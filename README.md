@@ -30,6 +30,8 @@
 
 完整的先修图、实践任务与时间预算见 [学习路线](docs/learning-path.md)。遇到新词可查 [35组中英术语索引](docs/glossary.md)，再沿具体章节链接阅读推导；全局 [符号约定](docs/notation.md) 与 [来源核验](SOURCES.md) 帮助跨章核对。
 
+读完一段路线后，用[12题课程自测](docs/self-assessment.md)定位下一步：先独立作答，再展开提示和参考答案，按具体通过判据回到对应章节。
+
 ## 第一次成功运行
 
 已验证目标是 Linux x86_64、Python 3.12、CPU PyTorch 2.6.0。锁文件对应这一平台；macOS/Windows 需要各自的依赖锁定与验证。云环境首次安装需要 PyPI 与 PyTorch 官方软件源可达。下面命令从仓库根目录运行：

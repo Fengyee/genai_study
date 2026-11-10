@@ -116,6 +116,8 @@ python -m genai_study.video_diagnostics --output artifacts/video-counterexample
 
 ## 进入研究前的毕业检查
 
+先用[12题课程自测与错题索引](self-assessment.md)检查关键概念连接。每题给出可检查的产物、隐藏提示/答案和回读入口，再结合下面的实践完成情况选择下一步。
+
 - 不看材料独立写出 DDPM 正向边缘分布和本仓库 flow 路径的条件速度。
 - 解释为何训练时可以采样随机时间点，而生成时需要沿时间推进。
 - 找出一个“训练损失更低但生成更差”的可能原因，并提出可证伪检查。
