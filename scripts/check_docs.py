@@ -19,7 +19,7 @@ REQUIRED = (
     "docs/notation.md", "docs/chapters/00-foundations.md",
     "docs/chapters/01-generative-models.md", "docs/chapters/02-diffusion.md",
     "docs/chapters/03-flow-matching.md", "docs/chapters/04-image-video-roadmap.md",
-    "docs/chapters/05-evaluation.md",
+    "docs/chapters/05-evaluation.md", "docs/chapters/06-video-temporal-lab.md",
 )
 EXCLUDED = {".git", ".venv", "artifacts", "node_modules", "__pycache__", ".pytest_cache"}
 

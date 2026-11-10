@@ -2,7 +2,7 @@
 
 给熟练使用 PyTorch、有研究经验但尚未系统学习生成式 AI 的 CS master / PhD：用清楚的假设、可核对的推导和能在 CPU 上跑通的小实验建立基础，再进入图像与视频生成研究。
 
-**当前版本**：6 个学习单元、二维 DDPM / Flow Matching 训练与采样、自动质量检查。它是一套可运行的基础课程起点；真实图像/视频训练、预训练模型实操及完整前沿综述仍在 [backlog](records/BACKLOG.md)。不需要 API key 或下载模型权重。
+**当前版本**：7 个学习单元、二维 DDPM / Flow Matching 训练与采样、无需权重的视频时序反例、自动质量检查。它是一套可运行的基础课程起点；真实图像/视频模型训练、预训练模型实操及完整前沿综述仍在 [backlog](records/BACKLOG.md)。不需要 API key 或下载模型权重。
 
 ## 我适合从哪里开始？
 
@@ -11,6 +11,8 @@
 | 第一次接触生成建模 | [00 基础](docs/chapters/00-foundations.md) → [01 生成模型](docs/chapters/01-generative-models.md) | 能区分密度、采样、条件建模与评价 |
 | 想理解扩散和流模型 | [02 扩散](docs/chapters/02-diffusion.md) → [03 Flow Matching](docs/chapters/03-flow-matching.md) | 推导核心训练目标，跑通并解释二维实验 |
 | 准备研究图像/视频 | 完成上述基础 → [04 研究路线](docs/chapters/04-image-video-roadmap.md) | 能选定一个有假设、基线和评价协议的问题 |
+
+图像/视频读者还可直接运行 [06 视频时序实验](docs/chapters/06-video-temporal-lab.md)，观察帧集合相同而时间顺序错误的反例。
 
 完整的先修图、实践任务与时间预算见 [学习路线](docs/learning-path.md)。全局 [符号约定](docs/notation.md) 与 [来源核验](SOURCES.md) 帮助跨章阅读。
 
@@ -37,7 +39,7 @@ python -m genai_study.experiment --method ddpm --steps 800 --output artifacts/fi
 bash scripts/quality.sh
 ```
 
-脚本验证公式性质、文档链接和两种算法的小规模实际运行；短 smoke 检查不评估训练是否收敛。第03章还提供固定 checkpoint、固定初始噪声的求解器步数实验。完整实验按 seed 固定 CPU 随机性，但跨 PyTorch/平台的位级一致性不保证。随机种子、多次评估和 toy 指标解释见 [实验说明](examples/README.md)。
+脚本验证公式性质、文档链接和两种算法的小规模实际运行；短 smoke 检查不评估训练是否收敛；视频检查验证程序生成的时序反例。第03章还提供固定 checkpoint、固定初始噪声的求解器步数实验。完整实验按 seed 固定 CPU 随机性，但跨 PyTorch/平台的位级一致性不保证。随机种子、多次评估和 toy 指标解释见 [实验说明](examples/README.md)。
 
 ## 内容边界与常见问题
 

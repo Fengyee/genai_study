@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "config": {
+    "frames": 16,
+    "fps": 8.0,
+    "seed": 7,
+    "shape": [
+      16,
+      32,
+      48
+    ],
+    "layout": "T,H,W",
+    "dtype": "float64",
+    "intensity_range": [
+      0.0,
+      1.0
+    ],
+    "gaussian_sigma_px": 2.0,
+    "center_x_start_px": 8.0,
+    "center_x_end_px": 39.0,
+    "center_y_px": 15.5,
+    "first_frame_time_seconds": 0.0,
+    "last_frame_time_seconds": 1.875,
+    "nominal_playback_duration_seconds": 2.0,
+    "rng": "NumPy default_rng (PCG64)"
+  },
+  "shuffled_source_indices": [
+    3,
+    10,
+    6,
+    8,
+    1,
+    14,
+    0,
+    7,
+    4,
+    13,
+    15,
+    2,
+    12,
+    5,
+    9,
+    11
+  ],
+  "timestamps_seconds": [
+    0.0,
+    0.125,
+    0.25,
+    0.375,
+    0.5,
+    0.625,
+    0.75,
+    0.875,
+    1.0,
+    1.125,
+    1.25,
+    1.375,
+    1.5,
+    1.625,
+    1.75,
+    1.875
+  ],
+  "metrics": {
+    "reference": {
+      "ordered_mse_to_reference": 0.0,
+      "time_mean_image_mse": 0.0,
+      "symmetric_frame_set_mse": 0.0,
+      "centroid_rmse_px": 0.0,
+      "mean_centroid_speed_px_per_second": 16.533248008822415,
+      "wrong_direction_steps": 0,
+      "endpoint_displacement_px": 30.999840016542027
+    },
+    "shuffled": {
+      "ordered_mse_to_reference": 0.01407099460536538,
+      "time_mean_image_mse": 3.944315482478255e-35,
+      "symmetric_frame_set_mse": 0.0,
+      "centroid_rmse_px": 11.553001632178782,
+      "mean_centroid_speed_px_per_second": 114.63093933596996,
+      "wrong_direction_steps": 6,
+      "endpoint_displacement_px": 16.533333333332443
+    },
+    "static_first_frame": {
+      "ordered_mse_to_reference": 0.014096999220737982,
+      "time_mean_image_mse": 0.007555664900544333,
+      "symmetric_frame_set_mse": 0.007048499610368991,
+      "centroid_rmse_px": 18.193634041406813,
+      "mean_centroid_speed_px_per_second": 0.0,
+      "wrong_direction_steps": 0,
+      "endpoint_displacement_px": 0.0
+    }
+  },
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.1.3",
+    "matplotlib": "3.9.3"
+  },
+  "limitations": "Synthetic known-trajectory counterexample; no learned generator or perceptual evaluator. Frame-set metrics ignore order. Static motion has zero speed but fails the moving-target task. These diagnostics are not FID/FVD or general-purpose video quality metrics."
+}

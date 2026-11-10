@@ -32,6 +32,12 @@
 
 验证：最终21项测试全部通过；训练→保存→载入→求解器完整路径成功。新依赖下重跑全部12组benchmark和干净读者环境，records/measurements记录的都是2.6.0实测，旧2.5.1仅在本地artifacts保留；没有重贴版本标签。求解器终点差随细分减小，但目标邻域比例不单调改善，已记录这一教学反例。
 
+## 轮次5：补上可运行的视频时序评价反例
+
+问题：视频部分仅有理论研究路线，读者无法在CPU上亲自观察帧分布与时序联合的差异。实施：移动高斯光点、同帧乱序、静态重复帧三个对照；完整帧拼图、原始数组、像素与质心诊断；新增06章、单位说明、练习答案和每小时检查入口。
+
+验证：同帧乱序的frame-set MSE=0，平均图MSE约3.94e-35，但轨迹质心RMSE=11.553px；静态速度=0而轨迹RMSE=18.194px，不能把少动当任务成功。5项新测试覆盖帧多重集、时序误差、静态陷阱、fps单位、CLI实际输出。全量26项测试及三条实际CLI smoke通过。这是合成评价反例，不是视频生成模型。
+
 ## 恢复方式
 
 1. `git status --short --branch`，保留未提交工作；`git log -5 --oneline` 与 `git ls-remote origin`核对实际本地/远端状态。
@@ -52,4 +58,9 @@
 - 随后仅更新报告与链接，`.venv/bin/python scripts/check_docs.py`：70个本地链接、0错误。
 - 独立 `/tmp/genai-reader-venv`：最终2.6.0依赖hash安装、editable安装、pip check、800更新flow成功。
 - 本轮检查未执行GPU/图像/视频模型，也未执行GitHub远端Actions。
-- 已完成源码/文档检查点，正在推送功能分支；最终远端与PR状态将在下一条记录确认。
+- 检查点 `69ff658` 已推送至 `origin/feat/reproducible-genai-curriculum`；`gh pr create ... --body-file records/PR_BODY.md` 实际返回 `Post https://api.github.com/graphql: Forbidden`，尚无PR。
+- 第5轮最终 `bash scripts/quality.sh`：退出0；26 passed（24.48秒）、文档0错误、DDPM/flow/video三条smoke通过。日志：`artifacts/quality/20261110T152101Z-mbVAni`。
+- 随后的06章实测表与最终报告链接检查：85 links / 0 errors。`git diff --check`通过。
+- 第5轮内容将作为独立提交推送同一功能分支；工作区状态应以恢复时的 `git status` 与 `git ls-remote` 为准。预期无未提交源码，忽略的artifacts为本地复现产物。
+- 小时检查只在PR合入默认分支后激活；目前main仍为空初始化提交，未观察远端Actions执行。网站未部署，编码代理持久调度未部署，环境配置未发布。
+- 下一轮：应用api.github.com/arXiv网络草稿后优先创建PR并核验原始文献；同时可设计CPU极小图像实验。Bark/Codex主动推送仍缺可用接口/绑定，不能声称将于会话外自动继续。

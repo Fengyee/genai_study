@@ -39,4 +39,5 @@ run_check docs "$python_bin" scripts/check_docs.py
 run_check tests "$python_bin" -m pytest -q --junitxml="$run_dir/pytest.xml"
 run_check smoke-flow "$python_bin" -m genai_study.experiment --method flow --steps 20 --samples 64 --output "$run_dir/flow"
 run_check smoke-ddpm "$python_bin" -m genai_study.experiment --method ddpm --steps 20 --samples 64 --output "$run_dir/ddpm"
+run_check smoke-video "$python_bin" -m genai_study.video_diagnostics --output "$run_dir/video"
 exit "$run_status"
