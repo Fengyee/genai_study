@@ -35,6 +35,7 @@ PixelRNN 论文中的 PixelCNN 提供一个具体图像例子：按行从左到�
 
 在仓库根目录激活基础环境后运行：
 
+<!-- cpu-check: autoregressive-causality -->
 ```bash
 python - <<'PY'
 import itertools

@@ -89,6 +89,7 @@ $$
 
 在基础环境运行下面代码，只需NumPy。把两个目标bit放进同一组，固定前缀后要求它们以相同概率取00或11。完整逐token分解可以先抽一个bit，再复制到第二个；按各自边缘分布独立抽样时，01和10也会出现。
 
+<!-- cpu-check: restok-group-factorization -->
 ```python
 import itertools
 import numpy as np

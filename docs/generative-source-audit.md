@@ -61,6 +61,7 @@ PixelRNN论文同时提出PixelCNN，教材据其§3.5说明卷积实现的训�
 
 在仓库根目录激活环境后运行：
 
+<!-- cpu-check: generative-identities -->
 ```bash
 python - <<'PY'
 import math

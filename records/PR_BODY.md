@@ -3,9 +3,9 @@
 - 10个学习单元：概率基础、生成模型、DDPM、Flow Matching、评价、视频时序反例、小图像生成/引导、研究路线及可选的预训练图像实践。学习路线写明先修、任务和完成判据。
 - 基础实验包括二维DDPM/flow、16×16条件卷积图像生成、checkpoint与固定噪声Euler对照、CFG强度扫描及视频时序诊断。保留多seed实测、原始数组、几何/裁剪反例和独立数学检查。
 - 可选SD1.4实践固定原作者权重revision、16文件SHA、许可及独立依赖锁。真实CPU完成512×512/20步生成、配对引导和完整重复；默认推理261.52秒、进程峰值5.38GiB，复跑PNG逐字节相同。保留提示中缺失的小屋等实际观察和后续提示实验。
-- 原文核验覆盖自回归因果掩码、ELBO/GAN/变量替换/CNF、DDPM/FM/DDIM、LDM/CFG/DiT及主要图像/视频评价指标；Wan、Kontext及SVD/CogVideoX阅读卡核对训练、条件、时间和公开模型的版本差异。
-- hash锁依赖、贡献规范、第三方归属、执行记录、每小时质量检查定义与协作锁适配器。修复uv备用安装缺pip、跨章节目录重复执行和导航不一致的问题。
+- 原文核验覆盖自回归因果掩码、ELBO/GAN/变量替换/CNF、DDPM/FM/DDIM、LDM/CFG/DiT及主要评价指标；Wan、Kontext、SVD/CogVideoX及2026首发的ResTok、LTX-2阅读卡核对训练、条件、时间、调用量和公开版本差异。35组中英术语索引链接到具体定义与练习。
+- hash锁依赖、贡献规范、第三方归属、执行记录、每小时质量检查定义与协作锁适配器；10个已审查CPU教学块纳入独立进程/超时检查。修复uv备用安装缺pip、跨章节目录重复执行和导航不一致的问题。
 
-验证：69项测试、7条基础CLI smoke通过；预训练实践另在干净独立venv完成hash安装、pip check、真实权重校验、2步smoke与完整生成。独立复算DDIM首末步、CFG配对输入、图像hash和数据预算；文档内自回归/评价/视频等代码逐字执行，链接及diff检查通过。测量范围和原始证据见records/PROGRESS.md、各实验报告与records/measurements。远端结果以本PR最新SHA的checks为准。
+验证：69项测试、10个CPU教学块、7条基础CLI smoke通过；预训练实践另在干净独立venv完成hash安装、pip check、真实权重校验、2步smoke与完整生成。独立复算DDIM首末步、CFG配对输入、图像hash和数据预算；教学块执行器的8个成功/故障fixture验证状态传播与超时后继续。链接及diff检查通过。测量范围和原始证据见records/PROGRESS.md、各实验报告与records/measurements。远端结果以本PR最新SHA的checks为准。
 
 运行状态：质量workflow定义为GitHub Actions每小时UTC:17，合入默认分支后激活；当前尚无schedule事件。网站、持续编码代理与通知绑定尚未部署，环境保持用户已发布版本。视频权重运行和更广的质量评测按backlog继续推进。

@@ -98,6 +98,7 @@ $1024\times1024$ 图像得到 $4096\times64$ 个 token 特征；相同大小的�
 
 在仓库根目录、完成 README 安装后运行；使用已有 NumPy，不下载模型或数据。数组内容只用于检查打包轴，任意数值均可。
 
+<!-- cpu-check: kontext-packing-time -->
 ```bash
 .venv/bin/python - <<'PY'
 import numpy as np

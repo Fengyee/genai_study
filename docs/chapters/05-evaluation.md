@@ -43,6 +43,7 @@ $$
 
 在已安装依赖的仓库根目录运行；无需训练或下载数据：
 
+<!-- cpu-check: coverage-counterexample -->
 ```bash
 python - <<'PY'
 import json
@@ -166,6 +167,7 @@ $$
 
 下面直接构造分类器概率和一维特征，检验两个指标的统计性质。它不加载图像或特征网络，完成 README 安装后，从仓库根目录执行：
 
+<!-- cpu-check: is-kid-counterexamples -->
 ```bash
 python - <<'PY'
 from itertools import product

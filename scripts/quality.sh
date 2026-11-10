@@ -36,6 +36,7 @@ run_check() {
   if (( status != 0 )); then run_status=1; fi
 }
 run_check docs "$python_bin" scripts/check_docs.py
+run_check lesson-examples "$python_bin" scripts/check_lesson_examples.py --timeout-seconds 20
 run_check tests "$python_bin" -m pytest -q --junitxml="$run_dir/pytest.xml"
 run_check smoke-flow "$python_bin" -m genai_study.experiment --method flow --steps 20 --samples 64 --output "$run_dir/flow"
 run_check smoke-ddpm "$python_bin" -m genai_study.experiment --method ddpm --steps 20 --samples 64 --output "$run_dir/ddpm"

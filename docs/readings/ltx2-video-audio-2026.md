@@ -49,6 +49,7 @@ $$
 
 令视频bit表示画面中是否发生一次敲击，音频bit表示对应声音是否出现。目标只允许00与11，各占一半。下面枚举全部四种情况，无需下载权重：
 
+<!-- cpu-check: ltx2-joint-factorization -->
 ```python
 import numpy as np
 
@@ -92,6 +93,7 @@ print({"sequential_mismatch": float(sequential[0, 1] + sequential[1, 0]),
 
 上述尺寸可以在基础环境用整数与标量独立核对：
 
+<!-- cpu-check: ltx2-token-shapes -->
 ```python
 frames, height, width, fps = 121, 512, 768, 24.0
 latent_frames = 1 + (frames - 1) // 8
@@ -168,6 +170,7 @@ $$
 
 下面是独立解析例：给定一对干净向量与噪声，使用其精确常量速度。它检查网格区间、$\widehat z_0$转换及递减时间Euler更新。真实模型中的预测误差需要另行测量。
 
+<!-- cpu-check: ltx2-sampling-grid -->
 ```python
 import numpy as np
 

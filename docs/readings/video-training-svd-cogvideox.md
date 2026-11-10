@@ -126,6 +126,7 @@ $$z_0=az_t-bv_{\mathrm{VP}},\qquad
 
 取 $a=(1+\sigma^2)^{-1/2}$、$b=\sigma a$，SVD 的预条件式也满足这一还原关系。`v_prediction` 的定义随噪声级别变化；[03 章](../chapters/03-flow-matching.md)直线路径的速度目标则为数据减噪声，使用参数前先展开对应公式。
 
+<!-- cpu-check: video-vp-shapes -->
 ```python
 import numpy as np
 
