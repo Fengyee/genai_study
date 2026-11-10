@@ -133,10 +133,12 @@ python -m genai_study.pretrained_image prepare \
 
 准备步骤下载清单中的文件并核对字节数与SHA-256。下载进度和退出结果可用于确认是否完成；保留该目录供后续推理复用。网络恢复后可重跑`prepare`，利用下载器保留的文件与元数据继续处理。托管服务重定向后的HTTP ETag可能采用不同对象哈希，本仓库以清单中的文件SHA-256校验内容。
 
-首次完整生成使用固定提示、512×512和20步：
+首次完整生成使用固定提示、512×512和20步，通过[运行记录器](../run-records.md)保存外层耗时、日志和退出状态。本例给子命令900秒预算，实际资源需求先参照实测报告：
 
 ```bash
-python -m genai_study.pretrained_image run \
+python -m genai_study.run_record --timeout 900 \
+  --output artifacts/run-records/sd14-first -- \
+  python -u -m genai_study.pretrained_image run \
   --manifest examples/pretrained-sd14/manifest.json \
   --model-dir artifacts/models/sd14 \
   --output artifacts/pretrained-sd14 \
@@ -147,11 +149,11 @@ python -m genai_study.pretrained_image run \
 
 运行时再次核对所有清单文件，从本地加载safetensors，使用CPU float32。成功结束后输出`image.png`、`initial_noise.npy`和`metrics.json`。生成图经过pipeline的Safety checker及图像后处理；检查结果也保存在JSON中。检测为需过滤的样本按pipeline规则处理，解释输出时一并查看该字段。
 
-CPU采样可能持续数分钟；程序在开始和若干中间步骤输出`DDIM step ... started`，最终结果以输出JSON和退出状态核对。
+CPU采样可能持续数分钟；程序在开始和若干中间步骤输出`DDIM step ... started`，这些信息写入记录目录的`command.log`。完成后先检查`run.json`的状态与退出码，再核对实验的`metrics.json`；超时或报错时仍可读取本次记录。
 
-已有`artifacts/pretrained-sd14`时直接阅读结果；重做请改用新目录，例如`--output artifacts/pretrained-sd14-repeat`。输出保护可帮助保留每次实验的证据。
+已有`artifacts/pretrained-sd14`时直接阅读结果；重做请把记录器目录改为`artifacts/run-records/sd14-repeat`，实验目录改为`artifacts/pretrained-sd14-repeat`。两者均保护已有记录。
 
-需要先确认加载与保存路径时，可把输出改为`artifacts/pretrained-sd14-smoke`，并使用`--steps 2 --height 256 --width 256`。这个短运行减少计算，覆盖文本编码、去噪、解码和输出检查。它同时改变了分辨率与时间网格；质量观察以声明了完整采样设置的实验为依据。
+需要先确认加载与保存路径时，可把记录目录改为`artifacts/run-records/sd14-smoke`、实验目录改为`artifacts/pretrained-sd14-smoke`，并使用`--steps 2 --height 256 --width 256`。这个短运行减少计算，覆盖文本编码、去噪、解码和输出检查。它同时改变了分辨率与时间网格；质量观察以声明了完整采样设置的实验为依据。
 
 ## 6. 先核对记录，再评价结果
 
@@ -186,7 +188,7 @@ CPU采样可能持续数分钟；程序在开始和若干中间步骤输出`DDIM
 
 ### B. 固定噪声比较条件引导
 
-完成默认运行后，复用同一模型目录，将`--guidance-scale`改为3.0、输出改为`artifacts/pretrained-sd14-guidance3`，其余参数保持。比较两份`initial_noise.npy`是否逐元素相同，再比较预先列出的五个提示检查项与构图、颜色。记录本次结果后，说明还需要哪些实验才能支持更普遍的判断。
+完成默认运行后，复用同一模型目录，将`--guidance-scale`改为3.0、实验输出改为`artifacts/pretrained-sd14-guidance3`，记录目录改为`artifacts/run-records/sd14-guidance3`，其余参数保持。比较两份`initial_noise.npy`是否逐元素相同，再比较预先列出的五个提示检查项与构图、颜色。记录本次结果后，说明还需要哪些实验才能支持更普遍的判断。
 
 <details>
 <summary>提示与解释范围</summary>

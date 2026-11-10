@@ -23,6 +23,7 @@ REQUIRED = (
     "docs/chapters/07-image-flow-lab.md",
     "docs/chapters/08-image-guidance-lab.md",
     "docs/chapters/09-pretrained-image-lab.md",
+    "docs/chapters/10-pretrained-video-lab.md",
 )
 EXCLUDED = {".git", ".venv", ".venv-pretrained", "artifacts", "node_modules", "__pycache__", ".pytest_cache"}
 

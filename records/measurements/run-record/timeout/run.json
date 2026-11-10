@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "status": "timed_out",
+  "argv": [
+    "/workspace/genai_study/.venv/bin/python",
+    "-u",
+    "-c",
+    "import time; print('started before timeout'); time.sleep(10)"
+  ],
+  "cwd": "/workspace/genai_study",
+  "started_utc": "2026-11-10T20:14:48.511807+00:00",
+  "timeout_seconds": 0.2,
+  "termination_grace_seconds": 1.0,
+  "runner": {
+    "version": 1,
+    "source_sha256": "be545eff1985b8eed096b0663145bade01303685430310d4b199aa727c685697",
+    "python_version": "3.12.14",
+    "python_executable": "/workspace/genai_study/.venv/bin/python"
+  },
+  "git": {
+    "root": "/workspace/genai_study",
+    "head": "efbc2c26719411a564a851304f63f8689fe9b398",
+    "changed_paths": [
+      {
+        "status": " M",
+        "path": "docs/automation.md"
+      },
+      {
+        "status": " M",
+        "path": "docs/chapters/09-pretrained-image-lab.md"
+      },
+      {
+        "status": " M",
+        "path": "docs/chapters/10-pretrained-video-lab.md"
+      },
+      {
+        "status": " M",
+        "path": "examples/README.md"
+      },
+      {
+        "status": " M",
+        "path": "scripts/check_docs.py"
+      },
+      {
+        "status": "??",
+        "path": "docs/run-records.md"
+      },
+      {
+        "status": "??",
+        "path": "src/genai_study/run_record.py"
+      },
+      {
+        "status": "??",
+        "path": "tests/test_run_record.py"
+      }
+    ]
+  },
+  "stdin": "devnull",
+  "log_file": "command.log",
+  "timed_out": true,
+  "child_returncode": -15,
+  "exit_code": 124,
+  "wall_seconds": 0.250485997999931,
+  "finished_utc": "2026-11-10T20:14:48.767800+00:00",
+  "log_size_bytes": 23,
+  "log_sha256": "9d371208405eed706b68561454bed848483dc68af1902ccac20aeacff0c4adf7"
+}

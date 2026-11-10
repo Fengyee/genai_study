@@ -67,6 +67,8 @@ GitHub Actions 的 `concurrency` 只约束对应 workflow 的 runs，**不能锁
 
 ## 可选预训练实践的验证范围
 
+09/10章使用[运行记录器](run-records.md)保存完整子命令的日志、超时、退出状态与wall；它通过pytest中的小进程验证，独立于模型内部指标和本节的权重实践。读者可先执行记录器文档中的无模型命令确认保存路径。
+
 09/10章共用`requirements-pretrained-lock.txt`和`.venv-pretrained`，分别运行SD1.4与SVD。常规pytest中的15项图像测试、23项视频测试覆盖固定manifest、文件损坏检测/恢复、参数、输出保护、预处理与独立随机流，使用临时小文件即可执行。每小时检查保持基础依赖和CPU小实验的预算；两模型分别约5.11GiB、8.40GiB的下载及真实推理由显式实践命令完成。
 
 模型、可选依赖或采样/解码路径变化时，应按09章重新核验文件、运行真实smoke和至少一张完整图，再检查固定噪声对照。记录实际模型revision、可选锁文件hash、输出hash、进程内存和计时范围，结果见[预训练实测](pretrained-image-report.md)。文档检查跳过两个venv和本地artifacts目录。

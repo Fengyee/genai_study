@@ -168,7 +168,9 @@ $$s_f=1+\frac{f}{F-1}(2.5-1),\qquad
 .venv-pretrained/bin/python -m genai_study.pretrained_video prepare \
   --model-dir artifacts/models/svd
 
-timeout 600 .venv-pretrained/bin/python -m genai_study.pretrained_video run \
+.venv-pretrained/bin/python -m genai_study.run_record --timeout 600 \
+  --output artifacts/run-records/svd-smoke -- \
+  .venv-pretrained/bin/python -u -m genai_study.pretrained_video run \
   --model-dir artifacts/models/svd \
   --input docs/assets/sd14-pilot-scene-seed43.png \
   --height 144 --width 256 --frames 4 --steps 2 \
@@ -178,23 +180,33 @@ timeout 600 .venv-pretrained/bin/python -m genai_study.pretrained_video run \
   --output artifacts/svd-smoke
 ```
 
-检查smoke退出状态、完整帧和指标后，保持条件，使用`--frames 14 --steps 4 --output artifacts/svd-calibration`运行校准，外层超时900秒。下一步以校准命令完整耗时乘$25/4$作保守预算外推；外推不超过1500秒、进程峰值不超过24GiB时，再执行14帧/25步，硬超时1800秒，输出到新目录`artifacts/svd-full`。这些数值是本轮预设预算和进入条件；实际耗时与内存需从每次运行记录读取。
+记录器在模型启动前创建`artifacts/run-records/svd-smoke`，保存`run.json`和`command.log`；即使超时或加载失败也可复查本次请求。完整用法、计时与退出码见[运行记录说明](../run-records.md)。先检查smoke的`run.json`为`succeeded`，再检查完整帧和指标，然后保持条件运行14帧/4步校准，外层超时900秒。
 
-校准与完整请求分别为以下命令；完整请求在核对上述资源条件后执行。省略的尺寸、引导、fps、增强强度和线程参数采用本章已列出的固定默认值，运行记录会保存实际值。
+校准请求如下。省略的尺寸、引导、fps、增强强度和线程参数采用本章已列出的固定默认值，成功输出的`metrics.json`保存实际值。
 
 ```bash
-timeout 900 .venv-pretrained/bin/python -m genai_study.pretrained_video run \
+.venv-pretrained/bin/python -m genai_study.run_record --timeout 900 \
+  --output artifacts/run-records/svd-calibration -- \
+  .venv-pretrained/bin/python -u -m genai_study.pretrained_video run \
   --model-dir artifacts/models/svd --input docs/assets/sd14-pilot-scene-seed43.png \
   --frames 14 --steps 4 --seed 7 --augmentation-seed 8 \
   --output artifacts/svd-calibration
+```
 
-timeout 1800 .venv-pretrained/bin/python -m genai_study.pretrained_video run \
+校准成功后，从`artifacts/run-records/svd-calibration/run.json`读取`wall_seconds`，乘$25/4$作预算外推；从`artifacts/svd-calibration/metrics.json`读取进程峰值内存。外推不超过1500秒、进程峰值不超过24GiB时，再执行14帧/25步，外层超时1800秒。超时后的进程清理最多另用1秒宽限；预算和进入条件按本机实际记录核对。
+
+通过上述检查后运行完整请求：
+
+```bash
+.venv-pretrained/bin/python -m genai_study.run_record --timeout 1800 \
+  --output artifacts/run-records/svd-full -- \
+  .venv-pretrained/bin/python -u -m genai_study.pretrained_video run \
   --model-dir artifacts/models/svd --input docs/assets/sd14-pilot-scene-seed43.png \
   --frames 14 --steps 25 --seed 7 --augmentation-seed 8 \
   --output artifacts/svd-full
 ```
 
-增加步数时，加载和编解码等固定成本也被上述比值放大。实际去噪步的耗时会随计算、缓存和系统负载变化，外推只用于决定本轮资源安排。每次保留退出码与完整日志；使用新输出目录保护已有实验。下一次修改模型、精度、尺寸或解码策略后，应重新校准。
+增加步数时，加载和编解码等固定成本也被上述比值放大。实际去噪步的耗时会随计算、缓存和系统负载变化，外推只用于决定本轮资源安排。记录目录保存退出状态和完整日志，实验目录保存成功的模型输出；重跑时两者都改用新目录。下一次修改模型、精度、尺寸或解码策略后，应重新校准。
 
 ## 6. 输出与观察协议
 
