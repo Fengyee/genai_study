@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "declared_date_utc": "2026-11-10",
+  "status": "declared before any VAE reconstruction forward pass",
+  "question": "How do posterior sampling and the released latent coordinate scale affect one fixed image's encode-decode round trip?",
+  "input": {
+    "path": "docs/assets/sd14-pilot-scene-seed43.png",
+    "sha256": "a262f5478c234927217e9268e5abeb7f58bcb21a2415366cdbe4f950f26688b9",
+    "height": 512,
+    "width": 512,
+    "source": "Previously retained SD1.4 pilot output; same-model generated watercolor image",
+    "preprocessing": "RGB float32 divided by 255, BCHW, then 2*x-1; preserve original size without cropping or resampling"
+  },
+  "model": {
+    "id": "CompVis/stable-diffusion-v1-4",
+    "revision": "133a221b8aa7292a167afc5127cb63fb5005638b",
+    "manifest": "examples/pretrained-sd14/manifest.json",
+    "component": "vae",
+    "scaling_factor": 0.18215,
+    "local_files_only": true,
+    "dtype": "float32",
+    "device": "cpu",
+    "threads": 1,
+    "tiling": false,
+    "slicing": false
+  },
+  "cases": [
+    {"id": "mode", "decoder_input": "posterior.mode()"},
+    {"id": "posterior-seed7", "decoder_input": "posterior.sample with independent CPU generator", "seed": 7},
+    {"id": "posterior-seed19", "decoder_input": "posterior.sample with independent CPU generator", "seed": 19},
+    {"id": "posterior-seed43", "decoder_input": "posterior.sample with independent CPU generator", "seed": 43},
+    {"id": "scale-roundtrip", "decoder_input": "(scaling_factor * posterior.mode()) / scaling_factor"},
+    {"id": "scale-mismatch", "decoder_input": "scaling_factor * posterior.mode(); deliberate omission of inverse scaling"}
+  ],
+  "budget": {
+    "primary_command_timeout_seconds": 300,
+    "termination_grace_seconds": 1,
+    "primary_encode_calls": 1,
+    "primary_decode_calls": 6,
+    "repeat_condition": "Primary succeeded, full child wall <= 120 seconds and process lifetime peak RSS <= 8 GiB",
+    "repeat_scope": "Repeat the complete same six-case command in a new result and run-record directory",
+    "repeat_command_timeout_seconds": 300,
+    "note": "Budgets are predeclared limits. Existing SD timing does not isolate VAE cost; no reconstruction runtime estimate is claimed."
+  },
+  "outputs": [
+    "Original input identity and preprocessed input array",
+    "Posterior mean, clipped logvar, standard deviation and all decoder-input latents",
+    "Raw decoder arrays and unclipped RGB arrays for every case",
+    "All clipped and quantized PNGs, with complete contact sheet",
+    "Raw/clipped RGB MSE and RMS, range and out-of-range fraction, clipping RMS",
+    "Posterior reparameterization and latent scaling round-trip residuals",
+    "All array/file hashes, source and dependency identities, per-stage timing, peak RSS",
+    "Run recorder argv, complete logs, wall time, termination and exit state"
+  ],
+  "interpretation": [
+    "Report this fixed image's encoder-decoder round-trip error; the encoder is not proven to find the optimal latent for this decoder.",
+    "Posterior mode equals latent mean for this diagonal Gaussian, while decoding the mean generally differs from averaging decoded samples.",
+    "Three seeds illustrate posterior perturbations for one input; they do not establish natural-image dataset performance.",
+    "Squared pixel error to a [0,1] target cannot increase after clipping; raw values and clipping effects are therefore reported together.",
+    "No U-Net, text encoder, diffusion sampling, retraining or model quality ranking is part of this experiment."
+  ]
+}
