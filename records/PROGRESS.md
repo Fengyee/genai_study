@@ -212,3 +212,10 @@ f95d055对应GitHub run42847424682 completed/success，证明本轮图像/课程
 验证：从文档逐字提取CPU代码块执行，latent=(1,16,128,128)→tokens=(1,4096,64)，两图8192个视觉tokens，pack/unpack精确还原；两时间约定的Euler更新与解析结果一致。相关`pytest -q tests/test_image_guidance.py`为8 passed（7.48秒）；子任务174链接0错误。整合导航与主审修订后再次执行链接/diff检查。
 
 下一项：SVD/CogVideoX训练论文、自回归训练/采样接口和2026代表工作；并先评估预训练图像实践的许可、真实硬件与内存成本。轮次15代码与54项全量检查已经在d6105a1远端成功，本轮仅改教学/来源文档，提交后核对新SHA的检查状态。
+
+## 轮次16最终交付与恢复检查点
+
+- 阅读卡与导航提交9e089bc已推送PR #1，PR正文已同步；本地179链接0错误、diff检查通过。[自动PR run42860490726](https://github.com/Fengyee/genai_study/actions/runs/42860490726)在9e089bc完成success。
+- 下一步资源证据（只读，2026-11-10）：当前torch为CPU构建，CUDA不可用；/dev中无nvidia设备，/proc/driver/nvidia/gpus不存在。cgroup memory.max=34359738368（32GiB），cpu.max=400000/100000（约4核配额），进程affinity为5个CPU；当时/workspace空闲59.49GiB。可据此评估小型预训练图像CPU推理，实际权重大小、峰值内存和运行时间仍需选定模型后核对。
+- 本次新增源代码、课程、实测、来源和图像均已保存并推送；这次后续提交只补交付/资源记录与backlog。下一轮恢复时先核对git status、HEAD/远端与PR checks，重新取得协作锁，再按BACKLOG推进。
+- main仍为初始化cefe9c1。每小时质量检查定义在PR中，实际位置为GitHub Actions，UTC每小时:17；自动PR和手动事件已验证，尚无schedule事件。环境未重新发布，网站未部署，持续编码调度与Bark/Codex主动通知缺可调用入口/绑定。最新工具搜索亦未发现相应入口。
