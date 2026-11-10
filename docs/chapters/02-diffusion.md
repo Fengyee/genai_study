@@ -107,7 +107,7 @@ L_{\text{simple}}=\mathbb E_{x_0,t,\epsilon}
 t\sim\operatorname{Uniform}\{1,\ldots,T\}.
 $$
 
-因此，无权重 MSE **不等于**完整负 ELBO，也不能直接作为可比较的对数似然。代码通常对 batch 和坐标都求平均，论文中的向量平方范数则对坐标求和；固定维度下两者相差常数，但报告损失时必须说明 reduction。
+因此，无权重 MSE **不等于**完整负 ELBO，也不能直接作为可比较的对数似然。代码通常对 batch 和坐标都求平均，论文中的向量平方范数则对坐标求和；固定维度下两者相差常数，但报告损失时必须说明 reduction。 原论文 §3.3、公式 (13) 还为整数图像的最后一步定义了离散 decoder；本仓库使用连续二维数据，没有实现该图像似然项。因此这里的噪声 MSE 不能报告成论文的图像 bits/dim。
 
 对给定 $(x_t,t)$，MSE 最优预测为条件均值 $\mathbb E[\epsilon\mid x_t,t]$。由于一份 $x_t$ 可以由不同的 $x_0,\epsilon$ 产生，最优 MSE 通常不是零。在 $t>0$ 且密度光滑时，边缘 score 满足
 
@@ -177,6 +177,6 @@ $$
 - 原作者实现 `hojonathanho/diffusion`：[固定版本 `diffusion_utils.py`](https://github.com/hojonathanho/diffusion/blob/1e0dceb3b3495bbe19116a5e1b3596cd0706c543/diffusion_tf/diffusion_utils.py)。2026-11-10 核对了前向边缘、posterior variance、后验均值系数及噪声到 $x_0$ 的转换。该实现用零基数组索引，且可选择裁剪重建；本仓库二维实验不裁剪。
 - Song et al., **Score-Based Generative Modeling through Stochastic Differential Equations**, ICLR 2021：[论文](https://arxiv.org/abs/2011.13456)。作为后续阅读理解 score、反向 SDE 与 probability-flow ODE；本章未实现这些连续时间采样器。
 
-核验边界：本轮云环境访问 arXiv 被网络策略拒绝；公式已独立推导并与上述固定版本原始代码对照，不能将这一记录视为本轮逐页查阅了论文全文。论文页码和进一步综述应在网络恢复后补充核验。
+核验边界：2026-11-10 恢复网络后，已下载并逐项核对 `arXiv:2006.11239v2` 中与本章直接相关的正向过程、后验、噪声参数化、训练目标、末步采样和图像 decoder 定义。版本、PDF 哈希、公式号、页码及核对范围见 [来源审计](../source-audit.md)。没有审计整篇论文的实验结果或复现其图像性能；本节其它论文的全文仍未核验。
 
 下一步：[03 · Flow matching](03-flow-matching.md)，比较同一目标分布上的另一种训练路径。
