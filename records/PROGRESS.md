@@ -138,9 +138,19 @@ f95d055对应GitHub run42847424682 completed/success，证明本轮图像/课程
 
 验证：直接提取01审计中的代码块执行成功；`pytest -q tests/test_toy.py`为14 passed（1.26秒），评价定向性质3 passed；整合后的全量46项测试与五条CLI已在轮次10记录通过。最终仅新增来源索引/执行记录/PR描述，运行文档链接与diff检查，具体结果见本轮后续检查点。
 
-## 最新检查点与恢复入口
+## 轮次11检查点
 
-- 图像实现已保存为194427a；本轮来源/记录保存后统一推送到现有PR #1：https://github.com/Fengyee/genai_study/pull/1 。远端新SHA与Actions结论在推送后核对。
+- 图像实现194427a、来源审计0a4feab均已推送到PR #1：https://github.com/Fengyee/genai_study/pull/1 。新SHA推送后未观察到自动PR检查，workflow API显示active；显式触发当前feature后，[run42852732071](https://github.com/Fengyee/genai_study/actions/runs/42852732071) 在0a4feab完成success，事件为workflow_dispatch，安装、全部检查、artifact上传均成功。该观察确认手动检查路径；每小时schedule仍待默认分支合入。
 - 所有原始实测JSON、源码哈希、图像和读者路径均已保存；artifacts模型/数组及/tmp的PDF和临时验证结果留作当前实例的补充证据。
 - 每小时质量检查位于GitHub Actions，UTC每小时第17分，单项300秒、作业25分钟；main仍cefe9c1，schedule等待PR合入默认分支，尚无schedule执行记录。PR检查已实际运行；编码代理调度和Bark/Codex主动通知仍缺可调用入口/绑定。本轮没有发布环境配置或部署网站。
 - 下一项直接执行：核验05的IS、precision/recall、FVD、KID来源与估计条件，补可手算反例；然后补SVD/CogVideoX训练论文和近年图像阅读卡。先核对本地/远端状态并持有协作锁，再从BACKLOG继续。
+
+## 轮次12：修正DDPM终点噪声的必要条件表述
+
+全路径复查发现02章写“只有当alpha_bar_T足够小时终点才接近标准正态”，与同章练习D的标准正态数据反例冲突。依据：独立高斯线性组合在任意alpha_bar下均为标准正态；一般数据的终点均值/协方差依赖其原始分布及尺度。
+
+修改：将其改为削弱一般数据信号的设计方式，补有限二阶矩条件并链接标准正态练习；将笼统噪声表反例具体化为本仓库八高斯。其协方差为2.0064I；100步beta从0.0001到0.02时，独立NumPy计算alpha_bar=0.3635632481、终点协方差=1.3658900528I，每坐标超出标准正态36.589%。来源审计追加这次教学表述修订。
+
+验证：独立高斯解析推导与四个alpha_bar值的协方差检查通过；`pytest -q tests/test_toy.py`为14 passed（0.79秒）。未改变算法、共享符号或依赖。文档链接及diff检查随本轮提交执行。
+
+全路径复查还验证三组图像raw/clipped RMS与05 coverage-trap原代码，并发现跨入口视频/solver目录复用遗漏；下一轮直接修复这些命令提示。IS/PR/FVD/KID原文核验正并行实施，未完成文件保留在工作区直到验证后提交。
