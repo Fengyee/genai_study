@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "checkpoint": {
+    "path": "artifacts/first-run-5000-audit/flow/checkpoint.pt",
+    "sha256": "cdba33a087af5ac18d72d6eb451cfefc4a22f57bf871b3957d9aeb5133fff404",
+    "metadata": {
+      "config": {
+        "method": "flow",
+        "steps": 5000,
+        "batch_size": 256,
+        "samples": 2048,
+        "seed": 7,
+        "threads": 1,
+        "output": "artifacts/first-run-5000-audit/flow",
+        "overwrite": false,
+        "device": "cpu",
+        "learning_rate": 0.001,
+        "hidden_width": 128,
+        "sampling_steps": 100,
+        "data_radius": 2.0,
+        "data_sigma": 0.08,
+        "ddpm_beta_start": 0.0001,
+        "ddpm_beta_end": 0.1,
+        "ddpm_alpha_bar_terminal": 0.005618760362267494,
+        "eval_examples": 4096
+      },
+      "versions": {
+        "python": "3.12.14",
+        "torch": "2.6.0+cpu",
+        "numpy": "2.1.3",
+        "matplotlib": "3.9.3"
+      },
+      "purpose": "inference only; optimizer state is not retained"
+    }
+  },
+  "config": {
+    "steps": [
+      10,
+      25,
+      100,
+      200
+    ],
+    "samples": 2048,
+    "seed": 123,
+    "threads": 1,
+    "device": "cpu",
+    "solver": "explicit Euler",
+    "noise_seed": 123,
+    "reference_seed": 124,
+    "baseline_seed": 125
+  },
+  "versions": {
+    "python": "3.12.14",
+    "torch": "2.6.0+cpu"
+  },
+  "baseline_diagnostics": {
+    "energy_distance_v_statistic": 0.005140066146850586,
+    "energy_sample_count": 512,
+    "mean_distance_to_nearest_center": 0.09832519292831421,
+    "fraction_within_3sigma": 0.99169921875,
+    "covered_modes_at_1pct": 8
+  },
+  "runs": [
+    {
+      "steps": 10,
+      "nfe": 10,
+      "elapsed_seconds": 0.02238854899951548,
+      "diagnostics": {
+        "energy_distance_v_statistic": 0.011351585388183594,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.1316867172718048,
+        "fraction_within_3sigma": 0.86865234375,
+        "covered_modes_at_1pct": 8
+      },
+      "previous_steps": null,
+      "paired_rms_l2_difference_from_previous": null
+    },
+    {
+      "steps": 25,
+      "nfe": 25,
+      "elapsed_seconds": 0.05417302699970605,
+      "diagnostics": {
+        "energy_distance_v_statistic": 0.010962724685668945,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.12209909409284592,
+        "fraction_within_3sigma": 0.90673828125,
+        "covered_modes_at_1pct": 8
+      },
+      "previous_steps": 10,
+      "paired_rms_l2_difference_from_previous": 0.06054042652249336
+    },
+    {
+      "steps": 100,
+      "nfe": 100,
+      "elapsed_seconds": 0.21498134799912805,
+      "diagnostics": {
+        "energy_distance_v_statistic": 0.011229753494262695,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.12047187238931656,
+        "fraction_within_3sigma": 0.9169921875,
+        "covered_modes_at_1pct": 8
+      },
+      "previous_steps": 25,
+      "paired_rms_l2_difference_from_previous": 0.02760249376296997
+    },
+    {
+      "steps": 200,
+      "nfe": 200,
+      "elapsed_seconds": 0.4294843099996797,
+      "diagnostics": {
+        "energy_distance_v_statistic": 0.011289596557617188,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.12028782069683075,
+        "fraction_within_3sigma": 0.9189453125,
+        "covered_modes_at_1pct": 8
+      },
+      "previous_steps": 100,
+      "paired_rms_l2_difference_from_previous": 0.004997581709176302
+    }
+  ],
+  "timing_scope": "one sampling call only; excludes loading, metrics and plotting; no warm-up",
+  "limitations": "Same checkpoint and initial noise; no training. Paired endpoint differences compare two discretizations, NOT error against an exact solution. More steps need not improve target-distribution diagnostics. Single-seed timings are not a hardware benchmark."
+}

@@ -1,0 +1,89 @@
+{
+  "started_utc": "2026-11-10T18:26:19.021332+00:00",
+  "source_commit": "bcdeae89400b59e596d07fe978292d6a19df1f10",
+  "python": "3.12.14",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "timing_scope": "wall_seconds covers child process start through exit, including imports, training/sampling, metrics, plotting and saving; excludes dependency installation; sequential processes without warm-up; shared host load uncontrolled",
+  "source_sha256": {
+    "src/genai_study/experiment.py": "bee833cc0c3221c9983f86ad8899e15d01e2f8f85cc9f8d1e9e1896530675aea",
+    "src/genai_study/toy.py": "ec76843afbddd8445148f5f5ffe0a4793288c12372e0925d911eeb4eea67facb",
+    "src/genai_study/checkpoint.py": "e41ea50d53dc106c6658c7d6cbb48b71bdd61b28261d58116200e63ca6199144",
+    "src/genai_study/solver_study.py": "ed9c240869870195aef61a81688dca5bf44daf8c1381ac4343c8e361e68b6252",
+    "requirements-lock.txt": "87c983be2101697e42bcef34553aec0c28e2132ff3c9492c6732561468cc366a"
+  },
+  "runs": [
+    {
+      "label": "flow",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "genai_study.experiment",
+        "--method",
+        "flow",
+        "--steps",
+        "5000",
+        "--output",
+        "artifacts/first-run-5000-audit/flow"
+      ],
+      "started_utc": "2026-11-10T18:26:19.024084+00:00",
+      "wall_seconds": 7.998881423000057,
+      "exit_code": 0,
+      "timeout_seconds": 120,
+      "log": "artifacts/first-run-5000-audit/flow.log",
+      "program_elapsed_seconds": 5.403957783000806,
+      "program_timing_scope": "evaluation, training, sampling and metrics; excludes imports and plots",
+      "metrics_sha256": "b558ce8aca344d33f61bb5529210c5dd00da88b93c4b1f5c90fb8401850cf6b0"
+    },
+    {
+      "label": "ddpm",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "genai_study.experiment",
+        "--method",
+        "ddpm",
+        "--steps",
+        "5000",
+        "--output",
+        "artifacts/first-run-5000-audit/ddpm"
+      ],
+      "started_utc": "2026-11-10T18:26:27.023403+00:00",
+      "wall_seconds": 7.895546083000227,
+      "exit_code": 0,
+      "timeout_seconds": 120,
+      "log": "artifacts/first-run-5000-audit/ddpm.log",
+      "program_elapsed_seconds": 5.403607711999939,
+      "program_timing_scope": "evaluation, training, sampling and metrics; excludes imports and plots",
+      "metrics_sha256": "c11dde667c3e5ef442322ebe0e5b0ff1dc23f20c91650b951856c38fa228fbb8"
+    },
+    {
+      "label": "solver",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "genai_study.solver_study",
+        "--checkpoint",
+        "artifacts/first-run-5000-audit/flow/checkpoint.pt",
+        "--steps",
+        "10",
+        "25",
+        "100",
+        "200",
+        "--samples",
+        "2048",
+        "--seed",
+        "123",
+        "--output",
+        "artifacts/first-run-5000-audit/solver"
+      ],
+      "started_utc": "2026-11-10T18:26:34.919384+00:00",
+      "wall_seconds": 2.7387859989994467,
+      "exit_code": 0,
+      "timeout_seconds": 120,
+      "log": "artifacts/first-run-5000-audit/solver.log",
+      "program_elapsed_seconds": null,
+      "program_timing_scope": "one sampling call only; excludes loading, metrics and plotting; no warm-up",
+      "metrics_sha256": "88923c09a786fa4d2f445cbc48017f480995abbfae9599d06778ff0ad2344c0a"
+    }
+  ]
+}

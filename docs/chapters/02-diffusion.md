@@ -120,13 +120,13 @@ $$
 
 ## 5. 动手：二维八高斯
 
-先完成 [README](../../README.md) 的依赖安装。若已有README的`artifacts/first-ddpm`或下列命令的`artifacts/ddpm`，可以直接复用结果阅读本节。首次运行时在仓库根目录执行；重做实验时选择新输出目录：
+先完成 [README](../../README.md) 的依赖安装。若已有`artifacts/first-ddpm`或`artifacts/ddpm`，先查看`metrics.json`中的`config.steps`：5000步结果可直接复用；800步结果用于短训练对照，需要5000步时选择新目录，例如`artifacts/ddpm-5000`。首次运行时在仓库根目录执行：
 
 ```bash
-python -m genai_study.experiment --method ddpm --steps 800 --seed 7 --output artifacts/ddpm
+python -m genai_study.experiment --method ddpm --steps 5000 --seed 7 --output artifacts/ddpm
 ```
 
-默认 CPU、单线程、batch size 256、生成 2048 个样本。`--steps` 控制训练更新次数，不是加噪或采样步数。默认 $T=100$，$\beta_t$ 线性从 $10^{-4}$ 到 $0.1$；终点 $\bar\alpha_T$ 约 $0.0056$。这张较强的噪声表用于缩短二维 CPU 教学实验，不是推荐的图像训练配置，也没有消除终点分布差异。
+默认CPU、单线程、batch size 256、生成2048个样本。`--steps`控制训练更新次数；推荐显式使用5000次，省略时CLI默认800次。已有三seed实测中，5000次更新的目标邻域比例为91.89%–93.51%，具体成本与800步对照见[实测报告](../experiment-report.md)。默认扩散/采样预算$T=100$，$\beta_t$线性从$10^{-4}$到$0.1$；终点$\bar\alpha_T$约$0.0056$。这张较强的噪声表用于缩短二维CPU教学实验；图像任务需另选配置，且这里仍存在终点分布差异。
 
 实现中的 Python 索引 $k=0,\ldots,T-1$ 对应本文 $t=k+1$。`alpha_bar_prev[0] = 1`，所以索引 0 的后验方差应严格为 0。注意数组索引 0 已是第一次加噪，不能误当作干净数据的 $t=0$。
 

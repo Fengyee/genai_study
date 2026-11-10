@@ -5,11 +5,13 @@
 在仓库根目录完成 README 的环境安装后运行：
 
 ```bash
-python -m genai_study.experiment --method ddpm --steps 800 --output artifacts/ddpm
-python -m genai_study.experiment --method flow --steps 800 --output artifacts/flow
+python -m genai_study.experiment --method ddpm --steps 5000 --output artifacts/ddpm
+python -m genai_study.experiment --method flow --steps 5000 --output artifacts/flow
 ```
 
-运行完成后应得到 `metrics.json`、`samples.npz`、`samples.png`、`loss.png` 和 `checkpoint.pt`。800 次更新是 CPU 教学预算；结合数据与生成散点图、留出损失和诊断指标检查拟合情况。若已经完成 README 的首次实验，可重用 `artifacts/first-flow` 等目录中的结果，并相应修改下文 checkpoint 路径。非空输出目录默认受保护；重跑时选择新目录，确认要覆盖旧实验时才使用 `--overwrite`。
+运行完成后应得到`metrics.json`、`samples.npz`、`samples.png`、`loss.png`和`checkpoint.pt`。推荐5000次训练更新，结合八簇形状、留出损失和诊断指标检查拟合情况；省略`--steps`时CLI默认800次，可用作欠拟合对照。[实测报告](../docs/experiment-report.md)保留两预算、三seed的完整测量。
+
+若已经完成README的首次实验，先查看`metrics.json`中的`config.steps`；5000步结果可直接重用，并相应修改下文checkpoint路径。已有800步结果可保留，需要5000步时使用新目录，例如`artifacts/flow-5000`。非空输出目录默认受保护，重跑时选择新的`--output`即可保存两次记录。
 
 - 数据：8 个等权二维高斯分量，中心位于半径 2 的圆，分量协方差为 `0.08² I`；无需下载。
 - 模型：三层宽度 128 的 SiLU MLP，用 8 个正弦/余弦频率编码时间。
@@ -27,7 +29,7 @@ python -m genai_study.experiment --method flow --steps 800 --output artifacts/fl
 - `fraction_within_3sigma`：到最近中心距离小于 `3×0.08` 的比例。二维高斯在三倍标准差**半径**内的理论概率约为 `1-exp(-9/2)=98.89%`，不是一维的 99.73%。
 - `covered_modes_at_1pct`：一个模式的上述圆内至少有全部生成样本的 1% 时才计入覆盖。范围 0–8；所有模式都覆盖也不能证明分布正确。
 
-这些指标检查二维分布拟合；图像与视频实验需要各自的数据和诊断协议。练习：比较 200/800/2400 次更新；更换 3 个随机种子；寻找“最近中心距离改善但模式覆盖下降”的反例。额外训练成本由更新数近似线性决定，采样成本由样本数决定。
+这些指标检查二维分布拟合；图像与视频实验需要各自的数据和诊断协议。练习：比较200/800/5000次更新；更换3个随机种子；寻找“最近中心距离改善但模式覆盖下降”的反例。额外训练成本由更新数近似线性决定，采样成本由样本数决定。
 
 ## 如何识别“覆盖全部模式”带来的误导
 
@@ -37,7 +39,7 @@ python -m genai_study.experiment --method flow --steps 800 --output artifacts/fl
 
 ## 固定模型，单独研究 Euler 求解步数
 
-复用上面的flow训练结果。`checkpoint.pt`保存推理权重、架构和训练配置；精确续训还需优化器等状态，当前文件未包含这些状态。旧版实验若缺少checkpoint，请在新目录重新训练。首次比较时运行下列命令；若已按03章生成`artifacts/flow-solver`，直接读取结果。重做对照时将`--output`改为新目录。
+复用上面的flow训练结果。`checkpoint.pt`保存推理权重、架构和训练配置；精确续训还需优化器等状态，当前文件未包含这些状态。旧版实验若缺少checkpoint，请在新目录重新训练。首次比较时运行下列命令；若已按03章生成`artifacts/flow-solver`，先核对其`metrics.json`的`checkpoint.metadata.config.steps`，再复用相应预算的结果。改用5000步checkpoint或重做对照时，将`--output`改为新目录，例如`artifacts/flow-solver-5000`。
 
 ```bash
 python -m genai_study.solver_study --checkpoint artifacts/flow/checkpoint.pt --steps 10 25 100 200 --samples 2048 --seed 123 --output artifacts/flow-solver

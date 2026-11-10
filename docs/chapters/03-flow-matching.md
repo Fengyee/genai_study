@@ -108,13 +108,13 @@ $$
 
 ## 5. 动手：与 DDPM 共用数据分布
 
-完成 [README](../../README.md) 的安装后，从仓库根目录首次运行以下命令。若已有README或实验说明中的flow结果，可直接复用；例如使用`artifacts/first-flow`时，下文的`--checkpoint`也相应改为`artifacts/first-flow/checkpoint.pt`。重训请选择新输出目录。
+完成 [README](../../README.md) 的安装后，从仓库根目录首次运行以下命令。已有flow结果时先查看`metrics.json`中的`config.steps`，5000步结果可直接复用；例如使用`artifacts/first-flow`时，下文的`--checkpoint`改为`artifacts/first-flow/checkpoint.pt`。已有800步结果可保留作短训练对照，需要5000步时选择新目录，例如`artifacts/flow-5000`，并同步checkpoint路径。
 
 ```bash
-python -m genai_study.experiment --method flow --steps 800 --seed 7 --output artifacts/flow
+python -m genai_study.experiment --method flow --steps 5000 --seed 7 --output artifacts/flow
 ```
 
-默认 CPU、单线程、batch size 256、2048 个生成样本，Euler 100 步。`--steps` 控制训练更新次数，不是采样步数。监督数据是二维八高斯；每次训练独立采样源噪声和目标点。输出的损失采用坐标与 batch 的均值。
+默认CPU、单线程、batch size 256、2048个生成样本，Euler采样100步。`--steps`控制训练更新次数；推荐显式使用5000次，省略时CLI默认800次。已有三seed实测中，5000次更新的目标邻域比例为92.38%–92.48%，具体成本与800步对照见[实测报告](../experiment-report.md)。监督数据是二维八高斯；每次训练独立采样源噪声和目标点。输出的损失采用坐标与batch的均值。
 
 观察损失曲线、样本散点图和 JSON 诊断，特别注意：
 
@@ -127,7 +127,7 @@ python -m genai_study.experiment --method flow --steps 800 --seed 7 --output art
 
 ### 可运行的求解器对照
 
-完成上面的训练后运行以下独立采样命令。若`artifacts/flow-solver`已有结果，直接读取其JSON和图；重新比较时将`--output`改为新目录。
+完成上面的训练后运行以下独立采样命令。若`artifacts/flow-solver`已有结果，先核对其`metrics.json`的`checkpoint.metadata.config.steps`与训练配置，再读取JSON和图；改用新的5000步checkpoint时，将`--output`也改为新目录，例如`artifacts/flow-solver-5000`。结果按所用训练预算解释；[历史800步求解器实测](../experiment-report.md#固定模型的求解器对照)另提供独立复现命令。
 
 ```bash
 python -m genai_study.solver_study --checkpoint artifacts/flow/checkpoint.pt \

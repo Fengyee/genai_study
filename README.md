@@ -39,19 +39,21 @@ python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install --require-hashes -r requirements-lock.txt
 python -m pip install --no-build-isolation --no-deps -e .
-python -m genai_study.experiment --method flow --steps 800 --output artifacts/first-flow
+python -m genai_study.experiment --method flow --steps 5000 --output artifacts/first-flow
 ```
 
 如果使用本任务准备好的云环境，直接 `source .venv/bin/activate` 后运行实验。没有系统 Python 3.12 时可用预装的 `uv venv --python 3.12 --seed .venv` 创建带 pip 的环境；云环境写缓存遇权限问题时给 uv 设置 `UV_CACHE_DIR=/workspace/.cache/uv`。
 
-成功标志是进程退出码为 0，并生成 `metrics.json`、`samples.npz`、`samples.png`、`loss.png` 和 `checkpoint.pt`。接着对照数据与生成分布的并排图、留出损失和诊断指标，判断分布拟合情况。数值和本机耗时见 [实测报告](docs/experiment-report.md)；安装会下载百 MiB 量级的 CPU torch wheel，具体大小以固定版本安装输出为准；连同其他依赖和缓存，需预留数 GB 空间。
+成功标志是进程退出码为 0，并生成 `metrics.json`、`samples.npz`、`samples.png`、`loss.png` 和 `checkpoint.pt`。推荐5000次更新：已有三个seed实测中，约92%–93%的生成点进入目标模式邻域，八个簇更清楚；继续对照散点图、留出损失和诊断指标检查剩余误差。记录的训练/评估/采样/指标耗时约8–9秒，完整命令还包括启动、导入、绘图与保存。数值和计时范围见 [实测报告](docs/experiment-report.md)。省略`--steps`时CLI默认800次更新，可用作短训练的欠拟合对照。
 
-输出目录默认保护已有结果。读到学习路线时可直接重用 `artifacts/first-flow`；需要重新训练时换一个目录，例如 `--output artifacts/flow-seed7-run2`。
+安装会下载百 MiB 量级的 CPU torch wheel，具体大小以固定版本安装输出为准；连同其他依赖和缓存，需预留数 GB 空间。
+
+输出目录默认保护已有结果。跨章节复用时，先查看`metrics.json`中的`config.steps`确认训练预算。已有800步结果可保留作对照；需要5000步结果时使用新目录，例如`--output artifacts/first-flow-5000`，后续求解器使用`--checkpoint artifacts/first-flow-5000/checkpoint.pt`。已有5000步结果时可直接重用。
 
 接着运行扩散并检查实现：
 
 ```bash
-python -m genai_study.experiment --method ddpm --steps 800 --output artifacts/first-ddpm
+python -m genai_study.experiment --method ddpm --steps 5000 --output artifacts/first-ddpm
 bash scripts/quality.sh
 ```
 

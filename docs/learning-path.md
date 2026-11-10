@@ -69,7 +69,7 @@ flowchart LR
 
 ## 三种使用方式
 
-**先获得一次运行成功。** 按 [README](../README.md) 安装并运行默认 flow 实验，查看输出，再读 00 和 03。第一次运行的目标是确认环境、输出与评估路径，再结合多种子实测讨论训练质量。
+**先获得一次运行成功。** 按 [README](../README.md) 安装并运行推荐5000步的flow实验，查看输出，再读00和03。第一次运行先确认环境与输出，再用八簇形状、邻域比例和真实数据参照解释拟合程度。800步结果保留作欠拟合对照。
 
 **系统学习。** 按 00 → 01 → 02 → 03 → 05 → 07 → 08 → 06 → 04 阅读，推导关键公式，执行二维生成、小图像生成/引导和视频时序诊断。至少做一次失败分析：缩短训练、改变采样或引导参数，然后解释退化来自哪一环。
 
@@ -77,14 +77,14 @@ flowchart LR
 
 ## 第一组可执行任务
 
-完成 README 的安装后，在仓库根目录运行以下尚未完成的实验。若已经按 README 生成 `artifacts/first-flow` 或 `artifacts/first-ddpm`，直接重用对应结果；重做实验时把 `--output` 改成新目录（例如 `artifacts/flow-seed7-run2`），保留前一次记录。
+完成README的安装后，在仓库根目录运行以下尚未完成的实验。若已有`artifacts/first-flow`或`artifacts/first-ddpm`，先查看对应`metrics.json`的`config.steps`；5000步结果可直接重用，800步结果保留作短训练对照。需要新的5000步结果时，把`--output`改成新目录，例如`artifacts/first-flow-5000`，后续checkpoint路径也相应更新。
 
 ```bash
-python -m genai_study.experiment --method flow --steps 800 --output artifacts/first-flow
-python -m genai_study.experiment --method ddpm --steps 800 --output artifacts/first-ddpm
+python -m genai_study.experiment --method flow --steps 5000 --output artifacts/first-flow
+python -m genai_study.experiment --method ddpm --steps 5000 --output artifacts/first-ddpm
 ```
 
-`--steps` 表示优化器更新次数；这两条训练命令的默认采样预算为 100 步。比较方法时还需控制数据、训练与采样预算，并检查收敛和多种子结果。单独改变 flow 积分步数使用 03 章的 `solver_study`。实际依赖、输出文件、测量记录和可调参数以 README 与实验命令的 `--help` 为准。
+`--steps`表示优化器更新次数；这里显式选择5000次，省略参数时CLI默认800次。这两条训练命令的默认采样预算为100步。比较方法时还需控制数据、训练与采样预算，并检查收敛和多种子结果。单独改变flow积分步数使用03章的`solver_study`。实际依赖、输出文件、测量记录和可调参数以README与实验命令的`--help`为准。
 
 完成后保存配置与完整输出，写下随机种子、训练预算、采样配置、样本覆盖情况，以及各指标支持的结论和适用条件。
 
