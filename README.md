@@ -28,7 +28,7 @@
 
 图像/视频读者还可直接运行 [06 视频时序实验](docs/chapters/06-video-temporal-lab.md)，观察帧集合相同而时间顺序错误的反例。
 
-完整的先修图、实践任务与时间预算见 [学习路线](docs/learning-path.md)。全局 [符号约定](docs/notation.md) 与 [来源核验](SOURCES.md) 帮助跨章阅读。
+完整的先修图、实践任务与时间预算见 [学习路线](docs/learning-path.md)。遇到新词可查 [35组中英术语索引](docs/glossary.md)，再沿具体章节链接阅读推导；全局 [符号约定](docs/notation.md) 与 [来源核验](SOURCES.md) 帮助跨章核对。
 
 ## 第一次成功运行
 
