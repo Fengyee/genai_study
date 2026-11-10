@@ -177,6 +177,8 @@ $$
 - 原作者实现 `hojonathanho/diffusion`：[固定版本 `diffusion_utils.py`](https://github.com/hojonathanho/diffusion/blob/1e0dceb3b3495bbe19116a5e1b3596cd0706c543/diffusion_tf/diffusion_utils.py)。2026-11-10 核对了前向边缘、posterior variance、后验均值系数及噪声到 $x_0$ 的转换。该实现用零基数组索引，且可选择裁剪重建；本仓库二维实验不裁剪。
 - Song et al., **Score-Based Generative Modeling through Stochastic Differential Equations**, ICLR 2021：[论文](https://arxiv.org/abs/2011.13456)。作为后续阅读理解 score、反向 SDE 与 probability-flow ODE；本章未实现这些连续时间采样器。
 
-核验边界：2026-11-10 恢复网络后，已下载并逐项核对 `arXiv:2006.11239v2` 中与本章直接相关的正向过程、后验、噪声参数化、训练目标、末步采样和图像 decoder 定义。版本、PDF 哈希、公式号、页码及核对范围见 [来源审计](../source-audit.md)。没有审计整篇论文的实验结果或复现其图像性能；本节其它论文的全文仍未核验。
+核验边界：2026-11-10 恢复网络后，已下载并逐项核对 `arXiv:2006.11239v2` 中与本章直接相关的正向过程、后验、噪声参数化、训练目标、末步采样和图像 decoder 定义。版本、PDF 哈希、公式号、页码及核对范围见 [来源审计](../source-audit.md)。核验范围为上述公式和实现。后续[理论衔接专题](../readings/diffusion-flow-bridge.md)另固定Score-SDE v2，核对反向SDE、概率流ODE及对应作者源码。
 
 下一步：[03 · Flow matching](03-flow-matching.md)，比较同一目标分布上的另一种训练路径。
+
+完成02/03后可选读[噪声预测、score与概率流的统一推导](../readings/diffusion-flow-bridge.md)，把本章的条件最优噪声预测器转换为去噪器与边缘速度。

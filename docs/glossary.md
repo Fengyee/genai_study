@@ -13,7 +13,7 @@
 | 教师强制 · teacher forcing | 训练时用观测到的前缀计算各位置的似然项；生成时使用已经采样的前缀。训练并行度由网络架构和因果约束共同决定。 | [01：训练输入与标签](chapters/01-generative-models.md#2-似然与自回归把联合分布拆开) |
 | 因果掩码 · causal mask | 限制预测位置能读取的信息；输入移位、掩码及其他跨位置运算共同保证只使用合法前缀。 | [01：因果性与标签泄漏反例](chapters/01-generative-models.md#用八个结果检查因果性与归一化) |
 | 证据下界 · evidence lower bound（ELBO） | 对数边缘似然的下界。VAE中的常见形式是期望重建对数似然减去近似后验与先验的KL；与真实对数似然的差由后验KL给出。 | [01：ELBO恒等式及条件](chapters/01-generative-models.md#3-vae用变分推断处理难积分) |
-| 分数函数 · score | 可微密度的对数对数据坐标求梯度，即$\nabla_x\log p(x)$；它描述对数密度的局部变化。 | [符号表：数据梯度与参数梯度](notation.md#术语符号与约定) |
+| 分数函数 · score | 可微密度的对数对数据坐标求梯度，即$\nabla_x\log p(x)$；它描述对数密度的局部变化。 | [符号表：数据梯度](notation.md#术语符号与约定)；[score与噪声/去噪器](readings/diffusion-flow-bridge.md#2-噪声score与去噪器是怎样连接的) |
 
 ## 图像与视频表示
 
@@ -52,7 +52,7 @@
 | --- | --- | --- |
 | DDPM · denoising diffusion probabilistic model | 用正向加噪过程构造学习任务，再学习反向生成链。噪声表、预测参数化和反向方差共同决定具体实现。 | [02：后验与反向条件](chapters/02-diffusion.md#3-可计算的后验与不可直接计算的反向条件) |
 | DDIM · denoising diffusion implicit model | 与扩散噪声预测配套的一类采样更新。09的$\eta=0$配置在给定初始噪声后不再额外采样噪声，并固定时间网格及末步边界。 | [09：DDIM时间点与确定性](chapters/09-pretrained-image-lab.md#4-ddim的步数噪声级别与确定性) |
-| ODE求解器 · ODE solver | 沿速度场数值推进状态，例如显式Euler用$x_{k+1}=x_k+h v(x_k,t_k)$。步长敏感性与已学速度场的误差分别检查。 | [03：ODE与Euler采样](chapters/03-flow-matching.md#4-采样为什么需要-ode-求解器) |
+| ODE求解器 · ODE solver | 沿速度场数值推进状态，例如显式Euler用$x_{k+1}=x_k+h v(x_k,t_k)$。步长敏感性与已学速度场的误差分别检查。 | [03：ODE与Euler采样](chapters/03-flow-matching.md#4-采样为什么需要-ode-求解器)；[概率流的1/2系数](readings/diffusion-flow-bridge.md#4-为什么probability-flow-ode出现一个12) |
 | 训练步 / 采样步 · training step / sampling step | 训练步计优化器更新，采样步计状态更新或所用时间点。参数名由CLI定义：`image_flow --steps`计训练更新，09的`--steps`计DDIM时间点。 | [08：两类步数参数](chapters/08-image-guidance-lab.md#4-训练一次再做固定模型的强度扫描)；[09：采样设置](chapters/09-pretrained-image-lab.md#4-ddim的步数噪声级别与确定性) |
 | 网络求值次数 · number of function evaluations（NFE） | 需同时记录网络调用、batch大小和每样本分支预算。09生成单张图的20步为20次batch2调用，累计40次样本分支求值；08显式调用两次网络完成一步。 | [09：调用计数](chapters/09-pretrained-image-lab.md#3-文本条件引导对齐两分支及调用计数)；[08：显式两分支](chapters/08-image-guidance-lab.md#3-在同一状态上组合两次速度预测) |
 | 检查点 · checkpoint | 保存模型权重及其架构、训练配置等状态。这里的推理checkpoint用于冻结模型做采样对照；完整续训还需优化器等状态。 | [07：固定模型的求解器对照](chapters/07-image-flow-lab.md#第二步冻结模型单独改变采样步数) |

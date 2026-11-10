@@ -253,3 +253,5 @@ for j in (951, 1):
 ## 下一步：参考图条件的视频生成
 
 完成本章后，可进入[10章SVD视频运行与失败分析](10-pretrained-video-lab.md)，复用独立环境，单独准备视频权重。沿两条图像条件路径追踪未缩放参考latent、生成latent、帧轴引导和两随机流，并结合实际失败检查资源与评价协议。
+
+理论延伸：DDIM的无噪声更新为何在重标定坐标中呈现Euler形式，见[扩散与Flow Matching的桥梁](../readings/diffusion-flow-bridge.md#5-三种常见接口如何接入)。

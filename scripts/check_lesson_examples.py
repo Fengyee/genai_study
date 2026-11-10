@@ -21,6 +21,7 @@ import time
 
 
 EXAMPLES = {
+    "diffusion-flow-bridge": "docs/readings/diffusion-flow-bridge.md",
     "autoregressive-causality": "docs/chapters/01-generative-models.md",
     "coverage-counterexample": "docs/chapters/05-evaluation.md",
     "is-kid-counterexamples": "docs/chapters/05-evaluation.md",

@@ -1,0 +1,10 @@
+{
+  "beta": 2,
+  "data_mean": 2,
+  "data_variance": 4,
+  "gaussian_conditional_and_velocity_max_error": 4.773959005888173e-15,
+  "vp_angle_rate_identity_max_error": 4.440892098500626e-16,
+  "stationary_ou_correct_velocity": 0,
+  "stationary_ou_missing_half_variance_derivative": 2,
+  "ddim_actual_terminal_noise_ratio": 0.029167158151720367
+}

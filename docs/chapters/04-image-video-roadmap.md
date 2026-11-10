@@ -188,7 +188,7 @@ $s=5$。展开两式后，有条件项系数均为5，无条件项系数均为�
 - [SVD · `e8cd657`](https://github.com/Stability-AI/generative-models/blob/e8cd657656fa5d61688191730d0e03242bf4ed44/README.md)：公开 SVD 标为 image-to-video，区分它与仓库后续其它模型。
 - [CogVideoX · `7a1af71`](https://github.com/THUDM/CogVideo/blob/7a1af7154511e0ce4e4be8d62faa8c5e5a3532d2/README.md)：3D Causal VAE，以及图像到视频功能是后续单独发布的模型变体。
 
-发布环境后已恢复 arXiv 访问，LDM/CFG/DiT 的上述主张已对照固定 PDF 核验；SVD/CogVideoX的训练论文、公开配置和许可进一步整理于配套阅读卡。视频权重运行与效果复现仍在后续实践队列，状态见项目执行进度。
+发布环境后已恢复 arXiv 访问，LDM/CFG/DiT 的上述主张已对照固定 PDF 核验；SVD/CogVideoX的训练论文、公开配置和许可进一步整理于配套阅读卡。[10章](10-pretrained-video-lab.md)已完成固定SVD的CPU运行与低分辨率失败分析，发布尺寸视频质量基线继续按backlog推进。
 
 ## 进一步阅读：把结构映射到真实系统
 

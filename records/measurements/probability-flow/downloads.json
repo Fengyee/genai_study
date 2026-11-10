@@ -1,0 +1,20 @@
+[
+  {
+    "file": "abstract.html",
+    "url": "https://arxiv.org/abs/2011.13456v2",
+    "bytes": 45283,
+    "sha256": "66c6d715024796426dc8407146a467707a0ebc5f003bc9e87e127e16fe23e27b"
+  },
+  {
+    "file": "paper.pdf",
+    "url": "https://arxiv.org/pdf/2011.13456v2",
+    "bytes": 26918820,
+    "sha256": "b244b740e60628d01bc3d4b98d721c2343be1fb9b67ad22593c8555e66f4d4a6"
+  },
+  {
+    "file": "commit.json",
+    "url": "https://api.github.com/repos/yang-song/score_sde/commits/main",
+    "bytes": 16347,
+    "sha256": "57da435a4c7106668901ab51fa9734990eb35c2acb43b8cfc1b721bd02ba8a4d"
+  }
+]

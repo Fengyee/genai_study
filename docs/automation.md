@@ -10,7 +10,7 @@ bash scripts/quality.sh
 
 脚本优先使用 `.venv/bin/python`；可通过 `GENAI_PYTHON=/absolute/path/to/python` 指定解释器。每次结果写入独立的 `artifacts/quality/<UTC 时间>-<随机后缀>/`，不覆盖旧记录，包括：
 
-- 文档检查、10个已审查CPU教学例子、pytest、两个20步生成smoke、视频时序反例、2步图像flow训练与checkpoint求解器对照、条件丢弃训练与引导对照的日志及各自退出码；
+- 文档检查、11个已审查CPU教学例子、pytest、两个20步生成smoke、视频时序反例、2步图像flow训练与checkpoint求解器对照、条件丢弃训练与引导对照的日志及各自退出码；
 - pytest JUnit XML、实验图片/指标，以及本轮总退出码 `exit-status.txt`；
 - 检查时间、Git commit、Python 版本。
 
@@ -18,7 +18,7 @@ bash scripts/quality.sh
 
 `check_docs.py` 检查必要文档、Markdown 内联链接/图片、引用式链接定义、本地文件及 Markdown 标题锚点。忽略代码围栏和行内代码。它针对仓库当前 Markdown 子集，支持 ATX 标题（`#`）和 HTML `id`；不是完整 CommonMark 渲染器。它不访问外部网址，不验证来源事实、公式正确性、孤立的未定义引用标签或图示教学质量；这些仍需要人工审查。
 
-[check_lesson_examples.py](../scripts/check_lesson_examples.py)直接执行7份文档中已审查的10个CPU代码块：自回归因果性、覆盖率反例、IS/KID、生成模型恒等式、Kontext打包/时间、SVD/CogVideoX参数化、ResTok分组，以及LTX-2联合分解/尺寸/网格。每个ID在脚本白名单中固定文件，并由紧邻代码围栏的HTML标记定位。标记缺失、重复、未知ID或不支持的包装形式会报告失败；其余允许块继续检查。
+[check_lesson_examples.py](../scripts/check_lesson_examples.py)直接执行8份文档中已审查的11个CPU代码块：扩散/flow的Gaussian概率流与DDIM坐标、自回归因果性、覆盖率反例、IS/KID、生成模型恒等式、Kontext打包/时间、SVD/CogVideoX参数化、ResTok分组，以及LTX-2联合分解/尺寸/网格。每个ID在脚本白名单中固定文件，并由紧邻代码围栏的HTML标记定位。标记缺失、重复、未知ID或不支持的包装形式会报告失败；其余允许块继续检查。
 
 每块使用当前Python解释器在独立进程运行，OMP/MKL/OpenBLAS线程数固定为1。独立命令默认30秒/块；quality入口设为20秒/块，外层仍限制该整项300秒。代码异常、非零退出或超时使检查总状态非零，日志保留文档位置、stdout/stderr和逐块结果。当前白名单无需权重、训练产物、下载或写文件；它执行仓库代码并采用当前环境权限。05的coverage块检查读者代码能执行，其覆盖性质另由toy测试验证。
 
@@ -30,7 +30,7 @@ bash scripts/quality.sh
 | --- | --- |
 | 触发 | PR、推送到 `main`、手动、每小时第 17 分钟（UTC） |
 | 运行位置 | GitHub 托管的 `ubuntu-24.04` runner，Python 3.12 |
-| 范围 | 文档链接、10个CPU教学块、已有测试、DDPM/flow训练smoke、视频时序诊断、图像训练/求解器、条件丢弃训练/引导对照 |
+| 范围 | 文档链接、11个CPU教学块、已有测试、DDPM/flow训练smoke、视频时序诊断、图像训练/求解器、条件丢弃训练/引导对照 |
 | 作业总超时 | 25 分钟（含安装） |
 | 并发 | 同一 workflow 与 PR/ref 共用 concurrency group，已有运行不取消 |
 | 权限 | `contents: read`，检查任务无提交或修改仓库权限 |
