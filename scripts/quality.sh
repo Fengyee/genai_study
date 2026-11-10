@@ -41,4 +41,5 @@ run_check smoke-flow "$python_bin" -m genai_study.experiment --method flow --ste
 run_check smoke-ddpm "$python_bin" -m genai_study.experiment --method ddpm --steps 20 --samples 64 --output "$run_dir/ddpm"
 run_check smoke-video "$python_bin" -m genai_study.video_diagnostics --output "$run_dir/video"
 run_check smoke-image "$python_bin" -m genai_study.image_flow --steps 2 --batch-size 4 --samples 16 --sampling-steps 2 --output "$run_dir/image"
+run_check smoke-image-solver "$python_bin" -m genai_study.image_solver_study --checkpoint "$run_dir/image/checkpoint.pt" --steps 2 4 --samples 16 --output "$run_dir/image-solver"
 exit "$run_status"

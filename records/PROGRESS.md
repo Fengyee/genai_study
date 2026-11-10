@@ -94,7 +94,7 @@ Actions观察：`gh run list`为空，workflows API total_count=0；Actions perm
 
 新增Wan2025定向阅读卡：2503.20314v2、固定官方代码commit和单一模型卡revision；核验VAE/token结构、时间采样、I2V接口、许可及评价范围。记录Table5与正文步数不一致，不擅自确定预算；作者显存/速度报告没有标为本仓库实测。未下载权重或调用外部生成模型。
 
-## 当前远端与下次恢复
+## 轮次8后的远端检查点（历史）
 
 - PR #1已OPEN：https://github.com/Fengyee/genai_study/pull/1 ，本轮全部修改持续推送此PR，不直接合并。
 - 已观察旧HEAD3a6bd7d的Actions run42845432968 completed/success；恢复记录HEAD3ba066b的run42845617763也success。最新代码提交的检查状态应以PR checks为准，不能把旧SHA成功当新SHA成功。
@@ -108,3 +108,22 @@ f95d055对应GitHub run42847424682 completed/success，证明本轮图像/课程
 维护观察：当前gh版本的`gh pr edit`因已退役Projects classic GraphQL字段失败，已通过官方REST PATCH /pulls/1成功更新相同PR标题/正文；没有创建重复PR或发送评论。环境设置保持用户发布状态，本轮没有重新应用旧草稿。
 
 轮次9远端验证结果：提交2592b2a的 [GitHub run42848472192](https://github.com/Fengyee/genai_study/actions/runs/42848472192) 已completed/success（59秒），新Node24 Actions的安装、全部检查及artifact上传均成功，未再出现此前Node20强制迁移提示。随后这次提交仅补充验证记录；未修改代码、依赖或workflow。
+
+## 轮次10：让图像积分实验可以独立复现
+
+恢复证据：本地与远端feature均为519e924，PR #1为OPEN，main仍cefe9c1。已观察519e924对应run42848799642成功。当前实例e181d1bdf5e5；本轮由主代理持有Git common directory中的工作区锁，子任务按文件分工协作。
+
+读者问题：图像训练缺少checkpoint，练习无法固定模型比较Euler步数；README与学习路线重复写同一输出目录，第二次执行会触发已有结果保护。实施：新增版本化图像推理checkpoint、共享安全载入与JSON元数据校验、显式初始噪声积分接口及image_solver_study；保存权重SHA、训练配置、固定条件/参考、逐步数诊断、原始/裁剪像素配对RMS与成本。新增图像训练→独立采样质量检查；07章和实验入口给出实际两步命令及可执行练习，说明如何复用或新建结果目录。按用户偏好精炼重复防御性措辞，并将写作约定加入AGENTS。
+
+实际验证：
+
+- 相关25项测试通过，包括旧二维checkpoint兼容、图像权重往返、旧torch版本前置拒绝、常速度/线性ODE解析递推与一阶收敛、输入与参数保持、CLI固定噪声和NumPy独立RMS复算。
+- 改前/改后2更新实验：全部5个数组和7组非耗时旧指标精确相等；checkpoint恢复后重现原生成数组。
+- 当前实例再次执行`image_flow --steps 1500 --seed 7/19/43`，输出至`artifacts/image-solver-current/train-seed<seed>`；训练/评估34.17、34.35、33.50秒。全部训练数组与历史三seed实测精确相等；checkpoint分别恢复原采样也精确相等。
+- 每个checkpoint执行`image_solver_study --steps 10 20 40 80 --samples 128 --seed 123`，输出至同层`study-seed<seed>`。三模型共享噪声、标签和两组目标数据；相邻RMS均缩小，但seed7方形通过率20→40步从89.0625%降到87.5%。float64独立复算与JSON绝对差小于1e-7，裁剪RMS均不超过原始RMS。
+- 读者按07章执行20更新训练→10/20/40/80步采样，并直接提取运行练习E代码，退出0。证据`/tmp/genai-reader-check-xum760_5`。
+- 在包含下轮来源文档的整合工作区执行`bash scripts/quality.sh`：退出0，46 passed（24.08秒）、138本地链接0错误、DDPM/flow/video/image/image-solver五条实际CLI smoke通过。日志`artifacts/quality/20261110T160855Z-PqFywv`。`git diff --check`通过。
+
+长期记录：`records/measurements/image-solver-study/`保存新训练与求解器JSON、代码/依赖哈希及逐seed验证结果，历史image-flow记录保持；`docs/image-experiment-report.md`给出表格、固定索引图、测量范围和读者命令。模型与全数组保留于忽略的artifacts，可按命令重建。
+
+本轮检查点先保存图像代码/实践文档；01/04/05来源核验文档已完成、仍在工作区，下一轮记录后提交。功能分支尚待统一推送及对应新SHA的远端检查。

@@ -82,11 +82,31 @@ class ConditionalConvFlow(nn.Module):
 
 
 @torch.no_grad()
-def sample_images(model: nn.Module, labels: Tensor, steps: int, generator: torch.Generator) -> Tensor:
-    x = torch.randn(len(labels), 1, IMAGE_SIZE, IMAGE_SIZE, generator=generator)
+def integrate_images(model: nn.Module, initial: Tensor, labels: Tensor, steps: int) -> Tensor:
+    """Explicit Euler on t in [0,1], with supplied BCHW noise and class labels.
+
+    One model evaluation per step; retain raw values and leave inputs unchanged.
+    The caller controls the model's evaluation mode.
+    """
+    if type(steps) is not int or steps < 1:
+        raise ValueError("steps must be a positive integer")
+    if initial.ndim != 4 or initial.shape[1:] != (1, IMAGE_SIZE, IMAGE_SIZE) or not initial.is_floating_point():
+        raise ValueError("initial must be floating B,1,16,16 images")
+    if labels.shape != (len(initial),) or labels.dtype != torch.long or labels.device != initial.device:
+        raise ValueError("labels must be a B-element int64 tensor on the image device")
+    if not len(initial) or not ((labels == 0) | (labels == 1)).all():
+        raise ValueError("Use nonempty images with labels 0 or 1")
+    x = initial.clone()
     for step in range(steps):
-        x = x + model(x, torch.full((len(x),), step / steps), labels) / steps
+        t = torch.full((len(x),), step / steps, dtype=x.dtype, device=x.device)
+        x = x + model(x, t, labels) / steps
     return x
+
+
+@torch.no_grad()
+def sample_images(model: nn.Module, labels: Tensor, steps: int, generator: torch.Generator) -> Tensor:
+    initial = torch.randn(len(labels), 1, IMAGE_SIZE, IMAGE_SIZE, generator=generator)
+    return integrate_images(model, initial, labels, steps)
 
 
 def template_bank() -> Tensor:
@@ -235,7 +255,8 @@ def main() -> None:
               "training_and_eval_seconds": training_seconds, "sampling_seconds": sampling_seconds,
               "diagnostics": observed, "reference_diagnostics": target_summary,
               "independent_target_baseline": baseline_summary,
-              "limitations": "Synthetic 16x16 shapes only, not natural-image quality. Coarse template recognizability does not establish distribution coverage. Geometry and figures clip to [0,1]; raw outputs and clipping distortion are retained. No checkpoint or optimizer state is saved."}
+              "checkpoint": "checkpoint.pt",
+              "limitations": "Synthetic 16x16 shapes. Coarse template recognizability and distribution coverage require separate assessment. Geometry and figures clip to [0,1]; raw outputs and clipping distortion are retained. The checkpoint contains final inference weights and training metadata; optimizer state is omitted."}
     with tempfile.TemporaryDirectory(prefix="genai-study-image-") as cache:
         os.environ.setdefault("MPLCONFIGDIR", str(Path(cache) / "matplotlib"))
         os.environ.setdefault("XDG_CACHE_HOME", cache)
@@ -245,6 +266,11 @@ def main() -> None:
         import numpy as np
 
         result["versions"].update(numpy=np.__version__, matplotlib=matplotlib.__version__)
+        # Local import keeps the model module independent of its checkpoint loader.
+        from .image_checkpoint import save_image_checkpoint
+        save_image_checkpoint(args.output / "checkpoint.pt", model,
+                              {"config": config, "versions": result["versions"],
+                               "initial_heldout_loss": initial_loss, "final_heldout_loss": final_loss})
         np.savez_compressed(args.output / "arrays.npz", generated_raw=generated.numpy(),
                             reference=reference.numpy(), independent_target=baseline.numpy(),
                             labels=labels.numpy(), training_loss=np.array(losses))

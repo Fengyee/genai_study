@@ -11,6 +11,7 @@ import torch
 from genai_study.image_flow import (ConditionalConvFlow, image_diagnostics,
                                     image_flow_path, render_shapes, sample_shapes,
                                     template_bank)
+from genai_study.image_checkpoint import load_image_checkpoint
 
 
 def test_shape_layout_range_balance_and_known_boundary():
@@ -90,6 +91,9 @@ def test_image_cli_small_run_and_rng_isolation(tmp_path):
         assert metrics["config"]["coarse_template_mse_threshold"] == 0.01
         assert metrics["diagnostics"]["circle"]["count"] == samples // 2
         assert metrics["diagnostics"]["square"]["count"] == samples // 2
+        _, checkpoint = load_image_checkpoint(output / "checkpoint.pt")
+        assert checkpoint["metadata"]["config"] == metrics["config"]
+        assert checkpoint["metadata"]["final_heldout_loss"] == metrics["final_heldout_loss"]
         for name in ("samples.png", "loss.png"):
             assert (output / name).stat().st_size > 1000
         with np.load(output / "arrays.npz") as data:

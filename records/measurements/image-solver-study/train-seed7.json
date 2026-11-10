@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "config": {
+    "steps": 1500,
+    "batch_size": 64,
+    "samples": 128,
+    "sampling_steps": 40,
+    "seed": 7,
+    "threads": 1,
+    "output": "artifacts/image-solver-current/train-seed7",
+    "overwrite": false,
+    "device": "cpu",
+    "layout": "B,C,H,W",
+    "image_shape": [
+      1,
+      16,
+      16
+    ],
+    "learning_rate": 0.001,
+    "base_width": 16,
+    "eval_examples": 256,
+    "data_range": [
+      0,
+      1
+    ],
+    "center_range_px": [
+      5,
+      10
+    ],
+    "size_range_px": [
+      2,
+      3.5
+    ],
+    "edge_width_px": 0.35,
+    "coarse_template_mse_threshold": 0.01,
+    "rng_offsets": {
+      "initialization": 0,
+      "training": 1,
+      "heldout": 2,
+      "sampling": 3,
+      "reference": 4,
+      "target_baseline": 5
+    }
+  },
+  "versions": {
+    "python": "3.12.14",
+    "torch": "2.6.0+cpu",
+    "numpy": "2.1.3",
+    "matplotlib": "3.9.3"
+  },
+  "parameter_count": 119345,
+  "initial_heldout_loss": {
+    "all": 1.2046478986740112,
+    "circle": 1.2009763717651367,
+    "square": 1.2083193063735962
+  },
+  "final_heldout_loss": {
+    "all": 0.05980340763926506,
+    "circle": 0.06142342835664749,
+    "square": 0.05818338319659233
+  },
+  "training_and_eval_seconds": 34.1726524149999,
+  "sampling_seconds": 0.5599233499997354,
+  "diagnostics": {
+    "circle": {
+      "label": 0,
+      "count": 64,
+      "coarse_recognizable_fraction": 0.96875,
+      "condition_match_fraction": 1.0,
+      "nearest_own_template_mse_mean": 0.002384689636528492,
+      "raw_out_of_range_fraction": 0.46209716796875,
+      "mean_absolute_clip_change": 0.008486819453537464,
+      "foreground_mass_mean": 24.58916473388672,
+      "foreground_mass_std": 6.387768745422363,
+      "zero_mass_fraction": 0.0,
+      "center_x_mean_px": 6.966981410980225,
+      "center_y_mean_px": 7.606573104858398,
+      "center_x_std_px": 1.322444200515747,
+      "center_y_std_px": 1.292240858078003
+    },
+    "square": {
+      "label": 1,
+      "count": 64,
+      "coarse_recognizable_fraction": 0.953125,
+      "condition_match_fraction": 0.96875,
+      "nearest_own_template_mse_mean": 0.002999969758093357,
+      "raw_out_of_range_fraction": 0.36322021484375,
+      "mean_absolute_clip_change": 0.007817192003130913,
+      "foreground_mass_mean": 31.074378967285156,
+      "foreground_mass_std": 7.946414470672607,
+      "zero_mass_fraction": 0.0,
+      "center_x_mean_px": 7.029423236846924,
+      "center_y_mean_px": 7.877170562744141,
+      "center_x_std_px": 1.3585115671157837,
+      "center_y_std_px": 1.2321771383285522
+    }
+  },
+  "reference_diagnostics": {
+    "circle": {
+      "label": 0,
+      "count": 64,
+      "coarse_recognizable_fraction": 1.0,
+      "condition_match_fraction": 1.0,
+      "nearest_own_template_mse_mean": 0.0008987503824755549,
+      "raw_out_of_range_fraction": 0.0,
+      "mean_absolute_clip_change": 0.0,
+      "foreground_mass_mean": 25.6011905670166,
+      "foreground_mass_std": 6.648711681365967,
+      "zero_mass_fraction": 0.0,
+      "center_x_mean_px": 7.44180965423584,
+      "center_y_mean_px": 7.78696870803833,
+      "center_x_std_px": 1.389343023300171,
+      "center_y_std_px": 1.3128238916397095
+    },
+    "square": {
+      "label": 1,
+      "count": 64,
+      "coarse_recognizable_fraction": 1.0,
+      "condition_match_fraction": 1.0,
+      "nearest_own_template_mse_mean": 0.0009314586641266942,
+      "raw_out_of_range_fraction": 0.0,
+      "mean_absolute_clip_change": 0.0,
+      "foreground_mass_mean": 32.11277389526367,
+      "foreground_mass_std": 8.936727523803711,
+      "zero_mass_fraction": 0.0,
+      "center_x_mean_px": 7.495910167694092,
+      "center_y_mean_px": 7.423941135406494,
+      "center_x_std_px": 1.3972970247268677,
+      "center_y_std_px": 1.3733798265457153
+    }
+  },
+  "independent_target_baseline": {
+    "circle": {
+      "label": 0,
+      "count": 64,
+      "coarse_recognizable_fraction": 1.0,
+      "condition_match_fraction": 1.0,
+      "nearest_own_template_mse_mean": 0.0009374315850436687,
+      "raw_out_of_range_fraction": 0.0,
+      "mean_absolute_clip_change": 0.0,
+      "foreground_mass_mean": 25.34208106994629,
+      "foreground_mass_std": 8.143959045410156,
+      "zero_mass_fraction": 0.0,
+      "center_x_mean_px": 7.57400369644165,
+      "center_y_mean_px": 7.309148788452148,
+      "center_x_std_px": 1.3481295108795166,
+      "center_y_std_px": 1.4717251062393188
+    },
+    "square": {
+      "label": 1,
+      "count": 64,
+      "coarse_recognizable_fraction": 1.0,
+      "condition_match_fraction": 1.0,
+      "nearest_own_template_mse_mean": 0.0010820473544299603,
+      "raw_out_of_range_fraction": 0.0,
+      "mean_absolute_clip_change": 0.0,
+      "foreground_mass_mean": 33.9248046875,
+      "foreground_mass_std": 9.816495895385742,
+      "zero_mass_fraction": 0.0,
+      "center_x_mean_px": 7.559528350830078,
+      "center_y_mean_px": 7.410877704620361,
+      "center_x_std_px": 1.3790980577468872,
+      "center_y_std_px": 1.5165207386016846
+    }
+  },
+  "checkpoint": "checkpoint.pt",
+  "limitations": "Synthetic 16x16 shapes. Coarse template recognizability and distribution coverage require separate assessment. Geometry and figures clip to [0,1]; raw outputs and clipping distortion are retained. The checkpoint contains final inference weights and training metadata; optimizer state is omitted."
+}

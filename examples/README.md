@@ -1,4 +1,6 @@
-# 二维生成实验
+# 生成实验与固定模型采样
+
+## 二维生成实验
 
 在仓库根目录完成 README 的环境安装后运行：
 
@@ -7,12 +9,12 @@ python -m genai_study.experiment --method ddpm --steps 800 --output artifacts/dd
 python -m genai_study.experiment --method flow --steps 800 --output artifacts/flow
 ```
 
-首次成功的标准是：命令退出码为 0，产生 `metrics.json`、`samples.npz`、`samples.png`、`loss.png` 和 `checkpoint.pt`。800 次更新是可在 CPU 上尝试的教学预算，不保证收敛。观察数据与生成散点图、留出样本损失和诊断指标；不要只依靠训练损失。已存在的非空输出目录默认拒绝写入；明确需要重跑覆盖时追加 `--overwrite`。
+运行完成后应得到 `metrics.json`、`samples.npz`、`samples.png`、`loss.png` 和 `checkpoint.pt`。800 次更新是 CPU 教学预算；结合数据与生成散点图、留出损失和诊断指标检查拟合情况。若已经完成 README 的首次实验，可重用 `artifacts/first-flow` 等目录中的结果，并相应修改下文 checkpoint 路径。非空输出目录默认受保护；重跑时选择新目录，确认要覆盖旧实验时才使用 `--overwrite`。
 
 - 数据：8 个等权二维高斯分量，中心位于半径 2 的圆，分量协方差为 `0.08² I`；无需下载。
 - 模型：三层宽度 128 的 SiLU MLP，用 8 个正弦/余弦频率编码时间。
 - 优化：Adam，学习率 `1e-3`，batch size 256，CPU 单线程。
-- DDPM：100 个扩散步，线性 beta 从 `0.0001` 到 `0.1`。此短噪声表为 toy 实验设计，不是图像扩散的推荐配置。Python 索引 `k=0` 对应论文 `t=1`，最后一步方差严格为 0。`--steps` 是训练更新数，不是扩散步数。
+- DDPM：100 个扩散步，线性 beta 从 `0.0001` 到 `0.1`。此短噪声表针对本章的二维数据尺度设计。Python 索引 `k=0` 对应论文 `t=1`，最后一步方差严格为 0。`--steps` 指训练更新数。
 - Flow matching：独立采样噪声和数据端点，直线条件路径，速度目标 `data-noise`；采样使用 100 步显式 Euler。
 - 默认 seed 7。模型初始化与训练、固定留出评估、生成、参考数据、基线数据分别使用不同随机流。同一依赖版本和 CPU 环境可复现；跨平台/版本不保证位级一致。
 
@@ -25,7 +27,7 @@ python -m genai_study.experiment --method flow --steps 800 --output artifacts/fl
 - `fraction_within_3sigma`：到最近中心距离小于 `3×0.08` 的比例。二维高斯在三倍标准差**半径**内的理论概率约为 `1-exp(-9/2)=98.89%`，不是一维的 99.73%。
 - `covered_modes_at_1pct`：一个模式的上述圆内至少有全部生成样本的 1% 时才计入覆盖。范围 0–8；所有模式都覆盖也不能证明分布正确。
 
-这些指标不是 FID、视觉质量或多随机种子置信区间。二维成功不意味着图像/视频能力。练习：比较 200/800/2400 次更新；更换 3 个随机种子；寻找“最近中心距离改善但模式覆盖下降”的反例。额外训练成本由更新数近似线性决定，采样成本由样本数决定。
+这些指标检查二维分布拟合；图像与视频实验需要各自的数据和诊断协议。练习：比较 200/800/2400 次更新；更换 3 个随机种子；寻找“最近中心距离改善但模式覆盖下降”的反例。额外训练成本由更新数近似线性决定，采样成本由样本数决定。
 
 ## 如何识别“覆盖全部模式”带来的误导
 
@@ -35,18 +37,34 @@ python -m genai_study.experiment --method flow --steps 800 --output artifacts/fl
 
 ## 固定模型，单独研究 Euler 求解步数
 
-先运行上面的 flow 训练命令。新的训练输出包含 `checkpoint.pt`（推理权重、架构和训练配置；**不保存优化器状态，不能用于严格续训**）。旧版本实验 JSON 若没有 checkpoint 字段，需要重新运行训练生成权重，不应把旧指标改写成新运行结果。然后：
+复用上面的 flow 训练结果。`checkpoint.pt` 保存推理权重、架构和训练配置；精确续训还需优化器等状态，当前文件未包含这些状态。旧版实验若缺少 checkpoint，请在新目录重新训练。然后运行：
 
 ```bash
 python -m genai_study.solver_study --checkpoint artifacts/flow/checkpoint.pt --steps 10 25 100 200 --samples 2048 --seed 123 --output artifacts/flow-solver
 ```
 
-此命令不训练。它只接受 flow checkpoint，先固定一批初始噪声，再对同一个冻结速度场运行不同步数的显式 Euler。步数列表会排序并去重；每步一次网络求值，因此 NFE（number of function evaluations）等于步数。权重载入明确使用 `torch.load(weights_only=True, map_location="cpu")`，不反序列化任意模型对象。
+此命令接受二维 flow checkpoint，固定初始噪声，对冻结的速度场运行不同步数的显式 Euler。步数列表会排序并去重；每步一次网络求值，因此 NFE（number of function evaluations）等于步数。权重以 `torch.load(weights_only=True, map_location="cpu")` 载入。
 
-输出 `metrics.json`、`samples.npz` 和 `samples.png`。JSON 保存 checkpoint SHA-256、训练 metadata、实际采样配置、独立真实数据基线以及每组 `steps` / `nfe` / `elapsed_seconds` / `diagnostics`。耗时只计单次采样，没有 warm-up，不能作为严谨硬件排名。
+输出 `metrics.json`、`samples.npz` 和 `samples.png`。JSON 保存 checkpoint SHA-256、训练 metadata、实际采样配置、独立真实数据基线以及每组 `steps` / `nfe` / `elapsed_seconds` / `diagnostics`。耗时计单次采样，未做预热或重复计时；硬件比较需要额外的测量协议。
 
-`runs[i].paired_rms_l2_difference_from_previous` 是当前与上一个较少步数之间，**同一初始噪声对应的终点差**：`sqrt(mean_i ||x_i^(K)-x_i^(K_previous)||²)`。第一组为 `null`。它衡量两个数值离散化之间的差异，**不是真解误差**；最细的 200 步也不是解析真解。`samples.npz` 包含 `initial`、`reference`、`baseline` 与 `steps_10` 等配对数组，可独立复核。
+`runs[i].paired_rms_l2_difference_from_previous` 是当前与上一个较少步数之间，**同一初始噪声对应的终点差**：`sqrt(mean_i ||x_i^(K)-x_i^(K_previous)||²)`。第一组为 `null`。它衡量两个数值离散化之间的差异；200 步仍是有限步近似，计算真解误差需要独立参考解。`samples.npz` 包含 `initial`、`reference`、`baseline` 与 `steps_10` 等配对数组，可独立复核。
 
 练习：观察终点配对差和数据分布诊断是否一起改善。解释为什么求解步数更多可能让模型自身 ODE 的数值解更稳定，却不一定使它更接近目标八高斯；模型误差、离散化误差和有限样本波动是三个不同来源。再固定初始噪声、提高训练预算重复比较，避免同时改变权重与采样种子。
 
-Checkpoint 使用边界：这里只加载本仓库训练命令产生并由自己保管的可信文件；`weights_only=True` 不是对任意第三方 checkpoint 的安全承诺。PyTorch `<2.6.0` 的该载入模式存在 [CVE-2025-32434 / GHSA-53q9-r3pm-6pq6](https://github.com/advisories/GHSA-53q9-r3pm-6pq6)，官方公告列出的修复版本为 `2.6.0`；本项目因此要求修复后的固定依赖，并在旧运行时载入前拒绝执行。不要通过关闭 `weights_only` 绕过格式或版本错误。
+Checkpoint 载入要求：使用本仓库训练命令产生并由自己保管的可信文件，保留 `weights_only=True` 和格式校验。PyTorch `<2.6.0` 的该载入模式存在 [CVE-2025-32434 / GHSA-53q9-r3pm-6pq6](https://github.com/advisories/GHSA-53q9-r3pm-6pq6)，官方公告列出的修复版本为 `2.6.0`；本项目因此要求修复后的固定依赖，并在旧运行时载入前拒绝执行。版本或格式校验失败时，检查环境版本与 checkpoint 来源后重试。
+
+## 小图像：从训练到独立求解器实验
+
+图像模型使用独立的命令和 checkpoint 格式。第一次运行按顺序执行；已有训练 checkpoint 时直接执行第二条：
+
+```bash
+python -m genai_study.image_flow --steps 1500 --seed 7 --output artifacts/image-flow
+python -m genai_study.image_solver_study \
+  --checkpoint artifacts/image-flow/checkpoint.pt \
+  --steps 10 20 40 80 --samples 128 --seed 123 \
+  --output artifacts/image-solver
+```
+
+训练输出包括 `metrics.json`、`arrays.npz`、`samples.png`、`loss.png` 和 `checkpoint.pt`。独立采样固定权重、初始噪声、类别标签、参考数据和独立目标基线，保存 `metrics.json`、`arrays.npz`、`samples.png`。步数升序去重，每组 NFE 等于 Euler 步数。改变输出目录即可保留另一轮结果。
+
+图像实验按 batch 和全部像素计算相邻方案的 RMS 差：`sqrt(mean_BCHW((x_K - x_previous)^2))`，分别记录原始值和各自裁剪到 `[0,1]` 后的值；与上文二维向量 L2 差采用不同归约。原始差反映数值离散化的敏感性，裁剪差说明显示图像的变化。结合每类的原始越界比例、几何模板通过率和位置/大小统计解释结果。完整定义、控制变量、运行成本和可执行练习见 [07 章](../docs/chapters/07-image-flow-lab.md) 与 [图像实测报告](../docs/image-experiment-report.md)。

@@ -4,7 +4,7 @@ Read README.md, docs/learning-path.md, docs/notation.md, records/PROGRESS.md and
 
 Work in reviewable rounds: identify one reader problem, collect primary evidence, implement, validate, update records, commit on a feature branch, submit through a PR. Never force push. Do not represent an unmerged workflow as deployed or a planned chapter as complete.
 
-Use Chinese explanations with English technical names at first occurrence. Every chapter needs prerequisites, learning goals, scope, exercises with hints/answers, and primary references. Distinguish measured results, mathematical claims, and hypotheses. Use docs/notation.md conventions; changes to shared notation require cross-chapter review.
+Use Chinese explanations with English technical names at first occurrence. State capabilities, results and applicability directly. Avoid repetitive defensive contrasts such as "X, not Y"; express necessary assumptions and limitations as specific facts, and keep mathematical counterexamples when they serve the lesson. Every chapter needs prerequisites, learning goals, scope, exercises with hints/answers, and primary references. Distinguish measured results, mathematical claims, and hypotheses. Use docs/notation.md conventions; changes to shared notation require cross-chapter review.
 
 Keep examples cheap and CPU runnable. For algorithm changes use analytic properties, independent derivations and meaningful numerical tests. Run `bash scripts/quality.sh` for shared code/dependency/convention changes. For documentation changes run `.venv/bin/python scripts/check_docs.py` plus relevant algorithm tests. Do not weaken assertions to clear checks. Record the exact command, outcome and limits; no fake benchmark numbers.
 

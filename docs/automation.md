@@ -10,11 +10,11 @@ bash scripts/quality.sh
 
 脚本优先使用 `.venv/bin/python`；可通过 `GENAI_PYTHON=/absolute/path/to/python` 指定解释器。每次结果写入独立的 `artifacts/quality/<UTC 时间>-<随机后缀>/`，不覆盖旧记录，包括：
 
-- 文档检查、pytest、两个20步生成smoke、视频时序反例及2步图像flow smoke的日志与各自退出码；
+- 文档检查、pytest、两个20步生成smoke、视频时序反例、2步图像flow训练及其checkpoint求解器对照的日志与各自退出码；
 - pytest JUnit XML、实验图片/指标，以及本轮总退出码 `exit-status.txt`；
 - 检查时间、Git commit、Python 版本。
 
-每项最多 300 秒，超时退出码为 124；单项失败后继续后续检查。CI 另有 25 分钟作业总超时（含安装），达到总超时可能中断尚未完成的检查。任何一项失败，总退出码非零。20 步仅验证训练、采样、保存结果的操作路径，**不能证明模型已经学会目标分布**。长训练结果需要单独按实验文档执行与解释。视频 smoke 通过 `python -m genai_study.video_diagnostics --output <本轮目录>/video` 运行合成序列反例，检查 `metrics.json` 与 `contact_sheet.png` 的生成路径；它不训练视频模型，也不验证真实视频生成能力。求解器的解析性质由已有 pytest 覆盖，不额外重复训练。
+每项最多 300 秒，超时退出码为 124；单项失败后继续后续检查。CI 另有 25 分钟作业总超时（含安装），达到总超时可能中断尚未完成的检查。任何一项失败，总退出码非零。短训练验证训练、采样、保存结果的操作路径；学习质量需按实验文档执行长训练并解释诊断结果。视频 smoke 运行合成序列反例，检查指标与拼图的生成路径。图像求解器 smoke 载入前一检查生成的checkpoint，对同一模型和初始噪声执行2步/4步Euler采样；解析性质另由pytest覆盖。
 
 `check_docs.py` 检查必要文档、Markdown 内联链接/图片、引用式链接定义、本地文件及 Markdown 标题锚点。忽略代码围栏和行内代码。它针对仓库当前 Markdown 子集，支持 ATX 标题（`#`）和 HTML `id`；不是完整 CommonMark 渲染器。它不访问外部网址，不验证来源事实、公式正确性、孤立的未定义引用标签或图示教学质量；这些仍需要人工审查。
 
@@ -26,7 +26,7 @@ bash scripts/quality.sh
 | --- | --- |
 | 触发 | PR、推送到 `main`、手动、每小时第 17 分钟（UTC） |
 | 运行位置 | GitHub 托管的 `ubuntu-24.04` runner，Python 3.12 |
-| 范围 | 文档链接、已有测试、DDPM/flow训练smoke、视频时序诊断、图像flow smoke |
+| 范围 | 文档链接、已有测试、DDPM/flow训练smoke、视频时序诊断、图像flow训练与checkpoint求解器smoke |
 | 作业总超时 | 25 分钟（含安装） |
 | 并发 | 同一 workflow 与 PR/ref 共用 concurrency group，已有运行不取消 |
 | 权限 | `contents: read`，检查任务无提交或修改仓库权限 |
@@ -57,4 +57,4 @@ GitHub Actions 的 `concurrency` 只约束对应 workflow 的 runs，**不能锁
 
 最近一次静态与本地故障验证见 [自动化验证记录](../records/automation-validation.md)。
 
-新增图像检查使用2次训练更新、batch4、16张样本、2步Euler，只验证操作路径；默认1500步图形实验另见07章及实测报告。
+图像训练检查使用2次更新、batch4、16张样本、2步Euler；随后从保存的checkpoint运行独立采样对照。默认1500步图形实验与固定权重实测另见07章及实测报告。

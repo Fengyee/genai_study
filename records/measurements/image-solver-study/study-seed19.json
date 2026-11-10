@@ -1,0 +1,352 @@
+{
+  "schema_version": 1,
+  "checkpoint": {
+    "path": "artifacts/image-solver-current/train-seed19/checkpoint.pt",
+    "sha256": "f5cb55cb3780db4a8e8520058a68b61fafa340757ff745927a757d25f9e293ac",
+    "schema_version": 1,
+    "method": "image_flow",
+    "architecture": {
+      "name": "ConditionalConvFlow-v1",
+      "width": 16,
+      "image_shape": [
+        1,
+        16,
+        16
+      ],
+      "num_classes": 2
+    },
+    "metadata": {
+      "config": {
+        "steps": 1500,
+        "batch_size": 64,
+        "samples": 128,
+        "sampling_steps": 40,
+        "seed": 19,
+        "threads": 1,
+        "output": "artifacts/image-solver-current/train-seed19",
+        "overwrite": false,
+        "device": "cpu",
+        "layout": "B,C,H,W",
+        "image_shape": [
+          1,
+          16,
+          16
+        ],
+        "learning_rate": 0.001,
+        "base_width": 16,
+        "eval_examples": 256,
+        "data_range": [
+          0,
+          1
+        ],
+        "center_range_px": [
+          5,
+          10
+        ],
+        "size_range_px": [
+          2,
+          3.5
+        ],
+        "edge_width_px": 0.35,
+        "coarse_template_mse_threshold": 0.01,
+        "rng_offsets": {
+          "initialization": 0,
+          "training": 1,
+          "heldout": 2,
+          "sampling": 3,
+          "reference": 4,
+          "target_baseline": 5
+        }
+      },
+      "versions": {
+        "python": "3.12.14",
+        "torch": "2.6.0+cpu",
+        "numpy": "2.1.3",
+        "matplotlib": "3.9.3"
+      },
+      "initial_heldout_loss": {
+        "all": 1.707590937614441,
+        "circle": 1.6672019958496094,
+        "square": 1.7479796409606934
+      },
+      "final_heldout_loss": {
+        "all": 0.06525854766368866,
+        "circle": 0.06209459528326988,
+        "square": 0.06842251121997833
+      }
+    }
+  },
+  "config": {
+    "steps": [
+      10,
+      20,
+      40,
+      80
+    ],
+    "samples": 128,
+    "seed": 123,
+    "threads": 1,
+    "device": "cpu",
+    "solver": "explicit Euler",
+    "layout": "B,C,H,W",
+    "image_shape": [
+      1,
+      16,
+      16
+    ],
+    "noise_seed": 123,
+    "reference_seed": 124,
+    "baseline_seed": 125,
+    "labels": {
+      "0": "circle",
+      "1": "square"
+    }
+  },
+  "versions": {
+    "python": "3.12.14",
+    "torch": "2.6.0+cpu",
+    "numpy": "2.1.3",
+    "matplotlib": "3.9.3"
+  },
+  "reference_diagnostics": {
+    "circle": {
+      "label": 0,
+      "count": 64,
+      "coarse_recognizable_fraction": 1.0,
+      "condition_match_fraction": 1.0,
+      "nearest_own_template_mse_mean": 0.0008762915385887027,
+      "raw_out_of_range_fraction": 0.0,
+      "mean_absolute_clip_change": 0.0,
+      "foreground_mass_mean": 26.74952507019043,
+      "foreground_mass_std": 8.009431838989258,
+      "zero_mass_fraction": 0.0,
+      "center_x_mean_px": 7.30159330368042,
+      "center_y_mean_px": 7.1952056884765625,
+      "center_x_std_px": 1.5136078596115112,
+      "center_y_std_px": 1.452380895614624
+    },
+    "square": {
+      "label": 1,
+      "count": 64,
+      "coarse_recognizable_fraction": 1.0,
+      "condition_match_fraction": 1.0,
+      "nearest_own_template_mse_mean": 0.0011146111646667123,
+      "raw_out_of_range_fraction": 0.0,
+      "mean_absolute_clip_change": 0.0,
+      "foreground_mass_mean": 33.65323257446289,
+      "foreground_mass_std": 9.187374114990234,
+      "zero_mass_fraction": 0.0,
+      "center_x_mean_px": 7.567201137542725,
+      "center_y_mean_px": 7.312162399291992,
+      "center_x_std_px": 1.5922602415084839,
+      "center_y_std_px": 1.4204144477844238
+    }
+  },
+  "independent_target_baseline": {
+    "circle": {
+      "label": 0,
+      "count": 64,
+      "coarse_recognizable_fraction": 1.0,
+      "condition_match_fraction": 1.0,
+      "nearest_own_template_mse_mean": 0.000878007966093719,
+      "raw_out_of_range_fraction": 0.0,
+      "mean_absolute_clip_change": 0.0,
+      "foreground_mass_mean": 25.828277587890625,
+      "foreground_mass_std": 7.95416784286499,
+      "zero_mass_fraction": 0.0,
+      "center_x_mean_px": 7.725700855255127,
+      "center_y_mean_px": 7.618150234222412,
+      "center_x_std_px": 1.464756965637207,
+      "center_y_std_px": 1.4908440113067627
+    },
+    "square": {
+      "label": 1,
+      "count": 64,
+      "coarse_recognizable_fraction": 1.0,
+      "condition_match_fraction": 1.0,
+      "nearest_own_template_mse_mean": 0.0009356567170470953,
+      "raw_out_of_range_fraction": 0.0,
+      "mean_absolute_clip_change": 0.0,
+      "foreground_mass_mean": 31.810041427612305,
+      "foreground_mass_std": 9.638303756713867,
+      "zero_mass_fraction": 0.0,
+      "center_x_mean_px": 7.487096309661865,
+      "center_y_mean_px": 7.941298961639404,
+      "center_x_std_px": 1.544944405555725,
+      "center_y_std_px": 1.3792871236801147
+    }
+  },
+  "runs": [
+    {
+      "steps": 10,
+      "nfe": 10,
+      "elapsed_seconds": 0.1602188719998594,
+      "diagnostics": {
+        "circle": {
+          "label": 0,
+          "count": 64,
+          "coarse_recognizable_fraction": 0.984375,
+          "condition_match_fraction": 0.984375,
+          "nearest_own_template_mse_mean": 0.002129562199115753,
+          "raw_out_of_range_fraction": 0.45062255859375,
+          "mean_absolute_clip_change": 0.011590531095862389,
+          "foreground_mass_mean": 31.573654174804688,
+          "foreground_mass_std": 6.835356712341309,
+          "zero_mass_fraction": 0.0,
+          "center_x_mean_px": 7.878291130065918,
+          "center_y_mean_px": 7.765860080718994,
+          "center_x_std_px": 1.0718241930007935,
+          "center_y_std_px": 1.1361171007156372
+        },
+        "square": {
+          "label": 1,
+          "count": 64,
+          "coarse_recognizable_fraction": 1.0,
+          "condition_match_fraction": 1.0,
+          "nearest_own_template_mse_mean": 0.0028828512877225876,
+          "raw_out_of_range_fraction": 0.41851806640625,
+          "mean_absolute_clip_change": 0.01306679006665945,
+          "foreground_mass_mean": 36.624427795410156,
+          "foreground_mass_std": 9.600337982177734,
+          "zero_mass_fraction": 0.0,
+          "center_x_mean_px": 7.817724704742432,
+          "center_y_mean_px": 7.770026206970215,
+          "center_x_std_px": 1.0420116186141968,
+          "center_y_std_px": 1.2055209875106812
+        }
+      },
+      "previous_steps": null,
+      "paired_pixel_rms_difference_from_previous": null,
+      "paired_clipped_pixel_rms_difference_from_previous": null
+    },
+    {
+      "steps": 20,
+      "nfe": 20,
+      "elapsed_seconds": 0.290864651999982,
+      "diagnostics": {
+        "circle": {
+          "label": 0,
+          "count": 64,
+          "coarse_recognizable_fraction": 0.96875,
+          "condition_match_fraction": 0.984375,
+          "nearest_own_template_mse_mean": 0.0022116387262940407,
+          "raw_out_of_range_fraction": 0.429443359375,
+          "mean_absolute_clip_change": 0.01065833680331707,
+          "foreground_mass_mean": 31.83165740966797,
+          "foreground_mass_std": 7.0027337074279785,
+          "zero_mass_fraction": 0.0,
+          "center_x_mean_px": 7.903426170349121,
+          "center_y_mean_px": 7.782196044921875,
+          "center_x_std_px": 1.1368805170059204,
+          "center_y_std_px": 1.2060816287994385
+        },
+        "square": {
+          "label": 1,
+          "count": 64,
+          "coarse_recognizable_fraction": 1.0,
+          "condition_match_fraction": 1.0,
+          "nearest_own_template_mse_mean": 0.0027615437284111977,
+          "raw_out_of_range_fraction": 0.3973388671875,
+          "mean_absolute_clip_change": 0.012008793652057648,
+          "foreground_mass_mean": 36.80879211425781,
+          "foreground_mass_std": 9.9179048538208,
+          "zero_mass_fraction": 0.0,
+          "center_x_mean_px": 7.806305408477783,
+          "center_y_mean_px": 7.783591270446777,
+          "center_x_std_px": 1.1036032438278198,
+          "center_y_std_px": 1.2797660827636719
+        }
+      },
+      "previous_steps": 10,
+      "paired_pixel_rms_difference_from_previous": 0.020518291741609573,
+      "paired_clipped_pixel_rms_difference_from_previous": 0.019576961174607277
+    },
+    {
+      "steps": 40,
+      "nfe": 40,
+      "elapsed_seconds": 0.5651283610000064,
+      "diagnostics": {
+        "circle": {
+          "label": 0,
+          "count": 64,
+          "coarse_recognizable_fraction": 0.96875,
+          "condition_match_fraction": 0.984375,
+          "nearest_own_template_mse_mean": 0.002288601826876402,
+          "raw_out_of_range_fraction": 0.3929443359375,
+          "mean_absolute_clip_change": 0.010088751092553139,
+          "foreground_mass_mean": 31.976425170898438,
+          "foreground_mass_std": 7.097765922546387,
+          "zero_mass_fraction": 0.0,
+          "center_x_mean_px": 7.913766384124756,
+          "center_y_mean_px": 7.787683486938477,
+          "center_x_std_px": 1.1717466115951538,
+          "center_y_std_px": 1.2410616874694824
+        },
+        "square": {
+          "label": 1,
+          "count": 64,
+          "coarse_recognizable_fraction": 1.0,
+          "condition_match_fraction": 1.0,
+          "nearest_own_template_mse_mean": 0.0026650987565517426,
+          "raw_out_of_range_fraction": 0.37738037109375,
+          "mean_absolute_clip_change": 0.011578268371522427,
+          "foreground_mass_mean": 36.88753128051758,
+          "foreground_mass_std": 10.061188697814941,
+          "zero_mass_fraction": 0.0,
+          "center_x_mean_px": 7.802608013153076,
+          "center_y_mean_px": 7.788551330566406,
+          "center_x_std_px": 1.1376358270645142,
+          "center_y_std_px": 1.3190850019454956
+        }
+      },
+      "previous_steps": 20,
+      "paired_pixel_rms_difference_from_previous": 0.01162714883685112,
+      "paired_clipped_pixel_rms_difference_from_previous": 0.010903732851147652
+    },
+    {
+      "steps": 80,
+      "nfe": 80,
+      "elapsed_seconds": 1.0975337639997633,
+      "diagnostics": {
+        "circle": {
+          "label": 0,
+          "count": 64,
+          "coarse_recognizable_fraction": 0.96875,
+          "condition_match_fraction": 0.984375,
+          "nearest_own_template_mse_mean": 0.00234861858189106,
+          "raw_out_of_range_fraction": 0.381591796875,
+          "mean_absolute_clip_change": 0.010014886036515236,
+          "foreground_mass_mean": 32.090476989746094,
+          "foreground_mass_std": 7.142561435699463,
+          "zero_mass_fraction": 0.0,
+          "center_x_mean_px": 7.917117118835449,
+          "center_y_mean_px": 7.7899274826049805,
+          "center_x_std_px": 1.1864027976989746,
+          "center_y_std_px": 1.2543020248413086
+        },
+        "square": {
+          "label": 1,
+          "count": 64,
+          "coarse_recognizable_fraction": 1.0,
+          "condition_match_fraction": 1.0,
+          "nearest_own_template_mse_mean": 0.0026586982421576977,
+          "raw_out_of_range_fraction": 0.37176513671875,
+          "mean_absolute_clip_change": 0.011537523940205574,
+          "foreground_mass_mean": 36.976627349853516,
+          "foreground_mass_std": 10.154839515686035,
+          "zero_mass_fraction": 0.0,
+          "center_x_mean_px": 7.800887107849121,
+          "center_y_mean_px": 7.78995418548584,
+          "center_x_std_px": 1.1530548334121704,
+          "center_y_std_px": 1.3357460498809814
+        }
+      },
+      "previous_steps": 40,
+      "paired_pixel_rms_difference_from_previous": 0.004782076925039291,
+      "paired_clipped_pixel_rms_difference_from_previous": 0.00465072225779295
+    }
+  ],
+  "paired_difference_definition": "sqrt(mean over B,C,H,W of squared paired endpoint differences); clipped variant clamps each endpoint to [0,1] first",
+  "timing_scope": "one integration call only; excludes loading, metrics and plotting; no warm-up",
+  "limitations": "Paired endpoint differences measure changes between two Euler discretizations of the same frozen model. Exact-solution error and target-distribution quality require separate evidence. More steps can change geometric diagnostics in either direction. Synthetic 16x16 shapes; single-run CPU timings depend on hardware and workload."
+}
