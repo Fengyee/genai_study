@@ -1,0 +1,170 @@
+{
+  "ffmpeg_version": "ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers",
+  "command": [
+    "ffmpeg",
+    "-nostdin",
+    "-v",
+    "error",
+    "-n",
+    "-framerate",
+    "7",
+    "-start_number",
+    "0",
+    "-i",
+    "/workspace/genai_study/artifacts/svd-current/smoke/frame_%03d.png",
+    "-frames:v",
+    "4",
+    "-c:v",
+    "libx264",
+    "-crf",
+    "18",
+    "-pix_fmt",
+    "yuv420p",
+    "-movflags",
+    "+faststart",
+    "/workspace/genai_study/artifacts/svd-current/smoke/video.mp4"
+  ],
+  "probe": {
+    "frames": [
+      {
+        "media_type": "video",
+        "stream_index": 0,
+        "key_frame": 1,
+        "pts": 0,
+        "pts_time": "0.000000",
+        "pkt_dts": 0,
+        "pkt_dts_time": "0.000000",
+        "best_effort_timestamp": 0,
+        "best_effort_timestamp_time": "0.000000",
+        "duration": 2048,
+        "duration_time": "0.142857",
+        "pkt_pos": "897",
+        "pkt_size": "4134",
+        "width": 256,
+        "height": 144,
+        "crop_top": 0,
+        "crop_bottom": 0,
+        "crop_left": 0,
+        "crop_right": 0,
+        "pix_fmt": "yuv420p",
+        "pict_type": "I",
+        "interlaced_frame": 0,
+        "top_field_first": 0,
+        "repeat_pict": 0,
+        "chroma_location": "left",
+        "side_data_list": [
+          {
+            "side_data_type": "H.26[45] User Data Unregistered SEI message"
+          }
+        ]
+      },
+      {
+        "media_type": "video",
+        "stream_index": 0,
+        "key_frame": 0,
+        "pts": 2048,
+        "pts_time": "0.142857",
+        "pkt_dts": 2048,
+        "pkt_dts_time": "0.142857",
+        "best_effort_timestamp": 2048,
+        "best_effort_timestamp_time": "0.142857",
+        "duration": 2048,
+        "duration_time": "0.142857",
+        "pkt_pos": "14125",
+        "pkt_size": "3565",
+        "width": 256,
+        "height": 144,
+        "crop_top": 0,
+        "crop_bottom": 0,
+        "crop_left": 0,
+        "crop_right": 0,
+        "pix_fmt": "yuv420p",
+        "pict_type": "B",
+        "interlaced_frame": 0,
+        "top_field_first": 0,
+        "repeat_pict": 0,
+        "chroma_location": "left"
+      },
+      {
+        "media_type": "video",
+        "stream_index": 0,
+        "key_frame": 0,
+        "pts": 4096,
+        "pts_time": "0.285714",
+        "best_effort_timestamp": 4096,
+        "best_effort_timestamp_time": "0.285714",
+        "duration": 2048,
+        "duration_time": "0.142857",
+        "pkt_pos": "17690",
+        "pkt_size": "3808",
+        "width": 256,
+        "height": 144,
+        "crop_top": 0,
+        "crop_bottom": 0,
+        "crop_left": 0,
+        "crop_right": 0,
+        "pix_fmt": "yuv420p",
+        "pict_type": "B",
+        "interlaced_frame": 0,
+        "top_field_first": 0,
+        "repeat_pict": 0,
+        "chroma_location": "left"
+      },
+      {
+        "media_type": "video",
+        "stream_index": 0,
+        "key_frame": 0,
+        "pts": 6144,
+        "pts_time": "0.428571",
+        "best_effort_timestamp": 6144,
+        "best_effort_timestamp_time": "0.428571",
+        "duration": 2048,
+        "duration_time": "0.142857",
+        "pkt_pos": "5031",
+        "pkt_size": "9094",
+        "width": 256,
+        "height": 144,
+        "crop_top": 0,
+        "crop_bottom": 0,
+        "crop_left": 0,
+        "crop_right": 0,
+        "pix_fmt": "yuv420p",
+        "pict_type": "P",
+        "interlaced_frame": 0,
+        "top_field_first": 0,
+        "repeat_pict": 0,
+        "chroma_location": "left"
+      }
+    ],
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 256,
+        "height": 144,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "7/1",
+        "avg_frame_rate": "7/1",
+        "duration": "0.571429",
+        "nb_frames": "4"
+      }
+    ]
+  },
+  "full_decode_exit_code": 0,
+  "encoding": "H.264 CRF18 yuv420p, lossy playback derivative from complete uint8 PNG sequence; original PNGs retained in frames.zip.",
+  "assets": {
+    "video.mp4": {
+      "sha256": "a40bfcbc2450ac7023a0eab2557075788591f0a3119b6436747077e98f0a8197",
+      "bytes": 21498
+    },
+    "contact_sheet.png": {
+      "sha256": "4fc97e1d7fec08b4fdd87afca46c74b27d969a3cae7e094c63e771aba37a0b9b",
+      "bytes": 330716
+    },
+    "frames.zip": {
+      "sha256": "1d30ff78143f57c6025e8b3ba94ad7c27d67f5301b917d13cdb9b71ce28cb3bb",
+      "bytes": 292720
+    }
+  }
+}

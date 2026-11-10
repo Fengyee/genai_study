@@ -1,0 +1,11 @@
+{
+  "verified_files": 11,
+  "verified_bytes": 9018094887,
+  "model_id": "stabilityai/stable-video-diffusion-img2vid",
+  "revision": "9cf024d5bfa8f56622af86c884f26a52f6676f2e",
+  "model_dir": "artifacts/models/svd",
+  "reused_verified_files": 11,
+  "download_calls": 0,
+  "verification_seconds": 4.599144944000727,
+  "prepare_seconds": 9.508939872001065
+}

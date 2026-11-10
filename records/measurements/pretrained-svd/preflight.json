@@ -1,0 +1,12 @@
+{
+  "created_utc": "2026-11-10T18:41:04.555994+00:00",
+  "source_commit": "a3ed4a8cb60627d8f19c4c5a9a02150ead49be8f",
+  "files": {
+    "src/genai_study/pretrained_video.py": "215940885a6f05b5d158a901a75b51e02e7a985a2b83556bd690320a09ea4e7f",
+    "src/genai_study/pretrained_image.py": "3cd514bae6d2a9e8c17fafea806f49854813ad88c0b08e858e685dd6e0b8f1be",
+    "requirements-pretrained-lock.txt": "95176d3908a08a99ca80ca84fe8d2aaf0a5b7c5cc80cd663fb63bd5c1b7b1729",
+    "examples/pretrained-svd/manifest.json": "6f10bafb14e6954382c828ed349cdaeb4023eb0dc4a727c43f4d317228deeb6a"
+  },
+  "plan_commit": "2ed6b0c",
+  "status": "Before first SVD model forward; all files verified and 92 base tests passed."
+}

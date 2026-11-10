@@ -1,0 +1,7 @@
+{
+  "initial_noise_exact": true,
+  "augmentation_input_exact": true,
+  "crop_and_added_conditions_checked": true,
+  "all_frames_png_hash_and_quantization_checked": true,
+  "peak_rss_gib": 9.535873413085938
+}

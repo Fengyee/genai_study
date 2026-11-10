@@ -1,0 +1,12 @@
+{
+  "duration": 0.571429,
+  "currentTime": 0.571429,
+  "ended": true,
+  "videoWidth": 256,
+  "videoHeight": 144,
+  "totalVideoFrames": 4,
+  "droppedVideoFrames": 0,
+  "playbackWallSeconds": 0.574199999999255,
+  "chromium_version": "156.0.8078.79",
+  "scope": "Headless Chromium actually played the complete local MP4 to ended. Frame content is assessed separately from this playback-path check."
+}
