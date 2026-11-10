@@ -106,3 +106,5 @@ Actions观察：`gh run list`为空，workflows API total_count=0；Actions perm
 f95d055对应GitHub run42847424682 completed/success，证明本轮图像/课程集成在远端也通过；但日志提示Node20 Action正被平台强制Node24。依据官方release与固定SHA元数据，更新checkout/setup-python/upload-artifact到声明Node24的稳定版本，并核对runner及上传归档兼容性。仅3行pin变化，未拓宽权限或改变调度触发。详见records/automation-validation.md；新提交的远端运行需在推送后观察。
 
 维护观察：当前gh版本的`gh pr edit`因已退役Projects classic GraphQL字段失败，已通过官方REST PATCH /pulls/1成功更新相同PR标题/正文；没有创建重复PR或发送评论。环境设置保持用户发布状态，本轮没有重新应用旧草稿。
+
+轮次9远端验证结果：提交2592b2a的 [GitHub run42848472192](https://github.com/Fengyee/genai_study/actions/runs/42848472192) 已completed/success（59秒），新Node24 Actions的安装、全部检查及artifact上传均成功，未再出现此前Node20强制迁移提示。随后这次提交仅补充验证记录；未修改代码、依赖或workflow。
