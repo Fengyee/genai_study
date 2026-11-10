@@ -195,3 +195,5 @@ $$
 下一步：[05 评价与实验诊断](05-evaluation.md)，随后完成07/08图像实践与06视频反例，再进入[04研究路线](04-image-video-roadmap.md)。
 
 理论延伸：[从噪声预测到生成速度](../readings/diffusion-flow-bridge.md)沿同一高斯路径推导边缘速度，核对反向时间、概率流1/2系数、VP的v参数化与DDIM/SVD坐标；包含可直接运行的解析高斯检查。
+
+理解速度场积分后，可沿[少步生成专题](../readings/consistency-endpoint-map.md)学习轨迹端点映射。解析Gaussian例固定起始边缘与终点，比较不同次数的局部速度求值和一次精确端点求值，再连接原始一致性模型的训练目标。

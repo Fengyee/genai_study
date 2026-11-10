@@ -96,6 +96,8 @@ python -m genai_study.experiment --method ddpm --steps 5000 --output artifacts/f
 
 研究条件控制时，先完成 [08章](chapters/08-image-guidance-lab.md) 的condition dropout训练，再用`image_guidance_study`改变引导强度。学习对照分别固定积分步数或引导强度，避免同时修改多个变量。
 
+研究采样加速时，先完成固定模型的步数对照，再读[少步生成与一致性端点映射](readings/consistency-endpoint-map.md)。用同一初态和正噪声终点比较解析映射与Euler，区分引导分支压缩、积分网格和学生训练目标。
+
 在04的条件控制之后，可选读[条件注意力专题](readings/conditioning-attention.md)，先检查Q/K/V的轴、CLIP隐藏态与全局向量、单token和mask置换，再追踪09/10的真实接口。
 
 图像编辑方向接着读 [FLUX.1 Kontext阅读卡](readings/flux-kontext-2025.md)：用CPU检查latent打包与时间反向映射，核对参考图token、guidance蒸馏接口及每步调用数，再为编辑完成度和内容保留设计分组评价。视频方向通过Wan卡对照时空表示与条件接口。

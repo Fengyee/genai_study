@@ -21,6 +21,7 @@ import time
 
 
 EXAMPLES = {
+    "consistency-endpoint-map": "docs/readings/consistency-endpoint-map.md",
     "conditioning-attention": "docs/readings/conditioning-attention.md",
     "diffusion-flow-bridge": "docs/readings/diffusion-flow-bridge.md",
     "autoregressive-causality": "docs/chapters/01-generative-models.md",

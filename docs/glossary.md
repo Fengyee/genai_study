@@ -1,6 +1,6 @@
 # GenAI 中英术语索引
 
-**使用前提：** 能读懂 PyTorch 张量与损失函数；概率基础可随时返回[00章](chapters/00-foundations.md)。**目标：** 从一个术语定位其定义、模型接口和可执行例子。**范围：** 本页索引00–10章及已有研究阅读卡中的37组高频术语，简释以链接处的假设和具体配置为准。
+**使用前提：** 能读懂 PyTorch 张量与损失函数；概率基础可随时返回[00章](chapters/00-foundations.md)。**目标：** 从一个术语定位其定义、模型接口和可执行例子。**范围：** 本页索引00–10章及已有研究阅读卡中的38组高频术语，简释以链接处的假设和具体配置为准。
 
 按主题查词，再到右栏阅读推导或运行练习。时间方向、符号和单位统一由[符号约定](notation.md)维护；系统学习顺序见[学习路线](learning-path.md)。原始论文、实现版本和验证范围保留在对应章节及[来源索引](../SOURCES.md)。
 
@@ -47,6 +47,7 @@
 | 噪声预测 · epsilon / noise prediction | 以正向过程采样的噪声$\epsilon$作为平方误差监督；总体最优预测是在给定带噪输入、时间（噪声级别）和条件后的噪声条件期望。 | [02：噪声MSE](chapters/02-diffusion.md#4-为什么是噪声均方误差) |
 | 方差保持扩散的v参数化 · variance-preserving（VP）v-prediction | 对$z_t=az_0+b\epsilon$、$a^2+b^2=1$，预测目标为$v=a\epsilon-bz_0$，还原关系为$z_0=az_t-bv$。转换输出时同时核对噪声级别与输入参数化。 | [SVD/CogVideoX：VP还原检查](readings/video-training-svd-cogvideox.md#4-cpu-检查把-v_prediction帧轴与尺寸算清楚) |
 | 流匹配速度 · flow-matching velocity | 驱动指定概率路径演化的数据或潜空间速度场。本仓库条件路径$x_t=(1-t)\epsilon+tx$从噪声走向数据，目标为$x-\epsilon$；理想网络在给定状态、时间及所用条件时预测此速度的条件期望。 | [03：条件速度与边缘速度](chapters/03-flow-matching.md#2-条件路径很多为什么只学一个速度场) |
+| 一致性模型 / 端点映射 · consistency model（CM） | 预测当前状态沿指定概率流轨迹到固定噪声端点的结果，并要求同轨迹预测一致。原始CD利用教师构造相邻状态，CT用数据共噪声配对，其关系按网格极限定理解释。 | [端点映射、边界与解析反例](readings/consistency-endpoint-map.md) |
 
 ## 采样与可复现性
 

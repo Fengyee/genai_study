@@ -192,3 +192,5 @@ PY
 [sampling]: https://github.com/black-forest-labs/flux/blob/802fb4713906133fcbd0d8dc5351620ca4773036/src/flux/sampling.py#L210
 [model]: https://github.com/black-forest-labs/flux/blob/802fb4713906133fcbd0d8dc5351620ca4773036/src/flux/model.py#L97
 [editing]: https://github.com/black-forest-labs/flux/blob/802fb4713906133fcbd0d8dc5351620ca4773036/docs/image-editing.md#L29
+
+机制补充：[少步生成与端点映射](consistency-endpoint-map.md)用原始Consistency Models和解析ODE区分积分区间、引导分支和学生训练目标；本卡系统继续按上面的固定训练方案与实际入口解释。
