@@ -1,6 +1,6 @@
 # 来源与核验边界
 
-本项目引用原始研究支撑概念，教学代码独立实现。原创代码和文档采用Apache-2.0；外部论文、模型与数据分别遵循原作者许可。基础实验的数据由程序构造，09章的预训练权重由读者按固定清单下载到本地缓存，仓库保存其身份、配置和运行证据。
+本项目引用原始研究支撑概念，教学代码独立实现。原创代码和文档采用Apache-2.0；外部论文、模型与数据分别遵循原作者许可。基础实验的数据由程序构造，09/10章的预训练权重由读者按固定清单下载到本地缓存，仓库保存其身份、配置和运行证据。
 
 章节末尾记录原始论文和作者实现链接。研究路线以 2013–2024 年代表工作建立基础，再通过固定版本阅读卡补充近年图像/视频进展；新增或变化快的结论需重新核验。各份审计明确记录论文版本、具体主张和对应证据。
 
@@ -48,3 +48,5 @@
 [LTX-2 2026阅读卡](docs/readings/ltx2-video-audio-2026.md)固定2026-01-06报告v1、同期代码及模型/许可revision，核对音画双流、条件分解、速度参数化、论文跨模态CFG与实际入口的差别。直接执行小张量与原函数控制流，确认蒸馏8+3区间/11次联合调用；保留论文参数量和README步数差异，GPU性能按作者协议归属。
 
 [SD1.4四请求提示探索](docs/sd14-prompt-pilot.md)继续使用上面固定模型和许可，生成前保存完整计划，保留两提示×两种子的全部原图、metrics和逐项观察。图片与推理输出逐字节相同，两个同seed噪声对完全一致。视觉观察者均为AI代码代理，真实读者评阅尚待开展。
+
+[10 SVD视频运行与失败分析](docs/chapters/10-pretrained-video-lab.md)固定原作者SVD revision `9cf024d5bfa8f56622af86c884f26a52f6676f2e`，完整下载并核验[11文件清单](examples/pretrained-svd/manifest.json)。保留[Community2024-07-05许可原文](examples/pretrained-svd/LICENSE-model.txt)、[NOTICE](examples/pretrained-svd/NOTICE)及指定归属 **Powered by Stability AI**。参考图来自上述SD1.4 scene/seed43输出；SVD生成结果同时受其模型许可约束。核对Diffusers0.35.2固定实现中的参考latent、双随机流、VP预条件、Euler更新和联合帧调用，独立复算首末Euler步并实际完成smoke/校准/25步/重复。完整视频输出严重失真，全部帧、运行成本和追加的直接官方API短对照见[报告](docs/pretrained-video-report.md)及[原始证据](records/measurements/pretrained-svd/README.md)；具体失败成因待控制实验。

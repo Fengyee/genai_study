@@ -24,9 +24,9 @@
 | Token / tokenizer · 序列单元 / 分词或编码器 | Token是序列中的表示单元，tokenizer规定输入到这些单元的转换。文本与ResTok可用离散索引，图像patch也可表示为连续向量。 | [09：文本token](chapters/09-pretrained-image-lab.md#2-从文本与噪声到图像)；[ResTok：两类模型与token](readings/restok-image-ar-2026.md#1-先把两个模型分开) |
 | 向量量化 / 码本 · vector quantization（VQ）/ codebook | 把连续向量映射到码本条目，用索引表示。8192项码本的固定长度索引需要13bit；码本向量维数与模型存储另计。 | [ResTok：离散索引预算](readings/restok-image-ar-2026.md#1-先把两个模型分开) |
 | 图块token · patch token | 将像素或潜张量按图块组织，展平并投影为网络序列。Token数量由所在空间、图块尺寸及时间轴决定。 | [04：DiT的latent patches](chapters/04-image-video-roadmap.md#4-从-u-net-到-diffusion-transformer)；[Wan：表示与压缩](readings/wan-video-2025.md#表示压缩率不是一个脱离通道数的数字) |
-| 潜变量缩放 · latent scaling factor | 改变潜变量数值坐标的乘法系数。SD1.4使用$z=0.18215z_{\mathrm{VAE}}$，解码前除以该系数；配套编码器与解码器须采用同一约定。 | [09：latent形状与缩放](chapters/09-pretrained-image-lab.md#2-从文本与噪声到图像) |
+| 潜变量缩放 · latent scaling factor | 改变潜变量数值坐标的乘法系数。SD1.4使用$z=0.18215z_{\mathrm{VAE}}$，解码前除以该系数；各latent路径须遵循训练坐标；SVD的参考条件编码保持未缩放，生成latent在解码前除以系数。 | [09：latent形状与缩放](chapters/09-pretrained-image-lab.md#2-从文本与噪声到图像)；[10：参考与生成路径](chapters/10-pretrained-video-lab.md#2-参考图走两条条件路径) |
 | 时空压缩 · spatial / temporal compression | 编码器沿空间或时间下采样，改变潜张量尺寸。首帧处理影响实际潜帧数，例如所选CogVideoX配置把49帧编码为13个潜帧。 | [SVD/CogVideoX：时间压缩与token](readings/video-training-svd-cogvideox.md#3d-causal-vae-与-token) |
-| 帧率 / 时长 · frames per second（fps）/ duration | fps给出每秒显示帧数。等间隔的$F$帧以$r$ fps播放，首尾采样时刻跨度为$(F-1)/r$；每帧显示一个间隔时，播放时长为$F/r$。 | [06：帧率与时间单位](chapters/06-video-temporal-lab.md#帧数帧率和时长不等价) |
+| 帧率 / 时长 · frames per second（fps）/ duration | fps给出每秒显示帧数。等间隔的$F$帧以$r$ fps播放，首尾采样时刻跨度为$(F-1)/r$；每帧显示一个间隔时，播放时长为$F/r$。 | [06：帧率与时间单位](chapters/06-video-temporal-lab.md#帧数帧率和时长不等价)；[10：条件与播放fps](chapters/10-pretrained-video-lab.md#4-扩散时间视频帧索引和播放帧率) |
 
 ## 条件与引导
 
@@ -56,7 +56,7 @@
 | 训练步 / 采样步 · training step / sampling step | 训练步计优化器更新，采样步计状态更新或所用时间点。参数名由CLI定义：`image_flow --steps`计训练更新，09的`--steps`计DDIM时间点。 | [08：两类步数参数](chapters/08-image-guidance-lab.md#4-训练一次再做固定模型的强度扫描)；[09：采样设置](chapters/09-pretrained-image-lab.md#4-ddim的步数噪声级别与确定性) |
 | 网络求值次数 · number of function evaluations（NFE） | 需同时记录网络调用、batch大小和每样本分支预算。09生成单张图的20步为20次batch2调用，累计40次样本分支求值；08显式调用两次网络完成一步。 | [09：调用计数](chapters/09-pretrained-image-lab.md#3-文本条件引导对齐两分支及调用计数)；[08：显式两分支](chapters/08-image-guidance-lab.md#3-在同一状态上组合两次速度预测) |
 | 检查点 · checkpoint | 保存模型权重及其架构、训练配置等状态。这里的推理checkpoint用于冻结模型做采样对照；完整续训还需优化器等状态。 | [07：固定模型的求解器对照](chapters/07-image-flow-lab.md#第二步冻结模型单独改变采样步数) |
-| 配对噪声 / 随机种子 · paired noise / random seed | 固定模型和同一份初始噪声，只改变待研究的配置，减少比较中的无关随机变化。Seed还需结合软件、设备和线程数记录。 | [08：配对输入](chapters/08-image-guidance-lab.md#5-如何控制噪声类别和参考数据)；[00：可复现性](chapters/00-foundations.md#5-随机性与可复现性) |
+| 配对噪声 / 随机种子 · paired noise / random seed | 固定模型和同一份初始噪声，只改变待研究的配置，减少比较中的无关随机变化。有参考图增强等额外随机流时也应分别固定；Seed还需结合软件、设备和线程数记录。 | [08：配对输入](chapters/08-image-guidance-lab.md#5-如何控制噪声类别和参考数据)；[00：可复现性](chapters/00-foundations.md#5-随机性与可复现性)；[10：两随机流](chapters/10-pretrained-video-lab.md#5-两个随机流与分阶段运行) |
 
 ## 评价与证据
 

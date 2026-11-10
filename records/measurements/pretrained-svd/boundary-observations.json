@@ -1,0 +1,33 @@
+{
+  "definition": "Boundary fraction counts scalar F,H,W,RGB float32 values exactly equal to 0 or 1 after pipeline denormalization/clamp; it does not recover unclipped decoder values or quantify their excess.",
+  "rows": [
+    {
+      "stage": "smoke",
+      "postprocessed_channel_fraction_exactly_0_or_1": 0.009657118055555556,
+      "adjacent_rgb_rms_min": 0.06827576196919878,
+      "adjacent_rgb_rms_max": 0.08472091558297236,
+      "frames_raw_sha256": "6f3d308f2c17ac1faaae7f406abcf99521e90ab01b6fbd84dd13db82fe2b18bd"
+    },
+    {
+      "stage": "calibration",
+      "postprocessed_channel_fraction_exactly_0_or_1": 0.08593685412533068,
+      "adjacent_rgb_rms_min": 0.14264722842667574,
+      "adjacent_rgb_rms_max": 0.4408692903059646,
+      "frames_raw_sha256": "10d5d699329abd5f3c54eb87d3bbb37e4db8f8e62c9deaa21857d0c3696deaba"
+    },
+    {
+      "stage": "full",
+      "postprocessed_channel_fraction_exactly_0_or_1": 0.4047696552579365,
+      "adjacent_rgb_rms_min": 0.2684581392257237,
+      "adjacent_rgb_rms_max": 0.5056586856607556,
+      "frames_raw_sha256": "f8eca4a6d74440fe113022be6f3608aa6e3bf6a7071a4f4eae553078899eab77"
+    },
+    {
+      "stage": "smoke-repeat",
+      "postprocessed_channel_fraction_exactly_0_or_1": 0.009657118055555556,
+      "adjacent_rgb_rms_min": 0.06827576196919878,
+      "adjacent_rgb_rms_max": 0.08472091558297236,
+      "frames_raw_sha256": "6f3d308f2c17ac1faaae7f406abcf99521e90ab01b6fbd84dd13db82fe2b18bd"
+    }
+  ]
+}

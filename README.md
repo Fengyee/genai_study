@@ -4,7 +4,7 @@
 
 给熟练使用 PyTorch、有研究经验但尚未系统学习生成式 AI 的 CS master / PhD：用清楚的假设、可核对的推导和能在 CPU 上跑通的小实验建立基础，再进入图像与视频生成研究。
 
-**当前版本**：10 个学习单元，涵盖二维 DDPM / Flow Matching、16×16 条件图像生成、固定模型的求解器与引导实验、视频时序反例，以及可选的 SD 1.4 预训练图像实践。基础实验在 CPU 上运行，数据由程序构造；可选实践另下载约 5.11 GiB 权重，使用独立依赖环境。各路径均无需付费 API。自然图像/视频训练、视频权重实践及完整前沿综述继续按 [backlog](records/BACKLOG.md)推进。
+**当前版本**：11个学习单元，涵盖二维DDPM / Flow Matching、小图像生成与引导、视频时序诊断，以及可选的SD1.4图像推理和SVD视频运行/失败分析。基础实验在CPU上使用程序构造数据；可选实践共用独立依赖环境，分别下载约5.11GiB和8.40GiB模型文件。各路径均无需付费API。自然图像/视频训练、发布尺寸的视频质量基线和前沿综述继续按[backlog](records/BACKLOG.md)推进。
 
 ## 我适合从哪里开始？
 
@@ -21,6 +21,8 @@
 希望亲手生成自然图像时，完成潜空间与条件基础后进入 [09 预训练图像实践](docs/chapters/09-pretrained-image-lab.md)。固定权重、文本、初始噪声和 DDIM 配置，运行 CPU 推理并比较引导强度；先对照[实测报告](docs/pretrained-image-report.md)安排下载、内存和时间。
 
 图像/视频读者还可直接运行 [06 视频时序实验](docs/chapters/06-video-temporal-lab.md)，观察帧集合相同而时间顺序错误的反例。
+
+想把预训练接口延伸到视频，可读[10 SVD运行与失败分析](docs/chapters/10-pretrained-video-lab.md)。低分辨率14帧/25步在本机完整运行约16.8分钟、峰值11.21GiB，输出存在严重形变；[报告](docs/pretrained-video-report.md)保留全部帧、官方API对照和后续诊断问题。
 
 完整的先修图、实践任务与时间预算见 [学习路线](docs/learning-path.md)。遇到新词可查 [35组中英术语索引](docs/glossary.md)，再沿具体章节链接阅读推导；全局 [符号约定](docs/notation.md) 与 [来源核验](SOURCES.md) 帮助跨章核对。
 
@@ -70,7 +72,7 @@ bash scripts/quality.sh
 ## 实验覆盖范围与运行问题
 
 - 二维八高斯用于检查训练目标、采样算法与分布诊断；图像与视频质量需要对应的数据和评价协议。
-- 07/08学习受控圆盘/方形分布，09使用已训练的自然图像模型；06检查合成序列的时序指标。[Wan 2025 阅读卡](docs/readings/wan-video-2025.md)连接视频论文与模型接口，视频权重运行列入后续实践。
+- 07/08学习受控圆盘/方形分布，09使用自然图像模型，10实测预训练图生视频的低分辨率运行与失败案例；06以合成序列检查时序指标。各实践明确自己的数据与适用范围。
 - 首次安装失败：检查 Python 版本与网络允许的 `pypi.org`、`files.pythonhosted.org`、`download.pytorch.org` 和 `download-r2.pytorch.org`；修复网络后保留 TLS 与 hash 校验重试。
 - CPU 很慢：二维/图形训练使用`--threads 1`，先降低`--steps`与`--samples`确认路径，再恢复完整训练预算。09的预训练入口使用2步、256×256的smoke配置，具体命令与成本见该章。
 

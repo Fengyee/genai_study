@@ -15,7 +15,7 @@
 | 固定SD1.4的真实CPU推理成本、引导对照和重复结果是什么？ | [预训练图像实测](../../docs/pretrained-image-report.md)与[09章操作路径](../../docs/chapters/09-pretrained-image-lab.md) | [pretrained-sd14索引](pretrained-sd14/README.md)：准备/缓存复用、smoke、双引导、完整重复、提示修订及源码/软件身份 |
 | 在生成前固定提示与seed集合后，如何保留并比较全部结果？ | [SD1.4四请求探索报告](../../docs/sd14-prompt-pilot.md) | [sd14-prompt-pilot索引](sd14-prompt-pilot/README.md)：事先计划、全部metrics、实际执行顺序、AI视觉观察与配置/噪声/图片核验 |
 | 推荐5000步首次路径能否重跑，并复用checkpoint完成采样对照？ | [首次路径复查报告](../../docs/experiment-report.md#推荐首次路径的再次运行) | [first-run-5000索引](first-run-5000/README.md)：两训练和solver原始JSON、完整argv/外层耗时，以及与历史数组的比对记录 |
-| 固定SVD图生视频能否在声明的CPU预算内完成？ | 分阶段实际验证中，状态见[执行记录](../PROGRESS.md) | [pretrained-svd计划](pretrained-svd/plan.json)固定输入、双随机流、阶段门槛与观察项目；模型身份和许可见[资产说明](../../examples/pretrained-svd/README.md)，可执行入口为[pretrained_video.py](../../src/genai_study/pretrained_video.py) |
+| 固定SVD图生视频能否在声明的CPU预算内完成，画面表现如何？ | [视频实测与失败分析](../../docs/pretrained-video-report.md)及[10章](../../docs/chapters/10-pretrained-video-lab.md)：完整请求16.8分钟、严重形变与闪烁 | [pretrained-svd索引](pretrained-svd/README.md)：事先计划、准备、smoke/校准/full/重复、官方API短对照、全部帧与播放核验；模型身份和许可见[资产说明](../../examples/pretrained-svd/README.md) |
 
 二维训练预算的全部原始JSON：
 

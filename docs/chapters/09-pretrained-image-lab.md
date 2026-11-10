@@ -249,3 +249,7 @@ for j in (951, 1):
 - [原始许可固定版本](https://huggingface.co/spaces/CompVis/stable-diffusion-license/blob/14d42d09bffd871b1666a084fc954a50cff72ac0/license.txt)：SHA-256 `be351ebe7ac01bcdbb018639aadcfd38f136b7dc3f2a3d4d3a24db51d1b210ef`。
 
 完成本章后，把一次“图片已生成”扩展成可核对的实验说明：记录权重与许可、配置、初始噪声、调用预算、耗时与内存，然后按预先定义的观察项评价输出。接着可在[04研究路线](04-image-video-roadmap.md)中选择条件控制、求解器或评价专题，或对照Kontext阅读卡研究生成与图像编辑之间的条件接口变化。
+
+## 下一步：参考图条件的视频生成
+
+完成本章后，可进入[10章SVD视频运行与失败分析](10-pretrained-video-lab.md)，复用独立环境，单独准备视频权重。沿两条图像条件路径追踪未缩放参考latent、生成latent、帧轴引导和两随机流，并结合实际失败检查资源与评价协议。

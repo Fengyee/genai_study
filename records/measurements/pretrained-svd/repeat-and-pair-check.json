@@ -1,0 +1,20 @@
+{
+  "smoke_repeat_arrays_exact": true,
+  "smoke_repeat_all_png_bytes_exact": true,
+  "calibration_full_initial_noise_exact": true,
+  "calibration_full_augmentation_input_exact": true,
+  "full_calls": 25,
+  "full_video_branches": 50,
+  "repeat_timing": {
+    "input_preparation": 0.016921672999160364,
+    "verification": 4.645464354998694,
+    "pipeline_load": 3.381911589000083,
+    "inference": 37.85448537500088,
+    "conditioning_before_first_unet": 3.873648045000664,
+    "denoising_first_unet_through_last_euler": 23.391923790000874,
+    "decoding_and_postprocessing": 10.58891353999934,
+    "total_before_metrics_write": 45.95738087399877
+  },
+  "repeat_peak_rss_gib": 9.58615493774414,
+  "smoke_frames_raw_sha256": "6f3d308f2c17ac1faaae7f406abcf99521e90ab01b6fbd84dd13db82fe2b18bd"
+}

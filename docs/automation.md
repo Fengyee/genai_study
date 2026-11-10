@@ -67,6 +67,8 @@ GitHub Actions 的 `concurrency` 只约束对应 workflow 的 runs，**不能锁
 
 ## 可选预训练实践的验证范围
 
-09章另用`requirements-pretrained-lock.txt`和`.venv-pretrained`运行SD1.4。常规质量脚本中的pytest覆盖其固定manifest、文件损坏检测/恢复、参数和输出保护，使用临时小文件即可执行。每小时检查继续保持基础依赖和CPU小实验的预算；约5.11GiB真实权重下载及完整推理由显式的预训练实践命令完成。
+09/10章共用`requirements-pretrained-lock.txt`和`.venv-pretrained`，分别运行SD1.4与SVD。常规pytest中的15项图像测试、23项视频测试覆盖固定manifest、文件损坏检测/恢复、参数、输出保护、预处理与独立随机流，使用临时小文件即可执行。每小时检查保持基础依赖和CPU小实验的预算；两模型分别约5.11GiB、8.40GiB的下载及真实推理由显式实践命令完成。
 
 模型、可选依赖或采样/解码路径变化时，应按09章重新核验文件、运行真实smoke和至少一张完整图，再检查固定噪声对照。记录实际模型revision、可选锁文件hash、输出hash、进程内存和计时范围，结果见[预训练实测](pretrained-image-report.md)。文档检查跳过两个venv和本地artifacts目录。
+
+SVD按[10章](chapters/10-pretrained-video-lab.md)的阶段协议执行：4帧/2步smoke、14帧/4步成本校准，通过事先设定的时间/内存门槛后运行14帧/25步，再完整重复smoke。保留参考增强输入、初噪声、全部帧和播放元数据。当前实际低分辨率输出有严重形变；[视频报告](pretrained-video-report.md)分别记录运行成本、数值重复、官方API短对照与画面观察。

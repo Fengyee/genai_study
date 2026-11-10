@@ -93,3 +93,7 @@ python -m genai_study.image_guidance_study \
 按 [09章](../docs/chapters/09-pretrained-image-lab.md)建立`.venv-pretrained`并使用独立hash锁安装依赖。先核对许可和[实测成本](../docs/pretrained-image-report.md)，再用`pretrained_image prepare`下载清单中的约5.11GiB文件。之后的`run`从本地加载，每次复核全部文件SHA，记录提示、初始噪声、DDIM配置、实际U-Net调用数、耗时和进程峰值内存。
 
 首次完整运行与两强度配对命令统一放在09章。已生成`artifacts/pretrained-sd14`时直接复用结果；重跑使用新目录。基础二维/图形实验继续使用`.venv`，预训练模块的`--help`和完整性检查测试可在基础环境执行。
+
+## 可选：固定SVD的CPU视频运行与失败分析
+
+[10章](../docs/chapters/10-pretrained-video-lab.md)复用预训练依赖环境，另准备8.40GiB固定SVD模型文件。实际完成4帧/2步、14帧/4步及14帧/25步，保留全部帧、双随机流、资源门槛与播放文件；完整25步约16.8分钟、峰值11.21GiB，输出有严重过饱和与形变。先阅读[实测报告](../docs/pretrained-video-report.md)选择运行阶段，再按章内命令操作。短配置的完整重复及直接官方API对照均逐元素一致。
