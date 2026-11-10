@@ -97,3 +97,12 @@ python -m genai_study.image_guidance_study \
 ## 可选：固定SVD的CPU视频运行与失败分析
 
 [10章](../docs/chapters/10-pretrained-video-lab.md)复用预训练依赖环境，另准备8.40GiB固定SVD模型文件。实际完成4帧/2步、14帧/4步及14帧/25步，保留全部帧、双随机流、资源门槛与播放文件；完整25步约16.8分钟、峰值11.21GiB，输出有严重过饱和与形变。先阅读[实测报告](../docs/pretrained-video-report.md)选择运行阶段，再按章内命令操作。短配置的完整重复及直接官方API对照均逐元素一致。
+
+## 无需训练的DDPM解析对照
+
+```bash
+python -m genai_study.oracle_study --samples 4096 --seeds 7 19 43 \
+  --threads 1 --output artifacts/oracle-study
+```
+
+把网络替换为标准正态或八高斯的条件最优噪声预测器，沿用现有100步采样实现。输出保存全部样本和独立随机流，核对正态方差递推、八高斯邻域率与径向二阶矩；推导、实际成本及解释见[解析对照报告](../docs/ddpm-oracle-report.md)。复跑选择新的目录。

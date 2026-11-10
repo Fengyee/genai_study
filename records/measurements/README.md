@@ -7,6 +7,7 @@
 | 实验问题 | 阅读与复现入口 | 原始记录及身份核验 |
 | --- | --- | --- |
 | 二维模型增加训练预算后，哪些分布诊断改善？ | [二维实测报告](../../docs/experiment-report.md)；800/5000更新、两种方法、三个seed | 下表列出全部12份训练JSON；[provenance](provenance.json)记录当时源码与依赖锁SHA |
+| 使用精确最优噪声预测器，DDPM还会产生什么偏差？ | [解析oracle报告](../../docs/ddpm-oracle-report.md)：正态方差递推、八高斯径向收缩 | [oracle-study索引](oracle-study/README.md)：事先预算、全部三seed、独立推导/数组复算、seed边界修复验证和图形来源 |
 | 固定二维flow后，增加Euler步数会怎样？ | [800步checkpoint的求解器对照](../../docs/experiment-report.md#固定模型的求解器对照)；该节有独立复现命令 | [solver-study.json](solver-study.json)：训练metadata、checkpoint SHA、配对噪声配置、每组NFE与终点诊断 |
 | 相同帧集合能否掩盖时序错误？ | [06章：合成视频时序反例](../../docs/chapters/06-video-temporal-lab.md) | [video-counterexample.json](video-counterexample.json)：实际置换、时间戳、像素/质心指标与单位；解析速度参照见正文 |
 | 程序圆盘/方形训练能学到哪些结构，还存在哪些误差？ | [小图像训练实测](../../docs/image-experiment-report.md) | [image-flow](image-flow/)的三个seed JSON与[provenance](image-flow/provenance.json)：几何粗判、类别内变化、原始越界与裁剪诊断 |

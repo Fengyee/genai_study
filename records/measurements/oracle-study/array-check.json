@@ -1,0 +1,53 @@
+{
+  "scope": "Independent NumPy metrics and scalar Gaussian propagation from saved arrays; no oracle-study statistics or model helpers called. All 21 array hashes/shapes/dtypes, NPZ identity, current source identity and six initial arrays checked.",
+  "checks": [
+    {
+      "base_seed": 7,
+      "normal_independent_linear_path_max_error": 3.0994415283203125e-06,
+      "mixture": {
+        "nearest_center_second_moment_over_2sigma2": 0.6639469608084316,
+        "neighborhood_fraction": 0.997802734375,
+        "energy_float64": 0.01460225757563327,
+        "energy_abs_difference": 7.885357162784601e-07
+      },
+      "mixture_independent_target": {
+        "nearest_center_second_moment_over_2sigma2": 1.007909941608117,
+        "neighborhood_fraction": 0.98828125,
+        "energy_float64": 0.007099126089082475,
+        "energy_abs_difference": 6.897334916544651e-07
+      }
+    },
+    {
+      "base_seed": 19,
+      "normal_independent_linear_path_max_error": 3.814697265625e-06,
+      "mixture": {
+        "nearest_center_second_moment_over_2sigma2": 0.668508259091559,
+        "neighborhood_fraction": 0.998046875,
+        "energy_float64": 0.009059472128647883,
+        "energy_abs_difference": 2.8137852581267e-07
+      },
+      "mixture_independent_target": {
+        "nearest_center_second_moment_over_2sigma2": 1.0076319797311326,
+        "neighborhood_fraction": 0.987548828125,
+        "energy_float64": 0.008087571657917625,
+        "energy_abs_difference": 4.1345479262488993e-07
+      }
+    },
+    {
+      "base_seed": 43,
+      "normal_independent_linear_path_max_error": 4.0531158447265625e-06,
+      "mixture": {
+        "nearest_center_second_moment_over_2sigma2": 0.6774792791420526,
+        "neighborhood_fraction": 0.99755859375,
+        "energy_float64": 0.004738114672922844,
+        "energy_abs_difference": 7.375061747971756e-07
+      },
+      "mixture_independent_target": {
+        "nearest_center_second_moment_over_2sigma2": 0.9942456241169634,
+        "neighborhood_fraction": 0.98876953125,
+        "energy_float64": 0.002597140287421862,
+        "energy_abs_difference": 2.851238476431206e-07
+      }
+    }
+  ]
+}

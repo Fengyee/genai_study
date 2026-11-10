@@ -1,0 +1,25 @@
+{
+  "started_utc": "2026-11-10T19:25:47.671239+00:00",
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "genai_study.oracle_study",
+    "--samples",
+    "4096",
+    "--seeds",
+    "7",
+    "19",
+    "43",
+    "--threads",
+    "1",
+    "--output",
+    "artifacts/oracle-study-current"
+  ],
+  "timeout_seconds": 120,
+  "exit_code": 0,
+  "wall_seconds": 1.4229752570008714,
+  "source_commit": "860e7bf4ebd307e6a202e251529c5c605822e7de",
+  "plan_sha256": "52c9d88c9783b7c75d062106e8c80f57af68050eff1fac9e75bbfc6862248f5e",
+  "preflight": "First attempt stopped at source hash guard before launching; final documentation-only source change re-read and committed identity checked before this run.",
+  "log": "/tmp/genai-oracle-study-run.log"
+}

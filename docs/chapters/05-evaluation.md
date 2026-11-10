@@ -288,3 +288,5 @@ FVD 将每段视频压缩为特征，再比较一、二阶统计。物体持久�
 | KID | Bińkowski et al., [Demystifying MMD GANs](https://arxiv.org/abs/1801.01401v5) | ICLR 2018；v5，2021-01-14；第 4 页 Eq. (4)、第 8 页 KID |
 
 已对照 Heusel、Chong/Forsyth、Parmar 三篇固定版本原文，核验 FID 定义、有限样本偏差和预处理协议；PDF SHA-256、页码、假设及独立数学检查见 [评价来源核验](../evaluation-source-audit.md)。IS、precision/recall、KID 与 FVD 的定义、条件及输入协议见 [第二组评价核验](../evaluation-metrics-audit.md)。toy 数值引用仓库内实测 JSON；本章 NumPy 示例验证解析性质，论文中的生成模型实验尚待复现。
+
+进一步实践：[DDPM解析预测器对照](../ddpm-oracle-report.md)固定已知最优噪声函数，检查有限步采样的方差及邻域率。用最近中心径向二阶矩与目标样本参照，补充coverage和邻域率对分量内部多样性的检查。

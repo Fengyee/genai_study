@@ -89,6 +89,8 @@ $$
 
 本仓库使用固定 $\tilde\beta_t$ 采样：$x_{t-1}=\mu_\theta+\sqrt{\tilde\beta_t}z$，其中每一步的 $z$ 独立；最后一步不加随机噪声。真实图像实现可能使用其他固定方差、学习方差或裁剪 $\hat x_0$。这些选择有各自的假设，不能把某一选择当成 DDPM 唯一形式。
 
+将最优条件均值用于采样后，真实反向协方差还包含干净数据的不确定性。由全协方差公式，若$c_t=\sqrt{\bar\alpha_{t-1}}\beta_t/(1-\bar\alpha_t)$，则$\operatorname{Cov}(X_{t-1}\mid X_t)=\tilde\beta_tI+c_t^2\operatorname{Cov}(X_0\mid X_t)$。固定$\tilde\beta_t$省去了第二项；[无需训练的解析对照](../ddpm-oracle-report.md)用标准正态与八高斯直接检查这一影响。
+
 ## 4. 为什么是噪声均方误差
 
 负对数似然的变分上界可分解为终点 KL、中间时间的高斯 KL 和最后一步的重建项。若中间反向方差固定为 $\sigma_t^2I$，则均值相关项为

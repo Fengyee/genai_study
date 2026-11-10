@@ -72,3 +72,5 @@ GitHub Actions 的 `concurrency` 只约束对应 workflow 的 runs，**不能锁
 模型、可选依赖或采样/解码路径变化时，应按09章重新核验文件、运行真实smoke和至少一张完整图，再检查固定噪声对照。记录实际模型revision、可选锁文件hash、输出hash、进程内存和计时范围，结果见[预训练实测](pretrained-image-report.md)。文档检查跳过两个venv和本地artifacts目录。
 
 SVD按[10章](chapters/10-pretrained-video-lab.md)的阶段协议执行：4帧/2步smoke、14帧/4步成本校准，通过事先设定的时间/内存门槛后运行14帧/25步，再完整重复smoke。保留参考增强输入、初噪声、全部帧和播放元数据。当前实际低分辨率输出有严重形变；[视频报告](pretrained-video-report.md)分别记录运行成本、数值重复、官方API短对照与画面观察。
+
+基础pytest还覆盖[DDPM解析oracle](ddpm-oracle-report.md)的score/后验恒等式、独立方差展开与小规模CLI输出保护；读者的4096点三seed诊断由显式命令运行。seed范围限制使`8*seed+角色偏移`保持在当前CPU生成器的32位种子范围，相关边界拒绝已测试。绘图脚本单独从保存数组读取并核验SHA。

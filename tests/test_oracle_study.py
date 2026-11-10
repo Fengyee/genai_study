@@ -90,7 +90,8 @@ def test_normal_variance_recursion_matches_closed_form_and_sampler_with_same_noi
 
 
 @pytest.mark.parametrize("option,value", [("--samples", "0"), ("--samples", "65537"),
-                                         ("--seeds", "-1"), ("--threads", "0")])
+                                         ("--seeds", "-1"), ("--seeds", str(2**29)),
+                                         ("--threads", "0")])
 def test_protocol_bounds_reject_invalid_arguments(option, value):
     with pytest.raises(SystemExit) as error:
         make_parser().parse_args(["--output", "unused", option, value])

@@ -128,7 +128,9 @@ def bounded_integer(low: int, high: int):
 def make_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--samples", type=bounded_integer(16, 65536), default=4096)
-    parser.add_argument("--seeds", nargs="+", type=bounded_integer(0, 2**32 - 1), default=[7, 19, 43],
+    # CPU random-normal streams repeat when seeds differ only above bit 31 in
+    # the pinned PyTorch version. Keep every derived 8*seed+offset below 2**32.
+    parser.add_argument("--seeds", nargs="+", type=bounded_integer(0, 2**29 - 1), default=[7, 19, 43],
                         help="Distinct base seeds; each role uses 8*seed+its recorded offset")
     parser.add_argument("--threads", type=bounded_integer(1, 4), default=1)
     parser.add_argument("--output", type=Path, required=True)

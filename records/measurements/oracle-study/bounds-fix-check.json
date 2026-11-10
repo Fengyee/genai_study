@@ -1,0 +1,30 @@
+{
+  "scope": "After narrowing allowed base seeds to 0..2^29-1, reran exactly the same 3-seed configuration in a separate directory; all original outputs retained.",
+  "observed_cpu_seed_0_and_2pow32_initial_arrays_equal": true,
+  "all_array_keys_equal": true,
+  "all_21_arrays_elementwise_equal": true,
+  "new_source_sha256": {
+    "oracle_study.py": "f525f6cf99a9f1b75e3b82e38cd78b11e18eceeef4b3cb9ba83419313f7082d1",
+    "toy.py": "ec76843afbddd8445148f5f5ffe0a4793288c12372e0925d911eeb4eea67facb",
+    "requirements-lock.txt": "87c983be2101697e42bcef34553aec0c28e2132ff3c9492c6732561468cc366a"
+  },
+  "new_metrics_sha256": "136f137bd56becf0b2287df443be2a537d8f4eb1fb117c9939979b943dadf4c6",
+  "new_arrays_npz_sha256": "10aa4ad7197ad1ffd22ae83a6a39caa2b50576b05fc2d34959bbcf9cf56a8a17",
+  "original_metrics_sha256": "cff1dc5b8b4a208df33f7e3d7bdb2b48dd44402bada7581efb7c191a5d5b002b",
+  "original_arrays_npz_sha256": "10aa4ad7197ad1ffd22ae83a6a39caa2b50576b05fc2d34959bbcf9cf56a8a17",
+  "validation_command": [
+    ".venv/bin/python",
+    "-m",
+    "genai_study.oracle_study",
+    "--samples",
+    "4096",
+    "--seeds",
+    "7",
+    "19",
+    "43",
+    "--threads",
+    "1",
+    "--output",
+    "artifacts/oracle-study-bounds-check"
+  ]
+}
