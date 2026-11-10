@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "phase": "declared before any SVD model forward or output inspection",
+  "date_utc": "2026-11-10",
+  "purpose": "Verify a fixed original-author image-to-video pipeline on CPU, measure cost, and examine all frames under reduced spatial resolution.",
+  "model_id": "stabilityai/stable-video-diffusion-img2vid",
+  "revision": "9cf024d5bfa8f56622af86c884f26a52f6676f2e",
+  "manifest_path": "examples/pretrained-svd/manifest.json",
+  "manifest_sha256": "6f10bafb14e6954382c828ed349cdaeb4023eb0dc4a727c43f4d317228deeb6a",
+  "requirements_lock_sha256": "95176d3908a08a99ca80ca84fe8d2aaf0a5b7c5cc80cd663fb63bd5c1b7b1729",
+  "input": {
+    "path": "docs/assets/sd14-pilot-scene-seed43.png",
+    "sha256": "a262f5478c234927217e9268e5abeb7f58bcb21a2415366cdbe4f950f26688b9",
+    "origin": "Complete SD1.4 scene/seed43 output from the already recorded prompt pilot. Selected before SVD generation.",
+    "processing": "EXIF transpose, RGB conversion, center crop to output aspect ratio, Lanczos resize; preserve processed PNG, crop coordinates and hashes."
+  },
+  "fixed": {
+    "height": 144,
+    "width": 256,
+    "seed": 7,
+    "augmentation_seed": 8,
+    "min_guidance_scale": 1.0,
+    "max_guidance_scale": 2.5,
+    "fps": 7,
+    "motion_bucket_id": 127,
+    "noise_aug_strength": 0.02,
+    "threads": 1,
+    "device": "cpu",
+    "dtype": "float32",
+    "decode_chunk_size": "equal to frame count"
+  },
+  "stages": [
+    {
+      "id": "smoke",
+      "frames": 4,
+      "steps": 2,
+      "timeout_seconds": 600,
+      "output": "artifacts/svd-current/smoke"
+    },
+    {
+      "id": "calibration",
+      "frames": 14,
+      "steps": 4,
+      "timeout_seconds": 900,
+      "output": "artifacts/svd-current/calibration"
+    },
+    {
+      "id": "full-low-resolution",
+      "frames": 14,
+      "steps": 25,
+      "timeout_seconds": 1800,
+      "output": "artifacts/svd-current/full",
+      "condition": "Proceed only if calibration exits zero, wall_seconds*25/4 <= 1500 and peak RSS <= 24 GiB. Record prediction and decision before execution."
+    },
+    {
+      "id": "smoke-repeat",
+      "frames": 4,
+      "steps": 2,
+      "timeout_seconds": 600,
+      "output": "artifacts/svd-current/smoke-repeat",
+      "condition": "Repeat the exact smoke configuration after initial successful pipeline validation; compare initial noise and all postprocessed frame arrays."
+    }
+  ],
+  "observation_plan": [
+    "Inspect complete contact sheet and playback for each successful request.",
+    "Describe cabin/shore/tree identity, framing changes, local deformation, abrupt changes and visible motion.",
+    "Retain all requested frames, technical failures, timeouts and costs. Do not replace input based on generated quality.",
+    "Describe frame differences as change magnitude. There is no ground-truth target motion for this input."
+  ],
+  "reproducibility_checks": [
+    "All weight/config hashes and model/software identity.",
+    "Actual video batch/frame/channel shape, K UNet calls and 2K conditional video branches.",
+    "fps7 input versus internal condition6 and actual exported 7fps timestamps.",
+    "Separate initial-video and image-augmentation random streams; actual frame guidance vector and full temporal decode chunk.",
+    "Input cropping/hash and complete postprocessed float32 array/PNG hashes."
+  ],
+  "scope": "144x256 is one quarter of trained 576x1024 in each spatial axis. Four-frame smoke also changes trained fourteen-frame context. Watercolor input is a specific synthetic example. No quality ranking, training reproduction or general video capability estimate is planned.",
+  "implementation_identity": "Record the completed inference source SHA and git commit in a separate preflight record before the first model call."
+}
