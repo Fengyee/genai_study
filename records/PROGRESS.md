@@ -174,3 +174,11 @@ f95d055对应GitHub run42847424682 completed/success，证明本轮图像/课程
 所有代码修改在轮次10已完成全量46项测试与五条实际CLI；随后轮次11–14为数学、教材及来源文档改动，各自执行独立推导/代码块和相关检查。数学修正e7339b7与目录复用ba79a0d已在本地保存，待本轮一起推送。最新已观察的远端成功为0a4feab的workflow_dispatch run42852732071；新SHA将在推送后实际触发并观察。
 
 下一轮直接任务：CPU小图像CFG训练与固定模型引导实验。先设计空条件分支及checkpoint兼容，独立验证参数约定/NFE，再测量训练和引导强度对几何/裁剪的影响。SVD/CogVideoX全文阅读及近年图像进展继续排队。当前无新增权限需求；每小时schedule仍等待PR进入默认分支，环境配置与网站部署状态保持此前记录。
+
+轮次14交付检查点：e7339b7、ba79a0d、f3e1ab8均已推送至PR #1，正文已同步。最终本地文档148链接0错误，diff检查通过。f3e1ab8对应[手动run42854304402](https://github.com/Fengyee/genai_study/actions/runs/42854304402)和[自动PR run42854514413](https://github.com/Fengyee/genai_study/actions/runs/42854514413)均completed/success；自动PR事件已实际观察到。每小时schedule仍无执行记录。
+
+## 轮次15进行中：CPU图像CFG实践
+
+已在f3e1ab8检查点后启动。设计：现有两个条件通道以全零表示空条件，保持网络与checkpoint架构；训练新增独立随机流的condition dropout，默认0保留既有数值路径。引导对照读取已训练空条件的checkpoint，固定噪声并为圆盘/方形配对，比较速度组合v_u+s(v_c-v_u)，每步显式计算两分支并记录2K NFE。普通条件模型缺少空条件训练证据时拒绝该对照。
+
+当前分工：代码与测试由image_cfg子任务处理，新08章由cfg_lesson处理；主代理继续持有Git common directory的协作锁。源码/文档尚在实现与验证中，未作为完成能力推送。下一步：相关测试和默认路径回归→1500更新三seed实测→补报告/入口/quality检查→完整验证后保存新检查点。
