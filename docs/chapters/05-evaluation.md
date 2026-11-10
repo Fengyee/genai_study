@@ -80,7 +80,7 @@ $$
 
 ## 3. FID 究竟比较了什么
 
-Fréchet Inception Distance（FID）先用固定 Inception 特征提取器 $\phi$，对真实与生成特征分别估计均值和协方差 $(\hat\mu_r,\hat\Sigma_r)$、$(\hat\mu_g,\hat\Sigma_g)$，再计算
+Fréchet Inception Distance（FID）先用固定 Inception 特征提取器 $\phi$（原论文采用 Inception-v3 最后池化层），对真实与生成特征分别估计均值和协方差 $(\hat\mu_r,\hat\Sigma_r)$、$(\hat\mu_g,\hat\Sigma_g)$，再计算
 
 $$
 \operatorname{FID}=
@@ -95,9 +95,9 @@ $$
 
 ### 有限样本与实现协议
 
-1. 均值和协方差是估计量；把它们代入非线性矩阵平方根，会带来有限样本偏差。偏差可依赖模型，不能用“所有方法样本数相同”宣称偏差已经消失。
+1. 均值和协方差是估计量；均值差平方与矩阵平方根等非线性运算会带来有限样本偏差。固定真实参考集时，生成侧的偏差仍依赖模型；统一生成样本数控制了样本量，模型间偏差差异仍可能改变排序。具体推导与原论文案例见 [评价来源核验](../evaluation-source-audit.md)。
 2. 样本量影响估计稳定性；当样本数小于特征维度时，经验协方差至多有 $n-1$ 秩。正则化可能帮助数值计算，但会改变具体估计过程，必须记录。
-3. Resize、插值核、抗锯齿、图像范围、裁剪、压缩、特征层和权重都属于协议的一部分。相同名称“FID”不保证数值可比较。
+3. Resize、插值核、抗锯齿、图像范围、裁剪、压缩、特征层和权重都属于协议的一部分。分别记录数据集准备与两侧特征提取前的缩放，以及库版本、函数和显式参数；复用参考统计时核对生成侧管线。下采样中的预滤波影响混叠，论文的库比较结论应对应其测试版本。
 4. 真实参考集的 split、内容和样本数也必须相同。对另一参考数据集得到的更低数值不能被解释成在同一任务上的提升。
 5. 比较差值应配合采样变化范围及失败案例。不能用单次计算的小数点后几位作为显著性证据，也不能把 bootstrap 区间当作自动消除 FID 偏差的方法。
 
@@ -186,12 +186,12 @@ FVD 下降不等于以下命题被证明：物体永久存在、碰撞守恒、�
 
 | 主题 | 来源 | 对应内容与版本 |
 | --- | --- | --- |
-| FID | Heusel et al., [GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium](https://arxiv.org/abs/1706.08500) | NeurIPS 2017；FID 定义与生成模型评价 |
+| FID | Heusel et al., [GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium](https://arxiv.org/abs/1706.08500v6) | NeurIPS 2017；v6，2018-01-12；第 6 页 Eq. (6)、第 7 页特征配置 |
 | Inception Score | Salimans et al., [Improved Techniques for Training GANs](https://arxiv.org/abs/1606.03498) | NeurIPS 2016；IS 定义 |
 | 生成分布 precision/recall | Kynkäänniemi et al., [Improved Precision and Recall Metric for Assessing Generative Models](https://arxiv.org/abs/1904.06991) | NeurIPS 2019；特征空间近邻支持估计 |
 | FVD | Unterthiner et al., [Towards Accurate Generative Models of Video: A New Metric & Challenges](https://arxiv.org/abs/1812.01717) | 2018 预印本；ICLR 2019 workshop，避免误记为主会论文 |
-| FID 有限样本偏差 | Chong & Forsyth, [Effectively Unbiased FID and Inception Score and Where to Find Them](https://arxiv.org/abs/1911.07023) | CVPR 2020；估计偏差及模型依赖性 |
-| 预处理敏感性 | Parmar, Zhang, Zhu, [On Aliased Resizing and Surprising Subtleties in GAN Evaluation](https://arxiv.org/abs/2104.11222) | CVPR 2022；resize 等评价实现差异 |
+| FID 有限样本偏差 | Chong & Forsyth, [Effectively Unbiased FID and Inception Score and Where to Find Them](https://arxiv.org/abs/1911.07023v3) | CVPR 2020；v3，2020-06-15；§3.1–3.2、§4.1/Figure 3 |
+| 预处理敏感性 | Parmar, Zhang, Zhu, [On Aliased Resizing and Surprising Subtleties in GAN Evaluation](https://arxiv.org/abs/2104.11222v3) | CVPR 2022；v3，2022-01-21；§3.1–3.3、Tables 1–2、§6.3 |
 | KID | Bińkowski et al., [Demystifying MMD GANs](https://arxiv.org/abs/1801.01401) | ICLR 2018；特征 MMD 与估计 |
 
-本轮没有完成这些论文的在线全文逐项核验；arXiv 访问在当前云环境受限。公式与统计反例在本文给出可检查的定义/推导，toy 数值引用仓库内实测 JSON。进一步引用具体论文实验数字前，应核对论文版本、协议和代码，补充来源记录。
+已对照 Heusel、Chong/Forsyth、Parmar 三篇固定版本原文，核验 FID 定义、有限样本偏差和预处理协议；PDF SHA-256、页码、假设及独立数学检查见 [评价来源核验](../evaluation-source-audit.md)。其余来源的主张核验按 backlog 继续推进。toy 数值引用仓库内实测 JSON，论文中的生成模型实验尚待复现。

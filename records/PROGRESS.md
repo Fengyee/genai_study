@@ -127,3 +127,20 @@ f95d055对应GitHub run42847424682 completed/success，证明本轮图像/课程
 长期记录：`records/measurements/image-solver-study/`保存新训练与求解器JSON、代码/依赖哈希及逐seed验证结果，历史image-flow记录保持；`docs/image-experiment-report.md`给出表格、固定索引图、测量范围和读者命令。模型与全数组保留于忽略的artifacts，可按命令重建。
 
 本轮检查点先保存图像代码/实践文档；01/04/05来源核验文档已完成、仍在工作区，下一轮记录后提交。功能分支尚待统一推送及对应新SHA的远端检查。
+
+## 轮次11：补齐基础、架构和评价的原文证据
+
+问题：01/04/05若干主张仍依赖概念解释，部分段落保留了早期arXiv访问失败状态；需要把公式和系统设计落实到可核对的原始证据。已读取10份固定版本PDF、重新核对2份官方README，分别建立generative-source-audit、image-video-source-audit、evaluation-source-audit，记录版本日期、PDF字节/SHA、页码/公式和具体核验范围。
+
+- 01：核验ELBO/KL方向、GAN最优判别器/JS目标、Real NVP变量替换、CNF负散度；补支持集条件、非饱和损失与梯度练习、映射方向。独立高斯/离散求和/负尺度仿射/线性CNF检查最大残差8.9e-16；GAN logit梯度autograd误差0。Neural ODE v6修订了特定NFE实验报告，索引保留版本差异。
+- 04：核验LDM重建/潜表示目标、CFG训练时随机丢弃条件、两种引导系数、DiT latent patch尺度。CFG原文一处“FID单调下降”与同页Table1/图4不一致，已记录具体列与数字；课程依据表格解释引导权衡。独立CFG向量代数残差2.78e-17，48倍表示数量与16倍注意力矩阵尺寸关系通过。SVD/CogVideoX本轮核验固定README接口，训练论文仍在backlog。
+- 05：核验FID平方高斯距离、模型依赖的有限样本偏差、resize/压缩协议；补均值平方项偏差公式与同N排序反转手算例。非对易协方差两种平方根迹写法差4.44e-16，特征缩放a²关系通过。更新评价管线记录要求与当前来源状态。
+
+验证：直接提取01审计中的代码块执行成功；`pytest -q tests/test_toy.py`为14 passed（1.26秒），评价定向性质3 passed；整合后的全量46项测试与五条CLI已在轮次10记录通过。最终仅新增来源索引/执行记录/PR描述，运行文档链接与diff检查，具体结果见本轮后续检查点。
+
+## 最新检查点与恢复入口
+
+- 图像实现已保存为194427a；本轮来源/记录保存后统一推送到现有PR #1：https://github.com/Fengyee/genai_study/pull/1 。远端新SHA与Actions结论在推送后核对。
+- 所有原始实测JSON、源码哈希、图像和读者路径均已保存；artifacts模型/数组及/tmp的PDF和临时验证结果留作当前实例的补充证据。
+- 每小时质量检查位于GitHub Actions，UTC每小时第17分，单项300秒、作业25分钟；main仍cefe9c1，schedule等待PR合入默认分支，尚无schedule执行记录。PR检查已实际运行；编码代理调度和Bark/Codex主动通知仍缺可调用入口/绑定。本轮没有发布环境配置或部署网站。
+- 下一项直接执行：核验05的IS、precision/recall、FVD、KID来源与估计条件，补可手算反例；然后补SVD/CogVideoX训练论文和近年图像阅读卡。先核对本地/远端状态并持有协作锁，再从BACKLOG继续。

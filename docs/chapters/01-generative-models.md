@@ -29,7 +29,7 @@ $$
 
 ## 3. VAE：用变分推断处理难积分
 
-设生成模型 $p_\theta(x,z)=p(z)p_\theta(x\mid z)$，引入近似后验 $q_\phi(z\mid x)$。在相关密度和积分存在、支持集条件满足时，固定观测 $x$ 有
+设生成模型 $p_\theta(x,z)=p(z)p_\theta(x\mid z)$，引入近似后验 $q_\phi(z\mid x)$。固定观测 $x$，假设 $0<p_\theta(x)<\infty$，$q_\phi(z\mid x)$ 只在真实后验非零处取正值，且以下期望与 KL 有限，则
 
 $$
 \begin{aligned}
@@ -42,7 +42,7 @@ $$
 \end{aligned}
 $$
 
-最后一项非负，因此 ELBO 是对数似然下界。等号成立当近似后验等于真实后验（几乎处处）。最大化下界既涉及生成模型拟合，也涉及变分近似是否足够表达真实后验；更高 ELBO 不一定意味着对数似然同比例提升。
+最后一项非负，因此 ELBO 是对数似然下界。等号成立当近似后验等于真实后验（几乎处处）。两个 KL 都沿着 $q_\phi$ 到相应生成分布的方向；由 $\log p_\theta(x,z)=\log p_\theta(z\mid x)+\log p_\theta(x)$ 取 $q_\phi$ 期望即可核对。最大化下界既涉及生成模型拟合，也涉及变分近似是否足够表达真实后验；比较两次训练的似然时，还要考虑后验 KL 差距的变化。
 
 若 $q_\phi$ 为对角高斯，可写
 
@@ -50,11 +50,11 @@ $$
 z=\mu_\phi(x)+\sigma_\phi(x)\odot\epsilon,\qquad \epsilon\sim\mathcal N(0,I).
 $$
 
-这将采样的随机性转移到与参数无关的 $\epsilon$，便于对 $\mu,\sigma$ 使用路径导数。它并不自动适用于任意离散潜变量。
+这将采样的随机性转移到与参数无关的 $\epsilon$，在可交换求导与期望的条件下，便于对 $\mu,\sigma$ 使用路径导数。离散潜变量需选择相应的梯度估计方法。
 
-“重建损失”也不是天然等于 MSE。只有选择相应的固定方差高斯观测模型等假设时，负对数重建似然才与平方误差相差缩放和常数。人为改变重建与 KL 的权重可能不再是原模型的标准 ELBO。
+重建项由观测模型决定：固定方差高斯给出带缩放和常数的平方误差，Bernoulli 给出二元交叉熵。对同一个生成模型，改变重建与 KL 的相对权重会改变标准 ELBO 目标。练习 B 展开维度求和与均值的差异。
 
-## 4. GAN：学习判别信号，不显式算密度
+## 4. GAN：通过判别信号学习生成器
 
 原始 GAN 的理想化目标为
 
@@ -63,26 +63,45 @@ $$
 +\mathbb E_{z\sim p(z)}\log(1-D(G(z))).
 $$
 
-在分布具有共同基准测度下的密度、判别器容量无限且可精确优化等条件下，最优判别器为
+在分布具有共同基准测度下的密度、判别器容量无限且可精确优化等条件下，固定 $G$，在 $p_{\mathrm{data}}(x)+p_G(x)>0$ 处的最优判别器为
 
 $$
 D^*(x)=\frac{p_{\mathrm{data}}(x)}{p_{\mathrm{data}}(x)+p_G(x)}.
 $$
 
-代回得到 $-\log4+2D_{\mathrm{JS}}(p_{\mathrm{data}}\Vert p_G)$。这是对理想目标的分析，不是有限网络交替梯度训练必然收敛的证明。实践中常用非饱和生成器损失，不能把所有 GAN 损失都称为这个相同的目标。
+两种分布密度都为零的位置，对目标无贡献，$D$ 的取值可任意选择。令 $m=(p_{\mathrm{data}}+p_G)/2$，Jensen–Shannon 散度定义为 $D_{\mathrm{JS}}(p_{\mathrm{data}}\Vert p_G)=\tfrac12D_{\mathrm{KL}}(p_{\mathrm{data}}\Vert m)+\tfrac12D_{\mathrm{KL}}(p_G\Vert m)$。将 $D^*$ 代回原目标得到 $-\log4+2D_{\mathrm{JS}}(p_{\mathrm{data}}\Vert p_G)$。
+
+原论文的收敛分析还假设每轮判别器达到最优，并在分布空间中充分小地更新 $p_G$。有限网络交替更新参数的训练行为需要单独验证。实践常用非饱和生成器损失
+
+$$
+L_G^{\mathrm{NS}}=-\mathbb E_{z\sim p(z)}\log D(G(z)),
+$$
+
+以增强判别器强烈拒绝生成样本时的梯度；上面的 JS 等式对应原始 minimax 目标。练习 E 直接计算这两个生成器损失的梯度。
 
 GAN 可以快速生成高观感样本，但覆盖率、优化稳定性和精确似然通常需要分别讨论。**“所有 GAN 都会模式崩溃”与“高保真说明没有模式丢失”都不成立。**
 
 ## 5. 可逆流与连续流
 
-离散可逆变换 $x=f_\theta(z)$ 由变量替换得到
+设 $x,z$ 同维，离散可逆变换 $x=f_\theta(z)$ 及其逆在相关区域连续可微，Jacobian 行列式非零。变量替换给出
 
 $$
 \log p_\theta(x)=\log p_Z(f_\theta^{-1}(x))+
 \log\left|\det \frac{\partial f_\theta^{-1}(x)}{\partial x}\right|.
 $$
 
-可逆性和可计算 Jacobian 行列式约束了模型结构。连续归一化流在解存在且唯一等条件下用 ODE 定义可逆演化（例如速度场对状态局部 Lipschitz，并保证整个积分区间上的解存在）；其密度变化涉及速度场的散度。任意 ODE 不自动可逆：$\dot x=\sqrt{|x|}$ 从 $x(0)=0$ 出发可以一直静止，也可以在任意等待时间后沿抛物线离开，说明缺少唯一性时映射并不良定。后续的 flow matching 是一种训练连续生成流的方法，通常不需要在训练中逐样本数值求解 ODE 或计算似然；**这不代表任意 flow matching 网络会免费提供精确似然**。
+等价地，在生成方向写成 $\log p_\theta(f_\theta(z))=\log p_Z(z)-\log|\det J_{f_\theta}(z)|$。绝对值保证反转坐标方向的变换也产生非负密度；练习 C 检查尺度变化造成的体积因子。Real NVP 论文把数据到潜变量的映射命名为 $f$，对应这里的 $f_\theta^{-1}$，阅读时需先对齐方向。
+
+可逆性和可计算 Jacobian 行列式约束了模型结构。连续归一化流用 $\dot x_t=v_\theta(x_t,t)$ 定义演化；例如速度场对状态局部 Lipschitz、对时间连续，并保证相应正反向解在整个积分区间存在唯一时，可构造可逆流。对足够光滑的密度和速度场，沿轨迹有
+
+$$
+\frac{d}{dt}\log p_t(x_t)=-\nabla\cdot v_\theta(x_t,t)
+=-\operatorname{tr}\!\left(\frac{\partial v_\theta}{\partial x}(x_t,t)\right).
+$$
+
+这里是随 $x_t$ 一起移动的总导数；似然计算需要同时积分密度变化并计算或估计散度。唯一性条件很关键：$\dot x=\sqrt{|x|}$ 从 $x(0)=0$ 出发可以一直静止，也可以在任意等待时间后沿抛物线离开，因此该初值不能确定唯一映射。
+
+后续的 flow matching 是训练连续生成流的方法，通常可直接构造训练样本；其采样、密度积分和散度计算各有相应的数值成本。
 
 ## 6. 扩散与 flow：把难分布变成随时间的简单任务
 
@@ -141,15 +160,23 @@ $p_X(x)=p_Z(x/2)/2$，即 $\mathcal N(0,4)$。遗漏 $1/2$ 后密度积分等于
 
 </details>
 
+**E · GAN 的生成器梯度。** 令判别器输出 $D(G(z))=\operatorname{sigmoid}(a)$。分别求单样本 minimax 损失 $\log(1-D(G(z)))$ 和非饱和损失 $-\log D(G(z))$ 对 logit $a$ 的导数。$D(G(z))\to0$ 时各自如何变化？
+
+<details><summary>答案</summary>
+
+两个导数分别为 $-D(G(z))$ 与 $D(G(z))-1$，极限分别为 $0$ 与 $-1$。非饱和目标在这一情况下提供更强的 logit 梯度；传到生成器参数的梯度仍需乘以 $\partial a/\partial\theta_G$。这解释了原论文选择替代损失的动机，也说明损失值与梯度行为要分别检查。
+
+</details>
+
 ## 原始来源与版本
 
-- Kingma & Welling, *Auto-Encoding Variational Bayes*, **ICLR 2014**，[arXiv:1312.6114](https://arxiv.org/abs/1312.6114)，§2：ELBO 和重参数化。本章完整推导恒等式及条件，不转载论文图。
-- Goodfellow et al., *Generative Adversarial Nets*, **NeurIPS 2014**，[arXiv:1406.2661](https://arxiv.org/abs/1406.2661)，§4：最优判别器和理想化散度分析。
-- Dinh et al., *Density Estimation using Real NVP*, **ICLR 2017**，[arXiv:1605.08803](https://arxiv.org/abs/1605.08803)：变量替换与可计算的耦合层。
-- Chen et al., *Neural Ordinary Differential Equations*, **NeurIPS 2018**，[arXiv:1806.07366](https://arxiv.org/abs/1806.07366)：连续归一化流及密度演化。
+- Kingma & Welling, *Auto-Encoding Variational Bayes*, **ICLR 2014**，[arXiv:1312.6114v11](https://arxiv.org/abs/1312.6114v11)，§2–3：ELBO 和重参数化。
+- Goodfellow et al., *Generative Adversarial Nets*, **NeurIPS 2014**，[arXiv:1406.2661v1](https://arxiv.org/abs/1406.2661v1)，§3–4：非饱和损失、最优判别器和理想化散度分析。
+- Dinh et al., *Density Estimation using Real NVP*, **ICLR 2017**，[arXiv:1605.08803v3](https://arxiv.org/abs/1605.08803v3)，§3.1–3.3：变量替换与可计算的耦合层。
+- Chen et al., *Neural Ordinary Differential Equations*, **NeurIPS 2018**，[arXiv:1806.07366v6](https://arxiv.org/abs/1806.07366v6)，§4、§6 和附录 A：连续归一化流、唯一性及密度演化。
 - Ho et al., *Denoising Diffusion Probabilistic Models*, **NeurIPS 2020**，[arXiv:2006.11239](https://arxiv.org/abs/2006.11239)：去噪训练与生成过程。
 - Lipman et al., *Flow Matching for Generative Modeling*, **ICLR 2023**，[arXiv:2210.02747](https://arxiv.org/abs/2210.02747)：概率路径与条件 flow matching。
 
-版本用正式发表年份区分，arXiv 链接可能跳转到修订版；引用具体方程时需核对所读 PDF 的版本。本章未运行这些论文的大规模实验，不据此声称复现其性能。
+2026-11-10 已按固定版本核对以上前四篇的指定公式和条件，PDF 哈希、页码、独立解析检查及 Neural ODE v6 的实验修订说明见 [01 章来源审计](../generative-source-audit.md)。正式发表年份与所读 arXiv 修订日期分别记录；本轮验证范围为数学主张和教学例子。
 
 下一步：[02 扩散](02-diffusion.md)，再读 [03 Flow matching](03-flow-matching.md)。
