@@ -340,3 +340,13 @@ LTX-2卡67f3ec2与实验计划1135255正在推送；四请求探索继续按既�
 验证：两次文字/公式审查后，主代理再次执行/tmp/genai-self-assessment-check.py。独立解析与实际diagnostics验证密度缩放、5.832标签泄漏质量、DDPM(1,-2)还原、联合高斯最小MSE2、Euler解析收敛、coverage8但邻域16%、原始RMS0.5/裁剪0、空条件0.1/0.9先验及视频3px/s/一步错误方向。直接核对08/09实际调用口径和预训练配对记录；文档/链接/diff检查随提交执行。尚无真实学习者的耗时或通过率测量。
 
 交付与在途工作：5b0de97已推送；bcb056d对应自动PR run42875297816已completed/success。下一轮SVD固定模型为9cf024d5bfa8f56622af86c884f26a52f6676f2e，11文件总9018094887字节；小文件、匿名可达性、F32 safetensors头及Community2024-07-05许可已核验。manifest/许可/NOTICE暂存examples/pretrained-svd，完整权重由/tmp/genai-prepare-svd.py在1200秒上限内下载，session51980，日志/tmp/genai-prepare-svd.log，目标artifacts/models/svd；恢复时先查状态并复用已核验文件。新入口/测试与10章草稿由分工代理实施，尚未声称视频运行成功。环境未重新发布，网站与持久编码调度保持未部署。
+
+## 轮次29：固定视频实践资产与可验证入口
+
+在任何SVD模型调用前，先保存并推送2ed6b0c中的11文件manifest、原文许可、NOTICE及分阶段计划。固定输入为已有SD1.4 scene/seed43完整图，记录原图SHA，采用EXIF转正/RGB/中心裁剪/Lanczos预处理；视频初噪声seed7与参考图增强seed8独立，保留144×256尺寸、帧轴引导1→2.5、fps输入7/内部6及完整时间解码。
+
+实现pretrained_video独立prepare/run，复用现有模型无关校验辅助函数，未修改共享源码或依赖。入口记录参考图裁剪、单位视频初噪声、实际VAE增强输入、实际joint-video形状/调用、scheduler网格、分段耗时、进程峰值、全部float32后处理帧及逐帧PNG。新增23项故障/性质检查覆盖固定身份、损坏修复、路径逃逸、EXIF/裁剪、双随机流、静止帧差反例、参数及无site-packages帮助/输出保护；两次API只读复核与固定Diffusers实现相符。
+
+实际准备：临时bootstrap下载11文件，逐项及结束校验通过，264.66秒，完整字节9018094887。最终仓库prepare入口重新运行：复用11文件、下载调用0、9.51秒（含两轮校验），记录artifacts/svd-current/prepare*.json。完整quality退出0：92 passed（31.64秒）、10/10教学块、7条CLI smoke、397链接0错误；日志artifacts/quality/20261110T183902Z-oYPMQH。独立NumPy对比真实Euler首末步也通过，首步最大差1.84e-5、末步9.31e-8。
+
+当前仅完成资产、入口与无权重/基础检查。接下来记录此入口的源码hash/commit，按已提交plan执行4帧2步smoke（600秒）、14帧4步校准（900秒），再按预设时间/内存阈值决定25步完整低分辨率运行（1800秒）。全部请求及失败状态保存到artifacts/svd-current；10章草稿未提交，待实际结果整合。最新已观察5b0de97远端run42876490960成功；环境状态查询确认当前实例running、网络enforced且无secret/通知绑定，未更改发布配置。
