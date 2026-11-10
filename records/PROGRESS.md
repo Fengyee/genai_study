@@ -350,3 +350,13 @@ LTX-2卡67f3ec2与实验计划1135255正在推送；四请求探索继续按既�
 实际准备：临时bootstrap下载11文件，逐项及结束校验通过，264.66秒，完整字节9018094887。最终仓库prepare入口重新运行：复用11文件、下载调用0、9.51秒（含两轮校验），记录artifacts/svd-current/prepare*.json。完整quality退出0：92 passed（31.64秒）、10/10教学块、7条CLI smoke、397链接0错误；日志artifacts/quality/20261110T183902Z-oYPMQH。独立NumPy对比真实Euler首末步也通过，首步最大差1.84e-5、末步9.31e-8。
 
 当前仅完成资产、入口与无权重/基础检查。接下来记录此入口的源码hash/commit，按已提交plan执行4帧2步smoke（600秒）、14帧4步校准（900秒），再按预设时间/内存阈值决定25步完整低分辨率运行（1800秒）。全部请求及失败状态保存到artifacts/svd-current；10章草稿未提交，待实际结果整合。最新已观察5b0de97远端run42876490960成功；环境状态查询确认当前实例running、网络enforced且无secret/通知绑定，未更改发布配置。
+
+## 轮次30：集中首次入口与原始证据导航
+
+问题：README把多份前沿阅读卡放在首次命令之前，研究路线简表也省略了评价/实践先修；测量目录已有多组JSON，却缺少统一定位。新增首次运行/完整路线/自测/证据快捷入口，把5份研究卡移入首次运行后的专题表，修正04入口为按完整路线完成基础、评价与实践。新增records/measurements/README.md，按实验问题连接报告、原始记录、源码与资产身份，并说明本地数组/checkpoint/权重的取得方式。
+
+验证：只读审查逐条核对课程依赖和索引中的真实文件；文档/diff检查通过。尝试headless Chromium读取GitHub上固定a3ed4a8的三个页面时，均遇ERR_CERT_AUTHORITY_INVALID；保留TLS校验，没有改系统信任或环境策略。相同运行环境的urllib使用已配置CA读取README返回200。桌面/窄屏GitHub布局、远端Mermaid元数据与details交互因此尚无实际验证证据，未记为通过；本地视频HTTP播放另有成功记录。
+
+SVD在途检查点：已推送a3ed4a8，对应自动PR run42877869115为completed/success。4帧2步smoke完整wall47.14秒，推理38.37秒，峰值9.54GiB；14帧4步校准wall203.80秒，推理194.41秒，峰值11.29GiB。两个阶段实际联合输入/分支数、独立重建的初噪声、相同参考增强、图像裁剪和帧hash均通过。全部PNG已导出MP4，ffprobe核实7fps/4或14帧，ffmpeg完整解码退出0；Chromium156从本地HTTP完整播放，分别4/14帧且无丢帧。file协议被浏览器管理员策略阻止后使用本地HTTP测试，未更改策略。
+
+按计划，校准wall×25/4=1273.77秒且峰值小于24GiB，进入25步完整低分辨率请求。决定先写入artifacts/svd-current/full-decision.json，再于2026-11-10T18:46:35Z启动，session99654，硬上限1800秒；日志full-low-resolution.log，成功输出目录full。源commit和hash在preflight.json中固定。恢复时先查此进程与文件，不重复启动或覆盖；完成后还需smoke-repeat、全帧与播放核验、报告/10章整合和按PR交付。已查看smoke与校准的完整拼图：前者模糊且变暗，后者色彩/形状大幅变化；这些运行继续按接口/成本校准解释并完整保留。
