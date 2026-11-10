@@ -6,6 +6,7 @@ of distribution coverage. Plotting/geometry clip to [0,1]; ODE outputs do not.
 """
 import argparse
 import json
+import math
 import os
 from pathlib import Path
 import platform
@@ -54,6 +55,26 @@ def block(in_channels: int, out_channels: int) -> nn.Sequential:
                          nn.GroupNorm(4, out_channels), nn.SiLU())
 
 
+def condition_channels(labels: Tensor, dtype: torch.dtype) -> Tensor:
+    """Encode circle/square as one-hot and the null condition (-1) as zeros."""
+    if labels.ndim != 1 or labels.dtype != torch.long or not ((labels >= -1) & (labels <= 1)).all():
+        raise ValueError("condition labels must be a vector of int64 values -1, 0 or 1")
+    encoded = F.one_hot(labels.clamp_min(0), num_classes=2).to(dtype)
+    return encoded * (labels >= 0)[:, None].to(dtype)
+
+
+def drop_conditions(labels: Tensor, probability: float, generator: torch.Generator) -> Tensor:
+    """Independently replace class labels by -1 using a separate random stream."""
+    if not math.isfinite(probability) or not 0 <= probability < 1:
+        raise ValueError("condition dropout must be finite and in [0,1)")
+    if labels.ndim != 1 or labels.dtype != torch.long or not ((labels == 0) | (labels == 1)).all():
+        raise ValueError("training labels must be an int64 vector of 0 or 1")
+    result = labels.clone()
+    if probability:
+        result[torch.rand(len(labels), generator=generator, device=labels.device) < probability] = -1
+    return result
+
+
 class ConditionalConvFlow(nn.Module):
     """Tiny U-Net: noisy image, time, two condition channels, and x/y coordinates."""
     def __init__(self, width: int = 16):
@@ -69,7 +90,7 @@ class ConditionalConvFlow(nn.Module):
         self.register_buffer("coordinates", torch.stack((xx, yy))[None])
 
     def forward(self, x: Tensor, t: Tensor, labels: Tensor) -> Tensor:
-        condition = F.one_hot(labels, num_classes=2).to(x.dtype)[:, :, None, None]
+        condition = condition_channels(labels, x.dtype)[:, :, None, None]
         inputs = torch.cat((x, t[:, None, None, None].expand(-1, 1, 16, 16),
                             condition.expand(-1, -1, 16, 16),
                             self.coordinates.expand(len(x), -1, -1, -1)), dim=1)
@@ -175,12 +196,21 @@ def positive(value: str) -> int:
     return number
 
 
+def dropout_probability(value: str) -> float:
+    number = float(value)
+    if not math.isfinite(number) or not 0 <= number < 1:
+        raise argparse.ArgumentTypeError("must be finite and in [0,1)")
+    return number
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--steps", type=positive, default=1500)
     parser.add_argument("--batch-size", type=positive, default=64)
     parser.add_argument("--samples", type=positive, default=128)
     parser.add_argument("--sampling-steps", type=positive, default=40)
+    parser.add_argument("--condition-dropout", type=dropout_probability, default=0.0,
+                        help="Probability of replacing a training condition by the zero-vector null condition")
     parser.add_argument("--seed", type=int, default=7)
     parser.add_argument("--threads", type=positive, default=1)
     parser.add_argument("--output", type=Path, required=True)
@@ -201,6 +231,7 @@ def main() -> None:
     sample_rng = torch.Generator().manual_seed(args.seed + 3)
     reference_rng = torch.Generator().manual_seed(args.seed + 4)
     baseline_rng = torch.Generator().manual_seed(args.seed + 5)
+    dropout_rng = torch.Generator().manual_seed(args.seed + 6)
 
     def batch(n, rng):
         data, labels = sample_shapes(n, rng)
@@ -212,24 +243,30 @@ def main() -> None:
     eval_x, eval_t, eval_labels, eval_velocity = batch(256, eval_rng)
 
     @torch.no_grad()
-    def eval_loss():
-        errors = (model(eval_x, eval_t, eval_labels) - eval_velocity).square().mean((1, 2, 3))
+    def eval_loss(unconditional=False):
+        conditions = torch.full_like(eval_labels, -1) if unconditional else eval_labels
+        errors = (model(eval_x, eval_t, conditions) - eval_velocity).square().mean((1, 2, 3))
         return {"all": float(errors.mean()), "circle": float(errors[eval_labels == 0].mean()),
                 "square": float(errors[eval_labels == 1].mean())}
 
     start = time.perf_counter()
     initial_loss = eval_loss()
+    initial_unconditional_loss = eval_loss(unconditional=True) if args.condition_dropout else None
     losses = []
+    unconditional_count = 0
     for _ in range(args.steps):
         xt, t, labels, target = batch(args.batch_size, train_rng)
+        conditions = drop_conditions(labels, args.condition_dropout, dropout_rng)
+        unconditional_count += int((conditions == -1).sum())
         optimizer.zero_grad(set_to_none=True)
-        loss = (model(xt, t, labels) - target).square().mean()
+        loss = (model(xt, t, conditions) - target).square().mean()
         if not torch.isfinite(loss):
             raise RuntimeError("Nonfinite training loss")
         loss.backward()
         optimizer.step()
         losses.append(float(loss.detach()))
     final_loss = eval_loss()
+    final_unconditional_loss = eval_loss(unconditional=True) if args.condition_dropout else None
     training_seconds = time.perf_counter() - start
     reference, labels = sample_shapes(args.samples, reference_rng)
     baseline, _ = sample_shapes(args.samples, baseline_rng)
@@ -246,12 +283,19 @@ def main() -> None:
                    "learning_rate": 1e-3, "base_width": 16, "eval_examples": 256,
                    "data_range": [0, 1], "center_range_px": [5, 10], "size_range_px": [2, 3.5],
                    "edge_width_px": EDGE_WIDTH, "coarse_template_mse_threshold": TEMPLATE_MSE_THRESHOLD,
+                   "null_condition_encoding": "zero-vector",
                    "rng_offsets": {"initialization": 0, "training": 1, "heldout": 2,
-                                   "sampling": 3, "reference": 4, "target_baseline": 5}})
+                                   "sampling": 3, "reference": 4, "target_baseline": 5,
+                                   "condition_dropout": 6}})
+    training_condition_counts = {"conditional": args.steps * args.batch_size - unconditional_count,
+                                 "unconditional": unconditional_count}
     result = {"schema_version": 1, "config": config,
               "versions": {"python": platform.python_version(), "torch": str(torch.__version__)},
               "parameter_count": sum(p.numel() for p in model.parameters()),
               "initial_heldout_loss": initial_loss, "final_heldout_loss": final_loss,
+              "initial_unconditional_heldout_loss": initial_unconditional_loss,
+              "final_unconditional_heldout_loss": final_unconditional_loss,
+              "training_condition_counts": training_condition_counts,
               "training_and_eval_seconds": training_seconds, "sampling_seconds": sampling_seconds,
               "diagnostics": observed, "reference_diagnostics": target_summary,
               "independent_target_baseline": baseline_summary,
@@ -270,7 +314,10 @@ def main() -> None:
         from .image_checkpoint import save_image_checkpoint
         save_image_checkpoint(args.output / "checkpoint.pt", model,
                               {"config": config, "versions": result["versions"],
-                               "initial_heldout_loss": initial_loss, "final_heldout_loss": final_loss})
+                               "initial_heldout_loss": initial_loss, "final_heldout_loss": final_loss,
+                               "initial_unconditional_heldout_loss": initial_unconditional_loss,
+                               "final_unconditional_heldout_loss": final_unconditional_loss,
+                               "training_condition_counts": training_condition_counts})
         np.savez_compressed(args.output / "arrays.npz", generated_raw=generated.numpy(),
                             reference=reference.numpy(), independent_target=baseline.numpy(),
                             labels=labels.numpy(), training_loss=np.array(losses))

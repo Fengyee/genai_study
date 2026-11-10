@@ -68,3 +68,20 @@ python -m genai_study.image_solver_study \
 训练输出包括 `metrics.json`、`arrays.npz`、`samples.png`、`loss.png` 和 `checkpoint.pt`。独立采样固定权重、初始噪声、类别标签、参考数据和独立目标基线，保存 `metrics.json`、`arrays.npz`、`samples.png`。步数升序去重，每组 NFE 等于 Euler 步数。改变输出目录即可保留另一轮结果。
 
 图像实验按 batch 和全部像素计算相邻方案的 RMS 差：`sqrt(mean_BCHW((x_K - x_previous)^2))`，分别记录原始值和各自裁剪到 `[0,1]` 后的值；与上文二维向量 L2 差采用不同归约。原始差反映数值离散化的敏感性，裁剪差说明显示图像的变化。结合每类的原始越界比例、几何模板通过率和位置/大小统计解释结果。完整定义、控制变量、运行成本和可执行练习见 [07 章](../docs/chapters/07-image-flow-lab.md) 与 [图像实测报告](../docs/image-experiment-report.md)。
+
+## 小图像：条件丢弃与引导强度
+
+首次运行以下两步。已有本组训练checkpoint时直接采样，已有采样结果时直接查看；重做时选择新输出目录并相应修改checkpoint路径。
+
+```bash
+python -m genai_study.image_flow --condition-dropout 0.2 --steps 1500 \
+  --seed 7 --output artifacts/image-cfg
+python -m genai_study.image_guidance_study \
+  --checkpoint artifacts/image-cfg/checkpoint.pt \
+  --scales 0 1 2 4 --sampling-steps 40 --samples 128 --seed 123 \
+  --output artifacts/image-guidance
+```
+
+训练以全零条件通道表示隐藏的类别，记录有条件/空条件分支实际训练样本数。引导命令读取这些元数据；默认07章训练的dropout为0，需按上面的配置重新训练以学习空条件分支。
+
+每份噪声分别配上圆盘/方形，所有强度复用同一权重与配对输入；强度0忽略请求类别，强度1恢复条件速度。每步显式计算两分支，40步对应每张图像80 NFE。输出为JSON、原始NPZ和固定索引图，数组键由`runs[].array_key`给出。使用 [08章](../docs/chapters/08-image-guidance-lab.md) 的练习复算配对差，并一起解释几何、多样性和裁剪诊断。

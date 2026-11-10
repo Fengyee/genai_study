@@ -2,7 +2,7 @@
 
 给熟练使用 PyTorch、有研究经验但尚未系统学习生成式 AI 的 CS master / PhD：用清楚的假设、可核对的推导和能在 CPU 上跑通的小实验建立基础，再进入图像与视频生成研究。
 
-**当前版本**：8 个学习单元、二维 DDPM / Flow Matching 训练与采样、16×16 条件卷积图像生成、固定模型的求解器实验、无需权重的视频时序反例、自动质量检查。全部示例可在 CPU 上运行，无需 API key 或下载模型权重。自然图像/视频模型训练、预训练模型实操及完整前沿综述列在 [backlog](records/BACKLOG.md)。
+**当前版本**：9 个学习单元、二维 DDPM / Flow Matching 训练与采样、16×16 条件卷积图像生成、固定模型的求解器与引导实验、无需权重的视频时序反例、自动质量检查。全部示例可在 CPU 上运行，无需 API key 或下载模型权重。自然图像/视频模型训练、预训练模型实操及完整前沿综述列在 [backlog](records/BACKLOG.md)。
 
 ## 我适合从哪里开始？
 
@@ -13,6 +13,8 @@
 | 准备研究图像/视频 | 完成上述基础 → [04 研究路线](docs/chapters/04-image-video-roadmap.md) | 能选定一个有假设、基线和评价协议的问题 |
 
 图像方向可从 [07 CPU 图像生成实验](docs/chapters/07-image-flow-lab.md) 学习 BCHW、卷积与类别条件，再用保存的 checkpoint 比较 Euler 采样步数。默认训练 1500 步，运行成本与结果分析见 [图像实测](docs/image-experiment-report.md)。
+
+接着通过 [08 条件丢弃与引导](docs/chapters/08-image-guidance-lab.md) 训练空条件分支，在相同噪声上比较引导强度、条件响应、数值范围与计算成本。
 
 图像/视频读者还可直接运行 [06 视频时序实验](docs/chapters/06-video-temporal-lab.md)，观察帧集合相同而时间顺序错误的反例。
 

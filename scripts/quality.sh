@@ -42,4 +42,6 @@ run_check smoke-ddpm "$python_bin" -m genai_study.experiment --method ddpm --ste
 run_check smoke-video "$python_bin" -m genai_study.video_diagnostics --output "$run_dir/video"
 run_check smoke-image "$python_bin" -m genai_study.image_flow --steps 2 --batch-size 4 --samples 16 --sampling-steps 2 --output "$run_dir/image"
 run_check smoke-image-solver "$python_bin" -m genai_study.image_solver_study --checkpoint "$run_dir/image/checkpoint.pt" --steps 2 4 --samples 16 --output "$run_dir/image-solver"
+run_check smoke-image-cfg "$python_bin" -m genai_study.image_flow --steps 2 --batch-size 8 --condition-dropout 0.5 --samples 16 --sampling-steps 2 --output "$run_dir/image-cfg"
+run_check smoke-image-guidance "$python_bin" -m genai_study.image_guidance_study --checkpoint "$run_dir/image-cfg/checkpoint.pt" --scales 0 1 2 --sampling-steps 2 --samples 16 --output "$run_dir/image-guidance"
 exit "$run_status"
