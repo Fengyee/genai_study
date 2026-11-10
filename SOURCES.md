@@ -1,6 +1,6 @@
 # 来源与核验边界
 
-本项目引用原始研究来支撑概念，所有 toy 代码独立实现。许可证不延伸到外部论文、仓库或数据。本次没有复制论文图片、模型权重或外部训练数据。
+本项目引用原始研究支撑概念，教学代码独立实现。原创代码和文档采用Apache-2.0；外部论文、模型与数据分别遵循原作者许可。基础实验的数据由程序构造，09章的预训练权重由读者按固定清单下载到本地缓存，仓库保存其身份、配置和运行证据。
 
 章节末尾记录原始论文和作者实现链接。研究路线以 2013–2024 年代表工作建立基础，再通过固定版本阅读卡补充近年图像/视频进展；新增或变化快的结论需重新核验。各份审计明确记录论文版本、具体主张和对应证据。
 
@@ -40,3 +40,5 @@
 [FLUX.1 Kontext 2025阅读卡](docs/readings/flux-kontext-2025.md) 固定v2报告、官方代码commit和单一dev模型卡/许可证revision，核对参考图token、时间/速度变换、guidance蒸馏、NFE以及编辑评价。CPU实际验证latent打包/还原与解析积分；24GB权重存储为按作者12B参数估算的理论数量，权重推理成本待测。
 
 [SVD与CogVideoX训练阅读卡](docs/readings/video-training-svd-cogvideox.md) 固定SVD v1、CogVideoX v3、官方源码及三个具体模型revision，核对训练阶段、数据筛选、VP预条件、时间压缩与帧率；保留论文和发布配置的结构/精度/能力差异。CPU检查验证VP还原、帧轴引导与token尺寸；视频性能数字归属作者及其协议。
+
+[09预训练图像实践](docs/chapters/09-pretrained-image-lab.md)使用原作者CompVis的SD1.4 revision `133a221b8aa7292a167afc5127cb63fb5005638b`，逐文件大小/SHA见[manifest](examples/pretrained-sd14/manifest.json)。[LICENSE-model.txt](examples/pretrained-sd14/LICENSE-model.txt)完整保留CreativeML Open RAIL-M原文及原作者通知，适用其自身条款。SD生成样例由[实测报告](docs/pretrained-image-report.md)记录的固定提示、随机种子和配置产生，输出使用同时遵守模型许可第6条。模型权重保存在忽略的本地artifacts目录。

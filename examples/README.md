@@ -85,3 +85,9 @@ python -m genai_study.image_guidance_study \
 训练以全零条件通道表示隐藏的类别，记录有条件/空条件分支实际训练样本数。引导命令读取这些元数据；默认07章训练的dropout为0，需按上面的配置重新训练以学习空条件分支。
 
 每份噪声分别配上圆盘/方形，所有强度复用同一权重与配对输入；强度0忽略请求类别，强度1恢复条件速度。每步显式计算两分支，40步对应每张图像80 NFE。输出为JSON、原始NPZ和固定索引图，数组键由`runs[].array_key`给出。使用 [08章](../docs/chapters/08-image-guidance-lab.md) 的练习复算配对差，并一起解释几何、多样性和裁剪诊断。
+
+## 可选：固定SD1.4权重的自然图像生成
+
+按 [09章](../docs/chapters/09-pretrained-image-lab.md)建立`.venv-pretrained`并使用独立hash锁安装依赖。先核对许可和[实测成本](../docs/pretrained-image-report.md)，再用`pretrained_image prepare`下载清单中的约5.11GiB文件。之后的`run`从本地加载，每次复核全部文件SHA，记录提示、初始噪声、DDIM配置、实际U-Net调用数、耗时和进程峰值内存。
+
+首次完整运行与两强度配对命令统一放在09章。已生成`artifacts/pretrained-sd14`时直接复用结果；重跑使用新目录。基础二维/图形实验继续使用`.venv`，预训练模块的`--help`和完整性检查测试可在基础环境执行。

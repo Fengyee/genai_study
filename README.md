@@ -2,7 +2,7 @@
 
 给熟练使用 PyTorch、有研究经验但尚未系统学习生成式 AI 的 CS master / PhD：用清楚的假设、可核对的推导和能在 CPU 上跑通的小实验建立基础，再进入图像与视频生成研究。
 
-**当前版本**：9 个学习单元、二维 DDPM / Flow Matching 训练与采样、16×16 条件卷积图像生成、固定模型的求解器与引导实验、无需权重的视频时序反例、自动质量检查。全部示例可在 CPU 上运行，无需 API key 或下载模型权重。自然图像/视频模型训练、预训练模型实操及完整前沿综述列在 [backlog](records/BACKLOG.md)。
+**当前版本**：10 个学习单元，涵盖二维 DDPM / Flow Matching、16×16 条件图像生成、固定模型的求解器与引导实验、视频时序反例，以及可选的 SD 1.4 预训练图像实践。基础实验在 CPU 上运行，数据由程序构造；可选实践另下载约 5.11 GiB 权重，使用独立依赖环境。各路径均无需付费 API。自然图像/视频训练、视频权重实践及完整前沿综述继续按 [backlog](records/BACKLOG.md)推进。
 
 ## 我适合从哪里开始？
 
@@ -15,6 +15,8 @@
 图像方向可从 [07 CPU 图像生成实验](docs/chapters/07-image-flow-lab.md) 学习 BCHW、卷积与类别条件，再用保存的 checkpoint 比较 Euler 采样步数。默认训练 1500 步，运行成本与结果分析见 [图像实测](docs/image-experiment-report.md)。
 
 接着通过 [08 条件丢弃与引导](docs/chapters/08-image-guidance-lab.md) 训练空条件分支，在相同噪声上比较引导强度、条件响应、数值范围与计算成本。
+
+希望亲手生成自然图像时，完成潜空间与条件基础后进入 [09 预训练图像实践](docs/chapters/09-pretrained-image-lab.md)。固定权重、文本、初始噪声和 DDIM 配置，运行 CPU 推理并比较引导强度；先对照[实测报告](docs/pretrained-image-report.md)安排下载、内存和时间。
 
 进入真实系统阅读时，可选 [FLUX.1 Kontext图像编辑](docs/readings/flux-kontext-2025.md) 或 [Wan视频生成](docs/readings/wan-video-2025.md)：两份2025阅读卡均固定原始报告和官方接口，提供可独立核对的条件、token与时间约定。
 
@@ -54,12 +56,12 @@ bash scripts/quality.sh
 ## 实验覆盖范围与运行问题
 
 - 二维八高斯用于检查训练目标、采样算法与分布诊断；图像与视频质量需要对应的数据和评价协议。
-- 图像实验学习受控圆盘/方形分布，视频实验检查时序指标。[Wan 2025 阅读卡](docs/readings/wan-video-2025.md) 进一步连接原始论文、模型接口与研究问题；权重运行列入后续实践。
+- 07/08学习受控圆盘/方形分布，09使用已训练的自然图像模型；06检查合成序列的时序指标。[Wan 2025 阅读卡](docs/readings/wan-video-2025.md)连接视频论文与模型接口，视频权重运行列入后续实践。
 - 首次安装失败：检查 Python 版本与网络允许的 `pypi.org`、`files.pythonhosted.org`、`download.pytorch.org` 和 `download-r2.pytorch.org`；修复网络后保留 TLS 与 hash 校验重试。
-- CPU 很慢：使用 `--threads 1`，先降低 `--steps` 与 `--samples` 确认路径，再恢复完整训练预算评估质量。
+- CPU 很慢：二维/图形训练使用`--threads 1`，先降低`--steps`与`--samples`确认路径，再恢复完整训练预算。09的预训练入口使用2步、256×256的smoke配置，具体命令与成本见该章。
 
 ## 参与和维护
 
 优先解决读者真正遇到的问题。贡献方法见 [CONTRIBUTING.md](CONTRIBUTING.md)，当前检查点见 [执行记录](records/PROGRESS.md)，待办见 [质量 backlog](records/BACKLOG.md)。每小时检查的定义和实际部署边界见 [自动化说明](docs/automation.md)。
 
-代码、原创文档和生成图使用 [Apache-2.0](LICENSE)，第三方材料归属见 [SOURCES.md](SOURCES.md)。欢迎通过 issue 提供可复现问题、通过 PR 补充推导和实验。如果这些材料帮助你完成学习或实验，欢迎推荐给同学和研究伙伴。
+原创代码和文档使用 [Apache-2.0](LICENSE)，外部模型、许可副本及生成示例的来源见 [SOURCES.md](SOURCES.md)。欢迎通过 issue 提供可复现问题、通过 PR 补充推导和实验。如果这些材料帮助你完成学习或实验，欢迎推荐给同学和研究伙伴。

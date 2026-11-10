@@ -22,8 +22,9 @@ REQUIRED = (
     "docs/chapters/05-evaluation.md", "docs/chapters/06-video-temporal-lab.md",
     "docs/chapters/07-image-flow-lab.md",
     "docs/chapters/08-image-guidance-lab.md",
+    "docs/chapters/09-pretrained-image-lab.md",
 )
-EXCLUDED = {".git", ".venv", "artifacts", "node_modules", "__pycache__", ".pytest_cache"}
+EXCLUDED = {".git", ".venv", ".venv-pretrained", "artifacts", "node_modules", "__pycache__", ".pytest_cache"}
 
 
 def prose(text: str) -> str:

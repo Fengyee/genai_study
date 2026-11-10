@@ -1,0 +1,78 @@
+{
+  "observed_utc": "2026-11-10",
+  "scope": "CPU SD1.4 full image inference, paired guidance, full reproducibility and one post-observation prompt revision",
+  "model_id": "CompVis/stable-diffusion-v1-4",
+  "revision": "133a221b8aa7292a167afc5127cb63fb5005638b",
+  "manifest_sha256": "96a6930e1db07afefe127075304325e316d03621e4681a42b351d9c6b6072141",
+  "requirements_lock_sha256": "95176d3908a08a99ca80ca84fe8d2aaf0a5b7c5cc80cd663fb63bd5c1b7b1729",
+  "inference_source": {
+    "full_default_pair_repeat_sha256": "c9b39c25ba705973388422ddd452a713d3568deb3dec43c0a58d408edf5e3827",
+    "current_sha256": "3cd514bae6d2a9e8c17fafea806f49854813ad88c0b08e858e685dd6e0b8f1be",
+    "difference": "Current source adds sparse stderr progress to existing UNet counting hook; sampling and metrics calculations unchanged. The foreground follow-up runs this source."
+  },
+  "hardware": {
+    "os": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "cpu_model": "AMD EPYC 9V45 96-Core Processor",
+    "torch_device": "cpu",
+    "memory_limit_bytes": 34359738368,
+    "cpu_max": "400000 100000",
+    "cpu_affinity_count": 5,
+    "torch_threads": 1
+  },
+  "commands": [
+    ".venv-pretrained/bin/python -m pip install --require-hashes -r requirements-pretrained-lock.txt",
+    ".venv-pretrained/bin/python -m pip install --no-build-isolation --no-deps -e .",
+    "python -m genai_study.pretrained_image prepare --manifest examples/pretrained-sd14/manifest.json --model-dir artifacts/models/sd14",
+    "python -m genai_study.pretrained_image run --model-dir artifacts/models/sd14 --output artifacts/sd14-current/smoke --steps 2 --height 256 --width 256 --threads 1",
+    "python -m genai_study.pretrained_image run --model-dir artifacts/models/sd14 --output artifacts/pretrained-sd14 --seed 7 --steps 20 --guidance-scale 7.5 --height 512 --width 512 --threads 1",
+    "python -m genai_study.pretrained_image run --model-dir artifacts/models/sd14 --output artifacts/pretrained-sd14-guidance3 --seed 7 --steps 20 --guidance-scale 3 --height 512 --width 512 --threads 1",
+    "python -m genai_study.pretrained_image run --model-dir artifacts/models/sd14 --output artifacts/pretrained-sd14-repeat --seed 7 --steps 20 --guidance-scale 7.5 --height 512 --width 512 --threads 1",
+    "python -m genai_study.pretrained_image run --model-dir artifacts/models/sd14 --output artifacts/pretrained-sd14-foreground --prompt 'a watercolor painting of a wooden cabin in the foreground, with a lake and pine trees in the background, daytime' --seed 7 --steps 20 --guidance-scale 7.5 --height 512 --width 512 --threads 1"
+  ],
+  "invocation_context": {
+    "interpreter": ".venv-pretrained/bin/python",
+    "cwd": "repository root",
+    "HF_HOME": "/workspace/genai_study/.cache/huggingface",
+    "full_run_timeout_seconds": 900,
+    "smoke_timeout_seconds": 600,
+    "model_runs": "sequential fresh processes; no model warm-up; filesystem cache and shared host load not controlled",
+    "concurrent_checks": "The foreground follow-up also overlapped the basic quality suite; earlier model runs overlapped lightweight document/source work."
+  },
+  "verification": {
+    "same_noise_default_guidance3": true,
+    "same_noise_default_repeat": true,
+    "same_png_bytes_default_repeat": true,
+    "same_effective_scheduler_default_guidance3": true,
+    "scheduler_default_names": "_use_default_values compared as an unordered name set; raw records preserved",
+    "rgb_rms_default_vs_guidance3_on_zero_one": 0.07198822904146594,
+    "ddim_independent_update_max_abs_errors": [
+      1.2361334744692698e-07,
+      1.702624053967483e-07
+    ],
+    "full_quality": {
+      "command": "bash scripts/quality.sh",
+      "exit_code": 0,
+      "pytest_passed": 69,
+      "pytest_seconds": 31.74,
+      "cli_smokes": 7,
+      "log_directory": "artifacts/quality/20261110T173958Z-SW6MRz",
+      "docs_links_at_run": 229,
+      "docs_errors": 0
+    },
+    "same_noise_default_foreground": true,
+    "foreground_unet_calls": 20,
+    "foreground_branch_evaluations": 40,
+    "foreground_actual_progress_messages": 6,
+    "all_five_safety_flags": false,
+    "all_five_safety_checkers_enabled": true
+  },
+  "files": {
+    "default.json": "7d201531a2423370066d156984ba172d4aa15f498cf5dd1fdccf8203645108eb",
+    "guidance3.json": "4b405a3c550dd02c559d25475aec5164a4c34268e2cfb026c93503e97d1b5cd8",
+    "prepare.json": "ee4b91ee48fb739e7d6323ecdc68433bd97691876dcc8556f544aee4d2e04683",
+    "repeat.json": "595810040b4bd9477c0453ed387cc993dcd5af6ac74515b131a2b8337821bc1b",
+    "smoke.json": "601a9431b7c1ad948812e503329e31c1d923a2c7a2b776e1bd81835226a5df8e",
+    "foreground.json": "8e8e8aeb88c1c72cb6137a344001bddb329ee1a256f3a3f480f95ae9aed90e29",
+    "prepare-reuse.json": "5e99d53941cdaf418f359aeedda2a41b39bf952baa3137f19ed0b465121ff8aa"
+  }
+}

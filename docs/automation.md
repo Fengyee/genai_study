@@ -60,3 +60,9 @@ GitHub Actions 的 `concurrency` 只约束对应 workflow 的 runs，**不能锁
 图像训练检查使用2次更新、batch4、16张样本、2步Euler；随后从保存的checkpoint运行独立采样对照。默认1500步图形实验与固定权重实测另见07章及实测报告。
 
 引导训练检查使用2次更新、batch8、condition dropout=0.5、seed7；随后比较0/1/2强度，每组2步Euler、16张配对图像。checkpoint记录实际见过的有/无条件训练样本数，引导入口要求两者均大于0；此固定smoke配置已验证包含两种训练样本。
+
+## 可选预训练实践的验证范围
+
+09章另用`requirements-pretrained-lock.txt`和`.venv-pretrained`运行SD1.4。常规质量脚本中的pytest覆盖其固定manifest、文件损坏检测/恢复、参数和输出保护，使用临时小文件即可执行。每小时检查继续保持基础依赖和CPU小实验的预算；约5.11GiB真实权重下载及完整推理由显式的预训练实践命令完成。
+
+模型、可选依赖或采样/解码路径变化时，应按09章重新核验文件、运行真实smoke和至少一张完整图，再检查固定噪声对照。记录实际模型revision、可选锁文件hash、输出hash、进程内存和计时范围，结果见[预训练实测](pretrained-image-report.md)。文档检查跳过两个venv和本地artifacts目录。
