@@ -32,3 +32,5 @@
 [生成模型来源核验](docs/generative-source-audit.md) 对照 VAE、GAN、Real NVP 与 Neural ODE 固定版本，核验ELBO与支持集、对抗目标、变量替换及连续流负散度公式；提供可运行的高斯/离散分布解析检查，并记录Neural ODE v6对历史NFE实验报告的修订。
 
 [图像/视频路线来源核验](docs/image-video-source-audit.md) 对照LDM、CFG、DiT固定版本，补齐CFG空条件分支的训练前提、latent patch尺寸推导与成本口径；记录CFG趋势正文与表格的差异，并重新核对SVD/CogVideoX固定官方README的公开接口。
+
+[其余评价指标核验](docs/evaluation-metrics-audit.md) 固定IS、improved precision/recall、KID、FVD原文，核对熵与互信息、近邻球、无偏U统计量和视频特征协议；直接执行原型高IS、负KID估计及裁剪偏差反例。FVD输入布局、缩放、数值范围、批大小和logits身份另与固定作者源码交叉核对。

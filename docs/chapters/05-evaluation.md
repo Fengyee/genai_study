@@ -2,7 +2,7 @@
 
 **先修**：[01 生成模型](01-generative-models.md)，完成 [02 DDPM](02-diffusion.md) 或 [03 Flow matching](03-flow-matching.md) 的 CPU 实验；均值、协方差与基本统计推断。
 
-**完成后应能**：辨别运行成功与分布拟合，设计使指标暴露盲点的反例，解释 FID/FVD 的假设，并写出有对照、版本、成本和不确定性范围的研究计划。
+**完成后应能**：辨别运行成功与分布拟合，设计使指标暴露盲点的反例，解释 FID/FVD、KID、IS 与特征空间 precision/recall 的假设，并写出有对照、版本、成本和不确定性范围的研究计划。
 
 **范围**：本章 CPU 诊断可直接运行；图像与视频评价是方法说明和实验设计，尚未在本仓库执行大模型评测。与 [04 研究路线](04-image-video-roadmap.md) 配合使用。
 
@@ -101,9 +101,30 @@ $$
 4. 真实参考集的 split、内容和样本数也必须相同。对另一参考数据集得到的更低数值不能被解释成在同一任务上的提升。
 5. 比较差值应配合采样变化范围及失败案例。不能用单次计算的小数点后几位作为显著性证据，也不能把 bootstrap 区间当作自动消除 FID 偏差的方法。
 
-KID（Kernel Inception Distance）等基于特征 MMD 的替代估计有不同的偏差与方差性质，也仍受特征和协议限制；更换指标不免除对照实验。本章没有实现 FID/KID，避免用随手计算的二维高斯距离冒充标准图像评估。
+### KID：无偏估计与负数结果
+
+Kernel Inception Distance（KID）使用 Inception 特征的**平方最大均值差异**（squared maximum mean discrepancy，$\mathrm{MMD}^2$），原论文采用三次多项式核
+
+$$
+k(u,v)=\left(\frac{u^\top v}{d}+1\right)^3,
+$$
+
+其中 $d$ 为特征维度。对于互相独立的两组 IID 特征 $u_1,\ldots,u_m$ 与 $v_1,\ldots,v_n$，固定特征提取器和核、$m,n\ge2$、相关核期望有限时，无偏 U 统计量为
+
+$$
+\widehat{\mathrm{MMD}}_u^2=
+\frac{\sum_{i\ne j}k(u_i,u_j)}{m(m-1)}+
+\frac{\sum_{i\ne j}k(v_i,v_j)}{n(n-1)}-
+\frac{2\sum_{i,j}k(u_i,v_j)}{mn}.
+$$
+
+同组求和排除对角项，跨组求和保留所有配对。总体 $\mathrm{MMD}^2\ge0$，但有限样本的无偏估计可为负；将负值裁剪为 0 会改变估计量并引入偏差。三次核比较特征中至三阶的矩信息；解读时仍需核对特征与核能分辨哪些分布。
+
+报告 KID 时写明特征层/权重、预处理、核、子集大小、抽样方法、重复次数和是否缩放数值（如乘 $10^3$）。与 FID 对比应使用一致的图像样本与特征协议，并报告各自的估计不确定性。第 4 节给出不依赖图像网络的解析反例；真实图像评价仍需加载对应特征权重。
 
 ## 4. IS、precision/recall 与单分数陷阱
+
+### IS 的熵与互信息形式
 
 Inception Score（IS）常写作
 
@@ -113,21 +134,91 @@ D_{\mathrm{KL}}(p_\phi(y\mid x)\Vert p_\phi(y))\right),
 \qquad p_\phi(y)=\mathbb E_{x\sim p_g}[p_\phi(y\mid x)].
 $$
 
-这里 $y$ 是分类器标签，不是生成条件。IS 偏好单张图的分类分布尖锐、总体分类分布多样；它不需要真实参考样本。
+这里 $y$ 是分类器标签。在联合分布 $p_g(x)p_\phi(y\mid x)$ 下，展开 KL 可得
 
-因此，反复输出每个分类器类别的一张原型，也可能得到很高分数，却完全缺乏类内多样性；能让分类器高置信但不自然的样本也会误导分数。分类器标签与目标数据域不匹配时，IS 的语义更难解释。不能据此证明未记忆训练数据或图像“真实”。
+$$
+\log\operatorname{IS}=H(Y)-\mathbb E_X[H(Y\mid X=x)]=I(X;Y).
+$$
 
-特征空间 precision/recall 尝试分别估计“生成样本落在真实样本支持区域附近的比例”与“真实区域被生成分布覆盖的程度”。例如基于近邻球的实现会受特征、近邻数、样本数与离群点影响；它们不是拥有真实标签的分类 precision/recall，也不是无需假设的精确分布支持度量。
+IS 因而偏好单张图的分类分布尖锐、总体分类分布多样。若分类器有 $C$ 类，$1\le\operatorname{IS}\le C$。等概率反复输出每类的一张原型，且分类器对这些原型给出对应 one-hot 概率时，$H(Y)=\log C$、条件熵为 0，IS 达到上界 $C$，类内变化仍为零。这个互信息只涉及分类器标签，语义取决于分类器与目标数据域的匹配；真实性、记忆及条件遵循需要其他证据。
 
-良好的报告应展示保真与覆盖的取舍，而非只公布最有利的一项。对于条件生成，还要在给定条件的分组内分析：无条件总体覆盖好，仍可能把所有提示的内容打乱。
+### 近邻球怎样估计 precision/recall
 
-## 5. 视频：FVD 有用，但不能认证物理规律
+Kynkäänniemi et al. 的 improved precision/recall 在固定特征空间中构造两组球。对每个真实特征 $r_i$，令 $\rho_i$ 为它到**真实集合中第 $k$ 个近邻**的距离，排除自身；令
 
-Fréchet Video Distance（FVD）将类似的高斯特征距离用于视频表示。原始方法使用从动作识别任务学习的视频特征（I3D），因此可以利用时空信息，而不是简单平均逐帧 FID。
+$$
+\mathcal R=\bigcup_i B(r_i,\rho_i).
+$$
 
-使用时必须记录特征权重、帧数、帧采样策略、fps、时长、尺寸、裁剪和参考视频来源。改变 fps 会改变动作速度的含义；使用短片段评估长视频，可能完全没有检查长程身份与状态一致性。不同特征编码器的“FVD”也不能直接混比。
+同理，用生成特征内部的近邻距离构造 $\mathcal G$。用闭球和欧氏距离时，估计为
 
-FVD 下降不等于以下命题被证明：物体永久存在、碰撞守恒、因果先后正确、文字指令被遵守。视频特征和高斯近似只是一种压缩观察。针对性测试必须覆盖具体事件，例如：物体遮挡后再出现时是否保留身份，容器倒水时液体是否保持合理状态变化。不要假定 FVD 一定检测不到某种错误；正确结论是，它没有普遍检测该错误的保证。
+$$
+\widehat{\mathrm{precision}}=\frac1n\sum_{j=1}^n\mathbf1\{g_j\in\mathcal R\},
+\qquad
+\widehat{\mathrm{recall}}=\frac1m\sum_{i=1}^m\mathbf1\{r_i\in\mathcal G\}.
+$$
+
+进入任意一个球即计为覆盖。原论文使用 VGG-16 第二全连接层后的特征，通常两侧各 50,000 个样本、$k=3$。这些是作者实验配置；样本数、$k$、特征和离群点都会影响覆盖估计。固定样本集时，增大 $k$ 会扩大球，使两项估计均不减，因此报告时需固定这些选择。
+
+结合 precision 与 recall 展示保真和覆盖的取舍；条件生成还应按条件分组检查。无条件总体覆盖充分时，逐提示内容仍可能错配。
+
+### 直接运行：原型高分与负的 U 统计量
+
+下面直接构造分类器概率和一维特征，检验两个指标的统计性质。它不加载图像或特征网络，完成 README 安装后，从仓库根目录执行：
+
+```bash
+python - <<'PY'
+from itertools import product
+import numpy as np
+
+def entropy(p):
+    p = np.asarray(p, dtype=float)
+    logp = np.zeros_like(p)
+    np.log(p, out=logp, where=p > 0)  # 约定 0 log 0 = 0
+    return -(p * logp).sum(axis=-1)
+
+def inception_score(probabilities):
+    return np.exp(entropy(probabilities.mean(0)) - entropy(probabilities).mean())
+
+# 三类各只有一张原型；重复次数增加，类内变化仍为零。
+prototypes = np.eye(3)
+repeated = np.repeat(prototypes, 100, axis=0)
+assert np.isclose(inception_score(prototypes), 3)
+assert np.isclose(inception_score(repeated), 3)
+assert np.isclose(inception_score(np.full((300, 3), 1 / 3)), 1)
+
+def mmd2_u(x, y):
+    m, d = x.shape
+    n = len(y)
+    kxx = (x @ x.T / d + 1) ** 3
+    kyy = (y @ y.T / d + 1) ** 3
+    kxy = (x @ y.T / d + 1) ** 3
+    return ((kxx.sum() - np.trace(kxx)) / (m * (m - 1))
+            + (kyy.sum() - np.trace(kyy)) / (n * (n - 1)) - 2 * kxy.mean())
+
+observed = np.array([[0.], [1.]])
+assert np.isclose(mmd2_u(observed, observed), -3.5)
+# 两组各2个IID Bernoulli(1/2)特征，共16种等概率的联合观测。
+batches = [np.array(bits, dtype=float)[:, None] for bits in product([0, 1], repeat=2)]
+values = np.array([mmd2_u(x, y) for x in batches for y in batches])
+assert np.isclose(values.mean(), 0)  # 同分布总体平方MMD为0
+assert np.isclose(np.maximum(values, 0).mean(), 0.875)
+print(f"IS: {inception_score(repeated):.1f}; signed MMD² estimate: {mmd2_u(observed, observed):.1f}")
+print(f"Exact expectation: {values.mean():.3f}; clipped expectation: {np.maximum(values, 0).mean():.3f}")
+PY
+```
+
+解析输出应为 `IS: 3.0; signed MMD² estimate: -3.5`，枚举期望为 `0.000`，裁剪后的期望为 `0.875`。两组独立抽样仍可能恰好观测到相同的 `[0, 1]`；无偏性约束的是所有可能观测的期望。代码既展示负估计，也用完整枚举核对了其期望。
+
+上述定义、原论文公式页码与独立推导见 [IS / precision-recall / KID / FVD 来源核验](../evaluation-metrics-audit.md)。
+
+## 5. 视频：FVD 的表示与任务协议
+
+Fréchet Video Distance（FVD）将平方高斯特征距离用于视频表示。原论文比较 Kinetics-400/600 预训练的 RGB I3D 视频网络和不同特征层，后续实验选用 Kinetics-400 的 logits；网络共同处理一段视频的空间与时间信息。
+
+使用时记录特征权重/层、输入布局与范围、空间预处理、帧数、帧采样策略、fps、时长和参考视频来源。原论文 BAIR 人评使用 2 帧上下文加 14 帧生成结果、256 条参考视频；KTH 实验采用 10 帧上下文加 10 帧生成结果。这些是具体任务协议，FVD 的定义允许其他视频长度。改变 fps 会改变动作速度的含义；短片段只覆盖对应时间范围内的一致性。跨实现比较还需核对特征和完整输入管线，详见 [FVD 来源与协议](../evaluation-metrics-audit.md)。
+
+FVD 将每段视频压缩为特征，再比较一、二阶统计。物体持久性、碰撞守恒、事件先后和条件遵循需要针对性测试，例如：物体遮挡后再出现时是否保留身份，容器倒水时液体是否保持合理状态变化。结合这些事件检查，才能说明分数变化对应了哪些任务能力。
 
 一个可用的多维视频协议应同时报告：逐帧空间伪影、条件动作完成度、跨帧身份、运动连续性、事件逻辑，以及每条完整视频的盲评结果。静止视频可能在某些时间一致性指标上优秀，必须用动作完成度把这一退化解排除。
 
@@ -187,11 +278,11 @@ FVD 下降不等于以下命题被证明：物体永久存在、碰撞守恒、�
 | 主题 | 来源 | 对应内容与版本 |
 | --- | --- | --- |
 | FID | Heusel et al., [GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium](https://arxiv.org/abs/1706.08500v6) | NeurIPS 2017；v6，2018-01-12；第 6 页 Eq. (6)、第 7 页特征配置 |
-| Inception Score | Salimans et al., [Improved Techniques for Training GANs](https://arxiv.org/abs/1606.03498) | NeurIPS 2016；IS 定义 |
-| 生成分布 precision/recall | Kynkäänniemi et al., [Improved Precision and Recall Metric for Assessing Generative Models](https://arxiv.org/abs/1904.06991) | NeurIPS 2019；特征空间近邻支持估计 |
-| FVD | Unterthiner et al., [Towards Accurate Generative Models of Video: A New Metric & Challenges](https://arxiv.org/abs/1812.01717) | 2018 预印本；ICLR 2019 workshop，避免误记为主会论文 |
+| Inception Score | Salimans et al., [Improved Techniques for Training GANs](https://arxiv.org/abs/1606.03498v1) | NeurIPS 2016；v1，2016-06-10；第 4 页 §4，IS 定义 |
+| 生成分布 precision/recall | Kynkäänniemi et al., [Improved Precision and Recall Metric for Assessing Generative Models](https://arxiv.org/abs/1904.06991v3) | NeurIPS 2019；v3，2019-10-30；§2 Eq. (1)–(2)、Algorithm 1 |
+| FVD | Unterthiner et al., [Towards Accurate Generative Models of Video: A New Metric & Challenges](https://arxiv.org/abs/1812.01717v2) | 2018 预印本；v2，2019-03-27；§2、§4.1、§4.3–4.4；ICLR 2019 workshop |
 | FID 有限样本偏差 | Chong & Forsyth, [Effectively Unbiased FID and Inception Score and Where to Find Them](https://arxiv.org/abs/1911.07023v3) | CVPR 2020；v3，2020-06-15；§3.1–3.2、§4.1/Figure 3 |
 | 预处理敏感性 | Parmar, Zhang, Zhu, [On Aliased Resizing and Surprising Subtleties in GAN Evaluation](https://arxiv.org/abs/2104.11222v3) | CVPR 2022；v3，2022-01-21；§3.1–3.3、Tables 1–2、§6.3 |
-| KID | Bińkowski et al., [Demystifying MMD GANs](https://arxiv.org/abs/1801.01401) | ICLR 2018；特征 MMD 与估计 |
+| KID | Bińkowski et al., [Demystifying MMD GANs](https://arxiv.org/abs/1801.01401v5) | ICLR 2018；v5，2021-01-14；第 4 页 Eq. (4)、第 8 页 KID |
 
-已对照 Heusel、Chong/Forsyth、Parmar 三篇固定版本原文，核验 FID 定义、有限样本偏差和预处理协议；PDF SHA-256、页码、假设及独立数学检查见 [评价来源核验](../evaluation-source-audit.md)。其余来源的主张核验按 backlog 继续推进。toy 数值引用仓库内实测 JSON，论文中的生成模型实验尚待复现。
+已对照 Heusel、Chong/Forsyth、Parmar 三篇固定版本原文，核验 FID 定义、有限样本偏差和预处理协议；PDF SHA-256、页码、假设及独立数学检查见 [评价来源核验](../evaluation-source-audit.md)。IS、precision/recall、KID 与 FVD 的定义、条件及输入协议见 [第二组评价核验](../evaluation-metrics-audit.md)。toy 数值引用仓库内实测 JSON；本章 NumPy 示例验证解析性质，论文中的生成模型实验尚待复现。
