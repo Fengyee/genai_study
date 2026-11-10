@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "observer": "AI coding agent, separate context containing only opaque image IDs and visual rubric; no prompt/seed/configuration supplied before review",
+  "observer_task": "blind_visual_review",
+  "root_review": "Coordinating AI agent also viewed all full images and agreed with all four cabin classifications. Root knew the experiment plan and ID mapping.",
+  "human_review": false,
+  "assessment_timing": "After all four planned requests completed; no image selected for replacement.",
+  "observations": [
+    {
+      "id": "A",
+      "request": "scene-seed43",
+      "cabin": "clear",
+      "building": "右侧蓝色坡屋顶、浅色墙和烟囱可辨，右端出画。",
+      "details": "深色门洞和小窗可见；木质材料不确定。",
+      "lake": "clear",
+      "pine_like_trees": "clear",
+      "watercolor": "clear",
+      "daylight": "clear",
+      "extra_border": "not_observed"
+    },
+    {
+      "id": "B",
+      "request": "cabin-seed19",
+      "cabin": "clear",
+      "building": "大屋顶覆盖横向板墙，左侧有较低附属结构，右端出画。",
+      "details": "门与深色开口、横向木板可辨。",
+      "lake": "not_observed",
+      "pine_like_trees": "clear",
+      "watercolor": "clear",
+      "daylight": "clear",
+      "extra_border": "not_observed"
+    },
+    {
+      "id": "C",
+      "request": "scene-seed19",
+      "cabin": "clear",
+      "building": "湖对岸有坡屋顶与红褐色山墙，建筑较小。",
+      "details": "深色小块可能为门窗，木质材料不确定。",
+      "lake": "clear",
+      "pine_like_trees": "clear",
+      "watercolor": "clear",
+      "daylight": "clear",
+      "extra_border": "not_observed"
+    },
+    {
+      "id": "D",
+      "request": "cabin-seed43",
+      "cabin": "clear",
+      "building": "中部屋顶、正面墙和侧墙可辨，左侧结构延伸至边缘。",
+      "details": "门窗及横向板材或原木纹理可见。",
+      "lake": "uncertain",
+      "pine_like_trees": "clear",
+      "watercolor": "clear",
+      "daylight": "clear_overcast_or_misty",
+      "extra_border": "not_observed"
+    }
+  ],
+  "counts": {
+    "scene": {
+      "clear": 2,
+      "total_requests": 2
+    },
+    "cabin": {
+      "clear": 2,
+      "total_requests": 2
+    }
+  },
+  "scope": "Descriptive observations for four fixed requests; two AI observations do not supply a human annotation study or population success-rate estimate."
+}

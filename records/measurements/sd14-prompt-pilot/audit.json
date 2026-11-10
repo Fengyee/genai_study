@@ -1,0 +1,34 @@
+{
+  "date_utc": "2026-11-10",
+  "plan_commit_before_generation": "1135255",
+  "plan_sha256": "2416656bf3d2ca424cbfa362027d26f57e95c3980eb32e2fbf1c50ca52dda521",
+  "checks_passed": [
+    "All four planned requests in original order; all exit 0 within 420 seconds, total within 1800 seconds.",
+    "Manifest, model revision, optional dependency lock and inference source hashes match plan.",
+    "All fixed request settings, software versions and actual scheduler configurations match; internal _use_default_values compared as sorted names, original JSON preserved.",
+    "Same-seed initial float32 arrays exactly equal; seed19 and seed43 arrays differ. Raw array hashes and output PNG hashes match metrics.",
+    "Four outputs each 20 UNet calls with batch2, 40 sample-branch evaluations, safety checker enabled and no filter flag.",
+    "Token counts scene17/cabin11, no truncation; copied PNGs byte-identical to complete outputs."
+  ],
+  "visual_review": "See observations.json for anonymized-ID observer and root review scope.",
+  "files": {
+    "docs/assets/sd14-pilot-cabin-seed19.png": {
+      "sha256": "8377ce013dfe6ba2b9f26ca38d388b1963385984b22ed6684333f4c3691d80a9",
+      "bytes": 390975
+    },
+    "docs/assets/sd14-pilot-scene-seed19.png": {
+      "sha256": "439ff4662b38f2b90304aa1234ca46618b9a030ecb38fbbcce259870bddaca48",
+      "bytes": 472541
+    },
+    "docs/assets/sd14-pilot-scene-seed43.png": {
+      "sha256": "a262f5478c234927217e9268e5abeb7f58bcb21a2415366cdbe4f950f26688b9",
+      "bytes": 467791
+    },
+    "docs/assets/sd14-pilot-cabin-seed43.png": {
+      "sha256": "23e909dac29b0072feff3d3363ba1d317a2794e6eaf2be9865a43b5ea77e8505",
+      "bytes": 408122
+    }
+  },
+  "environment": "Same current Linux CPU environment as pretrained-sd14/provenance.json; separate fresh processes, threads1, filesystem cache/shared host load uncontrolled. Base quality checks and documentation work ran concurrently with parts of this pilot.",
+  "local_arrays": "artifacts/sd14-prompt-pilot/<request>/initial_noise.npy; ignored by git; raw byte hashes preserved in each metrics JSON."
+}
