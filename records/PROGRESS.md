@@ -229,3 +229,9 @@ f95d055对应GitHub run42847424682 completed/success，证明本轮图像/课程
 验证：主代理逐字执行卡片CPU块，VP还原、零SNR端点、帧轴引导、49→13潜帧与17550视觉tokens通过；独立核对81帧外推注意力元素数比例2.5842515845。重新读取两PDF计算SHA，与卡片相符；SVD Table1的577M/152M单位核对为clips。相关视频测试5 passed（1.48秒）。卡片已接入README、学习路线、04及SOURCES，文档链接和diff检查通过。
 
 并行工作未提交：SD1.4可选CPU实践已固定原作者revision、许可和5.106GiB模型文件；独立venv的43项hash锁依赖安装、pip check、pipeline导入通过，原有24项依赖版本保持。完整权重下载和真实推理继续进行；预训练相关新文件暂存工作区，按后续轮次验证后提交。自回归teacher forcing/因果掩码补充正在实施。环境未重新发布、网站未部署、小时schedule仍等待默认分支合入。
+
+## 轮次18：修复uv备用安装入口
+
+问题：README建议`uv venv --python 3.12 .venv`，后续却直接使用`python -m pip`；uv默认创建的环境未安装pip。实际创建两个临时环境对照：无seed的`python -m pip --version`退出1、提示No module named pip；加入`--seed`后退出0，提供pip26.3/Python3.12。证据保留于/tmp/genai-uv-pip-rnzgonrf/result.json。
+
+修改仅为README备用命令添加`--seed`并说明带pip；标准python venv入口与hash依赖安装保持原协议。此修订覆盖实际首次运行故障，未改变项目算法或依赖。文档/diff检查通过后单独保存检查点。SVD阅读卡已保存a36698a，预训练权重下载与自回归材料仍继续处理。

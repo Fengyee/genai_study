@@ -36,7 +36,7 @@ python -m pip install --no-build-isolation --no-deps -e .
 python -m genai_study.experiment --method flow --steps 800 --output artifacts/first-flow
 ```
 
-如果使用本任务准备好的云环境，直接 `source .venv/bin/activate` 后运行实验。没有系统 Python 3.12 时可用预装的 `uv venv --python 3.12 .venv`；云环境写缓存遇权限问题时给 uv 设置 `UV_CACHE_DIR=/workspace/.cache/uv`。
+如果使用本任务准备好的云环境，直接 `source .venv/bin/activate` 后运行实验。没有系统 Python 3.12 时可用预装的 `uv venv --python 3.12 --seed .venv` 创建带 pip 的环境；云环境写缓存遇权限问题时给 uv 设置 `UV_CACHE_DIR=/workspace/.cache/uv`。
 
 成功标志是进程退出码为 0，并生成 `metrics.json`、`samples.npz`、`samples.png`、`loss.png` 和 `checkpoint.pt`。接着对照数据与生成分布的并排图、留出损失和诊断指标，判断分布拟合情况。数值和本机耗时见 [实测报告](docs/experiment-report.md)；安装会下载百 MiB 量级的 CPU torch wheel，具体大小以固定版本安装输出为准；连同其他依赖和缓存，需预留数 GB 空间。
 
