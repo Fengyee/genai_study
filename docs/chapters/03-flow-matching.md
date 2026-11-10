@@ -31,6 +31,16 @@ $$
 
 这里的 CFM 指 conditional flow matching。时间无物理单位；速度是“数据单位 / 归一化时间”。网络输出与 $x_t$ 同维，代表速度，不能直接代入 DDPM 的噪声预测公式。
 
+**与原论文的参数差别**：Lipman et al. 的 arXiv v2 公式 (20)–(23) 使用正的终点噪声标准差 $\sigma_{\min}$，对应
+
+$$
+x_t=[1-(1-\sigma_{\min})t]z+ty,\qquad
+\dot x_t=y-(1-\sigma_{\min})z.
+$$
+
+其终点为 $y+\sigma_{\min}z$，边缘分布是目标数据经过小高斯平滑的结果。本仓库使用 $\sigma_{\min}=0$ 的端点极限，得到上面的 $y-z$ 目标；条件分布在 $t=1$ 退化到数据点，不能把论文针对正条件方差、可逆条件映射的推导不加说明地套到该端点。训练从 $[0,1)$ 抽样，Euler 在最后一次更新前的时间评价网络；这不会自动证明任意离散目标的端点 ODE 正则性。核对位置与范围见 [来源审计](../source-audit.md)。
+
+
 ## 2. 条件路径很多，为什么只学一个速度场？
 
 同一个 $(x,t)$ 可以由许多不同的 $(z,y)$ 产生，直线之间也可以交叉。平方损失的最优解是
@@ -180,6 +190,6 @@ $$
 - Meta 官方 `facebookresearch/flow_matching`：[固定版本 `affine.py`](https://github.com/facebookresearch/flow_matching/blob/11568d37f8d5a080e12aa7b5305d9c35ae07d136/flow_matching/path/affine.py)。2026-11-10 核对了 $x_t=\sigma_t x_0+\alpha_t x_1$ 与导数目标，以及 `CondOTProbPath` 的 $\alpha_t=t,\sigma_t=1-t$。这是后续官方软件实现，不能当作 2023 论文最初发布的代码版本。
 - Liu, Gong, Liu, **Flow Straight and Fast: Learning to Generate and Transfer Data with Rectified Flow**, ICLR 2023：[论文](https://arxiv.org/abs/2209.03003)。用于对照 rectification 与耦合更新；本仓库未实现 reflow。
 
-核验边界：本轮云环境无法访问 arXiv，官方固定版本代码可访问并已核对；条件期望分解、弱连续性方程与高斯例子在本章独立推导。后续应补充论文全文的逐项核验，不能把二维结果解释为论文级别的模型复现。
+核验边界：2026-11-10 恢复网络后，已下载并核对 `arXiv:2210.02747v2` 的公式 (5)–(15)、(20)–(23)、(26) 及相关定理条件，并补充本仓库零终点噪声与原文正终点噪声的区别。版本、PDF 哈希、页码和未覆盖范围见 [来源审计](../source-audit.md)。这不是整篇论文实验的复现，也未核验本节其它论文的全文。
 
 下一步：[04 · 图像与视频生成路线](04-image-video-roadmap.md)，将路径、网络结构、条件信息与评价区分开来。
