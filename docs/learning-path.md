@@ -88,6 +88,8 @@ python -m genai_study.experiment --method ddpm --steps 800 --output artifacts/fi
 
 图像编辑方向接着读 [FLUX.1 Kontext阅读卡](readings/flux-kontext-2025.md)：用CPU检查latent打包与时间反向映射，核对参考图token、guidance蒸馏接口及每步调用数，再为编辑完成度和内容保留设计分组评价。视频方向通过Wan卡对照时空表示与条件接口。
 
+视频训练基础可先读 [SVD与CogVideoX对照](readings/video-training-svd-cogvideox.md)：追踪图像初始化、视频训练与任务微调，独立计算49帧的潜压缩与token数，并说明VP的`v_prediction`和本仓库flow速度各自的定义。
+
 ## 无需训练的视频时序实践
 
 完成05的评价基础后，在同一环境首次运行下列命令。若已生成`artifacts/video-counterexample`，直接复用结果阅读06章和04章；重做时将`--output`改为新目录。

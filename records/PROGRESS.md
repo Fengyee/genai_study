@@ -219,3 +219,13 @@ f95d055对应GitHub run42847424682 completed/success，证明本轮图像/课程
 - 下一步资源证据（只读，2026-11-10）：当前torch为CPU构建，CUDA不可用；/dev中无nvidia设备，/proc/driver/nvidia/gpus不存在。cgroup memory.max=34359738368（32GiB），cpu.max=400000/100000（约4核配额），进程affinity为5个CPU；当时/workspace空闲59.49GiB。可据此评估小型预训练图像CPU推理，实际权重大小、峰值内存和运行时间仍需选定模型后核对。
 - 本次新增源代码、课程、实测、来源和图像均已保存并推送；这次后续提交只补交付/资源记录与backlog。下一轮恢复时先核对git status、HEAD/远端与PR checks，重新取得协作锁，再按BACKLOG推进。
 - main仍为初始化cefe9c1。每小时质量检查定义在PR中，实际位置为GitHub Actions，UTC每小时:17；自动PR和手动事件已验证，尚无schedule事件。环境未重新发布，网站未部署，持续编码调度与Bark/Codex主动通知缺可调用入口/绑定。最新工具搜索亦未发现相应入口。
+
+## 轮次17：补齐SVD与CogVideoX训练证据
+
+恢复核对：本地与远端feature均为6931a9c、main仍cefe9c1，工作区起始干净；6931a9c对应自动PR run42861179002已completed/success。已重新取得协作写锁，继续自主迭代。
+
+问题：04章此前仅核对SVD/CogVideoX公开README，缺训练研究与具体权重之间的连接。新增对照阅读卡，固定SVD 2311.15127v1、CogVideoX 2408.06072v3、官方代码与三个模型revision；记录数据筛选、阶段训练、VP预条件、条件路径、时间压缩、许可和评价协议。CogVideoX论文Table6与发布2B配置的heads/time embedding/精度差异，以及后续论文能力与早期权重接口的差异均保留。
+
+验证：主代理逐字执行卡片CPU块，VP还原、零SNR端点、帧轴引导、49→13潜帧与17550视觉tokens通过；独立核对81帧外推注意力元素数比例2.5842515845。重新读取两PDF计算SHA，与卡片相符；SVD Table1的577M/152M单位核对为clips。相关视频测试5 passed（1.48秒）。卡片已接入README、学习路线、04及SOURCES，文档链接和diff检查通过。
+
+并行工作未提交：SD1.4可选CPU实践已固定原作者revision、许可和5.106GiB模型文件；独立venv的43项hash锁依赖安装、pip check、pipeline导入通过，原有24项依赖版本保持。完整权重下载和真实推理继续进行；预训练相关新文件暂存工作区，按后续轮次验证后提交。自回归teacher forcing/因果掩码补充正在实施。环境未重新发布、网站未部署、小时schedule仍等待默认分支合入。

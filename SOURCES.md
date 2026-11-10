@@ -38,3 +38,5 @@
 [08条件丢弃与引导](docs/chapters/08-image-guidance-lab.md) 沿用已核验CFG的双分支训练结构和FM的速度回归目标，明确采用教学速度组合。空条件的总体最优回归、类别相关丢弃的先验变化及高斯终点密度反例为独立推导；[三seed实测](docs/image-guidance-report.md)保存本仓库原始图形模型的条件响应、几何、裁剪和成本。
 
 [FLUX.1 Kontext 2025阅读卡](docs/readings/flux-kontext-2025.md) 固定v2报告、官方代码commit和单一dev模型卡/许可证revision，核对参考图token、时间/速度变换、guidance蒸馏、NFE以及编辑评价。CPU实际验证latent打包/还原与解析积分；24GB权重存储为按作者12B参数估算的理论数量，权重推理成本待测。
+
+[SVD与CogVideoX训练阅读卡](docs/readings/video-training-svd-cogvideox.md) 固定SVD v1、CogVideoX v3、官方源码及三个具体模型revision，核对训练阶段、数据筛选、VP预条件、时间压缩与帧率；保留论文和发布配置的结构/精度/能力差异。CPU检查验证VP还原、帧轴引导与token尺寸；视频性能数字归属作者及其协议。

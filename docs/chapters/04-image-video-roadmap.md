@@ -68,6 +68,8 @@ DiT 论文将 $256\times256\times3$ 图像编码为 $32\times32\times4$ 潜变�
 - **Stable Video Diffusion（2023 预印本）**：阅读数据筛选与分阶段训练。固定官方 README 的 SVD/SVD-XT 发布面向**图像到视频**，输入契约应从对应权重与推理入口核对。
 - **CogVideoX（2024 首发）**：阅读 3D 视频压缩与 Transformer 设计，核对具体模型版本支持的条件、分辨率和时长。后续仓库版本可能扩展能力，不应回写成 2024 首发论文的结论。
 
+配套 [SVD与CogVideoX训练阅读卡](../readings/video-training-svd-cogvideox.md) 已核验固定全文与发布配置：SVD的预条件去噪、分阶段训练和帧轴引导，CogVideoX的时间压缩、联合注意力和VP目标，均附可执行CPU检查。论文报告与具体权重的帧数、精度、结构及许可差异集中记录。
+
 **研究反例。** 每帧都很清晰，但角色服装不断变化；单帧图像质量指标可能很好，视频整体仍失败。平均帧级指标不能代替时间一致性检查。先用 [06 视频时序实验](06-video-temporal-lab.md) 检验更简单、可精确控制的情形：保持一组光点帧完全相同，只打乱顺序，即可改变运动。静止对照进一步说明“相邻帧变化越小越好”可能奖励不动的输出。
 
 ## 6. 评价协议先于排行榜
@@ -184,7 +186,7 @@ $s=5$。展开两式后，有条件项系数均为5，无条件项系数均为�
 - [SVD · `e8cd657`](https://github.com/Stability-AI/generative-models/blob/e8cd657656fa5d61688191730d0e03242bf4ed44/README.md)：公开 SVD 标为 image-to-video，区分它与仓库后续其它模型。
 - [CogVideoX · `7a1af71`](https://github.com/THUDM/CogVideo/blob/7a1af7154511e0ce4e4be8d62faa8c5e5a3532d2/README.md)：3D Causal VAE，以及图像到视频功能是后续单独发布的模型变体。
 
-发布环境后已恢复 arXiv 访问，LDM/CFG/DiT 的上述主张已对照固定 PDF 核验；SVD/CogVideoX 本轮复核固定 README 的公开接口与发布记录。其余视频论文的训练细节与效果仍在后续核验队列。权重运行记录见项目执行进度。
+发布环境后已恢复 arXiv 访问，LDM/CFG/DiT 的上述主张已对照固定 PDF 核验；SVD/CogVideoX的训练论文、公开配置和许可进一步整理于配套阅读卡。视频权重运行与效果复现仍在后续实践队列，状态见项目执行进度。
 
 ## 进一步阅读：把结构映射到真实系统
 
