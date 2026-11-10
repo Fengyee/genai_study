@@ -84,7 +84,7 @@ python -m genai_study.experiment --method ddpm --steps 800 --output artifacts/fi
 
 ## 无需训练的视频时序实践
 
-完成 05 的评价基础后，在同一环境运行：
+完成05的评价基础后，在同一环境首次运行下列命令。若已生成`artifacts/video-counterexample`，直接复用结果阅读06章和04章；重做时将`--output`改为新目录。
 
 ```bash
 python -m genai_study.video_diagnostics --output artifacts/video-counterexample

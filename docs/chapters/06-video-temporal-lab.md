@@ -63,7 +63,7 @@ $$
 
 ## 3. 直接运行与检查输出
 
-完成 [README](../../README.md) 的依赖安装，在仓库根目录执行：
+完成 [README](../../README.md) 的依赖安装，在仓库根目录首次执行以下命令。若已按学习路线或04章生成`artifacts/video-counterexample`，直接查看现有指标和拼图；重做时选择新输出目录。
 
 ```bash
 python -m genai_study.video_diagnostics --output artifacts/video-counterexample

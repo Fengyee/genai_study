@@ -155,7 +155,7 @@ $$
 
 ### 第二步：冻结模型，单独改变采样步数
 
-训练完成后，复用其 `checkpoint.pt`：
+训练完成后，复用其`checkpoint.pt`执行以下命令。若已生成`artifacts/image-solver`，直接读取现有结果完成本节与练习E；重做采样对照时选择新输出目录。
 
 ```bash
 python -m genai_study.image_solver_study \

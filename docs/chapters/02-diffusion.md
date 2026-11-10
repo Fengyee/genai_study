@@ -120,7 +120,7 @@ $$
 
 ## 5. 动手：二维八高斯
 
-先完成 [README](../../README.md) 的依赖安装，在仓库根目录运行：
+先完成 [README](../../README.md) 的依赖安装。若已有README的`artifacts/first-ddpm`或下列命令的`artifacts/ddpm`，可以直接复用结果阅读本节。首次运行时在仓库根目录执行；重做实验时选择新输出目录：
 
 ```bash
 python -m genai_study.experiment --method ddpm --steps 800 --seed 7 --output artifacts/ddpm

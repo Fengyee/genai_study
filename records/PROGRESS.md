@@ -154,3 +154,11 @@ f95d055对应GitHub run42847424682 completed/success，证明本轮图像/课程
 验证：独立高斯解析推导与四个alpha_bar值的协方差检查通过；`pytest -q tests/test_toy.py`为14 passed（0.79秒）。未改变算法、共享符号或依赖。文档链接及diff检查随本轮提交执行。
 
 全路径复查还验证三组图像raw/clipped RMS与05 coverage-trap原代码，并发现跨入口视频/solver目录复用遗漏；下一轮直接修复这些命令提示。IS/PR/FVD/KID原文核验正并行实施，未完成文件保留在工作区直到验证后提交。
+
+## 轮次13：消除跨章节命令的重复执行卡点
+
+问题与证据：学习路线→06→04重复使用`artifacts/video-counterexample`；实际首次执行退出0，第二次退出2并报告非空目录。03→examples的`flow-solver`、07→examples的`image-solver`也重复，已有checkpoint的提示尚未说明如何复用已完成的采样。
+
+实施：将首次执行、复用结果、换目录重做的说明放到各命令前；02/03也明确复用README训练及对应checkpoint路径。保持现有输出保护和算法行为。独立只读复查覆盖README、学习路线、00–07、examples及相关实现，DDPM/flow时间方向、二维/图像RMS归约一致；05原代码的coverage-trap得到8模式和12.5%邻域比例，三组图像原始数组RMS复算通过。
+
+验证：触发重复目录故障的实际CLI已确认；本轮仅改文档，执行本地链接与diff检查。无需重复训练或安装。

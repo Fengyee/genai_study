@@ -37,7 +37,7 @@ python -m genai_study.experiment --method flow --steps 800 --output artifacts/fl
 
 ## 固定模型，单独研究 Euler 求解步数
 
-复用上面的 flow 训练结果。`checkpoint.pt` 保存推理权重、架构和训练配置；精确续训还需优化器等状态，当前文件未包含这些状态。旧版实验若缺少 checkpoint，请在新目录重新训练。然后运行：
+复用上面的flow训练结果。`checkpoint.pt`保存推理权重、架构和训练配置；精确续训还需优化器等状态，当前文件未包含这些状态。旧版实验若缺少checkpoint，请在新目录重新训练。首次比较时运行下列命令；若已按03章生成`artifacts/flow-solver`，直接读取结果。重做对照时将`--output`改为新目录。
 
 ```bash
 python -m genai_study.solver_study --checkpoint artifacts/flow/checkpoint.pt --steps 10 25 100 200 --samples 2048 --seed 123 --output artifacts/flow-solver
@@ -55,7 +55,7 @@ Checkpoint 载入要求：使用本仓库训练命令产生并由自己保管的
 
 ## 小图像：从训练到独立求解器实验
 
-图像模型使用独立的命令和 checkpoint 格式。第一次运行按顺序执行；已有训练 checkpoint 时直接执行第二条：
+图像模型使用独立的命令和checkpoint格式。首次运行按顺序执行；已有训练checkpoint时执行第二条。若已按07章生成`artifacts/image-solver`，直接复用采样对照结果；重做时将对应`--output`改为新目录。
 
 ```bash
 python -m genai_study.image_flow --steps 1500 --seed 7 --output artifacts/image-flow

@@ -92,7 +92,7 @@ $$
 
 ### 已提供：无需模型的视频评价反例
 
-完成 README 的安装后，在仓库根目录运行：
+完成README的安装后，在仓库根目录首次运行以下命令。若已按学习路线或06章生成`artifacts/video-counterexample`，直接复用结果；重做时将`--output`改为新目录。
 
 ```bash
 python -m genai_study.video_diagnostics --output artifacts/video-counterexample

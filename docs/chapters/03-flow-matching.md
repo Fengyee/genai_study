@@ -108,7 +108,7 @@ $$
 
 ## 5. 动手：与 DDPM 共用数据分布
 
-在完成 [README](../../README.md) 的安装后，从仓库根目录运行：
+完成 [README](../../README.md) 的安装后，从仓库根目录首次运行以下命令。若已有README或实验说明中的flow结果，可直接复用；例如使用`artifacts/first-flow`时，下文的`--checkpoint`也相应改为`artifacts/first-flow/checkpoint.pt`。重训请选择新输出目录。
 
 ```bash
 python -m genai_study.experiment --method flow --steps 800 --seed 7 --output artifacts/flow
@@ -127,7 +127,7 @@ python -m genai_study.experiment --method flow --steps 800 --seed 7 --output art
 
 ### 可运行的求解器对照
 
-完成上面的训练后运行：
+完成上面的训练后运行以下独立采样命令。若`artifacts/flow-solver`已有结果，直接读取其JSON和图；重新比较时将`--output`改为新目录。
 
 ```bash
 python -m genai_study.solver_study --checkpoint artifacts/flow/checkpoint.pt \
