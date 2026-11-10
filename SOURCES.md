@@ -29,7 +29,7 @@
 
 [评价来源核验](docs/evaluation-source-audit.md) 对照 Heusel v6、Chong/Forsyth v3、Parmar v3，核验 FID 定义、模型依赖的有限样本偏差、resize与压缩协议，并用矩阵恒等式和均值偏差解析例交叉检查。固定 PDF 的 SHA、页码与适用条件均在索引中记录。
 
-[生成模型来源核验](docs/generative-source-audit.md) 对照 VAE、GAN、Real NVP 与 Neural ODE 固定版本，核验ELBO与支持集、对抗目标、变量替换及连续流负散度公式；提供可运行的高斯/离散分布解析检查，并记录Neural ODE v6对历史NFE实验报告的修订。
+[生成模型来源核验](docs/generative-source-audit.md) 对照 PixelRNN、VAE、GAN、Real NVP 与 Neural ODE 固定版本，核验自回归因果掩码、ELBO与支持集、对抗目标、变量替换及连续流负散度公式；提供八结果联合归一化/标签泄漏和高斯/离散分布解析检查，并记录Neural ODE v6对历史NFE实验报告的修订。
 
 [图像/视频路线来源核验](docs/image-video-source-audit.md) 对照LDM、CFG、DiT固定版本，补齐CFG空条件分支的训练前提、latent patch尺寸推导与成本口径；记录CFG趋势正文与表格的差异，并重新核对SVD/CogVideoX固定官方README的公开接口。
 

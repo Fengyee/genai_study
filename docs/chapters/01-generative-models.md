@@ -21,11 +21,55 @@ $$
 p_\theta(x_1,\ldots,x_D)=\prod_{i=1}^D p_\theta(x_i\mid x_{<i}).
 $$
 
-训练时对观测序列求负对数似然；在适当因果掩码下可以并行计算所有位置的损失。生成时必须按依赖顺序逐个或逐组产生变量。训练并行不等于采样也并行。
+对观测序列 $x$，负对数似然为 $-\sum_i\log p_\theta(x_i\mid x_{<i})$。**教师强制（teacher forcing）**在计算每一项时使用观测到的真实前缀；这直接计算该序列的精确似然。生成时则依次从 $p_\theta(x_1)$、$p_\theta(x_2\mid x_1)$ 等条件分布采样，并把已经生成的值送回网络。
 
-对高维图像，可选择像素序列或压缩后的离散 token。变量顺序、表示压缩和条件分解都会影响代价与归纳偏置。连续输入的条件分布还需要指定输出密度族，不是简单把分类 cross-entropy 原样搬过来。
+PixelRNN 论文中的 PixelCNN 提供一个具体图像例子：按行从左到右遍历像素，每个像素内部按 $R\to G\to B$ 分解条件概率，每个颜色通道是 $0,\ldots,255$ 上的256类分布。用 $D=3HW$ 展平这一顺序后，可以令 logits 为 `[B,256,D]`、整数标签为 `[B,D]`，以分类交叉熵计算各位置的损失。若对 batch 和位置取均值，得到的是平均每颜色通道的 NLL（nat）；再除以 $\log2$ 才是 bit/dim。训练时真实前缀都已知，PixelCNN 可用 masked convolution 同时计算所有位置；采样时每个新值依赖前面已经生成的值。PixelRNN 的循环隐藏状态还带有额外的计算依赖，具体并行度取决于架构。
 
-**反例：** 一个模型记住训练集，训练似然很好；面对不同分布的输入或新组合可能失败。似然训练并不免除泛化检查。
+**因果性要覆盖整个计算路径。** 预测位置 $i$ 时，只允许使用 $x_{<i}$。PixelCNN 第一层 Mask A 排除当前待预测颜色和之后的输入；后续 Mask B 允许读取相同颜色组的隐藏特征，因为第一层已使这些特征只含允许的前缀信息。对常见的自回归 Transformer 接口，可输入 `[BOS,x1,…,x(D−1)]`、以 `[x1,…,xD]` 为标签，再使用允许当前位置的下三角注意力掩码；输入移位和掩码共同保持预测对象与可见前缀一致。
+
+对图像还可选择压缩后的离散 token，需重新说明 token 顺序、码本和解码过程。连续输入的条件分布要指定输出密度族，例如有参数约束的高斯或混合密度；不同表示与预处理下的似然须按同一测度和单位比较。训练似然也需要留出数据验证：记住训练样本可能降低训练 NLL，却未改善新样本或新组合的预测。
+
+### 用八个结果检查因果性与归一化
+
+下面独立构造三个二元变量的自回归模型，无需训练。严格下三角权重使第 $i$ 个 logit 只依赖之前的 bit。枚举全部 $2^3$ 个结果，可以同时检查联合概率总和、并行与逐位置 NLL，以及改变当前/未来输入对预测的影响。
+
+在仓库根目录激活基础环境后运行：
+
+```bash
+python - <<'PY'
+import itertools
+import torch
+import torch.nn.functional as F
+
+dtype = torch.float64
+x = torch.tensor(list(itertools.product([0., 1.], repeat=3)), dtype=dtype)
+weight = torch.tensor([[0., 0., 0.], [.7, 0., 0.], [-.4, 1.2, 0.]], dtype=dtype)
+bias = torch.tensor([-.3, .2, -.1], dtype=dtype)
+logits = x @ weight.T + bias
+logp = -F.binary_cross_entropy_with_logits(logits, x, reduction='none').sum(1)
+
+sequential = torch.zeros(len(x), dtype=dtype)
+for i in range(3):
+    prefix_logit = (x[:, :i] * weight[i, :i]).sum(1) + bias[i]
+    sequential -= F.binary_cross_entropy_with_logits(prefix_logit, x[:, i], reduction='none')
+    changed = x.clone()
+    changed[:, i:] = 1 - changed[:, i:]
+    assert torch.equal((changed @ weight.T + bias)[:, i], logits[:, i])
+assert torch.allclose(logp, sequential, rtol=0, atol=1e-14)
+assert abs(logp.exp().sum().item() - 1) < 1e-14
+
+# A leaking classifier reads the bit it should predict and assigns it probability .9.
+leaky_logits = (2*x - 1) * torch.log(torch.tensor(9., dtype=dtype))
+leaky_logp = -F.binary_cross_entropy_with_logits(leaky_logits, x, reduction='none').sum(1)
+leaky_mass = leaky_logp.exp().sum().item()
+assert abs(leaky_mass - 8 * .9**3) < 1e-14
+print({'joint_mass': logp.exp().sum().item(),
+       'parallel_sequential_error': (logp-sequential).abs().max().item(),
+       'leaky_joint_mass': leaky_mass})
+PY
+```
+
+当前 CPU 环境的实际结果：有效模型的总质量为 `0.9999999999999999`，两种 NLL 计算的最大差为 `0.0`。泄漏模型给每个观测序列的三个正确 bit 都分配0.9，表面 NLL 只有 $-3\log0.9\approx0.3161$ nat，但八个序列的伪联合概率之和为 `5.832`，违反联合概率归一化要求。这个反例检验“预测目标进入了网络输入”的错误；正确 Mask B 传递的是已有因果约束的隐藏特征。
 
 ## 3. VAE：用变分推断处理难积分
 
@@ -168,8 +212,17 @@ $p_X(x)=p_Z(x/2)/2$，即 $\mathcal N(0,4)$。遗漏 $1/2$ 后密度积分等于
 
 </details>
 
+**F · 输入移位与自回归掩码。** 一个 Transformer 直接输入 `[x1,x2,x3]`，用允许当前位置的下三角注意力掩码，在三个位置分别预测同一组标签。可能出现什么问题？如何用扰动检查修正后的接口？
+
+<details><summary>答案</summary>
+
+每个位置都能从自身的输入 embedding 看到标签，网络可以学会复制。可将输入改为 `[BOS,x1,x2]`，标签仍为 `[x1,x2,x3]`，保留下三角掩码并检查其它跨位置运算的因果性。固定前缀 $x_{<i}$，改变 $x_i$ 与之后的输入，位置 $i$ 的预测分布应保持不变。对有效离散自回归模型，从最后一项开始依次求和：每个条件分布和为1，最终联合分布也和为1；正文的八结果枚举直接检查了这一性质。
+
+</details>
+
 ## 原始来源与版本
 
+- van den Oord et al., *Pixel Recurrent Neural Networks*, **ICML 2016**，[arXiv:1601.06759v3](https://arxiv.org/abs/1601.06759v3)，§2、§3.4–3.5：像素/RGB分解、离散输出、PixelCNN掩码及训练/采样接口。
 - Kingma & Welling, *Auto-Encoding Variational Bayes*, **ICLR 2014**，[arXiv:1312.6114v11](https://arxiv.org/abs/1312.6114v11)，§2–3：ELBO 和重参数化。
 - Goodfellow et al., *Generative Adversarial Nets*, **NeurIPS 2014**，[arXiv:1406.2661v1](https://arxiv.org/abs/1406.2661v1)，§3–4：非饱和损失、最优判别器和理想化散度分析。
 - Dinh et al., *Density Estimation using Real NVP*, **ICLR 2017**，[arXiv:1605.08803v3](https://arxiv.org/abs/1605.08803v3)，§3.1–3.3：变量替换与可计算的耦合层。
@@ -177,6 +230,6 @@ $p_X(x)=p_Z(x/2)/2$，即 $\mathcal N(0,4)$。遗漏 $1/2$ 后密度积分等于
 - Ho et al., *Denoising Diffusion Probabilistic Models*, **NeurIPS 2020**，[arXiv:2006.11239](https://arxiv.org/abs/2006.11239)：去噪训练与生成过程。
 - Lipman et al., *Flow Matching for Generative Modeling*, **ICLR 2023**，[arXiv:2210.02747](https://arxiv.org/abs/2210.02747)：概率路径与条件 flow matching。
 
-2026-11-10 已按固定版本核对以上前四篇的指定公式和条件，PDF 哈希、页码、独立解析检查及 Neural ODE v6 的实验修订说明见 [01 章来源审计](../generative-source-audit.md)。正式发表年份与所读 arXiv 修订日期分别记录；本轮验证范围为数学主张和教学例子。
+2026-11-10 已按固定版本核对 PixelRNN、VAE、GAN、Real NVP 和 Neural ODE 的指定公式和条件，PDF 哈希、页码、独立解析检查及 Neural ODE v6 的实验修订说明见 [01 章来源审计](../generative-source-audit.md)。正式发表年份与所读 arXiv 修订日期分别记录；本轮验证范围为数学主张和教学例子。
 
 下一步：[02 扩散](02-diffusion.md)，再读 [03 Flow matching](03-flow-matching.md)。
