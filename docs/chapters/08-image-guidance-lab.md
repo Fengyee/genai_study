@@ -277,3 +277,5 @@ $$
 - Ho & Salimans, *Classifier-Free Diffusion Guidance*，[arXiv:2207.12598v1](https://arxiv.org/abs/2207.12598v1)，Algorithm1–2、式(6)：随机丢弃条件、共享网络和两种预测的组合。固定PDF哈希、页码与原始实验条件见 [图像路线来源核验](../image-video-source-audit.md)。原文预测噪声，本章明确预测直线路径速度。
 - Lipman et al., *Flow Matching for Generative Modeling*，[arXiv:2210.02747v2](https://arxiv.org/abs/2210.02747v2)：条件与边缘速度、平方误差目标；固定原文与适用条件见 [核心公式审计](../source-audit.md) 和 [03章](03-flow-matching.md)。条件丢弃后两种回归目标的条件期望等式在本章独立展开。
 - 本章图形、采样代码与对照设计为项目原创教学内容。继续阅读 [04图像与视频研究路线](04-image-video-roadmap.md) 时，可用本实验的问题清单核对真实系统的条件编码、无条件训练方式、预测参数化、NFE与评价协议。
+
+进一步阅读 [FLUX.1 Kontext图像编辑](../readings/flux-kontext-2025.md)，将本章的类别通道与参考图token对照，并核对蒸馏guidance接口、相反的时间方向及每步网络调用数。

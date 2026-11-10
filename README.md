@@ -16,6 +16,8 @@
 
 接着通过 [08 条件丢弃与引导](docs/chapters/08-image-guidance-lab.md) 训练空条件分支，在相同噪声上比较引导强度、条件响应、数值范围与计算成本。
 
+进入真实系统阅读时，可选 [FLUX.1 Kontext图像编辑](docs/readings/flux-kontext-2025.md) 或 [Wan视频生成](docs/readings/wan-video-2025.md)：两份2025阅读卡均固定原始报告和官方接口，提供可独立核对的条件、token与时间约定。
+
 图像/视频读者还可直接运行 [06 视频时序实验](docs/chapters/06-video-temporal-lab.md)，观察帧集合相同而时间顺序错误的反例。
 
 完整的先修图、实践任务与时间预算见 [学习路线](docs/learning-path.md)。全局 [符号约定](docs/notation.md) 与 [来源核验](SOURCES.md) 帮助跨章阅读。
