@@ -36,6 +36,8 @@ dev 的参数量、许可与采样调用数只用于这一变体。pro/max 的�
 
 ```mermaid
 flowchart LR
+  accTitle: Kontext参考图条件生成
+  accDescr: 参考图经冻结AE得到固定tokens，与目标tokens沿序列轴拼接。Transformer结合文本、时间与guidance预测目标速度，Euler仅更新目标tokens后进入下一步。
   Y[参考图像] --> AE[冻结的 AE]
   AE --> R[固定参考 latent tokens]
   N[目标高斯噪声 tokens] --> S[沿序列轴拼接]

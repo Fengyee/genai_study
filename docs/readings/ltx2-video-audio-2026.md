@@ -12,6 +12,8 @@
 
 ```mermaid
 flowchart LR
+  accTitle: LTX-2音画联合生成
+  accDescr: 文本经冻结Gemma与特征提取后分别条件化视频和音频流；两路潜噪声通过双向交互更新，视频VAE输出视频帧，音频VAE与vocoder输出立体声音轨。
   C[文本] --> T[冻结Gemma与特征提取]
   T --> TV[视频文本connector]
   T --> TA[音频文本connector]

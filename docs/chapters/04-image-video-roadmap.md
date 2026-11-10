@@ -16,6 +16,8 @@ Latent Diffusion Models（LDM）先学习图像编码器 $E$ 与解码器 $D$，
 
 ```mermaid
 flowchart LR
+  accTitle: 潜空间训练与生成
+  accDescr: 训练图像经编码器成为潜变量，用于训练扩散或流模型；生成时从噪声得到潜变量，再经解码器得到图像。
   A[图像 x] --> B[编码器 E]
   B --> C[潜变量 z]
   C --> D[在潜空间训练扩散或流]

@@ -33,6 +33,8 @@
 
 ```mermaid
 flowchart LR
+  accTitle: SD1.4文本到图像推理
+  accDescr: 提示与空文本经CLIP编码；初始潜噪声结合两组文本条件重复执行U-Net与DDIM更新。生成潜变量除以0.18215，经VAE解码、安全检查与后处理输出512×512 RGB图像。
   P[文本提示与空文本] --> T[CLIP tokenizer 与文本编码器]
   T --> C[两组 77×768 条件]
   N[1×4×64×64 初始高斯噪声] --> U[按时间点重复 U-Net 与 DDIM 更新]

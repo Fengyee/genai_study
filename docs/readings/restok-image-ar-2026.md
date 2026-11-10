@@ -12,6 +12,8 @@ ResTok（Residual Tokenizer）学习把图像压缩为有层次的离散码；�
 
 ```mermaid
 flowchart LR
+  accTitle: ResTok重建与生成路径
+  accDescr: 训练图像经编码和VQ量化产生离散索引，解码器完成重建；HAR学习类别条件分布，生成时先逐个后分组采样新索引，再复用解码器。
   X[训练图像] --> E[CNN 与分层 ViT 编码器]
   E --> Q[VQ 码本量化]
   Q --> Z[最多128个离散索引]
