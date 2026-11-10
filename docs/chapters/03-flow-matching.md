@@ -90,7 +90,7 @@ $$
 
 固定一对端点的直线路径具有简单的传输解释，但独立端点耦合通常不是源分布与目标分布之间的最优传输耦合。不能因使用线性插值就声称实现了全局 OT、最少步采样或更高质量的图像生成。
 
-“Flow matching”“rectified flow”“diffusion velocity parameterization”之间有联系，也有不同的路径、耦合和训练约定。只看到一个变量名 `v`，不足以认定方法相同；先写出 $x_t$ 和目标的定义。
+“Flow matching”“rectified flow”“diffusion velocity parameterization”之间有联系，也有不同的路径、耦合和训练约定。比较名为 `v` 的预测量时，先写出各自的 $x_t$ 和目标定义，再核对路径、耦合与训练约定。
 
 ## 4. 采样为什么需要 ODE 求解器
 
@@ -120,7 +120,7 @@ python -m genai_study.experiment --method flow --steps 5000 --seed 7 --output ar
 
 - DDPM 的标签是噪声，flow 的标签是端点差，尺度与难度不同。两者最终 MSE 不能直接排名。
 - 最近中心距离可能奖励模式坍塌；模态覆盖只反映模式是否出现，不能保证权重或形状正确。结合覆盖、模式附近比例、energy distance 和图形判断。
-- 较低训练损失不代表时间积分准确。冻结同一模型、固定同一组初始噪声，分别使用 10、25、100、200 步积分，比较结果，这才是在隔离求解器步数的影响。训练命令会保存 `checkpoint.pt`；使用下面的独立求解器实验冻结同一个模型及初始噪声，不要重新训练四次后声称控制了模型。
+- 单独检查时间积分的影响：训练命令会保存 `checkpoint.pt`；用下面的独立求解器实验载入这一模型，固定同一组初始噪声，分别使用 10、25、100、200 步积分并比较结果。这样可以在保持模型拟合程度相同的条件下观察求解器步数的影响。
 - 一次固定 seed 的运行只能证明该配置下的观测；方法比较应使用多个训练 seed，报告变化范围及运行成本。
 
 **理论预期**：充分拟合的速度场与足够准确的积分应把源分布搬运到八高斯附近。**实际测量**：以运行输出为准。**未验证范围**：高维图像或视频、语义条件控制、最优传输耦合、似然评价及大规模训练。
@@ -190,7 +190,7 @@ $$
 - Meta 官方 `facebookresearch/flow_matching`：[固定版本 `affine.py`](https://github.com/facebookresearch/flow_matching/blob/11568d37f8d5a080e12aa7b5305d9c35ae07d136/flow_matching/path/affine.py)。2026-11-10 核对了 $x_t=\sigma_t x_0+\alpha_t x_1$ 与导数目标，以及 `CondOTProbPath` 的 $\alpha_t=t,\sigma_t=1-t$。这是后续官方软件实现，不能当作 2023 论文最初发布的代码版本。
 - Liu, Gong, Liu, **Flow Straight and Fast: Learning to Generate and Transfer Data with Rectified Flow**, ICLR 2023：[论文](https://arxiv.org/abs/2209.03003)。用于对照 rectification 与耦合更新；本仓库未实现 reflow。
 
-核验边界：2026-11-10 恢复网络后，已下载并核对 `arXiv:2210.02747v2` 的公式 (5)–(15)、(20)–(23)、(26) 及相关定理条件，并补充本仓库零终点噪声与原文正终点噪声的区别。版本、PDF 哈希、页码和未覆盖范围见 [来源审计](../source-audit.md)。这不是整篇论文实验的复现，也未核验本节其它论文的全文。
+核验范围：2026-11-10 恢复网络后，已下载并核对 `arXiv:2210.02747v2` 的公式 (5)–(15)、(20)–(23)、(26) 及相关定理条件，并补充本仓库零终点噪声与原文正终点噪声的区别。版本、PDF 哈希、页码和未覆盖范围见 [来源审计](../source-audit.md)。本次核验覆盖上述公式与条件；整篇论文的实验复现及本节其它论文的全文核验仍待开展。
 
 下一步：[05 评价与实验诊断](05-evaluation.md)，随后完成07/08图像实践与06视频反例，再进入[04研究路线](04-image-video-roadmap.md)。
 
