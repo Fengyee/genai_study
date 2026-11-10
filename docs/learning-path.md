@@ -98,6 +98,8 @@ python -m genai_study.experiment --method ddpm --steps 800 --output artifacts/fi
 
 离散图像生成可沿01的因果分解进入 [ResTok 2026](readings/restok-image-ar-2026.md)：先区分tokenizer和生成器，推导128个索引的9轮分组规则，再用两个相关bit检查组内条件独立的代价。对照09的连续latent、噪声CFG和DDIM，记录两类表示、预测量与成本口径。
 
+视频联合建模沿Wan进入 [LTX-2 2026](readings/ltx2-video-audio-2026.md)：用敲击事件检查音画边缘与联合，展开顺序条件分解，核对sigma时间、音视频token及8+3区间的真实调用数。该卡只需基础CPU环境完成解析检查，完整权重实践另需资源和访问条件。
+
 ## 无需训练的视频时序实践
 
 完成05的评价基础后，在同一环境首次运行下列命令。若已生成`artifacts/video-counterexample`，直接复用结果阅读06章和04章；重做时将`--output`改为新目录。

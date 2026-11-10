@@ -24,6 +24,8 @@
 
 2026专题从 [ResTok图像自回归](docs/readings/restok-image-ar-2026.md)进入：用128个token、9轮采样连接离散表示与分组条件独立，并核对论文指标、公开实现和安装依赖。
 
+视频方向可接着读 [LTX-2音画联合生成](docs/readings/ltx2-video-audio-2026.md)，用链式分解、声画配对反例和源码循环核对联合建模、条件引导及两阶段采样成本。
+
 图像/视频读者还可直接运行 [06 视频时序实验](docs/chapters/06-video-temporal-lab.md)，观察帧集合相同而时间顺序错误的反例。
 
 完整的先修图、实践任务与时间预算见 [学习路线](docs/learning-path.md)。全局 [符号约定](docs/notation.md) 与 [来源核验](SOURCES.md) 帮助跨章阅读。
