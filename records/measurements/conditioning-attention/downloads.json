@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://raw.githubusercontent.com/CompVis/latent-diffusion/a506df5756472e2ebaf9078affdde2c4f1502cd4/ldm/modules/attention.py",
+    "file": "ldm-attention.py",
+    "bytes": 8531,
+    "sha256": "012198f441427ef892da0b6efc5ea9fae8e414aefcc65504577b41c2afd3526e"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/openai/CLIP/cfcffb90e69f37bf2ff1e988237a0fbe41f33c04/clip/model.py",
+    "file": "openai-clip-model.py",
+    "bytes": 17242,
+    "sha256": "a8dd35d7ba5877e61fd4de3379ee0cd8a8c3962c50403c2949ad0961d5a02793"
+  }
+]

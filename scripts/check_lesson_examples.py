@@ -21,6 +21,7 @@ import time
 
 
 EXAMPLES = {
+    "conditioning-attention": "docs/readings/conditioning-attention.md",
     "diffusion-flow-bridge": "docs/readings/diffusion-flow-bridge.md",
     "autoregressive-causality": "docs/chapters/01-generative-models.md",
     "coverage-counterexample": "docs/chapters/05-evaluation.md",

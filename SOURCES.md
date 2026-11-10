@@ -54,3 +54,5 @@
 [扩散与Flow Matching理论衔接](docs/readings/diffusion-flow-bridge.md)固定Score-SDE `2011.13456v2`（PDF SHA `b244b740e60628d01bc3d4b98d721c2343be1fb9b67ad22593c8555e66f4d4a6`）与原作者JAX commit `0acb9e0ea3b8cccd935068cd9c657318fbc6ce4c`，核对式(6)/(7)/(13)/(35)–(37)、概率流0.5系数和T→eps积分。重新核对DDIM v4式(13)–(15)；独立推导后验均值、路径速度、VP参数化和坐标变换，并以解析Gaussian边缘/轨迹、符号错误反例与有限Euler误差验证。JAX项目仅做源码核对；实际CPU代码块使用基础NumPy并纳入质量检查。
 
 [DDPM解析oracle对照](docs/ddpm-oracle-report.md)沿用已固定DDPM v2的正向边缘、条件后验及噪声均值公式，独立推导全协方差遗漏项、平稳方差递推与八高斯score。正式三seed运行复用现有采样器，记录21份数组身份与独立复算；无需训练或新增外部权重。原始运行与seed参数边界修复后的来源分别归档于[测量索引](records/measurements/oracle-study/README.md)。
+
+[条件注意力专题](docs/readings/conditioning-attention.md)重新核对LDM v2 §3.3、固定CompVis attention.py与OpenAI CLIP源码，连接SD1.4的last_hidden_state和SVD的全局image_embeds/参考latent。Diffusers0.35.2 commit `b71269675ec1b85193107a691dd35c308e46f0a5`与Transformers4.57.6 commit `753d61104116eefc8ffc977327b441ee0c8d599f`的五份相关源码和本地安装逐字节一致。CPU检查包含SDPA对照、单token零梯度、mask联合置换和两键sigmoid导数；来源身份及独立检查见[记录](records/measurements/conditioning-attention/README.md)。

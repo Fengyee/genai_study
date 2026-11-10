@@ -1,6 +1,6 @@
 # 04 · 从二维实验走向图像与视频生成
 
-**先修与依赖：** [02 扩散](02-diffusion.md)、[03 Flow matching](03-flow-matching.md)；建议先读 [05 评价与诊断](05-evaluation.md)，并完成 [06 视频时序反例](06-video-temporal-lab.md)，再设计研究实验。**目标：** 解释从 toy 分布到图像/视频增加了哪些问题；辨别模型、训练方法和采样器；为一个可验证的研究问题设计实验。
+**先修与依赖：** [02 扩散](02-diffusion.md)、[03 Flow matching](03-flow-matching.md)；沿完整路线完成[05评价](05-evaluation.md)、[07图像生成](07-image-flow-lab.md)、[08条件引导](08-image-guidance-lab.md)和[06视频时序反例](06-video-temporal-lab.md)，再设计研究实验。**目标：** 解释从 toy 分布到图像/视频增加了哪些问题；辨别模型、训练方法和采样器；为一个可验证的研究问题设计实验。
 
 **当前范围：** 这是一份以 **2015—2024 年代表工作**为锚点的研究入门路线，连接2025–2026专题阅读卡。可执行路径包括 [07/08的小图像生成与引导](08-image-guidance-lab.md)、[09的预训练SD1.4图像推理](09-pretrained-image-lab.md)，[06的合成视频时序诊断](06-video-temporal-lab.md)，以及[10的SVD视频运行与失败分析](10-pretrained-video-lab.md)。发布尺寸的视频质量基线继续按资源和评价协议推进。
 
@@ -35,7 +35,7 @@ LDM 的自编码器同时使用感知损失和基于局部图块的对抗目标�
 
 ## 3. 条件控制与引导
 
-文本到图像系统通常包含文本表示模型和带条件的生成网络。交叉注意力是一种传递条件的方式，但条件编码器、tokenization、训练数据和损失同样影响文本遵循。
+文本到图像系统通常包含文本表示模型和带条件的生成网络。交叉注意力用当前空间特征查询已编码条件；条件编码器、tokenization、训练数据和损失共同影响文本遵循。配套[条件接口专题](../readings/conditioning-attention.md)从Q/K/V形状推导汇聚过程，对照SD1.4与SVD的CLIP输出，再用单token与mask置换反例检查接口。
 
 Classifier-free guidance（CFG）常把无条件与有条件噪声预测组合为
 
