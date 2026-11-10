@@ -100,3 +100,9 @@ Actions观察：`gh run list`为空，workflows API total_count=0；Actions perm
 - 已观察旧HEAD3a6bd7d的Actions run42845432968 completed/success；恢复记录HEAD3ba066b的run42845617763也success。最新代码提交的检查状态应以PR checks为准，不能把旧SHA成功当新SHA成功。
 - 每小时检查定义已包含图像smoke，但schedule仍需PR合入默认main；目前没有定时运行证据。网站未部署，持续编码调度/通知入口未配置；本轮没有重写或发布环境草稿。
 - 下一项高价值工作：使图像实验支持固定权重/初始噪声的独立求解器分析，量化裁剪与积分误差；之后继续01/04/05主张级原文核验及真实读者自测反馈。自然图像与视频模型仍需算力/许可/评价协议。
+
+## 轮次9：消除远端Actions的真实运行时弃用警告
+
+f95d055对应GitHub run42847424682 completed/success，证明本轮图像/课程集成在远端也通过；但日志提示Node20 Action正被平台强制Node24。依据官方release与固定SHA元数据，更新checkout/setup-python/upload-artifact到声明Node24的稳定版本，并核对runner及上传归档兼容性。仅3行pin变化，未拓宽权限或改变调度触发。详见records/automation-validation.md；新提交的远端运行需在推送后观察。
+
+维护观察：当前gh版本的`gh pr edit`因已退役Projects classic GraphQL字段失败，已通过官方REST PATCH /pulls/1成功更新相同PR标题/正文；没有创建重复PR或发送评论。环境设置保持用户发布状态，本轮没有重新应用旧草稿。

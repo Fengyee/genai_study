@@ -50,3 +50,13 @@
 4. 自动编码前配置真实调度器的认证、费用/时长上限和通知绑定；每个修改入口统一走工作区锁。先使用无副作用命令验证调度、互斥、超时与失败通知，再接入一次一个问题的 PR 工作流。
 
 依赖后续变更：checkpoint功能触发官方CVE检查，torch已从2.5.1升级2.6.0；以上依赖条目已同步。根代理对最终版本重跑质量检查，结果以PROGRESS最新检查点为准。
+
+## 已发布新实例的远端检查与运行时升级
+
+2026-11-10，PR #1已创建；远端run [42847424682](https://github.com/Fengyee/genai_study/actions/runs/42847424682) 在head f95d055完成success，安装/全部质量检查/产物上传均通过。该run报告旧Action仍target Node20并被强制Node24，触发本轮定向维护。
+
+官方release、Git refs及git ls-remote核对后，三个固定pin更新为：checkout v7.0.1（3d3c42e5aac5ba805825da76410c181273ba90b1）、setup-python v7.1.0（6d4fd22b20465ccc0f7354476588e8df7c9ca0e0）、upload-artifact v7.0.2（cf430e030ddbb5b0abf93d22962f4752f3646cd9）。各固定版本action.yml实际声明node24，runner最小2.327.1；前一成功run实际runner2.338.2符合。
+
+兼容性：checkout新增pull_request_target/workflow_run保护不影响本workflow的pull_request；setup-python现有输入兼容；upload-artifact新直接上传选项默认archive=true，现有目录归档保留，仓库无download-artifact消费者。仅修改3行版本pin，权限、事件、参数保持原定义。diff检查通过，新SHA的完整远端运行须查看PR checks，不能用旧SHA结果替代。
+
+官方迁移来源：[checkout v7.0.1](https://github.com/actions/checkout/releases/tag/v7.0.1)、[setup-python v7.1.0](https://github.com/actions/setup-python/releases/tag/v7.1.0)、[upload-artifact v7.0.2](https://github.com/actions/upload-artifact/releases/tag/v7.0.2)。

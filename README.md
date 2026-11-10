@@ -32,7 +32,7 @@ python -m genai_study.experiment --method flow --steps 800 --output artifacts/fi
 
 如果使用本任务准备好的云环境，直接 `source .venv/bin/activate` 后运行实验。没有系统 Python 3.12 时可用预装的 `uv venv --python 3.12 .venv`；云环境写缓存遇权限问题时给 uv 设置 `UV_CACHE_DIR=/workspace/.cache/uv`。
 
-成功标志是进程退出码为 0，并生成 `metrics.json`、`samples.png`、`loss.png` 和 `checkpoint.pt`。查看数据与生成分布并排图，不要仅看 loss 的曲线。**文件生成只是运行成功，分布质量还需诊断。** 数值和本机耗时见 [实测报告](docs/experiment-report.md)；安装会下载约 167 MiB 的 torch wheel，加上其他依赖，需预留数 GB 空间。
+成功标志是进程退出码为 0，并生成 `metrics.json`、`samples.png`、`loss.png` 和 `checkpoint.pt`。查看数据与生成分布并排图，不要仅看 loss 的曲线。**文件生成只是运行成功，分布质量还需诊断。** 数值和本机耗时见 [实测报告](docs/experiment-report.md)；安装会下载百MiB量级的CPU torch wheel，具体大小以固定版本安装输出为准；连同其他依赖和缓存，需预留数GB空间。
 
 接着运行扩散并检查实现：
 

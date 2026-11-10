@@ -6,5 +6,8 @@
   "source_sha256": {
     "src/genai_study/image_flow.py": "8d645de28b0e4609355735c988d994fa9ff4999f89a136d7e146705ab35fd194",
     "requirements-lock.txt": "87c983be2101697e42bcef34553aec0c28e2132ff3c9492c6732561468cc366a"
-  }
+  },
+  "visible_logical_cpus": 5,
+  "torch_threads_used": 1,
+  "reported_cpu_model": "AMD EPYC 9V45 96-Core Processor"
 }
