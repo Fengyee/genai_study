@@ -42,3 +42,5 @@
 [SVD与CogVideoX训练阅读卡](docs/readings/video-training-svd-cogvideox.md) 固定SVD v1、CogVideoX v3、官方源码及三个具体模型revision，核对训练阶段、数据筛选、VP预条件、时间压缩与帧率；保留论文和发布配置的结构/精度/能力差异。CPU检查验证VP还原、帧轴引导与token尺寸；视频性能数字归属作者及其协议。
 
 [09预训练图像实践](docs/chapters/09-pretrained-image-lab.md)使用原作者CompVis的SD1.4 revision `133a221b8aa7292a167afc5127cb63fb5005638b`，逐文件大小/SHA见[manifest](examples/pretrained-sd14/manifest.json)。[LICENSE-model.txt](examples/pretrained-sd14/LICENSE-model.txt)完整保留CreativeML Open RAIL-M原文及原作者通知，适用其自身条款。SD生成样例由[实测报告](docs/pretrained-image-report.md)记录的固定提示、随机种子和配置产生，输出使用同时遵守模型许可第6条。模型权重保存在忽略的本地artifacts目录。
+
+[ResTok 2026阅读卡](docs/readings/restok-image-ar-2026.md)固定2026-01-07首发论文v1、官方代码和两个模型revision，核对128-token层次、训练因果mask、9轮采样、分类CFG及评价协议；保留池化、残差方向、对齐margin和安装版本差异。CPU反例验证分组条件独立的表达约束与索引预算，权重字节数来自Hub元数据。

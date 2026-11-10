@@ -233,3 +233,5 @@ $p_X(x)=p_Z(x/2)/2$，即 $\mathcal N(0,4)$。遗漏 $1/2$ 后密度积分等于
 2026-11-10 已按固定版本核对 PixelRNN、VAE、GAN、Real NVP 和 Neural ODE 的指定公式和条件，PDF 哈希、页码、独立解析检查及 Neural ODE v6 的实验修订说明见 [01 章来源审计](../generative-source-audit.md)。正式发表年份与所读 arXiv 修订日期分别记录；本轮验证范围为数学主张和教学例子。
 
 下一步：[02 扩散](02-diffusion.md)，再读 [03 Flow matching](03-flow-matching.md)。
+
+完成潜空间与评价基础后，可读 [ResTok 2026专题](../readings/restok-image-ar-2026.md)：把逐像素因果分解扩展到学习到的离散token，检验分组采样的归一化、条件独立及调用预算。

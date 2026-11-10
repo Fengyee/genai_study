@@ -264,3 +264,11 @@ f95d055对应GitHub run42847424682 completed/success，证明本轮图像/课程
 原始JSON、软件/源文件hash和验证范围见records/measurements/pretrained-sd14；三张PNG保留于docs/assets且与运行输出相同。模型权重、独立venv与原始噪声保留在忽略目录。1fafe03已推送PR #1且自动run42864845461为success；本轮实现提交后再观察新SHA。ResTok 2026单文件卡已经子任务核验并保留在工作区，下一轮整合；LTX-2侦察材料位于/tmp/genai-ltx2-scout。
 
 运行位置和外部状态：小时质量workflow在GitHub Actions的PR中，main仍cefe9c1，尚无schedule事件；编码代理持久调度及Bark/Codex通知未发现可调用绑定。本轮仅发布仓库feature提交，环境未重新发布，网站未部署。主代理继续持有协作锁。
+
+## 轮次21：连接2026离散图像生成研究
+
+问题：当前近年阅读卡侧重扩散/flow，缺2026首发工作与01自回归因果性的连接。新增ResTok定向阅读卡，固定2601.03955v1（2026-01-07）、官方commit7811bf23及两个模型revision；讲解tokenizer/生成器、128索引/9轮采样、分组条件独立、分类CFG和rFID/gFID协议。论文与发布代码的池化、残差、对齐margin、VQ损失差异，以及README中torch2.6.0/torchvision0.17.2精确依赖冲突均保留证据。
+
+验证：两位代码审查核对训练输入/标签与采样路径，prefill1+NTP3+HAR5=9次调用；所选CFG前两轮1.0001、后七轮3.75，全程batch2。主代理逐字执行CPU块，128token/9轮/1664索引bits通过；固定前缀下两个相关bit的组内独立模型额外NLL为log2、错误组合概率0.5，联合仍归一化。另有分类CFG幂乘积恒等式独立检查通过。主代理重新计算9304728字节PDF SHA，与卡片一致。
+
+本轮只增加教学卡和导航，未下载ResTok权重、未更改算法或依赖。文档已接入README、学习路线、01、04与SOURCES，提交前执行链接/diff检查。SD1.4实现14038b2已推送PR #1，自动run42868818164实际启动；需继续观察结论。LTX-2后续卡正在核验，当前仍持有写锁并推进独立工作。
