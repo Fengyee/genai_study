@@ -4,6 +4,11 @@
 
 ## 当前状态
 
+恢复更新：用户已发布环境，并明确要求继续repo。新实例从已推送的 `3a6bd7d` 恢复，初始工作区干净。GitHub API与arXiv访问实测恢复，已创建 [PR #1](https://github.com/Fengyee/genai_study/pull/1)。环境已发布这一状态替代下文历史检查点的“未发布”；本轮不重复修改或发布环境配置。
+
+恢复后的完整检查 `bash scripts/quality.sh` 退出0：26 tests passed（16.39s）、85本地链接0错误、DDPM/flow/video三条smoke成功；结果目录 `artifacts/quality/20261110T153021Z-IOcPXT`。这验证了新实例恢复后的开发能力。
+
+
 已从空仓库建立课程、CPU实验、规范、依赖锁与自动检查。主分支只含空初始化提交 `cefe9c1`，用于建立PR比较基线；项目内容在 `feat/reproducible-genai-curriculum`。具体推送/PR状态在末尾最新检查点更新，不能由文件存在推断远端已运行。
 
 没有用户已有源文件被覆盖。实际图像/视频模型、预训练权重运行、网站部署和持续编码调度尚未完成。二维模型默认800步显著欠拟合，已作为教学结果如实标注。
@@ -46,13 +51,13 @@
 4. 按PR交付，不强推、不直接合并；自动修改统一经 `scripts/run_agent_locked.sh`，该锁只约束合作入口。
 5. 每轮更新本文件并保存提交；不要把未验证的调度、网站或环境草稿当成已发布能力。
 
-## 外部阻塞与沟通
+## 原始环境的外部阻塞与沟通（历史）
 
 运行实例的网络策略没有api.github.com/arxiv.org；已保存包含api.github.com、arxiv.org、export.arxiv.org的环境草稿，需用户在环境设置应用。GitHub API直接请求报Forbidden，arXiv CONNECT 403；Git HTTPS读写成功。
 
 未发现Bark变量/secret或通知工具；因此不能发送所要求的Bark阻塞通知，也未声称发送成功。未发现编码代理调度入口/预算配置，环境无crontab。GitHub Actions配置需PR合并后才生效。平台Codex推送只能由平台提供的订阅/调度能力接入，当前没有可调用接口。
 
-## 最新检查点
+## 前五轮检查点（历史）
 
 - `bash scripts/quality.sh`：退出0；21 passed（23.51秒）、文档链接0错误、两算法20更新smoke通过，日志目录 `artifacts/quality/20261110T151506Z-bTjSrl`。
 - 随后仅更新报告与链接，`.venv/bin/python scripts/check_docs.py`：70个本地链接、0错误。
@@ -64,3 +69,11 @@
 - 第5轮内容将作为独立提交推送同一功能分支；工作区状态应以恢复时的 `git status` 与 `git ls-remote` 为准。预期无未提交源码，忽略的artifacts为本地复现产物。
 - 小时检查只在PR合入默认分支后激活；目前main仍为空初始化提交，未观察远端Actions执行。网站未部署，编码代理持久调度未部署，环境配置未发布。
 - 下一轮：应用api.github.com/arXiv网络草稿后优先创建PR并核验原始文献；同时可设计CPU极小图像实验。Bark/Codex主动推送仍缺可用接口/绑定，不能声称将于会话外自动继续。
+
+## 轮次6：恢复验证与补齐PR交付
+
+证据：本地HEAD和远端feature分支均为3a6bd7d，main仍cefe9c1。GitHub API返回repo可读/写，arXiv DDPM摘要返回200；未重新申请或复制凭据。查询无既有PR后创建PR #1，状态open，base main。
+
+Actions观察：`gh run list`为空，workflows API total_count=0；Actions permissions接口返回403 Resource not accessible by integration，因此无法推断Actions开关。PR创建成功不等于CI通过。每小时schedule仍需workflow进入默认分支；本轮未合并PR。
+
+恢复后继续最高价值独立任务：07章CPU小图像flow生成、02/03原文核心公式核验、2025视频论文阅读卡。新代码实测与检查完成后分别保存提交到同一PR。自动通知和持续代理调度未出现可用工具或绑定，不能承诺会话外自动运行。
