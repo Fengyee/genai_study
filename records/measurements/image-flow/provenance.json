@@ -1,0 +1,10 @@
+{
+  "date": "2026-11-10",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "scope": "Actual reruns in the published/restored current executor; CPU, seeds7/19/43, 1500 optimizer steps, 40 Euler steps; no old-executor benchmark reused.",
+  "source_sha256": {
+    "src/genai_study/image_flow.py": "8d645de28b0e4609355735c988d994fa9ff4999f89a136d7e146705ab35fd194",
+    "requirements-lock.txt": "87c983be2101697e42bcef34553aec0c28e2132ff3c9492c6732561468cc366a"
+  }
+}

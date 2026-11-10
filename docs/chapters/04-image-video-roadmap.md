@@ -179,3 +179,7 @@ $s=5$。不应因为两个参数都叫 guidance scale 就直接填 4。
 - [CogVideoX · `7a1af71`](https://github.com/THUDM/CogVideo/blob/7a1af7154511e0ce4e4be8d62faa8c5e5a3532d2/README.md)：3D Causal VAE，以及图像到视频功能是后续单独发布的模型变体。
 
 当前云网络对 arXiv 的直接请求返回 403，故本轮没有重新逐篇阅读全文；数学关系采用章内推导与可访问实现交叉核对。引用的论文结论与本项目已验证的运行能力保持区分。
+
+## 进一步阅读：把结构映射到真实系统
+
+完成 [07 CPU小图像实验](07-image-flow-lab.md) 后，可用 [Wan 2025阅读卡](../readings/wan-video-2025.md) 对照图像/视频的潜表示、patch token、时间采样与I2V接口。阅读卡提供固定版本的原文定位与独立token数推导，不代表本仓库已运行Wan或覆盖最新全部进展。

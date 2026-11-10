@@ -10,7 +10,7 @@ bash scripts/quality.sh
 
 脚本优先使用 `.venv/bin/python`；可通过 `GENAI_PYTHON=/absolute/path/to/python` 指定解释器。每次结果写入独立的 `artifacts/quality/<UTC 时间>-<随机后缀>/`，不覆盖旧记录，包括：
 
-- 文档检查、pytest、两个 20 步训练 smoke 实验及视频时序诊断的日志与各自退出码；
+- 文档检查、pytest、两个20步生成smoke、视频时序反例及2步图像flow smoke的日志与各自退出码；
 - pytest JUnit XML、实验图片/指标，以及本轮总退出码 `exit-status.txt`；
 - 检查时间、Git commit、Python 版本。
 
@@ -26,7 +26,7 @@ bash scripts/quality.sh
 | --- | --- |
 | 触发 | PR、推送到 `main`、手动、每小时第 17 分钟（UTC） |
 | 运行位置 | GitHub 托管的 `ubuntu-24.04` runner，Python 3.12 |
-| 范围 | 文档链接、已有测试、DDPM/flow 训练 smoke、视频时序诊断 smoke |
+| 范围 | 文档链接、已有测试、DDPM/flow训练smoke、视频时序诊断、图像flow smoke |
 | 作业总超时 | 25 分钟（含安装） |
 | 并发 | 同一 workflow 与 PR/ref 共用 concurrency group，已有运行不取消 |
 | 权限 | `contents: read`，检查任务无提交或修改仓库权限 |
@@ -56,3 +56,5 @@ GitHub Actions 的 `concurrency` 只约束对应 workflow 的 runs，**不能锁
 每次适配器运行保留 `artifacts/agent-runs/` 中的开始时间、起始 commit、超时、输出与退出码；不记录 argv，也不会自动注入认证、检查费用或发送通知。调用方必须禁止输出凭据，事先配置预算，并在实际代理中执行恢复记录和 PR 工作流。`flock` 是协作式锁：绕过适配器且不取锁的进程仍然能够修改文件；独立 clone 的 Git common directory 也不共享这把锁。它无法防止其他平台或非合作进程写入。适配器的互斥/超时本地验证只证明脚本行为，不证明代理调度已经部署。
 
 最近一次静态与本地故障验证见 [自动化验证记录](../records/automation-validation.md)。
+
+新增图像检查使用2次训练更新、batch4、16张样本、2步Euler，只验证操作路径；默认1500步图形实验另见07章及实测报告。

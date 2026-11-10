@@ -2,7 +2,7 @@
 
 给熟练使用 PyTorch、有研究经验但尚未系统学习生成式 AI 的 CS master / PhD：用清楚的假设、可核对的推导和能在 CPU 上跑通的小实验建立基础，再进入图像与视频生成研究。
 
-**当前版本**：7 个学习单元、二维 DDPM / Flow Matching 训练与采样、无需权重的视频时序反例、自动质量检查。它是一套可运行的基础课程起点；真实图像/视频模型训练、预训练模型实操及完整前沿综述仍在 [backlog](records/BACKLOG.md)。不需要 API key 或下载模型权重。
+**当前版本**：8 个学习单元、二维 DDPM / Flow Matching 训练与采样、16×16 条件卷积图像生成、无需权重的视频时序反例、自动质量检查。它是一套可运行的基础课程起点；真实图像/视频模型训练、预训练模型实操及完整前沿综述仍在 [backlog](records/BACKLOG.md)。不需要 API key 或下载模型权重。
 
 ## 我适合从哪里开始？
 
@@ -11,6 +11,8 @@
 | 第一次接触生成建模 | [00 基础](docs/chapters/00-foundations.md) → [01 生成模型](docs/chapters/01-generative-models.md) | 能区分密度、采样、条件建模与评价 |
 | 想理解扩散和流模型 | [02 扩散](docs/chapters/02-diffusion.md) → [03 Flow Matching](docs/chapters/03-flow-matching.md) | 推导核心训练目标，跑通并解释二维实验 |
 | 准备研究图像/视频 | 完成上述基础 → [04 研究路线](docs/chapters/04-image-video-roadmap.md) | 能选定一个有假设、基线和评价协议的问题 |
+
+图像方向可从 [07 CPU图像生成实验](docs/chapters/07-image-flow-lab.md) 学习BCHW、卷积与类别条件；默认1500步无需下载数据或权重，成本和局限见 [图像实测](docs/image-experiment-report.md)。
 
 图像/视频读者还可直接运行 [06 视频时序实验](docs/chapters/06-video-temporal-lab.md)，观察帧集合相同而时间顺序错误的反例。
 
@@ -44,7 +46,7 @@ bash scripts/quality.sh
 ## 内容边界与常见问题
 
 - 二维八高斯用于学习算法，不能证明高维图像/视频质量，也不是 FID benchmark。
-- 图像/视频部分提供原始论文和研究问题，不把尚未实现的扩展列为已可运行项目。
+- 图像实验生成受控圆盘/方形，视频实验验证时序指标；真实自然图像/视频模型仍是研究路线。新增 [Wan 2025阅读卡](docs/readings/wan-video-2025.md) 帮助对照原始系统，不宣称复现大模型。
 - 首次安装失败：检查 Python 版本与网络允许的 `pypi.org`、`files.pythonhosted.org`、`download.pytorch.org` 和 `download-r2.pytorch.org`；不要关闭 TLS 或删掉 hash 校验。
 - CPU 很慢：使用 `--threads 1`，先降低 `--steps` 与 `--samples` 确认路径。低步数输出不应当成正常模型质量。
 
