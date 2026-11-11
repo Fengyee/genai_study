@@ -1,0 +1,39 @@
+{
+  "object_identity": {
+    "states": [
+      "clear",
+      "ambiguous",
+      "not_observed"
+    ],
+    "cube": "clear requires a coherent cube-like three-dimensional block with visible faces/edges or other convincing volume cues. A flat square or vague angular patch is ambiguous.",
+    "sphere": "clear requires a coherent ball-like rounded volume; a flat disk without sufficiently clear volume cues is ambiguous.",
+    "multiplicity": "Record visible counts of clear cubes/spheres plus extra or merged objects. For each requested target, ambiguity/absence is retained separately; do not select a favorable pair from multiple interchangeable candidates."
+  },
+  "color": {
+    "states": [
+      "red",
+      "blue",
+      "other",
+      "mixed_or_uncertain",
+      "not_assessable"
+    ],
+    "rule": "Judge the visible body of a clearly identified object, allowing watercolor highlights and shading. Dominant red-family or blue-family appearance must be clear; borderline orange/pink/purple/teal or conflicting object colors are mixed_or_uncertain with a descriptive note. If identity is ambiguous/absent, color remains not_assessable. Record observed colors before comparing with the prompt."
+  },
+  "horizontal_relation": {
+    "states": [
+      "cube_left_of_sphere",
+      "cube_right_of_sphere",
+      "uncertain",
+      "not_assessable"
+    ],
+    "eligibility": "Assess geometry independently of whether colors match, when exactly one clear cube and one clear sphere can be uniquely localized. Missing/ambiguous identities, duplicated interchangeable targets, severe merging or unlocalizable crop yield not_assessable with reason.",
+    "rule": "Use image-coordinate left/right. Record approximate visible bounding boxes when reliably localizable; compare their horizontal centers. A center separation of at least5% of image width (25.6px at512px) with a confident ordering supports left/right; closer centers or unreliable localization are uncertain. Record overlap and cropping separately. Bounding boxes are AI-assisted visual annotations, not detector measurements."
+  },
+  "secondary": [
+    "plain white/light neutral background or additional setting",
+    "watercolor-like appearance",
+    "extra objects",
+    "cropping/occlusion/merging",
+    "unexpected border or text"
+  ]
+}

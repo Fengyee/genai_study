@@ -18,7 +18,7 @@
 
 接着通过 [08 条件丢弃与引导](docs/chapters/08-image-guidance-lab.md) 训练空条件分支，在相同噪声上比较引导强度、条件响应、数值范围与计算成本。
 
-希望亲手生成自然图像时，完成潜空间与条件基础后进入 [09 预训练图像实践](docs/chapters/09-pretrained-image-lab.md)。固定权重、文本、初始噪声和 DDIM 配置，运行 CPU 推理并比较引导强度；先对照[实测报告](docs/pretrained-image-report.md)安排下载、内存和时间。
+希望亲手生成自然图像时，完成潜空间与条件基础后进入 [09 预训练图像实践](docs/chapters/09-pretrained-image-lab.md)。固定权重、文本、初始噪声和 DDIM 配置，运行 CPU 推理并比较引导强度；先对照[实测报告](docs/pretrained-image-report.md)安排下载、内存和时间。 [属性与关系案例](docs/sd14-attributes-layout.md)展示八个固定请求的全部原图，练习逐项评价与观察分歧记录。
 
 图像/视频读者还可直接运行 [06 视频时序实验](docs/chapters/06-video-temporal-lab.md)，观察帧集合相同而时间顺序错误的反例。
 
