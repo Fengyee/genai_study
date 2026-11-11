@@ -38,3 +38,5 @@
 模型来源与生成图片许可沿用[SD1.4资产说明](../../../SOURCES.md)。两位观察者均为AI代码代理，真实读者标注仍待收集。目录内计划与原始JSON保留当时措辞和源码路径，当前实测状态以上文和报告为准。
 
 固定b9be847的[实际GitHub阅读验收](reader-check.json)与[源码/图像核对](reader-source-check.json)确认两视口完整原图、锚点、练习、代码和来源/索引入口。原[窄屏结果表](reader-results-before-narrow.png)暴露逐字折行，后续[布局修改记录](reader-layout-change.json)将它改为简表；模型、成本、原始观察与主项计数保持。
+
+固定cd28325的[简表增量验收](reader-layout-check.json)在两视口通过；窄屏全部条件名称单行，表格约306×186 CSS像素。[修改后截图](reader-results-after-narrow.png)及[相邻解释](reader-results-context-narrow.png)保留原图，计数与冻结observations核对一致。该轮复用已核验的PNG缓存，图片网络证据沿用前一轮。
