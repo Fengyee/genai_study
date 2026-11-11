@@ -1,0 +1,9 @@
+{
+  "calculation_ast_matches_original": true,
+  "calculation_output_matches_original": true,
+  "changed_fields": "CLI module help paths; current run omitted optional local source hashing.",
+  "current_script_sha256": "7addcc95f71ec8fe6c937c8402191f4321c1ef8cd7c0604d6cdf3773473c5041",
+  "teaching_sha256": "1fca734bf28aea9a6fb167b061defcba3ead752cea8156d6cdbc97f79184dd07",
+  "teaching_lines": 23,
+  "independent_checks": 12
+}

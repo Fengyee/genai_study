@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "scope": "One VAE-only repeated-reference latent experiment; chunk14 is the reference execution for differences.",
+  "unit": "raw decoder coordinate",
+  "source_coordinate": "float32 B,C,F,H,W; no clipping, normalization or RGB quantization of decoded output",
+  "calculation": "Per-frame and adjacent-pair RMS recomputed directly from source NPY with float64 differences and reductions across B,C,H,W.",
+  "script": {
+    "path": "/workspace/genai_study/records/measurements/svd-decoder-chunks/plot.py",
+    "bytes": 13508,
+    "sha256": "f7731c188bd24f0e8f6c7c5294bdee01ac46e120b25a2b4ac57c8f7315949ff0"
+  },
+  "comparison": {
+    "path": "/workspace/genai_study/artifacts/svd-decoder-chunks/comparison.json",
+    "bytes": 6539,
+    "sha256": "8434fa16273f804c4f824c0698538ba6e3862136ef65b1c8357564a68e54f327"
+  },
+  "inputs": {
+    "14": {
+      "metrics": {
+        "path": "/workspace/genai_study/artifacts/svd-decoder-chunks/chunk14/metrics.json",
+        "bytes": 5722,
+        "sha256": "15cd2a51905996ace04fee8e32dee9b44f26ce72f35d2741f6eb218b5ad175d0"
+      },
+      "decoded_raw": {
+        "path": "/workspace/genai_study/artifacts/svd-decoder-chunks/chunk14/decoded_raw.npy",
+        "bytes": 6193280,
+        "sha256": "c3f93255b22f33235dace8f0d8823abde9023610d6e055db654d16740bf6a78e"
+      },
+      "raw_array_sha256": "bc20787502117a2f4dc91b711ba5bf226ecac0b3226dc27f515e5425f005e018",
+      "video_latents": {
+        "path": "/workspace/genai_study/artifacts/svd-decoder-chunks/chunk14/video_latents.npy",
+        "bytes": 129152,
+        "sha256": "9c60c09f1ef95bcd1cc2563902593b795f8a96cc58dac9dfcba1eda429b3bed0"
+      },
+      "video_latents_array_sha256": "83bcc4d695b160339850689536950d95d844df5e0dd81134b0abff38e752b406"
+    },
+    "7": {
+      "metrics": {
+        "path": "/workspace/genai_study/artifacts/svd-decoder-chunks/chunk7/metrics.json",
+        "bytes": 5821,
+        "sha256": "6cd0b668d6ca51ff4374b92c113d2b2c2116b192a57bc4521d4511959b458f62"
+      },
+      "decoded_raw": {
+        "path": "/workspace/genai_study/artifacts/svd-decoder-chunks/chunk7/decoded_raw.npy",
+        "bytes": 6193280,
+        "sha256": "e85b54346dba1f24e15a98734d4a97940abe12b70155fbd7b35bc5149f4821db"
+      },
+      "raw_array_sha256": "4b844b999148b213bacc7f2492dd1da2bc732bfb7e6c67986bdad73115870809",
+      "video_latents": {
+        "path": "/workspace/genai_study/artifacts/svd-decoder-chunks/chunk7/video_latents.npy",
+        "bytes": 129152,
+        "sha256": "9c60c09f1ef95bcd1cc2563902593b795f8a96cc58dac9dfcba1eda429b3bed0"
+      },
+      "video_latents_array_sha256": "83bcc4d695b160339850689536950d95d844df5e0dd81134b0abff38e752b406"
+    },
+    "1": {
+      "metrics": {
+        "path": "/workspace/genai_study/artifacts/svd-decoder-chunks/chunk1/metrics.json",
+        "bytes": 6878,
+        "sha256": "a182f3c20c17f2a7dd3393522bf32717de407d5a7e4a34b62072220986dccbf5"
+      },
+      "decoded_raw": {
+        "path": "/workspace/genai_study/artifacts/svd-decoder-chunks/chunk1/decoded_raw.npy",
+        "bytes": 6193280,
+        "sha256": "8ee3f114bd49c910e472be42e08ff7b99c5ebcce773133cc15b87aabacd7116b"
+      },
+      "raw_array_sha256": "f6cc96d011395df22f08ea7ff776898c2a87fe56df9ab9765435782f7b069208",
+      "video_latents": {
+        "path": "/workspace/genai_study/artifacts/svd-decoder-chunks/chunk1/video_latents.npy",
+        "bytes": 129152,
+        "sha256": "9c60c09f1ef95bcd1cc2563902593b795f8a96cc58dac9dfcba1eda429b3bed0"
+      },
+      "video_latents_array_sha256": "83bcc4d695b160339850689536950d95d844df5e0dd81134b0abff38e752b406"
+    }
+  },
+  "frame_index_1based": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "pair_start_1based": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+  ],
+  "pair_end_1based": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "curves": {
+    "14": {
+      "per_frame_raw_rms_vs_chunk14": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "adjacent_raw_rms": [
+        0.012287212504168159,
+        0.008325804210428611,
+        0.006382771277925166,
+        0.005518382922566107,
+        0.005162075315852175,
+        0.004833543822864352,
+        0.0047982913618194395,
+        0.004777548917381814,
+        0.005210361718703129,
+        0.005439956814680623,
+        0.006282981453423274,
+        0.008427391762553828,
+        0.012620911184312987
+      ]
+    },
+    "7": {
+      "per_frame_raw_rms_vs_chunk14": [
+        0.0169488750651943,
+        0.018076898257842262,
+        0.017547433630557017,
+        0.018112014607030928,
+        0.018659587107668116,
+        0.020209253752270548,
+        0.02095612144169841,
+        0.02170179736171982,
+        0.020565722800685134,
+        0.01922618837980577,
+        0.01817133356411145,
+        0.017933161838574272,
+        0.018309637085068112,
+        0.017322019314032953
+      ],
+      "adjacent_raw_rms": [
+        0.01307795099793261,
+        0.008571254365982769,
+        0.007194757381550758,
+        0.006921557515415438,
+        0.008370846788248575,
+        0.01303430070264891,
+        0.02021215275557432,
+        0.01307795099793261,
+        0.008571254365982769,
+        0.007194757381550758,
+        0.006921557515415438,
+        0.008370846788248575,
+        0.01303430070264891
+      ]
+    },
+    "1": {
+      "per_frame_raw_rms_vs_chunk14": [
+        0.04198384467752267,
+        0.044803844233002765,
+        0.044525192558805764,
+        0.04424801577867206,
+        0.044361503571868556,
+        0.044346296616785026,
+        0.044334510722608106,
+        0.0442597766988866,
+        0.044066784856184066,
+        0.043911381601574845,
+        0.0434168094168445,
+        0.04358554959240515,
+        0.04357947584441501,
+        0.0410339368715565
+      ],
+      "adjacent_raw_rms": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "input_and_output_equalities": {
+    "all_three_video_latents_bitwise_equal": true,
+    "all_fourteen_input_frames_bitwise_equal": true,
+    "chunk1_all_output_frames_bitwise_equal": true,
+    "chunk7_output_segments_1_to_7_and_8_to_14_bitwise_equal": true
+  },
+  "data_npz": {
+    "file": "data.npz",
+    "sha256": "87f6851b2bf4d69199363c28d5fe4fd6c7cb91aba47aa5d2638c390fcf9f46d0"
+  }
+}

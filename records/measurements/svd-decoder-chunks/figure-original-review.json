@@ -1,0 +1,43 @@
+{
+  "reviewed_utc": "2026-11-11T20:34:40.120811+00:00",
+  "figure_png_sha256": "88790a9c963f204c5ba5254cd3ec8871dec61102234ae9871c3aa43444e5b6f6",
+  "visual_inspection": "Viewed the 2232x1098 scientific plot (tool display scaled to 2048x1007). Titles, shared legend, axes, all frame/pair labels, cutoff labels and footer fit without visible overlaps or clipping. Final PNG is byte-identical to the inspected first candidate.",
+  "canvas_pixels": [
+    2232,
+    1098
+  ],
+  "numerical_review": "Independently recomputed curves from all raw NPY files, checked exact repeated inputs and outputs, cross-checked root comparison within 5e-15.",
+  "peer_review": "rotation_check independently recomputed all curves; maximum difference from recorded curves 6.94e-18. Confirmed exact chunk1 frame equality and chunk7 segment equality.",
+  "all_recorded_text_inside_canvas": true,
+  "refuse_overwrite": {
+    "exit_code": 2,
+    "expected_message_observed": true,
+    "all_deliverable_hashes_unchanged": true
+  },
+  "files": {
+    "/tmp/genai-svd-chunk-figure/plot.py": {
+      "bytes": 13504,
+      "sha256": "e3c8ab3c0e785d6a1537cf25875a7ac8c2081d1157dbfe24e7b3bd058ec6e678"
+    },
+    "/tmp/genai-svd-chunk-figure/final/svd-decoder-chunks.png": {
+      "bytes": 206725,
+      "sha256": "88790a9c963f204c5ba5254cd3ec8871dec61102234ae9871c3aa43444e5b6f6"
+    },
+    "/tmp/genai-svd-chunk-figure/final/svd-decoder-chunks.svg": {
+      "bytes": 94524,
+      "sha256": "a4ffe3a34817f88117e28ac924f202665362d5fa149cb63366aaa0aeba9d7232"
+    },
+    "/tmp/genai-svd-chunk-figure/final/data.json": {
+      "bytes": 6632,
+      "sha256": "054ab90576138811f45b4ee710a04cac120a52b07850b7f872ac13c58ca1be16"
+    },
+    "/tmp/genai-svd-chunk-figure/final/data.npz": {
+      "bytes": 3530,
+      "sha256": "87f6851b2bf4d69199363c28d5fe4fd6c7cb91aba47aa5d2638c390fcf9f46d0"
+    },
+    "/tmp/genai-svd-chunk-figure/final/verification.json": {
+      "bytes": 7586,
+      "sha256": "d8cf68a7494ff841811ab4ec5e9d217f4cd38873a753fcdbd345a9fdc3442c61"
+    }
+  }
+}

@@ -55,7 +55,7 @@ python -m genai_study.experiment --method ddpm --steps 5000 --output artifacts/f
 bash scripts/quality.sh
 ```
 
-脚本检查公式性质、文档链接，直接执行18个已审查的CPU教学代码块，并运行二维生成、图像生成和视频时序反例。短 smoke 用于检查程序路径；训练质量由完整实验评估。第 03、07 章提供固定 checkpoint 和初始噪声的求解器步数实验。完整实验按 seed 固定 CPU 随机性；跨 PyTorch/平台的位级一致性仍需另行验证。随机种子、多次评估和教学指标解释见 [实验说明](examples/README.md)。
+脚本检查公式性质、文档链接，直接执行19个已审查的CPU教学代码块，并运行二维生成、图像生成和视频时序反例。短 smoke 用于检查程序路径；训练质量由完整实验评估。第 03、07 章提供固定 checkpoint 和初始噪声的求解器步数实验。完整实验按 seed 固定 CPU 随机性；跨 PyTorch/平台的位级一致性仍需另行验证。随机种子、多次评估和教学指标解释见 [实验说明](examples/README.md)。
 
 恢复后的CPU实例已跑通首次训练与求解器路径；四条命令的实际成本、配置及固定checkpoint后的微小浮点差异见[恢复实例核验](docs/experiment-report.md#恢复实例后的首次路径与浮点差异)。
 
@@ -75,6 +75,7 @@ bash scripts/quality.sh
 | 空间网络接口 | [patch、位置与预测输出](docs/readings/spatial-tokens-and-position.md)：重排索引、卷积等价、自注意力与空间还原 |
 | 图像编辑 | [FLUX.1 Kontext 2025](docs/readings/flux-kontext-2025.md)：参考图token、时间方向与guidance蒸馏 |
 | 视频生成 | [Wan 2025](docs/readings/wan-video-2025.md)：时空表示、条件与公开模型接口 |
+| 视频解码与资源 | [固定SVD时间VAE的分块对照](docs/svd-decoder-chunk-report.md)：同一latent、时间卷积/GroupNorm、逐帧差与CPU成本 |
 | 视频训练基础 | [SVD与CogVideoX](docs/readings/video-training-svd-cogvideox.md)：训练阶段、视频压缩、VP预测量与版本差异 |
 | 离散图像生成 | [ResTok 2026](docs/readings/restok-image-ar-2026.md)：128个token、9轮采样与分组条件独立 |
 | 音画联合生成 | [LTX-2 2026](docs/readings/ltx2-video-audio-2026.md)：联合分布、双流条件与两阶段采样成本 |

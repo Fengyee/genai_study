@@ -1,0 +1,100 @@
+{
+  "status": "passed",
+  "reviewed_utc": "2026-11-11T20:40:00.462176+00:00",
+  "scope": "Final numeric/protocol/reproduction/code review. Figure data, caption, plot styles/cut coordinates and artifact hashes checked without visual inspection. No model execution, image viewing or tracked edits.",
+  "checks_passed": [
+    "Both report tables exactly match independent audit after declared decimal rounding; all 14 per-frame RMS values nonzero for each alternative.",
+    "Wall sum/window, frame7→8 boundary values, raw ranges, zero invariances and budget statements match audit.",
+    "Archived metrics, run records, renamed command logs and frozen independent audit are byte-identical to originals.",
+    "All three literal14 substitutions validated using real run_record parser and AST-extracted original probe parser; comparison CLI accepts matching directory layout.",
+    "Teaching block exactly matches archived source; convolution arithmetic, short-final-chunk answer and one-frame-halo scope checked independently.",
+    "Scaling s*mode→upstream divide s, actual num_frames per chunk, raw BCFHW coordinates, 5D GroupNorm statistics and eval behavior agree with fixed primary sources.",
+    "Cost scope accurately distinguishes full external wall, decoder-only time, query-point RSS, one execution per configuration and continuation gate without kernel memory limit.",
+    "RMS prose explicitly states mean of squared differences before square root.",
+    "Comparator requires C-order bytes for all three input arrays; independent actual-array bytes and signed-zero distinction verified.",
+    "New strict comparison matches original JSON in every field except current comparator script SHA.",
+    "Added plot reproduction command accepted by actual AST-extracted parser and matches reader result paths; figure data/caption/styles/hashes verified without viewing images."
+  ],
+  "reproduction_commands": [
+    {
+      "chunk_size": 14,
+      "record_output": "artifacts/svd-chunk-repeat/record-chunk14",
+      "probe_output": "artifacts/svd-chunk-repeat/chunk14"
+    },
+    {
+      "chunk_size": 7,
+      "record_output": "artifacts/svd-chunk-repeat/record-chunk7",
+      "probe_output": "artifacts/svd-chunk-repeat/chunk7"
+    },
+    {
+      "chunk_size": 1,
+      "record_output": "artifacts/svd-chunk-repeat/record-chunk1",
+      "probe_output": "artifacts/svd-chunk-repeat/chunk1"
+    }
+  ],
+  "issues": [
+    {
+      "id": "rms_wording",
+      "severity": "minor-correctness",
+      "status": "resolved and independently rechecked",
+      "detail": "Report says sum squared differences then square root without stating division by element count; should say mean squared differences then square root."
+    },
+    {
+      "id": "bitwise_label",
+      "severity": "minor-checker-contract",
+      "status": "resolved and independently rechecked",
+      "detail": "compare.py labels np.array_equal as bitwise equality; +0/-0 compare equal numerically. Current measured array SHA values are equal, so archived conclusions remain valid. Enforce raw SHA/bytes equality for reader reruns."
+    }
+  ],
+  "files": [
+    {
+      "path": "docs/svd-decoder-chunk-report.md",
+      "bytes": 10554,
+      "sha256": "7915b58a5e68e7d55cc65e616e67ada710a02f62999b30338a6ba865c867cc9b"
+    },
+    {
+      "path": "records/measurements/svd-decoder-chunks/README.md",
+      "bytes": 6290,
+      "sha256": "2fb0af4e8599c4a70665e96b54d12342b78b856d884244701ced4642a3c05dac"
+    },
+    {
+      "path": "records/measurements/svd-decoder-chunks/compare.py",
+      "bytes": 5538,
+      "sha256": "1cb21dc59fda7d059ce35e89bdc0c78541fb2b504bef5bcfe2b4c92029be84c6"
+    },
+    {
+      "path": "records/measurements/svd-decoder-chunks/comparison.json",
+      "bytes": 6539,
+      "sha256": "8434fa16273f804c4f824c0698538ba6e3862136ef65b1c8357564a68e54f327"
+    },
+    {
+      "path": "artifacts/svd-decoder-chunks/comparison-strict-identity.json",
+      "bytes": 6539,
+      "sha256": "0c5c1eef867467195b30c47540b9c43bf7e2d0b7eaa3ea735b3cbf487c14c5f0"
+    },
+    {
+      "path": "records/measurements/svd-decoder-chunks/strict-identity-check.json",
+      "bytes": 391,
+      "sha256": "52d6e4176c63575d5e9bd186983de0df82d518f727fad9b8b0c11aee8eb3658b"
+    },
+    {
+      "path": "records/measurements/svd-decoder-chunks/figure-data.json",
+      "bytes": 6667,
+      "sha256": "a98a1296efc3035e3c81eaceb1046c2e3671513be1c8c26fc45cc2a911ef0460"
+    },
+    {
+      "path": "records/measurements/svd-decoder-chunks/figure-verification.json",
+      "bytes": 7729,
+      "sha256": "3600c0218e46e7bad1b3c866e6fa3abe6161e3c2a79321ee79250d3df186bc24"
+    },
+    {
+      "path": "records/measurements/svd-decoder-chunks/plot.py",
+      "bytes": 13508,
+      "sha256": "f7731c188bd24f0e8f6c7c5294bdee01ac46e120b25a2b4ac57c8f7315949ff0"
+    }
+  ],
+  "unresolved_issues": [],
+  "strict_comparison_output": "artifacts/svd-decoder-chunks/comparison-strict-identity.json",
+  "strict_comparison_numeric_results_unchanged": true,
+  "figure_caption_and_data_check": "All plotted curves agree with frozen independent raw audit within5e-15; frame/pair indices, cut coordinates7.5/7 and stated styles match source; PNG/SVG byte hashes match verification."
+}

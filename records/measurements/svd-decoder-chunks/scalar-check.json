@@ -1,0 +1,1060 @@
+{
+  "schema_version": 1,
+  "all_checks_passed": true,
+  "scope": "Independent scalar arithmetic counterexample and optional local-source identities. No network, model construction, weights, sampling, or trained-model quality measurement.",
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.1.3"
+  },
+  "script_sha256": "5fa5341fca144df4284f566706b513ba457fb133ac0cd9c3809fb938c97be964",
+  "operator": "y_t=(x_(t-1)+2*x_t+x_(t+1))/4; stride 1; a single linear layer; zero outside each supplied sequence",
+  "chunk_semantics": "At most chunk_size consecutive frames per call, independent zero padding per chunk; concatenate outputs; keep the final short chunk at its actual length.",
+  "indexing": "1-based frame indices in explanatory output; residual means chunk output minus full output.",
+  "kernel": {
+    "rational": [
+      "1/4",
+      "1/2",
+      "1/4"
+    ],
+    "float64": [
+      0.25,
+      0.5,
+      0.25
+    ]
+  },
+  "cases": {
+    "ramp7": {
+      "input": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "full_output": {
+        "rational": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "5"
+        ],
+        "float64": [
+          1.0,
+          2.0,
+          3.0,
+          4.0,
+          5.0,
+          6.0,
+          5.0
+        ]
+      },
+      "chunks": {
+        "1": {
+          "output": {
+            "rational": [
+              "1/2",
+              "1",
+              "3/2",
+              "2",
+              "5/2",
+              "3",
+              "7/2"
+            ],
+            "float64": [
+              0.5,
+              1.0,
+              1.5,
+              2.0,
+              2.5,
+              3.0,
+              3.5
+            ]
+          },
+          "residual_chunk_minus_full": {
+            "rational": [
+              "-1/2",
+              "-1",
+              "-3/2",
+              "-2",
+              "-5/2",
+              "-3",
+              "-3/2"
+            ],
+            "float64": [
+              -0.5,
+              -1.0,
+              -1.5,
+              -2.0,
+              -2.5,
+              -3.0,
+              -1.5
+            ]
+          },
+          "internal_cuts_after_1based_frame": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "changed_1based_frames": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "max_abs_residual": "3",
+          "squared_residual_sum": "25",
+          "analytic_missing_neighbor_formula_matches": true,
+          "numpy_convolution_matches_exact_rationals": true,
+          "one_frame_halo_recovers_full_for_this_single_layer": true
+        },
+        "2": {
+          "output": {
+            "rational": [
+              "1",
+              "5/4",
+              "5/2",
+              "11/4",
+              "4",
+              "17/4",
+              "7/2"
+            ],
+            "float64": [
+              1.0,
+              1.25,
+              2.5,
+              2.75,
+              4.0,
+              4.25,
+              3.5
+            ]
+          },
+          "residual_chunk_minus_full": {
+            "rational": [
+              "0",
+              "-3/4",
+              "-1/2",
+              "-5/4",
+              "-1",
+              "-7/4",
+              "-3/2"
+            ],
+            "float64": [
+              0.0,
+              -0.75,
+              -0.5,
+              -1.25,
+              -1.0,
+              -1.75,
+              -1.5
+            ]
+          },
+          "internal_cuts_after_1based_frame": [
+            2,
+            4,
+            6
+          ],
+          "changed_1based_frames": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "max_abs_residual": "7/4",
+          "squared_residual_sum": "139/16",
+          "analytic_missing_neighbor_formula_matches": true,
+          "numpy_convolution_matches_exact_rationals": true,
+          "one_frame_halo_recovers_full_for_this_single_layer": true
+        },
+        "7": {
+          "output": {
+            "rational": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "5"
+            ],
+            "float64": [
+              1.0,
+              2.0,
+              3.0,
+              4.0,
+              5.0,
+              6.0,
+              5.0
+            ]
+          },
+          "residual_chunk_minus_full": {
+            "rational": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ],
+            "float64": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "internal_cuts_after_1based_frame": [],
+          "changed_1based_frames": [],
+          "max_abs_residual": "0",
+          "squared_residual_sum": "0",
+          "analytic_missing_neighbor_formula_matches": true,
+          "numpy_convolution_matches_exact_rationals": true,
+          "one_frame_halo_recovers_full_for_this_single_layer": true
+        }
+      }
+    },
+    "ramp14": {
+      "input": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "full_output": {
+        "rational": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "41/4"
+        ],
+        "float64": [
+          1.0,
+          2.0,
+          3.0,
+          4.0,
+          5.0,
+          6.0,
+          7.0,
+          8.0,
+          9.0,
+          10.0,
+          11.0,
+          12.0,
+          13.0,
+          10.25
+        ]
+      },
+      "chunks": {
+        "1": {
+          "output": {
+            "rational": [
+              "1/2",
+              "1",
+              "3/2",
+              "2",
+              "5/2",
+              "3",
+              "7/2",
+              "4",
+              "9/2",
+              "5",
+              "11/2",
+              "6",
+              "13/2",
+              "7"
+            ],
+            "float64": [
+              0.5,
+              1.0,
+              1.5,
+              2.0,
+              2.5,
+              3.0,
+              3.5,
+              4.0,
+              4.5,
+              5.0,
+              5.5,
+              6.0,
+              6.5,
+              7.0
+            ]
+          },
+          "residual_chunk_minus_full": {
+            "rational": [
+              "-1/2",
+              "-1",
+              "-3/2",
+              "-2",
+              "-5/2",
+              "-3",
+              "-7/2",
+              "-4",
+              "-9/2",
+              "-5",
+              "-11/2",
+              "-6",
+              "-13/2",
+              "-13/4"
+            ],
+            "float64": [
+              -0.5,
+              -1.0,
+              -1.5,
+              -2.0,
+              -2.5,
+              -3.0,
+              -3.5,
+              -4.0,
+              -4.5,
+              -5.0,
+              -5.5,
+              -6.0,
+              -6.5,
+              -3.25
+            ]
+          },
+          "internal_cuts_after_1based_frame": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "changed_1based_frames": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "max_abs_residual": "13/2",
+          "squared_residual_sum": "3445/16",
+          "analytic_missing_neighbor_formula_matches": true,
+          "numpy_convolution_matches_exact_rationals": true,
+          "one_frame_halo_recovers_full_for_this_single_layer": true
+        },
+        "2": {
+          "output": {
+            "rational": [
+              "1",
+              "5/4",
+              "5/2",
+              "11/4",
+              "4",
+              "17/4",
+              "11/2",
+              "23/4",
+              "7",
+              "29/4",
+              "17/2",
+              "35/4",
+              "10",
+              "41/4"
+            ],
+            "float64": [
+              1.0,
+              1.25,
+              2.5,
+              2.75,
+              4.0,
+              4.25,
+              5.5,
+              5.75,
+              7.0,
+              7.25,
+              8.5,
+              8.75,
+              10.0,
+              10.25
+            ]
+          },
+          "residual_chunk_minus_full": {
+            "rational": [
+              "0",
+              "-3/4",
+              "-1/2",
+              "-5/4",
+              "-1",
+              "-7/4",
+              "-3/2",
+              "-9/4",
+              "-2",
+              "-11/4",
+              "-5/2",
+              "-13/4",
+              "-3",
+              "0"
+            ],
+            "float64": [
+              0.0,
+              -0.75,
+              -0.5,
+              -1.25,
+              -1.0,
+              -1.75,
+              -1.5,
+              -2.25,
+              -2.0,
+              -2.75,
+              -2.5,
+              -3.25,
+              -3.0,
+              0.0
+            ]
+          },
+          "internal_cuts_after_1based_frame": [
+            2,
+            4,
+            6,
+            8,
+            10,
+            12
+          ],
+          "changed_1based_frames": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "max_abs_residual": "13/4",
+          "squared_residual_sum": "409/8",
+          "analytic_missing_neighbor_formula_matches": true,
+          "numpy_convolution_matches_exact_rationals": true,
+          "one_frame_halo_recovers_full_for_this_single_layer": true
+        },
+        "7": {
+          "output": {
+            "rational": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "5",
+              "25/4",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13",
+              "41/4"
+            ],
+            "float64": [
+              1.0,
+              2.0,
+              3.0,
+              4.0,
+              5.0,
+              6.0,
+              5.0,
+              6.25,
+              9.0,
+              10.0,
+              11.0,
+              12.0,
+              13.0,
+              10.25
+            ]
+          },
+          "residual_chunk_minus_full": {
+            "rational": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "-2",
+              "-7/4",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ],
+            "float64": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -2.0,
+              -1.75,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "internal_cuts_after_1based_frame": [
+            7
+          ],
+          "changed_1based_frames": [
+            7,
+            8
+          ],
+          "max_abs_residual": "2",
+          "squared_residual_sum": "113/16",
+          "analytic_missing_neighbor_formula_matches": true,
+          "numpy_convolution_matches_exact_rationals": true,
+          "one_frame_halo_recovers_full_for_this_single_layer": true
+        }
+      }
+    },
+    "minimal2": {
+      "input": [
+        1,
+        2
+      ],
+      "full_output": {
+        "rational": [
+          "1",
+          "5/4"
+        ],
+        "float64": [
+          1.0,
+          1.25
+        ]
+      },
+      "chunks": {
+        "1": {
+          "output": {
+            "rational": [
+              "1/2",
+              "1"
+            ],
+            "float64": [
+              0.5,
+              1.0
+            ]
+          },
+          "residual_chunk_minus_full": {
+            "rational": [
+              "-1/2",
+              "-1/4"
+            ],
+            "float64": [
+              -0.5,
+              -0.25
+            ]
+          },
+          "internal_cuts_after_1based_frame": [
+            1
+          ],
+          "changed_1based_frames": [
+            1,
+            2
+          ],
+          "max_abs_residual": "1/2",
+          "squared_residual_sum": "5/16",
+          "analytic_missing_neighbor_formula_matches": true,
+          "numpy_convolution_matches_exact_rationals": true,
+          "one_frame_halo_recovers_full_for_this_single_layer": true
+        },
+        "2": {
+          "output": {
+            "rational": [
+              "1",
+              "5/4"
+            ],
+            "float64": [
+              1.0,
+              1.25
+            ]
+          },
+          "residual_chunk_minus_full": {
+            "rational": [
+              "0",
+              "0"
+            ],
+            "float64": [
+              0.0,
+              0.0
+            ]
+          },
+          "internal_cuts_after_1based_frame": [],
+          "changed_1based_frames": [],
+          "max_abs_residual": "0",
+          "squared_residual_sum": "0",
+          "analytic_missing_neighbor_formula_matches": true,
+          "numpy_convolution_matches_exact_rationals": true,
+          "one_frame_halo_recovers_full_for_this_single_layer": true
+        },
+        "7": {
+          "output": {
+            "rational": [
+              "1",
+              "5/4"
+            ],
+            "float64": [
+              1.0,
+              1.25
+            ]
+          },
+          "residual_chunk_minus_full": {
+            "rational": [
+              "0",
+              "0"
+            ],
+            "float64": [
+              0.0,
+              0.0
+            ]
+          },
+          "internal_cuts_after_1based_frame": [],
+          "changed_1based_frames": [],
+          "max_abs_residual": "0",
+          "squared_residual_sum": "0",
+          "analytic_missing_neighbor_formula_matches": true,
+          "numpy_convolution_matches_exact_rationals": true,
+          "one_frame_halo_recovers_full_for_this_single_layer": true
+        }
+      }
+    },
+    "constant14": {
+      "input": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "full_output": {
+        "rational": [
+          "3/4",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "3/4"
+        ],
+        "float64": [
+          0.75,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.75
+        ]
+      },
+      "chunks": {
+        "1": {
+          "output": {
+            "rational": [
+              "1/2",
+              "1/2",
+              "1/2",
+              "1/2",
+              "1/2",
+              "1/2",
+              "1/2",
+              "1/2",
+              "1/2",
+              "1/2",
+              "1/2",
+              "1/2",
+              "1/2",
+              "1/2"
+            ],
+            "float64": [
+              0.5,
+              0.5,
+              0.5,
+              0.5,
+              0.5,
+              0.5,
+              0.5,
+              0.5,
+              0.5,
+              0.5,
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ]
+          },
+          "residual_chunk_minus_full": {
+            "rational": [
+              "-1/4",
+              "-1/2",
+              "-1/2",
+              "-1/2",
+              "-1/2",
+              "-1/2",
+              "-1/2",
+              "-1/2",
+              "-1/2",
+              "-1/2",
+              "-1/2",
+              "-1/2",
+              "-1/2",
+              "-1/4"
+            ],
+            "float64": [
+              -0.25,
+              -0.5,
+              -0.5,
+              -0.5,
+              -0.5,
+              -0.5,
+              -0.5,
+              -0.5,
+              -0.5,
+              -0.5,
+              -0.5,
+              -0.5,
+              -0.5,
+              -0.25
+            ]
+          },
+          "internal_cuts_after_1based_frame": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "changed_1based_frames": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "max_abs_residual": "1/2",
+          "squared_residual_sum": "25/8",
+          "analytic_missing_neighbor_formula_matches": true,
+          "numpy_convolution_matches_exact_rationals": true,
+          "one_frame_halo_recovers_full_for_this_single_layer": true
+        },
+        "2": {
+          "output": {
+            "rational": [
+              "3/4",
+              "3/4",
+              "3/4",
+              "3/4",
+              "3/4",
+              "3/4",
+              "3/4",
+              "3/4",
+              "3/4",
+              "3/4",
+              "3/4",
+              "3/4",
+              "3/4",
+              "3/4"
+            ],
+            "float64": [
+              0.75,
+              0.75,
+              0.75,
+              0.75,
+              0.75,
+              0.75,
+              0.75,
+              0.75,
+              0.75,
+              0.75,
+              0.75,
+              0.75,
+              0.75,
+              0.75
+            ]
+          },
+          "residual_chunk_minus_full": {
+            "rational": [
+              "0",
+              "-1/4",
+              "-1/4",
+              "-1/4",
+              "-1/4",
+              "-1/4",
+              "-1/4",
+              "-1/4",
+              "-1/4",
+              "-1/4",
+              "-1/4",
+              "-1/4",
+              "-1/4",
+              "0"
+            ],
+            "float64": [
+              0.0,
+              -0.25,
+              -0.25,
+              -0.25,
+              -0.25,
+              -0.25,
+              -0.25,
+              -0.25,
+              -0.25,
+              -0.25,
+              -0.25,
+              -0.25,
+              -0.25,
+              0.0
+            ]
+          },
+          "internal_cuts_after_1based_frame": [
+            2,
+            4,
+            6,
+            8,
+            10,
+            12
+          ],
+          "changed_1based_frames": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "max_abs_residual": "1/4",
+          "squared_residual_sum": "3/4",
+          "analytic_missing_neighbor_formula_matches": true,
+          "numpy_convolution_matches_exact_rationals": true,
+          "one_frame_halo_recovers_full_for_this_single_layer": true
+        },
+        "7": {
+          "output": {
+            "rational": [
+              "3/4",
+              "1",
+              "1",
+              "1",
+              "1",
+              "1",
+              "3/4",
+              "3/4",
+              "1",
+              "1",
+              "1",
+              "1",
+              "1",
+              "3/4"
+            ],
+            "float64": [
+              0.75,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.75,
+              0.75,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.75
+            ]
+          },
+          "residual_chunk_minus_full": {
+            "rational": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "-1/4",
+              "-1/4",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ],
+            "float64": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -0.25,
+              -0.25,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "internal_cuts_after_1based_frame": [
+            7
+          ],
+          "changed_1based_frames": [
+            7,
+            8
+          ],
+          "max_abs_residual": "1/4",
+          "squared_residual_sum": "1/8",
+          "analytic_missing_neighbor_formula_matches": true,
+          "numpy_convolution_matches_exact_rationals": true,
+          "one_frame_halo_recovers_full_for_this_single_layer": true
+        }
+      }
+    }
+  },
+  "analytic_residual_rule": "For every internal cut b|b+1, add -x_(b+1)/4 to residual b and -x_b/4 to residual b+1. Add both contributions where cuts meet (chunk_size=1).",
+  "source_identities": {
+    "models/autoencoders/autoencoder_kl_temporal_decoder.py": {
+      "path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_kl_temporal_decoder.py",
+      "bytes": 14778,
+      "sha256": "a89e764f032d410cfb42d73312c14b29755c792ed12c3452bcc31923e46c8c86"
+    },
+    "pipelines/stable_video_diffusion/pipeline_stable_video_diffusion.py": {
+      "path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/pipelines/stable_video_diffusion/pipeline_stable_video_diffusion.py",
+      "bytes": 32628,
+      "sha256": "c7a8c4afc7944401a1e79aba21ecb5a48221c5b584cf10f43509b3bd8fd577e9"
+    },
+    "models/resnet.py": {
+      "path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/models/resnet.py",
+      "bytes": 32254,
+      "sha256": "0c81501c54a1f05d0d72b0068efc5a71ad5f2bc66802b9694ed9134cb9b9d155"
+    },
+    "models/unets/unet_3d_blocks.py": {
+      "path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/models/unets/unet_3d_blocks.py",
+      "bytes": 51676,
+      "sha256": "3b2108a2fe4d31afd3f64216cdc32831f98a6557200d16deeaf1f559be1aafda"
+    }
+  },
+  "source_review": {
+    "diffusers_version_observed_separately": "0.35.2",
+    "pipeline_lines": "290-317: flatten frames, scale latents, slice chunks, pass chunk's actual num_frames to vae.decode, concatenate",
+    "decoder_lines": "75-83 and 128-133: Conv3d temporal output with kernel (3,1,1), padding (1,0,0), and B,C,F,H,W layout",
+    "temporal_blocks": "unet_3d_blocks.py:899-1009 links decoder blocks to SpatioTemporalResBlock; resnet.py:542-745 has two temporal Conv3d layers and GroupNorm on a B,C,F,H,W tensor",
+    "normalization_implication": "Temporal GroupNorm aggregates over each group and all remaining dimensions, including F, so changing chunks can change normalization throughout a chunk."
+  },
+  "supported_svd_conclusion": "Separate temporal decoder calls change available neighboring frames and normalization groups even for fixed input latents; chunk size can change decoded frames.",
+  "excluded_inferences": [
+    "The chosen scalar kernel equals learned SVD weights.",
+    "SVD errors are confined to the two frames adjacent to a cut.",
+    "A one-frame halo guarantees exact full-SVD decoding.",
+    "Smaller chunks universally worsen temporal metrics or visible flicker monotonically.",
+    "This arithmetic example proves the cause of existing SVD artifacts or measures real quality/memory/speed.",
+    "The full decoder output is a ground-truth video."
+  ]
+}

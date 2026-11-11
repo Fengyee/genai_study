@@ -1,0 +1,30 @@
+{
+  "checked_utc": "2026-11-11T20:41:07.151298+00:00",
+  "command": "bash scripts/quality.sh",
+  "log_directory": "artifacts/quality/20261111T203653Z-JoXwZN",
+  "base_head": "1d97b06613872096c6ab86fc9030be8059a1233a",
+  "uncommitted_integration": true,
+  "exit_code": 0,
+  "tests_passed": 178,
+  "test_seconds": 74.6,
+  "lesson_blocks_passed": 19,
+  "lesson_documents": 15,
+  "cli_smokes_passed": 7,
+  "subcommand_exit_codes": {
+    "tests.exit-status.txt": 0,
+    "lesson-examples.exit-status.txt": 0,
+    "smoke-image.exit-status.txt": 0,
+    "smoke-video.exit-status.txt": 0,
+    "smoke-image-cfg.exit-status.txt": 0,
+    "smoke-image-guidance.exit-status.txt": 0,
+    "smoke-image-solver.exit-status.txt": 0,
+    "smoke-ddpm.exit-status.txt": 0,
+    "smoke-flow.exit-status.txt": 0,
+    "docs.exit-status.txt": 0
+  },
+  "lesson_code_sha256": "1fca734bf28aea9a6fb167b061defcba3ead752cea8156d6cdbc97f79184dd07",
+  "lesson_code_bytes": 886,
+  "shared_executor_sha256": "47c8ebf8837a2f747385288b084c9934bcb061ae268030aa03c78de5952593eb",
+  "docs_at_run": "Markdown: checked 1035 local links; 0 errors",
+  "scope": "Full CPU quality checks after adding the reviewed scalar example. The three pretrained VAE commands were run separately under the preregistered plan. Later edits clarify RMS prose and tighten only the standalone comparison identity check; that comparison was actually rerun and all numerical values match."
+}

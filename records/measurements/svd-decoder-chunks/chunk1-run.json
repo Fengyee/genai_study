@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "status": "succeeded",
+  "argv": [
+    ".venv-pretrained/bin/python",
+    "-u",
+    "records/measurements/svd-decoder-chunks/run_probe.py",
+    "--model-dir",
+    "artifacts/models/svd",
+    "--input",
+    "docs/assets/svd-input.png",
+    "--chunk-size",
+    "1",
+    "--output",
+    "artifacts/svd-decoder-chunks/chunk1"
+  ],
+  "cwd": "/workspace/genai_study",
+  "started_utc": "2026-11-11T20:27:43.505083+00:00",
+  "timeout_seconds": 300.0,
+  "termination_grace_seconds": 1.0,
+  "runner": {
+    "version": 1,
+    "source_sha256": "be545eff1985b8eed096b0663145bade01303685430310d4b199aa727c685697",
+    "python_version": "3.12.14",
+    "python_executable": "/workspace/genai_study/.venv/bin/python"
+  },
+  "git": {
+    "root": "/workspace/genai_study",
+    "head": "1d97b06613872096c6ab86fc9030be8059a1233a",
+    "changed_paths": [
+      {
+        "status": "??",
+        "path": "records/measurements/svd-decoder-chunks/asset-identity.json"
+      },
+      {
+        "status": "??",
+        "path": "records/measurements/svd-decoder-chunks/check_scalar.py"
+      },
+      {
+        "status": "??",
+        "path": "records/measurements/svd-decoder-chunks/scalar-check.json"
+      },
+      {
+        "status": "??",
+        "path": "records/measurements/svd-decoder-chunks/source-audit.md"
+      },
+      {
+        "status": "??",
+        "path": "records/measurements/svd-decoder-chunks/teaching-example.py"
+      }
+    ]
+  },
+  "stdin": "devnull",
+  "log_file": "command.log",
+  "timed_out": false,
+  "child_returncode": 0,
+  "exit_code": 0,
+  "wall_seconds": 40.799752521999835,
+  "finished_utc": "2026-11-11T20:28:24.315674+00:00",
+  "log_size_bytes": 279,
+  "log_sha256": "f9aabddd07846690fa5c65f2cf0797c850d06fd37a3961983f8559a4a3a31041"
+}

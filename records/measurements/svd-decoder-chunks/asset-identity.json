@@ -1,0 +1,43 @@
+{
+  "observed_utc": "2026-11-11T20:24:34.233336+00:00",
+  "model_id": "stabilityai/stable-video-diffusion-img2vid",
+  "revision": "9cf024d5bfa8f56622af86c884f26a52f6676f2e",
+  "actual_vae_weight_full_hash_verified": {
+    "path": "artifacts/models/svd/vae/diffusion_pytorch_model.safetensors",
+    "bytes": 391017740,
+    "sha256": "9975042d7bee021bd53a72b1af14c8627d624f6547ec9abe661b68b962b88c49"
+  },
+  "files": [
+    {
+      "path": "examples/pretrained-svd/manifest.json",
+      "bytes": 2501,
+      "sha256": "6f10bafb14e6954382c828ed349cdaeb4023eb0dc4a727c43f4d317228deeb6a"
+    },
+    {
+      "path": "requirements-pretrained-lock.txt",
+      "bytes": 98413,
+      "sha256": "95176d3908a08a99ca80ca84fe8d2aaf0a5b7c5cc80cd663fb63bd5c1b7b1729"
+    },
+    {
+      "path": "artifacts/models/svd/vae/config.json",
+      "bytes": 609,
+      "sha256": "aab2b8766d6db1bf742fa0e3bf217fae64e67a20e7e0fe78de84f79007100ffb"
+    },
+    {
+      "path": "artifacts/svd-current/smoke/input.png",
+      "bytes": 69412,
+      "sha256": "e76d50ef91a5ece55252b9c867d58927ca8b21a303ee112014491608f79ed962"
+    },
+    {
+      "path": "docs/assets/svd-input.png",
+      "bytes": 69412,
+      "sha256": "e76d50ef91a5ece55252b9c867d58927ca8b21a303ee112014491608f79ed962"
+    },
+    {
+      "path": ".venv-pretrained/lib/python3.12/site-packages/torch/nn/modules/normalization.py",
+      "bytes": 14973,
+      "sha256": "8919d891301fd2048b60ddc9b30b6bf0d3fd0ac5dd9bc23f912269ec92aa7661"
+    }
+  ],
+  "scope": "Read-only audit; no model constructed or executed."
+}

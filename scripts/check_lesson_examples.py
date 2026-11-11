@@ -21,6 +21,7 @@ import time
 
 
 EXAMPLES = {
+    "temporal-decoder-chunks": "docs/svd-decoder-chunk-report.md",
     "meanflow-average-velocity": "docs/readings/meanflow-average-velocity.md",
     "reflow-coupling": "docs/readings/reflow-coupling.md",
     "spatial-tokens-and-position": "docs/readings/spatial-tokens-and-position.md",

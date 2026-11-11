@@ -1,0 +1,13 @@
+{
+  "checked_utc": "2026-11-11T20:36:52.659693+00:00",
+  "calculation_ast_matches_original": true,
+  "change": "Module docstring uses repository script and output paths.",
+  "current_script_sha256": "f7731c188bd24f0e8f6c7c5294bdee01ac46e120b25a2b4ac57c8f7315949ff0",
+  "rerun_output_directory": "artifacts/svd-chunk-figure-integrated",
+  "exact_reproduced_files": {
+    "svd-decoder-chunks.png": "88790a9c963f204c5ba5254cd3ec8871dec61102234ae9871c3aa43444e5b6f6",
+    "svd-decoder-chunks.svg": "a4ffe3a34817f88117e28ac924f202665362d5fa149cb63366aaa0aeba9d7232",
+    "data.npz": "87f6851b2bf4d69199363c28d5fe4fd6c7cb91aba47aa5d2638c390fcf9f46d0"
+  },
+  "root_visual_review": "Viewed full candidate PNG: all plotted quantities, cut location, legends and repeated-input caption match raw-array comparisons. Narrow-screen actual GitHub rendering remains to be checked."
+}

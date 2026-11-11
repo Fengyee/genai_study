@@ -1,0 +1,284 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-11-11T20:27:43.586088+00:00",
+  "model_id": "stabilityai/stable-video-diffusion-img2vid",
+  "revision": "9cf024d5bfa8f56622af86c884f26a52f6676f2e",
+  "manifest_sha256": "6f10bafb14e6954382c828ed349cdaeb4023eb0dc4a727c43f4d317228deeb6a",
+  "verified_assets": [
+    {
+      "path": "vae/config.json",
+      "size_bytes": 609,
+      "sha256": "aab2b8766d6db1bf742fa0e3bf217fae64e67a20e7e0fe78de84f79007100ffb"
+    },
+    {
+      "path": "vae/diffusion_pytorch_model.safetensors",
+      "size_bytes": 391017740,
+      "sha256": "9975042d7bee021bd53a72b1af14c8627d624f6547ec9abe661b68b962b88c49"
+    },
+    {
+      "path": "LICENSE.md",
+      "size_bytes": 11852,
+      "sha256": "d6f6b1a4dce5c852bd6d7d9482d002baf0ccdb71e662250b73be9eec8764ee8d"
+    }
+  ],
+  "input_png_sha256": "e76d50ef91a5ece55252b9c867d58927ca8b21a303ee112014491608f79ed962",
+  "script_sha256": "8ae054b3883d1cb5092f08215589ff378faa2c0d7703942a60532e53ff041e0d",
+  "pretrained_lock_sha256": "95176d3908a08a99ca80ca84fe8d2aaf0a5b7c5cc80cd663fb63bd5c1b7b1729",
+  "source_identity": {
+    "pipeline": {
+      "path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/pipelines/stable_video_diffusion/pipeline_stable_video_diffusion.py",
+      "sha256": "c7a8c4afc7944401a1e79aba21ecb5a48221c5b584cf10f43509b3bd8fd577e9"
+    },
+    "temporal_vae": {
+      "path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_kl_temporal_decoder.py",
+      "sha256": "a89e764f032d410cfb42d73312c14b29755c792ed12c3452bcc31923e46c8c86"
+    },
+    "resnet": {
+      "path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/models/resnet.py",
+      "sha256": "0c81501c54a1f05d0d72b0068efc5a71ad5f2bc66802b9694ed9134cb9b9d155"
+    }
+  },
+  "versions": {
+    "torch": "2.6.0+cpu",
+    "numpy": "2.1.3",
+    "diffusers": "0.35.2",
+    "transformers": "4.57.6",
+    "Pillow": "13.0.0"
+  },
+  "model_loading_info": {
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "mismatched_keys": [],
+    "error_msgs": []
+  },
+  "environment": {
+    "python": "3.12.14",
+    "machine": "x86_64",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41"
+  },
+  "config": {
+    "frames": 14,
+    "chunk_size": 1,
+    "threads": 2,
+    "dtype": "float32",
+    "device": "cpu",
+    "deterministic_algorithms": true,
+    "scaling_factor": 0.18215,
+    "latent_construction": "Posterior mode of the fixed normalized reference, repeated identically 14 times, then multiplied by scaling_factor. No augmentation or random draws."
+  },
+  "decoder_calls": [
+    {
+      "shape": [
+        1,
+        4,
+        18,
+        32
+      ],
+      "num_frames": 1
+    },
+    {
+      "shape": [
+        1,
+        4,
+        18,
+        32
+      ],
+      "num_frames": 1
+    },
+    {
+      "shape": [
+        1,
+        4,
+        18,
+        32
+      ],
+      "num_frames": 1
+    },
+    {
+      "shape": [
+        1,
+        4,
+        18,
+        32
+      ],
+      "num_frames": 1
+    },
+    {
+      "shape": [
+        1,
+        4,
+        18,
+        32
+      ],
+      "num_frames": 1
+    },
+    {
+      "shape": [
+        1,
+        4,
+        18,
+        32
+      ],
+      "num_frames": 1
+    },
+    {
+      "shape": [
+        1,
+        4,
+        18,
+        32
+      ],
+      "num_frames": 1
+    },
+    {
+      "shape": [
+        1,
+        4,
+        18,
+        32
+      ],
+      "num_frames": 1
+    },
+    {
+      "shape": [
+        1,
+        4,
+        18,
+        32
+      ],
+      "num_frames": 1
+    },
+    {
+      "shape": [
+        1,
+        4,
+        18,
+        32
+      ],
+      "num_frames": 1
+    },
+    {
+      "shape": [
+        1,
+        4,
+        18,
+        32
+      ],
+      "num_frames": 1
+    },
+    {
+      "shape": [
+        1,
+        4,
+        18,
+        32
+      ],
+      "num_frames": 1
+    },
+    {
+      "shape": [
+        1,
+        4,
+        18,
+        32
+      ],
+      "num_frames": 1
+    },
+    {
+      "shape": [
+        1,
+        4,
+        18,
+        32
+      ],
+      "num_frames": 1
+    }
+  ],
+  "outputs": {
+    "normalized_input": {
+      "file": "normalized_input.npy",
+      "shape": [
+        1,
+        3,
+        144,
+        256
+      ],
+      "dtype": "float32",
+      "sha256": "bc8d7993e65ed94bd8ebae9c8ec4082b5f26b88145c8a71a993a12654a271c79",
+      "array_bytes_sha256": "7b78055e8cc198f33681bb9ffb0a56f4d7e7b37f38cb170d911a823dedce0f1b"
+    },
+    "latent_mode": {
+      "file": "latent_mode.npy",
+      "shape": [
+        1,
+        4,
+        18,
+        32
+      ],
+      "dtype": "float32",
+      "sha256": "824ae82ef81a7623ef2916c8f92595a56ff1a06132ed715fc32b731e58381bc0",
+      "array_bytes_sha256": "ebc48a83173a8a37f1ebb234fae060e7c8058291c9e8782c96b73cce3e5a540e"
+    },
+    "video_latents": {
+      "file": "video_latents.npy",
+      "shape": [
+        1,
+        14,
+        4,
+        18,
+        32
+      ],
+      "dtype": "float32",
+      "sha256": "9c60c09f1ef95bcd1cc2563902593b795f8a96cc58dac9dfcba1eda429b3bed0",
+      "array_bytes_sha256": "83bcc4d695b160339850689536950d95d844df5e0dd81134b0abff38e752b406"
+    },
+    "decoded_raw": {
+      "file": "decoded_raw.npy",
+      "shape": [
+        1,
+        3,
+        14,
+        144,
+        256
+      ],
+      "dtype": "float32",
+      "sha256": "8ee3f114bd49c910e472be42e08ff7b99c5ebcce773133cc15b87aabacd7116b",
+      "array_bytes_sha256": "f6cc96d011395df22f08ea7ff776898c2a87fe56df9ab9765435782f7b069208"
+    }
+  },
+  "diagnostics": {
+    "raw_min": -0.8809089660644531,
+    "raw_max": 0.7380982637405396,
+    "fraction_outside_minus1_plus1": 0.0,
+    "adjacent_raw_rms": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "coordinate": "Raw VAE decoder output; normalization, clipping, RGB quantization and playback are not applied."
+  },
+  "timing_seconds": {
+    "asset_verification": 0.36714479599959304,
+    "imports_and_component_load": 4.859748829999262,
+    "encode_and_latent_construction": 1.2627111850006258,
+    "decode_latents": 33.51280604400017,
+    "serialization_diagnostics_source_hashes": 0.049436321999564825,
+    "post_input_validation_to_metrics": 40.066013200999805
+  },
+  "memory": {
+    "peak_rss_kib": 1009816,
+    "scope": "Linux process lifetime through output serialization, diagnostics and metadata construction; queried before metrics JSON writing/printing/exit."
+  },
+  "scope": "One fixed-latent temporal decoder run. The protocol compares three independent processes using the same reference and encoded mode. The UNet, denoising, CLIP, random video generation and generated-video quality are outside this experiment.",
+  "attribution": "Powered by Stability AI; examples/pretrained-svd/LICENSE-model.txt"
+}
