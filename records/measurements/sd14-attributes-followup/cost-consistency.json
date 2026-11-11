@@ -1,0 +1,12 @@
+{
+  "checked_utc": "2026-11-11T19:27:54.632900+00:00",
+  "source_summary_sha256": "1b80aa7871997235bd1d469e3e49da118baf382fc873e65ccde15c2427cfb2b1",
+  "rows_checked": 8,
+  "all_positive_finite_stage_costs": true,
+  "all_stage_sums_within_internal_total_within_full_wall": true,
+  "rss_unit": "Linux KiB / 1048576 = GiB",
+  "all_rss_conversions_match": true,
+  "command_sum_within_campaign_within_budget": true,
+  "campaign_minutes": 37.00006289885,
+  "notes": "Computed from retained metrics; does not infer image-content success."
+}

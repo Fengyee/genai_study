@@ -1,0 +1,31 @@
+{
+  "checked_utc": "2026-11-11T19:43:14.570251+00:00",
+  "before_commit": "b9be84784adb853d2b184631244d195244cf4846",
+  "before_report_sha256": "77c7a97ba62508a6f9516c412d0206ca20434f5ac60da0e432ddada5d81345a0",
+  "after_report_sha256": "34ae979c6e3ab3ba9e3ec9f491479bb976161a004ed55d5403a591617441cc11",
+  "only_result_table_and_adjacent_explanation_changed": true,
+  "code_blocks_and_all_eight_image_markdown_exactly_preserved": true,
+  "numeric_matrix": {
+    "single_red_cube": [
+      0,
+      2,
+      null
+    ],
+    "single_blue_cube": [
+      2,
+      2,
+      null
+    ],
+    "red_cube_left_blue_sphere": [
+      0,
+      2,
+      0
+    ],
+    "blue_sphere_left_red_cube": [
+      0,
+      2,
+      0
+    ]
+  },
+  "scope": "Compact summary table with detailed observations and unresolved disagreements retained in adjacent prose. All raw notes, primary criteria, costs and model evidence unchanged. Actual browser check pending."
+}

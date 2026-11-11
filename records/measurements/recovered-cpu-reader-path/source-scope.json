@@ -1,0 +1,95 @@
+{
+  "checked_utc": "2026-11-11T19:06:37.686676+00:00",
+  "scope": "Read-only source comparison; no model/training/sampling execution or tracked file changes. Comparison against actual historical Git blobs and current working-tree bytes.",
+  "historical_commit": "bcdeae89400b59e596d07fe978292d6a19df1f10",
+  "current_head": "52e76baac0ebdd0171170e81721bd959b4d1f27a",
+  "source_comparison": [
+    {
+      "path": "src/genai_study/experiment.py",
+      "historical_record_sha256": "bee833cc0c3221c9983f86ad8899e15d01e2f8f85cc9f8d1e9e1896530675aea",
+      "historical_git_blob_sha256": "bee833cc0c3221c9983f86ad8899e15d01e2f8f85cc9f8d1e9e1896530675aea",
+      "current_sha256": "bee833cc0c3221c9983f86ad8899e15d01e2f8f85cc9f8d1e9e1896530675aea",
+      "record_matches_historical_blob": true,
+      "current_bytes_equal_historical": true
+    },
+    {
+      "path": "src/genai_study/toy.py",
+      "historical_record_sha256": "ec76843afbddd8445148f5f5ffe0a4793288c12372e0925d911eeb4eea67facb",
+      "historical_git_blob_sha256": "ec76843afbddd8445148f5f5ffe0a4793288c12372e0925d911eeb4eea67facb",
+      "current_sha256": "ec76843afbddd8445148f5f5ffe0a4793288c12372e0925d911eeb4eea67facb",
+      "record_matches_historical_blob": true,
+      "current_bytes_equal_historical": true
+    },
+    {
+      "path": "src/genai_study/checkpoint.py",
+      "historical_record_sha256": "e41ea50d53dc106c6658c7d6cbb48b71bdd61b28261d58116200e63ca6199144",
+      "historical_git_blob_sha256": "e41ea50d53dc106c6658c7d6cbb48b71bdd61b28261d58116200e63ca6199144",
+      "current_sha256": "013a6e1ab0289496962db76777dac6292cd6cec98828ee58a7a8c9a1144a5b79",
+      "record_matches_historical_blob": true,
+      "current_bytes_equal_historical": false
+    },
+    {
+      "path": "src/genai_study/solver_study.py",
+      "historical_record_sha256": "ed9c240869870195aef61a81688dca5bf44daf8c1381ac4343c8e361e68b6252",
+      "historical_git_blob_sha256": "ed9c240869870195aef61a81688dca5bf44daf8c1381ac4343c8e361e68b6252",
+      "current_sha256": "ed9c240869870195aef61a81688dca5bf44daf8c1381ac4343c8e361e68b6252",
+      "record_matches_historical_blob": true,
+      "current_bytes_equal_historical": true
+    },
+    {
+      "path": "requirements-lock.txt",
+      "historical_record_sha256": "87c983be2101697e42bcef34553aec0c28e2132ff3c9492c6732561468cc366a",
+      "historical_git_blob_sha256": "87c983be2101697e42bcef34553aec0c28e2132ff3c9492c6732561468cc366a",
+      "current_sha256": "87c983be2101697e42bcef34553aec0c28e2132ff3c9492c6732561468cc366a",
+      "record_matches_historical_blob": true,
+      "current_bytes_equal_historical": true
+    }
+  ],
+  "imports": {
+    "src/genai_study/experiment.py": [
+      "import argparse",
+      "import json",
+      "import os",
+      "import tempfile",
+      "import platform",
+      "from pathlib import Path",
+      "import time",
+      "import torch",
+      "from .checkpoint import save_checkpoint",
+      "from .toy import GAUSSIAN_3SIGMA_MASS_2D, TimeMLP, diagnostics, flow_path, make_schedule, q_sample, sample_data, sample_ddpm, sample_flow",
+      "import matplotlib",
+      "import matplotlib.pyplot as plt",
+      "import numpy as np"
+    ],
+    "src/genai_study/solver_study.py": [
+      "import argparse",
+      "import hashlib",
+      "import json",
+      "import os",
+      "from pathlib import Path",
+      "import platform",
+      "import tempfile",
+      "import time",
+      "import torch",
+      "from .checkpoint import load_checkpoint",
+      "from .experiment import positive_int",
+      "from .toy import diagnostics, integrate_flow, sample_data",
+      "import matplotlib",
+      "import matplotlib.pyplot as plt",
+      "import numpy as np"
+    ]
+  },
+  "checkpoint_change": {
+    "summary": "Added nonempty string-to-tensor state validation, required finite float32, and explicit CPU/float32 module construction before strict state loading.",
+    "unchanged_numerical_parts": "TimeMLP definition, training loop, data/noise generators, evaluation, sampler steps, solver loop and pinned basic dependency lock are byte-identical in the compared source files.",
+    "valid_default_path": "For fresh CPU CLI processes with finite float32 state and default float32 dtype, validation reads tensors without mutating them or drawing RNG; explicit CPU/float32 construction selects the prior default device/dtype. Invalid or unsupported states now reject.",
+    "serialization_scope": "Checkpoint file SHA may differ because output metadata or archive details differ; compare model-state tensor names, dtypes, shapes and element values separately."
+  },
+  "interpretation": {
+    "exact_equal_results": "Would establish equality for these specific saved arrays/checkpoint states under the checked configs and software, across the two observed host instances. It would not establish universal cross-CPU/platform bitwise reproducibility.",
+    "non_equal_results": "Report precise array/state and metric differences. Matching algorithm source and dependencies narrow possible causes, but this observation alone cannot assign all differences to CPU model: floating-point kernel dispatch, runtime/host state and any other uncontrolled environment differences remain factors.",
+    "timing": "Report each complete recorded command wall and internal timing scope as measured on that instance. CPU model differs and the current run shares resources with a two-thread SD workload; host load, frequency and filesystem/library caches are uncontrolled. Timings do not isolate a CPU-model or threading causal speedup.",
+    "checkpoint_source_effect": "The validated default numerical path is preserved by inspection; complete-command timing also includes the newly added save/load validation work, whose separate cost was not measured here."
+  },
+  "recommended_chinese_summary": "训练/采样主体与基础锁文件和历史版本逐字节一致；checkpoint仅增加有限float32验证并显式按CPU float32重建。新旧数组与参数的实际比较用于描述这两次实例的复现结果。当前CPU型号、后台负载和缓存等条件共同变化，耗时按各自实测口径报告，避免单凭一次观察归因于某个硬件因素。"
+}

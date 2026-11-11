@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "status": "succeeded",
+  "argv": [
+    ".venv-pretrained/bin/python",
+    "-u",
+    "-m",
+    "genai_study.pretrained_image",
+    "run",
+    "--manifest",
+    "examples/pretrained-sd14/manifest.json",
+    "--model-dir",
+    "artifacts/models/sd14",
+    "--output",
+    "artifacts/sd14-attributes-followup/single-blue-cube-seed101",
+    "--prompt",
+    "a watercolor painting of a blue cube, plain white background",
+    "--seed",
+    "101",
+    "--steps",
+    "20",
+    "--guidance-scale",
+    "7.5",
+    "--height",
+    "512",
+    "--width",
+    "512",
+    "--threads",
+    "2"
+  ],
+  "cwd": "/workspace/genai_study",
+  "started_utc": "2026-11-11T18:54:34.530890+00:00",
+  "timeout_seconds": 420.0,
+  "termination_grace_seconds": 1.0,
+  "runner": {
+    "version": 1,
+    "source_sha256": "be545eff1985b8eed096b0663145bade01303685430310d4b199aa727c685697",
+    "python_version": "3.12.14",
+    "python_executable": "/workspace/genai_study/.venv/bin/python"
+  },
+  "git": {
+    "root": "/workspace/genai_study",
+    "head": "3fec489ba365dac91529f5ce02d9b2dbeebb7937",
+    "changed_paths": [
+      {
+        "status": " M",
+        "path": "README.md"
+      },
+      {
+        "status": " M",
+        "path": "SOURCES.md"
+      },
+      {
+        "status": " M",
+        "path": "docs/automation.md"
+      },
+      {
+        "status": " M",
+        "path": "docs/chapters/03-flow-matching.md"
+      },
+      {
+        "status": " M",
+        "path": "docs/glossary.md"
+      },
+      {
+        "status": " M",
+        "path": "docs/learning-path.md"
+      },
+      {
+        "status": " M",
+        "path": "docs/notation.md"
+      },
+      {
+        "status": " M",
+        "path": "docs/readings/consistency-endpoint-map.md"
+      },
+      {
+        "status": " M",
+        "path": "records/BACKLOG.md"
+      },
+      {
+        "status": " M",
+        "path": "records/measurements/README.md"
+      },
+      {
+        "status": " M",
+        "path": "scripts/check_lesson_examples.py"
+      },
+      {
+        "status": "??",
+        "path": "docs/readings/meanflow-average-velocity.md"
+      },
+      {
+        "status": "??",
+        "path": "records/measurements/meanflow-average-velocity/LICENSE-upstream-MIT.txt"
+      },
+      {
+        "status": "??",
+        "path": "records/measurements/meanflow-average-velocity/check_gaussian.py"
+      },
+      {
+        "status": "??",
+        "path": "records/measurements/meanflow-average-velocity/check_linear_field.py"
+      },
+      {
+        "status": "??",
+        "path": "records/measurements/meanflow-average-velocity/draft-check.json"
+      },
+      {
+        "status": "??",
+        "path": "records/measurements/meanflow-average-velocity/gaussian-check.json"
+      },
+      {
+        "status": "??",
+        "path": "records/measurements/meanflow-average-velocity/gaussian-derivation.md"
+      },
+      {
+        "status": "??",
+        "path": "records/measurements/meanflow-average-velocity/linear-field-check.json"
+      },
+      {
+        "status": "??",
+        "path": "records/measurements/meanflow-average-velocity/source-call-check.json"
+      },
+      {
+        "status": "??",
+        "path": "records/measurements/meanflow-average-velocity/source-identity.json"
+      }
+    ]
+  },
+  "stdin": "devnull",
+  "log_file": "command.log",
+  "timed_out": false,
+  "child_returncode": 0,
+  "exit_code": 0,
+  "wall_seconds": 291.0809595710002,
+  "finished_utc": "2026-11-11T18:59:25.626589+00:00",
+  "log_size_bytes": 4882,
+  "log_sha256": "9b5627d6487591f36e7fd8895e8d6ebec580de19eecfbf019c20d7ea0ca25a74"
+}

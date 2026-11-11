@@ -1,0 +1,99 @@
+{
+  "reviewed_utc": "2026-11-11T19:35:35.191479+00:00",
+  "scope": "Numerical values, source/archive identities, protocol chronology and parser-only reproduction review. No PNG viewing or observation review. No inference.",
+  "report_path": "docs/sd14-attributes-layout.md",
+  "report_sha256": "77c7a97ba62508a6f9516c412d0206ca20434f5ac60da0e432ddada5d81345a0",
+  "readme_sha256": "32fbc8dfd074cc666784e155ddac37ec94552d34f4ce937fcb9f405cfc6f1045",
+  "requests": [
+    {
+      "request_id": "single-red-cube-seed101",
+      "cost_row_matches": true,
+      "metrics_run_log_original_bytes_equal": true,
+      "report_asset_sha_matches": true
+    },
+    {
+      "request_id": "single-blue-cube-seed101",
+      "cost_row_matches": true,
+      "metrics_run_log_original_bytes_equal": true,
+      "report_asset_sha_matches": true
+    },
+    {
+      "request_id": "red-cube-left-blue-sphere-seed101",
+      "cost_row_matches": true,
+      "metrics_run_log_original_bytes_equal": true,
+      "report_asset_sha_matches": true
+    },
+    {
+      "request_id": "blue-sphere-left-red-cube-seed101",
+      "cost_row_matches": true,
+      "metrics_run_log_original_bytes_equal": true,
+      "report_asset_sha_matches": true
+    },
+    {
+      "request_id": "blue-sphere-left-red-cube-seed211",
+      "cost_row_matches": true,
+      "metrics_run_log_original_bytes_equal": true,
+      "report_asset_sha_matches": true
+    },
+    {
+      "request_id": "red-cube-left-blue-sphere-seed211",
+      "cost_row_matches": true,
+      "metrics_run_log_original_bytes_equal": true,
+      "report_asset_sha_matches": true
+    },
+    {
+      "request_id": "single-blue-cube-seed211",
+      "cost_row_matches": true,
+      "metrics_run_log_original_bytes_equal": true,
+      "report_asset_sha_matches": true
+    },
+    {
+      "request_id": "single-red-cube-seed211",
+      "cost_row_matches": true,
+      "metrics_run_log_original_bytes_equal": true,
+      "report_asset_sha_matches": true
+    }
+  ],
+  "aggregate_costs_counts_and_noise_pair_counts": "passed",
+  "four_frozen_source_identities": "passed",
+  "single_command_real_cli_parsers": "passed",
+  "single_command_output_and_record_paths_new": true,
+  "prior_timeout_and_diagnostic_stages_separate": "passed",
+  "clarification_before_diagnostic2_and_followup_plan_before_start": "passed",
+  "report_rss_and_internal_wall_scope": "consistent with frozen source query order",
+  "findings": [
+    {
+      "severity": "P2 reproducibility instruction gap",
+      "path": "docs/sd14-attributes-layout.md",
+      "text": "The bounded driver requires the replacement plan file to be committed in current HEAD and byte-identical. The report mentions a separately saved plan but omits this prerequisite. State all eight output/record paths plus argv and execution path must be fresh and synchronized; source hashes must match.",
+      "status": "resolved_by_parent_edit"
+    },
+    {
+      "severity": "P2 stale execution status",
+      "path": "records/measurements/sd14-attributes-followup/README.md",
+      "text": "Still says eight actual outcomes await execution; command uses historical occupied output/execution paths without labeling it as the original command or instructing fresh paths.",
+      "status": "resolved_by_parent_edit"
+    },
+    {
+      "severity": "P2 reproduction path detail",
+      "path": "report and measurement README",
+      "text": "A new --execution filename under the old parent collides with existing request_id.recorder.log files. Use a fresh execution parent directory too.",
+      "status": "resolved_by_parent_edit"
+    }
+  ],
+  "notes": "Final report and index checked after parent fixes. New plan commit, new output/record paths and fresh execution parent are explicit; cost rows and real CLI parse rechecked unchanged. Observation semantics excluded.",
+  "initial_report_sha256": "7426aede3cce4c5958346bf247e3da9a05497696aea9d0294e0e5e5e399388ea",
+  "initial_readme_sha256": "f2c191329e616e04360be0c1cc2dfc23e70bf6f3e301d199920776212f12f6e1",
+  "rechecked_utc": "2026-11-11T19:37:09.452392+00:00",
+  "readonly_path_preflight": {
+    "method": "Actual check_plan_paths on copied in-memory plan with all16 output/record paths changed; no files created and no execute/inference call.",
+    "old_execution_parent_new_filename": {
+      "rejected": true,
+      "error": "Recorder stdout log already exists"
+    },
+    "new_execution_parent_and_filename": "passed"
+  },
+  "final_rechecked_utc": "2026-11-11T19:37:54.613813+00:00",
+  "outcome": "passed_after_three_documentation_fixes",
+  "unresolved_findings": 0
+}

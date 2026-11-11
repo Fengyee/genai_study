@@ -1,0 +1,311 @@
+{
+  "checked_utc": "2026-11-11T19:27:06.228737+00:00",
+  "scope": "Independent read-only audit; only terminal succeeded/filtered slots receive completed-output validation. No pixel-content interpretation. Earlier timeout batch and four-step diagnostics excluded.",
+  "plan_commit": "0bc702c562f9dad44ad446d448ffcb1a30d0d995",
+  "plan_sha256": "c14f167cc3668c1e2f29dcf2046a9b8dce91ff1c5de89c08e558b501047b9144",
+  "execution_snapshot_sha256": "0b2d249af79489a956203fea78d55656e7a7362839d5551c7c4a0eb307232fa8",
+  "campaign_status_at_snapshot": "completed",
+  "completed_slots_checked": 8,
+  "all_eight_completed_and_checked": true,
+  "source_identity_count": 4,
+  "cached_asset_verification": {
+    "performed": false
+  },
+  "requests": [
+    {
+      "request_id": "single-red-cube-seed101",
+      "seed": 101,
+      "status": "succeeded",
+      "validation": "passed",
+      "wall_seconds": 277.01644783599977,
+      "inference_seconds": 260.86967798800015,
+      "rss_kib": 5616000,
+      "png_sha256": "a82f10ed42696ec4ee1736473fa03e5c49dbb7d92a05e693a481e65028229a8b",
+      "noise_raw_sha256": "7e21a385554c654015bc4c511142ce6d34f23e26f6c58e7f3e8143dffa7bb9b8",
+      "noise_file_sha256": "d88a904c10e6a6082a209ca56c07a0671b4dcd44740741eb7ff1e6c708704b53",
+      "run_record_sha256": "027f00c675b342c1f5f164c4aa6459b216eef187a9f9efb27f79d65a9ad3285c",
+      "metrics_sha256": "e384491645ebcff43aaf08c8b47be57c8672b06cefc4a6a146cd2ca0bf9a5779",
+      "launch_git_head": "0bc702c562f9dad44ad446d448ffcb1a30d0d995"
+    },
+    {
+      "request_id": "single-blue-cube-seed101",
+      "seed": 101,
+      "status": "succeeded",
+      "validation": "passed",
+      "wall_seconds": 291.0809595710002,
+      "inference_seconds": 274.87379934599994,
+      "rss_kib": 5706908,
+      "png_sha256": "0d35ef7af25a133f15382cb5c3b0cc22bb27e490d1785e9dc3c321b309454924",
+      "noise_raw_sha256": "7e21a385554c654015bc4c511142ce6d34f23e26f6c58e7f3e8143dffa7bb9b8",
+      "noise_file_sha256": "d88a904c10e6a6082a209ca56c07a0671b4dcd44740741eb7ff1e6c708704b53",
+      "run_record_sha256": "6b449be32de0570db3c09b816b912d18d3422a9bcd3799060ee591120eecc0fe",
+      "metrics_sha256": "cf240596bb72b3e8940ad7b39e326ed4af441e919db36378a7540f58d6f9b951",
+      "launch_git_head": "3fec489ba365dac91529f5ce02d9b2dbeebb7937"
+    },
+    {
+      "request_id": "red-cube-left-blue-sphere-seed101",
+      "seed": 101,
+      "status": "succeeded",
+      "validation": "passed",
+      "wall_seconds": 287.91942661899975,
+      "inference_seconds": 272.5644223200002,
+      "rss_kib": 5683856,
+      "png_sha256": "7bd4f102296682515c84d9f3c73e4effe6e165afdb7b07cc755b01483239491c",
+      "noise_raw_sha256": "7e21a385554c654015bc4c511142ce6d34f23e26f6c58e7f3e8143dffa7bb9b8",
+      "noise_file_sha256": "d88a904c10e6a6082a209ca56c07a0671b4dcd44740741eb7ff1e6c708704b53",
+      "run_record_sha256": "afe7afaf56ec7ee456f1ef6424501a6a9022c0da9b358d861391a8096d0e961c",
+      "metrics_sha256": "42ef533951b89435f1f2a225c2cb85a897479b8a2b19bdf6da12f6b0ab1902a4",
+      "launch_git_head": "3fec489ba365dac91529f5ce02d9b2dbeebb7937"
+    },
+    {
+      "request_id": "blue-sphere-left-red-cube-seed101",
+      "seed": 101,
+      "status": "succeeded",
+      "validation": "passed",
+      "wall_seconds": 261.138534832,
+      "inference_seconds": 245.1237471630002,
+      "rss_kib": 5610868,
+      "png_sha256": "fc3808726c9b273edf67ee5b78377ffe614ba5ef03b3cc83499991762fd9ccba",
+      "noise_raw_sha256": "7e21a385554c654015bc4c511142ce6d34f23e26f6c58e7f3e8143dffa7bb9b8",
+      "noise_file_sha256": "d88a904c10e6a6082a209ca56c07a0671b4dcd44740741eb7ff1e6c708704b53",
+      "run_record_sha256": "b714bb36cea78ce4fef6969ab9d9d59d337ce1f008da576e35d1b504615f84bb",
+      "metrics_sha256": "ec4be343ec3809eee712683f8255d4379d5e99ff496d59542891e8ba3af12879",
+      "launch_git_head": "876647bfbcc913af577447c036beb03b4e7d1346"
+    },
+    {
+      "request_id": "blue-sphere-left-red-cube-seed211",
+      "seed": 211,
+      "status": "succeeded",
+      "validation": "passed",
+      "wall_seconds": 266.1624085239996,
+      "inference_seconds": 251.76294549399972,
+      "rss_kib": 5625684,
+      "png_sha256": "82b01f58f8cdc1bb41472763b1cc4a7ec87ef4f06d5bb717c8b60e6813ae6fa5",
+      "noise_raw_sha256": "77091174538a4f96c0d8d99d38d68dbbb8c194f860da0294f054d185ee3d12c5",
+      "noise_file_sha256": "8db23a39d54ddd03e5905b3ccb965796eac6decad21634934b01e9c936b64c4d",
+      "run_record_sha256": "3003609ddb84d8564a106a02a6d1e9d1c4c4f331a79bc7fb0ab52160064ee21d",
+      "metrics_sha256": "23c664f9437fb193edd20bc39b7e318b8e48e28fade7edbd87449a600f43b897",
+      "launch_git_head": "52e76baac0ebdd0171170e81721bd959b4d1f27a"
+    },
+    {
+      "request_id": "red-cube-left-blue-sphere-seed211",
+      "seed": 211,
+      "status": "succeeded",
+      "validation": "passed",
+      "wall_seconds": 296.07221650400015,
+      "inference_seconds": 280.0585336969998,
+      "rss_kib": 5613096,
+      "png_sha256": "c902d68310c232fd7254f9dc9eff5b038c0ab3f1bedef7d1ae2331a81bfa2944",
+      "noise_raw_sha256": "77091174538a4f96c0d8d99d38d68dbbb8c194f860da0294f054d185ee3d12c5",
+      "noise_file_sha256": "8db23a39d54ddd03e5905b3ccb965796eac6decad21634934b01e9c936b64c4d",
+      "run_record_sha256": "f9fbca99c662a255b6189e6422f7824b41e89b0a2d7fdc3afc06edf7c489b5ca",
+      "metrics_sha256": "dc17fa75b3d34f51e85347abb958c6cd49999088e8e9ffa6f2bca7a31a5e76e3",
+      "launch_git_head": "52e76baac0ebdd0171170e81721bd959b4d1f27a"
+    },
+    {
+      "request_id": "single-blue-cube-seed211",
+      "seed": 211,
+      "status": "succeeded",
+      "validation": "passed",
+      "wall_seconds": 268.62546128899976,
+      "inference_seconds": 252.55061093099994,
+      "rss_kib": 5658048,
+      "png_sha256": "dd832ba236a1be55574d455cc1edd5926dcebc2449e88ec01dd67ace995bb870",
+      "noise_raw_sha256": "77091174538a4f96c0d8d99d38d68dbbb8c194f860da0294f054d185ee3d12c5",
+      "noise_file_sha256": "8db23a39d54ddd03e5905b3ccb965796eac6decad21634934b01e9c936b64c4d",
+      "run_record_sha256": "0a562c4948beaac858bfd2100dee5e015c0db162115dffee4ef818b1e13de934",
+      "metrics_sha256": "f458cd375f80740c72798eaff6919e6ecd7910ff1ad2ec13cc32e47868e1513f",
+      "launch_git_head": "002dd89bfef5ac6ae2a8f3cddb3bb9d59fa3ad0d"
+    },
+    {
+      "request_id": "single-red-cube-seed211",
+      "seed": 211,
+      "status": "succeeded",
+      "validation": "passed",
+      "wall_seconds": 270.44308692199957,
+      "inference_seconds": 255.23531239300064,
+      "rss_kib": 5623852,
+      "png_sha256": "cd1c14bc2fcb42aa9c145cd6432892279dfea938ba52b522500a02abd1da9511",
+      "noise_raw_sha256": "77091174538a4f96c0d8d99d38d68dbbb8c194f860da0294f054d185ee3d12c5",
+      "noise_file_sha256": "8db23a39d54ddd03e5905b3ccb965796eac6decad21634934b01e9c936b64c4d",
+      "run_record_sha256": "c57845cc14beea14161006cc8d96a256b456c687f783f610442cb702536a03d1",
+      "metrics_sha256": "38ef6a08164b3117f253ce3884d674c856684ef4b2132943e232806d05bcc8ac",
+      "launch_git_head": "002dd89bfef5ac6ae2a8f3cddb3bb9d59fa3ad0d"
+    }
+  ],
+  "successful_command_wall_sum_seconds": 2218.458542096999,
+  "campaign_wall_seconds": 2220.0037739309996,
+  "max_query_point_rss_kib": 5706908,
+  "pairwise_noise_checks": [
+    {
+      "left": "single-red-cube-seed101",
+      "right": "single-blue-cube-seed101",
+      "same_seed": true,
+      "arrays_equal": true
+    },
+    {
+      "left": "single-red-cube-seed101",
+      "right": "red-cube-left-blue-sphere-seed101",
+      "same_seed": true,
+      "arrays_equal": true
+    },
+    {
+      "left": "single-red-cube-seed101",
+      "right": "blue-sphere-left-red-cube-seed101",
+      "same_seed": true,
+      "arrays_equal": true
+    },
+    {
+      "left": "single-red-cube-seed101",
+      "right": "blue-sphere-left-red-cube-seed211",
+      "same_seed": false,
+      "arrays_equal": false
+    },
+    {
+      "left": "single-red-cube-seed101",
+      "right": "red-cube-left-blue-sphere-seed211",
+      "same_seed": false,
+      "arrays_equal": false
+    },
+    {
+      "left": "single-red-cube-seed101",
+      "right": "single-blue-cube-seed211",
+      "same_seed": false,
+      "arrays_equal": false
+    },
+    {
+      "left": "single-red-cube-seed101",
+      "right": "single-red-cube-seed211",
+      "same_seed": false,
+      "arrays_equal": false
+    },
+    {
+      "left": "single-blue-cube-seed101",
+      "right": "red-cube-left-blue-sphere-seed101",
+      "same_seed": true,
+      "arrays_equal": true
+    },
+    {
+      "left": "single-blue-cube-seed101",
+      "right": "blue-sphere-left-red-cube-seed101",
+      "same_seed": true,
+      "arrays_equal": true
+    },
+    {
+      "left": "single-blue-cube-seed101",
+      "right": "blue-sphere-left-red-cube-seed211",
+      "same_seed": false,
+      "arrays_equal": false
+    },
+    {
+      "left": "single-blue-cube-seed101",
+      "right": "red-cube-left-blue-sphere-seed211",
+      "same_seed": false,
+      "arrays_equal": false
+    },
+    {
+      "left": "single-blue-cube-seed101",
+      "right": "single-blue-cube-seed211",
+      "same_seed": false,
+      "arrays_equal": false
+    },
+    {
+      "left": "single-blue-cube-seed101",
+      "right": "single-red-cube-seed211",
+      "same_seed": false,
+      "arrays_equal": false
+    },
+    {
+      "left": "red-cube-left-blue-sphere-seed101",
+      "right": "blue-sphere-left-red-cube-seed101",
+      "same_seed": true,
+      "arrays_equal": true
+    },
+    {
+      "left": "red-cube-left-blue-sphere-seed101",
+      "right": "blue-sphere-left-red-cube-seed211",
+      "same_seed": false,
+      "arrays_equal": false
+    },
+    {
+      "left": "red-cube-left-blue-sphere-seed101",
+      "right": "red-cube-left-blue-sphere-seed211",
+      "same_seed": false,
+      "arrays_equal": false
+    },
+    {
+      "left": "red-cube-left-blue-sphere-seed101",
+      "right": "single-blue-cube-seed211",
+      "same_seed": false,
+      "arrays_equal": false
+    },
+    {
+      "left": "red-cube-left-blue-sphere-seed101",
+      "right": "single-red-cube-seed211",
+      "same_seed": false,
+      "arrays_equal": false
+    },
+    {
+      "left": "blue-sphere-left-red-cube-seed101",
+      "right": "blue-sphere-left-red-cube-seed211",
+      "same_seed": false,
+      "arrays_equal": false
+    },
+    {
+      "left": "blue-sphere-left-red-cube-seed101",
+      "right": "red-cube-left-blue-sphere-seed211",
+      "same_seed": false,
+      "arrays_equal": false
+    },
+    {
+      "left": "blue-sphere-left-red-cube-seed101",
+      "right": "single-blue-cube-seed211",
+      "same_seed": false,
+      "arrays_equal": false
+    },
+    {
+      "left": "blue-sphere-left-red-cube-seed101",
+      "right": "single-red-cube-seed211",
+      "same_seed": false,
+      "arrays_equal": false
+    },
+    {
+      "left": "blue-sphere-left-red-cube-seed211",
+      "right": "red-cube-left-blue-sphere-seed211",
+      "same_seed": true,
+      "arrays_equal": true
+    },
+    {
+      "left": "blue-sphere-left-red-cube-seed211",
+      "right": "single-blue-cube-seed211",
+      "same_seed": true,
+      "arrays_equal": true
+    },
+    {
+      "left": "blue-sphere-left-red-cube-seed211",
+      "right": "single-red-cube-seed211",
+      "same_seed": true,
+      "arrays_equal": true
+    },
+    {
+      "left": "red-cube-left-blue-sphere-seed211",
+      "right": "single-blue-cube-seed211",
+      "same_seed": true,
+      "arrays_equal": true
+    },
+    {
+      "left": "red-cube-left-blue-sphere-seed211",
+      "right": "single-red-cube-seed211",
+      "same_seed": true,
+      "arrays_equal": true
+    },
+    {
+      "left": "single-blue-cube-seed211",
+      "right": "single-red-cube-seed211",
+      "same_seed": true,
+      "arrays_equal": true
+    }
+  ],
+  "memory_scope": "Linux RUSAGE_SELF high-water RSS from process start through source line254 query, after PNG/NPY saving and before PNG hash, metrics serialization/write, printing and exit. Full command wall comes from run_record.",
+  "script_sha256": "ad83eb9be20ee786d83a11ca4cc33bb43e52e64e5e69e6f0ebfc0f313f7cee44"
+}

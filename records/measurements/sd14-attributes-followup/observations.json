@@ -1,0 +1,167 @@
+{
+  "created_utc": "2026-11-11T19:33:17.134587+00:00",
+  "root_observations_sha256": "80b27bbc2fa47e3cd3b12f6a0211098037f3b782bd43d100519aa3dac5675df3",
+  "blind_observations_sha256": "15e11f967469bdc95b881cf0aff9632b6741f09e5ab4d9d7decb167b3773c008",
+  "policy": "Preserve raw observations. Do not resolve disagreement by majority or favorable-pair selection; unresolved identity/count remains uncertain. No post-hoc rerun or prompt/seed replacement.",
+  "observer_scope": "Two AI code agents, one prompt/seed-blind and one informed. Not human annotation, population success rates, or independent human agreement estimates.",
+  "rows": [
+    {
+      "anonymous_id": "A",
+      "request_id": "red-cube-left-blue-sphere-seed211",
+      "cube_identity_root": "ambiguous",
+      "cube_identity_blind": "ambiguous",
+      "cube_identity_final": "ambiguous",
+      "sphere_clear_count_root": 1,
+      "sphere_clear_count_blind": 1,
+      "sphere_count_final": 1,
+      "relation_final": "not_assessable",
+      "relation_reason": "No agreed clear cube-and-unique-sphere pair; geometry was not assigned an incorrect left/right value.",
+      "primary_criterion_confirmed": false,
+      "primary_criterion_scope": "single prompt: exactly one clear cube with target body color; relational prompt: both unique target objects, their colors and requested direction. Background/style kept separately.",
+      "disagreements": [],
+      "agreed_sphere_color": "mixed_or_uncertain"
+    },
+    {
+      "anonymous_id": "B",
+      "request_id": "single-red-cube-seed101",
+      "cube_identity_root": "ambiguous",
+      "cube_identity_blind": "clear",
+      "cube_identity_final": "uncertain_observer_disagreement",
+      "sphere_clear_count_root": 0,
+      "sphere_clear_count_blind": 0,
+      "sphere_count_final": 0,
+      "relation_final": "not_assessable",
+      "relation_reason": "No agreed clear cube-and-unique-sphere pair; geometry was not assigned an incorrect left/right value.",
+      "primary_criterion_confirmed": false,
+      "primary_criterion_scope": "single prompt: exactly one clear cube with target body color; relational prompt: both unique target objects, their colors and requested direction. Background/style kept separately.",
+      "disagreements": [
+        "cube identity: root ambiguous, blind clear. Blind color mixed_or_uncertain; root color not_assessable. Retain uncertain identity and both raw color annotations."
+      ]
+    },
+    {
+      "anonymous_id": "C",
+      "request_id": "blue-sphere-left-red-cube-seed211",
+      "cube_identity_root": "ambiguous",
+      "cube_identity_blind": "ambiguous",
+      "cube_identity_final": "ambiguous",
+      "sphere_clear_count_root": 1,
+      "sphere_clear_count_blind": 1,
+      "sphere_count_final": 1,
+      "relation_final": "not_assessable",
+      "relation_reason": "No agreed clear cube-and-unique-sphere pair; geometry was not assigned an incorrect left/right value.",
+      "primary_criterion_confirmed": false,
+      "primary_criterion_scope": "single prompt: exactly one clear cube with target body color; relational prompt: both unique target objects, their colors and requested direction. Background/style kept separately.",
+      "disagreements": [],
+      "agreed_sphere_color": "mixed_or_uncertain"
+    },
+    {
+      "anonymous_id": "D",
+      "request_id": "blue-sphere-left-red-cube-seed101",
+      "cube_identity_root": "ambiguous",
+      "cube_identity_blind": "ambiguous",
+      "cube_identity_final": "ambiguous",
+      "sphere_clear_count_root": 1,
+      "sphere_clear_count_blind": 2,
+      "sphere_count_final": "uncertain_observer_disagreement",
+      "relation_final": "not_assessable",
+      "relation_reason": "No agreed clear cube-and-unique-sphere pair; geometry was not assigned an incorrect left/right value.",
+      "primary_criterion_confirmed": false,
+      "primary_criterion_scope": "single prompt: exactly one clear cube with target body color; relational prompt: both unique target objects, their colors and requested direction. Background/style kept separately.",
+      "disagreements": [
+        "right-edge cropped blue shape: root ambiguous candidate, blind clear second sphere. Retain unresolved count; common central blue sphere is clear to both."
+      ],
+      "agreed_central_sphere_color": "blue"
+    },
+    {
+      "anonymous_id": "E",
+      "request_id": "single-blue-cube-seed101",
+      "cube_identity_root": "clear",
+      "cube_identity_blind": "clear",
+      "cube_identity_final": "clear",
+      "sphere_clear_count_root": 0,
+      "sphere_clear_count_blind": 0,
+      "sphere_count_final": 0,
+      "relation_final": "not_assessable",
+      "relation_reason": "No agreed clear cube-and-unique-sphere pair; geometry was not assigned an incorrect left/right value.",
+      "primary_criterion_confirmed": true,
+      "primary_criterion_scope": "single prompt: exactly one clear cube with target body color; relational prompt: both unique target objects, their colors and requested direction. Background/style kept separately.",
+      "disagreements": [],
+      "agreed_cube_color": "blue"
+    },
+    {
+      "anonymous_id": "F",
+      "request_id": "single-blue-cube-seed211",
+      "cube_identity_root": "clear",
+      "cube_identity_blind": "clear",
+      "cube_identity_final": "clear",
+      "sphere_clear_count_root": 0,
+      "sphere_clear_count_blind": 0,
+      "sphere_count_final": 0,
+      "relation_final": "not_assessable",
+      "relation_reason": "No agreed clear cube-and-unique-sphere pair; geometry was not assigned an incorrect left/right value.",
+      "primary_criterion_confirmed": true,
+      "primary_criterion_scope": "single prompt: exactly one clear cube with target body color; relational prompt: both unique target objects, their colors and requested direction. Background/style kept separately.",
+      "disagreements": [],
+      "agreed_cube_color": "blue"
+    },
+    {
+      "anonymous_id": "G",
+      "request_id": "red-cube-left-blue-sphere-seed101",
+      "cube_identity_root": "ambiguous",
+      "cube_identity_blind": "ambiguous",
+      "cube_identity_final": "ambiguous",
+      "sphere_clear_count_root": 1,
+      "sphere_clear_count_blind": 2,
+      "sphere_count_final": "uncertain_observer_disagreement",
+      "relation_final": "not_assessable",
+      "relation_reason": "No agreed clear cube-and-unique-sphere pair; geometry was not assigned an incorrect left/right value.",
+      "primary_criterion_confirmed": false,
+      "primary_criterion_scope": "single prompt: exactly one clear cube with target body color; relational prompt: both unique target objects, their colors and requested direction. Background/style kept separately.",
+      "disagreements": [
+        "right-edge cropped blue shape: root ambiguous candidate, blind clear second sphere. Retain unresolved count; common central blue sphere is clear to both."
+      ],
+      "agreed_central_sphere_color": "blue"
+    },
+    {
+      "anonymous_id": "H",
+      "request_id": "single-red-cube-seed211",
+      "cube_identity_root": "ambiguous",
+      "cube_identity_blind": "clear",
+      "cube_identity_final": "uncertain_observer_disagreement",
+      "sphere_clear_count_root": 0,
+      "sphere_clear_count_blind": 0,
+      "sphere_count_final": 0,
+      "relation_final": "not_assessable",
+      "relation_reason": "No agreed clear cube-and-unique-sphere pair; geometry was not assigned an incorrect left/right value.",
+      "primary_criterion_confirmed": false,
+      "primary_criterion_scope": "single prompt: exactly one clear cube with target body color; relational prompt: both unique target objects, their colors and requested direction. Background/style kept separately.",
+      "disagreements": [
+        "cube identity: root ambiguous, blind clear. Blind color mixed_or_uncertain; root color not_assessable. Retain uncertain identity and both raw color annotations."
+      ]
+    }
+  ],
+  "descriptive_counts": {
+    "single_red_cube": {
+      "planned": 2,
+      "confirmed": 0,
+      "uncertain_identity": 2
+    },
+    "single_blue_cube": {
+      "planned": 2,
+      "confirmed": 2,
+      "uncertain_identity": 0
+    },
+    "red_cube_left_blue_sphere": {
+      "planned": 2,
+      "confirmed": 0,
+      "geometry_assessable": 0
+    },
+    "blue_sphere_left_red_cube": {
+      "planned": 2,
+      "confirmed": 0,
+      "geometry_assessable": 0
+    }
+  },
+  "all_four_relational_geometries_not_assessable": true,
+  "primary_count_does_not_include_background_style": true
+}

@@ -1,0 +1,240 @@
+{
+  "checked_utc": "2026-11-11T19:45:38.853688+00:00",
+  "commit": "cd28325eba565efb93d86c8a689ae9f8d29f01c4",
+  "prior_commit": "b9be84784adb853d2b184631244d195244cf4846",
+  "source_sha256": "34ae979c6e3ab3ba9e3ec9f491479bb976161a004ed55d5403a591617441cc11",
+  "all_passed": true,
+  "passed_viewports": 2,
+  "tls_verification": true,
+  "scope": "Incremental result-table layout and adjacent explanation; previous image network validation and navigation checks retained.",
+  "rows": [
+    [
+      "条件",
+      "主项确认",
+      "几何可评"
+    ],
+    [
+      "单红立方体",
+      "0/2",
+      "—"
+    ],
+    [
+      "单蓝立方体",
+      "2/2",
+      "—"
+    ],
+    [
+      "红立方体在左",
+      "0/2",
+      "0/2"
+    ],
+    [
+      "蓝球在左",
+      "0/2",
+      "0/2"
+    ]
+  ],
+  "comparison": {
+    "before_narrow_png_dimensions": [
+      324,
+      907
+    ],
+    "after_narrow_png_dimensions": [
+      307,
+      187
+    ],
+    "finding": "The prior condition column wrapped labels into individual characters. All four condition labels and all headers now fit on one line at 390px; the full result table is 306x186 CSS pixels at both viewports. The adjacent paragraph keeps the denominator, dash meaning and uncertainty interpretation visible and readable.",
+    "visual_observer": "AI code agent /root/meanflow_reader_check",
+    "inspected": [
+      "results-before-narrow.png",
+      "results-table-narrow.png",
+      "results-context-narrow.png",
+      "results-context-desktop.png"
+    ]
+  },
+  "pages": [
+    {
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "passed": true,
+      "table": {
+        "width": 306.046875,
+        "height": 186,
+        "clientWidth": 306,
+        "scrollWidth": 306,
+        "overflowX": "auto",
+        "scrollLeftAfter": 0
+      },
+      "labels": [
+        {
+          "text": "单红立方体",
+          "width": 123.015625,
+          "height": 37,
+          "lineHeight": 24
+        },
+        {
+          "text": "单蓝立方体",
+          "width": 123.015625,
+          "height": 37,
+          "lineHeight": 24
+        },
+        {
+          "text": "红立方体在左",
+          "width": 123.015625,
+          "height": 37,
+          "lineHeight": 24
+        },
+        {
+          "text": "蓝球在左",
+          "width": 123.015625,
+          "height": 37,
+          "lineHeight": 24
+        }
+      ],
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentScrollWidth": 1440,
+        "articleClientWidth": 1012,
+        "articleScrollWidth": 1012
+      },
+      "adjacent_explanation_matches_source": true,
+      "exercises": {
+        "count": 3,
+        "match_source": true
+      },
+      "code_matches": true,
+      "image_dom_matches": true
+    },
+    {
+      "viewport": "narrow",
+      "width": 390,
+      "height": 844,
+      "passed": true,
+      "table": {
+        "width": 306.046875,
+        "height": 186,
+        "clientWidth": 306,
+        "scrollWidth": 306,
+        "overflowX": "auto",
+        "scrollLeftAfter": 0
+      },
+      "labels": [
+        {
+          "text": "单红立方体",
+          "width": 123.015625,
+          "height": 37,
+          "lineHeight": 24
+        },
+        {
+          "text": "单蓝立方体",
+          "width": 123.015625,
+          "height": 37,
+          "lineHeight": 24
+        },
+        {
+          "text": "红立方体在左",
+          "width": 123.015625,
+          "height": 37,
+          "lineHeight": 24
+        },
+        {
+          "text": "蓝球在左",
+          "width": 123.015625,
+          "height": 37,
+          "lineHeight": 24
+        }
+      ],
+      "geometry": {
+        "viewportWidth": 390,
+        "documentScrollWidth": 390,
+        "articleClientWidth": 324,
+        "articleScrollWidth": 324
+      },
+      "adjacent_explanation_matches_source": true,
+      "exercises": {
+        "count": 3,
+        "match_source": true
+      },
+      "code_matches": true,
+      "image_dom_matches": true
+    }
+  ],
+  "guards": {
+    "image_markdown_unchanged": true,
+    "image_assets_match_prior": [
+      {
+        "path": "docs/assets/sd14-attributes-single-red-cube-seed101.png",
+        "sha256": "a82f10ed42696ec4ee1736473fa03e5c49dbb7d92a05e693a481e65028229a8b",
+        "matches_prior_network_verified_bytes": true
+      },
+      {
+        "path": "docs/assets/sd14-attributes-single-blue-cube-seed101.png",
+        "sha256": "0d35ef7af25a133f15382cb5c3b0cc22bb27e490d1785e9dc3c321b309454924",
+        "matches_prior_network_verified_bytes": true
+      },
+      {
+        "path": "docs/assets/sd14-attributes-single-red-cube-seed211.png",
+        "sha256": "cd1c14bc2fcb42aa9c145cd6432892279dfea938ba52b522500a02abd1da9511",
+        "matches_prior_network_verified_bytes": true
+      },
+      {
+        "path": "docs/assets/sd14-attributes-single-blue-cube-seed211.png",
+        "sha256": "dd832ba236a1be55574d455cc1edd5926dcebc2449e88ec01dd67ace995bb870",
+        "matches_prior_network_verified_bytes": true
+      },
+      {
+        "path": "docs/assets/sd14-attributes-red-cube-left-blue-sphere-seed101.png",
+        "sha256": "7bd4f102296682515c84d9f3c73e4effe6e165afdb7b07cc755b01483239491c",
+        "matches_prior_network_verified_bytes": true
+      },
+      {
+        "path": "docs/assets/sd14-attributes-blue-sphere-left-red-cube-seed101.png",
+        "sha256": "fc3808726c9b273edf67ee5b78377ffe614ba5ef03b3cc83499991762fd9ccba",
+        "matches_prior_network_verified_bytes": true
+      },
+      {
+        "path": "docs/assets/sd14-attributes-red-cube-left-blue-sphere-seed211.png",
+        "sha256": "c902d68310c232fd7254f9dc9eff5b038c0ab3f1bedef7d1ae2331a81bfa2944",
+        "matches_prior_network_verified_bytes": true
+      },
+      {
+        "path": "docs/assets/sd14-attributes-blue-sphere-left-red-cube-seed211.png",
+        "sha256": "82b01f58f8cdc1bb41472763b1cc4a7ec87ef4f06d5bb717c8b60e6813ae6fa5",
+        "matches_prior_network_verified_bytes": true
+      }
+    ],
+    "code_unchanged": true,
+    "code_bytes": 502,
+    "code_sha256": "7de3ef7423e63ad8ba7fdc3b8edd1e64a53ff94ab58abaef8b65a71e2f766d13",
+    "exercises_unchanged": true
+  },
+  "image_request_policy": "The unchanged PNG bytes previously verified against actual GitHub responses are served from a local in-memory cache for this table-only run. No new image-network validation is claimed.",
+  "scope_limits": "No repeated model inference, image-content scoring, full navigation retest, new PNG network validation, physical device or screen-reader test.",
+  "evidence": [
+    {
+      "file": "browser-results.json",
+      "sha256": "f98b448669c6b25e48c1228f90ba5d1c668a67da731181edbec61bc11d85a8df"
+    },
+    {
+      "file": "source-check.json",
+      "sha256": "e901c114c969a46398a5aed122a5b07d6283a400cf73ab27abcbe4e4096833cd"
+    },
+    {
+      "file": "results-before-narrow.png",
+      "sha256": "1c5813e69c1a2a90fee8bdbbfe708080f177f6cee7f57b74a23ca912b19310a1"
+    },
+    {
+      "file": "results-table-narrow.png",
+      "sha256": "2406f784dfb1b55394f7dfb251946c4e65a41aa2e04607c201ba0cb7183c31f3"
+    },
+    {
+      "file": "results-context-narrow.png",
+      "sha256": "9231fa465e03ff5fd02c993b06112d5a0cb4c85b661c9603310f5fda1108dda8"
+    },
+    {
+      "file": "results-context-desktop.png",
+      "sha256": "e7e5c45c1573ccfe9a4863b903595673c6e27fd4aa1f2ea77c414d071f419100"
+    }
+  ]
+}

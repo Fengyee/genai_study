@@ -1,0 +1,306 @@
+{
+  "checked_utc": "2026-11-11T19:29:15.088922+00:00",
+  "branch": "feat/sd14-attributes-layout",
+  "head": "054e4e81093f99851a90bc636ea95eefdde1f592",
+  "scope": "当前PR6 README → docs/learning-path → examples/README → docs/experiment-report 的首次二维路径；对照保存的恢复实例JSON、CLI源码和依赖锁，查找会造成命令失败或实质性误导的问题。",
+  "source_sha256": {
+    "README.md": "a1f7c055d293162aceba073097e775af095dd27d03181b88e95ef7ec37104461",
+    "docs/learning-path.md": "803bb6fdaafe15708b13813eb2e23f798e3776c8b92d057a4b860f85dcb4c61c",
+    "examples/README.md": "37503e8c368c6423eab4b12dfb48b0f9c8a404e140db5d8df26fbb7e5a9dfd96",
+    "docs/experiment-report.md": "ff596422980656725d0e0edc84d46d4bfdec38cfefbbed2fddc82404d7b4e994",
+    "src/genai_study/experiment.py": "bee833cc0c3221c9983f86ad8899e15d01e2f8f85cc9f8d1e9e1896530675aea",
+    "src/genai_study/solver_study.py": "ed9c240869870195aef61a81688dca5bf44daf8c1381ac4343c8e361e68b6252",
+    "src/genai_study/checkpoint.py": "013a6e1ab0289496962db76777dac6292cd6cec98828ee58a7a8c9a1144a5b79",
+    "scripts/quality.sh": "e29560f57f2469e08d50a1e700d02c7a07b771ff4ecf50820111b3f78e0d6ce3",
+    "scripts/check_lesson_examples.py": "01760fa1d36ee21d06d8658b502898f41100010f77182cdcad5fc4ee71131d52",
+    "pyproject.toml": "8b35069bf9c68a061a465848eecfccbb16a72e4b1dd90743a9dfef232c15eec5",
+    "requirements-lock.txt": "87c983be2101697e42bcef34553aec0c28e2132ff3c9492c6732561468cc366a"
+  },
+  "findings": [],
+  "conclusion": "在所审查的首次路径、版本、随机性和成本范围内，未发现新增的实质性错误或会令文档命令失败的矛盾。",
+  "checks": [
+    {
+      "topic": "安装与版本",
+      "result": "README声明Linux x86_64 / Python3.12 / CPU PyTorch2.6.0；pyproject的>=3.12,<3.13及固定依赖与lock相符，--no-build-isolation使用的setuptools75.6.0包含在lock；恢复JSON版本与报告相符。",
+      "locations": [
+        "README.md:33",
+        "README.md:35",
+        "README.md:43",
+        "pyproject.toml:1",
+        "requirements-lock.txt:678"
+      ]
+    },
+    {
+      "topic": "训练预算与默认配置",
+      "result": "README、learning-path和examples均显式推荐5000次更新；CLI省略--steps默认800与说明一致。seed7、batch256、2048样本、单线程、100步采样均与源码和两份恢复JSON一致。",
+      "locations": [
+        "README.md:40",
+        "docs/learning-path.md:84",
+        "examples/README.md:9",
+        "src/genai_study/experiment.py:26"
+      ]
+    },
+    {
+      "topic": "跨入口输出与checkpoint",
+      "result": "learning-path先要求复用已完成的first-flow/first-ddpm；examples明确修改checkpoint指向已有5000步结果。历史800步报告使用独立flow-800-reference路径并要求确认预算；非空目录保护与重跑新目录步骤一致。",
+      "locations": [
+        "README.md:49",
+        "docs/learning-path.md:84",
+        "examples/README.md:16",
+        "examples/README.md:44",
+        "docs/experiment-report.md:63",
+        "docs/experiment-report.md:74"
+      ]
+    },
+    {
+      "topic": "随机性与数值复现",
+      "result": "训练、留出评估、生成、参考与基线使用分离随机流。solver固定初始噪声与同一checkpoint。恢复报告明确区分精确相同的输入、训练权重差异及旧checkpoint控制下2.50e-6至7.27e-6终点最大差；没有把当前观察归因于单一CPU因素。",
+      "locations": [
+        "examples/README.md:23",
+        "src/genai_study/experiment.py:41",
+        "src/genai_study/solver_study.py:44",
+        "docs/experiment-report.md:86",
+        "docs/experiment-report.md:88",
+        "docs/experiment-report.md:97"
+      ]
+    },
+    {
+      "topic": "成本与证据轮次",
+      "result": "README约8–9秒对应历史内部计时范围7.926–8.907秒；报告保留2026-11-10历史计时，并单列恢复实例19.43/18.09/6.78/6.45秒外层wall。恢复训练内部计时13.4239/12.2830秒可在原JSON读取。各口径与源码查询位置相符，读者可沿README新增入口找到当前成本和并行负载说明。",
+      "locations": [
+        "README.md:45",
+        "README.md:60",
+        "docs/experiment-report.md:3",
+        "docs/experiment-report.md:18",
+        "docs/experiment-report.md:78",
+        "docs/experiment-report.md:90",
+        "examples/README.md:25",
+        "examples/README.md:54"
+      ]
+    },
+    {
+      "topic": "分支中的教学块数量",
+      "result": "当前PR6的EXAMPLES静态白名单16项，与README16一致；feat/meanflow-average-velocity为17项，与该分支README17一致。MeanFlow导航与39/40组术语数量差异对应分支范围。",
+      "locations": [
+        "README.md:58",
+        "scripts/check_lesson_examples.py:24"
+      ],
+      "current_examples": 16,
+      "later_branch_examples": 17
+    }
+  ],
+  "observed_saved_runs": [
+    {
+      "label": "flow",
+      "status": "succeeded",
+      "wall_seconds": 19.426485807000063,
+      "versions": {
+        "python": "3.12.14",
+        "torch": "2.6.0+cpu",
+        "numpy": "2.1.3",
+        "matplotlib": "3.9.3"
+      },
+      "config": {
+        "method": "flow",
+        "steps": 5000,
+        "batch_size": 256,
+        "samples": 2048,
+        "seed": 7,
+        "threads": 1,
+        "output": "artifacts/recovered-cpu-reader-path/flow",
+        "overwrite": false,
+        "device": "cpu",
+        "learning_rate": 0.001,
+        "hidden_width": 128,
+        "sampling_steps": 100,
+        "data_radius": 2.0,
+        "data_sigma": 0.08,
+        "ddpm_beta_start": 0.0001,
+        "ddpm_beta_end": 0.1,
+        "ddpm_alpha_bar_terminal": 0.005618760362267494,
+        "eval_examples": 4096
+      },
+      "internal_elapsed_seconds": 13.423934783000277,
+      "timing_scope": "evaluation, training, sampling and metrics; excludes imports and plots"
+    },
+    {
+      "label": "ddpm",
+      "status": "succeeded",
+      "wall_seconds": 18.09498640799984,
+      "versions": {
+        "python": "3.12.14",
+        "torch": "2.6.0+cpu",
+        "numpy": "2.1.3",
+        "matplotlib": "3.9.3"
+      },
+      "config": {
+        "method": "ddpm",
+        "steps": 5000,
+        "batch_size": 256,
+        "samples": 2048,
+        "seed": 7,
+        "threads": 1,
+        "output": "artifacts/recovered-cpu-reader-path/ddpm",
+        "overwrite": false,
+        "device": "cpu",
+        "learning_rate": 0.001,
+        "hidden_width": 128,
+        "sampling_steps": 100,
+        "data_radius": 2.0,
+        "data_sigma": 0.08,
+        "ddpm_beta_start": 0.0001,
+        "ddpm_beta_end": 0.1,
+        "ddpm_alpha_bar_terminal": 0.005618760362267494,
+        "eval_examples": 4096
+      },
+      "internal_elapsed_seconds": 12.283049347000087,
+      "timing_scope": "evaluation, training, sampling and metrics; excludes imports and plots"
+    },
+    {
+      "label": "solver",
+      "status": "succeeded",
+      "wall_seconds": 6.782035234999967,
+      "versions": {
+        "python": "3.12.14",
+        "torch": "2.6.0+cpu"
+      },
+      "config": {
+        "steps": [
+          10,
+          25,
+          100,
+          200
+        ],
+        "samples": 2048,
+        "seed": 123,
+        "threads": 1,
+        "device": "cpu",
+        "solver": "explicit Euler",
+        "noise_seed": 123,
+        "reference_seed": 124,
+        "baseline_seed": 125
+      },
+      "internal_elapsed_seconds": null,
+      "timing_scope": "one sampling call only; excludes loading, metrics and plotting; no warm-up"
+    },
+    {
+      "label": "fixed-old-checkpoint-solver",
+      "status": "succeeded",
+      "wall_seconds": 6.445429065999633,
+      "versions": {
+        "python": "3.12.14",
+        "torch": "2.6.0+cpu"
+      },
+      "config": {
+        "steps": [
+          10,
+          25,
+          100,
+          200
+        ],
+        "samples": 2048,
+        "seed": 123,
+        "threads": 1,
+        "device": "cpu",
+        "solver": "explicit Euler",
+        "noise_seed": 123,
+        "reference_seed": 124,
+        "baseline_seed": 125
+      },
+      "internal_elapsed_seconds": null,
+      "timing_scope": "one sampling call only; excludes loading, metrics and plotting; no warm-up"
+    }
+  ],
+  "validation": {
+    "markdown_local_links_checked": 846,
+    "markdown_errors": 0,
+    "bash_syntax_blocks_checked": 11,
+    "bash_syntax_all_passed": true,
+    "bash_syntax_details": [
+      {
+        "file": "README.md",
+        "block": 1,
+        "line": 35,
+        "syntax_exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "README.md",
+        "block": 2,
+        "line": 53,
+        "syntax_exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/learning-path.md",
+        "block": 1,
+        "line": 87,
+        "syntax_exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/learning-path.md",
+        "block": 2,
+        "line": 126,
+        "syntax_exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "examples/README.md",
+        "block": 1,
+        "line": 9,
+        "syntax_exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "examples/README.md",
+        "block": 2,
+        "line": 46,
+        "syntax_exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "examples/README.md",
+        "block": 3,
+        "line": 66,
+        "syntax_exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "examples/README.md",
+        "block": 4,
+        "line": 82,
+        "syntax_exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "examples/README.md",
+        "block": 5,
+        "line": 109,
+        "syntax_exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/experiment-report.md",
+        "block": 1,
+        "line": 38,
+        "syntax_exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/experiment-report.md",
+        "block": 2,
+        "line": 65,
+        "syntax_exit": 0,
+        "stderr": ""
+      }
+    ],
+    "independent_agent": "source_scope_check independently found no issue in install/randomness/cost/solver scope"
+  },
+  "limits": [
+    "本轮未重装环境、运行模型或重新执行quality.sh；运行成功和数值差异依据已保存的四次真实执行证据及root-check。",
+    "本轮仅执行Markdown链接检查与bash -n语法检查；未检查外部网络可达性。",
+    "本轮未查看SD图片，未审查自然图像/视频质量，未修改tracked文件或Git。"
+  ],
+  "git_status_after_review": ""
+}

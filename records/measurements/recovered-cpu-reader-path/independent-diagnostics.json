@@ -1,0 +1,218 @@
+{
+  "method": "NumPy float64 direct pairwise difference/sqrt matrices on first512 samples, plus analytic radius2 eight centers in float64; no calls to repository diagnostics or torch.cdist. Counter/threshold fields checked exactly, float discrepancies reported numerically. Float64 centers differ slightly from the implementation float32 trigonometric coordinates.",
+  "checks": [
+    {
+      "label": "flow",
+      "array": "generated",
+      "independent": {
+        "energy_distance_v_statistic": 0.010622436575095318,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.117740734695489,
+        "fraction_within_3sigma": 0.9248046875,
+        "covered_modes_at_1pct": 8
+      },
+      "reported": {
+        "energy_distance_v_statistic": 0.010622262954711914,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.11774054914712906,
+        "fraction_within_3sigma": 0.9248046875,
+        "covered_modes_at_1pct": 8
+      },
+      "integer_and_fraction_fields_exact_equal": true,
+      "energy_abs_difference": 1.736203834035166e-07,
+      "nearest_distance_abs_difference": 1.8554835994055718e-07
+    },
+    {
+      "label": "ddpm",
+      "array": "generated",
+      "independent": {
+        "energy_distance_v_statistic": 0.008850069068071509,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.13307402704396654,
+        "fraction_within_3sigma": 0.9189453125,
+        "covered_modes_at_1pct": 8
+      },
+      "reported": {
+        "energy_distance_v_statistic": 0.008849620819091797,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.1330738365650177,
+        "fraction_within_3sigma": 0.9189453125,
+        "covered_modes_at_1pct": 8
+      },
+      "integer_and_fraction_fields_exact_equal": true,
+      "energy_abs_difference": 4.4824897971196265e-07,
+      "nearest_distance_abs_difference": 1.904789488360592e-07
+    },
+    {
+      "label": "solver",
+      "array": "steps_10",
+      "independent": {
+        "energy_distance_v_statistic": 0.011351963360460182,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.13168705057344254,
+        "fraction_within_3sigma": 0.86865234375,
+        "covered_modes_at_1pct": 8
+      },
+      "reported": {
+        "energy_distance_v_statistic": 0.011351585388183594,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.13168691098690033,
+        "fraction_within_3sigma": 0.86865234375,
+        "covered_modes_at_1pct": 8
+      },
+      "integer_and_fraction_fields_exact_equal": true,
+      "energy_abs_difference": 3.7797227658842303e-07,
+      "nearest_distance_abs_difference": 1.3958654221379874e-07
+    },
+    {
+      "label": "solver",
+      "array": "steps_25",
+      "independent": {
+        "energy_distance_v_statistic": 0.010963264253608607,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.12209951831242177,
+        "fraction_within_3sigma": 0.90673828125,
+        "covered_modes_at_1pct": 8
+      },
+      "reported": {
+        "energy_distance_v_statistic": 0.010962724685668945,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.12209923565387726,
+        "fraction_within_3sigma": 0.90673828125,
+        "covered_modes_at_1pct": 8
+      },
+      "integer_and_fraction_fields_exact_equal": true,
+      "energy_abs_difference": 5.395679396613673e-07,
+      "nearest_distance_abs_difference": 2.826585445148133e-07
+    },
+    {
+      "label": "solver",
+      "array": "steps_100",
+      "independent": {
+        "energy_distance_v_statistic": 0.011229621520673305,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.12047212353881961,
+        "fraction_within_3sigma": 0.9169921875,
+        "covered_modes_at_1pct": 8
+      },
+      "reported": {
+        "energy_distance_v_statistic": 0.011229991912841797,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.12047181278467178,
+        "fraction_within_3sigma": 0.9169921875,
+        "covered_modes_at_1pct": 8
+      },
+      "integer_and_fraction_fields_exact_equal": true,
+      "energy_abs_difference": 3.7039216849166223e-07,
+      "nearest_distance_abs_difference": 3.1075414783088284e-07
+    },
+    {
+      "label": "solver",
+      "array": "steps_200",
+      "independent": {
+        "energy_distance_v_statistic": 0.01129008945593224,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.12028807486600399,
+        "fraction_within_3sigma": 0.9189453125,
+        "covered_modes_at_1pct": 8
+      },
+      "reported": {
+        "energy_distance_v_statistic": 0.011289834976196289,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.12028782069683075,
+        "fraction_within_3sigma": 0.9189453125,
+        "covered_modes_at_1pct": 8
+      },
+      "integer_and_fraction_fields_exact_equal": true,
+      "energy_abs_difference": 2.544797359504969e-07,
+      "nearest_distance_abs_difference": 2.541691732360629e-07
+    },
+    {
+      "label": "fixed-old-checkpoint-solver",
+      "array": "steps_10",
+      "independent": {
+        "energy_distance_v_statistic": 0.011351927344345647,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.13168698421968267,
+        "fraction_within_3sigma": 0.86865234375,
+        "covered_modes_at_1pct": 8
+      },
+      "reported": {
+        "energy_distance_v_statistic": 0.011352062225341797,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.13168670237064362,
+        "fraction_within_3sigma": 0.86865234375,
+        "covered_modes_at_1pct": 8
+      },
+      "integer_and_fraction_fields_exact_equal": true,
+      "energy_abs_difference": 1.348809961498887e-07,
+      "nearest_distance_abs_difference": 2.818490390521511e-07
+    },
+    {
+      "label": "fixed-old-checkpoint-solver",
+      "array": "steps_25",
+      "independent": {
+        "energy_distance_v_statistic": 0.010963227397775555,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.1220994527408629,
+        "fraction_within_3sigma": 0.90673828125,
+        "covered_modes_at_1pct": 8
+      },
+      "reported": {
+        "energy_distance_v_statistic": 0.010962724685668945,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.12209903448820114,
+        "fraction_within_3sigma": 0.90673828125,
+        "covered_modes_at_1pct": 8
+      },
+      "integer_and_fraction_fields_exact_equal": true,
+      "energy_abs_difference": 5.027121066092377e-07,
+      "nearest_distance_abs_difference": 4.182526617546589e-07
+    },
+    {
+      "label": "fixed-old-checkpoint-solver",
+      "array": "steps_100",
+      "independent": {
+        "energy_distance_v_statistic": 0.011229574268114995,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.12047215654626267,
+        "fraction_within_3sigma": 0.9169921875,
+        "covered_modes_at_1pct": 8
+      },
+      "reported": {
+        "energy_distance_v_statistic": 0.011229991912841797,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.12047193199396133,
+        "fraction_within_3sigma": 0.9169921875,
+        "covered_modes_at_1pct": 8
+      },
+      "integer_and_fraction_fields_exact_equal": true,
+      "energy_abs_difference": 4.176447268022798e-07,
+      "nearest_distance_abs_difference": 2.2455230133666682e-07
+    },
+    {
+      "label": "fixed-old-checkpoint-solver",
+      "array": "steps_200",
+      "independent": {
+        "energy_distance_v_statistic": 0.011290039183682765,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.12028813123645805,
+        "fraction_within_3sigma": 0.9189453125,
+        "covered_modes_at_1pct": 8
+      },
+      "reported": {
+        "energy_distance_v_statistic": 0.011289596557617188,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.12028784304857254,
+        "fraction_within_3sigma": 0.9189453125,
+        "covered_modes_at_1pct": 8
+      },
+      "integer_and_fraction_fields_exact_equal": true,
+      "energy_abs_difference": 4.4262606557765594e-07,
+      "nearest_distance_abs_difference": 2.8818788551376873e-07
+    }
+  ],
+  "max_energy_abs_difference": 5.395679396613673e-07,
+  "max_nearest_distance_abs_difference": 4.182526617546589e-07,
+  "all_count_fields_match": true
+}

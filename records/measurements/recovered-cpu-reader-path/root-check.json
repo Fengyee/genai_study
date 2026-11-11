@@ -1,0 +1,81 @@
+{
+  "checked_utc": "2026-11-11T19:23:18.591180+00:00",
+  "reviewer": "root",
+  "method": "Independently load preserved NPZ arrays and calculate float64 differences; rehash historical files and bundle",
+  "arrays": {
+    "flow": {
+      "generated": {
+        "exact_equal": false,
+        "max_abs": 4.208087921142578e-05,
+        "rms": 1.8582742564786582e-06
+      },
+      "reference": {
+        "exact_equal": true,
+        "max_abs": 0.0,
+        "rms": 0.0
+      },
+      "training_loss": {
+        "exact_equal": false,
+        "max_abs": 5.960464477539062e-07,
+        "rms": 1.4828983979458465e-07
+      }
+    },
+    "ddpm": {
+      "generated": {
+        "exact_equal": false,
+        "max_abs": 6.958842277526855e-05,
+        "rms": 2.052486874409185e-06
+      },
+      "reference": {
+        "exact_equal": true,
+        "max_abs": 0.0,
+        "rms": 0.0
+      },
+      "training_loss": {
+        "exact_equal": false,
+        "max_abs": 1.4901161193847656e-07,
+        "rms": 3.907742515814502e-08
+      }
+    },
+    "fixed_old_checkpoint": {
+      "initial": {
+        "exact_equal": true,
+        "max_abs": 0.0,
+        "rms": 0.0
+      },
+      "reference": {
+        "exact_equal": true,
+        "max_abs": 0.0,
+        "rms": 0.0
+      },
+      "baseline": {
+        "exact_equal": true,
+        "max_abs": 0.0,
+        "rms": 0.0
+      },
+      "steps_10": {
+        "exact_equal": false,
+        "max_abs": 2.5033950805664062e-06,
+        "rms": 1.856706966227135e-07
+      },
+      "steps_25": {
+        "exact_equal": false,
+        "max_abs": 4.947185516357422e-06,
+        "rms": 2.5060214501423844e-07
+      },
+      "steps_100": {
+        "exact_equal": false,
+        "max_abs": 6.318092346191406e-06,
+        "rms": 2.9941459582694116e-07
+      },
+      "steps_200": {
+        "exact_equal": false,
+        "max_abs": 7.271766662597656e-06,
+        "rms": 3.1246922283303147e-07
+      }
+    }
+  },
+  "historical_files_sha_passed": 13,
+  "bundle_files_sha_passed": 20,
+  "reported_numeric_differences_match": true
+}

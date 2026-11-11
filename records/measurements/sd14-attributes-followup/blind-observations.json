@@ -1,0 +1,413 @@
+{
+  "scope": {
+    "rubric": "/tmp/genai-visual-round51/rubric.json",
+    "images": ["A.png", "B.png", "C.png", "D.png", "E.png", "F.png", "G.png", "H.png"],
+    "image_size_px": [512, 512],
+    "method": "Independent visual inspection of each complete original image with view_image at original detail. No crops, image edits, generation, detector, model execution, prompt information, seed information, or other files were used.",
+    "bbox_format": "[xmin, ymin, xmax, ymax] in full-image coordinates, approximately estimated by the observing AI; not detector measurements. Bounds describe visible regions, including the visible remainder of cropped objects.",
+    "color_method": "Visible body colors were recorded without comparison to any target prompt. Colors of ambiguous identities are not_assessable; descriptive visible hues may be retained in notes.",
+    "relationship_method": "Only exactly one clear, uniquely localizable cube and exactly one clear, uniquely localizable sphere qualify. A confident horizontal-center separation of at least 25.6 px is required for left/right."
+  },
+  "observations": [
+    {
+      "image": "A.png",
+      "clear_cube_count": 0,
+      "clear_sphere_count": 1,
+      "cube_identity": "ambiguous",
+      "sphere_identity": "clear",
+      "clear_objects": [
+        {
+          "id": "A_sphere_1",
+          "type": "sphere",
+          "identity": "clear",
+          "bbox_xyxy": [123, 48, 403, 359],
+          "center_x_approx": 263,
+          "color": "mixed_or_uncertain",
+          "notes": "A large rounded, ball-like volume with an elliptical outer contour and curved surface cues, although its interior is divided into angular facets. The body contains substantial red, blue/cyan, and unpainted white regions; neither red nor blue is a clear uniform dominant body color."
+        }
+      ],
+      "ambiguous_candidates": [
+        {
+          "id": "A_cube_candidate_1",
+          "type": "cube",
+          "identity": "ambiguous",
+          "bbox_xyxy": [8, 207, 107, 311],
+          "color": "not_assessable",
+          "notes": "Small pink/red angular region at lower left has possible top/side face cues, but its right side joins the larger red structure and its complete block geometry and distinct-object boundary are unclear."
+        },
+        {
+          "id": "A_cube_candidate_2",
+          "type": "cube",
+          "identity": "ambiguous",
+          "bbox_xyxy": [54, 0, 512, 507],
+          "color": "not_assessable",
+          "notes": "Large red upper-left plane, blue upper-right plane, and blue lower plane form an angular surrounding structure. Much is hidden by the ball, cut by the image boundary, or merged with paint washes; a single coherent cube-like block cannot be established."
+        },
+        {
+          "id": "A_cube_candidate_3",
+          "type": "cube",
+          "identity": "ambiguous",
+          "bbox_xyxy": [453, 188, 508, 309],
+          "color": "not_assessable",
+          "notes": "A narrow red rectangular patch at the right edge has little convincing depth and does not independently establish a cube."
+        }
+      ],
+      "horizontal_relation": {
+        "state": "not_assessable",
+        "reason": "No clear cube; the angular structures cannot supply a unique confidently identified cube paired with the clear sphere.",
+        "center_separation_px": null
+      },
+      "secondary": {
+        "background": "Exposed areas are off-white textured paper, with extensive red and blue geometric planes and paint washes filling most of the setting.",
+        "plain_white_or_light_neutral_background": false,
+        "watercolor_like": true,
+        "extra_objects_or_forms": "Several angular surround/block-like forms and the isolated-looking right red rectangle, all retained above as ambiguous candidates rather than extra clear cubes.",
+        "overlap_occlusion_merging": "The ball overlaps the surrounding planes; several red regions merge. The ball remains largely localizable.",
+        "cropping": "Surrounding red/blue structure reaches and is cut by the top and right boundaries; lower wash approaches or touches the bottom. The main ball is not image-edge cropped.",
+        "unexpected_border": "No clear added frame.",
+        "text": "No visible text."
+      }
+    },
+    {
+      "image": "B.png",
+      "clear_cube_count": 1,
+      "clear_sphere_count": 0,
+      "cube_identity": "clear",
+      "sphere_identity": "not_observed",
+      "clear_objects": [
+        {
+          "id": "B_cube_1",
+          "type": "cube",
+          "identity": "clear",
+          "bbox_xyxy": [181, 119, 512, 402],
+          "center_x_approx": 346.5,
+          "color": "mixed_or_uncertain",
+          "notes": "A box-like block has a nearly square front and a contrasting visible right side, which provide coherent volume cues despite right-edge cropping. Its front contains a red perimeter, a large purple/pink area, and a white lower region; the side is pale cyan/teal with darker teal edges. The visible body has conflicting colors."
+        }
+      ],
+      "ambiguous_candidates": [
+        {
+          "id": "B_cube_candidate_1",
+          "type": "cube",
+          "identity": "ambiguous",
+          "bbox_xyxy": [258, 385, 512, 512],
+          "color": "not_assessable",
+          "notes": "A broad red region descends below the upper block and exits the bottom/right edges. It could be an attached support, another block, or a wash; no separate cube volume is securely visible."
+        }
+      ],
+      "horizontal_relation": {
+        "state": "not_assessable",
+        "reason": "No clear sphere is observed.",
+        "center_separation_px": null
+      },
+      "secondary": {
+        "background": "A muted green/teal field covers the image, with pink/red wash toward the upper right.",
+        "plain_white_or_light_neutral_background": false,
+        "watercolor_like": true,
+        "extra_objects_or_forms": "The broad red lower extension is an ambiguous additional form.",
+        "overlap_occlusion_merging": "The lower red extension merges into the block's lower red edge.",
+        "cropping": "The main block is cut off at the right boundary. The lower red extension is cut off at the bottom and right.",
+        "unexpected_border": "No added image frame; the red rectangular rim belongs to the depicted object.",
+        "text": "No visible text."
+      }
+    },
+    {
+      "image": "C.png",
+      "clear_cube_count": 0,
+      "clear_sphere_count": 1,
+      "cube_identity": "ambiguous",
+      "sphere_identity": "clear",
+      "clear_objects": [
+        {
+          "id": "C_sphere_1",
+          "type": "sphere",
+          "identity": "clear",
+          "bbox_xyxy": [5, 15, 467, 476],
+          "center_x_approx": 236,
+          "color": "mixed_or_uncertain",
+          "notes": "One large coherent round volume, with a curved perimeter, reflective-looking light patches, and shading. Red occupies much of the upper/left body, blue much of the right/lower body, with white/cyan regions throughout."
+        }
+      ],
+      "ambiguous_candidates": [
+        {
+          "id": "C_cube_candidate_1",
+          "type": "cube",
+          "identity": "ambiguous",
+          "bbox_xyxy": [208, 81, 361, 220],
+          "color": "not_assessable",
+          "notes": "Red-bordered quadrilateral within the ball; it reads as a surface/reflection motif and does not establish a separate three-dimensional cube."
+        },
+        {
+          "id": "C_cube_candidate_2",
+          "type": "cube",
+          "identity": "ambiguous",
+          "bbox_xyxy": [198, 205, 381, 349],
+          "color": "not_assessable",
+          "notes": "Lower-central red angular rectangular motif has partial edge-like marks but no coherent independent block volume."
+        },
+        {
+          "id": "C_cube_candidate_3",
+          "type": "cube",
+          "identity": "ambiguous",
+          "bbox_xyxy": [101, 225, 198, 330],
+          "color": "not_assessable",
+          "notes": "Blue angular patch in the lower-left interior of the ball; surface-like, without enough distinct faces to establish a cube."
+        },
+        {
+          "id": "C_sphere_candidate_1",
+          "type": "sphere",
+          "identity": "ambiguous",
+          "bbox_xyxy": [267, 216, 355, 315],
+          "color": "not_assessable",
+          "notes": "Small light circular motif with a blue rim inside the large sphere. It lacks sufficient independent volume cues and may be a flat marking or reflection."
+        },
+        {
+          "id": "C_sphere_candidate_2",
+          "type": "sphere",
+          "identity": "ambiguous",
+          "bbox_xyxy": [261, 342, 362, 434],
+          "color": "not_assessable",
+          "notes": "Lower internal rounded light/blue patch is not securely separable from the large sphere's surface pattern."
+        }
+      ],
+      "horizontal_relation": {
+        "state": "not_assessable",
+        "reason": "No clear cube; internal angular motifs do not establish a separate target cube.",
+        "center_separation_px": null
+      },
+      "secondary": {
+        "background": "Off-white paper is visible mainly at the left/top. Large red/blue-gray washes occur behind and to the right of the sphere, with a small base-like form below.",
+        "plain_white_or_light_neutral_background": false,
+        "watercolor_like": true,
+        "extra_objects_or_forms": "A short dark blue oval support/base under the sphere, with a pale ring beneath; several internal geometric motifs are listed as ambiguous candidates.",
+        "overlap_occlusion_merging": "The motifs merge with the large sphere's surface. The sphere meets a small base-like form at its bottom.",
+        "cropping": "The large sphere is visible within the image. Background washes and the lowest base/wash extend to image boundaries.",
+        "unexpected_border": "No clear added border.",
+        "text": "No visible text."
+      }
+    },
+    {
+      "image": "D.png",
+      "clear_cube_count": 0,
+      "clear_sphere_count": 2,
+      "cube_identity": "ambiguous",
+      "sphere_identity": "clear",
+      "clear_objects": [
+        {
+          "id": "D_sphere_1",
+          "type": "sphere",
+          "identity": "clear",
+          "bbox_xyxy": [214, 134, 410, 331],
+          "center_x_approx": 312,
+          "color": "blue",
+          "notes": "Central blue ball-like form with a round boundary, lighter upper marks, and darker/lighter body shading. A surrounding white annulus is recorded separately from the blue body's bounds."
+        },
+        {
+          "id": "D_sphere_2",
+          "type": "sphere",
+          "identity": "clear",
+          "bbox_xyxy": [439, 176, 512, 426],
+          "center_x_approx": 475.5,
+          "color": "blue",
+          "notes": "A second, much-cropped rounded blue volume at the right edge has a continuous curved contour, cyan/blue shading, and a darker lower rim. Its full extent and full-object center lie beyond what is visible; this bbox and center describe only its visible portion."
+        }
+      ],
+      "ambiguous_candidates": [
+        {
+          "id": "D_cube_candidate_1",
+          "type": "cube",
+          "identity": "ambiguous",
+          "bbox_xyxy": [220, 0, 512, 512],
+          "color": "not_assessable",
+          "notes": "A large red field/panel behind the blue shapes has a sloping left edge, but no sufficiently coherent cube faces or complete block volume. It is heavily cropped."
+        },
+        {
+          "id": "D_sphere_candidate_1",
+          "type": "sphere",
+          "identity": "ambiguous",
+          "bbox_xyxy": [465, 81, 512, 182],
+          "color": "not_assessable",
+          "notes": "Separate-looking blue curved segment above the larger right-edge form. Cropping and its narrow visible area prevent deciding whether it is another ball, a connected form, or a curved decoration."
+        }
+      ],
+      "horizontal_relation": {
+        "state": "not_assessable",
+        "reason": "No clear cube and two clear sphere-like objects; there is no unique eligible cube/sphere pair.",
+        "center_separation_px": null
+      },
+      "secondary": {
+        "background": "Muted green/teal background on the left and a bright red panel/field across the right.",
+        "plain_white_or_light_neutral_background": false,
+        "watercolor_like": true,
+        "extra_objects_or_forms": "White circular rim around the central blue ball, a second clear cropped ball, and an additional ambiguous upper-right curved segment.",
+        "overlap_occlusion_merging": "Blue forms sit over or within the red field. The upper and lower right-edge segments have uncertain connectivity.",
+        "cropping": "The red field exits at top, right, and bottom. The second clear ball and the upper ambiguous blue segment are cut by the right edge.",
+        "unexpected_border": "A very thin irregular unpainted strip is visible along part of the top; no clear deliberate frame.",
+        "text": "No visible text."
+      }
+    },
+    {
+      "image": "E.png",
+      "clear_cube_count": 1,
+      "clear_sphere_count": 0,
+      "cube_identity": "clear",
+      "sphere_identity": "not_observed",
+      "clear_objects": [
+        {
+          "id": "E_cube_1",
+          "type": "cube",
+          "identity": "clear",
+          "bbox_xyxy": [119, 123, 389, 389],
+          "center_x_approx": 254,
+          "color": "blue",
+          "notes": "One coherent cube-like block with a large front face, narrower left face, and light top face. Blue clearly dominates the body despite pale/white highlights."
+        }
+      ],
+      "ambiguous_candidates": [],
+      "horizontal_relation": {
+        "state": "not_assessable",
+        "reason": "No sphere is observed.",
+        "center_separation_px": null
+      },
+      "secondary": {
+        "background": "A yellow rectangular painted panel sits against gray-brown/tan paper; the outer paper is darker near the margins.",
+        "plain_white_or_light_neutral_background": false,
+        "watercolor_like": true,
+        "extra_objects_or_forms": "The yellow rectangle is a flat backdrop/panel with no convincing cube volume.",
+        "overlap_occlusion_merging": "The cube is clearly separated visually from the yellow backdrop.",
+        "cropping": "The cube and yellow panel are fully inside the image.",
+        "unexpected_border": "The yellow panel gives a rectangular framing effect; no text or separate hard outer frame.",
+        "text": "No visible text."
+      }
+    },
+    {
+      "image": "F.png",
+      "clear_cube_count": 1,
+      "clear_sphere_count": 0,
+      "cube_identity": "clear",
+      "sphere_identity": "not_observed",
+      "clear_objects": [
+        {
+          "id": "F_cube_1",
+          "type": "cube",
+          "identity": "clear",
+          "bbox_xyxy": [58, 15, 478, 500],
+          "center_x_approx": 268,
+          "color": "blue",
+          "notes": "One large cube-like block with a broad top and two visible side/front faces meeting at a lower corner. The visible body is light-to-dark blue with white unpainted streaks and highlights."
+        }
+      ],
+      "ambiguous_candidates": [],
+      "horizontal_relation": {
+        "state": "not_assessable",
+        "reason": "No sphere is observed.",
+        "center_separation_px": null
+      },
+      "secondary": {
+        "background": "Off-white textured paper with a blue-gray cast shadow/wash extending to the lower right.",
+        "plain_white_or_light_neutral_background": true,
+        "watercolor_like": true,
+        "extra_objects_or_forms": "No separate extra object is clearly visible. White and dark-blue internal patches are surface treatment within the block.",
+        "overlap_occlusion_merging": "The cube's lower edge blends slightly into its shadow/wash but the cube remains readily localizable.",
+        "cropping": "The cube itself is within the image; the cast shadow and lower wash reach the right/bottom boundaries.",
+        "unexpected_border": "No visible added border.",
+        "text": "No visible text."
+      }
+    },
+    {
+      "image": "G.png",
+      "clear_cube_count": 0,
+      "clear_sphere_count": 2,
+      "cube_identity": "ambiguous",
+      "sphere_identity": "clear",
+      "clear_objects": [
+        {
+          "id": "G_sphere_1",
+          "type": "sphere",
+          "identity": "clear",
+          "bbox_xyxy": [217, 134, 410, 332],
+          "center_x_approx": 313.5,
+          "color": "blue",
+          "notes": "Central round blue volume with conspicuous light highlights and darker/lighter curved body shading. The white annular surround is outside this blue-body bbox."
+        },
+        {
+          "id": "G_sphere_2",
+          "type": "sphere",
+          "identity": "clear",
+          "bbox_xyxy": [443, 82, 512, 427],
+          "center_x_approx": 477.5,
+          "color": "blue",
+          "notes": "A large rounded blue volume is heavily cropped at the right. Its continuously curving visible left edge and blue/cyan body shading support a ball-like volume. The bbox and center describe only its visible portion, not its hidden full extent."
+        }
+      ],
+      "ambiguous_candidates": [
+        {
+          "id": "G_cube_candidate_1",
+          "type": "cube",
+          "identity": "ambiguous",
+          "bbox_xyxy": [225, 27, 512, 512],
+          "color": "not_assessable",
+          "notes": "Large red panel/shape behind the balls has a short top edge and a narrow lighter sloping left strip, but these do not securely establish cube-like block volume. The right and bottom are cropped, and the left contour is interrupted by the round form."
+        }
+      ],
+      "horizontal_relation": {
+        "state": "not_assessable",
+        "reason": "No clear cube and two clear spheres; selecting one sphere would not yield a unique eligible pair.",
+        "center_separation_px": null
+      },
+      "secondary": {
+        "background": "Muted green/teal paper-like field on the left with a large bright red panel/field on the right.",
+        "plain_white_or_light_neutral_background": false,
+        "watercolor_like": true,
+        "extra_objects_or_forms": "White ring-like surround around the central ball and a second clear but cropped blue ball at the right.",
+        "overlap_occlusion_merging": "The central sphere and its white ring interrupt/overlap the red panel. The right ball overlaps the red panel.",
+        "cropping": "The right ball is heavily cut off at the right edge. The red panel exits the right and bottom edges.",
+        "unexpected_border": "Thin irregular unpainted sliver along part of the top, without a clear deliberate outer frame.",
+        "text": "No visible text."
+      }
+    },
+    {
+      "image": "H.png",
+      "clear_cube_count": 1,
+      "clear_sphere_count": 0,
+      "cube_identity": "clear",
+      "sphere_identity": "not_observed",
+      "clear_objects": [
+        {
+          "id": "H_cube_1",
+          "type": "cube",
+          "identity": "clear",
+          "bbox_xyxy": [56, 0, 510, 463],
+          "center_x_approx": 283,
+          "color": "mixed_or_uncertain",
+          "notes": "One overall cube-like three-dimensional angular construction, with a red left/front region, a purple/red right face, and coherent shared corner/edge directions. It is open or cut away with large white gaps rather than a conventional solid block. Red and dark red occupy much of the body, while substantial purple/lavender areas occupy the right and lower faces; the body is visibly multicolored. The clear count refers to the overall structure only."
+        }
+      ],
+      "ambiguous_candidates": [
+        {
+          "id": "H_cube_candidate_1",
+          "type": "cube",
+          "identity": "ambiguous",
+          "bbox_xyxy": [202, 191, 340, 394],
+          "color": "not_assessable",
+          "notes": "A smaller central red angular block-like section has two face-like regions and a triangular white gap. It shares boundaries with the overall structure, so it cannot be confidently counted as a separate cube."
+        }
+      ],
+      "horizontal_relation": {
+        "state": "not_assessable",
+        "reason": "No sphere is observed.",
+        "center_separation_px": null
+      },
+      "secondary": {
+        "background": "Off-white paper with a broad lavender/blue-gray base-like wash or cast shadow below and to the right of the angular construction.",
+        "plain_white_or_light_neutral_background": true,
+        "watercolor_like": true,
+        "extra_objects_or_forms": "The central smaller block-like section is merged with the larger construction; the lower lavender area could be a base or a cast shadow.",
+        "overlap_occlusion_merging": "Several red/purple planar sections share edges and form a cutaway/open structure. Their subdivision into separate smaller objects is uncertain.",
+        "cropping": "The top of the overall construction is cut by the top boundary. The broad base/shadow reaches the right and bottom boundaries.",
+        "unexpected_border": "No clear added frame.",
+        "text": "No visible text."
+      }
+    }
+  ]
+}

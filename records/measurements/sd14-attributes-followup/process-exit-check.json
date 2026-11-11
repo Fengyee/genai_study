@@ -1,0 +1,16 @@
+{
+  "checked_utc": "2026-11-11T19:28:33.066996+00:00",
+  "scope": "Recorded driver PID and all eight recorder PIDs absent in current /proc; model child exits already recorded zero in each run.json.",
+  "pid_exists": {
+    "5064": false,
+    "5084": false,
+    "5755": false,
+    "6762": false,
+    "8079": false,
+    "8751": false,
+    "9182": false,
+    "9655": false,
+    "10641": false
+  },
+  "all_absent": true
+}

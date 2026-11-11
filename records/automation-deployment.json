@@ -3,7 +3,7 @@
   "workflow": "quality.yml",
   "workflow_id": 413455315,
   "cron_utc": "17 * * * *",
-  "last_observed_utc": "2026-11-11T17:34:54.199467+00:00",
+  "last_observed_utc": "2026-11-11T19:36:16.305257+00:00",
   "schedule_observed": false,
   "completed_runs": [
     {
@@ -392,5 +392,123 @@
     "scope": "Root independently inspected downloaded ZIP; schedule trigger remains separately unverified."
   },
   "observer_exit_code": 0,
-  "conclusion": "Cron configuration is present and active on the default branch; push/manual runs and artifacts were verified at their actual SHAs. No schedule event was observed in this window; its cause remains undetermined."
+  "conclusion": "Hourly cron is configured and active on main d99b748. Existing push/manual run evidence retained. No schedule run observed in initial117 or recovery64 successful captures, or the final recovery GET. Cause undetermined; 18:17 live observation was interrupted.",
+  "recovery_observation": {
+    "checked_utc": "2026-11-11T19:37:19.161980+00:00",
+    "reviewer": "independent schedule_final_audit agent",
+    "scope": "Read-only audit of bounded recovery observation, one final GET-only remote recheck, and existing deployed-main artifact; no workflow mutation, dispatch, permission endpoint probe, notification, model work, or tracked-file change.",
+    "repository": "Fengyee/genai_study",
+    "window": {
+      "started_utc": "2026-11-11T18:31:58.189832+00:00",
+      "last_query_finished_utc": "2026-11-11T19:34:59.074110+00:00",
+      "deadline_utc": "2026-11-11T19:35:00+00:00",
+      "capture_count": 64,
+      "all_captures_successful": true,
+      "every_listing_total_count": 0,
+      "interval_seconds_min": 60.000531,
+      "interval_seconds_max": 60.090976,
+      "nominal_tick_utc": "2026-11-11T19:17:00Z",
+      "bracketing_capture_times_utc": [
+        "2026-11-11T19:16:58.441357+00:00",
+        "2026-11-11T19:17:58.443097+00:00"
+      ],
+      "observer_stopped": true,
+      "errors": []
+    },
+    "process_observation": {
+      "pid": 2369,
+      "state": "Z",
+      "kernel_exit_code_field52": 0,
+      "scope": "Kernel /proc stat snapshot; state Z means the observer has terminated and awaits parent reaping."
+    },
+    "observed_schedule_run": null,
+    "final_remote": {
+      "schedule": {
+        "request": "GET repos/Fengyee/genai_study/actions/workflows/quality.yml/runs?event=schedule&per_page=5",
+        "started_utc": "2026-11-11T19:36:15.749512+00:00",
+        "finished_utc": "2026-11-11T19:36:16.305257+00:00",
+        "exit_code": 0,
+        "total_count": 0,
+        "returned_runs": 0
+      },
+      "workflow": {
+        "request": "GET repos/Fengyee/genai_study/actions/workflows/quality.yml",
+        "started_utc": "2026-11-11T19:36:16.305690+00:00",
+        "finished_utc": "2026-11-11T19:36:16.823287+00:00",
+        "exit_code": 0,
+        "id": 413455315,
+        "state": "active",
+        "path": ".github/workflows/quality.yml"
+      },
+      "main": {
+        "request": "GET repos/Fengyee/genai_study/commits/main",
+        "started_utc": "2026-11-11T19:36:16.823725+00:00",
+        "finished_utc": "2026-11-11T19:36:17.585584+00:00",
+        "exit_code": 0,
+        "sha": "d99b748fd4555db525f76a0ea83bb73b6b98c84d"
+      },
+      "main_workflow": {
+        "request": "GET repos/Fengyee/genai_study/contents/.github/workflows/quality.yml?ref=main",
+        "started_utc": "2026-11-11T19:36:17.589246+00:00",
+        "finished_utc": "2026-11-11T19:36:18.137961+00:00",
+        "exit_code": 0,
+        "bytes": 1356,
+        "sha256": "901761ec81e8fe5f8c9189287d40c05102cafe670b662dad076524b0e0992ff6"
+      }
+    },
+    "workflow": {
+      "id": 413455315,
+      "state": "active",
+      "main_sha": "d99b748fd4555db525f76a0ea83bb73b6b98c84d",
+      "path": ".github/workflows/quality.yml",
+      "bytes": 1356,
+      "sha256": "901761ec81e8fe5f8c9189287d40c05102cafe670b662dad076524b0e0992ff6",
+      "recovery_current_remote_and_local_bytes_equal": true,
+      "cron_utc": "17 * * * *",
+      "runner": "ubuntu-24.04",
+      "python": "3.12",
+      "job_timeout_minutes": 25,
+      "quality_command_timeout_seconds": 300,
+      "artifact_retention_days": 14,
+      "concurrency_group": "quality-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}",
+      "cancel_in_progress": false
+    },
+    "deployed_main_evidence": {
+      "run_id": 43068708112,
+      "event": "push",
+      "head_sha": "d99b748fd4555db525f76a0ea83bb73b6b98c84d",
+      "artifact_id": 13877521472,
+      "artifact_path": "/workspace/genai_study/artifacts/automation-deployment/artifact-13877521472.zip",
+      "artifact_bytes": 2017450,
+      "artifact_sha256": "8aa03422560a465dc5ea9e7290d704ab19ca455f716eb61d3b7dcba58b91fc3b",
+      "zip_entries": 52,
+      "pytest_count": 146,
+      "pytest_failures_errors_skipped": 0,
+      "lesson_summary": "Lesson examples: 15/15 passed; 0 failures",
+      "smokes": 7,
+      "exit_records": 11,
+      "all_exit_zero": true,
+      "local_links": 779,
+      "main_context_sha_matches": true,
+      "scope": "Existing successful push-run artifact independently reopened; scheduled event remains unobserved."
+    },
+    "gap": {
+      "prior_capture_count": 8,
+      "prior_last_schedule_query_utc": "2026-11-11T18:06:13.706115+00:00",
+      "recovery_initial_snapshot_utc": "2026-11-11T18:31:54.723049+00:00",
+      "nominal_tick_without_live_capture": "2026-11-11T18:17:00Z",
+      "explanation": "The earlier observer ended during the connection interruption. No live capture evidence covers the 18:17 tick; later API listings provide retrospective retained-run observations."
+    },
+    "cause_status": "Undetermined. Configuration and active workflow state are verified; absence of schedule events is not attributed to a specific cause. Earlier permissions endpoint403 is retained in prior deployment records and was not retried.",
+    "raw_evidence_manifest": "/tmp/genai-schedule-recovery-final-evidence.json",
+    "audit_script_sha256": "a89eaf90417bf01664322a902b2538498bd780f2f993e30abc33caf00a30f0f5"
+  },
+  "recovery_raw_manifest": "automation-recovery-20261111-evidence.json",
+  "root_recovery_check": {
+    "checked_utc": "2026-11-11T19:40:20.197115+00:00",
+    "raw_evidence_files_rehashed": 87,
+    "successful_empty_schedule_captures": 64,
+    "live_tick_covered": "2026-11-11T19:17:00Z",
+    "unobserved_gap_tick": "2026-11-11T18:17:00Z"
+  }
 }
