@@ -1,0 +1,115 @@
+{
+  "checked_utc": "2026-11-11T19:53:09.810069+00:00",
+  "repository": "Fengyee/genai_study",
+  "main": "d99b748fd4555db525f76a0ea83bb73b6b98c84d",
+  "pull_requests": [
+    {
+      "baseRefName": "main",
+      "headRefName": "feat/reproducible-genai-curriculum",
+      "headRefOid": "8a6c47b7ccfefdbac5f80c996a0af8a13618eb11",
+      "isDraft": false,
+      "mergedAt": "2026-11-11T15:36:37Z",
+      "number": 1,
+      "state": "MERGED",
+      "title": "Build a reproducible GenAI curriculum with image/video practice and source audits",
+      "url": "https://github.com/Fengyee/genai_study/pull/1"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "feat/vae-reconstruction",
+      "headRefOid": "2ac2f7b9e22d34065dcf7f26801d667115772cd3",
+      "isDraft": false,
+      "mergedAt": "2026-11-11T17:26:57Z",
+      "number": 2,
+      "state": "MERGED",
+      "title": "Complete VAE practice and fix GitHub math rendering",
+      "url": "https://github.com/Fengyee/genai_study/pull/2"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "feat/spatial-token-interface",
+      "headRefOid": "79508e8a603d5ea77721edf734ea592f2f72b7d0",
+      "isDraft": false,
+      "mergedAt": "2026-11-11T17:29:43Z",
+      "number": 3,
+      "state": "MERGED",
+      "title": "Explain spatial token interfaces and positional binding",
+      "url": "https://github.com/Fengyee/genai_study/pull/3"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "fix/checkpoint-numeric-contract",
+      "headRefOid": "efb3ead63cf08b0a3953e24d67af9ccf6a5e568a",
+      "isDraft": false,
+      "mergedAt": null,
+      "number": 4,
+      "state": "OPEN",
+      "title": "Preserve float32 checkpoint identity and reject invalid tensor states",
+      "url": "https://github.com/Fengyee/genai_study/pull/4"
+    },
+    {
+      "baseRefName": "fix/checkpoint-numeric-contract",
+      "headRefName": "docs/prompt-cluster-bootstrap",
+      "headRefOid": "f5cc2554db8a74e3a0de7688d79e4a3d3055d6f7",
+      "isDraft": false,
+      "mergedAt": null,
+      "number": 5,
+      "state": "OPEN",
+      "title": "Make prompt-cluster uncertainty a runnable teaching example",
+      "url": "https://github.com/Fengyee/genai_study/pull/5"
+    },
+    {
+      "baseRefName": "docs/prompt-cluster-bootstrap",
+      "headRefName": "feat/sd14-attributes-layout",
+      "headRefOid": "1b6f8f5fcd1ff9c41d4a0be9a9dcc4158111cefa",
+      "isDraft": false,
+      "mergedAt": null,
+      "number": 6,
+      "state": "OPEN",
+      "title": "Report SD1.4 attribute cases and cloud recovery reproducibility",
+      "url": "https://github.com/Fengyee/genai_study/pull/6",
+      "checked_ci": {
+        "id": 43090442366,
+        "head_sha": "1b6f8f5fcd1ff9c41d4a0be9a9dcc4158111cefa",
+        "conclusion": "success",
+        "url": "https://github.com/Fengyee/genai_study/actions/runs/43090442366"
+      }
+    },
+    {
+      "baseRefName": "feat/sd14-attributes-layout",
+      "headRefName": "docs/measurement-scope-and-prose",
+      "headRefOid": "7ed0d67145ad9edb78be362329448aa6e3abc8e5",
+      "isDraft": false,
+      "mergedAt": null,
+      "number": 7,
+      "state": "OPEN",
+      "title": "Clarify measurement boundaries and image learning guidance",
+      "url": "https://github.com/Fengyee/genai_study/pull/7",
+      "checked_ci": {
+        "id": 43090541515,
+        "head_sha": "7ed0d67145ad9edb78be362329448aa6e3abc8e5",
+        "conclusion": "success",
+        "url": "https://github.com/Fengyee/genai_study/actions/runs/43090541515"
+      }
+    },
+    {
+      "baseRefName": "docs/measurement-scope-and-prose",
+      "headRefName": "feat/meanflow-average-velocity",
+      "headRefOid": "9ebea09116f13db3082123f11c42010efc3d9fed",
+      "isDraft": false,
+      "mergedAt": null,
+      "number": 8,
+      "state": "OPEN",
+      "title": "Teach MeanFlow average velocity and two-time JVP interfaces",
+      "url": "https://github.com/Fengyee/genai_study/pull/8",
+      "checked_ci": {
+        "id": 43090655852,
+        "head_sha": "9ebea09116f13db3082123f11c42010efc3d9fed",
+        "conclusion": "success",
+        "url": "https://github.com/Fengyee/genai_study/actions/runs/43090655852"
+      }
+    }
+  ],
+  "merge_authorization": "PR1/2/3 were explicitly authorized and merged; no new main merge performed. New work delivered through PRs.",
+  "scope": "Snapshot before documentation-only checkpoint commit; subsequent heads must be checked from GitHub on recovery."
+}

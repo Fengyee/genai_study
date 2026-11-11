@@ -12,7 +12,7 @@
 - [PR #4](https://github.com/Fengyee/genai_study/pull/4)开放，最新efb3ead的run43070085722成功，包含checkpoint数值契约及调度观察记录。8份历史checkpoint重放结果逐元素相同；本项尚无合并授权。
 - [PR #5](https://github.com/Fengyee/genai_study/pull/5)开放，基于PR #4，最新f5cc255的run43071278535成功。完整本地检查178 tests、16/16教学块、7条CLI smoke通过；固定1684744实际页面双视口52公式/锚点/答案/局部滚动均通过。PR #4/#5的新合并授权已询问，等待用户答复，其他工作继续。
 - [PR #6](https://github.com/Fengyee/genai_study/pull/6)分支为feat/sd14-attributes-layout，原八请求首条超时、余七未执行；单独声明的线程诊断后，两线程批次0bc702c八条全部成功，37.00分钟，完整原图与两位AI独立观察均已归档。固定源码和锁文件保持。
-- [PR #7](https://github.com/Fengyee/genai_study/pull/7)的测量边界与写作改进已推送，3fec489的CI成功；[PR #8](https://github.com/Fengyee/genai_study/pull/8)的MeanFlow专题和解析图已推送，002dd89的CI成功，最新e6e996e只补实际浏览器验收记录。PR8完整基线178 tests、17教学块、7条smoke；两项按PR6→PR7→PR8堆叠，均待审阅与单独合并授权。轮次52–55完整记录在相应分支。
+- PR6最终内容1b6f8f5、[PR #7](https://github.com/Fengyee/genai_study/pull/7)集成7ed0d67与[PR #8](https://github.com/Fengyee/genai_study/pull/8)集成9ebea09的最新CI均成功；PR6已转为可审阅。当前工作分支feat/meanflow-average-velocity包含完整轮次记录，PR8本地基线178 tests、17教学块、7条smoke，合并后945本地链接0错误；代码/测试/依赖/教学执行器与e6e996e保持。分支按PR6→PR7→PR8同步，均待审阅与单独合并授权。
 - 每小时质量workflow位于main，API active、cron为UTC每小时:17；原416版本push/手动与d99版本push的artifact均实际核验。初段117次查询覆盖16:17/17:17；恢复后18:31–19:35的64次覆盖19:17，19:36复查仍无schedule事件；18:17处于断线空窗，原因未确定。
 - 编码代理持久调度、网站和通知绑定未部署；Bark/Codex推送仍缺可用接口。原八请求已按超时规则停止；新两线程批次已完成，完整PNG、metrics/run与日志文本进入仓库，浮点数组保存在忽略的artifacts。
 
@@ -695,3 +695,5 @@ Flow/DDPM生成坐标最大差4.21e−5/6.96e−5；邻域比例仍0.9248046875/
 PR7基底同步：将PR6已完成报告与恢复记录1b6f8f5合入当前docs/measurement-scope-and-prose，保留轮次52–53的测量边界/写作修改，执行记录按轮次插回。PR正文保留本PR范围，主分支未改变；共享源码、测试、依赖及教学执行器与PR6相同。文档/diff检查通过后推送并查询最新CI。
 
 PR8基底同步：当前工作分支feat/meanflow-average-velocity已合入PR7的7ed0d67，含PR6最终1b6f8f5成果；保留MeanFlow正文、图、符号/术语、白名单与全部验收证据，执行记录按轮次54–55插回。共享算法/测试/依赖/教学执行器与此前e6e996e逐字节一致；仅合入经过验证的报告和恢复文档，运行文档/diff检查。另归档002dd89的SVG文件页实际viewscreen预览结果，两视口页面和原始SVG均成功。
+
+交付检查点：按实际GitHub API保存records/pr-delivery-20261111.json。PR6的1b6f8f5/run43090442366、PR7的7ed0d67/run43090541515、PR8的9ebea09/run43090655852均success；主协调核对各run head与对应PR head完全一致。PR6 ready for review，PR7/8基底同步完成，main仍d99。此后检查点提交仅更新文档快照，恢复时继续核对实际Git/远端；没有新的main合并、网站或环境发布。下一具体任务：审阅/tmp/genai-reflow-candidate原论文v1/作者代码与/tmp/genai-reflow-independent的独立解析证据，通过后另建专题PR。
