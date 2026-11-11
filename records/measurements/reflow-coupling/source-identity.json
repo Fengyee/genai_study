@@ -1,0 +1,73 @@
+{
+  "observed_utc": "2026-11-11T19:50:28.225224+00:00",
+  "paper": {
+    "arxiv": "2209.03003v1",
+    "submitted_utc": "2022-09-07 08:59:55 UTC",
+    "title": "Flow Straight and Fast: Learning to Generate and Transfer Data with Rectified Flow",
+    "authors": [
+      "Xingchao Liu",
+      "Chengyue Gong",
+      "Qiang Liu"
+    ],
+    "url": "https://arxiv.org/pdf/2209.03003v1",
+    "pages": 41
+  },
+  "author_repository": {
+    "url": "https://github.com/gnobitab/RectifiedFlow",
+    "commit": "5a1fd4dd3ea7db764ce370a84ce35f9c8b15fde6",
+    "date": "2024-06-20T09:39:05Z",
+    "identity_evidence": "Pinned README explicitly identifies official implementation of ICLR2023 Spotlight paper; later snapshot, not claimed 2022 original release."
+  },
+  "files": [
+    {
+      "path": "2209.03003v1.pdf",
+      "bytes": 18024983,
+      "sha256": "d81790cb6988ef480002adcc84000d4f44855b11fb868001fd53aad133bc3a74"
+    },
+    {
+      "path": "arxiv-abs.html",
+      "bytes": 43078,
+      "sha256": "1bb9d0ea2d8040023107698f7169d211e5c609a417e7e29d406b5a0eb2da946c"
+    },
+    {
+      "path": "author-README.md",
+      "bytes": 11725,
+      "sha256": "7680cd5d365dd9a9b501c6d17da3027433379b6bbc98815ce8f4f1c83ca468fe"
+    },
+    {
+      "path": "author-source/ImageGeneration/run_lib_reflow.py",
+      "bytes": 12126,
+      "sha256": "68a19198ec072cf640f0231fdf182875ff345ab150f11854d2c79cf95a1696a2"
+    },
+    {
+      "path": "author-source/ImageGeneration/sampling.py",
+      "bytes": 5068,
+      "sha256": "653407a258be0be930dad38871c234e0968892387d0130c7fed39646d6a2d8ed"
+    },
+    {
+      "path": "author-source/ImageGeneration/sde_lib.py",
+      "bytes": 3629,
+      "sha256": "8b608786153cd944d76d8d0ef331023405b1cf3440c79de7bbb6ed6b44543729"
+    },
+    {
+      "path": "author-source/ImageGeneration/losses.py",
+      "bytes": 7411,
+      "sha256": "f59d42f90c982063498c5c6328d184bebb3258a79c8233a712cf06743b4ca5e8"
+    },
+    {
+      "path": "author-source/ImageGeneration/configs/rectified_flow/cifar10_rf_gaussian_reflow_train.py",
+      "bytes": 2424,
+      "sha256": "6fdf1d066fe06197d3c833bdd2d199e8eba2cba9af3ee759e5030d17ffc6d480"
+    },
+    {
+      "path": "author-source/ImageGeneration/configs/rectified_flow/cifar10_rf_gaussian_reflow_generate_data.py",
+      "bytes": 2599,
+      "sha256": "d1e939fb4be7f3ef914713736183daaaa21fb0445cb32f31356b2fa91d6edc60"
+    },
+    {
+      "path": "author-source/ImageGeneration/configs/rectified_flow/cifar10_rf_gaussian_reflow_distill_k=1.py",
+      "bytes": 2422,
+      "sha256": "21d53e82d1a81a4ae880abff44a07ec029e8670df3a705415f96196116ec2878"
+    }
+  ]
+}

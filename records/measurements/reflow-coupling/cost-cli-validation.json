@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "calculation_body_unchanged": true,
+  "original_v0_preserved": "math-check-v0.py",
+  "result_original_json_fields_identical": true,
+  "result_original_bytes_identical": true,
+  "failure_checks": [
+    {
+      "case": "existing-file",
+      "exit_code": 2,
+      "output_unchanged": true
+    },
+    {
+      "case": "dangling-symlink",
+      "exit_code": 2,
+      "output_unchanged": true
+    }
+  ],
+  "files": [
+    {
+      "path": "/tmp/genai-reflow-candidate/math-check.py",
+      "bytes": 6353,
+      "sha256": "bc73119a7b4b58a09122fa0c49ac09359be07dd304316ba16159ba465ac7cbfc"
+    },
+    {
+      "path": "/tmp/genai-reflow-candidate/cli-rerun/math-check.json",
+      "bytes": 3217,
+      "sha256": "1cbc022481ceb55015aa89d0a26a97cd7156dd8d5babfc75071244c665c8f4b5"
+    },
+    {
+      "path": "/tmp/genai-reflow-candidate/math-check-v0.py",
+      "bytes": 5893,
+      "sha256": "32b7e2a18b2bb92d021ad773d336b6c85994381e1493dca522cb26aff5633b49"
+    },
+    {
+      "path": "/tmp/genai-reflow-candidate/math-result.json",
+      "bytes": 3217,
+      "sha256": "1cbc022481ceb55015aa89d0a26a97cd7156dd8d5babfc75071244c665c8f4b5"
+    }
+  ]
+}

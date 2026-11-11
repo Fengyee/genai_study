@@ -1,0 +1,76 @@
+{
+  "status": "passed",
+  "checked_utc": "2026-11-11T20:12:45.928380+00:00",
+  "reviewer": "/root/meanflow_figure",
+  "scope": "Final read-only review of four Markdown files: mathematics/constants/indices, local notation, reader reproduction commands, and fact/evidence boundaries. No tracked edits or Git writes.",
+  "files": {
+    "docs/readings/reflow-coupling.md": {
+      "bytes": 10666,
+      "sha256": "a8a2dd6e458274eaefd1664a404ab5e1ebbca1e09345dcf593f8b8dd2ee884fe"
+    },
+    "records/measurements/reflow-coupling/README.md": {
+      "bytes": 5166,
+      "sha256": "b501b29fda1bd9bd24c4414c3597577f7e6991c5ee04ba8d89a31d999854f132"
+    },
+    "records/measurements/reflow-coupling/gaussian-derivation.md": {
+      "bytes": 6878,
+      "sha256": "0776ecec15dba09cfc822d08d233bf3afd4c4e15c2f288966a7f1648565aaf2a"
+    },
+    "records/measurements/reflow-coupling/squared-cost-derivation.md": {
+      "bytes": 2295,
+      "sha256": "c7b63c744f5e7d8357dfcbb9d8a866a30a4f172c95153e6eebbdce83dfc910ce"
+    }
+  },
+  "open_findings": [],
+  "resolved_findings": [
+    {
+      "id": "R1",
+      "severity": "medium",
+      "file": "records/measurements/reflow-coupling/gaussian-derivation.md",
+      "finding": "The initial integrated derivation still invoked a /tmp draft script and an already existing output file.",
+      "verified_resolution": "Reader command now uses tracked check_gaussian.py and a new artifacts output; prose and evidence link use the integrated file names."
+    },
+    {
+      "id": "R2",
+      "severity": "medium",
+      "file": "records/measurements/reflow-coupling/gaussian-derivation.md",
+      "finding": "The trace formula contained the undefined concatenated control sequence \\nolimitsR.",
+      "verified_resolution": "The current formula separates \\nolimits R."
+    },
+    {
+      "id": "R3",
+      "severity": "low",
+      "file": "records/measurements/reflow-coupling/check_gaussian.py",
+      "finding": "Adjacent script docstring retained the draft command.",
+      "verified_resolution": "Docstring now uses repository paths; independently confirmed its calculation AST matches the original script after removing the module docstring."
+    }
+  ],
+  "mathematics": {
+    "independent_gaussian": "v=(2t-1)x/q; exact Z_t=sqrt(q)Z_0; endpoint identity; input cost 2d; rectified cost 0; reflow field 0. For nonzero starts, path is radial shrink/expansion and not affine in time.",
+    "rotation_gaussian": "v=[(2t-1)I+J]x/q; exact Z_t=M_tZ_0; det M_t=q>=1/2. Constant path velocity (J-I)Z_0; global spatial Lipschitz bound 2; no endpoint singularities; fixed coupling under reflow; cost 4 versus global optimum 0.",
+    "shared_marginal": "Both examples have covariance q(t)I in d=2; velocity difference Jx/q(t) is weighted-divergence-free.",
+    "squared_cost_identity": "C(pi)-C(pi^R)=S(Z)+V(pi)",
+    "independent_d2_constants": "S=4-pi, V=pi, total cost drop 4; pi in this sentence is the circle constant, explicitly identified in the document.",
+    "rotation_constants": "S=V=0; cost remains 4.",
+    "iteration_indices": "pi^k -> Z^{k+1} -> pi^{k+1}; sum k=0,...,K-1 for K updates; min adjacent combination bounded by C(pi^0)/K.",
+    "conditions": "Exact rectifiable flows, within-round marginal preservation, and finite initial squared displacement moment support the orthogonal decomposition and energy integrals.",
+    "local_notation": "J/M_t in the card and R/A_t in the standalone derivation are each defined locally with the same counterclockwise rotation. Cost convention and dimension are explicit.",
+    "peer_review": "rotation_check independently reread the squared-cost derivation and confirmed the identity, constants, adjacent indices, and conditions."
+  },
+  "reproduction_review": {
+    "markdown_commands": "Tracked file paths, --output and --source flags match the CLI parsers. The Gaussian command creates its parent directory; the subsequent costs command uses that directory. Author-loss commands create the output parent first.",
+    "teaching_code": "Exact code block was executed without an assertion failure during this review. Its 36-line bytes match teaching-example.py and integration-check.json SHA.",
+    "teaching_code_sha256": "d4f3a26876413c1ba58cb3e411632f22ae5c448570264b9e1b50ce8f124d33fb",
+    "gaussian_calculation_ast_independently_compared": true,
+    "current_script_sha256": "aaf0f7e2a2b4358423e733e224f87f7b8906ed794afae844fca532b9fc9f1947",
+    "archived_execution": "integration-check.json records equivalence of three executed CPU outputs with archived evidence. No further rerun was needed after the documentation-only fixes.",
+    "scope": "Review did not download upstream sources or execute a trained model."
+  },
+  "fact_scope": {
+    "population_vs_points": "Population Gaussian costs are derived from covariance and explicitly separated from deterministic teaching points.",
+    "finite_difference": "The card value 2.40e-10 agrees with candidate-math-check.json maximum 2.399740406389128e-10.",
+    "author_loss": "Version, source SHA, time scaling, sample shape, loss 0/7.5/0.17280000448 and execution scope agree with archived author-loss-cli.json and source-audit.md.",
+    "paper_claims": "Fixed-paper theorem/typo descriptions agree with source-audit.md and root-check.json. This final review did not independently reopen the PDF or access /tmp/genai-reflow-candidate.",
+    "claim_limits": "No unsupported universal finite-round one-step exactness, monotone S, full-model validation, practical quality or global OT claim found."
+  }
+}

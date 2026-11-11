@@ -12,7 +12,7 @@
 - [PR #4](https://github.com/Fengyee/genai_study/pull/4)开放，最新efb3ead的run43070085722成功，包含checkpoint数值契约及调度观察记录。8份历史checkpoint重放结果逐元素相同；本项尚无合并授权。
 - [PR #5](https://github.com/Fengyee/genai_study/pull/5)开放，基于PR #4，最新f5cc255的run43071278535成功。完整本地检查178 tests、16/16教学块、7条CLI smoke通过；固定1684744实际页面双视口52公式/锚点/答案/局部滚动均通过。PR #4/#5的新合并授权已询问，等待用户答复，其他工作继续。
 - [PR #6](https://github.com/Fengyee/genai_study/pull/6)分支为feat/sd14-attributes-layout，原八请求首条超时、余七未执行；单独声明的线程诊断后，两线程批次0bc702c八条全部成功，37.00分钟，完整原图与两位AI独立观察均已归档。固定源码和锁文件保持。
-- PR6最终内容1b6f8f5、[PR #7](https://github.com/Fengyee/genai_study/pull/7)集成7ed0d67与[PR #8](https://github.com/Fengyee/genai_study/pull/8)集成9ebea09的最新CI均成功；PR6已转为可审阅。当前工作分支feat/meanflow-average-velocity包含完整轮次记录，PR8本地基线178 tests、17教学块、7条smoke，合并后945本地链接0错误；代码/测试/依赖/教学执行器与e6e996e保持。分支按PR6→PR7→PR8同步，均待审阅与单独合并授权。
+- PR6最终内容1b6f8f5、[PR #7](https://github.com/Fengyee/genai_study/pull/7)集成7ed0d67与[PR #8](https://github.com/Fengyee/genai_study/pull/8)集成9ebea09的最新CI均成功；PR6已转为可审阅。PR8检查点94f7660的CI43091354688也已success。分支按PR6→PR7→PR8同步，均待审阅与单独合并授权。当前从94f7660创建docs/reflow-coupling，正在完成Reflow耦合更新专题与证据；新增第18个教学块，完整检查和实际页面验收见轮次60。
 - 每小时质量workflow位于main，API active、cron为UTC每小时:17；原416版本push/手动与d99版本push的artifact均实际核验。初段117次查询覆盖16:17/17:17；恢复后18:31–19:35的64次覆盖19:17，19:36复查仍无schedule事件；18:17处于断线空窗，原因未确定。
 - 编码代理持久调度、网站和通知绑定未部署；Bark/Codex推送仍缺可用接口。原八请求已按超时规则停止；新两线程批次已完成，完整PNG、metrics/run与日志文本进入仓库，浮点数组保存在忽略的artifacts。
 
@@ -697,3 +697,17 @@ PR7基底同步：将PR6已完成报告与恢复记录1b6f8f5合入当前docs/me
 PR8基底同步：当前工作分支feat/meanflow-average-velocity已合入PR7的7ed0d67，含PR6最终1b6f8f5成果；保留MeanFlow正文、图、符号/术语、白名单与全部验收证据，执行记录按轮次54–55插回。共享算法/测试/依赖/教学执行器与此前e6e996e逐字节一致；仅合入经过验证的报告和恢复文档，运行文档/diff检查。另归档002dd89的SVG文件页实际viewscreen预览结果，两视口页面和原始SVG均成功。
 
 交付检查点：按实际GitHub API保存records/pr-delivery-20261111.json。PR6的1b6f8f5/run43090442366、PR7的7ed0d67/run43090541515、PR8的9ebea09/run43090655852均success；主协调核对各run head与对应PR head完全一致。PR6 ready for review，PR7/8基底同步完成，main仍d99。此后检查点提交仅更新文档快照，恢复时继续核对实际Git/远端；没有新的main合并、网站或环境发布。下一具体任务：审阅/tmp/genai-reflow-candidate原论文v1/作者代码与/tmp/genai-reflow-independent的独立解析证据，通过后另建专题PR。
+
+## 轮次60：Reflow端点耦合更新与最优传输反例
+
+问题：03章已介绍条件插值和边缘速度，读者还需要把一次精确流生成的端点对写成下一轮回归数据，并区分同轮边缘保持、跨轮中间边缘变化和端点配对成本。新阅读卡接入03/MeanFlow、学习路线、README和41组术语；为局部源端点、耦合与平方成本增加符号说明。36行CPU例加入自动执行白名单，目前18块/14篇。
+
+依据：固定arXiv:2209.03003v1（41页，PDF SHA d81790cb…3a74）与作者5a1fd4d快照，核对rectifiable定义、边缘/凸位移成本定理、配对生成、共同索引、uniform+L2及RK45接口。原v1第15页式13两项范数漏写平方、best-iterate文字与定理求和索引不同，主协调与来源代理分别查看实际页面；本地独立平方展开采用一致相邻轮索引，未将完整第三方PDF/源码复制入仓库。
+
+两个独立解析分别从联合Gaussian协方差和旋转逆矩阵推导。独立同边缘例精确流先缩后伸、端点恒等，reflow场为0；90度旋转例恒速且一步Euler精确、耦合保持，但平方成本4高于可行恒等成本0。闭区间速度场良定。主协调另用60度旋转与不同端点协方差验证成本5与可行1.5的对照，并用64点Gauss–Legendre核对S=4−π、V=π的成本分解。
+
+验证：27项float64独立核验通过，另一套协方差/中心差分最大残差约2.40e−10；真实作者损失工厂经固定SHA、AST原样抽取，模型替身小张量验证正确loss0、偏移7.5与单端点重排0.17280000448。接入后3份CPU结果与原证据数值完全匹配；作者结果仅输出路径不同。作者模型、数据加载器与教师求解器按源码审查。Gaussian脚本仅更新仓库复现路径的module docstring，计算AST与原检查完全相同；旧SHA原记录保留。
+
+整合修复：附录原临时目录命令改为仓库路径与新输出；补齐一个TeX命令分隔空格。36行教学块1649字节与独立来源相同，MeanFlow原79公式和CPU块保持。共享符号、教学执行器有变更，运行完整quality；随后按推送SHA验收新卡、全局符号/术语和两份数学附录。当前工作仍在本地分支，PR及CI状态将在验证后追加。main、环境发布、网站、调度和通知状态保持前述实际记录。
+
+轮次60本地验收：完整`bash scripts/quality.sh`退出0，178 tests（67.36秒）、18/18教学块、7条CLI smoke全部通过，10个子检查退出0；目录artifacts/quality/20261111T201031Z-0pcA7W。当时980链接0错误，随后仅记录/导航变化再检981链接0错误；git diff检查通过。四份最终教学/推导文件的独立审查SHA已核对并归档final-review.json，无未解决发现。接下来推送新分支、创建以PR8为基底的PR并执行固定SHA阅读验收。

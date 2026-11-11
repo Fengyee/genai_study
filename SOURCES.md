@@ -72,3 +72,5 @@
 [05提示簇重采样反例](docs/chapters/05-evaluation.md#可运行反例复制结果不会增加独立提示)读取Efron/Narasimhan的[作者稿](https://efron.ckirby.su.domains/papers/2018Automatic-Construction-BCIs.pdf)，PDF SHA `117c03df5fecf8954c21a1faeef2eb249f33fa24bd9969c5de91d1b5d5a19184`，第6–7页§3式(3.1)–(3.7)给出IID观测和有放回抽样定义。提示差复制与方差变化为本仓库独立构造；完整27种分布与错误按行抽样经Fraction枚举/卷积核验，[证据](records/reader-checks/prompt-bootstrap/README.md)明确条件分布、权重与置信区间的验证范围。
 
 [MeanFlow两时间平均速度](docs/readings/meanflow-average-velocity.md)固定2025-05-19论文`2505.13447v1`及作者2025-07-08 commit `58d099c0fa197bd31b9a7b51727a76019ae5fdbe`。核对式3–12、两时间JVP换元、停止目标梯度、对角边界与一次采样；Gaussian及独立二维线性场检验身份和端点，作者三个采样函数以解析替身核对调用。ImageNet FID、图像训练与速度数字按作者协议归属；[证据索引](records/measurements/meanflow-average-velocity/README.md)保留SHA、执行范围与MIT许可。
+
+[Reflow耦合更新](docs/readings/reflow-coupling.md)固定Liu/Gong/Liu的arXiv:2209.03003v1与作者gnobitab/RectifiedFlow后续commit5a1fd4d，核对单轮边缘保持、凸位移成本、递归直度范围及配对数据接口。独立Gaussian/旋转推导、作者纯损失函数AST核验和v1第15页平方/索引排版问题见[证据索引](records/measurements/reflow-coupling/README.md)。原创数学例和检查器随本仓许可；完整PDF及作者训练源码按固定URL取得，身份与原文件声明单独记录。

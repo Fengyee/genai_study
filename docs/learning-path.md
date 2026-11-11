@@ -103,6 +103,8 @@ python -m genai_study.experiment --method ddpm --steps 5000 --output artifacts/f
 
 随后用[MeanFlow两时间平均速度](readings/meanflow-average-velocity.md)把整段位移连接到可训练目标。完成标志是推导总导数、为当前/目标时间与当前/区间长度两种接口写出正确JVP方向，并用Gaussian例解释平均速度一次求值与一步Euler的输出差异。
 
+完成03的Gaussian解析例后，可用[Reflow耦合更新](readings/reflow-coupling.md)检查一轮生成端点怎样进入下一轮训练，比较同轮与跨轮边缘，并通过90°旋转反例核对恒速轨迹和最优传输的关系。该专题使用CPU解析检查，与MeanFlow的两时间平均速度接口相互补充。
+
 在04的条件控制之后，可选读[条件注意力专题](readings/conditioning-attention.md)，先检查Q/K/V的轴、CLIP隐藏态与全局向量、单token和mask置换，再追踪09/10的真实接口。
 
 阅读DiT与视频Transformer结构前，接着完成[空间token与位置专题](readings/spatial-tokens-and-position.md)：手算一个patch索引，验证矩阵投影与stride卷积相等，并说明内容/位置重排后如何恢复空间输出。再进入Wan和CogVideoX的时空token计数。
