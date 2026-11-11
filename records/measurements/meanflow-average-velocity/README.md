@@ -52,3 +52,16 @@ curl --fail --location --max-time 30 \
 ## GitHub阅读验收
 
 固定876647b，新卡/符号/术语三页在1440×1000和390×844两视口全部通过；79/90/17个公式均产生MathML，错误与原始TeX为0。新锚点、三道习题、1924字节代码、公式/表格/代码局部滚动及术语入口实际跳转通过，document/article无整体溢出。[API摘要](api-render-summary.json)、[实际客户端摘要](client-render-summary.json)与[主代理复核](root-reader-check.json)记录身份、数量和范围；[桌面JVP表](meanflow-anchor-desktop.png)和[窄屏习题](meanflow-exercises-narrow.png)保留原截图。其它完整截图位于本地产物目录；屏幕阅读器及真实移动设备尚待读者验证。
+
+## 解析轨迹图
+
+[PNG](../../../docs/assets/meanflow-gaussian.png)与[SVG](../../../docs/assets/meanflow-gaussian.svg)同时展示完整区间位移和瞬时切线更新。图中的虚线弦连接当前与目标端点，中间点按端点连线得到。右图九个标记是固定输入，方差0.49/0来自Gaussian总体。图采用颜色、线型及圆/方标记，中文替代说明和相邻配文解释坐标与范围；窄屏可打开矢量图查看细节。
+
+从仓库根目录重跑：
+
+```bash
+.venv/bin/python records/measurements/meanflow-average-velocity/plot_geometry.py \
+  --output-dir artifacts/meanflow-geometry-reproduction
+```
+
+新目录保存PNG、SVG、全部绘图数组data.npz及verification.json；已有目录会被拒绝。[生成记录](figure-verification.json)、[独立几何审查](figure-geometry-review.json)与[主代理核对](figure-root-check.json)保存版本、身份、解析端点与图像检查。原始数据在本地/tmp/genai-meanflow-figure/final，读者可用该命令重新生成。

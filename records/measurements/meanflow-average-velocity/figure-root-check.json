@@ -1,0 +1,11 @@
+{
+  "scalar_hypot_path_max_abs": 4.440892098500626e-16,
+  "chord_independent_line_check": true,
+  "euler_independent_line_check": true,
+  "all_79_existing_tex_payloads_and_order_preserved": true,
+  "root_viewed_complete_png": true,
+  "visual_findings": "Time axis descends1to0; common start-1.5, exact/chord endpoint.45, Euler endpoint1.5. Styles and markers distinguish all curves. Figure-wide labels require enlargement on narrow screens; adjacent Chinese description and SVG link provide the same interpretation.",
+  "actual_repository_command_passed": true,
+  "png_svg_and_array_sha_match_original": true,
+  "reproduction_directory": "artifacts/meanflow-geometry-root"
+}

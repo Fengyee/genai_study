@@ -100,6 +100,10 @@ F_{\rho\leftarrow\tau}(x)
 
 从噪声$`x_1=z`$跨到$`0`$：精确平均速度输出$`m+sz`$，一步反向Euler使用$`w_1(z)=z-m`$，会将所有起点送到$`m`$。当$`z\sim\mathcal N(0,1)`$时，两者输出总体方差分别为$`s^2`$和0。这来自已知Gaussian边缘的精确解析场；学习一个图像网络需要单独的训练和质量证据。
 
+![解析Gaussian对照：左图从噪声−1.5沿精确轨迹到0.45，平均速度弦连接相同端点，Euler切线到1.5；右图精确输出随输入线性变化，Euler输出恒为1.5](../assets/meanflow-gaussian.png)
+
+图中固定`m=1.5`、`s=0.7`。左图从`z=-1.5`出发，横轴沿生成方向从1走向0；蓝色曲线是精确ODE轨迹，绿色虚线弦连接完整区间两端，橙色切线给出一步Euler更新。弦的中间点由端点连线确定；改变目标时间时，需重新求对应区间的平均速度。右图的九个点用于逐点示意，总体方差0.49和0来自标准正态初态的解析变换。可打开[SVG矢量图](../assets/meanflow-gaussian.svg)查看细节；图由[可重跑脚本](../../records/measurements/meanflow-average-velocity/plot_geometry.py)生成。
+
 下面代码中的`r,t`分别对应本页$`\rho,\tau`$。固定9个点检查逐点端点误差；输出总体方差由解析变换给出。还会在对角线比较两种接口下的JVP，并检出错误地固定间隔的实现。
 
 <!-- cpu-check: meanflow-average-velocity -->

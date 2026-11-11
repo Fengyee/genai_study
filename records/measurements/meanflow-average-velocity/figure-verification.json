@@ -1,0 +1,53 @@
+{
+  "created_utc": "2026-11-11T19:12:32.581766+00:00",
+  "scope": "Original analytic scientific illustration; no model inference, training or random sampling.",
+  "parameters": {
+    "m": 1.5,
+    "s": 0.7,
+    "z_panel_a": -1.5
+  },
+  "geometry": {
+    "time_coordinates": "tau data-to-noise, shown descending 1 to0 for generation",
+    "initial_state": -1.5,
+    "exact_endpoint": 0.4500000000000002,
+    "one_euler_endpoint": 1.5,
+    "average_velocity": -1.9500000000000002,
+    "initial_instantaneous_velocity": -3.0,
+    "exact_trajectory_max_distance_from_chord": 0.36417627472758396,
+    "chord_scope": "Intermediate chord points only illustrate the net endpoint displacement."
+  },
+  "independent_checks": {
+    "derivative_matches_ode_max_abs": 8.881784197001252e-16,
+    "derivative_central_difference_max_abs": 2.1445867304237254e-10,
+    "all_endpoints_and_initial_tangent_assertions_passed": true
+  },
+  "endpoint_map": {
+    "fixed_plot_inputs": 9,
+    "dense_curve_inputs": 401,
+    "population_assumption": "Z~N(0,1)",
+    "population_variance_average": 0.48999999999999994,
+    "population_variance_one_euler": 0.0,
+    "maximum_endpoint_error_on_nine_fixed_inputs": 1.4,
+    "variance_is_not_estimated_from_plot_markers": true
+  },
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.1.3",
+    "matplotlib": "3.9.3"
+  },
+  "script_sha256": "0372e036582b4d5f081322b0087a197d6a05c5b44dd2571de34a87aec9e014a6",
+  "files": {
+    "data.npz": {
+      "sha256": "3dae627a9ff767a5280f3c7bba3b1ddf4785fd065f7869e882297f6e0a546139",
+      "bytes": 25274
+    },
+    "meanflow-gaussian.png": {
+      "sha256": "2caec9cd8e55d186bc79cc690d524b46a16fdcc2c909eabd16c624e65a153adf",
+      "bytes": 211464
+    },
+    "meanflow-gaussian.svg": {
+      "sha256": "b846b699a1565509dd2753c2e56e7fa9ace7000426b4ffaa7651c6f4fd9b0c22",
+      "bytes": 107600
+    }
+  }
+}
