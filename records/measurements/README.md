@@ -17,6 +17,7 @@
 | 同一图像经VAE编码与解码后，后验采样和缩放带来什么变化？ | [VAE重建实践](../../docs/vae-reconstruction-report.md)：六案例、原始/裁剪像素误差与完整重复 | [vae-reconstruction索引](vae-reconstruction/README.md)：事前协议、全部指标/外层日志、26数组复算、源码和媒体身份 |
 | 在生成前固定提示与seed集合后，如何保留并比较全部结果？ | [SD1.4四请求探索报告](../../docs/sd14-prompt-pilot.md) | [sd14-prompt-pilot索引](sd14-prompt-pilot/README.md)：事先计划、全部metrics、实际执行顺序、AI视觉观察与配置/噪声/图片核验 |
 | 推荐5000步首次路径能否重跑，并复用checkpoint完成采样对照？ | [首次路径复查报告](../../docs/experiment-report.md#推荐首次路径的再次运行) | [first-run-5000索引](first-run-5000/README.md)：两训练和solver原始JSON、完整argv/外层耗时，以及与历史数组的比对记录 |
+| 环境恢复后，首次路径仍能运行吗，哪些结果精确或近似一致？ | [恢复实例核验](../../docs/experiment-report.md#恢复实例后的首次路径与浮点差异)：两训练、两次求解器及其实际成本 | [recovered-cpu-reader-path索引](recovered-cpu-reader-path/README.md)：三请求原计划、观察后追加的旧checkpoint控制、逐数组/参数差异、源码身份和独立诊断复算 |
 | 固定SVD图生视频能否在声明的CPU预算内完成，画面表现如何？ | [视频实测与失败分析](../../docs/pretrained-video-report.md)及[10章](../../docs/chapters/10-pretrained-video-lab.md)：完整请求16.8分钟、严重形变与闪烁 | [pretrained-svd索引](pretrained-svd/README.md)：事先计划、准备、smoke/校准/full/重复、官方API短对照、全部帧与播放核验；模型身份和许可见[资产说明](../../examples/pretrained-svd/README.md) |
 
 二维训练预算的全部原始JSON：

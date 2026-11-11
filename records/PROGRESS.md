@@ -6,14 +6,15 @@
 
 2026-11-11恢复后的当前检查点：云环境、两个虚拟环境和历史实验产物均可用，原未提交成果已接续验证并提交。用户授权的浏览器CA同步完成，正常TLS的GitHub浏览器检查已恢复；旧进程已随连接中断退出；本次恢复后协调PID2281重新取得同一工作区写锁。环境配置保持用户发布版本。
 
-- PR #1已按授权合并，main为416dd8ce9c3e890d03d814bc02d0015c21e51090。
+- PR #1已按授权合并，首次合并后的main为416dd8ce9c3e890d03d814bc02d0015c21e51090；后续main状态见下一项。
 - [PR #2](https://github.com/Fengyee/genai_study/pull/2)与[PR #3](https://github.com/Fengyee/genai_study/pull/3)已获后续明确授权并顺序合并：PR #2的2ac2f7b检查通过后合入；PR #3切base到main、更新分支到79508e8，run43068306477成功后合入。main现为d99b748fd4555db525f76a0ea83bb73b6b98c84d；其push43068708112已success。
 - 默认分支包含VAE实测、预测权重、GitHub数学修复、空间token专题和反馈表。32页1536公式的批量客户端验收与新专题/符号表两视口验收分别归档；默认分支检查范围为146 tests、15教学块和7条CLI smoke。
 - [PR #4](https://github.com/Fengyee/genai_study/pull/4)开放，最新efb3ead的run43070085722成功，包含checkpoint数值契约及调度观察记录。8份历史checkpoint重放结果逐元素相同；本项尚无合并授权。
 - [PR #5](https://github.com/Fengyee/genai_study/pull/5)开放，基于PR #4，最新f5cc255的run43071278535成功。完整本地检查178 tests、16/16教学块、7条CLI smoke通过；固定1684744实际页面双视口52公式/锚点/答案/局部滚动均通过。PR #4/#5的新合并授权已询问，等待用户答复，其他工作继续。
-- 当前分支feat/sd14-attributes-layout准备八请求预训练图像实验；固定计划/预检保存在records/measurements/sd14-attributes-pilot，计划f3c26f8已推送；驱动与验证证据现已找回，首次生成尚未启动，先保存运行前提交。现有模型资产/依赖通过核对，代码与锁文件保持。
+- [PR #6](https://github.com/Fengyee/genai_study/pull/6)为当前feat/sd14-attributes-layout，原八请求首条超时、余七未执行；单独声明的线程诊断后，两线程批次0bc702c已执行七条成功，末条运行中。固定源码和锁文件保持，完成后统一观察全部图片。
+- [PR #7](https://github.com/Fengyee/genai_study/pull/7)的测量边界与写作改进已推送，3fec489的CI成功；[PR #8](https://github.com/Fengyee/genai_study/pull/8)的MeanFlow专题和解析图已推送，002dd89的CI成功，最新e6e996e只补实际浏览器验收记录。PR8完整基线178 tests、17教学块、7条smoke；两项按PR6→PR7→PR8堆叠，均待审阅与单独合并授权。轮次52–55完整记录在相应分支。
 - 每小时质量workflow位于main，API active、cron为UTC每小时:17；原416版本push/手动与d99版本push的artifact均实际核验。15:39–17:35 UTC观察结束，117次查询覆盖16:17/17:17计划点，最后无schedule事件；原因未确定，恢复时先读实际事件。
-- 编码代理持久调度、网站和通知绑定未部署；Bark/Codex推送仍缺可用接口。原八请求已按超时规则停止；线程成本诊断已完成，新两线程八请求待启动，数据保存在忽略的artifacts。
+- 编码代理持久调度、网站和通知绑定未部署；Bark/Codex推送仍缺可用接口。原八请求已按超时规则停止；新两线程批次运行中，全部原始数据保存在忽略的artifacts。
 
 以下恢复说明和轮次按历史保留，当前状态以上段及末尾最新检查点为准。
 
@@ -622,3 +623,13 @@ SVD在途检查点：已推送a3ed4a8，对应自动PR run42877869115为complete
 轮次51成本诊断完成：1/2线程两条4步请求均技术成功，wall118.221238/76.689715秒，推理100.568589/62.474548秒，查询点RSS5654772/5671548KiB；计划的20步保守外推为520.50/326.59秒。第二条满足≤360秒与≤8GiB门槛，决策时未查看诊断图片。整个诊断至末条退出303.48秒，两个真实命令合计194.91秒。原计划两项从模板复制的调用计数字段曾保留20/40，实际steps和argv均为4；首条结束后、第二条前发布勘误为4/8，保留原计划，参数与成本规则未改。两初噪声完全一致，两个PNG有150/786432个RGB标量差1；全部原图、metrics/run/log与验证代码均归档。
 
 随后预声明两线程的独立八请求批次，保留原提示/seed顺序与观察规则、420秒/3600秒上限、首图360秒/8GiB门槛。新计划路径records/measurements/sd14-attributes-followup，预检四源码身份/八parser/16新目录通过；先提交推送再执行，原批1超时/7未执行不改。
+
+## 轮次56：恢复后实际重走首次CPU学习路径
+
+问题：环境恢复后CPU实例变化，需要实测README入口并确认历史成果保留。预声明三条命令，完整运行Flow5000、DDPM5000与新checkpoint的10/25/100/200步求解器，分别19.43/18.09/6.78秒。观察到数组小差异后另存补充计划，固定原历史Flow checkpoint再次求解，6.45秒；四条均成功，全部过程162.64秒低于600秒预算。13个历史文件SHA保持。
+
+Flow/DDPM生成坐标最大差4.21e−5/6.96e−5；邻域比例仍0.9248046875/0.9189453125，覆盖模式均8。固定旧权重后初噪声/reference/baseline逐元素相同，10/25/100/200步输出最大差2.50e−6至7.27e−6。源码审查保留checkpoint验证与显式dtype构造变更，实例、后端、缓存和后台负载未控制，记录支持本实例的可运行性及观察到的浮点差异。
+
+代理用独立float64复算10份结果的诊断；主代理另读NPZ重算关键差异，重核历史13文件和原始20份证据身份，全部匹配。计划、补充计划、四份metrics/run、对照、方法脚本与原始证据清单归档records/measurements/recovered-cpu-reader-path；脚本按当时路径保留，原始数组在artifacts。仅新增报告/证据，采用文档与diff检查，沿用本分支178/16/7完整基线；当前预训练批次仍按冻结计划执行。
+
+反馈入口恢复检查：main d99的737字节quality.yml与本地SHA相同，问题必填/环境选填已部署。正常TLS实际访问issue-new URL跳转GitHub登录，textarea为0；当前仅核验登录入口和已部署源码，字段呈现与真实提交未执行。轻量证据records/reader-checks/feedback-form-recovery-20261111.json；没有创建测试issue。
