@@ -1,0 +1,143 @@
+{
+  "checked_utc": "2026-11-11T20:43:10.400570+00:00",
+  "scope": "Read-only bounded diagnosis of queued PR9 workflow and schedule absence. 15 successful gh API GETs plus one successful official GitHub Status HTTPS GET; no workflow/repository mutation, Git write, dispatch, cancel, rerun, enable, permission change, merge, or external message.",
+  "queued_run": {
+    "id": 43095115227,
+    "html_url": "https://github.com/Fengyee/genai_study/actions/runs/43095115227",
+    "event": "pull_request",
+    "head_sha": "4a3235a2ebd6d962dd2ea286c3774afd8bc9cf70",
+    "head_branch": "docs/reflow-coupling",
+    "status": "queued",
+    "conclusion": null,
+    "run_attempt": 1,
+    "created_at": "2026-11-11T20:17:33Z",
+    "updated_at": "2026-11-11T20:17:33Z",
+    "run_started_at": "2026-11-11T20:17:33Z",
+    "check_suite_id": 116703696853
+  },
+  "queue_observation": {
+    "api_first_read_utc": "2026-11-11T20:40:19.657667+00:00",
+    "api_followup_window_end_utc": "2026-11-11T20:41:16.461928+00:00",
+    "minutes_since_created_at_at_followup": 23.724365466666665,
+    "jobs": {
+      "total_count": 0,
+      "jobs": []
+    },
+    "check_suite_status": "queued",
+    "check_suite_latest_check_runs_count": 0,
+    "check_runs": {
+      "total_count": 0,
+      "check_runs": []
+    },
+    "interpretation": "Run and suite remain queued; no jobs or check runs exist in these responses. run_started_at equals creation, so that timestamp does not demonstrate an executing runner."
+  },
+  "previous_pr9_run": {
+    "id": 43094510880,
+    "html_url": "https://github.com/Fengyee/genai_study/actions/runs/43094510880",
+    "head_sha": "dca73531b1c2cdabfe5c74d95f59538bf36a2818",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-11T20:13:44Z",
+    "updated_at": "2026-11-11T20:15:51Z"
+  },
+  "repository": {
+    "full_name": "Fengyee/genai_study",
+    "visibility": "public",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "disabled": false,
+    "default_branch": "main",
+    "created_at": "2026-11-10T14:55:17Z"
+  },
+  "workflow": {
+    "id": 413455315,
+    "state": "active",
+    "path": ".github/workflows/quality.yml",
+    "main_bytes": 1356,
+    "main_sha256": "901761ec81e8fe5f8c9189287d40c05102cafe670b662dad076524b0e0992ff6",
+    "cron": "17 * * * *",
+    "timezone": "UTC",
+    "job_timeout_minutes": 25,
+    "concurrency_group_expression": "quality-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}",
+    "cancel_in_progress": false,
+    "resolved_pr9_group": "quality-Quality checks-9",
+    "resolved_main_schedule_group": "quality-Quality checks-refs/heads/main",
+    "interpretation": "PR9 and default-branch schedule resolve to different concurrency groups. The 25-minute setting belongs to jobs.quality and does not establish a deadline for a run with no job."
+  },
+  "concurrency_observation": {
+    "pr9_branch_total_count": 2,
+    "pr9_branch_runs": [
+      {
+        "id": 43095115227,
+        "status": "queued",
+        "conclusion": null,
+        "created_at": "2026-11-11T20:17:33Z",
+        "updated_at": "2026-11-11T20:17:33Z"
+      },
+      {
+        "id": 43094510880,
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-11T20:13:44Z",
+        "updated_at": "2026-11-11T20:15:51Z"
+      }
+    ],
+    "workflow_queued_count": 1,
+    "workflow_in_progress_response": {
+      "total_count": 1,
+      "workflow_runs": []
+    },
+    "repository_in_progress_response": {
+      "total_count": 0,
+      "workflow_runs": []
+    },
+    "response_inconsistency": "Workflow-filtered in_progress returned total_count=1 with an empty workflow_runs array; repository-level followup returned total_count=0 with an empty array. Preserve both; no active blocking run is identified.",
+    "interpretation": "The preceding PR9 run is completed/success; observed results do not identify an executing run occupying its concurrency group. This does not prove the GitHub scheduler has no internal queue state."
+  },
+  "schedule_response": {
+    "total_count": 0,
+    "workflow_runs": []
+  },
+  "official_status": {
+    "url": "https://www.githubstatus.com/api/v2/summary.json",
+    "http_status": 200,
+    "fetched_utc": "2026-11-11T20:40:21.600802+00:00",
+    "response_date": "Wed, 11 Nov 2026 20:40:07 GMT",
+    "summary": {
+      "indicator": "none",
+      "description": "All Systems Operational"
+    },
+    "actions_components": [
+      {
+        "id": "br0l2tvcx85d",
+        "name": "Actions",
+        "status": "operational",
+        "updated_at": "2026-11-10T17:28:17.860Z"
+      }
+    ],
+    "active_incidents": [],
+    "scope": "Official service-wide snapshot; it does not diagnose this repository or exclude an unreported/localized delay."
+  },
+  "findings": [
+    "Latest PR9 head4a3235a remains queued without jobs/check-runs in the observed window; dca73531 CI remains successful.",
+    "Default branch workflow is active and byte-identical to prior deployment evidence; repository is public, not a fork, and neither archived nor disabled.",
+    "No currently executing blocker was identified by branch-level and repository-level run lists; one workflow-count inconsistency is retained.",
+    "No schedule event has appeared as of the20:40 query. That absence predates this PR9 queue and uses a distinct configured concurrency group.",
+    "GitHub Status reports Actions operational and no active incident; the repository-specific queue cause remains unconfirmed."
+  ],
+  "safe_authorized_followup": [
+    "Keep the successful local quality evidence and exact-head remote statuses separate; continue independent repository work.",
+    "Use bounded read-only checks of this run and naturally-created subsequent PR runs; record head SHA, job creation and eventual outcome.",
+    "If prolonged, inspect owner-visible Actions UI/support diagnostics for the queued run and schedule absence. Current evidence supplies no specific credential or repository setting correction to request."
+  ],
+  "mutation_recovery_supported_by_current_evidence": false,
+  "mutation_recovery_reason": "No disabled workflow, invalid concurrency key, or visible active same-group run was found. Changing cron, cancelling/rerunning, or enabling an already active workflow would be an untested intervention and was not performed.",
+  "unqueried_or_unverified": [
+    "Actions policy/billing details were not re-requested; prior session evidence recorded a policy endpoint403. Repository admin metadata does not itself establish credential scopes for those endpoints.",
+    "No runner was assigned, so there are no job logs to inspect.",
+    "No new schedule/manual dispatch was triggered to probe scheduling."
+  ],
+  "evidence_directory": "/tmp/genai-actions-queue-review",
+  "raw_manifest": "raw-evidence-manifest.json"
+}
