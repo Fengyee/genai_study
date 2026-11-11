@@ -1,0 +1,86 @@
+{
+  "scope": "read-only draft, no tracked changes or inference",
+  "files": [
+    {
+      "path": "docs/pretrained-image-report.md",
+      "edits": 2,
+      "before_sha256": "caad30a2519379983de456a9ad369d9cf90ff644a7fa93485b70e1ce4e47e72f",
+      "after_sha256": "2ca0767e105b7fc23f2bd2fc919ce096041cf4e69df9de126546a9528a8f2b1c",
+      "invariants": {
+        "headings_preserved": true,
+        "fences_preserved": true,
+        "math_preserved": true,
+        "numeric_tokens_preserved": true,
+        "links_preserved": true
+      }
+    },
+    {
+      "path": "docs/sd14-prompt-pilot.md",
+      "edits": 2,
+      "before_sha256": "44dda59dd3173d496cae2d2327f8e1aedc86e182bd2219aa17bc16ca5f55ca99",
+      "after_sha256": "9360daffe9923bbf351b30335ffe3f9bc58f7608b91999ef8f9a85e1f90121a8",
+      "invariants": {
+        "headings_preserved": true,
+        "fences_preserved": true,
+        "math_preserved": true,
+        "numeric_tokens_preserved": true,
+        "links_preserved": true
+      }
+    },
+    {
+      "path": "docs/pretrained-video-report.md",
+      "edits": 2,
+      "before_sha256": "6514da95dbc9d83d123162f7b6cd07e0e24a1ce92bd9305a518bb32ff17501cb",
+      "after_sha256": "0d57b5e7aea9bd6b58a15a736ce1d10b657694e0517b082a6be8c3eea5f94e5d",
+      "invariants": {
+        "headings_preserved": true,
+        "fences_preserved": true,
+        "math_preserved": true,
+        "numeric_tokens_preserved": true,
+        "links_preserved": true
+      }
+    },
+    {
+      "path": "docs/chapters/09-pretrained-image-lab.md",
+      "edits": 2,
+      "before_sha256": "8dd860fa8024df96fd799f05c0eee5361af550fbb9ce7f2b3e14140774825a02",
+      "after_sha256": "d4ce187c92361a556be7a95b971030632ea75ef2ef91b2c2dbb91ddf89116b23",
+      "invariants": {
+        "headings_preserved": true,
+        "fences_preserved": true,
+        "math_preserved": true,
+        "numeric_tokens_preserved": true,
+        "links_preserved": true
+      }
+    },
+    {
+      "path": "docs/chapters/10-pretrained-video-lab.md",
+      "edits": 1,
+      "before_sha256": "3b3e6382fa699274aafbdb76d698f9ed33afa737ec4d2cfeda9941576d7911af",
+      "after_sha256": "7bfe20ed90ad4c10278f500983ba8b0d0aa2dca874a4be414f2dc9adf4f20e69",
+      "invariants": {
+        "headings_preserved": true,
+        "fences_preserved": true,
+        "math_preserved": true,
+        "numeric_tokens_preserved": true,
+        "links_preserved": true
+      }
+    },
+    {
+      "path": "docs/vae-reconstruction-report.md",
+      "edits": 1,
+      "before_sha256": "a606994f75cdd58688a06c9b879f54cab365953ca8613211568d818a67d32b11",
+      "after_sha256": "60fb841342a79363da50827744aa94f77da7a4cd03568e3531ef2d6fc21558a0",
+      "invariants": {
+        "headings_preserved": true,
+        "fences_preserved": true,
+        "math_preserved": true,
+        "numeric_tokens_preserved": true,
+        "links_preserved": true
+      }
+    }
+  ],
+  "patch_sha256": "41b1de7d3232624d7f3c8d802ae1c6cfb1a36da19f1b5b3453159c56e59e1d39",
+  "source_edits_included": false,
+  "historical_metrics_edits_included": false
+}

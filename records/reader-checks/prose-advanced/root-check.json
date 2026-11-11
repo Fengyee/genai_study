@@ -1,0 +1,16 @@
+{
+  "checked_utc": "2026-11-11T18:51:50.334613+00:00",
+  "files": [
+    {
+      "path": "docs/chapters/04-image-video-roadmap.md",
+      "sha256": "2ead8c6f849c33bdf1a4106c8990ac67bcd080a0653688b6906b86f3530c1095",
+      "invariants_match": true
+    },
+    {
+      "path": "docs/chapters/07-image-flow-lab.md",
+      "sha256": "50ff21172930024522719538f2516dfe7a4af34156175af98a5dee60f75ee639",
+      "invariants_match": true
+    }
+  ],
+  "method": "Independent ordered regex extraction from HEAD/current files; complete fences, protected math, headings, all digit sequences and Markdown links preserved. Changes independently read in context."
+}

@@ -1,0 +1,89 @@
+{
+  "created_utc": "2026-11-11T18:32:52.147479+00:00",
+  "reviewed_from": "/tmp/genai-prose-advanced-review.json",
+  "scope": "Recovered eight prose edits; read-only repository access; writes only to /tmp. No Git operation or model inference.",
+  "source_snapshot": [
+    {
+      "path": "docs/chapters/04-image-video-roadmap.md",
+      "sha256": "cb5833a164652dbbd4a98c45d572f1752f7e9ea0b3895075de8f79bd671461b3",
+      "matches_original_review": true
+    },
+    {
+      "path": "docs/chapters/07-image-flow-lab.md",
+      "sha256": "169cf5f30eeb927462f8ed8c830f8dc35cabea57e88e4504c5bb618d2fd9d708",
+      "matches_original_review": true
+    },
+    {
+      "path": "docs/chapters/08-image-guidance-lab.md",
+      "sha256": "2f5d01cf1dff49d6f2dab039166c9b6dea80564c395b1ed82b2b8945cd4caad6",
+      "matches_original_review": true
+    },
+    {
+      "path": "docs/chapters/09-pretrained-image-lab.md",
+      "sha256": "8dd860fa8024df96fd799f05c0eee5361af550fbb9ce7f2b3e14140774825a02",
+      "matches_original_review": true
+    },
+    {
+      "path": "docs/chapters/10-pretrained-video-lab.md",
+      "sha256": "3b3e6382fa699274aafbdb76d698f9ed33afa737ec4d2cfeda9941576d7911af",
+      "matches_original_review": true
+    }
+  ],
+  "files": [
+    {
+      "path": "docs/chapters/04-image-video-roadmap.md",
+      "source_sha256": "cb5833a164652dbbd4a98c45d572f1752f7e9ea0b3895075de8f79bd671461b3",
+      "draft_sha256": "2ead8c6f849c33bdf1a4106c8990ac67bcd080a0653688b6906b86f3530c1095",
+      "changes": 6,
+      "invariants_match": true,
+      "counts": {
+        "headings": 15,
+        "fenced_blocks": 4,
+        "protected_inline_math": 34,
+        "inline_code": 43,
+        "links": 46,
+        "numeric_tokens": 130
+      }
+    },
+    {
+      "path": "docs/chapters/07-image-flow-lab.md",
+      "source_sha256": "169cf5f30eeb927462f8ed8c830f8dc35cabea57e88e4504c5bb618d2fd9d708",
+      "draft_sha256": "50ff21172930024522719538f2516dfe7a4af34156175af98a5dee60f75ee639",
+      "changes": 2,
+      "invariants_match": true,
+      "counts": {
+        "headings": 24,
+        "fenced_blocks": 11,
+        "protected_inline_math": 49,
+        "inline_code": 112,
+        "links": 13,
+        "numeric_tokens": 174
+      }
+    }
+  ],
+  "totals": {
+    "headings": 39,
+    "fenced_blocks": 15,
+    "protected_inline_math": 83,
+    "inline_code": 155,
+    "links": 59,
+    "numeric_tokens": 304
+  },
+  "unchanged_chapters": [
+    "docs/chapters/08-image-guidance-lab.md",
+    "docs/chapters/09-pretrained-image-lab.md",
+    "docs/chapters/10-pretrained-video-lab.md"
+  ],
+  "patch_sha256": "4f79f77c017236d9da960e1558373cecabf03b2ded57c5e66d2bef1e2b04dc25",
+  "original_patch_byte_identical": true,
+  "independent_method": "Line-scanner extracts complete fenced blocks; source hashes, unique replacements, rebuilt draft and patch bytes, all ordered invariants, plus full digit sequences compared.",
+  "meaning_review": "Eight changes retain scope and necessary mathematical conditions; candidate 5 limits inference to observed ordering and applicability, candidate 7 explicitly preserves four factors affecting strict translation equivariance.",
+  "limits": "No external-paper revalidation, runtime or browser checks; all mathematical/code/link structures are unchanged.",
+  "separate_semantic_review": {
+    "agent": "/root/prose_recovery/semantic_scope",
+    "result": "All eight edits acceptable; no new factual or mathematical error identified.",
+    "candidate_5": "Full evaluation set, counts, uncertainty and applicability preserve the small experiment scope. Observed ordering could optionally be phrased as observed model differences; current version remains acceptable.",
+    "candidate_7": "Preserves arbitrary-translation strict equivariance question and finite boundary, padding, downsampling and coordinate-channel effects. Position-distribution check fits coordinate use.",
+    "chapters_08_09_10": "Necessary distinctions about conditional expectation, velocity/density, paired noise, RMS, sampling scope, positive sigma, random streams and resource extrapolation retained."
+  }
+}
