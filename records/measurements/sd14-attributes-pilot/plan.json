@@ -1,0 +1,753 @@
+{
+  "schema_version": 1,
+  "campaign": "sd14-attributes-pilot",
+  "created_utc": "2026-11-11T17:50:06Z",
+  "phase": "Draft protocol prepared before generating or viewing any of the eight planned outputs. Parent will commit the fixed plan before execution.",
+  "questions": [
+    "在两个固定新种子下，把单对象提示中的red改为blue，立方体主体及对应颜色是否清楚出现？",
+    "在同一红色立方体和蓝色球体的两种完整提示下，图像左右关系是否随提示交换？"
+  ],
+  "scope": "固定SD1.4管线的小规模描述性属性观察；保存八个原计划槽位，报告逐图和同seed配对结果。",
+  "model_id": "CompVis/stable-diffusion-v1-4",
+  "revision": "133a221b8aa7292a167afc5127cb63fb5005638b",
+  "model_directory": "artifacts/models/sd14",
+  "source_identities": {
+    "examples/pretrained-sd14/manifest.json": {
+      "sha256": "96a6930e1db07afefe127075304325e316d03621e4681a42b351d9c6b6072141",
+      "bytes": 7639
+    },
+    "requirements-pretrained-lock.txt": {
+      "sha256": "95176d3908a08a99ca80ca84fe8d2aaf0a5b7c5cc80cd663fb63bd5c1b7b1729",
+      "bytes": 98413
+    },
+    "src/genai_study/pretrained_image.py": {
+      "sha256": "3cd514bae6d2a9e8c17fafea806f49854813ad88c0b08e858e685dd6e0b8f1be",
+      "bytes": 15154
+    },
+    "src/genai_study/run_record.py": {
+      "sha256": "be545eff1985b8eed096b0663145bade01303685430310d4b199aa727c685697",
+      "bytes": 7728
+    }
+  },
+  "verified_cached_assets": {
+    "verified_files": 16,
+    "verified_bytes": 5482669095,
+    "elapsed_seconds": 2.9209826880005494
+  },
+  "dependency_preflight": {
+    "lock_matches_all_43_installed_versions": true,
+    "pip_check": "passed; see cli-preflight.json",
+    "versions": {
+      "torch": "2.6.0+cpu",
+      "numpy": "2.1.3",
+      "diffusers": "0.35.2",
+      "transformers": "4.57.6",
+      "accelerate": "1.11.0",
+      "safetensors": "0.6.2",
+      "huggingface-hub": "0.36.0",
+      "tokenizers": "0.22.2",
+      "Pillow": "13.0.0"
+    },
+    "python": "3.12.14",
+    "new_installs_or_downloads": false
+  },
+  "seed_predeclaration": {
+    "seeds": [
+      101,
+      211
+    ],
+    "historical_sd14_seeds_found": [
+      7,
+      19,
+      43
+    ],
+    "history_scope": "All metrics.json under artifacts plus SD1.4 and prompt-pilot tracked measurement JSONs with model_id/prompt/seed fields.",
+    "planned_seeds_not_found_in_scanned_outputs": true,
+    "planned_outputs_generated_or_viewed": false
+  },
+  "fixed": {
+    "steps": 20,
+    "guidance_scale": 7.5,
+    "height": 512,
+    "width": 512,
+    "threads": 1,
+    "device": "cpu",
+    "dtype": "float32",
+    "eta": 0.0,
+    "negative_prompt": "",
+    "batch_size": 1,
+    "scheduler": "DDIMScheduler",
+    "safety_checker_enabled": true,
+    "unet_calls_per_request": 20,
+    "unet_branch_evaluations_per_request": 40,
+    "fresh_process_per_request": true,
+    "warmup": false
+  },
+  "expected_scheduler": {
+    "evidence": "records/measurements/pretrained-sd14/default.json",
+    "class": "DDIMScheduler",
+    "timesteps": [
+      951,
+      901,
+      851,
+      801,
+      751,
+      701,
+      651,
+      601,
+      551,
+      501,
+      451,
+      401,
+      351,
+      301,
+      251,
+      201,
+      151,
+      101,
+      51,
+      1
+    ],
+    "init_noise_sigma": 1.0,
+    "config": {
+      "num_train_timesteps": 1000,
+      "beta_start": 0.00085,
+      "beta_end": 0.012,
+      "beta_schedule": "scaled_linear",
+      "trained_betas": null,
+      "clip_sample": false,
+      "set_alpha_to_one": false,
+      "steps_offset": 1,
+      "prediction_type": "epsilon",
+      "thresholding": false,
+      "dynamic_thresholding_ratio": 0.995,
+      "clip_sample_range": 1.0,
+      "sample_max_value": 1.0,
+      "timestep_spacing": "leading",
+      "rescale_betas_zero_snr": false,
+      "_use_default_values": [
+        "timestep_spacing",
+        "thresholding",
+        "sample_max_value",
+        "prediction_type",
+        "clip_sample_range",
+        "rescale_betas_zero_snr",
+        "dynamic_thresholding_ratio"
+      ],
+      "skip_prk_steps": true,
+      "_class_name": "DDIMScheduler",
+      "_diffusers_version": "0.7.0.dev0"
+    },
+    "comparison_rule": "Compare complete effective scheduler configuration; compare internal _use_default_values as an unordered set and retain original JSON."
+  },
+  "expected_initial_noise": {
+    "101": {
+      "shape": [
+        1,
+        4,
+        64,
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "7e21a385554c654015bc4c511142ce6d34f23e26f6c58e7f3e8143dffa7bb9b8",
+      "hash_format": "C-order float32 raw bytes before init_noise_sigma multiplication"
+    },
+    "211": {
+      "shape": [
+        1,
+        4,
+        64,
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "77091174538a4f96c0d8d99d38d68dbbb8c194f860da0294f054d185ee3d12c5",
+      "hash_format": "C-order float32 raw bytes before init_noise_sigma multiplication"
+    }
+  },
+  "pairing": "同一seed在四个提示下使用相同1x4x64x64初噪声；生成后逐元素比较initial_noise.npy，并核对预声明raw SHA。两个seed的初噪声必须不同。",
+  "prompts": {
+    "single_red_cube": {
+      "text": "a watercolor painting of a red cube, plain white background",
+      "family": "single_object_color",
+      "expected_objects": [
+        {
+          "shape": "cube",
+          "color": "red"
+        }
+      ],
+      "expected_cube_side": null,
+      "tokens_with_special_tokens": 13
+    },
+    "single_blue_cube": {
+      "text": "a watercolor painting of a blue cube, plain white background",
+      "family": "single_object_color",
+      "expected_objects": [
+        {
+          "shape": "cube",
+          "color": "blue"
+        }
+      ],
+      "expected_cube_side": null,
+      "tokens_with_special_tokens": 13
+    },
+    "red_cube_left_blue_sphere": {
+      "text": "a watercolor painting of a red cube to the left of a blue sphere, plain white background",
+      "family": "two_object_relation",
+      "expected_objects": [
+        {
+          "shape": "cube",
+          "color": "red"
+        },
+        {
+          "shape": "sphere",
+          "color": "blue"
+        }
+      ],
+      "expected_cube_side": "left",
+      "tokens_with_special_tokens": 20
+    },
+    "blue_sphere_left_red_cube": {
+      "text": "a watercolor painting of a blue sphere to the left of a red cube, plain white background",
+      "family": "two_object_relation",
+      "expected_objects": [
+        {
+          "shape": "cube",
+          "color": "red"
+        },
+        {
+          "shape": "sphere",
+          "color": "blue"
+        }
+      ],
+      "expected_cube_side": "right",
+      "tokens_with_special_tokens": 20
+    }
+  },
+  "requests": [
+    {
+      "order": 1,
+      "request_id": "single-red-cube-seed101",
+      "prompt_id": "single_red_cube",
+      "seed": 101,
+      "output": "artifacts/sd14-attributes-pilot/single-red-cube-seed101",
+      "record_output": "artifacts/run-records/sd14-attributes-pilot/single-red-cube-seed101",
+      "argv": [
+        ".venv/bin/python",
+        "-m",
+        "genai_study.run_record",
+        "--timeout",
+        "420",
+        "--output",
+        "artifacts/run-records/sd14-attributes-pilot/single-red-cube-seed101",
+        "--",
+        ".venv-pretrained/bin/python",
+        "-u",
+        "-m",
+        "genai_study.pretrained_image",
+        "run",
+        "--manifest",
+        "examples/pretrained-sd14/manifest.json",
+        "--model-dir",
+        "artifacts/models/sd14",
+        "--output",
+        "artifacts/sd14-attributes-pilot/single-red-cube-seed101",
+        "--prompt",
+        "a watercolor painting of a red cube, plain white background",
+        "--seed",
+        "101",
+        "--steps",
+        "20",
+        "--guidance-scale",
+        "7.5",
+        "--height",
+        "512",
+        "--width",
+        "512",
+        "--threads",
+        "1"
+      ],
+      "planned_status": "not_started",
+      "actual_execution": null,
+      "visual_observation": null
+    },
+    {
+      "order": 2,
+      "request_id": "single-blue-cube-seed101",
+      "prompt_id": "single_blue_cube",
+      "seed": 101,
+      "output": "artifacts/sd14-attributes-pilot/single-blue-cube-seed101",
+      "record_output": "artifacts/run-records/sd14-attributes-pilot/single-blue-cube-seed101",
+      "argv": [
+        ".venv/bin/python",
+        "-m",
+        "genai_study.run_record",
+        "--timeout",
+        "420",
+        "--output",
+        "artifacts/run-records/sd14-attributes-pilot/single-blue-cube-seed101",
+        "--",
+        ".venv-pretrained/bin/python",
+        "-u",
+        "-m",
+        "genai_study.pretrained_image",
+        "run",
+        "--manifest",
+        "examples/pretrained-sd14/manifest.json",
+        "--model-dir",
+        "artifacts/models/sd14",
+        "--output",
+        "artifacts/sd14-attributes-pilot/single-blue-cube-seed101",
+        "--prompt",
+        "a watercolor painting of a blue cube, plain white background",
+        "--seed",
+        "101",
+        "--steps",
+        "20",
+        "--guidance-scale",
+        "7.5",
+        "--height",
+        "512",
+        "--width",
+        "512",
+        "--threads",
+        "1"
+      ],
+      "planned_status": "not_started",
+      "actual_execution": null,
+      "visual_observation": null
+    },
+    {
+      "order": 3,
+      "request_id": "red-cube-left-blue-sphere-seed101",
+      "prompt_id": "red_cube_left_blue_sphere",
+      "seed": 101,
+      "output": "artifacts/sd14-attributes-pilot/red-cube-left-blue-sphere-seed101",
+      "record_output": "artifacts/run-records/sd14-attributes-pilot/red-cube-left-blue-sphere-seed101",
+      "argv": [
+        ".venv/bin/python",
+        "-m",
+        "genai_study.run_record",
+        "--timeout",
+        "420",
+        "--output",
+        "artifacts/run-records/sd14-attributes-pilot/red-cube-left-blue-sphere-seed101",
+        "--",
+        ".venv-pretrained/bin/python",
+        "-u",
+        "-m",
+        "genai_study.pretrained_image",
+        "run",
+        "--manifest",
+        "examples/pretrained-sd14/manifest.json",
+        "--model-dir",
+        "artifacts/models/sd14",
+        "--output",
+        "artifacts/sd14-attributes-pilot/red-cube-left-blue-sphere-seed101",
+        "--prompt",
+        "a watercolor painting of a red cube to the left of a blue sphere, plain white background",
+        "--seed",
+        "101",
+        "--steps",
+        "20",
+        "--guidance-scale",
+        "7.5",
+        "--height",
+        "512",
+        "--width",
+        "512",
+        "--threads",
+        "1"
+      ],
+      "planned_status": "not_started",
+      "actual_execution": null,
+      "visual_observation": null
+    },
+    {
+      "order": 4,
+      "request_id": "blue-sphere-left-red-cube-seed101",
+      "prompt_id": "blue_sphere_left_red_cube",
+      "seed": 101,
+      "output": "artifacts/sd14-attributes-pilot/blue-sphere-left-red-cube-seed101",
+      "record_output": "artifacts/run-records/sd14-attributes-pilot/blue-sphere-left-red-cube-seed101",
+      "argv": [
+        ".venv/bin/python",
+        "-m",
+        "genai_study.run_record",
+        "--timeout",
+        "420",
+        "--output",
+        "artifacts/run-records/sd14-attributes-pilot/blue-sphere-left-red-cube-seed101",
+        "--",
+        ".venv-pretrained/bin/python",
+        "-u",
+        "-m",
+        "genai_study.pretrained_image",
+        "run",
+        "--manifest",
+        "examples/pretrained-sd14/manifest.json",
+        "--model-dir",
+        "artifacts/models/sd14",
+        "--output",
+        "artifacts/sd14-attributes-pilot/blue-sphere-left-red-cube-seed101",
+        "--prompt",
+        "a watercolor painting of a blue sphere to the left of a red cube, plain white background",
+        "--seed",
+        "101",
+        "--steps",
+        "20",
+        "--guidance-scale",
+        "7.5",
+        "--height",
+        "512",
+        "--width",
+        "512",
+        "--threads",
+        "1"
+      ],
+      "planned_status": "not_started",
+      "actual_execution": null,
+      "visual_observation": null
+    },
+    {
+      "order": 5,
+      "request_id": "blue-sphere-left-red-cube-seed211",
+      "prompt_id": "blue_sphere_left_red_cube",
+      "seed": 211,
+      "output": "artifacts/sd14-attributes-pilot/blue-sphere-left-red-cube-seed211",
+      "record_output": "artifacts/run-records/sd14-attributes-pilot/blue-sphere-left-red-cube-seed211",
+      "argv": [
+        ".venv/bin/python",
+        "-m",
+        "genai_study.run_record",
+        "--timeout",
+        "420",
+        "--output",
+        "artifacts/run-records/sd14-attributes-pilot/blue-sphere-left-red-cube-seed211",
+        "--",
+        ".venv-pretrained/bin/python",
+        "-u",
+        "-m",
+        "genai_study.pretrained_image",
+        "run",
+        "--manifest",
+        "examples/pretrained-sd14/manifest.json",
+        "--model-dir",
+        "artifacts/models/sd14",
+        "--output",
+        "artifacts/sd14-attributes-pilot/blue-sphere-left-red-cube-seed211",
+        "--prompt",
+        "a watercolor painting of a blue sphere to the left of a red cube, plain white background",
+        "--seed",
+        "211",
+        "--steps",
+        "20",
+        "--guidance-scale",
+        "7.5",
+        "--height",
+        "512",
+        "--width",
+        "512",
+        "--threads",
+        "1"
+      ],
+      "planned_status": "not_started",
+      "actual_execution": null,
+      "visual_observation": null
+    },
+    {
+      "order": 6,
+      "request_id": "red-cube-left-blue-sphere-seed211",
+      "prompt_id": "red_cube_left_blue_sphere",
+      "seed": 211,
+      "output": "artifacts/sd14-attributes-pilot/red-cube-left-blue-sphere-seed211",
+      "record_output": "artifacts/run-records/sd14-attributes-pilot/red-cube-left-blue-sphere-seed211",
+      "argv": [
+        ".venv/bin/python",
+        "-m",
+        "genai_study.run_record",
+        "--timeout",
+        "420",
+        "--output",
+        "artifacts/run-records/sd14-attributes-pilot/red-cube-left-blue-sphere-seed211",
+        "--",
+        ".venv-pretrained/bin/python",
+        "-u",
+        "-m",
+        "genai_study.pretrained_image",
+        "run",
+        "--manifest",
+        "examples/pretrained-sd14/manifest.json",
+        "--model-dir",
+        "artifacts/models/sd14",
+        "--output",
+        "artifacts/sd14-attributes-pilot/red-cube-left-blue-sphere-seed211",
+        "--prompt",
+        "a watercolor painting of a red cube to the left of a blue sphere, plain white background",
+        "--seed",
+        "211",
+        "--steps",
+        "20",
+        "--guidance-scale",
+        "7.5",
+        "--height",
+        "512",
+        "--width",
+        "512",
+        "--threads",
+        "1"
+      ],
+      "planned_status": "not_started",
+      "actual_execution": null,
+      "visual_observation": null
+    },
+    {
+      "order": 7,
+      "request_id": "single-blue-cube-seed211",
+      "prompt_id": "single_blue_cube",
+      "seed": 211,
+      "output": "artifacts/sd14-attributes-pilot/single-blue-cube-seed211",
+      "record_output": "artifacts/run-records/sd14-attributes-pilot/single-blue-cube-seed211",
+      "argv": [
+        ".venv/bin/python",
+        "-m",
+        "genai_study.run_record",
+        "--timeout",
+        "420",
+        "--output",
+        "artifacts/run-records/sd14-attributes-pilot/single-blue-cube-seed211",
+        "--",
+        ".venv-pretrained/bin/python",
+        "-u",
+        "-m",
+        "genai_study.pretrained_image",
+        "run",
+        "--manifest",
+        "examples/pretrained-sd14/manifest.json",
+        "--model-dir",
+        "artifacts/models/sd14",
+        "--output",
+        "artifacts/sd14-attributes-pilot/single-blue-cube-seed211",
+        "--prompt",
+        "a watercolor painting of a blue cube, plain white background",
+        "--seed",
+        "211",
+        "--steps",
+        "20",
+        "--guidance-scale",
+        "7.5",
+        "--height",
+        "512",
+        "--width",
+        "512",
+        "--threads",
+        "1"
+      ],
+      "planned_status": "not_started",
+      "actual_execution": null,
+      "visual_observation": null
+    },
+    {
+      "order": 8,
+      "request_id": "single-red-cube-seed211",
+      "prompt_id": "single_red_cube",
+      "seed": 211,
+      "output": "artifacts/sd14-attributes-pilot/single-red-cube-seed211",
+      "record_output": "artifacts/run-records/sd14-attributes-pilot/single-red-cube-seed211",
+      "argv": [
+        ".venv/bin/python",
+        "-m",
+        "genai_study.run_record",
+        "--timeout",
+        "420",
+        "--output",
+        "artifacts/run-records/sd14-attributes-pilot/single-red-cube-seed211",
+        "--",
+        ".venv-pretrained/bin/python",
+        "-u",
+        "-m",
+        "genai_study.pretrained_image",
+        "run",
+        "--manifest",
+        "examples/pretrained-sd14/manifest.json",
+        "--model-dir",
+        "artifacts/models/sd14",
+        "--output",
+        "artifacts/sd14-attributes-pilot/single-red-cube-seed211",
+        "--prompt",
+        "a watercolor painting of a red cube, plain white background",
+        "--seed",
+        "211",
+        "--steps",
+        "20",
+        "--guidance-scale",
+        "7.5",
+        "--height",
+        "512",
+        "--width",
+        "512",
+        "--threads",
+        "1"
+      ],
+      "planned_status": "not_started",
+      "actual_execution": null,
+      "visual_observation": null
+    }
+  ],
+  "order_policy": "先以seed101按四提示次序运行，再以seed211反向运行四提示；同seed的比较沿用同一初噪声。顺序在出图前固定，观察全部可用原图后再总结。",
+  "execution_budget": {
+    "per_request_timeout_seconds": 420,
+    "campaign_wall_budget_seconds": 3600,
+    "maximum_concurrent_requests": 1,
+    "termination_grace_seconds": 1,
+    "start_next_only_with_remaining_seconds_at_least": 430,
+    "clock": "time.monotonic from immediately before first outer recorder launch until final cleanup; include recorder startup, source metadata, logs and process termination. Preflight and pre-generation commit occur beforehand.",
+    "driver_requirement": "run_record only enforces the per-request cap. Driver must enforce the campaign deadline and maintain one live request. Apply the first_request_gate before request2. If fewer than430s remain, do not start the next request; retain pending slots as not_attempted with budget reason. On hard campaign deadline SIGTERM the recorder, allow its child-process-group cleanup, and save the driver stop reason.",
+    "total_child_timeout_ceiling_seconds": 3360,
+    "total_budget_note": "Eight420s caps sum to3360s; the remaining240s covers wrapper/cleanup overhead. This arithmetic is a budget allocation, not a runtime guarantee."
+  },
+  "output_and_failure_policy": {
+    "directories": "Use the eight new output and recorder directories exactly as planned. If any planned directory exists, stop before execution to choose a new complete campaign root and record that administrative change. Do not overwrite prior outputs.",
+    "success": "run.json status=succeeded and exit_code=0 plus metrics.json/image.png/initial_noise.npy present, parseable and matching recorded hashes/configuration.",
+    "filtered": "metrics.safety.nsfw_content_detected=true is a filtered observation even if exit_code=0. Preserve the pipeline-checked image and all metadata; semantic attributes are not_assessable_filtered.",
+    "technical_failure": "Preserve failed/launch_failed/timed_out/interrupted status, exit code and full command.log. A progress line saying step N started does not establish completion.",
+    "timeout": "Per-request timed_out/exit124 keeps its original slot and all available artifacts. No replacement seed/prompt or retry is added to this eight-request set.",
+    "after_failure": "Apply first_request_gate after request1. After later failures, continue to the next fixed request only if remaining budget and verified shared prerequisites permit it; stop on an unresolved shared asset/software problem and mark remaining requests not_attempted with blocked reason.",
+    "unfinished": "A running record left by host interruption needs process inspection and an explicit interruption note; never infer success from partial files.",
+    "all_results": "Publish or index every planned slot, complete original checked images for assessable/filtered outputs, original metrics, external records and exclusions. Preserve raw original PNG bytes; no cropping or selective omission."
+  },
+  "observation_protocol": {
+    "unit": "One complete original512x512 image. Two independent AI observers if available; one receives anonymous image IDs and the object-description rubric without prompts, seeds or previous results. Root maps descriptions to predeclared targets after annotations. Record observer identity, whether blind, and all disagreements. Real-reader annotations remain future work.",
+    "object_identity": {
+      "states": [
+        "clear",
+        "ambiguous",
+        "not_observed"
+      ],
+      "cube": "clear requires a coherent cube-like three-dimensional block with visible faces/edges or other convincing volume cues. A flat square or vague angular patch is ambiguous.",
+      "sphere": "clear requires a coherent ball-like rounded volume; a flat disk without sufficiently clear volume cues is ambiguous.",
+      "multiplicity": "Record visible counts of clear cubes/spheres plus extra or merged objects. For each requested target, ambiguity/absence is retained separately; do not select a favorable pair from multiple interchangeable candidates."
+    },
+    "color": {
+      "states": [
+        "red",
+        "blue",
+        "other",
+        "mixed_or_uncertain",
+        "not_assessable"
+      ],
+      "rule": "Judge the visible body of a clearly identified object, allowing watercolor highlights and shading. Dominant red-family or blue-family appearance must be clear; borderline orange/pink/purple/teal or conflicting object colors are mixed_or_uncertain with a descriptive note. If identity is ambiguous/absent, color remains not_assessable. Record observed colors before comparing with the prompt."
+    },
+    "horizontal_relation": {
+      "states": [
+        "cube_left_of_sphere",
+        "cube_right_of_sphere",
+        "uncertain",
+        "not_assessable"
+      ],
+      "eligibility": "Assess geometry independently of whether colors match, when exactly one clear cube and one clear sphere can be uniquely localized. Missing/ambiguous identities, duplicated interchangeable targets, severe merging or unlocalizable crop yield not_assessable with reason.",
+      "rule": "Use image-coordinate left/right. Record approximate visible bounding boxes when reliably localizable; compare their horizontal centers. A center separation of at least5% of image width (25.6px at512px) with a confident ordering supports left/right; closer centers or unreliable localization are uncertain. Record overlap and cropping separately. Bounding boxes are AI-assisted visual annotations, not detector measurements."
+    },
+    "secondary": [
+      "plain white/light neutral background or additional setting",
+      "watercolor-like appearance",
+      "extra objects",
+      "cropping/occlusion/merging",
+      "unexpected border or text"
+    ],
+    "target_match": "Derive per-attribute match/mismatch/uncertain from blind descriptions and fixed prompts. A complete single-object match requires exactly one clear cube with requested color; a complete relation match requires uniquely clear cube+sphere, both specified colors and the specified left/right relation. Extra objects/secondary qualities are reported separately. Filtered/technical/unstarted slots retain their explicit status.",
+    "disagreement": "Preserve both raw annotations. If observers disagree on identity/color/relation and no clearly supported resolution is documented, final item remains uncertain. Do not convert uncertainty to a confident failure or success.",
+    "reporting": "Report counts with explicit planned denominator2 for each prompt, including unavailable statuses, plus all same-seed paired cases. No universal success rate, confidence interval, significance claim or model-ranking claim from these eight requests."
+  },
+  "repeat_policy": {
+    "full_repeat_planned": false,
+    "reason": "The goal is new content coverage. Existing SD1.4 default/repeat saved identical noise and PNG bytes; subsequent four-request pilot used the same current inference-source SHA/lock/model and verified paired arrays. The only documented source difference preceding that pilot was sparse progress logging in an existing hook.",
+    "existing_evidence": [
+      "records/measurements/pretrained-sd14/provenance.json",
+      "records/measurements/pretrained-sd14/default.json",
+      "records/measurements/pretrained-sd14/repeat.json",
+      "records/measurements/sd14-prompt-pilot/audit.json"
+    ],
+    "gates": "Before interpreting new images, verify source/lock/model identities, versions, no token truncation, all fixed settings, expected noise hashes and same-seed array equality. If an invariant fails, preserve results and suspend paired interpretation; diagnose separately. Any diagnostic rerun is separately declared and does not replace an original request or silently extend this3600s campaign."
+  },
+  "machine_cost_estimate": {
+    "label": "Estimate based on historical observations; actual new costs unknown until execution.",
+    "historical_evidence": "docs/sd14-prompt-pilot.md: four fresh-process requests266.89–271.21s each,1074.13s total; RSS5.34–5.44GiB.",
+    "estimated_wall_seconds_per_request": 270,
+    "estimated_eight_request_wall_seconds": 2160,
+    "estimated_eight_request_wall_minutes": 36,
+    "estimated_process_peak_rss_gib": 5.5,
+    "output_disk_reserve_bytes": 104857600,
+    "cached_weight_bytes": 5482669095,
+    "new_download_bytes": 0,
+    "current_resource_snapshot": {
+      "cgroup": {
+        "memory.max": "34359738368",
+        "memory.current": "6494912512",
+        "cpu.max": "400000 100000"
+      },
+      "workspace_available_bytes": 47199703040,
+      "cpu_count": 5
+    },
+    "limitations": "Shared-host load and page-cache state can change latency and memory observations. Single-thread inference uses only part of the4-CPU quota. Sequential processes limit simultaneous model memory; scheduling is not guaranteed to finish all requests before the budget.",
+    "rss_scope": "Estimated peak up to the existing in-program RUSAGE_SELF query at pretrained_image.py:254; later PNG hashing/JSON output/shutdown excluded from that query point."
+  },
+  "actual_measurements": {
+    "campaign_started_utc": null,
+    "campaign_wall_seconds": null,
+    "requests_attempted": null,
+    "completed": null,
+    "filtered": null,
+    "technical_failures": null,
+    "unstarted": null,
+    "per_request_costs": null,
+    "note": "Fill only after execution from original run.json and metrics; keep estimated and measured fields distinct.",
+    "first_request_gate_result": null,
+    "request_statuses_include_not_attempted": true
+  },
+  "interpretation_limits": [
+    "Watercolor styling makes object geometry and borderline hue subjective; preserve uncertainty and reviewer disagreement.",
+    "The two relation prompts change object-phrase order along with the requested layout; conclusions apply to these complete prompt changes.",
+    "Same initial noise fixes one stochastic input; prompt changes can also change shape, scale, composition and other content.",
+    "Two seeds and four prompts provide cases about this fixed configuration. They do not estimate broader compositional ability or establish general model reliability.",
+    "AI reviewers can share biases; observations require later independent human review for stronger claims."
+  ],
+  "local_preflight_evidence": [
+    "/tmp/genai-sd14-attributes-plan/preflight.json",
+    "/tmp/genai-sd14-attributes-plan/installed-lock-versions.json",
+    "/tmp/genai-sd14-attributes-plan/cli-preflight.json"
+  ],
+  "planned_next_action": "Root reviews and commits the fixed plan and provenance before launching the first recorded request. No model run was executed while preparing this draft.",
+  "first_request_gate": {
+    "request_id": "single-red-cube-seed101",
+    "first_request_is_a_planned_full_request": true,
+    "technical_failure_rule": "If request1 is failed, launch_failed, timed_out, interrupted, incomplete, or violates the fixed artifact/configuration checks, stop the campaign. Retain its full record and mark requests2–8 not_attempted with first_request_failure reason.",
+    "successful_resource_gate": {
+      "maximum_run_record_wall_seconds": 360,
+      "maximum_model_process_peak_rss_gib": 8,
+      "maximum_model_process_peak_rss_kib": 8388608,
+      "wall_source": "run.json wall_seconds: elapsed monotonic time around the full child command including startup and cleanup. The separate campaign timer includes recorder pre-launch metadata/log overhead.",
+      "memory_source": "metrics.json memory.process_peak_rss_kib, queried by resource.getrusage(resource.RUSAGE_SELF).ru_maxrss at src/genai_study/pretrained_image.py:254. It is the model Python process high-water RSS up to that query, in Linux KiB.",
+      "memory_coverage": {
+        "query_source_line": 254,
+        "included_before_query": [
+          "Python startup/imports",
+          "cached model-file verification",
+          "model loading",
+          "text encoding and20-step denoising",
+          "VAE decoding, safety check and PIL postprocessing",
+          "saving image.png and initial_noise.npy at lines216–217",
+          "metadata and initial-noise hash calculations preceding line254"
+        ],
+        "later_work_not_covered": [
+          "output-PNG SHA256 calculation at line259",
+          "metrics.json serialization/write at lines262–263",
+          "final result printing and process shutdown"
+        ],
+        "scope_note": "The first-request8GiB gate uses the same query-point RSS metric as the historical5.34–5.44GiB report. It is not a measurement of the final terminated-process maximum or incremental inference memory."
+      }
+    },
+    "stop_condition": "After a technically successful first request, stop if wall_seconds>360 or process_peak_rss_kib>8388608, or either required resource field is missing, nonfinite, nonpositive or has an invalid type. Mark remaining requests not_attempted with resource_gate reason and observed values.",
+    "quality_and_filtering": "Do not use generated content quality as a gate. A safety-filtered first output remains filtered and may proceed if its technical checks and resource limits pass. No prompt/seed replacement.",
+    "external_time_tool": "/usr/bin/time is absent in the current environment (read-only --version attempt exited127). Reuse the existing recorder and pipeline RSS fields; install no additional tool. For unsuccessful requests missing metrics, record RSS as unavailable and apply the technical-failure stop rule."
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "recorded_utc": "2026-11-11T17:47:08.688272+00:00",
+  "cwd": "/workspace/genai_study",
+  "scope": "Previously observed CLI help and dependency checks, plus read-only source/document review. These commands were not rerun when creating this record. No model inference or training.",
+  "commands": [
+    {
+      "argv": [
+        ".venv/bin/python",
+        "-m",
+        "genai_study.run_record",
+        "--help"
+      ],
+      "exit_code": 0,
+      "output_summary": "Usage: run_record.py [-h] --timeout TIMEOUT --output OUTPUT ...; requires a new record directory; passes child argv after -- without shell interpretation; python -u supports timely logs."
+    },
+    {
+      "argv": [
+        ".venv-pretrained/bin/python",
+        "-m",
+        "genai_study.pretrained_image",
+        "run",
+        "--help"
+      ],
+      "exit_code": 0,
+      "output_summary": "Supports --manifest, --model-dir, --output, --prompt, --seed, --steps, --guidance-scale, --height, --width and --threads."
+    },
+    {
+      "argv": [
+        ".venv-pretrained/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "stdout_summary": "No broken requirements found.",
+      "warning_summary": "/home/agent/.cache/pip was not writable; pip disabled its cache for this check."
+    }
+  ],
+  "command_observation": "The three commands were executed in one && chain; all three produced output and the shell returned 0, establishing successful exit for each command.",
+  "sources_reviewed": {
+    "src/genai_study/run_record.py": {
+      "sha256_at_record_time": "be545eff1985b8eed096b0663145bade01303685430310d4b199aa727c685697"
+    },
+    "src/genai_study/pretrained_image.py": {
+      "sha256_at_record_time": "3cd514bae6d2a9e8c17fafea806f49854813ad88c0b08e858e685dd6e0b8f1be"
+    },
+    "docs/run-records.md": {
+      "sha256_at_record_time": "41b7467f71d71fdb529e431ee6371425349b14ecbeea982381ed6a40ee38b04b"
+    },
+    "docs/chapters/09-pretrained-image-lab.md": {
+      "sha256_at_record_time": "8dd860fa8024df96fd799f05c0eee5361af550fbb9ce7f2b3e14140774825a02"
+    },
+    "docs/pretrained-image-report.md": {
+      "sha256_at_record_time": "caad30a2519379983de456a9ad369d9cf90ff644a7fa93485b70e1ce4e47e72f"
+    },
+    "docs/sd14-prompt-pilot.md": {
+      "sha256_at_record_time": "44dda59dd3173d496cae2d2327f8e1aedc86e182bd2219aa17bc16ca5f55ca99"
+    }
+  },
+  "argv_template": [
+    ".venv/bin/python",
+    "-m",
+    "genai_study.run_record",
+    "--timeout",
+    "420",
+    "--output",
+    "artifacts/run-records/<campaign>/<request-id>",
+    "--",
+    ".venv-pretrained/bin/python",
+    "-u",
+    "-m",
+    "genai_study.pretrained_image",
+    "run",
+    "--manifest",
+    "examples/pretrained-sd14/manifest.json",
+    "--model-dir",
+    "artifacts/models/sd14",
+    "--output",
+    "artifacts/<campaign>/<request-id>",
+    "--prompt",
+    "<fixed-plan-prompt>",
+    "--seed",
+    "<fixed-plan-seed>",
+    "--steps",
+    "20",
+    "--guidance-scale",
+    "7.5",
+    "--height",
+    "512",
+    "--width",
+    "512",
+    "--threads",
+    "1"
+  ],
+  "output_protection": {
+    "record_directory": "run_record mkdir(exist_ok=False) requires a new path, including rejection of an existing empty directory.",
+    "experiment_directory": "pretrained_image rejects an existing file/nonempty directory before verification and checks again before saving. Use a new per-request directory.",
+    "separation": "Record and experiment directories must be distinct."
+  },
+  "budget_review": {
+    "planned_requests": 8,
+    "execution": "One request process at a time, fixed order, no replacement samples for timeouts/failures/filtered outputs.",
+    "per_child_timeout_seconds": 420,
+    "sum_of_child_timeout_limits_seconds": 3360,
+    "termination_grace_seconds_per_timed_out_request": 1.0,
+    "driver_total_budget_seconds": 3600,
+    "recorder_wall_scope": "Starts immediately before Popen and ends after child cleanup; includes child startup/imports/verification/loading/inference/output and termination grace. Recorder startup and initial metadata collection are excluded.",
+    "driver_requirement": "run_record has no multi-request budget. The driver must use one monotonic campaign clock including recorder and orchestration overhead, and record cumulative elapsed/remaining budget after each request.",
+    "launch_rule": "If the remaining campaign budget cannot accommodate a full 420-second request plus cleanup/recording reserve, do not launch it; mark remaining fixed requests not_started_budget.",
+    "global_deadline_handling": "If the global deadline requires stopping an active request, send SIGTERM to run_record early enough to permit cleanup and final recording; its child model is in a separate process group. Killing only the recorder with SIGKILL can leave running children and an unfinished running record.",
+    "timeout_followup": "Keep the timed-out request and partial outputs/logs. Continue only to the next predeclared request when remaining budget and execution conditions permit; do not rerun or substitute the timed-out request.",
+    "limitation": "The 3360-second arithmetic alone does not enforce the 3600-second driver budget because startup, metadata collection and cleanup add time."
+  },
+  "status_review": {
+    "running": "Initial durable state; may remain after recorder SIGKILL/host interruption. Check live processes and logs; do not classify as successful.",
+    "succeeded": "Child exit 0. Also validate metrics.json, image.png and initial_noise.npy, identities/configuration and hashes before evaluating the sample.",
+    "failed": "Nonzero child exit; log is retained. Negative child_returncode means a signal; recorder exposes 128 + signal. A kill signal alone does not prove an OOM.",
+    "launch_failed": "Child executable was not started; exit 127 for missing executable, otherwise 126 for launch OSError.",
+    "timed_out": "timed_out=true, exit_code=124. SIGTERM is sent to the child process group; after at most a one-second grace, SIGKILL is sent and the direct child is reaped.",
+    "interrupted": "Recorder received SIGINT or SIGTERM, cleans up the child group, and returns 130 or 143 respectively."
+  },
+  "technical_and_filtering_evidence": {
+    "technical_status": "Read run.json status, exit_code, child_returncode, timed_out, wall_seconds and command.log; validate log_sha256/log_size_bytes when finalized.",
+    "progress_log": "DDIM step N started records entry to that UNet call, not its completion or successful output saving.",
+    "filtering": "Read metrics.json safety.checker_enabled and safety.nsfw_content_detected. A filtered request can still have succeeded/exit 0. Report it separately, retain the pipeline safety-checked image, and do not replace its prompt/seed.",
+    "partial_output": "A failed/timed-out/interrupted request may leave partial files; preserve them and the planned request position, without labeling them a complete successful result.",
+    "successful_protocol": "For each declared 512x512, 20-step request, verify unet_forward_calls=20, all unet_batch_sizes=2, branch evaluations=40, initial_noise shape=[1,4,64,64], fixed model/scheduler/configuration, and prompt truncation status."
+  }
+}

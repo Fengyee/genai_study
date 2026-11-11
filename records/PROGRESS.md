@@ -10,7 +10,8 @@
 - [PR #2](https://github.com/Fengyee/genai_study/pull/2)与[PR #3](https://github.com/Fengyee/genai_study/pull/3)已获后续明确授权并顺序合并：PR #2的2ac2f7b检查通过后合入；PR #3切base到main、更新分支到79508e8，run43068306477成功后合入。main现为d99b748fd4555db525f76a0ea83bb73b6b98c84d；其push43068708112已success。
 - 默认分支包含VAE实测、预测权重、GitHub数学修复、空间token专题和反馈表。32页1536公式的批量客户端验收与新专题/符号表两视口验收分别归档；默认分支检查范围为146 tests、15教学块和7条CLI smoke。
 - [PR #4](https://github.com/Fengyee/genai_study/pull/4)开放，最新efb3ead的run43070085722成功，包含checkpoint数值契约及调度观察记录。8份历史checkpoint重放结果逐元素相同；本项尚无合并授权。
-- 当前分支docs/prompt-cluster-bootstrap基于PR #4，[PR #5](https://github.com/Fengyee/genai_study/pull/5)开放，新增05提示簇重采样反例。完整本地检查178 tests、16/16教学块、7条CLI smoke通过，artifacts/quality/20261111T174013Z-bzRcQS；固定1684744实际页面双视口52公式/锚点/答案/局部滚动均通过。
+- [PR #5](https://github.com/Fengyee/genai_study/pull/5)开放，基于PR #4，最新f5cc255的run43071278535成功。完整本地检查178 tests、16/16教学块、7条CLI smoke通过；固定1684744实际页面双视口52公式/锚点/答案/局部滚动均通过。PR #4/#5的新合并授权已询问，等待用户答复，其他工作继续。
+- 当前分支feat/sd14-attributes-layout准备八请求预训练图像实验；固定计划/预检保存在records/measurements/sd14-attributes-pilot，首次生成尚未启动，需先提交计划与有界驱动。现有模型资产/依赖通过核对，代码与锁文件保持。
 - 每小时质量workflow位于main，API active、cron为UTC每小时:17；原416版本push/手动与d99版本push的artifact均实际核验。15:39–17:35 UTC观察结束，117次查询覆盖16:17/17:17计划点，最后无schedule事件；原因未确定，恢复时先读实际事件。
 - 编码代理持久调度、网站和通知绑定未部署；Bark/Codex推送仍缺可用接口。当前没有模型运行，数据保存在忽略的artifacts。
 
@@ -599,3 +600,13 @@ SVD在途检查点：已推送a3ed4a8，对应自动PR run42877869115为complete
 轮次50最终页面验收：1684744已推送并创建[PR #5](https://github.com/Fengyee/genai_study/pull/5)，base为fix/checkpoint-numeric-contract。实际GitHub的05章在1440/390两视口均52/52 MathML（42行内/10块），无空renderer、错误和原始TeX。新锚点实际点击、九次复制答案的展开/还原及三公式显示通过；897字节代码与源码匹配，显示省略末尾换行，窄屏代码宽280/742且实际scrollLeft=20，document无整体溢出。主代理核对精确提交及源码SHA、查看窄屏答案，轻量JSON与截图已归档；未测试屏幕阅读器。当前远端1684744的CI仍在执行，后续查询新提交结果。
 
 下一项准备：按现有P1 backlog扩大预训练提示评价，草拟4个颜色/左右关系提示×seed101/211共8请求；历史约4.5分钟/图用于估计36分钟，单请求420秒、总预算3600秒。先核对缓存、固定身份与观察规则并提交计划，再启动生成；目前尚未执行这些请求。全部结果、失败和AI观察者范围将按协议保留。
+
+## 轮次51：预声明颜色与左右关系的八请求实验
+
+问题：已有SD1.4真实案例集中于小屋/湖景，缺少对象属性和关系的预先声明观察。固定四提示（红/蓝立方体；红立方体与蓝球的左右顺序互换）及101/211两个此前未用于已记录SD1.4输出的seed。先保存全部提示、镜像执行顺序、固定参数、单图观察规则、失败/过滤策略和预算；协议草稿冻结SHA41f96fd4…f8e3，根代理逐字节复制后审阅。
+
+预检：缓存16文件5,482,669,095字节完整hash匹配，43依赖版本与lock逐项一致，pip check通过，8个argv经真实parser解析成功；CLIP token13/13/20/20，预期初噪声两个SHA在生成前固定。模型、锁、pretrained_image及run_record源码身份均保存。可用磁盘约44GiB、内存约31GiB，历史每图约271秒/5.44GiB仅作为估计；本批实际测量尚空。没有重新安装依赖或下载模型。
+
+执行约束：每请求420秒、总3600秒、一条并发；首请求技术失败/超时就停止，成功后wall>360秒或RSS>8GiB也停止后续，缺失资源字段同样无法通过门槛。模型RSS实际在PNG/NPY保存后、最终metrics写入前查询；当前没有/usr/bin/time，复用已验证的记录器与此字段。所有失败、过滤和not_attempted保留，质量不触发替换。模型管线的旧重复证据与本批未重复的范围分别说明。
+
+当前检查点：计划/预检和README已写入新分支，专用驱动正在做小型stub验证；尚未生成任何新图。下一步审阅驱动、保存并推送运行前提交，再按原顺序执行。执行中按每条原子保存状态，遇中断先查看process/run.json再恢复，保留已有目录；所有源文件仍由主协调持有同一工作区锁。
