@@ -1,0 +1,46 @@
+{
+  "mode": "parser-only; never called runner/inference",
+  "requests": [
+    {
+      "request_id": "single-red-cube-seed101",
+      "argv_parses": true,
+      "output_paths_new": true
+    },
+    {
+      "request_id": "single-blue-cube-seed101",
+      "argv_parses": true,
+      "output_paths_new": true
+    },
+    {
+      "request_id": "red-cube-left-blue-sphere-seed101",
+      "argv_parses": true,
+      "output_paths_new": true
+    },
+    {
+      "request_id": "blue-sphere-left-red-cube-seed101",
+      "argv_parses": true,
+      "output_paths_new": true
+    },
+    {
+      "request_id": "blue-sphere-left-red-cube-seed211",
+      "argv_parses": true,
+      "output_paths_new": true
+    },
+    {
+      "request_id": "red-cube-left-blue-sphere-seed211",
+      "argv_parses": true,
+      "output_paths_new": true
+    },
+    {
+      "request_id": "single-blue-cube-seed211",
+      "argv_parses": true,
+      "output_paths_new": true
+    },
+    {
+      "request_id": "single-red-cube-seed211",
+      "argv_parses": true,
+      "output_paths_new": true
+    }
+  ],
+  "sha256": "41f96fd41ce9ae846eb4b90297607f3664191bcd58b0fe857a75fa85e582f8e3"
+}

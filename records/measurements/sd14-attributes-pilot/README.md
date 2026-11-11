@@ -18,3 +18,17 @@
 观察按完整512×512原图进行，逐项记录立方体/球体身份、颜色、数量、左右关系和不确定状态。关系仅在目标可唯一定位时评估；视觉估计的框与5%图宽中心间隔规则预先固定。计划由一位只收到匿名图片及描述规则的AI观察者和知情协调者分别检查，保存分歧；真实读者评价仍待开展。每条件仅两个seed，报告具体配对案例与计数。
 
 复现时按计划中的argv选择新的整组结果与记录目录，保留已有输出。模型来源、许可和生成图像归属沿用[SD1.4资产说明](../../../SOURCES.md)。本次不安排八图完整重复；历史管线重复的证据与本批次需要重新核验的身份/数组条件在plan的repeat_policy中分别说明。
+
+## 有界执行与恢复
+
+[执行驱动](execute_plan.py)要求计划与当前Git提交逐字节一致，并在启动前核对源码与八组路径。每条结束后校验记录器、实际配置/版本/时间网格、PNG完整解码和SHA、初噪声及配对；状态按条原子写入。运行前的[7项执行测试](driver-tests.json)使用真实记录器与合成推理产物，[9项结果校验](driver-validator-tests.json)覆盖损坏与配置偏离；这些检查没有执行模型。
+
+在仓库根目录、原计划的全部输出目录尚不存在时运行：
+
+```bash
+.venv/bin/python records/measurements/sd14-attributes-pilot/execute_plan.py \
+  --plan records/measurements/sd14-attributes-pilot/plan.json \
+  --execution artifacts/sd14-attributes-pilot-execution/execution.json
+```
+
+已开始后先读取execution.json及对应run.json，核对活跃PID和子进程；驱动会拒绝覆盖原记录。机器中断后需保留已运行槽位并制定明确的续作记录，当前驱动没有自动续跑模式。若cleanup_confirmed为false，须先检查并处理记录的进程，确认退出后才能安排后续工作。[恢复预检](recovery-preflight.json)记录本次重连时所有八条仍未启动。

@@ -4,14 +4,14 @@
 
 ## 当前状态
 
-2026-11-11恢复后的当前检查点：云环境、两个虚拟环境和历史实验产物均可用，原未提交成果已接续验证并提交。用户授权的浏览器CA同步完成，正常TLS的GitHub浏览器检查已恢复；协调PID975持有工作区写锁。环境配置保持用户发布版本。
+2026-11-11恢复后的当前检查点：云环境、两个虚拟环境和历史实验产物均可用，原未提交成果已接续验证并提交。用户授权的浏览器CA同步完成，正常TLS的GitHub浏览器检查已恢复；旧进程已随连接中断退出；本次恢复后协调PID2281重新取得同一工作区写锁。环境配置保持用户发布版本。
 
 - PR #1已按授权合并，main为416dd8ce9c3e890d03d814bc02d0015c21e51090。
 - [PR #2](https://github.com/Fengyee/genai_study/pull/2)与[PR #3](https://github.com/Fengyee/genai_study/pull/3)已获后续明确授权并顺序合并：PR #2的2ac2f7b检查通过后合入；PR #3切base到main、更新分支到79508e8，run43068306477成功后合入。main现为d99b748fd4555db525f76a0ea83bb73b6b98c84d；其push43068708112已success。
 - 默认分支包含VAE实测、预测权重、GitHub数学修复、空间token专题和反馈表。32页1536公式的批量客户端验收与新专题/符号表两视口验收分别归档；默认分支检查范围为146 tests、15教学块和7条CLI smoke。
 - [PR #4](https://github.com/Fengyee/genai_study/pull/4)开放，最新efb3ead的run43070085722成功，包含checkpoint数值契约及调度观察记录。8份历史checkpoint重放结果逐元素相同；本项尚无合并授权。
 - [PR #5](https://github.com/Fengyee/genai_study/pull/5)开放，基于PR #4，最新f5cc255的run43071278535成功。完整本地检查178 tests、16/16教学块、7条CLI smoke通过；固定1684744实际页面双视口52公式/锚点/答案/局部滚动均通过。PR #4/#5的新合并授权已询问，等待用户答复，其他工作继续。
-- 当前分支feat/sd14-attributes-layout准备八请求预训练图像实验；固定计划/预检保存在records/measurements/sd14-attributes-pilot，首次生成尚未启动，需先提交计划与有界驱动。现有模型资产/依赖通过核对，代码与锁文件保持。
+- 当前分支feat/sd14-attributes-layout准备八请求预训练图像实验；固定计划/预检保存在records/measurements/sd14-attributes-pilot，计划f3c26f8已推送；驱动与验证证据现已找回，首次生成尚未启动，先保存运行前提交。现有模型资产/依赖通过核对，代码与锁文件保持。
 - 每小时质量workflow位于main，API active、cron为UTC每小时:17；原416版本push/手动与d99版本push的artifact均实际核验。15:39–17:35 UTC观察结束，117次查询覆盖16:17/17:17计划点，最后无schedule事件；原因未确定，恢复时先读实际事件。
 - 编码代理持久调度、网站和通知绑定未部署；Bark/Codex推送仍缺可用接口。当前没有模型运行，数据保存在忽略的artifacts。
 
@@ -610,3 +610,7 @@ SVD在途检查点：已推送a3ed4a8，对应自动PR run42877869115为complete
 执行约束：每请求420秒、总3600秒、一条并发；首请求技术失败/超时就停止，成功后wall>360秒或RSS>8GiB也停止后续，缺失资源字段同样无法通过门槛。模型RSS实际在PNG/NPY保存后、最终metrics写入前查询；当前没有/usr/bin/time，复用已验证的记录器与此字段。所有失败、过滤和not_attempted保留，质量不触发替换。模型管线的旧重复证据与本批未重复的范围分别说明。
 
 当前检查点：计划/预检和README已写入新分支，专用驱动正在做小型stub验证；尚未生成任何新图。下一步审阅驱动、保存并推送运行前提交，再按原顺序执行。执行中按每条原子保存状态，遇中断先查看process/run.json再恢复，保留已有目录；所有源文件仍由主协调持有同一工作区锁。
+
+轮次51恢复检查点：约18:07 UTC执行连接断开，状态与等待接口曾不一致；本次环境重新接入后核对仓库仍为已推送f3c26f8，工作区干净，/tmp驱动及全部验证证据保留，16个预声明请求/记录目录均不存在。旧模型/记录器/观察器进程未运行；协调者重新取得同一工作区锁（PID2281）。重新执行源码身份、八CLI解析、计划与HEAD一致检查及可选环境pip check，均通过；未改环境配置或下载权重。
+
+保存有界驱动execute_plan.py，SHA a8d240b6fe2735086fe04a2097f132d76df2dc31c8ee21b69d8989d242de5dd0。先前7项真实记录器/合成推理stub和9项结果验证均通过，模拟范围分别注明；包含SIGTERM/总预算清理、首图资源门槛、技术失败停止及完整PNG解析。证据归档同目录driver-tests.json、driver-validator-tests.json、driver-preflight.json与recovery-preflight.json。驱动提交并推送后才启动原八请求；每条状态原子保存，所有失败与未执行槽位保留。定时观察曾在18:17前中断，恢复观察单独记录，尚不声称覆盖此窗口。
