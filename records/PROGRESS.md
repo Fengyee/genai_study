@@ -510,3 +510,15 @@ SVD在途检查点：已推送a3ed4a8，对应自动PR run42877869115为complete
 待接续成果：空间token/位置专题已独立完成，冻结SHA2f01fa06ffaffc563ba184031a048eeb59255ffd4cb83b87c293ee9e930c4625，完整草稿保存artifacts/drafts/spatial-tokens-and-position.md及/tmp/genai-spatial-token-scope/frozen-card.md。原样CPU与作者unpatchify抽取检查通过，主代理另用3通道6×4网格、固定投影和六token注意力完成独立索引/卷积/置换核验；尚未接入CPU白名单或提交。先完成本轮真实阅读故障验收，再按当前数学格式接入这一独立专题。写锁仍由协调PID975持有，未运行模型请求，实际schedule观察继续。
 
 本轮提交前完整检查已完成：bash scripts/quality.sh退出0，144 passed（36.51秒）、14/14教学块、7条CLI smoke；日志artifacts/quality/20261111T164217Z-jgHDX6，执行时736链接0错误。随后仅补维护记录与PR说明，提交前再跑文档/diff；推送后进行真实页面验收。
+
+## 轮次44：把数学验收推进到实际客户端
+
+348e545已推送PR #2，远端run43061265389 success。浏览器按该SHA复查20个页面/视口组合：Q03全部公式与表格范数正常，Mermaid实际显示（之前脚本选中了隐藏fullscreen iframe）；长对齐公式在390视口的内层math局部横向滚动，document未整体溢出。但客户端拒绝operatorname，01首个含x_{<i}的块公式报括号错误，证明API节点数量不足以完成验收。
+
+证据：在已加载的真实GitHub页临时插入官方API返回的候选数学节点，普通候选与正常控制都执行；mathop+mathrm+nolimits生成MathML，mean/softmax下标为msub且munder为0。原始display x_{<i}复现错误，显式lt正常。临时DOM候选和推送源码验证的范围分别记录，原始失败摘要保留。
+
+修复：19页43个命名算子改为保留算子类别与侧下标的组合，7个块公式小于号改显式命令。逐文件逆替换精确恢复348e545原bytes；公式顺序、其它文字、代码和数值保持。新增两个实际客户端回归规则及测试，累计13项文档检查测试通过。受影响19页API重新请求成功，合并32页仍1536/1536内容/类别一致，主代理独立核对全部source SHA。
+
+检查点：完整quality正在执行，随后推送并以新精确SHA运行32页实际MathML/错误盘点，核心窄屏另行检查。空间专题已在/tmp/genai-spatial-token-scope/client-compatible-card.md使用同一数学格式预检，46公式API通过，2846字节CPU块与原冻结版本一致，继续保留独立草稿。schedule观察延长到17:35 UTC覆盖下一计划窗口；可见repo非fork/归档/禁用，main正确、workflow active，actions/permissions端点返回403，未修改设置或重复dispatch。
+
+本轮最终完整quality退出0：146 passed（36.14秒）、14/14教学块、7条CLI smoke，执行时736链接0错误；日志artifacts/quality/20261111T165428Z-088aa2。随后仅补记录，推送新SHA后做全部32页客户端验收。

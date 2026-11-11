@@ -142,6 +142,31 @@ def test_math_row_separator_stays_on_the_same_physical_line():
     assert DOCS.math_format_issues(repaired) == []
 
 
+def test_operator_name_uses_the_verified_client_expression_only_in_math():
+    broken = r"协方差$`\operatorname{Cov}(X,Y)`$。" + "\n\n```math\n"
+    broken += r"\operatorname{mean}_{i}(x_i)" + "\n```\n"
+    issues = DOCS.math_format_issues(broken)
+    assert [line for line, _ in issues] == [1, 4]
+    assert all(r"\mathop{\mathrm{...}}" in message and r"\nolimits" in message
+               for _, message in issues)
+    repaired = r"协方差$`\mathop{\mathrm{Cov}}\nolimits(X,Y)`$。" + "\n\n```math\n"
+    repaired += r"\mathop{\mathrm{mean}}\nolimits_{i}(x_i)" + "\n```\n"
+    repaired += r"普通代码 `\operatorname{Cov}` 和 ``$`\operatorname{Cov}`$``。" + "\n"
+    repaired += '```python\ntext = r"\\operatorname{Cov}"\n```\n'
+    assert DOCS.math_format_issues(repaired) == []
+
+
+def test_raw_less_than_is_replaced_in_display_math_and_allowed_inline():
+    broken = "```math\np(x_{<i})\n```\n"
+    issues = DOCS.math_format_issues(broken)
+    assert len(issues) == 1 and issues[0][0] == 2
+    assert r"\lt" in issues[0][1]
+    repaired = "```math\np(x_{\\lt i})\n```\n"
+    repaired += r"行内$`x_{<i}`$已验证可显示。" + "\n"
+    repaired += '```python\nassert 1 < 2\ntext = "x_{<i}"\n```\n'
+    assert DOCS.math_format_issues(repaired) == []
+
+
 def test_math_error_preserves_link_validation_and_source_line(tmp_path):
     (tmp_path / "target.md").write_text("# Target\n", encoding="utf-8")
     page = tmp_path / "lesson.md"

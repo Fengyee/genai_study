@@ -68,7 +68,7 @@ c_{\mathrm{out}}(\sigma_{\min})=0.
 \mathcal L_{\mathrm{CD}}=
 \mathbb E\left[\lambda(\sigma_n)
 d\big(f_\theta(x_{n+1},\sigma_{n+1}),
-\operatorname{stopgrad}[f_{\theta^-}(\hat x_n,\sigma_n)]\big)\right].
+\mathop{\mathrm{stopgrad}}\nolimits[f_{\theta^-}(\hat x_n,\sigma_n)]\big)\right].
 ```
 
 学生参数$`\theta`$通过梯度更新；目标网络$`\theta^-`$按指数移动平均（EMA）更新，$`\theta^-\leftarrow\mu\theta^-+(1-\mu)\theta`$，其输出停止梯度。教师$`\phi`$负责生成相邻状态，EMA目标网络负责提供端点目标。本文固定的作者代码在CD中使用Heun求解一个区间，调用教师两次，再调用在线学生与目标网络；训练预算与采样预算需分别统计。

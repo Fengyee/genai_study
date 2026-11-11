@@ -20,4 +20,8 @@
 - [32页最终API摘要](api-final-summary.json)：37次请求均成功，1379行内＋157块公式全部识别，返回的1536个TeX内容与源文件按原序逐项相同。主代理重新核对32个源文件SHA。
 - [源码不变量](source-invariants.json)：相对原文，除明确记录的等价范数写法与TeX空白调整，公式原序、非数学代码围栏和数值token均保持。
 
-上述API检查完成于推送前；修改后GitHub页面的真实MathJax呈现待同一版本推送后验收。
+上述API检查随后对应提交348e545。推送后的实际客户端验收又发现两类错误，记录在[348e545客户端摘要](client-at-348-summary.json)：命名算子宏被当前组件拒绝，一处块公式中的原始小于号触发括号错误。API识别与实际数学显示由此分开验收。
+
+客户端候选通过临时插入同源GitHub页面验证，未发布候选页面：[算子及小于号对照](client-candidate-probe.json)、[侧下标对照](client-nolimits-probe.json)、[softmax侧下标](client-softmax-probe.json)。已采用 `\mathop{\mathrm{...}}\nolimits` 与显式 `\lt`，保留数学算子类别和侧下标。
+
+[客户端修复源码不变量](client-source-invariants.json)记录19页43个算子和7个小于号替换；逆变换精确恢复348e545原始字节。[新API汇总](api-client-compatible-summary.json)重新核对受影响19页并合并32页结果，全部1536个公式的内容和类别继续逐项通过。更新后的推送版本仍需最终客户端全量盘点。

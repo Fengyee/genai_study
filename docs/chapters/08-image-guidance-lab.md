@@ -31,7 +31,7 @@ flowchart LR
 X_t=(1-t)Z+tY,\qquad U=Y-Z.
 ```
 
-令 $`D\sim\operatorname{Bernoulli}(p_{\mathrm{drop}})`$ 独立于数据、类别、噪声与时间。网络实际接收
+令 $`D\sim\mathop{\mathrm{Bernoulli}}\nolimits(p_{\mathrm{drop}})`$ 独立于数据、类别、噪声与时间。网络实际接收
 
 ```math
 \widetilde C=
@@ -168,7 +168,7 @@ label:    0  1  0  1  0  1 ...
 以条件基准 $`s=1`$ 为参照，配对像素RMS定义为
 
 ```math
-\Delta_s=\sqrt{\operatorname{mean}_{B,C,H,W}
+\Delta_s=\sqrt{\mathop{\mathrm{mean}}\nolimits_{B,C,H,W}
 \left(x^{(s)}-x^{(1)}\right)^2}.
 ```
 

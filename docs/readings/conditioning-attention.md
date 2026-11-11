@@ -10,7 +10,7 @@
 
 ```math
 Q=UW_Q,\quad K=CW_K,\quad V=CW_V,\qquad
-A=\operatorname{softmax}_{\text{key}}\!\left(\frac{QK^\top}{\sqrt{d_h}}+M\right),\quad O=AV.
+A=\mathop{\mathrm{softmax}}\nolimits_{\text{key}}\!\left(\frac{QK^\top}{\sqrt{d_h}}+M\right),\quad O=AV.
 ```
 
 $`Q,K`$的每头宽度为$`d_h`$；$`V`$的宽度记为$`d_v`$。这里使用行向量约定，softmax沿条件键轴归一化。$`M`$是加性mask：允许位置为0，屏蔽位置为$`-\infty`$；每个查询至少保留一个有效键。
@@ -78,7 +78,7 @@ O'=A'V'=AP^\top PV=AV=O.
 
 ## 5. CPU检查：形状、置换与单token梯度
 
-下面只创建小张量，基础环境中的PyTorch即可执行。手写矩阵公式与PyTorch SDPA交叉核对；双key的一维特例另外使用$`\operatorname{sigmoid}(2x)`$及其导数$`2p(1-p)`$作解析参照。
+下面只创建小张量，基础环境中的PyTorch即可执行。手写矩阵公式与PyTorch SDPA交叉核对；双key的一维特例另外使用$`\mathop{\mathrm{sigmoid}}\nolimits(2x)`$及其导数$`2p(1-p)`$作解析参照。
 
 <!-- cpu-check: conditioning-attention -->
 ```python

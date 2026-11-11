@@ -90,7 +90,7 @@ FID 的常用形式是在固定特征空间中，用均值和协方差拟合两�
 
 ```math
 \|\mu_r-\mu_g\|_2^2+
-\operatorname{Tr}\!\left(\Sigma_r+\Sigma_g
+\mathop{\mathrm{Tr}}\nolimits\!\left(\Sigma_r+\Sigma_g
 -2(\Sigma_r^{1/2}\Sigma_g\Sigma_r^{1/2})^{1/2}\right).
 ```
 

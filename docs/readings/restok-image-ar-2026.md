@@ -82,9 +82,9 @@ r_\ell=r_{\ell-1}-U_\ell(z_\ell^{(0)}).
 
 ```math
 q_\theta(z\mid c)=
-\prod_{i=1}^{4}q_\theta(z_i\mid z_{<i},c)
+\prod_{i=1}^{4}q_\theta(z_i\mid z_{\lt i},c)
 \prod_{g=1}^{5}\prod_{i\in\mathcal G_g}
-q_\theta(z_i\mid z_{<\mathcal G_g},c).
+q_\theta(z_i\mid z_{\lt \mathcal G_g},c).
 ```
 
 后一部分在给定前缀后采用**组内条件独立**。它仍定义归一化分布，同时对组内依赖作了建模约束。学习分层表示的一个目标，是让这种分组仍能保持足够的生成质量。以下反例可以精确说明这一约束。

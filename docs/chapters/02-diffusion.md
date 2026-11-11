@@ -41,7 +41,7 @@ x_t=\sqrt{\bar\alpha_t}x_0+\sqrt{1-\bar\alpha_t}\epsilon,
 
 归纳的关键是方差：$`\alpha_t(1-\bar\alpha_{t-1})+\beta_t=1-\bar\alpha_t`$。因此训练时可以直接随机抽取 $`t`$，无需先运行 $`t`$ 次加噪。
 
-对一般数据，减小 $`\bar\alpha_T`$ 会削弱终点残留的数据信号；终点与 $`\mathcal N(0,I)`$ 的接近程度还取决于数据分布和尺度。数据具有有限二阶矩时，终点均值为 $`\sqrt{\bar\alpha_T}\mathbb E[x_0]`$，协方差为 $`\bar\alpha_T\operatorname{Cov}(x_0)+(1-\bar\alpha_T)I`$。一个特殊情形是标准正态数据：由于独立高斯的线性组合仍为高斯，任意 $`\bar\alpha_T\in[0,1]`$ 都严格得到标准正态；[练习D](#d-标准正态数据的解析噪声预测器)进一步推导它的最优预测器。
+对一般数据，减小 $`\bar\alpha_T`$ 会削弱终点残留的数据信号；终点与 $`\mathcal N(0,I)`$ 的接近程度还取决于数据分布和尺度。数据具有有限二阶矩时，终点均值为 $`\sqrt{\bar\alpha_T}\mathbb E[x_0]`$，协方差为 $`\bar\alpha_T\mathop{\mathrm{Cov}}\nolimits(x_0)+(1-\bar\alpha_T)I`$。一个特殊情形是标准正态数据：由于独立高斯的线性组合仍为高斯，任意 $`\bar\alpha_T\in[0,1]`$ 都严格得到标准正态；[练习D](#d-标准正态数据的解析噪声预测器)进一步推导它的最优预测器。
 
 **噪声表与数据尺度**：对100步使用 $`\beta_t`$ 从 $`10^{-4}`$ 到 $`0.02`$ 的线性表，$`\bar\alpha_T\approx0.36356`$。本仓库半径2、分量标准差0.08的等权八高斯具有协方差 $`2.0064I`$，对应终点协方差约 $`1.36589I`$，每坐标方差比标准正态高约36.59%。这给出了该数据与噪声表组合的具体终点偏差；缩短扩散步数后，应重新核对噪声表和采样起点。
 
@@ -89,7 +89,7 @@ $`t=1`$ 时该后验退化为已知的 $`x_0`$：均值 $`x_0`$、方差 0，应
 
 本仓库使用固定 $`\tilde\beta_t`$ 采样：$`x_{t-1}=\mu_\theta+\sqrt{\tilde\beta_t}z`$，其中每一步的 $`z`$ 独立；最后一步不加随机噪声。真实图像实现可能使用其他固定方差、学习方差或裁剪 $`\hat x_0`$。这些选择有各自的假设，不能把某一选择当成 DDPM 唯一形式。
 
-将最优条件均值用于采样后，真实反向协方差还包含干净数据的不确定性。由全协方差公式，若$`c_t=\sqrt{\bar\alpha_{t-1}}\beta_t/(1-\bar\alpha_t)`$，则$`\operatorname{Cov}(X_{t-1}\mid X_t)=\tilde\beta_tI+c_t^2\operatorname{Cov}(X_0\mid X_t)`$。固定$`\tilde\beta_t`$省去了第二项；[无需训练的解析对照](../ddpm-oracle-report.md)用标准正态与八高斯直接检查这一影响。
+将最优条件均值用于采样后，真实反向协方差还包含干净数据的不确定性。由全协方差公式，若$`c_t=\sqrt{\bar\alpha_{t-1}}\beta_t/(1-\bar\alpha_t)`$，则$`\mathop{\mathrm{Cov}}\nolimits(X_{t-1}\mid X_t)=\tilde\beta_tI+c_t^2\mathop{\mathrm{Cov}}\nolimits(X_0\mid X_t)`$。固定$`\tilde\beta_t`$省去了第二项；[无需训练的解析对照](../ddpm-oracle-report.md)用标准正态与八高斯直接检查这一影响。
 
 ## 4. 为什么是噪声均方误差
 
@@ -106,7 +106,7 @@ DDPM 常用的简化目标忽略上述时间权重：
 ```math
 L_{\text{simple}}=\mathbb E_{x_0,t,\epsilon}
 \left[\|\epsilon-\epsilon_\theta(x_t,t)\|^2\right],\qquad
-t\sim\operatorname{Uniform}\{1,\ldots,T\}.
+t\sim\mathop{\mathrm{Uniform}}\nolimits\{1,\ldots,T\}.
 ```
 
 因此，无权重 MSE **不等于**完整负 ELBO，也不能直接作为可比较的对数似然。代码通常对 batch 和坐标都求平均，论文中的向量平方范数则对坐标求和；固定维度下两者相差常数，但报告损失时必须说明 reduction。 原论文 §3.3、公式 (13) 还为整数图像的最后一步定义了离散 decoder；本仓库使用连续二维数据，没有实现该图像似然项。因此这里的噪声 MSE 不能报告成论文的图像 bits/dim。
@@ -173,7 +173,7 @@ python -m genai_study.experiment --method ddpm --steps 5000 --seed 7 --output ar
 \epsilon^*(x_t,t)=\sqrt{1-\bar\alpha_t}\,x_t.
 ```
 
-**提示/答案**：联合高斯的 $`\operatorname{Cov}(\epsilon,x_t)=\sqrt{1-\bar\alpha_t}I`$、$`\operatorname{Cov}(x_t)=I`$。每坐标最小 MSE 是 $`\bar\alpha_t`$，所以“网络没把训练噪声 MSE 降到零”本身不证明训练失败。将此 oracle 代入反向均值得到 $`\sqrt{\alpha_t}x_t`$；但这里使用的 $`\tilde\beta_t`$ 小于真实平稳反向过程的 $`\beta_t`$，因此 oracle 均值也不保证有限步采样完全精确。
+**提示/答案**：联合高斯的 $`\mathop{\mathrm{Cov}}\nolimits(\epsilon,x_t)=\sqrt{1-\bar\alpha_t}I`$、$`\mathop{\mathrm{Cov}}\nolimits(x_t)=I`$。每坐标最小 MSE 是 $`\bar\alpha_t`$，所以“网络没把训练噪声 MSE 降到零”本身不证明训练失败。将此 oracle 代入反向均值得到 $`\sqrt{\alpha_t}x_t`$；但这里使用的 $`\tilde\beta_t`$ 小于真实平稳反向过程的 $`\beta_t`$，因此 oracle 均值也不保证有限步采样完全精确。
 
 ## 7. 来源、版本与阅读顺序
 

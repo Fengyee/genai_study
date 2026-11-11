@@ -18,7 +18,7 @@
 链式法则给出
 
 ```math
-p_\theta(x_1,\ldots,x_D)=\prod_{i=1}^D p_\theta(x_i\mid x_{<i}).
+p_\theta(x_1,\ldots,x_D)=\prod_{i=1}^D p_\theta(x_i\mid x_{\lt i}).
 ```
 
 对观测序列 $`x`$，负对数似然为 $`-\sum_i\log p_\theta(x_i\mid x_{<i})`$。**教师强制（teacher forcing）**在计算每一项时使用观测到的真实前缀；这直接计算该序列的精确似然。生成时则依次从 $`p_\theta(x_1)`$、$`p_\theta(x_2\mid x_1)`$ 等条件分布采样，并把已经生成的值送回网络。
@@ -140,7 +140,7 @@ GAN 可以快速生成高观感样本，但覆盖率、优化稳定性和精确�
 
 ```math
 \frac{d}{dt}\log p_t(x_t)=-\nabla\cdot v_\theta(x_t,t)
-=-\operatorname{tr}\!\left(\frac{\partial v_\theta}{\partial x}(x_t,t)\right).
+=-\mathop{\mathrm{tr}}\nolimits\!\left(\frac{\partial v_\theta}{\partial x}(x_t,t)\right).
 ```
 
 这里是随 $`x_t`$ 一起移动的总导数；似然计算需要同时积分密度变化并计算或估计散度。唯一性条件很关键：$`\dot x=\sqrt{|x|}`$ 从 $`x(0)=0`$ 出发可以一直静止，也可以在任意等待时间后沿抛物线离开，因此该初值不能确定唯一映射。
@@ -204,7 +204,7 @@ $`p_X(x)=p_Z(x/2)/2`$，即 $`\mathcal N(0,4)`$。遗漏 $`1/2`$ 后密度积分
 
 </details>
 
-**E · GAN 的生成器梯度。** 令判别器输出 $`D(G(z))=\operatorname{sigmoid}(a)`$。分别求单样本 minimax 损失 $`\log(1-D(G(z)))`$ 和非饱和损失 $`-\log D(G(z))`$ 对 logit $`a`$ 的导数。$`D(G(z))\to0`$ 时各自如何变化？
+**E · GAN 的生成器梯度。** 令判别器输出 $`D(G(z))=\mathop{\mathrm{sigmoid}}\nolimits(a)`$。分别求单样本 minimax 损失 $`\log(1-D(G(z)))`$ 和非饱和损失 $`-\log D(G(z))`$ 对 logit $`a`$ 的导数。$`D(G(z))\to0`$ 时各自如何变化？
 
 <details><summary>答案</summary>
 

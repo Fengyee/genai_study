@@ -44,7 +44,7 @@ h_{\mathrm{disk}}(i,j)=r-\sqrt{(j-c_x)^2+(i-c_y)^2}
 h_{\mathrm{square}}(i,j)=r-\max(|j-c_x|,|i-c_y|).
 ```
 
-像素取 $`y_{i,j}=\operatorname{sigmoid}(h(i,j)/0.35)`$。方形的表达式沿角外方向不是欧氏有符号距离；这里使用它的等值线定义软化方形，不能据此推断边缘在所有方向具有完全相同的欧氏厚度。
+像素取 $`y_{i,j}=\mathop{\mathrm{sigmoid}}\nolimits(h(i,j)/0.35)`$。方形的表达式沿角外方向不是欧氏有符号距离；这里使用它的等值线定义软化方形，不能据此推断边缘在所有方向具有完全相同的欧氏厚度。
 
 软边使亚像素位置和尺寸变化能连续影响像素值，减少硬阈值栅格化的突变。图像由形状、中心和尺寸几个参数决定，集中在低维几何集合上；在线采样增加的是这些参数的组合，任务复杂度仍由几何族限定。
 
@@ -52,7 +52,7 @@ h_{\mathrm{square}}(i,j)=r-\max(|j-c_x|,|i-c_y|).
 
 ## 3. 带类别条件的直线路径
 
-沿用 03 章的方向：$`t=0`$ 是噪声，$`t=1`$ 是数据。独立采样 $`z\sim\mathcal N(0,I)`$、$`y\sim p_{\mathrm{data}}(y\mid c)`$，并采样 $`t\sim\operatorname{Uniform}[0,1]`$：
+沿用 03 章的方向：$`t=0`$ 是噪声，$`t=1`$ 是数据。独立采样 $`z\sim\mathcal N(0,I)`$、$`y\sim p_{\mathrm{data}}(y\mid c)`$，并采样 $`t\sim\mathop{\mathrm{Uniform}}\nolimits[0,1]`$：
 
 ```math
 x_t=(1-t)z+ty,\qquad u_t=y-z.

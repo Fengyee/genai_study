@@ -87,7 +87,7 @@ VAE在高和宽两个方向各压缩8倍，潜通道数为4。因此512×512图�
 
 ```math
 a_j=\prod_{i=0}^{j}(1-\beta_i),\qquad
-\beta_i=\left[\operatorname{linspace}
+\beta_i=\left[\mathop{\mathrm{linspace}}\nolimits
 (\sqrt{0.00085},\sqrt{0.012},1000)_i\right]^2.
 ```
 

@@ -89,7 +89,7 @@ print({"sequential_mismatch": float(sequential[0, 1] + sequential[1, 0]),
 
 这些$`\sigma`$是线性混合路径的系数。它与SVD阅读卡的加性噪声标准差采用不同路径定义，转换时从公式出发。
 
-以单阶段默认的121帧、512×768、24fps为例：视频潜帧数为$`1+(121-1)/8=16`$，潜形状为`B,128,16,16,24`。每个潜位置成为一个128维token，共$`16\cdot16\cdot24=6144`$个视频token。官方音轨长度计算使用$`121/24`$秒，得到$`\operatorname{round}((121/24)\cdot25)=126`$个音频token。
+以单阶段默认的121帧、512×768、24fps为例：视频潜帧数为$`1+(121-1)/8=16`$，潜形状为`B,128,16,16,24`。每个潜位置成为一个128维token，共$`16\cdot16\cdot24=6144`$个视频token。官方音轨长度计算使用$`121/24`$秒，得到$`\mathop{\mathrm{round}}\nolimits((121/24)\cdot25)=126`$个音频token。
 
 首尾视频帧时刻相差$`(121-1)/24=5`$秒，按每帧占一个显示间隔计的时长为$`121/24`$秒。音频与视频latent的索引数不同，时间位置由fps、采样率、hop与因果偏移共同决定。源码对两种VAE的首位置均做因果边界校正；不能把“第$`i`$个视频token”和“第$`i`$个音频token”直接当成同一时刻。
 
@@ -129,7 +129,7 @@ u_{\mathrm{target}}=\epsilon-z.
 Euler步进器再用$`(z_\sigma-\widehat z_0)/\sigma`$得到速度，并更新
 
 ```math
-z_{\sigma'}=z_\sigma+(\sigma'-\sigma)u_\theta,\qquad \sigma'<\sigma.
+z_{\sigma'}=z_\sigma+(\sigma'-\sigma)u_\theta,\qquad \sigma'\lt \sigma.
 ```
 
 与本仓库03/07/08的时间约定相比，取$`t=1-\sigma`$，则路径相同、速度符号相反：$`v_{\mathrm{repo}}=z-\epsilon=-u_{\mathrm{target}}`$。源码在$`\sigma=0`$终点停止调用网络，从而避免在终点计算上式的除法。

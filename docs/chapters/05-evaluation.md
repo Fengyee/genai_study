@@ -34,7 +34,7 @@
 **理论基线**：二维各向同性高斯样本到其自身生成中心的距离 $`R`$ 满足 $`R^2/\sigma^2\sim\chi^2_2`$，因此
 
 ```math
-\Pr(R<3\sigma)=1-\exp(-9/2)\approx98.8891\%.
+\Pr(R\lt 3\sigma)=1-\exp(-9/2)\approx98.8891\%.
 ```
 
 这不是一维正态“正负三倍标准差约 99.7%”的结论。代码测的是到最近中心的距离：落入其他中心圆盘的尾部也被计入，故严格说与“自身中心”的解析概率不同；当前中心间隔很大，这项差异可忽略。有限样本基线 98.68% 与解析概率不同，不是代码必然出错。
@@ -84,9 +84,9 @@ PY
 Fréchet Inception Distance（FID）先用固定 Inception 特征提取器 $`\phi`$（原论文采用 Inception-v3 最后池化层），对真实与生成特征分别估计均值和协方差 $`(\hat\mu_r,\hat\Sigma_r)`$、$`(\hat\mu_g,\hat\Sigma_g)`$，再计算
 
 ```math
-\operatorname{FID}=
+\mathop{\mathrm{FID}}\nolimits=
 \|\hat\mu_r-\hat\mu_g\|_2^2+
-\operatorname{Tr}\left(\hat\Sigma_r+\hat\Sigma_g-
+\mathop{\mathrm{Tr}}\nolimits\left(\hat\Sigma_r+\hat\Sigma_g-
 2(\hat\Sigma_r^{1/2}\hat\Sigma_g\hat\Sigma_r^{1/2})^{1/2}\right).
 ```
 
@@ -130,7 +130,7 @@ k(u,v)=\left(\frac{u^\top v}{d}+1\right)^3,
 Inception Score（IS）常写作
 
 ```math
-\operatorname{IS}=\exp\left(\mathbb E_{x\sim p_g}
+\mathop{\mathrm{IS}}\nolimits=\exp\left(\mathbb E_{x\sim p_g}
 D_{\mathrm{KL}}(p_\phi(y\mid x)\Vert p_\phi(y))\right),
 \qquad p_\phi(y)=\mathbb E_{x\sim p_g}[p_\phi(y\mid x)].
 ```
@@ -138,10 +138,10 @@ D_{\mathrm{KL}}(p_\phi(y\mid x)\Vert p_\phi(y))\right),
 这里 $`y`$ 是分类器标签。在联合分布 $`p_g(x)p_\phi(y\mid x)`$ 下，展开 KL 可得
 
 ```math
-\log\operatorname{IS}=H(Y)-\mathbb E_X[H(Y\mid X=x)]=I(X;Y).
+\log\mathop{\mathrm{IS}}\nolimits=H(Y)-\mathbb E_X[H(Y\mid X=x)]=I(X;Y).
 ```
 
-IS 因而偏好单张图的分类分布尖锐、总体分类分布多样。若分类器有 $`C`$ 类，$`1\le\operatorname{IS}\le C`$。等概率反复输出每类的一张原型，且分类器对这些原型给出对应 one-hot 概率时，$`H(Y)=\log C`$、条件熵为 0，IS 达到上界 $`C`$，类内变化仍为零。这个互信息只涉及分类器标签，语义取决于分类器与目标数据域的匹配；真实性、记忆及条件遵循需要其他证据。
+IS 因而偏好单张图的分类分布尖锐、总体分类分布多样。若分类器有 $`C`$ 类，$`1\le\mathop{\mathrm{IS}}\nolimits\le C`$。等概率反复输出每类的一张原型，且分类器对这些原型给出对应 one-hot 概率时，$`H(Y)=\log C`$、条件熵为 0，IS 达到上界 $`C`$，类内变化仍为零。这个互信息只涉及分类器标签，语义取决于分类器与目标数据域的匹配；真实性、记忆及条件遵循需要其他证据。
 
 ### 近邻球怎样估计 precision/recall
 

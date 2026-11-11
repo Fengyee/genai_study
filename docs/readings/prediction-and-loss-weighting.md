@@ -111,7 +111,7 @@ $`h(u)\ge0`$是希望保留的积分权重，可以包含基准时间密度与�
 
 ```math
 \int\frac{h(u)^2}{\rho(u)}\,
-\mathbb E[\ell_\theta^2\mid u]\,du<\infty.
+\mathbb E[\ell_\theta^2\mid u]\,du\lt \infty.
 ```
 
 提议分布在重要区域过小时，校正权重可能很大。对随机梯度估计也需相应的梯度矩条件，才能讨论其方差。若直接改变时间分布并保留$`\lambda=1`$，得到的是新的积分目标。均匀时间与有限区间上的均匀log-SNR涉及不同的坐标密度，换坐标时还需计入Jacobian。

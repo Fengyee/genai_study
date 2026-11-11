@@ -26,7 +26,7 @@ u_t(z,y)=\frac{\mathrm d x_t}{\mathrm dt}=y-z.
 
 ```math
 L_{\mathrm{CFM}}=\mathbb E_{z,y,t}\left[\|v_\theta(x_t,t)-(y-z)\|^2\right],
-\qquad t\sim\operatorname{Uniform}[0,1].
+\qquad t\sim\mathop{\mathrm{Uniform}}\nolimits[0,1].
 ```
 
 这里的 CFM 指 conditional flow matching。时间无物理单位；速度是“数据单位 / 归一化时间”。网络输出与 $`x_t`$ 同维，代表速度，不能直接代入 DDPM 的噪声预测公式。
@@ -166,7 +166,7 @@ s_t^2=(1-t)^2+t^2.
 v^*(x,t)=m+\frac{2t-1}{s_t^2}(x-tm).
 ```
 
-**推导提示**：$`\mathbb E[y-z]=m`$，$`\operatorname{Cov}(y-z,x_t)=(2t-1)I`$，再用联合高斯条件均值。
+**推导提示**：$`\mathbb E[y-z]=m`$，$`\mathop{\mathrm{Cov}}\nolimits(y-z,x_t)=(2t-1)I`$，再用联合高斯条件均值。
 
 **自查**：在 $`t=1/2`$，速度场恰为常量 $`m`$，但条件训练目标 $`y-z`$ 仍有方差。若 $`m=0`$，源与目标边缘相同，中间路径方差却先从 1 缩小到 $`1/2`$、再扩大到 1。这说明独立端点直线插值不一定是最省力的分布路径。
 
@@ -175,7 +175,7 @@ v^*(x,t)=m+\frac{2t-1}{s_t^2}(x-tm).
 上面的高斯例子中，每坐标条件方差为
 
 ```math
-\operatorname{Var}(y-z\mid x_t)=2-\frac{(2t-1)^2}{s_t^2}=\frac{1}{s_t^2}.
+\mathop{\mathrm{Var}}\nolimits(y-z\mid x_t)=2-\frac{(2t-1)^2}{s_t^2}=\frac{1}{s_t^2}.
 ```
 
 因此即使预测器等于解析 $`v^*`$，条件目标 MSE 也为正。在 $`t=1/2`$ 每坐标残差为 2；这属于目标的条件不确定性，而非数值求解误差。

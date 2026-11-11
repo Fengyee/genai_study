@@ -23,7 +23,7 @@ x_{\mathrm{VAE}}=2x_{\mathrm{RGB}}-1.
 固定`AutoencoderKL`输出近似后验的均值和对角对数方差：
 
 ```math
-q_\phi(z\mid x)=\mathcal N\!\left(\mu_\phi(x),\operatorname{diag}(\exp\ell_\phi(x))\right).
+q_\phi(z\mid x)=\mathcal N\!\left(\mu_\phi(x),\mathop{\mathrm{diag}}\nolimits(\exp\ell_\phi(x))\right).
 ```
 
 本实现将网络输出的logvar裁剪到$`[-30,20]`$，然后计算$`\sigma=\exp(\ell/2)`$。`posterior.mode()`返回$`\mu`$；`posterior.sample(generator=...)`通过重参数化得到
@@ -59,14 +59,14 @@ D(z_{\mathrm{diff}}/c_{\mathrm{VAE}}).
 
 ## 4. 原始重建与显示图分别测量
 
-解码器输出$`y`$在VAE坐标中，将其变为未裁剪RGB：$`r=(y+1)/2`$；显示图使用$`\bar r=\operatorname{clip}(r,0,1)`$，再量化为8位。对每个案例，分别报告
+解码器输出$`y`$在VAE坐标中，将其变为未裁剪RGB：$`r=(y+1)/2`$；显示图使用$`\bar r=\mathop{\mathrm{clip}}\nolimits(r,0,1)`$，再量化为8位。对每个案例，分别报告
 
 ```math
-\operatorname{MSE}_{\mathrm{raw}}=\frac1{3HW}\|r-x_{\mathrm{RGB}}\|_2^2,\qquad
-\operatorname{MSE}_{\mathrm{clip}}=\frac1{3HW}\|\bar r-x_{\mathrm{RGB}}\|_2^2.
+\mathop{\mathrm{MSE}}\nolimits_{\mathrm{raw}}=\frac1{3HW}\|r-x_{\mathrm{RGB}}\|_2^2,\qquad
+\mathop{\mathrm{MSE}}\nolimits_{\mathrm{clip}}=\frac1{3HW}\|\bar r-x_{\mathrm{RGB}}\|_2^2.
 ```
 
-RMS为对应MSE的平方根，单位沿RGB的$`[0,1]`$坐标解释。越界比例统计$`r<0`$或$`r>1`$的通道值；裁剪RMS为$`\sqrt{\operatorname{mean}((r-\bar r)^2)}`$。这些统计基于浮点数组，PNG还包含量化变化。
+RMS为对应MSE的平方根，单位沿RGB的$`[0,1]`$坐标解释。越界比例统计$`r<0`$或$`r>1`$的通道值；裁剪RMS为$`\sqrt{\mathop{\mathrm{mean}}\nolimits((r-\bar r)^2)}`$。这些统计基于浮点数组，PNG还包含量化变化。
 
 对区间内的目标$`x_{\mathrm{RGB}}`$，逐坐标投影到$`[0,1]`$总满足$`|\bar r-x_{\mathrm{RGB}}|\leq|r-x_{\mathrm{RGB}}|`$，所以裁剪后MSE必不增加。保留原始数值可以分辨网络重建与显示后处理各自的影响。
 
@@ -141,7 +141,7 @@ RMS为对应MSE的平方根，单位沿RGB的$`[0,1]`$坐标解释。越界比�
 
 <details><summary>参考答案</summary>
 
-两者为1和$`\operatorname{Var}(Z)+(\mathbb EZ)^2=1.25`$。研究图像中的效应时，先固定输入和VAE，预先声明更多seed及纹理观察项，保留全部输出；若要研究数据集行为，还需扩展输入图像并分别统计。
+两者为1和$`\mathop{\mathrm{Var}}\nolimits(Z)+(\mathbb EZ)^2=1.25`$。研究图像中的效应时，先固定输入和VAE，预先声明更多seed及纹理观察项，保留全部输出；若要研究数据集行为，还需扩展输入图像并分别统计。
 
 </details>
 

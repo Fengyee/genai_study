@@ -32,8 +32,8 @@ c_t=\frac{\sqrt{A_{t-1}}\beta_t}{1-A_t}.
 对未知$`X_0`$应用全协方差公式：
 
 ```math
-\operatorname{Cov}(X_{t-1}\mid X_t)
-=\tilde\beta_t I+c_t^2\operatorname{Cov}(X_0\mid X_t).
+\mathop{\mathrm{Cov}}\nolimits(X_{t-1}\mid X_t)
+=\tilde\beta_t I+c_t^2\mathop{\mathrm{Cov}}\nolimits(X_0\mid X_t).
 ```
 
 第二项来自干净数据的后验不确定性，是半正定矩阵。现有教学采样器使用第一项作为固定方差；即使均值已经精确，也会漏掉第二项。对于混合数据，真实反向条件一般还具有混合结构，补足协方差本身也未必恢复整个条件分布。
@@ -68,7 +68,7 @@ m_{tj}=\sqrt{A_t}\mu_j,\qquad r_t=A_ts_0^2+1-A_t.
 状态$`x`$对各分量的后验权重为
 
 ```math
-w_{tj}(x)=\operatorname{softmax}_j
+w_{tj}(x)=\mathop{\mathrm{softmax}}\nolimits_j
 \left(-\frac{\|x-m_{tj}\|^2}{2r_t}\right),
 ```
 
@@ -100,7 +100,7 @@ python -m genai_study.oracle_study --samples 4096 --seeds 7 19 43 \
 在每个分量内，真实二维高斯有
 
 ```math
-\mathbb P(\|X-\mu_j\|<3s_0)=1-e^{-9/2}\approx98.8891\%,\qquad
+\mathbb P(\|X-\mu_j\|\lt 3s_0)=1-e^{-9/2}\approx98.8891\%,\qquad
 \mathbb E\|X-\mu_j\|^2=2s_0^2.
 ```
 

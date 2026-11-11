@@ -39,10 +39,10 @@
 
 ### 高斯距离的两种矩阵写法
 
-Heusel Eq. (6) 写作 $`\operatorname{Tr}((AB)^{1/2})`$，其中 $`A,B`$ 是协方差。课程采用对称形式
+Heusel Eq. (6) 写作 $`\mathop{\mathrm{Tr}}\nolimits((AB)^{1/2})`$，其中 $`A,B`$ 是协方差。课程采用对称形式
 
 ```math
-\operatorname{Tr}\bigl((A^{1/2}BA^{1/2})^{1/2}\bigr).
+\mathop{\mathrm{Tr}}\nolimits\bigl((A^{1/2}BA^{1/2})^{1/2}\bigr).
 ```
 
 当 $`A`$ 正定时，$`AB`$ 与 $`A^{1/2}BA^{1/2}`$ 相似，主平方根具有相同特征值与迹；半正定情形可由添加 $`\varepsilon I`$ 后取极限得到。两种表达的迹一致，课程写法同时显式保留了内部矩阵的对称半正定结构。数值实现还需处理舍入误差、奇异协方差及所用正则化。
@@ -55,7 +55,7 @@ Heusel Eq. (6) 写作 $`\operatorname{Tr}((AB)^{1/2})`$，其中 $`A,B`$ 是协�
 
 ```math
 \mathbb E\|\bar X-m_r\|_2^2
-=\|\mu_g-m_r\|_2^2+\frac{\operatorname{Tr}(\Sigma_g)}{N}.
+=\|\mu_g-m_r\|_2^2+\frac{\mathop{\mathrm{Tr}}\nolimits(\Sigma_g)}{N}.
 ```
 
 由 $`\bar X-\mu_g`$ 的均值为零、协方差为 $`\Sigma_g/N`$ 即可得到。因此，均值差平方本身已经产生依赖生成分布的有限样本偏差；完整 FID 还包含协方差估计与矩阵平方根的影响。

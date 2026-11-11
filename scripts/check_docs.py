@@ -28,6 +28,11 @@ REQUIRED = (
     "docs/chapters/10-pretrained-video-lab.md",
 )
 EXCLUDED = {".git", ".venv", ".venv-pretrained", "artifacts", "node_modules", "__pycache__", ".pytest_cache"}
+OPERATORNAME = re.compile(r"(?<!\\)(?:\\\\)*\\operatorname(?![A-Za-z])")
+OPERATOR_MESSAGE = (
+    r"math macro: replace \operatorname with a verified \mathop{\mathrm{...}} expression; "
+    r"use \nolimits for side subscripts"
+)
 
 
 def prose(text: str) -> str:
@@ -77,12 +82,13 @@ def destinations(text: str):
 
 
 def math_block_issues(text: str) -> list[tuple[int, str]]:
-    """Check math-fence placement and line endings used by this repository.
+    """Check known GitHub math-block formatting failures.
 
     GitHub can leave display math unrendered when it shares a details section
     with inline math. We use short inline paragraphs or an external math block
     there. A TeX row separator at a physical line ending can also gain an extra
     backslash during GitHub transport, so the next formula stays on that line.
+    Known client restrictions are checked in each math payload as well.
     """
     tokens = re.compile(
         r"(?P<fence>^ {0,3}(?P<marker>`{3,}|~{3,})(?P<info>[^\n]*))"
@@ -114,6 +120,10 @@ def math_block_issues(text: str) -> list[tuple[int, str]]:
                 for offset, line in enumerate(text[body_start:body_end].splitlines()):
                     if line.rstrip().endswith("\\\\"):
                         issues.append((first_line + offset, r"math block: keep TeX \\ and the following formula on the same physical line"))
+                    if OPERATORNAME.search(line):
+                        issues.append((first_line + offset, OPERATOR_MESSAGE))
+                    if "<" in line:
+                        issues.append((first_line + offset, r"math block: use \lt with a separating space instead of a raw < character"))
             position = closing.end() if closing else len(text)
         elif match.group("tag") is not None:
             tag = match.group("tag")
@@ -143,15 +153,21 @@ def math_format_issues(text: str) -> list[tuple[int, str]]:
     outside_fences = prose(text)
     issues = math_block_issues(text)
     table_lines = set()
+    operator_lines = set()
     for match in ignored.finditer(outside_fences):
         token = match.group()
-        if not token.startswith("$`") or r"\|" not in token[2:-2]:
+        if not token.startswith("$`"):
             continue
+        payload = token[2:-2]
+        number = outside_fences.count("\n", 0, match.start()) + 1
+        if OPERATORNAME.search(payload):
+            operator_lines.add(number)
         start = outside_fences.rfind("\n", 0, match.start()) + 1
-        if outside_fences[start:match.start()].lstrip().startswith("|"):
-            table_lines.add(outside_fences.count("\n", 0, match.start()) + 1)
+        if r"\|" in payload and outside_fences[start:match.start()].lstrip().startswith("|"):
+            table_lines.add(number)
     issues.extend((line, r"table math: use \Vert instead of \|; Markdown tables consume the backslash")
                   for line in sorted(table_lines))
+    issues.extend((line, OPERATOR_MESSAGE) for line in sorted(operator_lines))
     visible = ignored.sub(lambda match: re.sub(r"[^\n]", " ", match.group()), outside_fences)
     in_display = False
     for number, line in enumerate(visible.splitlines(), 1):

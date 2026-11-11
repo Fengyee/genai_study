@@ -1,0 +1,325 @@
+{
+  "checked_utc": "2026-11-11T16:46:27.836847+00:00",
+  "commit": "348e54571f53ffbfce6b962d6ffdae45088d36d1",
+  "tls_verification": true,
+  "uses_existing_environment_proxy": true,
+  "scope": "Published-source checks after the first Markdown fix; exposes client errors not detected by the server Markdown API.",
+  "pages": [
+    {
+      "path": "README.md",
+      "viewport": "desktop",
+      "status": 200,
+      "renderer_count": 0,
+      "mathml_count": 0,
+      "empty_or_error_renderers": [],
+      "raw_math_candidates": [],
+      "unconverted_math_pre_count": 0
+    },
+    {
+      "path": "docs/learning-path.md",
+      "viewport": "desktop",
+      "status": 200,
+      "renderer_count": 10,
+      "mathml_count": 10,
+      "empty_or_error_renderers": [],
+      "raw_math_candidates": [],
+      "unconverted_math_pre_count": 0
+    },
+    {
+      "path": "docs/self-assessment.md",
+      "viewport": "desktop",
+      "status": 200,
+      "renderer_count": 78,
+      "mathml_count": 75,
+      "empty_or_error_renderers": [
+        {
+          "index": 0,
+          "math": 0,
+          "svg": 0,
+          "text": "The following macros are not allowed: operatorname"
+        },
+        {
+          "index": 30,
+          "math": 0,
+          "svg": 0,
+          "text": "The following macros are not allowed: operatorname"
+        },
+        {
+          "index": 31,
+          "math": 0,
+          "svg": 0,
+          "text": "The following macros are not allowed: operatorname"
+        }
+      ],
+      "raw_math_candidates": [],
+      "unconverted_math_pre_count": 0
+    },
+    {
+      "path": "docs/chapters/04-image-video-roadmap.md",
+      "viewport": "desktop",
+      "status": 200,
+      "renderer_count": 36,
+      "mathml_count": 35,
+      "empty_or_error_renderers": [
+        {
+          "index": 26,
+          "math": 0,
+          "svg": 0,
+          "text": "The following macros are not allowed: operatorname"
+        }
+      ],
+      "raw_math_candidates": [],
+      "unconverted_math_pre_count": 0
+    },
+    {
+      "path": "docs/readings/prediction-and-loss-weighting.md",
+      "viewport": "desktop",
+      "status": 200,
+      "renderer_count": 112,
+      "mathml_count": 112,
+      "empty_or_error_renderers": [],
+      "raw_math_candidates": [],
+      "unconverted_math_pre_count": 0
+    },
+    {
+      "path": "docs/chapters/06-video-temporal-lab.md",
+      "viewport": "desktop",
+      "status": 200,
+      "renderer_count": 34,
+      "mathml_count": 34,
+      "empty_or_error_renderers": [],
+      "raw_math_candidates": [],
+      "unconverted_math_pre_count": 0
+    },
+    {
+      "path": "docs/notation.md",
+      "viewport": "desktop",
+      "status": 200,
+      "renderer_count": 82,
+      "mathml_count": 82,
+      "empty_or_error_renderers": [],
+      "raw_math_candidates": [],
+      "unconverted_math_pre_count": 0
+    },
+    {
+      "path": "docs/chapters/01-generative-models.md",
+      "viewport": "desktop",
+      "status": 200,
+      "renderer_count": 76,
+      "mathml_count": 73,
+      "empty_or_error_renderers": [
+        {
+          "index": 0,
+          "math": 0,
+          "svg": 0,
+          "text": "\n    Extra open brace or missing close brace\n  "
+        },
+        {
+          "index": 45,
+          "math": 0,
+          "svg": 0,
+          "text": "The following macros are not allowed: operatorname"
+        },
+        {
+          "index": 63,
+          "math": 0,
+          "svg": 0,
+          "text": "The following macros are not allowed: operatorname"
+        }
+      ],
+      "raw_math_candidates": [],
+      "unconverted_math_pre_count": 0
+    },
+    {
+      "path": "docs/chapters/08-image-guidance-lab.md",
+      "viewport": "desktop",
+      "status": 200,
+      "renderer_count": 61,
+      "mathml_count": 59,
+      "empty_or_error_renderers": [
+        {
+          "index": 8,
+          "math": 0,
+          "svg": 0,
+          "text": "The following macros are not allowed: operatorname"
+        },
+        {
+          "index": 34,
+          "math": 0,
+          "svg": 0,
+          "text": "The following macros are not allowed: operatorname"
+        }
+      ],
+      "raw_math_candidates": [],
+      "unconverted_math_pre_count": 0
+    },
+    {
+      "path": "docs/readings/diffusion-flow-bridge.md",
+      "viewport": "desktop",
+      "status": 200,
+      "renderer_count": 123,
+      "mathml_count": 123,
+      "empty_or_error_renderers": [],
+      "raw_math_candidates": [],
+      "unconverted_math_pre_count": 0
+    },
+    {
+      "path": "README.md",
+      "viewport": "narrow",
+      "status": 200,
+      "renderer_count": 0,
+      "mathml_count": 0,
+      "empty_or_error_renderers": [],
+      "raw_math_candidates": [],
+      "unconverted_math_pre_count": 0
+    },
+    {
+      "path": "docs/learning-path.md",
+      "viewport": "narrow",
+      "status": 200,
+      "renderer_count": 10,
+      "mathml_count": 10,
+      "empty_or_error_renderers": [],
+      "raw_math_candidates": [],
+      "unconverted_math_pre_count": 0
+    },
+    {
+      "path": "docs/self-assessment.md",
+      "viewport": "narrow",
+      "status": 200,
+      "renderer_count": 78,
+      "mathml_count": 75,
+      "empty_or_error_renderers": [
+        {
+          "index": 0,
+          "math": 0,
+          "svg": 0,
+          "text": "The following macros are not allowed: operatorname"
+        },
+        {
+          "index": 30,
+          "math": 0,
+          "svg": 0,
+          "text": "The following macros are not allowed: operatorname"
+        },
+        {
+          "index": 31,
+          "math": 0,
+          "svg": 0,
+          "text": "The following macros are not allowed: operatorname"
+        }
+      ],
+      "raw_math_candidates": [],
+      "unconverted_math_pre_count": 0
+    },
+    {
+      "path": "docs/chapters/04-image-video-roadmap.md",
+      "viewport": "narrow",
+      "status": 200,
+      "renderer_count": 36,
+      "mathml_count": 35,
+      "empty_or_error_renderers": [
+        {
+          "index": 26,
+          "math": 0,
+          "svg": 0,
+          "text": "The following macros are not allowed: operatorname"
+        }
+      ],
+      "raw_math_candidates": [],
+      "unconverted_math_pre_count": 0
+    },
+    {
+      "path": "docs/readings/prediction-and-loss-weighting.md",
+      "viewport": "narrow",
+      "status": 200,
+      "renderer_count": 112,
+      "mathml_count": 112,
+      "empty_or_error_renderers": [],
+      "raw_math_candidates": [],
+      "unconverted_math_pre_count": 0
+    },
+    {
+      "path": "docs/chapters/06-video-temporal-lab.md",
+      "viewport": "narrow",
+      "status": 200,
+      "renderer_count": 34,
+      "mathml_count": 34,
+      "empty_or_error_renderers": [],
+      "raw_math_candidates": [],
+      "unconverted_math_pre_count": 0
+    },
+    {
+      "path": "docs/notation.md",
+      "viewport": "narrow",
+      "status": 200,
+      "renderer_count": 82,
+      "mathml_count": 82,
+      "empty_or_error_renderers": [],
+      "raw_math_candidates": [],
+      "unconverted_math_pre_count": 0
+    },
+    {
+      "path": "docs/chapters/01-generative-models.md",
+      "viewport": "narrow",
+      "status": 200,
+      "renderer_count": 76,
+      "mathml_count": 73,
+      "empty_or_error_renderers": [
+        {
+          "index": 0,
+          "math": 0,
+          "svg": 0,
+          "text": "\n    Extra open brace or missing close brace\n  "
+        },
+        {
+          "index": 45,
+          "math": 0,
+          "svg": 0,
+          "text": "The following macros are not allowed: operatorname"
+        },
+        {
+          "index": 63,
+          "math": 0,
+          "svg": 0,
+          "text": "The following macros are not allowed: operatorname"
+        }
+      ],
+      "raw_math_candidates": [],
+      "unconverted_math_pre_count": 0
+    },
+    {
+      "path": "docs/chapters/08-image-guidance-lab.md",
+      "viewport": "narrow",
+      "status": 200,
+      "renderer_count": 61,
+      "mathml_count": 59,
+      "empty_or_error_renderers": [
+        {
+          "index": 8,
+          "math": 0,
+          "svg": 0,
+          "text": "The following macros are not allowed: operatorname"
+        },
+        {
+          "index": 34,
+          "math": 0,
+          "svg": 0,
+          "text": "The following macros are not allowed: operatorname"
+        }
+      ],
+      "raw_math_candidates": [],
+      "unconverted_math_pre_count": 0
+    },
+    {
+      "path": "docs/readings/diffusion-flow-bridge.md",
+      "viewport": "narrow",
+      "status": 200,
+      "renderer_count": 123,
+      "mathml_count": 123,
+      "empty_or_error_renderers": [],
+      "raw_math_candidates": [],
+      "unconverted_math_pre_count": 0
+    }
+  ]
+}

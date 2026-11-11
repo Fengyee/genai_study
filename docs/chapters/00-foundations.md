@@ -82,7 +82,7 @@ Y\mid X=x\sim\mathcal N(ax,b^2I).
 
 <details><summary>答案</summary>
 
-不可以。此时 $`Y=(a+b)X`$，方差为 $`(a+b)^2`$；一般公式还包含 $`2ab\operatorname{Cov}(X,E)`$。例如 $`a=b=1`$ 时方差为 4，而不是 2。
+不可以。此时 $`Y=(a+b)X`$，方差为 $`(a+b)^2`$；一般公式还包含 $`2ab\mathop{\mathrm{Cov}}\nolimits(X,E)`$。例如 $`a=b=1`$ 时方差为 4，而不是 2。
 
 </details>
 
