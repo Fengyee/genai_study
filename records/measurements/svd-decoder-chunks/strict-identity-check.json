@@ -1,0 +1,12 @@
+{
+  "input_arrays_c_order_bytes_identical": [
+    "normalized_input",
+    "latent_mode",
+    "video_latents"
+  ],
+  "chunk1_all_frame_bytes_equal": true,
+  "chunk7_segment_bytes_equal": true,
+  "signed_zero_distinguishes_byte_from_value_equality": true,
+  "all_numeric_results_unchanged": true,
+  "new_comparator_sha256": "1cb21dc59fda7d059ce35e89bdc0c78541fb2b504bef5bcfe2b4c92029be84c6"
+}

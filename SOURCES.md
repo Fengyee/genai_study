@@ -74,3 +74,5 @@
 [MeanFlow两时间平均速度](docs/readings/meanflow-average-velocity.md)固定2025-05-19论文`2505.13447v1`及作者2025-07-08 commit `58d099c0fa197bd31b9a7b51727a76019ae5fdbe`。核对式3–12、两时间JVP换元、停止目标梯度、对角边界与一次采样；Gaussian及独立二维线性场检验身份和端点，作者三个采样函数以解析替身核对调用。ImageNet FID、图像训练与速度数字按作者协议归属；[证据索引](records/measurements/meanflow-average-velocity/README.md)保留SHA、执行范围与MIT许可。
 
 [Reflow耦合更新](docs/readings/reflow-coupling.md)固定Liu/Gong/Liu的arXiv:2209.03003v1与作者gnobitab/RectifiedFlow后续commit5a1fd4d，核对单轮边缘保持、凸位移成本、递归直度范围及配对数据接口。独立Gaussian/旋转推导、作者纯损失函数AST核验和v1第15页平方/索引排版问题见[证据索引](records/measurements/reflow-coupling/README.md)。原创数学例和检查器随本仓许可；完整PDF及作者训练源码按固定URL取得，身份与原文件声明单独记录。
+
+[SVD时间解码分块实测](docs/svd-decoder-chunk-report.md)固定Diffusers0.35.2 commit b71269675ec1b85193107a691dd35c308e46f0a5和SVD模型revision9cf024d，逐字节核对五份上游/安装源码。原样decode_latents、真实时间VAE、单视频实际帧数、5D GroupNorm与缩放坐标经源码和独立数组核验；三点时间卷积为原创精确有理数反例。[证据](records/measurements/svd-decoder-chunks/README.md)保存来源、权重/config/许可SHA、冻结协议、三组完整成本与数值结果。

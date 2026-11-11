@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-11T20:23:51.537981+00:00",
+  "question": "How does temporal chunk partition change decoding of the same fixed 14-frame latent under the released SVD VAE?",
+  "script": {
+    "path": "records/measurements/svd-decoder-chunks/run_probe.py",
+    "sha256": "8ae054b3883d1cb5092f08215589ff378faa2c0d7703942a60532e53ff041e0d"
+  },
+  "frozen_sources": {
+    "requirements-pretrained-lock.txt": "95176d3908a08a99ca80ca84fe8d2aaf0a5b7c5cc80cd663fb63bd5c1b7b1729",
+    "examples/pretrained-svd/manifest.json": "6f10bafb14e6954382c828ed349cdaeb4023eb0dc4a727c43f4d317228deeb6a",
+    "docs/assets/svd-input.png": "e76d50ef91a5ece55252b9c867d58927ca8b21a303ee112014491608f79ed962",
+    "src/genai_study/pretrained_video.py": "215940885a6f05b5d158a901a75b51e02e7a985a2b83556bd690320a09ea4e7f",
+    "src/genai_study/pretrained_image.py": "3cd514bae6d2a9e8c17fafea806f49854813ad88c0b08e858e685dd6e0b8f1be",
+    "src/genai_study/run_record.py": "be545eff1985b8eed096b0663145bade01303685430310d4b199aa727c685697"
+  },
+  "latent_protocol": {
+    "reference": "docs/assets/svd-input.png",
+    "pixel_transform": "RGB uint8 -> float32 BCHW /127.5 -1",
+    "encoder": "Fixed AutoencoderKLTemporalDecoder encoder posterior mode",
+    "video_latent": "Repeat identical mode 14 times, multiply by0.18215; upstream decode_latents reverses scaling",
+    "shape": [
+      1,
+      14,
+      4,
+      18,
+      32
+    ],
+    "random_augmentation": false,
+    "random_latent_noise": false,
+    "threads": 2,
+    "dtype": "float32",
+    "device": "cpu",
+    "independent_process_per_chunk": true
+  },
+  "commands": [
+    {
+      "id": "chunk14",
+      "chunk_size": 14,
+      "output": "artifacts/svd-decoder-chunks/chunk14",
+      "record_output": "artifacts/svd-decoder-chunks/record-chunk14",
+      "argv": [
+        ".venv-pretrained/bin/python",
+        "-u",
+        "records/measurements/svd-decoder-chunks/run_probe.py",
+        "--model-dir",
+        "artifacts/models/svd",
+        "--input",
+        "docs/assets/svd-input.png",
+        "--chunk-size",
+        "14",
+        "--output",
+        "artifacts/svd-decoder-chunks/chunk14"
+      ]
+    },
+    {
+      "id": "chunk7",
+      "chunk_size": 7,
+      "output": "artifacts/svd-decoder-chunks/chunk7",
+      "record_output": "artifacts/svd-decoder-chunks/record-chunk7",
+      "argv": [
+        ".venv-pretrained/bin/python",
+        "-u",
+        "records/measurements/svd-decoder-chunks/run_probe.py",
+        "--model-dir",
+        "artifacts/models/svd",
+        "--input",
+        "docs/assets/svd-input.png",
+        "--chunk-size",
+        "7",
+        "--output",
+        "artifacts/svd-decoder-chunks/chunk7"
+      ]
+    },
+    {
+      "id": "chunk1",
+      "chunk_size": 1,
+      "output": "artifacts/svd-decoder-chunks/chunk1",
+      "record_output": "artifacts/svd-decoder-chunks/record-chunk1",
+      "argv": [
+        ".venv-pretrained/bin/python",
+        "-u",
+        "records/measurements/svd-decoder-chunks/run_probe.py",
+        "--model-dir",
+        "artifacts/models/svd",
+        "--input",
+        "docs/assets/svd-input.png",
+        "--chunk-size",
+        "1",
+        "--output",
+        "artifacts/svd-decoder-chunks/chunk1"
+      ]
+    }
+  ],
+  "budget": {
+    "per_command_timeout_seconds": 300,
+    "total_sequence_seconds": 1000,
+    "first_command_max_wall_seconds": 240,
+    "first_command_max_peak_rss_gib": 12,
+    "any_failed_or_timed_out_command": "Stop sequence; remaining commands not attempted; preserve all records.",
+    "first_gate": "Proceed after chunk14 only when wall<=240 and queried peakRSS<=12GiB.",
+    "resource_scope": "Small144x256 VAE-only inference; no UNet/CLIP load; actual RSS post-run. Memory ceiling is a continuation gate, not a kernel-enforced memory limit."
+  },
+  "outputs": "All raw float32 B,C,F,H,W arrays and intermediate inputs retained locally; JSON metrics, command logs/records, hashes and comparisons archived.",
+  "comparisons": {
+    "required_identity": "Compare normalized_input, latent_mode and video_latents bytewise across all completed runs before assigning differences to chunk partition.",
+    "primary": "Per-frame and global float64 RMS/max absolute raw decoder output differences relative to chunk14.",
+    "secondary": "Raw adjacent-frame RMS, range/outside[-1,1], command wall, decoder-only time, queried process peakRSS. Display clipping values kept separate if reported.",
+    "analytic_invariance": "Identical inputs imply repeated independent chunk1 outputs and repeated7-frame segments for chunk7 under deterministic identical execution; record exact equality and float64 residual, rather than presupposing bitwise identity on every platform.",
+    "no_required_difference": "Zero or nonzero differences are both retained; no minimum visual or numerical effect required.",
+    "population_inference": "Single fixed reference and latent protocol; no confidence interval, video-generation quality ranking or diagnosis of prior denoising failure."
+  },
+  "commit_requirement": "Plan and script are committed before first model run; coordinator checks plan bytes against HEAD and frozen source hashes."
+}

@@ -1,0 +1,38 @@
+{
+  "started_utc": "2026-11-11T20:25:06.192951+00:00",
+  "started_monotonic": 7873.212964382,
+  "plan_sha256": "898818a4b7b48119cc2983d43e0c128edd1ab872f1531b3468cc7f7a4b2e62c7",
+  "preregistration_head": "1d97b06613872096c6ab86fc9030be8059a1233a",
+  "source_hashes_verified_before_first_run": true,
+  "status": "succeeded",
+  "slots": [
+    {
+      "id": "chunk14",
+      "status": "succeeded",
+      "wall_seconds": 73.130625023,
+      "peak_rss_gib": 2.783550262451172
+    },
+    {
+      "id": "chunk7",
+      "status": "succeeded",
+      "wall_seconds": 46.81876807699973,
+      "peak_rss_gib": 1.8300209045410156
+    },
+    {
+      "id": "chunk1",
+      "status": "succeeded",
+      "wall_seconds": 40.799752521999835,
+      "peak_rss_gib": 0.9630355834960938
+    }
+  ],
+  "first_gate": {
+    "checked_utc": "2026-11-11T20:26:40.852622+00:00",
+    "passed": true,
+    "wall_seconds": 73.130625023,
+    "peak_rss_gib": 2.783550262451172
+  },
+  "recorded_complete_utc": "2026-11-11T20:28:33.098127+00:00",
+  "last_command_finished_utc": "2026-11-11T20:28:24.315674+00:00",
+  "observed_sequence_seconds": 198.122723,
+  "command_wall_sum": 160.74914562199956
+}

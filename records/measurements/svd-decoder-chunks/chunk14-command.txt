@@ -1,0 +1,4 @@
+Verified fixed VAE assets; starting chunk=14
+Encoding reference posterior mode
+Decoding all 14 frames with chunk=14
+{"chunk_size": 14, "decode_seconds": 64.07642741099971, "peak_rss_kib": 2918764, "output_sha256": "c3f93255b22f33235dace8f0d8823abde9023610d6e055db654d16740bf6a78e"}

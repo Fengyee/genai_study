@@ -1,0 +1,235 @@
+{
+  "schema_version": 1,
+  "numpy": "2.1.3",
+  "script_sha256": "1cb21dc59fda7d059ce35e89bdc0c78541fb2b504bef5bcfe2b4c92029be84c6",
+  "primary_coordinates": "Raw float32 VAE output B,C,F,H,W; differences and reductions computed in float64. No clipping or RGB quantization.",
+  "input_identity": {
+    "normalized_input": {
+      "all_three_bitwise_equal": true,
+      "array_bytes_sha256": "7b78055e8cc198f33681bb9ffb0a56f4d7e7b37f38cb170d911a823dedce0f1b"
+    },
+    "latent_mode": {
+      "all_three_bitwise_equal": true,
+      "array_bytes_sha256": "ebc48a83173a8a37f1ebb234fae060e7c8058291c9e8782c96b73cce3e5a540e"
+    },
+    "video_latents": {
+      "all_three_bitwise_equal": true,
+      "array_bytes_sha256": "83bcc4d695b160339850689536950d95d844df5e0dd81134b0abff38e752b406"
+    }
+  },
+  "comparisons": [
+    {
+      "chunk_size": 14,
+      "global_raw_rms_vs_chunk14": 0.0,
+      "per_frame_raw_rms_vs_chunk14": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "max_abs_raw_vs_chunk14": 0.0,
+      "per_frame_max_abs_raw_vs_chunk14": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "adjacent_raw_rms": [
+        0.012287212504168159,
+        0.008325804210428611,
+        0.006382771277925166,
+        0.005518382922566107,
+        0.005162075315852175,
+        0.004833543822864351,
+        0.0047982913618194395,
+        0.004777548917381814,
+        0.005210361718703129,
+        0.0054399568146806234,
+        0.006282981453423274,
+        0.008427391762553828,
+        0.012620911184312987
+      ],
+      "raw_range": [
+        -0.9061580896377563,
+        0.6771974563598633
+      ],
+      "fraction_outside_minus1_plus1": 0.0,
+      "decode_seconds": 64.07642741099971,
+      "command_wall_seconds": 73.130625023,
+      "peak_rss_gib": 2.783550262451172,
+      "observed_call_frames": [
+        14
+      ],
+      "raw_output_array_sha256": "bc20787502117a2f4dc91b711ba5bf226ecac0b3226dc27f515e5425f005e018",
+      "max_adjacent_rms_reduction_layout_difference": 8.673617379884035e-19
+    },
+    {
+      "chunk_size": 7,
+      "global_raw_rms_vs_chunk14": 0.01889142544320128,
+      "per_frame_raw_rms_vs_chunk14": [
+        0.016948875065194297,
+        0.018076898257842262,
+        0.017547433630557017,
+        0.018112014607030928,
+        0.018659587107668116,
+        0.02020925375227055,
+        0.02095612144169841,
+        0.02170179736171982,
+        0.020565722800685134,
+        0.01922618837980577,
+        0.01817133356411145,
+        0.017933161838574272,
+        0.018309637085068112,
+        0.017322019314032953
+      ],
+      "max_abs_raw_vs_chunk14": 0.3188364803791046,
+      "per_frame_max_abs_raw_vs_chunk14": [
+        0.2621164917945862,
+        0.29513686895370483,
+        0.2935873866081238,
+        0.30745837092399597,
+        0.3188364803791046,
+        0.2859128415584564,
+        0.31263819336891174,
+        0.2817838788032532,
+        0.299422025680542,
+        0.29872655868530273,
+        0.27358749508857727,
+        0.3135634958744049,
+        0.29416075348854065,
+        0.29393333196640015
+      ],
+      "adjacent_raw_rms": [
+        0.013077950997932606,
+        0.008571254365982769,
+        0.007194757381550758,
+        0.006921557515415438,
+        0.008370846788248575,
+        0.01303430070264891,
+        0.02021215275557432,
+        0.013077950997932606,
+        0.008571254365982769,
+        0.007194757381550758,
+        0.006921557515415438,
+        0.008370846788248575,
+        0.01303430070264891
+      ],
+      "raw_range": [
+        -0.8999108076095581,
+        0.6747957468032837
+      ],
+      "fraction_outside_minus1_plus1": 0.0,
+      "decode_seconds": 39.109443383000325,
+      "command_wall_seconds": 46.81876807699973,
+      "peak_rss_gib": 1.8300209045410156,
+      "observed_call_frames": [
+        7,
+        7
+      ],
+      "raw_output_array_sha256": "4b844b999148b213bacc7f2492dd1da2bc732bfb7e6c67986bdad73115870809",
+      "max_adjacent_rms_reduction_layout_difference": 3.469446951953614e-18
+    },
+    {
+      "chunk_size": 1,
+      "global_raw_rms_vs_chunk14": 0.04375841646955538,
+      "per_frame_raw_rms_vs_chunk14": [
+        0.04198384467752267,
+        0.04480384423300277,
+        0.044525192558805764,
+        0.04424801577867205,
+        0.044361503571868556,
+        0.044346296616785026,
+        0.044334510722608106,
+        0.0442597766988866,
+        0.044066784856184066,
+        0.043911381601574845,
+        0.0434168094168445,
+        0.04358554959240515,
+        0.04357947584441502,
+        0.0410339368715565
+      ],
+      "max_abs_raw_vs_chunk14": 0.6712268441915512,
+      "per_frame_max_abs_raw_vs_chunk14": [
+        0.6025847941637039,
+        0.6675761789083481,
+        0.6712268441915512,
+        0.6376183182001114,
+        0.6396006643772125,
+        0.6504558324813843,
+        0.641046330332756,
+        0.6150513216853142,
+        0.6180380135774612,
+        0.6283342391252518,
+        0.6383721604943275,
+        0.619203194975853,
+        0.622918576002121,
+        0.5620320290327072
+      ],
+      "adjacent_raw_rms": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "raw_range": [
+        -0.8809089660644531,
+        0.7380982637405396
+      ],
+      "fraction_outside_minus1_plus1": 0.0,
+      "decode_seconds": 33.51280604400017,
+      "command_wall_seconds": 40.799752521999835,
+      "peak_rss_gib": 0.9630355834960938,
+      "observed_call_frames": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "raw_output_array_sha256": "f6cc96d011395df22f08ea7ff776898c2a87fe56df9ab9765435782f7b069208",
+      "max_adjacent_rms_reduction_layout_difference": 0.0
+    }
+  ],
+  "chunk1_all_frames_equal": true,
+  "chunk7_two_segments_equal": true,
+  "all_file_and_array_hashes_validated": true,
+  "scope": "One repeated-reference latent and one execution per chunk in declared order; chunk14 is a reference execution for output differences. Sampling quality, memory/speed generalization, and prior denoising failure causation require separate evidence."
+}

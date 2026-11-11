@@ -12,7 +12,7 @@
 - [PR #4](https://github.com/Fengyee/genai_study/pull/4)开放，最新efb3ead的run43070085722成功，包含checkpoint数值契约及调度观察记录。8份历史checkpoint重放结果逐元素相同；本项尚无合并授权。
 - [PR #5](https://github.com/Fengyee/genai_study/pull/5)开放，基于PR #4，最新f5cc255的run43071278535成功。完整本地检查178 tests、16/16教学块、7条CLI smoke通过；固定1684744实际页面双视口52公式/锚点/答案/局部滚动均通过。PR #4/#5的新合并授权已询问，等待用户答复，其他工作继续。
 - [PR #6](https://github.com/Fengyee/genai_study/pull/6)分支为feat/sd14-attributes-layout，原八请求首条超时、余七未执行；单独声明的线程诊断后，两线程批次0bc702c八条全部成功，37.00分钟，完整原图与两位AI独立观察均已归档。固定源码和锁文件保持。
-- PR6最终内容1b6f8f5、[PR #7](https://github.com/Fengyee/genai_study/pull/7)集成7ed0d67与[PR #8](https://github.com/Fengyee/genai_study/pull/8)集成9ebea09的最新CI均成功；PR6已转为可审阅。PR8检查点94f7660的CI43091354688也已success。分支按PR6→PR7→PR8同步，均待审阅与单独合并授权。当前从94f7660创建docs/reflow-coupling，Reflow专题已通过178/18/7完整检查和固定SHA两视口验收，以PR #9交付；详细证据见轮次60。
+- PR6最终内容1b6f8f5、[PR #7](https://github.com/Fengyee/genai_study/pull/7)集成7ed0d67与[PR #8](https://github.com/Fengyee/genai_study/pull/8)集成9ebea09的最新CI均成功；PR6已转为可审阅。PR8检查点94f7660的CI43091354688也已success。分支按PR6→PR7→PR8同步，均待审阅与单独合并授权。Reflow专题已通过178/18/7完整检查和固定SHA两视口验收，以PR #9交付；正文dca73531的CI成功，证据检查点4a3235a的CI仍queued。当前工作分支feat/svd-temporal-decoder-chunks从4a3235a接续，固定latent分块实测已完成；详细进度见轮次61。
 - 每小时质量workflow位于main，API active、cron为UTC每小时:17；原416版本push/手动与d99版本push的artifact均实际核验。初段117次查询覆盖16:17/17:17；恢复后18:31–19:35的64次覆盖19:17，19:36复查仍无schedule事件；18:17处于断线空窗，原因未确定。
 - 编码代理持久调度、网站和通知绑定未部署；Bark/Codex推送仍缺可用接口。原八请求已按超时规则停止；新两线程批次已完成，完整PNG、metrics/run与日志文本进入仓库，浮点数组保存在忽略的artifacts。
 
@@ -713,3 +713,27 @@ PR8基底同步：当前工作分支feat/meanflow-average-velocity已合入PR7�
 轮次60本地验收：完整`bash scripts/quality.sh`退出0，178 tests（67.36秒）、18/18教学块、7条CLI smoke全部通过，10个子检查退出0；目录artifacts/quality/20261111T201031Z-0pcA7W。当时980链接0错误，随后仅记录/导航变化再检981链接0错误；git diff检查通过。四份最终教学/推导文件的独立审查SHA已核对并归档final-review.json，无未解决发现。接下来推送新分支、创建以PR8为基底的PR并执行固定SHA阅读验收。
 
 轮次60交付验收：已创建[PR #9](https://github.com/Fengyee/genai_study/pull/9)，base为PR8的feat/meanflow-average-velocity。正文dca73531的run43094510880 completed/success；五页255公式API逐项保持，实际GitHub1440×1000和390×844共10页面/510 MathML全部通过。36行1649字节代码（显示省略末尾newline）、三题、符号新增两行、术语新增一组、局部滚动、12次先修/证据/固定论文作者链接点击均通过。主协调重hash五份正文和十份证据/截图，并查看窄屏符号、练习和相邻轮公式；轻量证据及练习截图归档reader-check.json。后续检查点仅更新证据/状态。下一具体工作：按原生尺寸资源与时序解码语义审查SVD基线可行性，先固定探测预算、内存门槛和已知验证范围。
+
+## 轮次61：固定潜变量的SVD时间解码分块实验（预声明）
+
+读者问题：10章说明缩小decode_chunk_size会改变时间上下文，但尚缺独立于去噪器的实测。原生576×1024基线需要扩展当前128–256尺寸入口并重新评估资源；先选择更窄的VAE-only干预，在固定原参考图的posterior mode上严格重复14帧，比较chunk14/7/1。
+
+来源已核对Diffusers0.35.2的tag/commit与本地文件逐字节一致：pipeline按每块帧数调用vae.decode；时间卷积受分块padding影响，5D GroupNorm也覆盖帧轴并在eval使用当前输入统计。原样调用该decode_latents函数，仅给出真实固定VAE依赖；视频latent先乘0.18215、方法内部再反向缩放。
+
+运行前将plan.json与run_probe.py提交。三个独立进程CPUfloat32/2threads、相同输入/模式latent，按14→7→1执行，每命令300秒、整序列1000秒。首条完整命令wall≤240秒且查询点RSS≤12GiB才继续；该RSS为继续门槛，不是内核内存上限。失败/超时即停止并保留剩余未执行项。保存全部原始输出、latent身份、实际decoder调用、分阶段计时与完整命令记录；独立复算逐帧RMS及重复片段性质，所有结果均保留。本项验证解码上下文，原SVD去噪失败原因与发布尺寸质量基线继续排队。
+
+轮次61实测完成：固定1d97b066计划/探针后，2026-11-11 20:25:06–20:28:24 UTC完成全部三条命令，完整序列198.122723秒，外层wall合计160.749145622秒。chunk14/7/1命令wall为73.130625/46.818768/40.799753秒，decode-only为64.076427/39.109443/33.512806秒，查询点RSS为2.783550/1.830021/0.963036GiB。首条通过240秒/12GiB继续门槛；三条均exit0，无模型任务留在后台。
+
+独立审计重新hash三份资产、12个NPY、日志、源码/锁与预声明Git字节。三个normalized_input、mode、scaled latent均严格相同，实际decoder块帧数为[14]、[7,7]、十四个1。float64相对chunk14的全局raw RMS为0.01889143/0.04375842，最大差0.31883648/0.67122684；chunk7两段、chunk1各帧逐字节相同。第三条启动时有五份新教学/证据文件，冻结推理文件保持。主协调另外复算，dot/fsum独立方法与向量化归约差约1e−17。
+
+数值审查补充：保存前Torch输出为置换后的非连续view，NPY重载为C连续；相同float64邻帧归约因布局出现≤3.47e−18差。重建原存储次序后精确复现metrics，保留原始文件。读者复审还修正RMS文字的均值分母，并把比较器的字节身份判定改成C-order bytes；+0/−0反例验证判定差异，本次所有输入和重复输出的真实bytes保持一致，全部数值结果不变。
+
+报告新增23行CPU三点卷积例、三题答案、真实GroupNorm帧轴解释和完整复跑入口；独立Fraction/NumPy核验12组案例。两面板科学图从全部raw输出重算，主协调查看原图，集成重绘PNG/SVG/NPZ逐字节一致。三组metrics/run/log、独立核验、来源、数据与图证据已归档；新CPU块使白名单扩至19块/15文档。完整quality正在运行，之后创建以PR9为基底的PR并做实际GitHub页面验收。
+
+轮次61全量本地检查：`bash scripts/quality.sh`退出0，178 tests（74.60秒）、19/19教学块、7条CLI smoke，目录artifacts/quality/20261111T203653Z-JoXwZN。运行时1035链接0错误；后续仅证据/文字修改再检1037链接0错误。probe及历史源文件未改，独立比较器字节检查更新后实际重跑，数值保持。等待最终只读审阅确认后提交正文并按固定SHA验收页面。
+
+轮次61最终内容复审通过：报告/证据索引/比较器/图数据等九文件SHA已核对，final-reader-audit.json无遗留问题。CPU块23行886字节、SHA1fca734b…dd07，正文RMS定义和严格字节身份均已修正并重验。即将推送完整报告并创建新PR，页面验收绑定随后实际提交SHA。
+
+轮次61页面与交付：已创建[PR #10](https://github.com/Fengyee/genai_study/pull/10)，base为docs/reflow-coupling，正文3e41f75。GitHub实际1440×1000与390×844均通过：5个公式/视口、23行886字节CPU及338/168字节Bash、3题、两张表逐格数字、14次锚点和12次课程/证据/固定来源跳转。PNG/SVG网络响应SHA相同，两种视口真实SVG预览加载；主协调查看窄屏表格/图上下文，重hash正文及11份证据/截图。窄图324×159为缩略图，中文说明完整，图内标签需打开矢量版放大；未测实际缩放交互/屏幕阅读器。reader-check.json及原表截图归档。
+
+20:43交付状态：PR9检查点4a3235a/run43095115227与PR10正文3e41f75/run43097625331均queued；PR9正文dca73531的run43094510880仍success。独立只读队列诊断未发现已禁用workflow或可识别同组运行，官方Actions状态operational，排队原因未确定；没有取消、重跑或改配置。平台环境状态新查询为running/当前观测，用户发布配置身份保持；工具没有Bark/编码调度入口，配置无secret/runtime变量绑定。下一轮继续整体路径审查并修正已发现的README术语计数陈旧问题，持续保存远端实际状态。

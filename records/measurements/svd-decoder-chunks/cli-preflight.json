@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "case": "existing_output",
+      "returncode": 2,
+      "stderr": "usage: run_probe.py [-h] --model-dir MODEL_DIR --input INPUT --chunk-size\n                    {14,7,1} --output OUTPUT\nrun_probe.py: error: output must be a new directory\n"
+    },
+    {
+      "case": "wrong_input",
+      "returncode": 2,
+      "stderr": "usage: run_probe.py [-h] --model-dir MODEL_DIR --input INPUT --chunk-size\n                    {14,7,1} --output OUTPUT\nrun_probe.py: error: input must match the archived SVD reference PNG SHA\n"
+    }
+  ],
+  "scope": "Parser/output/input rejection only. No model loaded."
+}

@@ -1,0 +1,566 @@
+{
+  "status": "passed",
+  "created_utc": "2026-11-11T20:30:55.315778+00:00",
+  "preregistration_commit": "1d97b06613872096c6ab86fc9030be8059a1233a",
+  "plan_sha256": "898818a4b7b48119cc2983d43e0c128edd1ab872f1531b3468cc7f7a4b2e62c7",
+  "source_hashes": {
+    "records/measurements/svd-decoder-chunks/run_probe.py": "8ae054b3883d1cb5092f08215589ff378faa2c0d7703942a60532e53ff041e0d",
+    "requirements-pretrained-lock.txt": "95176d3908a08a99ca80ca84fe8d2aaf0a5b7c5cc80cd663fb63bd5c1b7b1729",
+    "examples/pretrained-svd/manifest.json": "6f10bafb14e6954382c828ed349cdaeb4023eb0dc4a727c43f4d317228deeb6a",
+    "docs/assets/svd-input.png": "e76d50ef91a5ece55252b9c867d58927ca8b21a303ee112014491608f79ed962",
+    "src/genai_study/pretrained_video.py": "215940885a6f05b5d158a901a75b51e02e7a985a2b83556bd690320a09ea4e7f",
+    "src/genai_study/pretrained_image.py": "3cd514bae6d2a9e8c17fafea806f49854813ad88c0b08e858e685dd6e0b8f1be",
+    "src/genai_study/run_record.py": "be545eff1985b8eed096b0663145bade01303685430310d4b199aa727c685697"
+  },
+  "assets_full_sha_verified": [
+    {
+      "path": "vae/config.json",
+      "size_bytes": 609,
+      "sha256": "aab2b8766d6db1bf742fa0e3bf217fae64e67a20e7e0fe78de84f79007100ffb"
+    },
+    {
+      "path": "vae/diffusion_pytorch_model.safetensors",
+      "size_bytes": 391017740,
+      "sha256": "9975042d7bee021bd53a72b1af14c8627d624f6547ec9abe661b68b962b88c49"
+    },
+    {
+      "path": "LICENSE.md",
+      "size_bytes": 11852,
+      "sha256": "d6f6b1a4dce5c852bd6d7d9482d002baf0ccdb71e662250b73be9eec8764ee8d"
+    }
+  ],
+  "input_identity_comparisons": [
+    {
+      "pair": [
+        "chunk14",
+        "chunk7"
+      ],
+      "all_three_input_arrays_byte_identical": true
+    },
+    {
+      "pair": [
+        "chunk14",
+        "chunk1"
+      ],
+      "all_three_input_arrays_byte_identical": true
+    },
+    {
+      "pair": [
+        "chunk7",
+        "chunk1"
+      ],
+      "all_three_input_arrays_byte_identical": true
+    }
+  ],
+  "cost_rows": [
+    {
+      "id": "chunk14",
+      "chunk_size": 14,
+      "wall_seconds": 73.130625023,
+      "decode_seconds": 64.07642741099971,
+      "internal_total_seconds": 72.11431115800042,
+      "unitemized_internal_seconds": 0.057157500002176675,
+      "peak_rss_kib": 2918764,
+      "peak_rss_gib": 2.783550262451172,
+      "rss_scope": "Linux process lifetime through output serialization, diagnostics and metadata construction; queried before metrics JSON writing/printing/exit.",
+      "raw_min": -0.9061580896377563,
+      "raw_max": 0.6771974563598633,
+      "outside_minus1_plus1_fraction": 0.0,
+      "adjacent_raw_rms": [
+        0.012287212504168159,
+        0.008325804210428611,
+        0.006382771277925166,
+        0.005518382922566107,
+        0.005162075315852175,
+        0.004833543822864352,
+        0.004798291361819439,
+        0.004777548917381814,
+        0.005210361718703128,
+        0.005439956814680623,
+        0.006282981453423274,
+        0.008427391762553827,
+        0.012620911184312985
+      ],
+      "decoder_calls": [
+        {
+          "shape": [
+            14,
+            4,
+            18,
+            32
+          ],
+          "num_frames": 14
+        }
+      ],
+      "metrics_sha256": "15cd2a51905996ace04fee8e32dee9b44f26ce72f35d2741f6eb218b5ad175d0",
+      "run_sha256": "8c305c60744a7c6027099489e118884b1b0bfc5df073840e3850faa9b5ba9cd4",
+      "raw_npy_sha256": "c3f93255b22f33235dace8f0d8823abde9023610d6e055db654d16740bf6a78e",
+      "changed_paths": []
+    },
+    {
+      "id": "chunk7",
+      "chunk_size": 7,
+      "wall_seconds": 46.81876807699973,
+      "decode_seconds": 39.109443383000325,
+      "internal_total_seconds": 46.001383230999636,
+      "unitemized_internal_seconds": 0.017151258000012604,
+      "peak_rss_kib": 1918916,
+      "peak_rss_gib": 1.8300209045410156,
+      "rss_scope": "Linux process lifetime through output serialization, diagnostics and metadata construction; queried before metrics JSON writing/printing/exit.",
+      "raw_min": -0.8999108076095581,
+      "raw_max": 0.6747957468032837,
+      "outside_minus1_plus1_fraction": 0.0,
+      "adjacent_raw_rms": [
+        0.013077950997932606,
+        0.008571254365982769,
+        0.007194757381550758,
+        0.006921557515415438,
+        0.008370846788248575,
+        0.013034300702648912,
+        0.02021215275557432,
+        0.013077950997932606,
+        0.008571254365982769,
+        0.007194757381550758,
+        0.006921557515415438,
+        0.008370846788248575,
+        0.013034300702648912
+      ],
+      "decoder_calls": [
+        {
+          "shape": [
+            7,
+            4,
+            18,
+            32
+          ],
+          "num_frames": 7
+        },
+        {
+          "shape": [
+            7,
+            4,
+            18,
+            32
+          ],
+          "num_frames": 7
+        }
+      ],
+      "metrics_sha256": "6cd0b668d6ca51ff4374b92c113d2b2c2116b192a57bc4521d4511959b458f62",
+      "run_sha256": "4f0d5387cd4b7653421c64d42d435bef4b0be0aa6665bca61d6321a98981ead6",
+      "raw_npy_sha256": "e85b54346dba1f24e15a98734d4a97940abe12b70155fbd7b35bc5149f4821db",
+      "changed_paths": []
+    },
+    {
+      "id": "chunk1",
+      "chunk_size": 1,
+      "wall_seconds": 40.799752521999835,
+      "decode_seconds": 33.51280604400017,
+      "internal_total_seconds": 40.066013200999805,
+      "unitemized_internal_seconds": 0.01416602400058764,
+      "peak_rss_kib": 1009816,
+      "peak_rss_gib": 0.9630355834960938,
+      "rss_scope": "Linux process lifetime through output serialization, diagnostics and metadata construction; queried before metrics JSON writing/printing/exit.",
+      "raw_min": -0.8809089660644531,
+      "raw_max": 0.7380982637405396,
+      "outside_minus1_plus1_fraction": 0.0,
+      "adjacent_raw_rms": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "decoder_calls": [
+        {
+          "shape": [
+            1,
+            4,
+            18,
+            32
+          ],
+          "num_frames": 1
+        },
+        {
+          "shape": [
+            1,
+            4,
+            18,
+            32
+          ],
+          "num_frames": 1
+        },
+        {
+          "shape": [
+            1,
+            4,
+            18,
+            32
+          ],
+          "num_frames": 1
+        },
+        {
+          "shape": [
+            1,
+            4,
+            18,
+            32
+          ],
+          "num_frames": 1
+        },
+        {
+          "shape": [
+            1,
+            4,
+            18,
+            32
+          ],
+          "num_frames": 1
+        },
+        {
+          "shape": [
+            1,
+            4,
+            18,
+            32
+          ],
+          "num_frames": 1
+        },
+        {
+          "shape": [
+            1,
+            4,
+            18,
+            32
+          ],
+          "num_frames": 1
+        },
+        {
+          "shape": [
+            1,
+            4,
+            18,
+            32
+          ],
+          "num_frames": 1
+        },
+        {
+          "shape": [
+            1,
+            4,
+            18,
+            32
+          ],
+          "num_frames": 1
+        },
+        {
+          "shape": [
+            1,
+            4,
+            18,
+            32
+          ],
+          "num_frames": 1
+        },
+        {
+          "shape": [
+            1,
+            4,
+            18,
+            32
+          ],
+          "num_frames": 1
+        },
+        {
+          "shape": [
+            1,
+            4,
+            18,
+            32
+          ],
+          "num_frames": 1
+        },
+        {
+          "shape": [
+            1,
+            4,
+            18,
+            32
+          ],
+          "num_frames": 1
+        },
+        {
+          "shape": [
+            1,
+            4,
+            18,
+            32
+          ],
+          "num_frames": 1
+        }
+      ],
+      "metrics_sha256": "a182f3c20c17f2a7dd3393522bf32717de407d5a7e4a34b62072220986dccbf5",
+      "run_sha256": "7a845962cc7bfdad0de6f345121a9557e4215d4f1e1ff4280db518588ccbccb2",
+      "raw_npy_sha256": "8ee3f114bd49c910e472be42e08ff7b99c5ebcce773133cc15b87aabacd7116b",
+      "changed_paths": [
+        {
+          "status": "??",
+          "path": "records/measurements/svd-decoder-chunks/asset-identity.json"
+        },
+        {
+          "status": "??",
+          "path": "records/measurements/svd-decoder-chunks/check_scalar.py"
+        },
+        {
+          "status": "??",
+          "path": "records/measurements/svd-decoder-chunks/scalar-check.json"
+        },
+        {
+          "status": "??",
+          "path": "records/measurements/svd-decoder-chunks/source-audit.md"
+        },
+        {
+          "status": "??",
+          "path": "records/measurements/svd-decoder-chunks/teaching-example.py"
+        }
+      ]
+    }
+  ],
+  "sum_command_wall_seconds": 160.74914562199956,
+  "observed_request_window_seconds": 198.122723,
+  "inter_request_and_coordinator_seconds": 37.37357737800045,
+  "pairwise_raw_float64_differences": {
+    "chunk14_vs_chunk7": {
+      "global_rms": 0.018891425443201278,
+      "global_max_abs": 0.3188364803791046,
+      "per_frame_rms": [
+        0.016948875065194297,
+        0.01807689825784226,
+        0.01754743363055701,
+        0.01811201460703092,
+        0.018659587107668112,
+        0.02020925375227055,
+        0.020956121441698408,
+        0.021701797361719816,
+        0.020565722800685134,
+        0.01922618837980577,
+        0.01817133356411145,
+        0.017933161838574272,
+        0.01830963708506811,
+        0.01732201931403295
+      ],
+      "per_frame_max_abs": [
+        0.2621164917945862,
+        0.29513686895370483,
+        0.2935873866081238,
+        0.30745837092399597,
+        0.3188364803791046,
+        0.2859128415584564,
+        0.31263819336891174,
+        0.2817838788032532,
+        0.299422025680542,
+        0.29872655868530273,
+        0.27358749508857727,
+        0.3135634958744049,
+        0.29416075348854065,
+        0.29393333196640015
+      ],
+      "different_float_elements": 1548285,
+      "exact_equal": false
+    },
+    "chunk14_vs_chunk1": {
+      "global_rms": 0.04375841646955537,
+      "global_max_abs": 0.6712268441915512,
+      "per_frame_rms": [
+        0.041983844677522655,
+        0.04480384423300275,
+        0.04452519255880574,
+        0.04424801577867204,
+        0.044361503571868535,
+        0.044346296616785005,
+        0.044334510722608085,
+        0.04425977669888659,
+        0.044066784856184045,
+        0.043911381601574824,
+        0.04341680941684447,
+        0.043585549592405126,
+        0.04357947584441499,
+        0.04103393687155648
+      ],
+      "per_frame_max_abs": [
+        0.6025847941637039,
+        0.6675761789083481,
+        0.6712268441915512,
+        0.6376183182001114,
+        0.6396006643772125,
+        0.6504558324813843,
+        0.641046330332756,
+        0.6150513216853142,
+        0.6180380135774612,
+        0.6283342391252518,
+        0.6383721604943275,
+        0.619203194975853,
+        0.622918576002121,
+        0.5620320290327072
+      ],
+      "different_float_elements": 1548287,
+      "exact_equal": false
+    },
+    "chunk7_vs_chunk1": {
+      "global_rms": 0.04078445040521773,
+      "global_max_abs": 0.626220665872097,
+      "per_frame_rms": [
+        0.03898176813574747,
+        0.042269120844071355,
+        0.04182566981261609,
+        0.04109457959056943,
+        0.04127643396837049,
+        0.0413694553559494,
+        0.03852292791931835,
+        0.03898176813574747,
+        0.042269120844071355,
+        0.04182566981261609,
+        0.04109457959056943,
+        0.04127643396837049,
+        0.0413694553559494,
+        0.03852292791931835
+      ],
+      "per_frame_max_abs": [
+        0.5754129141569138,
+        0.6247805655002594,
+        0.6239668130874634,
+        0.5894898027181625,
+        0.5978448912501335,
+        0.626220665872097,
+        0.5784878432750702,
+        0.5754129141569138,
+        0.6247805655002594,
+        0.6239668130874634,
+        0.5894898027181625,
+        0.5978448912501335,
+        0.626220665872097,
+        0.5784878432750702
+      ],
+      "different_float_elements": 1548288,
+      "exact_equal": false
+    }
+  },
+  "within_chunk_invariance": {
+    "chunk7_first_vs_second_segment": {
+      "global_rms": 0.0,
+      "global_max_abs": 0.0,
+      "per_frame_rms": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "per_frame_max_abs": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "different_float_elements": 0,
+      "exact_equal": true
+    },
+    "chunk1_all_vs_first_frame": {
+      "global_rms": 0.0,
+      "global_max_abs": 0.0,
+      "per_frame_rms": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "per_frame_max_abs": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "different_float_elements": 0,
+      "exact_equal": true
+    }
+  },
+  "versions": {
+    "torch": "2.6.0+cpu",
+    "numpy": "2.1.3",
+    "diffusers": "0.35.2",
+    "transformers": "4.57.6",
+    "Pillow": "13.0.0"
+  },
+  "execution": {
+    "started_utc": "2026-11-11T20:25:06.192951+00:00",
+    "started_monotonic": 7873.212964382,
+    "plan_sha256": "898818a4b7b48119cc2983d43e0c128edd1ab872f1531b3468cc7f7a4b2e62c7",
+    "preregistration_head": "1d97b06613872096c6ab86fc9030be8059a1233a",
+    "source_hashes_verified_before_first_run": true,
+    "status": "succeeded",
+    "slots": [
+      {
+        "id": "chunk14",
+        "status": "succeeded",
+        "wall_seconds": 73.130625023,
+        "peak_rss_gib": 2.783550262451172
+      },
+      {
+        "id": "chunk7",
+        "status": "succeeded",
+        "wall_seconds": 46.81876807699973,
+        "peak_rss_gib": 1.8300209045410156
+      },
+      {
+        "id": "chunk1",
+        "status": "succeeded",
+        "wall_seconds": 40.799752521999835,
+        "peak_rss_gib": 0.9630355834960938
+      }
+    ],
+    "first_gate": {
+      "checked_utc": "2026-11-11T20:26:40.852622+00:00",
+      "passed": true,
+      "wall_seconds": 73.130625023,
+      "peak_rss_gib": 2.783550262451172
+    },
+    "recorded_complete_utc": "2026-11-11T20:28:33.098127+00:00",
+    "last_command_finished_utc": "2026-11-11T20:28:24.315674+00:00",
+    "observed_sequence_seconds": 198.122723,
+    "command_wall_sum": 160.74914562199956
+  },
+  "method": "Raw float32 NPY validated by file and C-order array SHA; float64 per-frame dot-product squared norms combined with math.fsum. No clipping, RGB conversion, image inspection or model execution.",
+  "scope": "One fixed repeated encoded reference; exact input identity checked across processes. Encoder itself was not re-executed. Query-point RSS and full external command wall are distinct measures."
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "status": "succeeded",
+  "argv": [
+    ".venv-pretrained/bin/python",
+    "-u",
+    "records/measurements/svd-decoder-chunks/run_probe.py",
+    "--model-dir",
+    "artifacts/models/svd",
+    "--input",
+    "docs/assets/svd-input.png",
+    "--chunk-size",
+    "14",
+    "--output",
+    "artifacts/svd-decoder-chunks/chunk14"
+  ],
+  "cwd": "/workspace/genai_study",
+  "started_utc": "2026-11-11T20:25:06.254893+00:00",
+  "timeout_seconds": 300.0,
+  "termination_grace_seconds": 1.0,
+  "runner": {
+    "version": 1,
+    "source_sha256": "be545eff1985b8eed096b0663145bade01303685430310d4b199aa727c685697",
+    "python_version": "3.12.14",
+    "python_executable": "/workspace/genai_study/.venv/bin/python"
+  },
+  "git": {
+    "root": "/workspace/genai_study",
+    "head": "1d97b06613872096c6ab86fc9030be8059a1233a",
+    "changed_paths": []
+  },
+  "stdin": "devnull",
+  "log_file": "command.log",
+  "timed_out": false,
+  "child_returncode": 0,
+  "exit_code": 0,
+  "wall_seconds": 73.130625023,
+  "finished_utc": "2026-11-11T20:26:19.416542+00:00",
+  "log_size_bytes": 282,
+  "log_sha256": "c3308d29695366feb4f9e2439d756f332f6a66a8f39479413e0e2672327a9c07"
+}
