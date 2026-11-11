@@ -539,3 +539,11 @@ SVD在途检查点：已推送a3ed4a8，对应自动PR run42877869115为complete
 集成：接入04、README、路线、术语/符号和条件注意力，术语39组，CPU白名单12文档15块。完整bash scripts/quality.sh退出0：146 passed（36.15秒）、15/15教学块、7条smoke，执行时775本地链接0错误；日志artifacts/quality/20261111T170520Z-XoMQbD。随后仅补记录，提交前复查文档/diff。没有训练或预训练forward。
 
 交付：PR #2最新2ac2f7b已推送，保留完成的数学验收记录。从该检查点建立feat/spatial-token-interface，以PR #2分支为base创建独立PR，使本专题差异可单独审阅；用户尚未授权新的合并。推送后补本卡与新增符号的真实GitHub数学/布局验收。当前每小时workflow仍在main416dd8ce，真实schedule继续观察；环境配置、网站、持续编码调度和通知部署状态保持。
+
+## 轮次46：核验当前来源入口的外部可达性
+
+问题：本地检查只验证仓库内链接，来源入口的HTTP可达性缺少当前快照证据。以HEAD、4并发、15秒/请求、必要GET正文上限8192字节的计划检查README/SOURCES/11章/10阅读卡；先完成80个，再补余下18个并重新核对新增专题来源。实际98个请求全部HEAD、最终HTTP200，正文下载0字节，最长2.713402秒；4个正常重定向保留原始归属URL。PDF/模型大文件及本仓PR/Actions按计划排除，没有下载权重或向外部发布内容。
+
+主代理独立重算23个文件SHA，核对98个URL唯一、状态/方法/下载字节一致；最终快照对应9f5b3b6。记录归档records/reader-checks/source-links-20261111.json，并在SOURCES明确可达性范围；科学结论和锚点需沿各专题另外核对。全部受检入口可达，正文来源链接无需修改。
+
+交付检查点：空间专题9f5b3b6已推送，独立PR #3为https://github.com/Fengyee/genai_study/pull/3 ，base为feat/vae-reconstruction（PR #2）。新专题/符号表的真实浏览器检查正在完成；冷启动首次2秒采样未完成公式转换，已按实际客户端完成状态等待复查，暂不将其判为正文错误。本轮仅增加验证记录和说明，沿用轮次45完整146测试/15教学块/7条smoke，提交前执行文档/diff检查。schedule观察和环境部署边界保持。
