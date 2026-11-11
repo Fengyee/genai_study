@@ -12,7 +12,7 @@
 - [PR #4](https://github.com/Fengyee/genai_study/pull/4)开放，最新efb3ead的run43070085722成功，包含checkpoint数值契约及调度观察记录。8份历史checkpoint重放结果逐元素相同；本项尚无合并授权。
 - [PR #5](https://github.com/Fengyee/genai_study/pull/5)开放，基于PR #4，最新f5cc255的run43071278535成功。完整本地检查178 tests、16/16教学块、7条CLI smoke通过；固定1684744实际页面双视口52公式/锚点/答案/局部滚动均通过。PR #4/#5的新合并授权已询问，等待用户答复，其他工作继续。
 - [PR #6](https://github.com/Fengyee/genai_study/pull/6)分支为feat/sd14-attributes-layout，原八请求首条超时、余七未执行；单独声明的线程诊断后，两线程批次0bc702c八条全部成功，37.00分钟，完整原图与两位AI独立观察均已归档。固定源码和锁文件保持。
-- PR6最终内容1b6f8f5、[PR #7](https://github.com/Fengyee/genai_study/pull/7)集成7ed0d67与[PR #8](https://github.com/Fengyee/genai_study/pull/8)集成9ebea09的最新CI均成功；PR6已转为可审阅。PR8检查点94f7660的CI43091354688也已success。分支按PR6→PR7→PR8同步，均待审阅与单独合并授权。当前从94f7660创建docs/reflow-coupling，正在完成Reflow耦合更新专题与证据；新增第18个教学块，完整检查和实际页面验收见轮次60。
+- PR6最终内容1b6f8f5、[PR #7](https://github.com/Fengyee/genai_study/pull/7)集成7ed0d67与[PR #8](https://github.com/Fengyee/genai_study/pull/8)集成9ebea09的最新CI均成功；PR6已转为可审阅。PR8检查点94f7660的CI43091354688也已success。分支按PR6→PR7→PR8同步，均待审阅与单独合并授权。当前从94f7660创建docs/reflow-coupling，Reflow专题已通过178/18/7完整检查和固定SHA两视口验收，以PR #9交付；详细证据见轮次60。
 - 每小时质量workflow位于main，API active、cron为UTC每小时:17；原416版本push/手动与d99版本push的artifact均实际核验。初段117次查询覆盖16:17/17:17；恢复后18:31–19:35的64次覆盖19:17，19:36复查仍无schedule事件；18:17处于断线空窗，原因未确定。
 - 编码代理持久调度、网站和通知绑定未部署；Bark/Codex推送仍缺可用接口。原八请求已按超时规则停止；新两线程批次已完成，完整PNG、metrics/run与日志文本进入仓库，浮点数组保存在忽略的artifacts。
 
@@ -711,3 +711,5 @@ PR8基底同步：当前工作分支feat/meanflow-average-velocity已合入PR7�
 整合修复：附录原临时目录命令改为仓库路径与新输出；补齐一个TeX命令分隔空格。36行教学块1649字节与独立来源相同，MeanFlow原79公式和CPU块保持。共享符号、教学执行器有变更，运行完整quality；随后按推送SHA验收新卡、全局符号/术语和两份数学附录。当前工作仍在本地分支，PR及CI状态将在验证后追加。main、环境发布、网站、调度和通知状态保持前述实际记录。
 
 轮次60本地验收：完整`bash scripts/quality.sh`退出0，178 tests（67.36秒）、18/18教学块、7条CLI smoke全部通过，10个子检查退出0；目录artifacts/quality/20261111T201031Z-0pcA7W。当时980链接0错误，随后仅记录/导航变化再检981链接0错误；git diff检查通过。四份最终教学/推导文件的独立审查SHA已核对并归档final-review.json，无未解决发现。接下来推送新分支、创建以PR8为基底的PR并执行固定SHA阅读验收。
+
+轮次60交付验收：已创建[PR #9](https://github.com/Fengyee/genai_study/pull/9)，base为PR8的feat/meanflow-average-velocity。正文dca73531的run43094510880 completed/success；五页255公式API逐项保持，实际GitHub1440×1000和390×844共10页面/510 MathML全部通过。36行1649字节代码（显示省略末尾newline）、三题、符号新增两行、术语新增一组、局部滚动、12次先修/证据/固定论文作者链接点击均通过。主协调重hash五份正文和十份证据/截图，并查看窄屏符号、练习和相邻轮公式；轻量证据及练习截图归档reader-check.json。后续检查点仅更新证据/状态。下一具体工作：按原生尺寸资源与时序解码语义审查SVD基线可行性，先固定探测预算、内存门槛和已知验证范围。

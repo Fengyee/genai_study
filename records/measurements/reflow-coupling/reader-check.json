@@ -1,0 +1,327 @@
+{
+  "checked_utc": "2026-11-11T20:16:29.461897+00:00",
+  "commit": "dca73531b1c2cdabfe5c74d95f59538bf36a2818",
+  "all_passed": true,
+  "scope": "Five source pages checked through the GitHub Markdown API and actual GitHub Chromium rendering at 1440x1000 and 390x844, with selected real source/prerequisite/evidence link clicks.",
+  "tls_verification": true,
+  "browser_version": "156.0.8078.79",
+  "api": {
+    "pages": 5,
+    "formula_payloads_matched_in_order": 255,
+    "inline_display_kinds_matched_in_order": 255,
+    "source_blobs_match_commit": true,
+    "source_blobs_match_browser_expected_source": true
+  },
+  "client": {
+    "pages_checked": 10,
+    "pages_passed": 10,
+    "mathml_instances": 510,
+    "errors": 0,
+    "raw_tex": 0,
+    "empty_renderers": 0,
+    "overall_horizontal_overflow": false,
+    "overflowing_local_math_table_and_code_regions_scroll": true
+  },
+  "sources": [
+    {
+      "path": "docs/readings/reflow-coupling.md",
+      "sha256": "a8a2dd6e458274eaefd1664a404ab5e1ebbca1e09345dcf593f8b8dd2ee884fe",
+      "bytes": 10666,
+      "inline": 50,
+      "display": 7,
+      "total": 57
+    },
+    {
+      "path": "docs/notation.md",
+      "sha256": "723f0f73e50313e1cf580df6bdf50cfc9959ad51290b450b7f9454dbda85e946",
+      "bytes": 8718,
+      "inline": 98,
+      "display": 0,
+      "total": 98
+    },
+    {
+      "path": "docs/glossary.md",
+      "sha256": "8b5857b4393f68e21eacac87417cedcdea8a95601725bcd78f09bfce7d4e4efb",
+      "bytes": 16959,
+      "inline": 17,
+      "display": 0,
+      "total": 17
+    },
+    {
+      "path": "records/measurements/reflow-coupling/gaussian-derivation.md",
+      "sha256": "0776ecec15dba09cfc822d08d233bf3afd4c4e15c2f288966a7f1648565aaf2a",
+      "bytes": 6878,
+      "inline": 40,
+      "display": 15,
+      "total": 55
+    },
+    {
+      "path": "records/measurements/reflow-coupling/squared-cost-derivation.md",
+      "sha256": "c7b63c744f5e7d8357dfcbb9d8a866a30a4f172c95153e6eebbdce83dfc910ce",
+      "bytes": 2295,
+      "inline": 21,
+      "display": 7,
+      "total": 28
+    }
+  ],
+  "code": {
+    "lines": 36,
+    "bytes": 1649,
+    "sha256": "d4f3a26876413c1ba58cb3e411632f22ae5c448570264b9e1b50ce8f124d33fb",
+    "browser_bytes": 1648,
+    "matches_allowing_omitted_terminal_newline": true,
+    "committed_teaching_example_matches_api_verified_block": true
+  },
+  "pages": [
+    {
+      "page": "reflow",
+      "viewport": "desktop",
+      "mathml": 57,
+      "inline": 50,
+      "display": 7,
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentScrollWidth": 1440,
+        "articleClientWidth": 1012,
+        "articleScrollWidth": 1012
+      },
+      "local_scroll_regions": 0,
+      "anchors_clicked": 7
+    },
+    {
+      "page": "reflow",
+      "viewport": "narrow",
+      "mathml": 57,
+      "inline": 50,
+      "display": 7,
+      "geometry": {
+        "viewportWidth": 390,
+        "documentScrollWidth": 390,
+        "articleClientWidth": 324,
+        "articleScrollWidth": 324
+      },
+      "local_scroll_regions": 4,
+      "anchors_clicked": 7
+    },
+    {
+      "page": "notation",
+      "viewport": "desktop",
+      "mathml": 98,
+      "inline": 98,
+      "display": 0,
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentScrollWidth": 1440,
+        "articleClientWidth": 1012,
+        "articleScrollWidth": 1012
+      },
+      "local_scroll_regions": 0,
+      "anchors_clicked": 1
+    },
+    {
+      "page": "notation",
+      "viewport": "narrow",
+      "mathml": 98,
+      "inline": 98,
+      "display": 0,
+      "geometry": {
+        "viewportWidth": 390,
+        "documentScrollWidth": 390,
+        "articleClientWidth": 324,
+        "articleScrollWidth": 324
+      },
+      "local_scroll_regions": 0,
+      "anchors_clicked": 1
+    },
+    {
+      "page": "glossary",
+      "viewport": "desktop",
+      "mathml": 17,
+      "inline": 17,
+      "display": 0,
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentScrollWidth": 1440,
+        "articleClientWidth": 1012,
+        "articleScrollWidth": 1012
+      },
+      "local_scroll_regions": 0,
+      "anchors_clicked": 1
+    },
+    {
+      "page": "glossary",
+      "viewport": "narrow",
+      "mathml": 17,
+      "inline": 17,
+      "display": 0,
+      "geometry": {
+        "viewportWidth": 390,
+        "documentScrollWidth": 390,
+        "articleClientWidth": 324,
+        "articleScrollWidth": 324
+      },
+      "local_scroll_regions": 6,
+      "anchors_clicked": 1
+    },
+    {
+      "page": "gaussian",
+      "viewport": "desktop",
+      "mathml": 55,
+      "inline": 40,
+      "display": 15,
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentScrollWidth": 1440,
+        "articleClientWidth": 1012,
+        "articleScrollWidth": 1012
+      },
+      "local_scroll_regions": 0,
+      "anchors_clicked": 1
+    },
+    {
+      "page": "gaussian",
+      "viewport": "narrow",
+      "mathml": 55,
+      "inline": 40,
+      "display": 15,
+      "geometry": {
+        "viewportWidth": 390,
+        "documentScrollWidth": 390,
+        "articleClientWidth": 324,
+        "articleScrollWidth": 324
+      },
+      "local_scroll_regions": 5,
+      "anchors_clicked": 1
+    },
+    {
+      "page": "cost",
+      "viewport": "desktop",
+      "mathml": 28,
+      "inline": 21,
+      "display": 7,
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentScrollWidth": 1440,
+        "articleClientWidth": 1012,
+        "articleScrollWidth": 1012
+      },
+      "local_scroll_regions": 0,
+      "anchors_clicked": 1
+    },
+    {
+      "page": "cost",
+      "viewport": "narrow",
+      "mathml": 28,
+      "inline": 21,
+      "display": 7,
+      "geometry": {
+        "viewportWidth": 390,
+        "documentScrollWidth": 390,
+        "articleClientWidth": 324,
+        "articleScrollWidth": 324
+      },
+      "local_scroll_regions": 3,
+      "anchors_clicked": 1
+    }
+  ],
+  "teaching_checks": {
+    "main_card_exercises_visible": 3,
+    "main_card_exercises_math_errors": 0,
+    "notation_new_rows_visible": 2,
+    "glossary_new_row_visible": 1
+  },
+  "navigation": {
+    "passed_clicks": 12,
+    "viewports": 2,
+    "link_types": [
+      "prerequisite C section and fragment",
+      "squared-cost proof",
+      "local evidence index",
+      "arXiv2209.03003v1 abstract",
+      "author implementation at5a1fd4dd and L141-L221",
+      "glossary-to-card"
+    ],
+    "scope": "Destination URL/fragment and expected visible target text verified. Original source claims were not independently re-audited during this reader check."
+  },
+  "visual_review": {
+    "observer": "AI code agent /root/meanflow_reader_check",
+    "inspected_screenshots": [
+      "reflow-exercises-narrow.png",
+      "reflow-code-narrow.png",
+      "notation-reflow-rows-narrow.png",
+      "glossary-reflow-row-narrow.png",
+      "gaussian-formula-narrow.png",
+      "cost-formula-narrow.png"
+    ],
+    "finding": "Three exercises and answers are readable at390px. Added notation and glossary rows are visible. Both proof appendices render native mathematics; long expressions, tables and code scroll locally. Document width stays390px in narrow view and1440px in desktop view.",
+    "scope_limits": "Physical mobile device and screen-reader behavior were not tested; mathematical validity and CPU execution use the separate repository checks."
+  },
+  "evidence": [
+    {
+      "file": "api/summary.json",
+      "sha256": "2313e2db2e1eca1f19838bc5a0a1033c6ea9c8cc24cc6121311edf1e640f0fe6"
+    },
+    {
+      "file": "client/browser-results.json",
+      "sha256": "d0941848e8a0177449e2705d7c7e104d42fad0ec7553f8a8014e4d789c7cc512"
+    },
+    {
+      "file": "client/navigation-results.json",
+      "sha256": "eaaa57e70ddb9e5350163860c16c17eea564014c6c05ade7d086b6b8dfcfef32"
+    },
+    {
+      "file": "api/reader-controls.json",
+      "sha256": "a0979bf00ae90045dd452930b6af65458c3efffdc7f406c84ddb7782cb1856b6"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "client/reflow-exercises-narrow.png",
+      "sha256": "c95c8ae5ee3e6b385c312076c7c6e708d89081faaab92c34880d0ab58e397cd4",
+      "bytes": 59937
+    },
+    {
+      "file": "client/reflow-code-narrow.png",
+      "sha256": "742999e9235e61f02113aa8395de10e6b356d9a0e6285641aea3d2fbaf8d26f4",
+      "bytes": 76157
+    },
+    {
+      "file": "client/notation-reflow-rows-narrow.png",
+      "sha256": "456db61ea62e592462b3eeb2de53ac8a9412bcbee2918bc8702157a44d42e049",
+      "bytes": 92294
+    },
+    {
+      "file": "client/glossary-reflow-row-narrow.png",
+      "sha256": "61379e67e200919dc5146df938773b6681bb02bf3d49e184d39f7b573c321e10",
+      "bytes": 89152
+    },
+    {
+      "file": "client/gaussian-formula-narrow.png",
+      "sha256": "c80e0c609ea9eab1eb84ff443c0118fc674cd13097e5ac4315deffdd8280cc9e",
+      "bytes": 124987
+    },
+    {
+      "file": "client/cost-formula-narrow.png",
+      "sha256": "1971267e19076e611807aa9c4aeab5c6d089f66c5baa02b85a72752e5f47031d",
+      "bytes": 107543
+    }
+  ],
+  "root_verification": {
+    "checked_utc": "2026-11-11T20:17:26.439345+00:00",
+    "source_files_rehashed": 5,
+    "evidence_and_screenshot_files_rehashed": 10,
+    "screenshots_visually_reviewed": [
+      "client/notation-reflow-rows-narrow.png",
+      "client/reflow-exercises-narrow.png",
+      "client/cost-last-formula-narrow.png"
+    ],
+    "finding": "Narrow-screen notation, exercises and best-iterate expression are readable; formula indices agree with the source."
+  },
+  "remote_ci": {
+    "run_id": 43094510880,
+    "head_sha": "dca73531b1c2cdabfe5c74d95f59538bf36a2818",
+    "event": "pull_request",
+    "status": "completed",
+    "conclusion": "success"
+  }
+}
