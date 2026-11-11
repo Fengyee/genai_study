@@ -1,0 +1,82 @@
+{
+  "method": "Exact Fraction means and population variances, independently checked with centered squares and second moments; 70-digit Decimal square roots for outputs.",
+  "configuration": {
+    "shape_NCTHW": [
+      1,
+      2,
+      8,
+      1,
+      1
+    ],
+    "groups": 1,
+    "affine": false,
+    "epsilon": "1/100000",
+    "teaching_simplifications": "C=2, G=1, affine=False; epsilon=1e-5 matches the parent review's VAE temporal block source check."
+  },
+  "statistics": {
+    "full_8_frames": {
+      "n": 16,
+      "mean": "15/2",
+      "population_variance": "85/4"
+    },
+    "first_4_frames": {
+      "n": 8,
+      "mean": "11/2",
+      "population_variance": "69/4"
+    },
+    "first_5_frames": {
+      "n": 10,
+      "mean": "6",
+      "population_variance": "18"
+    }
+  },
+  "channel_0_frame_2_value_1": {
+    "full_8_frames": "-1.410047644045387904478273962924577762683471247783164895025146847788748",
+    "first_4_frames": "-1.083472363722007822199951052484131031223893357525908660303064938896002",
+    "first_5_frames": "-1.178510974613465059715096292953283167338527928082334758156291368344508"
+  },
+  "unseen_context_change": {
+    "change": "channel 1, frame 8: 15 -> 115 (one-based frame numbering)",
+    "first_5_frames_inputs_identical": true,
+    "changed_full_statistics": {
+      "n": 16,
+      "mean": "55/4",
+      "population_variance": "11215/16"
+    },
+    "all_10_first_5_frames_full_groupnorm_outputs_changed": true,
+    "channel_0_frame_2_changed_full_output": "-0.4815823193925863341353421335700981979009338198597894637274653954916964",
+    "first_5_frames_halo_groupnorm_outputs_unchanged": true
+  },
+  "two_group_C4_check": {
+    "shape_NCTHW": [
+      1,
+      4,
+      8,
+      1,
+      1
+    ],
+    "groups": 2,
+    "group0_input": "channels 0/1 contain 0..15",
+    "group1_input": "channels 2/3 contain 100..115",
+    "change": "channel 3, frame 8: 115 -> 215",
+    "group0_statistics_before_and_after": {
+      "n": 16,
+      "mean": "15/2",
+      "population_variance": "85/4"
+    },
+    "group1_statistics_before": {
+      "n": 16,
+      "mean": "215/2",
+      "population_variance": "85/4"
+    },
+    "group1_statistics_after": {
+      "n": 16,
+      "mean": "455/4",
+      "population_variance": "11215/16"
+    },
+    "group0_outputs_identical": true,
+    "group1_channel2_frame2_output_changed": true
+  },
+  "scope": "Scalar GroupNorm counterexample only. Any deterministic reconstruction based solely on a fixed observed local window must return the same result for identical local inputs; these full-group outputs differ. This excludes universal exact local-only reconstruction when unobserved same-group values are unrestricted, not reconstruction with externally supplied global statistics, restricted inputs, or a halo covering the entire group. No claim about causal attribution in a real SVD full network.",
+  "errors": []
+}

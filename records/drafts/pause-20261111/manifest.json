@@ -1,0 +1,126 @@
+{
+  "saved_utc": "2026-11-11T21:18:21.912710+00:00",
+  "status": "Unintegrated work preserved at user-requested pause. No change to executable quality script or published lesson.",
+  "files": [
+    {
+      "original_path": "/tmp/genai-temporal-norm-candidate/REVIEW.md",
+      "archive_path": "temporal-groupnorm/REVIEW.md",
+      "bytes": 1996,
+      "sha256": "6d47ff0c624088be5af64571a9349954417f2fcaf322e6b2f88eab3ccc0fe8fb"
+    },
+    {
+      "original_path": "/tmp/genai-temporal-norm-candidate/check_torch.py",
+      "archive_path": "temporal-groupnorm/check_torch.py",
+      "bytes": 2807,
+      "sha256": "d2e9e6da9374e9924dd6c07d79353a2656d0d86b914b13277bf97aabb32b25dd"
+    },
+    {
+      "original_path": "/tmp/genai-temporal-norm-candidate/closing-and-exercise.md",
+      "archive_path": "temporal-groupnorm/closing-and-exercise.md",
+      "bytes": 1181,
+      "sha256": "f5b55214760a013fda343a169b183d1087aa989c149d048938bc188bb6365e74"
+    },
+    {
+      "original_path": "/tmp/genai-temporal-norm-candidate/independent-comparison.json",
+      "archive_path": "temporal-groupnorm/independent-comparison.json",
+      "bytes": 579,
+      "sha256": "6260e92d1fff6d919765a9dc5beff9cdfa27dbd5dbf7620e49036059d2def1dc"
+    },
+    {
+      "original_path": "/tmp/genai-temporal-norm-candidate/manifest.json",
+      "archive_path": "temporal-groupnorm/manifest.json",
+      "bytes": 2001,
+      "sha256": "08430a2c2bf53e283d0eefb5ed2b31e03b53c0f85806f70790e50b0463ed9228"
+    },
+    {
+      "original_path": "/tmp/genai-temporal-norm-candidate/section5-addition.md",
+      "archive_path": "temporal-groupnorm/section5-addition.md",
+      "bytes": 3568,
+      "sha256": "32e1d8e9292e620c814e1557de8f1ab62552591c58dbdeb4cf12ce2b6bbfe2ed"
+    },
+    {
+      "original_path": "/tmp/genai-temporal-norm-candidate/source-identity.json",
+      "archive_path": "temporal-groupnorm/source-identity.json",
+      "bytes": 1586,
+      "sha256": "c47b4dcf70479aaeaa3b22c0c20f884b5cff6b2a58378645602bfabdda8595d5"
+    },
+    {
+      "original_path": "/tmp/genai-temporal-norm-candidate/source-notes.json",
+      "archive_path": "temporal-groupnorm/source-notes.json",
+      "bytes": 1931,
+      "sha256": "e8ec9bcba8dcc7b4230fb742fe73fb8a2b89f1d1790190569ae03fc749bdd26d"
+    },
+    {
+      "original_path": "/tmp/genai-temporal-norm-candidate/teaching-example.py",
+      "archive_path": "temporal-groupnorm/teaching-example.py",
+      "bytes": 1159,
+      "sha256": "b7ad16c58a79efb1f057e6b4ca4eec63b3c834e6298bb501b66d2aeeed0dd2d9"
+    },
+    {
+      "original_path": "/tmp/genai-temporal-norm-candidate/torch-check.json",
+      "archive_path": "temporal-groupnorm/torch-check.json",
+      "bytes": 1379,
+      "sha256": "1342d5a1dae673daa1818e2bc9929e358f5371e4c2fc5e1954d6b5d175fdc111"
+    },
+    {
+      "original_path": "/tmp/genai-temporal-norm-candidate/torch-upstream-identity.json",
+      "archive_path": "temporal-groupnorm/torch-upstream-identity.json",
+      "bytes": 440,
+      "sha256": "481090e4c97d2bf439c565b043c78c552309c7ca36bcd318fdbbbf6cb7a2c1b1"
+    },
+    {
+      "original_path": "/tmp/genai-quality-signal-candidate/README.md",
+      "archive_path": "quality-signal/README.md",
+      "bytes": 344,
+      "sha256": "5f44ac272ceb25b97d99a3cdb48f3327adf0f64603ff03f225a7aaadd513947c"
+    },
+    {
+      "original_path": "/tmp/genai-quality-signal-candidate/baseline/scripts/quality.sh",
+      "archive_path": "quality-signal/baseline/scripts/quality.sh",
+      "bytes": 2496,
+      "sha256": "e29560f57f2469e08d50a1e700d02c7a07b771ff4ecf50820111b3f78e0d6ce3"
+    },
+    {
+      "original_path": "/tmp/genai-quality-signal-candidate/checkpoint.json",
+      "archive_path": "quality-signal/checkpoint.json",
+      "bytes": 3195,
+      "sha256": "c95ec99f23a98927a2f249ab380ae35bf7eb606b7cc9f433734336efc0c7b942"
+    },
+    {
+      "original_path": "/tmp/genai-quality-signal-candidate/quality-signal-unvalidated.patch",
+      "archive_path": "quality-signal/quality-signal-unvalidated.patch",
+      "bytes": 312,
+      "sha256": "c23a43b5619b729e600edb80f48d098155fea383bd2f2c84b008039cd54a35d7"
+    },
+    {
+      "original_path": "/tmp/genai-quality-signal-candidate/scripts/quality.sh",
+      "archive_path": "quality-signal/scripts/quality.sh",
+      "bytes": 2537,
+      "sha256": "56ac8fb79c9717ce0be1b0c60160523b61edd5cda1e3e03f53ec3195135e2508"
+    },
+    {
+      "original_path": "/tmp/genai-temporal-norm-reader-review.json",
+      "archive_path": "temporal-groupnorm/genai-temporal-norm-reader-review.json",
+      "bytes": 6382,
+      "sha256": "614f7727c675f5717cd9fd26cb8a181fc70ee373534eb39c46cb5efcc565cfd2"
+    },
+    {
+      "original_path": "/tmp/audit_temporal_norm_reader.py",
+      "archive_path": "temporal-groupnorm/audit_temporal_norm_reader.py",
+      "bytes": 8887,
+      "sha256": "1e741c93674cbc7f96f31777287510bc95185d2a2349d52274187cb661a5994a"
+    },
+    {
+      "original_path": "/tmp/genai-temporal-norm-independent/results.json",
+      "archive_path": "temporal-groupnorm/independent/results.json",
+      "bytes": 2884,
+      "sha256": "61dda5a4c481d23e7646067c292e2ace7a4dce10b0ad52e17f0008d1a5847360"
+    },
+    {
+      "original_path": "/tmp/genai-temporal-norm-independent/scalar_check.py",
+      "archive_path": "temporal-groupnorm/independent/scalar_check.py",
+      "bytes": 5999,
+      "sha256": "2c9b6cde64fca2029b5b308f6d4f765dd910291f6fed791f2eabc00dcdab956d"
+    }
+  ]
+}

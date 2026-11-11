@@ -1,0 +1,107 @@
+{
+  "status": "passed_no_confirmed_issue",
+  "review_started_utc": "2026-11-11T21:13:31.887859+00:00",
+  "review_completed_utc": "2026-11-11T21:13:58.350753+00:00",
+  "scope": "Read-only candidate, existing-report and pinned-installed-source review; independent exact-rational/NumPy/PyTorch small-tensor checks; no learned-model inference, training, repository edits, Git mutations or downloads.",
+  "files": {
+    "/tmp/genai-temporal-norm-candidate/section5-addition.md": {
+      "sha256": "32e1d8e9292e620c814e1557de8f1ab62552591c58dbdeb4cf12ce2b6bbfe2ed",
+      "bytes": 3568
+    },
+    "/tmp/genai-temporal-norm-candidate/teaching-example.py": {
+      "sha256": "b7ad16c58a79efb1f057e6b4ca4eec63b3c834e6298bb501b66d2aeeed0dd2d9",
+      "bytes": 1159
+    },
+    "/tmp/genai-temporal-norm-candidate/closing-and-exercise.md": {
+      "sha256": "f5b55214760a013fda343a169b183d1087aa989c149d048938bc188bb6365e74",
+      "bytes": 1181
+    },
+    "/workspace/genai_study/docs/svd-decoder-chunk-report.md": {
+      "sha256": "7915b58a5e68e7d55cc65e616e67ada710a02f62999b30338a6ba865c867cc9b",
+      "bytes": 10554
+    }
+  },
+  "independent_derivation": {
+    "normalization_domain": "For each fixed sample n and group g, reduce C/G channels and F,H,W only; M=(C/G)FHW. Batch n and group g are excluded from the reduction axes.",
+    "exact_moments": {
+      "all8": {
+        "mean_exact": "15/2",
+        "variance_exact": "85/4",
+        "mean": 7.5,
+        "variance": 21.25,
+        "M": 16
+      },
+      "first4": {
+        "mean_exact": "11/2",
+        "variance_exact": "69/4",
+        "mean": 5.5,
+        "variance": 17.25,
+        "M": 8
+      },
+      "first5": {
+        "mean_exact": "6",
+        "variance_exact": "18",
+        "mean": 6.0,
+        "variance": 18.0,
+        "M": 10
+      },
+      "remote_plus100": {
+        "mean_exact": "55/4",
+        "variance_exact": "11215/16",
+        "mean": 13.75,
+        "variance": 700.9375,
+        "M": 16
+      }
+    },
+    "derivation": "For m first frames of both channels: mixture of uniform integers0..m-1 and the same integers shifted8 gives mean=(m-1)/2+4 and variance=(m*m-1)/12+16. Full8 gives7.5/21.25; first4 gives5.5/17.25; first5 gives6/18. Replacing15by115 increases sum by100 and sum of squares by13000, giving mean13.75 and variance890-13.75^2=700.9375.",
+    "channel0_frame2_outputs": [
+      -1.4100476440453877,
+      -1.0834723637220078,
+      -1.1785109746134652
+    ],
+    "remote_changed_outputs_in_first5_frames": 10,
+    "whole_group_translation": "Exact rational calculation preserves centered values and variance after adding123to every group element. Fixed epsilon therefore preserves normalized values in exact arithmetic.",
+    "group_isolation": "Two-group test: perturbing sample0/group0 leaves sample0/group1 exactly unchanged.",
+    "batch_isolation": "Two-sample test: perturbing sample0 leaves all of sample1 exactly unchanged.",
+    "train_eval_equality": "PyTorch CPU float64 output is exactly equal in train/eval for the same tensor.",
+    "manual_vs_torch_max_abs": 6.938893903907228e-18
+  },
+  "candidate_execution": {
+    "returncode": 0,
+    "stdout": "frame 2: full, chunk4, one-frame halo [-1.4100476440453877, -1.0834723637220078, -1.1785109746134652]\n",
+    "stderr": ""
+  },
+  "source_review": {
+    "local_hashes_match_supplied_pinned_identity": {
+      "torch_groupnorm": "8919d891301fd2048b60ddc9b30b6bf0d3fd0ac5dd9bc23f912269ec92aa7661",
+      "diffusers_resnet": "0c81501c54a1f05d0d72b0068efc5a71ad5f2bc66802b9694ed9134cb9b9d155",
+      "diffusers_blocks": "3b2108a2fe4d31afd3f64216cdc32831f98a6557200d16deeaf1f559be1aafda",
+      "diffusers_vae": "a89e764f032d410cfb42d73312c14b29755c792ed12c3452bcc31923e46c8c86"
+    },
+    "epsilon": "Both fixed VAE MidBlockTemporalDecoder and UpBlockTemporalDecoder explicitly pass temporal_eps=1e-5; SpatioTemporalResBlock forwards this to TemporalResnetBlock; spatial eps remains separately configured.",
+    "real_parameters": "Real temporal norms have32groups and affine=True. Candidate explicitly fixes one group and affine=False to isolate statistics.",
+    "network_scope": "Per-group statistics acrossF are established; actual output influence also depends on convolution/nonlinearity/residual/affine parameters. Candidate preserves this distinction and calls for intervention to attribute mechanisms."
+  },
+  "reader_review": [
+    "Frame indices are consistent with the preceding report section: frame2 is tensor index1, frame5halo is:5, remote frame8 is index7. Channel numbers use standard0-based convention.",
+    "One right halo at the beginning of the sequence is an explicit finite-subset counterexample. Remote frame8changes full statistics while the local five-frame tensor is identical. Thus locally recomputed GroupNorm cannot universally reproduce full-group normalization.",
+    "The new numerical example adds a global-statistics mechanism to the existing local-convolution example. Translation and remote-perturbation exercise adds a distinct completion criterion rather than repeating the previous halo question.",
+    "The repeated-latent caveat accurately permits identical early statistics; subsequent temporal padding can alter features. The experiment does not assign a measured share of decoder error to GroupNorm."
+  ],
+  "findings": [],
+  "validation_limits": [
+    "No new upstream fetch; fixed installed files were compared with the supplied identity manifest and relevant code read.",
+    "No SVD model execution or attribution experiment."
+  ],
+  "rerun_script": "/tmp/audit_temporal_norm_reader.py",
+  "independent_reader_review": {
+    "path": "/tmp/genai-temporal-norm-reader-child.json",
+    "sha256": "a47eb64d58ca2e662b24df9111f56c796b2c4b3f219edccd285488fb2ea21c91",
+    "findings": [],
+    "candidate_and_report_identity_matches": true
+  },
+  "integration_notes": [
+    "The candidate ends with an editorial suggestion to connect exercise3and add a question; turn that suggestion into the actual final exercise text during integration. Keep the scoped mechanism paragraph with the example.",
+    "Existing section5 describes measured differences as joint contributions of convolution and GroupNorm. When integrating the candidate, describe them as the full decoder response to chunking, consistent with the candidate requirement for intervention to attribute each mechanism."
+  ]
+}

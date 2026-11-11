@@ -1,0 +1,36 @@
+{
+  "created_utc": "2026-11-11T21:08:59.898332+00:00",
+  "python_check_source": {
+    "path": "/tmp/genai-temporal-norm-candidate/check_torch.py",
+    "bytes": 2807,
+    "sha256": "d2e9e6da9374e9924dd6c07d79353a2656d0d86b914b13277bf97aabb32b25dd"
+  },
+  "teaching_example": {
+    "path": "/tmp/genai-temporal-norm-candidate/teaching-example.py",
+    "bytes": 1159,
+    "sha256": "b7ad16c58a79efb1f057e6b4ca4eec63b3c834e6298bb501b66d2aeeed0dd2d9"
+  },
+  "torch_version": "2.6.0+cpu",
+  "dtype": "float64",
+  "device": "cpu",
+  "epsilon": 1e-05,
+  "stdout": "frame 2: full, chunk4, one-frame halo [-1.4100476440453877, -1.0834723637220078, -1.1785109746134652]\n",
+  "observed_frame2_full_chunk_halo": [
+    -1.4100476440453877,
+    -1.0834723637220078,
+    -1.1785109746134652
+  ],
+  "scalar_frame2_full_chunk_halo": [
+    -1.4100476440453877,
+    -1.0834723637220078,
+    -1.1785109746134652
+  ],
+  "max_abs_scalar_difference": 0.0,
+  "remote_changed_frame2": -0.4815823193925864,
+  "remote_modification_changed_all_ten_local_full_outputs": true,
+  "two_groups_match_separate_normalization": true,
+  "remote_other_group_does_not_affect_first_group": true,
+  "batch_examples_normalized_independently": true,
+  "training_evaluation_exact_match": true,
+  "scope": "One normalization layer, no convolution, trained model, SVD forward or causal attribution of decoder differences."
+}

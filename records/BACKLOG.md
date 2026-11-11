@@ -91,4 +91,4 @@
 
 ## 下一项直接可执行工作
 
-继续整体审查与专题证据核验，按读者从论文到实现时的具体缺口排序；当前完整路线和自测已覆盖00–10，预训练失败记录入口已落地。视频发布尺寸基线按可用资源另定预算；持续通过PR交付并观察真实Actions。
+当前按用户要求暂停。恢复时先按[暂停说明](PAUSE.md)核对实际main并取写锁，再从[信号记录检查点](drafts/pause-20261111/quality-signal/checkpoint.json)开始隔离复现；明确TERM/INT、子进程组、timeout与未执行步骤的状态后修复并验证。随后整合[时间GroupNorm草稿](drafts/pause-20261111/temporal-groupnorm/REVIEW.md)，补CPU白名单与实际GitHub阅读验收。其余发布尺寸视频、真实读者反馈和定时事件按上列优先级继续。

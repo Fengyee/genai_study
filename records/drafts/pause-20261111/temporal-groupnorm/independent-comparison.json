@@ -1,0 +1,18 @@
+{
+  "independent_70_digit_decimal_vs_torch_float64_abs_errors": [
+    2.220446049250313e-16,
+    0.0,
+    2.220446049250313e-16
+  ],
+  "remote_case_abs_error": 5.551115123125783e-17,
+  "tolerance": 5e-16,
+  "all_passed": true,
+  "source_of_scalar": {
+    "path": "/tmp/genai-temporal-norm-independent/results.json",
+    "sha256": "61dda5a4c481d23e7646067c292e2ace7a4dce10b0ad52e17f0008d1a5847360"
+  },
+  "source_of_torch": {
+    "path": "/tmp/genai-temporal-norm-candidate/torch-check.json",
+    "sha256": "1342d5a1dae673daa1818e2bc9929e358f5371e4c2fc5e1954d6b5d175fdc111"
+  }
+}

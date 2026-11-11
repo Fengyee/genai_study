@@ -1,0 +1,36 @@
+{
+  "torch_version": "2.6.0+cpu",
+  "torch_git_version": "2236df1770800ffea5697b11b0bb0d910b2e59e1",
+  "files": {
+    "torch_groupnorm": {
+      "path": "/workspace/genai_study/.venv/lib/python3.12/site-packages/torch/nn/modules/normalization.py",
+      "bytes": 14973,
+      "sha256": "8919d891301fd2048b60ddc9b30b6bf0d3fd0ac5dd9bc23f912269ec92aa7661"
+    },
+    "diffusers_resnet": {
+      "path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/models/resnet.py",
+      "bytes": 32254,
+      "sha256": "0c81501c54a1f05d0d72b0068efc5a71ad5f2bc66802b9694ed9134cb9b9d155"
+    },
+    "diffusers_blocks": {
+      "path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/models/unets/unet_3d_blocks.py",
+      "bytes": 51676,
+      "sha256": "3b2108a2fe4d31afd3f64216cdc32831f98a6557200d16deeaf1f559be1aafda"
+    },
+    "diffusers_vae": {
+      "path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_kl_temporal_decoder.py",
+      "bytes": 14778,
+      "sha256": "a89e764f032d410cfb42d73312c14b29755c792ed12c3452bcc31923e46c8c86"
+    },
+    "original_report": {
+      "path": "/workspace/genai_study/docs/svd-decoder-chunk-report.md",
+      "bytes": 10554,
+      "sha256": "7915b58a5e68e7d55cc65e616e67ada710a02f62999b30338a6ba865c867cc9b"
+    },
+    "teaching_example": {
+      "path": "/tmp/genai-temporal-norm-candidate/teaching-example.py",
+      "bytes": 1159,
+      "sha256": "b7ad16c58a79efb1f057e6b4ca4eec63b3c834e6298bb501b66d2aeeed0dd2d9"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "url": "https://raw.githubusercontent.com/pytorch/pytorch/2236df1770800ffea5697b11b0bb0d910b2e59e1/torch/nn/modules/normalization.py",
+  "final_url": "https://raw.githubusercontent.com/pytorch/pytorch/2236df1770800ffea5697b11b0bb0d910b2e59e1/torch/nn/modules/normalization.py",
+  "http_status": 200,
+  "bytes": 14973,
+  "sha256": "8919d891301fd2048b60ddc9b30b6bf0d3fd0ac5dd9bc23f912269ec92aa7661",
+  "installed_equals_upstream": true
+}

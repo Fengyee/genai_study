@@ -1,0 +1,50 @@
+{
+  "/tmp/genai-temporal-norm-candidate/REVIEW.md": {
+    "bytes": 1996,
+    "sha256": "6d47ff0c624088be5af64571a9349954417f2fcaf322e6b2f88eab3ccc0fe8fb"
+  },
+  "/tmp/genai-temporal-norm-candidate/check_torch.py": {
+    "bytes": 2807,
+    "sha256": "d2e9e6da9374e9924dd6c07d79353a2656d0d86b914b13277bf97aabb32b25dd"
+  },
+  "/tmp/genai-temporal-norm-candidate/closing-and-exercise.md": {
+    "bytes": 1181,
+    "sha256": "f5b55214760a013fda343a169b183d1087aa989c149d048938bc188bb6365e74"
+  },
+  "/tmp/genai-temporal-norm-candidate/independent-comparison.json": {
+    "bytes": 579,
+    "sha256": "6260e92d1fff6d919765a9dc5beff9cdfa27dbd5dbf7620e49036059d2def1dc"
+  },
+  "/tmp/genai-temporal-norm-candidate/section5-addition.md": {
+    "bytes": 3568,
+    "sha256": "32e1d8e9292e620c814e1557de8f1ab62552591c58dbdeb4cf12ce2b6bbfe2ed"
+  },
+  "/tmp/genai-temporal-norm-candidate/source-identity.json": {
+    "bytes": 1586,
+    "sha256": "c47b4dcf70479aaeaa3b22c0c20f884b5cff6b2a58378645602bfabdda8595d5"
+  },
+  "/tmp/genai-temporal-norm-candidate/source-notes.json": {
+    "bytes": 1931,
+    "sha256": "e8ec9bcba8dcc7b4230fb742fe73fb8a2b89f1d1790190569ae03fc749bdd26d"
+  },
+  "/tmp/genai-temporal-norm-candidate/teaching-example.py": {
+    "bytes": 1159,
+    "sha256": "b7ad16c58a79efb1f057e6b4ca4eec63b3c834e6298bb501b66d2aeeed0dd2d9"
+  },
+  "/tmp/genai-temporal-norm-candidate/torch-check.json": {
+    "bytes": 1379,
+    "sha256": "1342d5a1dae673daa1818e2bc9929e358f5371e4c2fc5e1954d6b5d175fdc111"
+  },
+  "/tmp/genai-temporal-norm-candidate/torch-upstream-identity.json": {
+    "bytes": 440,
+    "sha256": "481090e4c97d2bf439c565b043c78c552309c7ca36bcd318fdbbbf6cb7a2c1b1"
+  },
+  "/tmp/genai-temporal-norm-independent/scalar_check.py": {
+    "bytes": 5999,
+    "sha256": "2c9b6cde64fca2029b5b308f6d4f765dd910291f6fed791f2eabc00dcdab956d"
+  },
+  "/tmp/genai-temporal-norm-independent/results.json": {
+    "bytes": 2884,
+    "sha256": "61dda5a4c481d23e7646067c292e2ace7a4dce10b0ad52e17f0008d1a5847360"
+  }
+}

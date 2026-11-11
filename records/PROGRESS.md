@@ -4,17 +4,15 @@
 
 ## 当前状态
 
-2026-11-11恢复后的当前检查点：云环境、两个虚拟环境和历史实验产物均可用，原未提交成果已接续验证并提交。用户授权的浏览器CA同步完成，正常TLS的GitHub浏览器检查已恢复；旧进程已随连接中断退出；本次恢复后协调PID2281重新取得同一工作区写锁。环境配置保持用户发布版本。
+2026-11-11，用户要求准备暂停，并明确授权将已完成成果全部合入main。PR #1–#12均已合并；主分支在合并完成时为a43df722b41a4fcfeca953b077924f2229f170f5，Git tree与经过完整验证的99ea164逐字节相同。最终暂停记录通过单独PR交付，恢复时以GitHub实际main为准。
 
-- PR #1已按授权合并，首次合并后的main为416dd8ce9c3e890d03d814bc02d0015c21e51090；后续main状态见下一项。
-- [PR #2](https://github.com/Fengyee/genai_study/pull/2)与[PR #3](https://github.com/Fengyee/genai_study/pull/3)已获后续明确授权并顺序合并：PR #2的2ac2f7b检查通过后合入；PR #3切base到main、更新分支到79508e8，run43068306477成功后合入。main现为d99b748fd4555db525f76a0ea83bb73b6b98c84d；其push43068708112已success。
-- 默认分支包含VAE实测、预测权重、GitHub数学修复、空间token专题和反馈表。32页1536公式的批量客户端验收与新专题/符号表两视口验收分别归档；默认分支检查范围为146 tests、15教学块和7条CLI smoke。
-- [PR #4](https://github.com/Fengyee/genai_study/pull/4)开放，最新efb3ead的run43070085722成功，包含checkpoint数值契约及调度观察记录。8份历史checkpoint重放结果逐元素相同；本项尚无合并授权。
-- [PR #5](https://github.com/Fengyee/genai_study/pull/5)开放，基于PR #4，最新f5cc255的run43071278535成功。完整本地检查178 tests、16/16教学块、7条CLI smoke通过；固定1684744实际页面双视口52公式/锚点/答案/局部滚动均通过。PR #4/#5的新合并授权已询问，等待用户答复，其他工作继续。
-- [PR #6](https://github.com/Fengyee/genai_study/pull/6)分支为feat/sd14-attributes-layout，原八请求首条超时、余七未执行；单独声明的线程诊断后，两线程批次0bc702c八条全部成功，37.00分钟，完整原图与两位AI独立观察均已归档。固定源码和锁文件保持。
-- PR6最终内容1b6f8f5、[PR #7](https://github.com/Fengyee/genai_study/pull/7)集成7ed0d67与[PR #8](https://github.com/Fengyee/genai_study/pull/8)集成9ebea09的最新CI均成功；PR6已转为可审阅。PR8检查点94f7660的CI43091354688也已success。分支按PR6→PR7→PR8同步，均待审阅与单独合并授权。Reflow专题已通过178/18/7完整检查和固定SHA两视口验收，以PR #9交付；正文dca73531的CI成功，证据检查点4a3235a的CI仍queued。固定latent分块实测已以PR #10交付，178/19/7及两视口验收完成；整体复审已通过[PR #11](https://github.com/Fengyee/genai_study/pull/11)交付，75245fb的CI43099027810成功。当前fix/cli-derived-numeric-bounds处理公开CLI的极端数值参数，见轮次61–63。
-- 每小时质量workflow位于main，API active、cron为UTC每小时:17；原416版本push/手动与d99版本push的artifact均实际核验。初段117次查询覆盖16:17/17:17；恢复后18:31–19:35的64次覆盖19:17，19:36复查仍无schedule事件；18:17处于断线空窗，原因未确定。
-- 编码代理持久调度、网站和通知绑定未部署；Bark/Codex推送仍缺可用接口。原八请求已按超时规则停止；新两线程批次已完成，完整PNG、metrics/run与日志文本进入仓库，浮点数组保存在忽略的artifacts。
+- 已有11个学习单元、12张专题阅读卡、13题课程自测和41组术语；覆盖DDPM/Flow Matching、图像条件与引导、时序评价，以及Consistency/MeanFlow/Reflow和固定版本的2025–2026专题。
+- 本地完整检查208 tests、19教学块、7条CLI smoke通过；PR12的CI43101632556也成功。合并后main push43102187504成功；实际下载artifact13892712747，核验208 tests、19块、7smokes和11份退出记录全0，文件SHA保存在[暂停快照](pause-20261111.json)。
+- 真实CPU、SD1.4、VAE、SVD实测及失败分析已保存；原始大数组、模型缓存继续保留在忽略的artifacts，GitHub包含复现代码、固定资产身份、原图和轻量证据。
+- GitHub每小时质量workflow保持active，默认分支现在覆盖208 tests/19块/7smokes；最新查询仍未观察到schedule事件。编码代理定时启动、Bark/Codex推送绑定和网站均未部署。
+- 两项未集成工作已保存到[暂停草稿](drafts/pause-20261111/README.md)：质量脚本中断状态修复提案尚未验证；时间GroupNorm数学/小张量例已审阅，尚未接入教材和自动执行。按此顺序恢复。
+- 云环境与两个虚拟环境可用，用户发布配置保持；本次没有环境发布。平台最新观测仍为running/current，当前工具没有暂停目标或停止云实例的入口。收尾结束后停止自主编辑，由用户在界面暂停实例。
+- 最终交付须确认本地main、origin/main与GitHub一致，工作树干净，无后台训练/验证任务，释放协调锁。恢复按[暂停说明](PAUSE.md)操作。
 
 以下恢复说明和轮次按历史保留，当前状态以上段及末尾最新检查点为准。
 
@@ -763,3 +761,14 @@ PR8基底同步：当前工作分支feat/meanflow-average-velocity已合入PR7�
 轮次63完整验收：artifacts/quality/20261111T211031Z-FZXOZI，208 tests（JUnit总时间86.864秒）、19/19教学块、7条CLI smoke全部通过，10个子检查exit0。主协调另将七份smoke NPZ内全部数组与轮次61完整检查逐一对比，shape/dtype/C-order bytes完全相同。视频独立审查JSON的audited_utc为检查开始时刻，原文件保持；主协调核对三份最终源文件SHA及数值子证据。仅新增参数拒绝路径，算法、模型、依赖与普通配置的数值输出保持。即将推送并创建以PR11为基底的新PR。
 
 新发现与下一轮：被终止的旧quality运行在无pytest.xml、日志未完成时仍写exit-status=0，与外层143矛盾。已将信号中断记录列为P1，先独立复现并修复SIGTERM/SIGINT退出记录，再继续已通过数学审阅的时间GroupNorm教学草稿（/tmp/genai-temporal-norm-candidate及/tmp/genai-temporal-norm-reader-review.json）。PR9/10的旧检查仍queued，PR11最新检查success；默认分支/环境/网站/调度状态保持。
+
+
+## 暂停交付：按用户授权合并并保存恢复入口
+
+用户要求暂停目标和云环境准备，并让GitHub成果全部合入main。停止新一轮实现，将PR4–12逐项核对head后以merge方式合入main，保留全部历史和分支；PR1–3先前已授权合并。PR9/10的旧检查仍在队列，最终PR12完整CI覆盖其祖先全部内容并成功，合并后的main另行核验。远端main a43df72的完整tree与本地全量验证的99ea164相同。
+
+云环境原配置与历史产物保持；20份未集成草稿/证据逐文件SHA核对后归档。质量脚本信号提案没有执行测试或发信号；其原始中断产物仍如实记录0与缺失检查文件。GroupNorm草稿的标量/Decimal与真实Torch检查通过，但没有修改课程、白名单或运行VAE。没有未保存的仓库源码修改；本暂停记录随单独PR交付。
+
+恢复优先级：先独立复现并修复quality中断记录，再接入GroupNorm例并做文档/教学块/页面验收；发布尺寸SVD基线需重新声明资源预算，真实读者评价和实际schedule事件仍待观察。当前stars=0，1k+ star继续作为长期目标。
+
+暂停检查点验证：合并后main push43102187504 success，下载并核对完整artifact，208 tests、19教学块、7smokes与全部11份退出记录通过。暂停文档1050个本地链接0错误；运行源文件、测试、脚本、锁和workflow与已通过main完全相同。
