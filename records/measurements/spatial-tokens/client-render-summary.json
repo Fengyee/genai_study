@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "checked_utc": "2026-11-11T17:11:20.495239+00:00",
+  "finished_utc": "2026-11-11T17:11:37.614742+00:00",
+  "commit": "9f5b3b6e52c651053ee40d39dd984d86f8669ea9",
+  "platform": "Public GitHub file preview at the pinned commit",
+  "browser": "156.0.8078.79",
+  "tls_verification": true,
+  "desktop_viewport": [
+    1440,
+    1000
+  ],
+  "narrow_viewport": [
+    390,
+    844
+  ],
+  "all_checks_passed": true,
+  "failures": [],
+  "card_source_sha256": "f69dc540d5ea004664d2502856979f90ac70cdcca17e30da06485b666eed0965",
+  "cpu_block_source_bytes": 2832,
+  "cpu_block_with_fences_bytes": 2846,
+  "client_readiness": "Waited for each math-renderer to produce MathML/SVG or an explicit error before counting; preserved the initial cold-start sample separately.",
+  "math_errors": 0,
+  "raw_tex_candidates": 0,
+  "unconverted_math_fences": 0,
+  "page_wide_horizontal_overflow": false,
+  "visual_review": [
+    "All three numbered exercise answers remain readable at 390px.",
+    "Attention formula renders softmax with its key-axis subscript.",
+    "Wide tables/code use local horizontal scroll containers."
+  ],
+  "screen_reader_tested": false,
+  "scope_limits": [
+    "No screen-reader or physical mobile-device testing.",
+    "Browser code text equality ignores a single terminal newline omitted by GitHub display."
+  ],
+  "pages": [
+    {
+      "path": "docs/readings/spatial-tokens-and-position.md",
+      "viewport": "desktop",
+      "http_status": 200,
+      "expected_formulas": 46,
+      "math_renderers": 46,
+      "mathml_nodes": 46,
+      "inline": 40,
+      "display": 6,
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentScrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "articleClientWidth": 1012,
+        "articleScrollWidth": 1012
+      },
+      "details_count": 0,
+      "scroll_containers": [],
+      "screenshots": [
+        "exercises-desktop.png",
+        "attention-equation-desktop.png",
+        "patch-table-desktop.png"
+      ],
+      "exercises": {
+        "count": 3,
+        "all_answers_visible": true,
+        "presentation": "Three numbered items with inline answers; no details widgets."
+      },
+      "code": {
+        "source_bytes": 2832,
+        "browser_inner_text_bytes": 2831,
+        "source_sha256": "d2a4649e720ed650163327e87bc358bc2fdc3697616375c0d3af60fef932a591",
+        "browser_sha256": "026fe2494f460b3725c4b75615052d287299cc9803953e9ab7aaa1b0f2f2f9a0",
+        "matches_ignoring_one_terminal_newline": true,
+        "geometry": {
+          "clientWidth": 742,
+          "scrollWidth": 742,
+          "overflowX": "auto"
+        }
+      }
+    },
+    {
+      "path": "docs/notation.md",
+      "viewport": "desktop",
+      "http_status": 200,
+      "expected_formulas": 86,
+      "math_renderers": 86,
+      "mathml_nodes": 86,
+      "inline": 86,
+      "display": 0,
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentScrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "articleClientWidth": 1012,
+        "articleScrollWidth": 1012
+      },
+      "details_count": 0,
+      "scroll_containers": [],
+      "screenshots": [
+        "notation-patch-desktop.png"
+      ]
+    },
+    {
+      "path": "docs/readings/spatial-tokens-and-position.md",
+      "viewport": "narrow",
+      "http_status": 200,
+      "expected_formulas": 46,
+      "math_renderers": 46,
+      "mathml_nodes": 46,
+      "inline": 40,
+      "display": 6,
+      "geometry": {
+        "viewportWidth": 390,
+        "documentScrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "articleClientWidth": 324,
+        "articleScrollWidth": 324
+      },
+      "details_count": 0,
+      "scroll_containers": [
+        {
+          "tag": "math",
+          "clientWidth": 324,
+          "scrollWidth": 426,
+          "overflowX": "auto",
+          "scrollLeftAfter": 20
+        },
+        {
+          "tag": "TABLE",
+          "clientWidth": 324,
+          "scrollWidth": 408,
+          "overflowX": "auto",
+          "scrollLeftAfter": 20
+        },
+        {
+          "tag": "math",
+          "clientWidth": 324,
+          "scrollWidth": 444,
+          "overflowX": "auto",
+          "scrollLeftAfter": 20
+        },
+        {
+          "tag": "math",
+          "clientWidth": 324,
+          "scrollWidth": 511,
+          "overflowX": "auto",
+          "scrollLeftAfter": 20
+        },
+        {
+          "tag": "TABLE",
+          "clientWidth": 324,
+          "scrollWidth": 525,
+          "overflowX": "auto",
+          "scrollLeftAfter": 20
+        },
+        {
+          "tag": "PRE",
+          "clientWidth": 280,
+          "scrollWidth": 742,
+          "overflowX": "auto",
+          "scrollLeftAfter": 20
+        },
+        {
+          "tag": "TABLE",
+          "clientWidth": 324,
+          "scrollWidth": 585,
+          "overflowX": "auto",
+          "scrollLeftAfter": 20
+        }
+      ],
+      "screenshots": [
+        "exercises-narrow.png",
+        "attention-equation-narrow.png",
+        "patch-table-narrow.png"
+      ],
+      "exercises": {
+        "count": 3,
+        "all_answers_visible": true,
+        "presentation": "Three numbered items with inline answers; no details widgets."
+      },
+      "code": {
+        "source_bytes": 2832,
+        "browser_inner_text_bytes": 2831,
+        "source_sha256": "d2a4649e720ed650163327e87bc358bc2fdc3697616375c0d3af60fef932a591",
+        "browser_sha256": "026fe2494f460b3725c4b75615052d287299cc9803953e9ab7aaa1b0f2f2f9a0",
+        "matches_ignoring_one_terminal_newline": true,
+        "geometry": {
+          "clientWidth": 280,
+          "scrollWidth": 742,
+          "overflowX": "auto"
+        }
+      }
+    },
+    {
+      "path": "docs/notation.md",
+      "viewport": "narrow",
+      "http_status": 200,
+      "expected_formulas": 86,
+      "math_renderers": 86,
+      "mathml_nodes": 86,
+      "inline": 86,
+      "display": 0,
+      "geometry": {
+        "viewportWidth": 390,
+        "documentScrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "articleClientWidth": 324,
+        "articleScrollWidth": 324
+      },
+      "details_count": 0,
+      "scroll_containers": [],
+      "screenshots": [
+        "notation-patch-narrow.png"
+      ]
+    }
+  ]
+}

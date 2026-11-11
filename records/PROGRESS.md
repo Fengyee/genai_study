@@ -4,9 +4,14 @@
 
 ## 当前状态
 
-2026-11-11恢复：usage limit中断后，wait工具返回ready；原虚拟环境、VAE计划提交6a662c3和未提交代码/来源/报告草稿均保留。旧协调进程已结束，新协调PID975取得同一写锁。用户已明确授权合并PR #1及验证定时触发；核对远端8a6c47b的quality成功后，以指定head SHA合并，main为416dd8ce9c3e890d03d814bc02d0015c21e51090。后续工作切到feat/vae-reconstruction，合入origin/main并保留未提交草稿。环境配置无需重建，未重新发布。
+2026-11-11恢复后的当前检查点：云环境、两个虚拟环境和历史实验产物均可用，原未提交成果已接续验证并提交。用户授权的浏览器CA同步完成，正常TLS的GitHub浏览器检查已恢复；协调PID975持有工作区写锁。环境配置保持用户发布版本。
 
-每小时质量workflow已位于默认分支，API state=active；合并push run43050083353与手动workflow_dispatch run43050263196均success，artifact已实际下载并核验115项测试/全部退出状态。正在观察首个真实schedule事件，后者尚未验证。纽约时间每小时:17触发（配置使用UTC每小时:17），GitHub队列可能延迟。编码代理持久调度、网站和通知绑定仍未部署。
+- PR #1已按授权合并，main为416dd8ce9c3e890d03d814bc02d0015c21e51090。
+- [PR #2](https://github.com/Fengyee/genai_study/pull/2)开放，feat/vae-reconstruction最新2ac2f7b：VAE实测、预测目标/权重、路线和GitHub数学修复；32页1536公式的实际客户端验证完成。
+- [PR #3](https://github.com/Fengyee/genai_study/pull/3)开放，当前feat/spatial-token-interface基于PR #2：空间token/位置专题及来源入口核验，b7a4910已推送且远端quality成功。新专题与符号表两视口全部公式/习题/滚动验收通过。两项PR均待评审，新的合并尚未授权。
+- 当前分支最近完整本地检查：146 tests、15/15教学块、7条CLI smoke通过，artifacts/quality/20261111T170520Z-XoMQbD。后续证据/表单改动运行对应检查，逐轮记在末尾。
+- 每小时质量workflow位于main，API active、cron为UTC每小时:17；push43050083353与手动43050263196均success，artifact实际核验115 tests、13教学块及全部退出状态。真实schedule观察继续到17:35 UTC，尚无成功触发证据。
+- 编码代理持久调度、网站和通知绑定未部署；Bark/Codex推送仍缺可用接口。当前没有模型运行，数据保存在忽略的artifacts。
 
 以下恢复说明和轮次按历史保留，当前状态以上段及末尾最新检查点为准。
 
@@ -547,3 +552,5 @@ SVD在途检查点：已推送a3ed4a8，对应自动PR run42877869115为complete
 主代理独立重算23个文件SHA，核对98个URL唯一、状态/方法/下载字节一致；最终快照对应9f5b3b6。记录归档records/reader-checks/source-links-20261111.json，并在SOURCES明确可达性范围；科学结论和锚点需沿各专题另外核对。全部受检入口可达，正文来源链接无需修改。
 
 交付检查点：空间专题9f5b3b6已推送，独立PR #3为https://github.com/Fengyee/genai_study/pull/3 ，base为feat/vae-reconstruction（PR #2）。新专题/符号表的真实浏览器检查正在完成；冷启动首次2秒采样未完成公式转换，已按实际客户端完成状态等待复查，暂不将其判为正文错误。本轮仅增加验证记录和说明，沿用轮次45完整146测试/15教学块/7条smoke，提交前执行文档/diff检查。schedule观察和环境部署边界保持。
+
+轮次45–46最终验收：9f5b3b6的专题/符号表在1440与390两视口全部HTTP200，分别46/46与86/86公式产生MathML，错误/原始TeX为0，三个习题答案直接显示。宽表及代码实际局部滚动，无document/article整体横向溢出；代码与源码相同，浏览器省略末尾一个换行。主代理复查源码SHA与精确提交bytes、查看窄屏全部习题截图；轻量JSON与截图归档records/measurements/spatial-tokens。远端9f5b3b6的run43065307028与b7a4910的run43065875399均success。本次仅保存验收/恢复记录，运行文档与diff检查后提交。
