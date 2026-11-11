@@ -1,0 +1,72 @@
+{
+  "endpoint": "POST https://api.github.com/markdown",
+  "mode": "gfm",
+  "context": "Fengyee/genai_study",
+  "scope": "Minimal repository-authored inputs and observed responses for the four rendering failures.",
+  "cases": [
+    {
+      "case": "inline_chinese_adjacent",
+      "observed_utc": "2026-11-11T16:27:25.755509+00:00",
+      "markdown": "设一维变量$X\\sim\\operatorname{Uniform}(0,0.25)$，模型使用这一密度。",
+      "response_html": "<p dir=\"auto\">设一维变量$X\\sim\\operatorname{Uniform}(0,0.25)$，模型使用这一密度。</p>",
+      "source_sha256": "4f4da25da3685066b406ba5fdc23c1cf89cfc44e4c91e1d0d2b9f42351cf39ef",
+      "response_sha256": "32d933843bb39c914afbf92c58c438f11659e9f1f44b4dd80c75186a3f59af7d"
+    },
+    {
+      "case": "inline_chinese_backtick",
+      "observed_utc": "2026-11-11T16:27:25.755509+00:00",
+      "markdown": "设一维变量$`X\\sim\\operatorname{Uniform}(0,0.25)`$，模型使用这一密度。",
+      "response_html": "<p dir=\"auto\">设一维变量<math-renderer class=\"js-inline-math\" style=\"display: inline-block\" data-run-id=\"440fbe3d10768ae737cfd5320dd0df3f\">$X\\sim\\operatorname{Uniform}(0,0.25)$</math-renderer>，模型使用这一密度。</p>",
+      "source_sha256": "6529d9ddddf0cf6ad4a9da872dfd506e82be607ea2b1e8106f6426c7dc6b40a7",
+      "response_sha256": "d91b04a56e0218f34fcfed96a873ce105922079fec73daeca6a7d80fe9be4d56"
+    },
+    {
+      "case": "mixed_protected_inline_math",
+      "observed_utc": "2026-11-11T16:32:03.257349+00:00",
+      "markdown": "<details><summary>答案</summary>\n\n$`x=1`$\n\n```math\n\\hat x_0=\\frac{x_t-0.8\\hat\\epsilon}{0.6}=(1,-2).\n```\n\n</details>\n",
+      "response_html": "<details><summary>答案</summary>\n<p dir=\"auto\"><math-renderer class=\"js-inline-math\" style=\"display: inline-block\" data-run-id=\"ea7382708429792c4a2f752d462c9f95\">$x=1$</math-renderer></p>\n<pre lang=\"math\" class=\"notranslate\"><code class=\"notranslate\">\\hat x_0=\\frac{x_t-0.8\\hat\\epsilon}{0.6}=(1,-2).\n</code></pre>\n</details>",
+      "source_sha256": "8b08167b3aa42a23cb85bda42bb90bc3ca681b0195a70c690cc53aebacd39fc4",
+      "response_sha256": "9a4a636a9b963fffb03ff05c53132b6fb96a70a3b2bf2ef77ec833b30671a5d1"
+    },
+    {
+      "case": "mixed_both_outside_details",
+      "observed_utc": "2026-11-11T16:32:03.257349+00:00",
+      "markdown": "$`x=1`$\n\n```math\n\\hat x_0=\\frac{x_t-0.8\\hat\\epsilon}{0.6}=(1,-2).\n```\n",
+      "response_html": "<p dir=\"auto\"><math-renderer class=\"js-inline-math\" style=\"display: inline-block\" data-run-id=\"b0446e6a57cc562479db7bcb8998ca73\">$x=1$</math-renderer></p>\n<math-renderer class=\"js-display-math\" style=\"display: block\" data-run-id=\"b0446e6a57cc562479db7bcb8998ca73\">$$\\hat x_0=\\frac{x_t-0.8\\hat\\epsilon}{0.6}=(1,-2).$$</math-renderer>",
+      "source_sha256": "401058f4f3ff71d69722a1c294110c6a35a5b93167cf0df88e2d483cff327fdf",
+      "response_sha256": "8c76220858e182f6dbeccc19cd611fe3aa0e71936252436955f6330ac055ff53"
+    },
+    {
+      "case": "aligned_fence_newline",
+      "observed_utc": "2026-11-11T16:37:13.047380+00:00",
+      "markdown": "```math\n\\begin{aligned}\na&=b\\\\\nc&=d\n\\end{aligned}\n```\n",
+      "response_html": "<math-renderer class=\"js-display-math\" style=\"display: block\" data-run-id=\"7814019ff61608d856ade22f34e28df7\">$$\\begin{aligned}\na&amp;=b\\\\\\\nc&amp;=d\n\\end{aligned}$$</math-renderer>",
+      "source_sha256": "e5551c635b866f94df8e3bb50ee8ea7205ab118a46bbf60d1d2c6cacabd8bd62",
+      "response_sha256": "53f55909fe6314e4b750eea15c6799221f5b57b1b40a3f77da6e3656dd8280ee"
+    },
+    {
+      "case": "aligned_fence_one_line",
+      "observed_utc": "2026-11-11T16:37:13.047380+00:00",
+      "markdown": "```math\n\\begin{aligned}\na&=b\\\\ c&=d\n\\end{aligned}\n```\n",
+      "response_html": "<math-renderer class=\"js-display-math\" style=\"display: block\" data-run-id=\"3674c4fb83e07dfc2671630d65306397\">$$\\begin{aligned}\na&amp;=b\\\\ c&amp;=d\n\\end{aligned}$$</math-renderer>",
+      "source_sha256": "6daca3af5025a04760ff0d933faacc8ff4d8fc843c30dca8946c7c382444826b",
+      "response_sha256": "a69b45bd88d71f6517b9028bf9476f696365d67467fe00ec847db8acf1569de7"
+    },
+    {
+      "case": "norm_table_pipes",
+      "observed_utc": "2026-11-11T16:37:13.047380+00:00",
+      "markdown": "| 值 | 定义 |\n| --- | --- |\n| 向量 | $`\\|a\\|_2^2`$ |\n",
+      "response_html": "<markdown-accessiblity-table><table role=\"table\">\n<thead>\n<tr>\n<th>值</th>\n<th>定义</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>向量</td>\n<td><math-renderer class=\"js-inline-math\" style=\"display: inline-block\" data-run-id=\"ed678fa11dee171e3fca920946b48d9b\">$|a|_2^2$</math-renderer></td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>",
+      "source_sha256": "4e6bdfe4a522ef64e47bac24c1352bacf2fe6ba930b4de26ccf3a945453f0b19",
+      "response_sha256": "7a9b02401654a02831f47f0438772c78e9f58107ef113e8c81be21958658bea3"
+    },
+    {
+      "case": "norm_table_vert",
+      "observed_utc": "2026-11-11T16:37:13.047380+00:00",
+      "markdown": "| 值 | 定义 |\n| --- | --- |\n| 向量 | $`\\Vert a\\Vert_2^2`$ |\n",
+      "response_html": "<markdown-accessiblity-table><table role=\"table\">\n<thead>\n<tr>\n<th>值</th>\n<th>定义</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>向量</td>\n<td><math-renderer class=\"js-inline-math\" style=\"display: inline-block\" data-run-id=\"58ebe315bafcd5826fa54a20e85c47dd\">$\\Vert a\\Vert_2^2$</math-renderer></td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>",
+      "source_sha256": "e60bdcf097c4b931c7c4887b9849c80434bb5b4440ccab5e1f91de68bf8b2717",
+      "response_sha256": "0f9fc20dd6769f21a341b37958a90d1254b46ec56ad3cecdf72d49b5f3e64b10"
+    }
+  ]
+}

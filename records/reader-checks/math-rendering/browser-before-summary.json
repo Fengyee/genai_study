@@ -1,0 +1,92 @@
+{
+  "updated_utc": "2026-11-11T16:28:24.827474+00:00",
+  "status": "github_access_restored_reader_math_defect_confirmed",
+  "commit": "341340a7044407d522f6e80198a8509de621e520",
+  "browser": "Chromium 156.0.8078.79",
+  "tls_verification": true,
+  "environment_recovery": {
+    "current_public_ca_sha256": "c71b4d1e9d7775c538c688ab10cea9ce417d7312e89838f9d15ff73256cd7fc3",
+    "approved_import_performed_by": "root",
+    "sandbox_symptom": "NSS cert9.db W_OK fails EROFS",
+    "working_execution": "approved require_escalated browser run; default TLS and existing environment proxy"
+  },
+  "verified": {
+    "http_200_page_viewport_pairs": 6,
+    "pages": [
+      "README.md",
+      "docs/learning-path.md",
+      "docs/self-assessment.md"
+    ],
+    "viewports": [
+      [
+        1440,
+        1000
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "page_horizontal_overflow_observed": false,
+    "article_horizontal_overflow_observed": false,
+    "missing_fragment_targets": 0,
+    "actual_fragment_clicks": [
+      "README first-run in both viewports",
+      "self-assessment q01/q02/q03 in both viewports"
+    ],
+    "details_toggle_and_restore": "learning-path 2 and self-assessment 26, both viewports",
+    "local_overflow": "narrow README code blocks and learning-path table/code have overflow-x:auto"
+  },
+  "confirmed_defects": [
+    {
+      "severity": "P1",
+      "kind": "unrendered_math",
+      "paths": [
+        "docs/self-assessment.md",
+        "docs/chapters/04-image-video-roadmap.md",
+        "docs/readings/prediction-and-loss-weighting.md"
+      ],
+      "self_assessment_lines": [
+        20,
+        29,
+        44,
+        49,
+        62,
+        66,
+        73,
+        74,
+        75,
+        77,
+        79
+      ],
+      "evidence": "Q01 raw TeX ordinary paragraph; Q03 details display raw TeX after 5s expansion wait; same paragraph contains correctly rendered beta_1 MathML control",
+      "likely_inline_trigger": "Chinese text/punctuation adjacent to opening $; root delegated official API minimal reproduction",
+      "display_scope": "Q03 details full-document context; ordinary multi-line $$ blocks in prediction card render"
+    }
+  ],
+  "not_verified": [
+    "Mermaid: scripted scroll attempted hidden iframe and timed out; actual rendered graph status not yet determined",
+    "screen-reader interaction",
+    "complete cross-repository math rendering"
+  ],
+  "visual_inspections": [
+    "README.md-desktop-v2.png",
+    "README.md-narrow-v2.png",
+    "docs-self-assessment.md-desktop-v2.png",
+    "self-assessment-detail-5-desktop.png",
+    "self-assessment-detail-5-desktop-delayed.png",
+    "self-assessment-detail-5-narrow.png"
+  ],
+  "evidence_files": [
+    "nss-access-trace.txt",
+    "nss-access-check.json",
+    "render-check-verified.json",
+    "render-check-math-focused.json"
+  ],
+  "historical_tls_failures": [
+    "render-check-tls-blocked-history.json",
+    "summary-tls-blocked-history.json",
+    "tls-probes.json",
+    "browser-certificate-probes.json"
+  ]
+}

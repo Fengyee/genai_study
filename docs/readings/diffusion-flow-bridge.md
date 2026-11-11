@@ -8,84 +8,99 @@
 
 ## 1. 先固定路径和时间方向
 
-设数据$Y\sim p_{\mathrm{data}}$，独立噪声$E\sim\mathcal N(0,I)$，定义
+设数据$`Y\sim p_{\mathrm{data}}`$，独立噪声$`E\sim\mathcal N(0,I)`$，定义
 
-$$X_u=\alpha(u)Y+\sigma(u)E.$$
+```math
+X_u=\alpha(u)Y+\sigma(u)E.
+```
 
-本页的$u$沿**数据到噪声**方向增加；$\alpha$是数据的幅度系数，对应02章离散时刻的$\sqrt{\bar\alpha_t}$。02章的单步$\alpha_t=1-\beta_t$另有含义。为保持03章的约定，本文把沿$u$的边缘速度记为$w_u$，仍用$v_t$表示沿噪声到数据方向的flow速度。
+本页的$`u`$沿**数据到噪声**方向增加；$`\alpha`$是数据的幅度系数，对应02章离散时刻的$`\sqrt{\bar\alpha_t}`$。02章的单步$`\alpha_t=1-\beta_t`$另有含义。为保持03章的约定，本文把沿$`u`$的边缘速度记为$`w_u`$，仍用$`v_t`$表示沿噪声到数据方向的flow速度。
 
-以下推导在$\alpha,\sigma>0$的内部时间进行，系数可微，数据有有限二阶矩，并允许交换积分和求导。高斯扰动此时给出光滑正密度$p_u$。将连续性方程解释为ODE的边缘演化，还需速度场生成适定的输运流，例如所讨论区间内具有足够正则性、解唯一且不爆炸。下面的Gaussian解析例满足这些要求。
+以下推导在$`\alpha,\sigma>0`$的内部时间进行，系数可微，数据有有限二阶矩，并允许交换积分和求导。高斯扰动此时给出光滑正密度$`p_u`$。将连续性方程解释为ODE的边缘演化，还需速度场生成适定的输运流，例如所讨论区间内具有足够正则性、解唯一且不爆炸。下面的Gaussian解析例满足这些要求。
 
-条件生成时可固定条件$c$，把密度改为$p_u(x\mid c)$，后验均值也都包含$c$；为简洁，下文省略这个固定条件。
+条件生成时可固定条件$`c`$，把密度改为$`p_u(x\mid c)`$，后验均值也都包含$`c`$；为简洁，下文省略这个固定条件。
 
 ## 2. 噪声、score与去噪器是怎样连接的？
 
-记$s_u(x)=\nabla_x\log p_u(x)$。给定$Y=y$的条件密度为$\mathcal N(\alpha y,\sigma^2I)$，对$x$求导得到
+记$`s_u(x)=\nabla_x\log p_u(x)`$。给定$`Y=y`$的条件密度为$`\mathcal N(\alpha y,\sigma^2I)`$，对$`x`$求导得到
 
-$$\nabla_x\log p_u(x\mid y)=-\frac{x-\alpha y}{\sigma^2}.$$
+```math
+\nabla_x\log p_u(x\mid y)=-\frac{x-\alpha y}{\sigma^2}.
+```
 
-对后验$p(y\mid x,u)$求平均，并用$X_u-\alpha Y=\sigma E$，可得
+对后验$`p(y\mid x,u)`$求平均，并用$`X_u-\alpha Y=\sigma E`$，可得
 
-$$s_u(x)=-\frac{\mathbb E[E\mid X_u=x]}{\sigma},\qquad
-\bar\epsilon_u(x):=\mathbb E[E\mid X_u=x]=-\sigma s_u(x).$$
+```math
+s_u(x)=-\frac{\mathbb E[E\mid X_u=x]}{\sigma},\qquad
+\bar\epsilon_u(x):=\mathbb E[E\mid X_u=x]=-\sigma s_u(x).
+```
 
-这解释了噪声MSE的最优预测为何能提供边缘score。每个训练样本的随机噪声$E$是监督标签，网络给定$(x,u)$后的最优回归为条件均值$\bar\epsilon_u$。
+这解释了噪声MSE的最优预测为何能提供边缘score。每个训练样本的随机噪声$`E`$是监督标签，网络给定$`(x,u)`$后的最优回归为条件均值$`\bar\epsilon_u`$。
 
-进一步对$X_u=\alpha Y+\sigma E$取条件期望，得到去噪器
+进一步对$`X_u=\alpha Y+\sigma E`$取条件期望，得到去噪器
 
-$$D_u(x):=\mathbb E[Y\mid X_u=x]
+```math
+D_u(x):=\mathbb E[Y\mid X_u=x]
 =\frac{x-\sigma\bar\epsilon_u(x)}{\alpha}
-=\frac{x+\sigma^2s_u(x)}{\alpha}.$$
+=\frac{x+\sigma^2s_u(x)}{\alpha}.
+```
 
 最后一种表达通常称为高斯扰动下的 **Tweedie关系**。它还原的是数据的后验均值；不同原始样本仍可能产生同一个带噪状态。
 
 ## 3. 从条件导数到边缘速度
 
-固定同一对$(Y,E)$，路径导数是$\alpha'Y+\sigma'E$。依照03章的条件期望与连续性方程推导，边缘速度可取
+固定同一对$`(Y,E)`$，路径导数是$`\alpha'Y+\sigma'E`$。依照03章的条件期望与连续性方程推导，边缘速度可取
 
-$$\begin{aligned}
+```math
+\begin{aligned}
 w_u(x)
-&=\mathbb E[\alpha'Y+\sigma'E\mid X_u=x]\\
-&=\alpha'D_u(x)+\sigma'\bar\epsilon_u(x)\\
-&=\frac{\alpha'}{\alpha}x+
+&=\mathbb E[\alpha'Y+\sigma'E\mid X_u=x]\\ &=\alpha'D_u(x)+\sigma'\bar\epsilon_u(x)\\ &=\frac{\alpha'}{\alpha}x+
 \left(\frac{\alpha'}{\alpha}\sigma^2-\sigma\sigma'\right)s_u(x).
-\end{aligned}$$
+\end{aligned}
+```
 
-于是$\partial_up_u=-\nabla\cdot(p_uw_u)$。同一密度演化有时可以由多个速度场实现；上式是这条条件路径的后验平均所选出的场。
+于是$`\partial_up_u=-\nabla\cdot(p_uw_u)`$。同一密度演化有时可以由多个速度场实现；上式是这条条件路径的后验平均所选出的场。
 
-**时间翻转。** 若设$t=1-u$来匹配03章的生成方向，速度变为$v_t(x)=-w_{1-t}(x)$。也可以保留$u$坐标，从大$u$向小$u$积分，让负的步长承担方向变化。选择一种坐标后同时核对路径、速度与积分区间。
+**时间翻转。** 若设$`t=1-u`$来匹配03章的生成方向，速度变为$`v_t(x)=-w_{1-t}(x)`$。也可以保留$`u`$坐标，从大$`u`$向小$`u`$积分，让负的步长承担方向变化。选择一种坐标后同时核对路径、速度与积分区间。
 
 ## 4. 为什么probability-flow ODE出现一个1/2？
 
 考虑一个线性漂移、标量扩散系数的前向随机微分方程（SDE）：
 
-$$dX_u=f(u)X_u\,du+g(u)\,dW_u.$$
+```math
+dX_u=f(u)X_u\,du+g(u)\,dW_u.
+```
 
-其中$W_u$为标准Brownian运动，短时间随机增量的协方差为$du\,I$。线性SDE要具有上面的高斯条件边缘，应满足
+其中$`W_u`$为标准Brownian运动，短时间随机增量的协方差为$`du\,I`$。线性SDE要具有上面的高斯条件边缘，应满足
 
-$$f=\frac{\alpha'}{\alpha},\qquad
+```math
+f=\frac{\alpha'}{\alpha},\qquad
 g^2=\frac{d\sigma^2}{du}-2f\sigma^2
-=2\sigma\sigma'-2\frac{\alpha'}{\alpha}\sigma^2.$$
+=2\sigma\sigma'-2\frac{\alpha'}{\alpha}\sigma^2.
+```
 
-这里需要$g^2\ge0$，等价于$\sigma^2/\alpha^2$沿$u$不减。若从$u=0$的$X_0=Y$开始，还需$\alpha(0)=1$、$\sigma(0)=0$；若从内部时间$u_a$开始，匹配给定$Y$的条件边缘需要初始化为$X_{u_a}\mid Y\sim\mathcal N(\alpha(u_a)Y,\sigma(u_a)^2I)$。只要求整体边缘一致时，初始化为真实$p_{u_a}$即可。条件路径的速度恒等式本身可以在更一般的系数下成立。
+这里需要$`g^2\ge0`$，等价于$`\sigma^2/\alpha^2`$沿$`u`$不减。若从$`u=0`$的$`X_0=Y`$开始，还需$`\alpha(0)=1`$、$`\sigma(0)=0`$；若从内部时间$`u_a`$开始，匹配给定$`Y`$的条件边缘需要初始化为$`X_{u_a}\mid Y\sim\mathcal N(\alpha(u_a)Y,\sigma(u_a)^2I)`$。只要求整体边缘一致时，初始化为真实$`p_{u_a}`$即可。条件路径的速度恒等式本身可以在更一般的系数下成立。
 
-该SDE的密度满足Fokker–Planck方程。对仅依赖时间的$g$，利用$\nabla p_u=p_us_u$可重写为
+该SDE的密度满足Fokker–Planck方程。对仅依赖时间的$`g`$，利用$`\nabla p_u=p_us_u`$可重写为
 
-$$\begin{aligned}
+```math
+\begin{aligned}
 \partial_up_u
-&=-\nabla\cdot(fxp_u)+\frac12g^2\Delta p_u\\
-&=-\nabla\cdot\left[p_u\left(fx-\frac12g^2s_u\right)\right].
-\end{aligned}$$
+&=-\nabla\cdot(fxp_u)+\frac12g^2\Delta p_u\\ &=-\nabla\cdot\left[p_u\left(fx-\frac12g^2s_u\right)\right].
+\end{aligned}
+```
 
 因此 **概率流常微分方程（probability-flow ODE）** 使用
 
-$$\frac{dx}{du}=fx-\frac12g^2s_u(x)=w_u(x).$$
+```math
+\frac{dx}{du}=fx-\frac12g^2s_u(x)=w_u(x).
+```
 
-系数$1/2$来自扩散项的密度演化。反向SDE保留随机增量，其漂移在同一$u$坐标下为$fx-g^2s_u$，按递减$u$求解；将随机项删除后，密度演化也随之改变。Song等人的式(6)与式(13)分别给出这两个过程。状态相关扩散矩阵还涉及额外的散度项，详见原文附录D.1。
+系数$`1/2`$来自扩散项的密度演化。反向SDE保留随机增量，其漂移在同一$`u`$坐标下为$`fx-g^2s_u`$，按递减$`u`$求解；将随机项删除后，密度演化也随之改变。Song等人的式(6)与式(13)分别给出这两个过程。状态相关扩散矩阵还涉及额外的散度项，详见原文附录D.1。
 
-**一个能检出错误的平稳例子。** 取$f=-1$、$g^2=2$、$p_u=\mathcal N(0,1)$，则$s_u(x)=-x$，正确概率流速度为$-x-(-x)=0$。若在无噪声ODE中漏掉$1/2$，速度变成$x$，初始方差为1时的方差导数为2；若把score符号反过来，速度为$-2x$，方差导数为$-4$。这些错误都可能保留零均值，检查均值之外的性质很重要。
+**一个能检出错误的平稳例子。** 取$`f=-1`$、$`g^2=2`$、$`p_u=\mathcal N(0,1)`$，则$`s_u(x)=-x`$，正确概率流速度为$`-x-(-x)=0`$。若在无噪声ODE中漏掉$`1/2`$，速度变成$`x`$，初始方差为1时的方差导数为2；若把score符号反过来，速度为$`-2x`$，方差导数为$`-4`$。这些错误都可能保留零均值，检查均值之外的性质很重要。
 
-这个例子也区分了三种跨时间关系：固定$(Y,E)$构造的Gaussian条件路径通常会移动；平稳SDE的样本受到持续随机扰动；概率流ODE在此例中保持每个样本不动。它们在每个时间都具有同一个标准正态分布，跨时间的联合分布和逐样本配对各有不同。
+这个例子也区分了三种跨时间关系：固定$`(Y,E)`$构造的Gaussian条件路径通常会移动；平稳SDE的样本受到持续随机扰动；概率流ODE在此例中保持每个样本不动。它们在每个时间都具有同一个标准正态分布，跨时间的联合分布和逐样本配对各有不同。
 
 精确边缘对应使用正确score、匹配的初始边缘和精确ODE解。实际系统还包含网络误差、先验近似及有限步求解误差，需按实验的真实配置分析。
 
@@ -93,59 +108,69 @@ $$\frac{dx}{du}=fx-\frac12g^2s_u(x)=w_u(x).$$
 
 ### VP的v参数化与flow速度
 
-在$\alpha^2+\sigma^2=1$的方差保持（VP）路径上，训练目标可定义为
+在$`\alpha^2+\sigma^2=1`$的方差保持（VP）路径上，训练目标可定义为
 
-$$V_{\mathrm{VP}}=\alpha E-\sigma Y.$$
+```math
+V_{\mathrm{VP}}=\alpha E-\sigma Y.
+```
 
-这是对$(Y,E)$的旋转组合。对单位圆约束求导可得
+这是对$`(Y,E)`$的旋转组合。对单位圆约束求导可得
 
-$$\alpha'Y+\sigma'E
+```math
+\alpha'Y+\sigma'E
 =(\alpha\sigma'-\sigma\alpha')V_{\mathrm{VP}},\qquad
 w_u=(\alpha\sigma'-\sigma\alpha')\,
-\mathbb E[V_{\mathrm{VP}}\mid X_u=x].$$
+\mathbb E[V_{\mathrm{VP}}\mid X_u=x].
+```
 
-前面的系数由时间参数化决定。例如$\alpha=e^{-u}$、$\sigma=\sqrt{1-e^{-2u}}$时，它等于$\alpha/\sigma$。03章的直线flow路径使用$tY+(1-t)E$，其条件速度为$Y-E$；阅读叫作`v`的输出时，先找到路径和目标的完整定义。
+前面的系数由时间参数化决定。例如$`\alpha=e^{-u}`$、$`\sigma=\sqrt{1-e^{-2u}}`$时，它等于$`\alpha/\sigma`$。03章的直线flow路径使用$`tY+(1-t)E`$，其条件速度为$`Y-E`$；阅读叫作`v`的输出时，先找到路径和目标的完整定义。
 
 | 预测对象 | 定义或总体最优预测 | 换算时要保留的量 |
 | --- | --- | --- |
-| 噪声$\epsilon$ | $\bar\epsilon_u=\mathbb E[E\mid X_u=x]$ | $s_u=-\bar\epsilon_u/\sigma$ |
-| 数据/去噪器 | $D_u=\mathbb E[Y\mid X_u=x]$ | $D_u=(x-\sigma\bar\epsilon_u)/\alpha$ |
-| VP的$v$ | $\mathbb E[\alpha E-\sigma Y\mid X_u=x]$ | VP归一化与上面的时间系数 |
-| 边缘速度 | $w_u=\mathbb E[\alpha'Y+\sigma'E\mid X_u=x]$ | 路径导数、时间方向及坐标单位 |
+| 噪声$`\epsilon`$ | $`\bar\epsilon_u=\mathbb E[E\mid X_u=x]`$ | $`s_u=-\bar\epsilon_u/\sigma`$ |
+| 数据/去噪器 | $`D_u=\mathbb E[Y\mid X_u=x]`$ | $`D_u=(x-\sigma\bar\epsilon_u)/\alpha`$ |
+| VP的$`v`$ | $`\mathbb E[\alpha E-\sigma Y\mid X_u=x]`$ | VP归一化与上面的时间系数 |
+| 边缘速度 | $`w_u=\mathbb E[\alpha'Y+\sigma'E\mid X_u=x]`$ | 路径导数、时间方向及坐标单位 |
 
 上表连接预测对象与速度。[预测目标与损失权重](prediction-and-loss-weighting.md)继续推导同一状态上的误差缩放、时间权重和有限容量下的最优解差异，适合在阅读训练实现前完成。
 
 ### DDIM：换坐标后的一步Euler
 
-对VP幅度$\alpha,\sigma$，定义$\bar x=x/\alpha$、$\rho=\sigma/\alpha$。09章无裁剪、`eta=0`的DDIM一步可直接重写为
+对VP幅度$`\alpha,\sigma`$，定义$`\bar x=x/\alpha`$、$`\rho=\sigma/\alpha`$。09章无裁剪、`eta=0`的DDIM一步可直接重写为
 
-$$\bar x_{\mathrm{prev}}
-=\bar x+(\rho_{\mathrm{prev}}-\rho)\widehat\epsilon(x,u).$$
+```math
+\bar x_{\mathrm{prev}}
+=\bar x+(\rho_{\mathrm{prev}}-\rho)\widehat\epsilon(x,u).
+```
 
-这在$(\bar x,\rho)$坐标上呈现Euler形式。其条件边缘为$\bar X=Y+\rho E$，正确的边缘导数是$\mathbb E[E\mid\bar X]=-\rho\nabla_{\bar x}\log p_\rho(\bar x)$。在连续VP坐标中，噪声网络实际接收$\bar x/\sqrt{1+\rho^2}$及相应噪声级别。DDIM原文v4第6页式(13)–(15)也强调：在不同时间坐标上取有限Euler步，离散更新通常会有差别。
+这在$`(\bar x,\rho)`$坐标上呈现Euler形式。其条件边缘为$`\bar X=Y+\rho E`$，正确的边缘导数是$`\mathbb E[E\mid\bar X]=-\rho\nabla_{\bar x}\log p_\rho(\bar x)`$。在连续VP坐标中，噪声网络实际接收$`\bar x/\sqrt{1+\rho^2}`$及相应噪声级别。DDIM原文v4第6页式(13)–(15)也强调：在不同时间坐标上取有限Euler步，离散更新通常会有差别。
 
-端点按实际scheduler读取。09章固定的`set_alpha_to_one=False`使最终累计量为$a_0=0.99915$，因此$\rho_{\mathrm{end}}=\sqrt{(1-a_0)/a_0}>0$；这份配置的最后坐标与理想$\rho=0$分别记录。
+端点按实际scheduler读取。09章固定的`set_alpha_to_one=False`使最终累计量为$`a_0=0.99915`$，因此$`\rho_{\mathrm{end}}=\sqrt{(1-a_0)/a_0}>0`$；这份配置的最后坐标与理想$`\rho=0`$分别记录。
 
 ### SVD：沿加性噪声sigma积分
 
-10章采用加性坐标$Z_\sigma=Y+\sigma E$。此时$D_\sigma(z)=z+\sigma^2s_\sigma(z)$，所以
+10章采用加性坐标$`Z_\sigma=Y+\sigma E`$。此时$`D_\sigma(z)=z+\sigma^2s_\sigma(z)`$，所以
 
-$$\frac{dz}{d\sigma}
+```math
+\frac{dz}{d\sigma}
 =\frac{z-D_\sigma(z)}{\sigma}
-=-\sigma s_\sigma(z).$$
+=-\sigma s_\sigma(z).
+```
 
-SVD先把VP预测量还原为$D_\theta$，再以递减sigma执行Euler，网格追加0作为终点。负的$\Delta\sigma$已经编码生成方向；首末步的实现与数值核验见[10章](../chapters/10-pretrained-video-lab.md#3-沿sigma积分vp预测量去噪器与euler)。应用条件引导后按组合后的网络预测执行更新；引导速度的目标分布另需分析。
+SVD先把VP预测量还原为$`D_\theta`$，再以递减sigma执行Euler，网格追加0作为终点。负的$`\Delta\sigma`$已经编码生成方向；首末步的实现与数值核验见[10章](../chapters/10-pretrained-video-lab.md#3-沿sigma积分vp预测量去噪器与euler)。应用条件引导后按组合后的网络预测执行更新；引导速度的目标分布另需分析。
 
-在$\alpha=0$或$\sigma=0$处，本文含除法的换算需要单独分析极限。原路径与条件回归目标有时仍良好定义，例如03章直接使用$Y-E$作为训练标签。
+在$`\alpha=0`$或$`\sigma=0`$处，本文含除法的换算需要单独分析极限。原路径与条件回归目标有时仍良好定义，例如03章直接使用$`Y-E`$作为训练标签。
 
 ## 6. CPU解析检查：均值、方差和坐标都要检查
 
-取$Y\sim\mathcal N(2,4)$、$\alpha=e^{-u}$、$\sigma=\sqrt{1-e^{-2u}}$，则
+取$`Y\sim\mathcal N(2,4)`$、$`\alpha=e^{-u}`$、$`\sigma=\sqrt{1-e^{-2u}}`$，则
 
-$$p_u=\mathcal N(m_u,q_u),\quad m_u=2e^{-u},\quad
-q_u=1+3e^{-2u},\quad s_u(x)=-\frac{x-m_u}{q_u},\quad w_u=-x-s_u.$$
+```math
+p_u=\mathcal N(m_u,q_u),\quad m_u=2e^{-u},\quad
+q_u=1+3e^{-2u},\quad s_u(x)=-\frac{x-m_u}{q_u},\quad w_u=-x-s_u.
+```
 
-这个VP路径把数据方差4逐渐送向1，标准正态是其平稳参照。概率流的解析轨迹为$x_u=m_u+\sqrt{q_u/q_{u_0}}(x_{u_0}-m_{u_0})$。下面用固定标准化坐标核对轨迹，以及Gaussian总体均值/方差的导数；有限时间端点仍含数据成分，初始化使用真实$p_{0.2}$。
+这个VP路径把数据方差4逐渐送向1，标准正态是其平稳参照。概率流的解析轨迹为$`x_u=m_u+\sqrt{q_u/q_{u_0}}(x_{u_0}-m_{u_0})`$。下面用固定标准化坐标核对轨迹，以及Gaussian总体均值/方差的导数；有限时间端点仍含数据成分，初始化使用真实$`p_{0.2}`$。
 
 <!-- cpu-check: diffusion-flow-bridge -->
 ```python
@@ -214,11 +239,11 @@ print({'Euler_endpoint_errors': errors, 'stationary_variance_derivatives': varia
 
 ## 7. 练习与参考答案
 
-1. 把03章的噪声到数据路径$X_t=tY+(1-t)E$直接代入前向SDE系数式，为什么得到负的$g^2$？
+1. 把03章的噪声到数据路径$`X_t=tY+(1-t)E`$直接代入前向SDE系数式，为什么得到负的$`g^2`$？
 
    <details><summary>提示与答案</summary>
 
-   对$t\in(0,1)$，$f=1/t$，$g^2=-2(1-t)/t<0$，该时间方向不能按此式作为实值前向扩散系数。改用数据到噪声坐标$u=1-t$，$\alpha=1-u$、$\sigma=u$，得到$g^2=2u/(1-u)>0$。条件路径的速度推导在两种坐标下都成立，端点$u=1$另有奇异性。
+   对$`t\in(0,1)`$，$`f=1/t`$，$`g^2=-2(1-t)/t<0`$，该时间方向不能按此式作为实值前向扩散系数。改用数据到噪声坐标$`u=1-t`$，$`\alpha=1-u`$、$`\sigma=u`$，得到$`g^2=2u/(1-u)>0`$。条件路径的速度推导在两种坐标下都成立，端点$`u=1`$另有奇异性。
 
    </details>
 
@@ -226,7 +251,7 @@ print({'Euler_endpoint_errors': errors, 'stationary_variance_derivatives': varia
 
    <details><summary>提示与答案</summary>
 
-   先核对初始状态、预测函数、坐标、网格和数值方法。相同连续ODE的有限离散方案仍有不同误差；DDIM在$\rho$上的Euler与在其它时间上的Euler就能产生不同更新。仅在代数等价且全部输入对应时要求一致；实际误差应与独立解析解或可信参考解比较。
+   先核对初始状态、预测函数、坐标、网格和数值方法。相同连续ODE的有限离散方案仍有不同误差；DDIM在$`\rho`$上的Euler与在其它时间上的Euler就能产生不同更新。仅在代数等价且全部输入对应时要求一致；实际误差应与独立解析解或可信参考解比较。
 
    </details>
 

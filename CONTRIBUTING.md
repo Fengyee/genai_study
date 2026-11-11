@@ -16,6 +16,10 @@
 
 图示应有可独立阅读的文字说明。PNG使用描述关键观察的alt，并在正文或表格中给出重要数值；Mermaid添加`accTitle`和`accDescr`，语法见[官方可访问性说明](https://mermaid.js.org/config/accessibility.html)。依赖图同时提供文字路径，让读者可以直接理解章节关系。验证时分别记录语法解析、浏览器呈现和屏幕阅读器实际测试的范围。
 
+数学排版使用GitHub[官方数学语法](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions)：行内统一采用 ``$`TeX`$``，保护中文邻接和Markdown特殊字符；块公式使用独立的 `math` 代码围栏。折叠答案中的短公式放在独立段落，采用同一行内定界；较长推导移到折叠区外。实际GitHub检查发现，折叠区混用行内与块公式时可能保留原始TeX，因此本仓库禁止在 `details` 内放 `math` 围栏。文档检查会验证这些格式约定；公式语义、窄屏布局与MathJax实际显示仍需分别核对。
+
+表格中的范数定界使用 `\Vert`，避免Markdown消耗 `\|` 的转义。在 `aligned`、`cases` 等环境中，TeX换行符 `\\` 后把下一项接在同一物理行；当前GitHub渲染接口会给紧邻物理换行的双反斜杠再加一个反斜杠。这两项也纳入文档检查，核验范围见[数学排版记录](records/reader-checks/math-rendering/README.md)。
+
 ## 评审重点
 
 事实/数学错误和运行故障优先，其次是先修断层、误导性图表、复现缺口，最后是展示。要求 CI 通过并不代表理论正确：审稿人还应检查假设、公式端点和概念迁移的边界。外链检查受网络限制时须如实记录，不能假称验证成功。

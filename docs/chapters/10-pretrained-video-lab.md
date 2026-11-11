@@ -61,41 +61,51 @@ CLIP支路传入一个全局图像token。单个有效条件token在注意力汇
 
 ## 3. 沿sigma积分：VP预测量、去噪器与Euler
 
-本节用$z_0$表示干净视频latent，$\sigma$表示加性噪声标准差：
+本节用$`z_0`$表示干净视频latent，$`\sigma`$表示加性噪声标准差：
 
-$$z_\sigma=z_0+\sigma\epsilon,\qquad
-a_\sigma=(1+\sigma^2)^{-1/2},\quad b_\sigma=\sigma a_\sigma.$$
+```math
+z_\sigma=z_0+\sigma\epsilon,\qquad
+a_\sigma=(1+\sigma^2)^{-1/2},\quad b_\sigma=\sigma a_\sigma.
+```
 
-因此归一化输入为$a_\sigma z_\sigma=a_\sigma z_0+b_\sigma\epsilon$。网络的VP目标可以写为
+因此归一化输入为$`a_\sigma z_\sigma=a_\sigma z_0+b_\sigma\epsilon`$。网络的VP目标可以写为
 
-$$v_{\mathrm{VP}}=a_\sigma\epsilon-b_\sigma z_0.$$
+```math
+v_{\mathrm{VP}}=a_\sigma\epsilon-b_\sigma z_0.
+```
 
-这与[03章](03-flow-matching.md)直线路径中“数据减初始噪声”的flow速度有不同定义。固定SVD去噪器将网络输出$v_\theta$还原为干净样本预测：
+这与[03章](03-flow-matching.md)直线路径中“数据减初始噪声”的flow速度有不同定义。固定SVD去噪器将网络输出$`v_\theta`$还原为干净样本预测：
 
-$$D_\theta(z_\sigma;\sigma,c)
+```math
+D_\theta(z_\sigma;\sigma,c)
 =\frac{z_\sigma}{1+\sigma^2}
 -\frac{\sigma}{\sqrt{1+\sigma^2}}\,
 v_\theta(a_\sigma z_\sigma,\tau_\sigma,c),
-\qquad \tau_\sigma=\tfrac14\log\sigma.$$
+\qquad \tau_\sigma=\tfrac14\log\sigma.
+```
 
-这里$c$合并参考latent、CLIP向量及附加条件；实现中参考latent在预条件之后沿通道拼接。网络接收的$\tau_\sigma$是连续时间嵌入，可为负数。
+这里$`c`$合并参考latent、CLIP向量及附加条件；实现中参考latent在预条件之后沿通道拼接。网络接收的$`\tau_\sigma`$是连续时间嵌入，可为负数。
 
-在每个非零$\sigma_j$，定义导数并执行Euler更新：
+在每个非零$`\sigma_j`$，定义导数并执行Euler更新：
 
-$$d_j=\frac{z_j-D_\theta(z_j;\sigma_j,c)}{\sigma_j},\qquad
-z_{j+1}=z_j+(\sigma_{j+1}-\sigma_j)d_j.$$
+```math
+d_j=\frac{z_j-D_\theta(z_j;\sigma_j,c)}{\sigma_j},\qquad
+z_{j+1}=z_j+(\sigma_{j+1}-\sigma_j)d_j.
+```
 
 本入口沿用scheduler的`s_churn=0`，积分期间不额外注入随机噪声。
 
-固定scheduler使用`v_prediction`、连续网络时间、Karras网格，$\sigma_{\max}=700$、$\sigma_{\min}=0.002$、$\rho=7$。对$K\ge2$，先构造$K$个正sigma，随后追加干净端点0：
+固定scheduler使用`v_prediction`、连续网络时间、Karras网格，$`\sigma_{\max}=700`$、$`\sigma_{\min}=0.002`$、$`\rho=7`$。对$`K\ge2`$，先构造$`K`$个正sigma，随后追加干净端点0：
 
-$$\sigma_j=\left[\sigma_{\max}^{1/\rho}
+```math
+\sigma_j=\left[\sigma_{\max}^{1/\rho}
 +\frac{j}{K-1}\left(\sigma_{\min}^{1/\rho}-\sigma_{\max}^{1/\rho}\right)\right]^\rho,
-\quad j=0,\ldots,K-1,\qquad\sigma_K=0.$$
+\quad j=0,\ldots,K-1,\qquad\sigma_K=0.
+```
 
-于是25步对应25次预测与更新，最后从0.002走向0。固定库的`leading`配置把初始单位高斯噪声乘以`init_noise_sigma`；在本版本中，实际float32值为 **700.000732421875**，对应$\sqrt{700^2+1}$。入口保存乘系数前的单位噪声，metrics另存实际sigma和时间网格。
+于是25步对应25次预测与更新，最后从0.002走向0。固定库的`leading`配置把初始单位高斯噪声乘以`init_noise_sigma`；在本版本中，实际float32值为 **700.000732421875**，对应$`\sqrt{700^2+1}`$。入口保存乘系数前的单位噪声，metrics另存实际sigma和时间网格。
 
-**独立核验。** 在两个解析端点构造已知$z_0,\epsilon$及正确$v_{\mathrm{VP}}$，用NumPy重建预条件、$D_\theta$和Euler，再比较固定Diffusers的`scale_model_input`与`step`。25步网格首步$700\to545.729248$的更新最大绝对差为$1.84\times10^{-5}$，末步$0.002\to0$为$9.31\times10^{-8}$。该检查使用小数组，覆盖公式与库接口；模型预测误差由实际生成观察和后续实验研究。
+**独立核验。** 在两个解析端点构造已知$`z_0,\epsilon`$及正确$`v_{\mathrm{VP}}`$，用NumPy重建预条件、$`D_\theta`$和Euler，再比较固定Diffusers的`scale_model_input`与`step`。25步网格首步$`700\to545.729248`$的更新最大绝对差为$`1.84\times10^{-5}`$，末步$`0.002\to0`$为$`9.31\times10^{-8}`$。该检查使用小数组，覆盖公式与库接口；模型预测误差由实际生成观察和后续实验研究。
 
 <details><summary>完成权重准备后，独立复算首末步</summary>
 
@@ -143,18 +153,20 @@ PY
 
 | 坐标 | 本实验取值与作用 |
 | --- | --- |
-| 扩散sigma / 网络时间 | 25个正sigma递减，$\tau=\frac14\log\sigma$送入U-Net |
-| 帧索引$f$ | 0到13，同次去噪中联合处理，决定帧轴引导系数 |
+| 扩散sigma / 网络时间 | 25个正sigma递减，$`\tau=\frac14\log\sigma`$送入U-Net |
+| 帧索引$`f`$ | 0到13，同次去噪中联合处理，决定帧轴引导系数 |
 | 播放时间 | 显式导出为7 fps；首尾采样时刻跨度13/7秒，14帧播放时长2秒 |
 
 CLI的`--fps 7`经过固定pipeline后成为条件值6，与运动分桶127和增强强度0.02一起编码。输出视频的播放fps由导出工具单独指定，并用媒体元数据复查。改变播放速度会改变每秒位移等物理量，潜变量和已生成帧可以保持相同。
 
 引导沿帧轴从1线性增至2.5，每个扩散步骤重复同一组系数：
 
-$$s_f=1+\frac{f}{F-1}(2.5-1),\qquad
-\widehat v_f=v_{u,f}+s_f(v_{c,f}-v_{u,f}).$$
+```math
+s_f=1+\frac{f}{F-1}(2.5-1),\qquad
+\widehat v_f=v_{u,f}+s_f(v_{c,f}-v_{u,f}).
+```
 
-一个视频的两分支合并进batch2，整段$F$帧在每次调用中联合预测。$K$步对应 **K次U-Net调用、2K次视频分支求值**；内部空间层可能把batch与帧展开，帧之间仍通过时间层相互作用。CLIP、参考图编码和视频解码另计成本。
+一个视频的两分支合并进batch2，整段$`F`$帧在每次调用中联合预测。$`K`$步对应 **K次U-Net调用、2K次视频分支求值**；内部空间层可能把batch与帧展开，帧之间仍通过时间层相互作用。CLIP、参考图编码和视频解码另计成本。
 
 时间VAE的`decode_chunk_size`固定为整段帧数。缩小chunk会改变解码时的时间上下文，可能改变帧间连续性；研究这一内存取舍时，需固定生成latent并把chunk大小列为实验变量。
 
@@ -193,7 +205,7 @@ $$s_f=1+\frac{f}{F-1}(2.5-1),\qquad
   --output artifacts/svd-calibration
 ```
 
-校准成功后，从`artifacts/run-records/svd-calibration/run.json`读取`wall_seconds`，乘$25/4$作预算外推；从`artifacts/svd-calibration/metrics.json`读取进程峰值内存。外推不超过1500秒、进程峰值不超过24GiB时，再执行14帧/25步，外层超时1800秒。超时后的进程清理最多另用1秒宽限；预算和进入条件按本机实际记录核对。
+校准成功后，从`artifacts/run-records/svd-calibration/run.json`读取`wall_seconds`，乘$`25/4`$作预算外推；从`artifacts/svd-calibration/metrics.json`读取进程峰值内存。外推不超过1500秒、进程峰值不超过24GiB时，再执行14帧/25步，外层超时1800秒。超时后的进程清理最多另用1秒宽限；预算和进入条件按本机实际记录核对。
 
 通过上述检查后运行完整请求：
 
@@ -251,11 +263,11 @@ ffprobe -v error -select_streams v:0 \
 
 </details>
 
-**B · Euler干净端点。** 在最后一步$\sigma_{j+1}=0$时，代入更新式能得到什么？为什么仍需$\sigma_j>0$？
+**B · Euler干净端点。** 在最后一步$`\sigma_{j+1}=0`$时，代入更新式能得到什么？为什么仍需$`\sigma_j>0`$？
 
 <details><summary>提示与答案</summary>
 
-$z_{j+1}=z_j-\sigma_j(z_j-D_j)/\sigma_j=D_j$，最后状态等于该步去噪预测。导数定义含除以当前sigma，所以管线在正sigma处预测，再走到0；追加的0作为终点使用。理想$v_{\mathrm{VP}}$使$D_j=z_0$，实际网络保留预测误差。
+$`z_{j+1}=z_j-\sigma_j(z_j-D_j)/\sigma_j=D_j`$，最后状态等于该步去噪预测。导数定义含除以当前sigma，所以管线在正sigma处预测，再走到0；追加的0作为终点使用。理想$`v_{\mathrm{VP}}`$使$`D_j=z_0`$，实际网络保留预测误差。
 
 </details>
 

@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Check repository Markdown links without fetching external URLs.
+"""Check repository Markdown links and math formatting without fetching URLs.
 
 Handles inline/image links, reference definitions, headings and HTML id anchors.
 This is a conservative check for this repository's Markdown subset, not a full
 CommonMark parser. Code fences and inline code are excluded from link scanning.
+Math checks enforce this repository's GitHub delimiter and transport rules; they do
+not validate TeX, browser typesetting, or every possible Markdown construction.
 """
 from __future__ import annotations
 
@@ -74,6 +76,118 @@ def destinations(text: str):
             yield number, reference.group(1).strip("<>")
 
 
+def math_block_issues(text: str) -> list[tuple[int, str]]:
+    """Check math-fence placement and line endings used by this repository.
+
+    GitHub can leave display math unrendered when it shares a details section
+    with inline math. We use short inline paragraphs or an external math block
+    there. A TeX row separator at a physical line ending can also gain an extra
+    backslash during GitHub transport, so the next formula stays on that line.
+    """
+    tokens = re.compile(
+        r"(?P<fence>^ {0,3}(?P<marker>`{3,}|~{3,})(?P<info>[^\n]*))"
+        r"|(?P<code>(?<!`)(?P<ticks>`+)(?!`)[\s\S]*?(?<!`)(?P=ticks)(?!`))"
+        r"|(?P<comment><!--[\s\S]*?(?:-->|\Z))"
+        r"|(?P<tag></?[A-Za-z][A-Za-z0-9:-]*(?=[\s/>])(?:[^>\"']|\"[^\"]*\"|'[^']*')*>)"
+        r"|(?P<escape>\\.)",
+        re.MULTILINE,
+    )
+    depth = 0
+    position = 0
+    issues = []
+    while match := tokens.search(text, position):
+        position = match.end()
+        if match.group("fence") is not None:
+            marker = match.group("marker")
+            language = match.group("info").strip().split()
+            if depth and language and language[0] == "math":
+                line = text.count("\n", 0, match.start()) + 1
+                issues.append((line, "math inside details: use a short standalone $`TeX`$ paragraph or move the math block outside details"))
+            closing = re.compile(
+                rf"^ {{0,3}}{re.escape(marker[0])}{{{len(marker)},}}[ \t]*(?:\n|$)",
+                re.MULTILINE,
+            ).search(text, position)
+            if language and language[0] == "math":
+                body_start = position + int(text[position:position + 1] == "\n")
+                body_end = closing.start() if closing else len(text)
+                first_line = text.count("\n", 0, body_start) + 1
+                for offset, line in enumerate(text[body_start:body_end].splitlines()):
+                    if line.rstrip().endswith("\\\\"):
+                        issues.append((first_line + offset, r"math block: keep TeX \\ and the following formula on the same physical line"))
+            position = closing.end() if closing else len(text)
+        elif match.group("tag") is not None:
+            tag = match.group("tag")
+            if re.match(r"</?details(?=[\s/>])", tag, re.IGNORECASE):
+                if tag.startswith("</"):
+                    depth = max(0, depth - 1)
+                else:
+                    depth += 1
+    return issues
+
+
+def math_format_issues(text: str) -> list[tuple[int, str]]:
+    """Check math delimiters and the repository's GitHub transport rules.
+
+    Explicit inline math, code spans, HTML tags/attributes and comments are
+    blanked before scanning. Fenced blocks are already removed by ``prose``.
+    Unpaired single dollars are left alone, including an isolated currency
+    symbol. This is a format guard for the repository's Markdown subset.
+    """
+    ignored = re.compile(
+        r"\$`[^`\n]+`\$"
+        r"|(?<!`)(?P<ticks>`+)(?!`)[\s\S]*?(?<!`)(?P=ticks)(?!`)"
+        r"|<!--[\s\S]*?(?:-->|\Z)"
+        r"|</?[A-Za-z][A-Za-z0-9:-]*(?=[\s/>])(?:[^>\"']|\"[^\"]*\"|'[^']*')*>"
+        r"|\\."
+    )
+    outside_fences = prose(text)
+    issues = math_block_issues(text)
+    table_lines = set()
+    for match in ignored.finditer(outside_fences):
+        token = match.group()
+        if not token.startswith("$`") or r"\|" not in token[2:-2]:
+            continue
+        start = outside_fences.rfind("\n", 0, match.start()) + 1
+        if outside_fences[start:match.start()].lstrip().startswith("|"):
+            table_lines.add(outside_fences.count("\n", 0, match.start()) + 1)
+    issues.extend((line, r"table math: use \Vert instead of \|; Markdown tables consume the backslash")
+                  for line in sorted(table_lines))
+    visible = ignored.sub(lambda match: re.sub(r"[^\n]", " ", match.group()), outside_fences)
+    in_display = False
+    for number, line in enumerate(visible.splitlines(), 1):
+        # Consume escapes in pairs: an escaped backslash leaves a subsequent
+        # dollar active, while a backslash directly escaping the dollar does not.
+        dollars = []
+        index = 0
+        while index < len(line):
+            if line[index] == "\\":
+                index += 2
+                continue
+            if line[index] == "$":
+                dollars.append(index)
+            index += 1
+        doubles = []
+        singles = []
+        index = 0
+        while index < len(dollars):
+            if index + 1 < len(dollars) and dollars[index + 1] == dollars[index] + 1:
+                doubles.append(dollars[index])
+                index += 2
+            else:
+                singles.append(dollars[index])
+                index += 1
+        if in_display:
+            if len(doubles) % 2:
+                in_display = False
+            continue
+        if doubles:
+            issues.append((number, "display math: replace $$ delimiters with a fenced ```math block"))
+            in_display = len(doubles) % 2 == 1
+        elif len(singles) >= 2:
+            issues.append((number, "inline math: use explicit $`TeX`$ delimiters"))
+    return sorted(issues, key=lambda issue: issue[0])
+
+
 def check(root: Path, require_paths: bool = True) -> tuple[list[str], int]:
     errors = []
     if require_paths:
@@ -83,6 +197,8 @@ def check(root: Path, require_paths: bool = True) -> tuple[list[str], int]:
     count = 0
     for source in files:
         text = source.read_text(encoding="utf-8")
+        errors.extend(f"{source.relative_to(root)}:{line}: {message}"
+                      for line, message in math_format_issues(text))
         for line, destination in destinations(text):
             url = urlsplit(destination)
             if url.scheme or url.netloc:
@@ -105,7 +221,7 @@ def check(root: Path, require_paths: bool = True) -> tuple[list[str], int]:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
-    parser.add_argument("--no-required-paths", action="store_true", help="Only check links (for a small fixture or partial checkout).")
+    parser.add_argument("--no-required-paths", action="store_true", help="Skip the required-file list (for a small fixture or partial checkout).")
     args = parser.parse_args()
     errors, count = check(args.root.resolve(), not args.no_required_paths)
     for error in errors:
