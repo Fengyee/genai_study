@@ -713,3 +713,11 @@ PR8基底同步：当前工作分支feat/meanflow-average-velocity已合入PR7�
 轮次60本地验收：完整`bash scripts/quality.sh`退出0，178 tests（67.36秒）、18/18教学块、7条CLI smoke全部通过，10个子检查退出0；目录artifacts/quality/20261111T201031Z-0pcA7W。当时980链接0错误，随后仅记录/导航变化再检981链接0错误；git diff检查通过。四份最终教学/推导文件的独立审查SHA已核对并归档final-review.json，无未解决发现。接下来推送新分支、创建以PR8为基底的PR并执行固定SHA阅读验收。
 
 轮次60交付验收：已创建[PR #9](https://github.com/Fengyee/genai_study/pull/9)，base为PR8的feat/meanflow-average-velocity。正文dca73531的run43094510880 completed/success；五页255公式API逐项保持，实际GitHub1440×1000和390×844共10页面/510 MathML全部通过。36行1649字节代码（显示省略末尾newline）、三题、符号新增两行、术语新增一组、局部滚动、12次先修/证据/固定论文作者链接点击均通过。主协调重hash五份正文和十份证据/截图，并查看窄屏符号、练习和相邻轮公式；轻量证据及练习截图归档reader-check.json。后续检查点仅更新证据/状态。下一具体工作：按原生尺寸资源与时序解码语义审查SVD基线可行性，先固定探测预算、内存门槛和已知验证范围。
+
+## 轮次61：固定潜变量的SVD时间解码分块实验（预声明）
+
+读者问题：10章说明缩小decode_chunk_size会改变时间上下文，但尚缺独立于去噪器的实测。原生576×1024基线需要扩展当前128–256尺寸入口并重新评估资源；先选择更窄的VAE-only干预，在固定原参考图的posterior mode上严格重复14帧，比较chunk14/7/1。
+
+来源已核对Diffusers0.35.2的tag/commit与本地文件逐字节一致：pipeline按每块帧数调用vae.decode；时间卷积受分块padding影响，5D GroupNorm也覆盖帧轴并在eval使用当前输入统计。原样调用该decode_latents函数，仅给出真实固定VAE依赖；视频latent先乘0.18215、方法内部再反向缩放。
+
+运行前将plan.json与run_probe.py提交。三个独立进程CPUfloat32/2threads、相同输入/模式latent，按14→7→1执行，每命令300秒、整序列1000秒。首条完整命令wall≤240秒且查询点RSS≤12GiB才继续；该RSS为继续门槛，不是内核内存上限。失败/超时即停止并保留剩余未执行项。保存全部原始输出、latent身份、实际decoder调用、分阶段计时与完整命令记录；独立复算逐帧RMS及重复片段性质，所有结果均保留。本项验证解码上下文，原SVD去噪失败原因与发布尺寸质量基线继续排队。

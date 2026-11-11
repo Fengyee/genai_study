@@ -1,0 +1,49 @@
+{
+  "observed_utc": "2026-11-11T20:21:23.744525+00:00",
+  "diffusers_version": "0.35.2",
+  "tag_object": "3257c4bc4582ffe0849f4680b5884bfbefe538e7",
+  "commit": "b71269675ec1b85193107a691dd35c308e46f0a5",
+  "files": [
+    {
+      "path": "pipelines/stable_video_diffusion/pipeline_stable_video_diffusion.py",
+      "local_path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/pipelines/stable_video_diffusion/pipeline_stable_video_diffusion.py",
+      "url": "https://raw.githubusercontent.com/huggingface/diffusers/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/pipelines/stable_video_diffusion/pipeline_stable_video_diffusion.py",
+      "bytes": 32628,
+      "sha256": "c7a8c4afc7944401a1e79aba21ecb5a48221c5b584cf10f43509b3bd8fd577e9",
+      "upstream_equals_installed": true
+    },
+    {
+      "path": "models/autoencoders/autoencoder_kl_temporal_decoder.py",
+      "local_path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_kl_temporal_decoder.py",
+      "url": "https://raw.githubusercontent.com/huggingface/diffusers/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/models/autoencoders/autoencoder_kl_temporal_decoder.py",
+      "bytes": 14778,
+      "sha256": "a89e764f032d410cfb42d73312c14b29755c792ed12c3452bcc31923e46c8c86",
+      "upstream_equals_installed": true
+    },
+    {
+      "path": "models/resnet.py",
+      "local_path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/models/resnet.py",
+      "url": "https://raw.githubusercontent.com/huggingface/diffusers/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/models/resnet.py",
+      "bytes": 32254,
+      "sha256": "0c81501c54a1f05d0d72b0068efc5a71ad5f2bc66802b9694ed9134cb9b9d155",
+      "upstream_equals_installed": true
+    },
+    {
+      "path": "models/unets/unet_3d_blocks.py",
+      "local_path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/models/unets/unet_3d_blocks.py",
+      "url": "https://raw.githubusercontent.com/huggingface/diffusers/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/models/unets/unet_3d_blocks.py",
+      "bytes": 51676,
+      "sha256": "3b2108a2fe4d31afd3f64216cdc32831f98a6557200d16deeaf1f559be1aafda",
+      "upstream_equals_installed": true
+    },
+    {
+      "path": "models/autoencoders/vae.py",
+      "local_path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/models/autoencoders/vae.py",
+      "url": "https://raw.githubusercontent.com/huggingface/diffusers/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/models/autoencoders/vae.py",
+      "bytes": 32733,
+      "sha256": "5d79b5d057d0f702e1a335a89913b695d7dc6faa91f3978f17e4a153162afba6",
+      "upstream_equals_installed": true
+    }
+  ],
+  "scope": "Read-only installed source and pinned upstream bytes; no model construction or forward."
+}

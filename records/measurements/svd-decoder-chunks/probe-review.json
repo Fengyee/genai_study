@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "checked_utc": "2026-11-11T20:24:14.946283+00:00",
+  "file": {
+    "path": "/workspace/genai_study/records/measurements/svd-decoder-chunks/run_probe.py",
+    "bytes": 9942,
+    "sha256": "8ae054b3883d1cb5092f08215589ff378faa2c0d7703942a60532e53ff041e0d"
+  },
+  "mode": "Read-only static/source review. No model construction, weights loaded, decoder execution, imports of this script, tracked changes, or Git writes.",
+  "syntax_ast_parse": "passed",
+  "findings": [],
+  "checks": {
+    "fixed_input": "Reference PNG SHA is checked; RGB and 256x144 enforced; normalization to [-1,1] is deterministic.",
+    "assets": "Manifest identity verifies VAE config, safetensors and model license before creating output. local_files_only prevents checkpoint download.",
+    "latent": "posterior.mode() -> repeat 14 frames -> multiply fixed scale 0.18215; shape [1,14,4,18,32] and equal frames enforced; no augmentation or latent sampling.",
+    "cross_process_input": "Each run constructs the same deterministic inputs and writes raw-array hashes. Comparing normalized_input, latent_mode, video_latents hashes across all three completed runs remains a required result-level validation.",
+    "upstream_call": "Installed StableVideoDiffusionPipeline.decode_latents is called directly. Its body only needs self.vae; SimpleNamespace supplies it. It divides the scaled input by the same scaling factor.",
+    "hook": "Temporal decoder forward_pre_hook receives true keyword num_frames and shape. Expected calls are [14], [7,7], or 14 copies of 1. Hook removal is protected by finally.",
+    "output": "Raw decoder B,C,F,H,W shape [1,3,14,144,256] and all finite verified. No video postprocessing; NPY float32 values, dtype, shape, file and array-byte SHA are retained.",
+    "rms": "np.diff(axis=2) and mean over axes (0,1,3,4) yield one adjacent-frame raw RMS per pair. float64 arithmetic prevents float32 accumulation overflow.",
+    "timing": "Imports/component load, encode+latent construction, upstream decode, and serialization/diagnostics/source hashing have separate perf_counter intervals. decode includes prehook overhead.",
+    "rss": "resource.RUSAGE_SELF ru_maxrss is process-lifetime peak in KiB on this Linux environment, queried before final JSON write/printing/exit. It is not decode-only memory.",
+    "output_protection": "Existing output path or symlink rejected; mkdir(exist_ok=False) claims a fresh directory before any artifact write. Failure may leave a partial new directory for diagnosis.",
+    "scope": "Static repeated-frame reconstruction latent isolates temporal decoding. Scope correctly excludes U-Net, denoising, CLIP, stochastic video generation and generated-video quality.",
+    "independent_peer": "rotation_check independently confirmed latent construction, upstream dependency use, hook calls, shapes, RMS and saved hashes."
+  },
+  "outer_protocol_requirements": {
+    "per_command_timeout_seconds": 300,
+    "total_budget_seconds": 1000,
+    "after_first_run_gate": {
+      "whole_command_wall_seconds_max": 240,
+      "linux_process_peak_rss_kib_max": 12582912
+    },
+    "sequence": "Run chunk14 first. Continue chunk7 then chunk1 only after successful first output, wall/RSS gate and remaining-budget checks.",
+    "enforcement_location": "External orchestrator/run_record; this script contains no timeout, budget or RSS limit enforcement.",
+    "failure_record": "Outer run_record should retain timeout/exit status and command log when this script cannot reach metrics writing.",
+    "comparison_gate": "Require normalized_input, latent_mode and video_latents array_bytes_sha256 equality across runs before attributing decoded differences to chunk size."
+  },
+  "source_identity": {
+    "pipeline": {
+      "path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/pipelines/stable_video_diffusion/pipeline_stable_video_diffusion.py",
+      "sha256": "c7a8c4afc7944401a1e79aba21ecb5a48221c5b584cf10f43509b3bd8fd577e9"
+    },
+    "temporal_vae": {
+      "path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_kl_temporal_decoder.py",
+      "sha256": "a89e764f032d410cfb42d73312c14b29755c792ed12c3452bcc31923e46c8c86"
+    }
+  }
+}
