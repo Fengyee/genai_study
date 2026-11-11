@@ -733,3 +733,7 @@ PR8基底同步：当前工作分支feat/meanflow-average-velocity已合入PR7�
 轮次61全量本地检查：`bash scripts/quality.sh`退出0，178 tests（74.60秒）、19/19教学块、7条CLI smoke，目录artifacts/quality/20261111T203653Z-JoXwZN。运行时1035链接0错误；后续仅证据/文字修改再检1037链接0错误。probe及历史源文件未改，独立比较器字节检查更新后实际重跑，数值保持。等待最终只读审阅确认后提交正文并按固定SHA验收页面。
 
 轮次61最终内容复审通过：报告/证据索引/比较器/图数据等九文件SHA已核对，final-reader-audit.json无遗留问题。CPU块23行886字节、SHA1fca734b…dd07，正文RMS定义和严格字节身份均已修正并重验。即将推送完整报告并创建新PR，页面验收绑定随后实际提交SHA。
+
+轮次61页面与交付：已创建[PR #10](https://github.com/Fengyee/genai_study/pull/10)，base为docs/reflow-coupling，正文3e41f75。GitHub实际1440×1000与390×844均通过：5个公式/视口、23行886字节CPU及338/168字节Bash、3题、两张表逐格数字、14次锚点和12次课程/证据/固定来源跳转。PNG/SVG网络响应SHA相同，两种视口真实SVG预览加载；主协调查看窄屏表格/图上下文，重hash正文及11份证据/截图。窄图324×159为缩略图，中文说明完整，图内标签需打开矢量版放大；未测实际缩放交互/屏幕阅读器。reader-check.json及原表截图归档。
+
+20:43交付状态：PR9检查点4a3235a/run43095115227与PR10正文3e41f75/run43097625331均queued；PR9正文dca73531的run43094510880仍success。独立只读队列诊断未发现已禁用workflow或可识别同组运行，官方Actions状态operational，排队原因未确定；没有取消、重跑或改配置。平台环境状态新查询为running/当前观测，用户发布配置身份保持；工具没有Bark/编码调度入口，配置无secret/runtime变量绑定。下一轮继续整体路径审查并修正已发现的README术语计数陈旧问题，持续保存远端实际状态。

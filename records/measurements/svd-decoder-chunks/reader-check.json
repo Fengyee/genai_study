@@ -1,0 +1,406 @@
+{
+  "checked_utc": "2026-11-11T20:44:56.417957+00:00",
+  "commit": "3e41f75a25739bea56420efc349ca00663721258",
+  "path": "docs/svd-decoder-chunk-report.md",
+  "source_sha256": "7915b58a5e68e7d55cc65e616e67ada710a02f62999b30338a6ba865c867cc9b",
+  "source_bytes": 10554,
+  "all_passed": true,
+  "tls_verification": true,
+  "browser_version": "156.0.8078.79",
+  "api": {
+    "payloads_and_order_match": 5,
+    "inline": 3,
+    "display": 2,
+    "committed_source_matches_snapshot": true
+  },
+  "client": {
+    "passed_viewports": 2,
+    "viewports": [
+      [
+        1440,
+        1000
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "mathml_instances": 10,
+    "math_errors": 0,
+    "empty_renderers": 0,
+    "raw_tex": 0,
+    "overall_horizontal_overflow": false,
+    "headings_clicked": 14
+  },
+  "tables": {
+    "matches_all_source_cells": true,
+    "data_rows_per_table": 3,
+    "narrow_widths": [
+      324,
+      314
+    ],
+    "narrow_horizontal_scroll_required": false,
+    "observation": "All numeric values remain on one line at390px; chunk帧数 header wraps once. Both tables fit the article width."
+  },
+  "blocks": [
+    {
+      "language": "python",
+      "bytes": 886,
+      "lines": 23,
+      "sha256": "1fca734bf28aea9a6fb167b061defcba3ead752cea8156d6cdbc97f79184dd07"
+    },
+    {
+      "language": "bash",
+      "bytes": 338,
+      "lines": 5,
+      "sha256": "e6e9ad55b214c840339446ea87ec937d3d03bd9d8afcfa2076d70c7ceccfcb9a"
+    },
+    {
+      "language": "bash",
+      "bytes": 168,
+      "lines": 3,
+      "sha256": "90693fcdc537e8cb5fbb340a86c3b12ba63e83a37e52e2c8d7417ac07cc50732"
+    }
+  ],
+  "blocks_match_source_allowing_terminal_newline": true,
+  "three_exercises_and_answers_match_source": true,
+  "png": {
+    "bytes": 206725,
+    "sha256": "88790a9c963f204c5ba5254cd3ec8871dec61102234ae9871c3aa43444e5b6f6",
+    "dimensions": [
+      2232,
+      1098
+    ]
+  },
+  "svg": {
+    "bytes": 94524,
+    "sha256": "a4ffe3a34817f88117e28ac924f202665362d5fa149cb63366aaa0aeba9d7232",
+    "viewBox": "0 0 892.8 439.2"
+  },
+  "pages": [
+    {
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentScrollWidth": 1440,
+        "articleClientWidth": 1012,
+        "articleScrollWidth": 1012
+      },
+      "math": {
+        "renderer_count": 5,
+        "mathml_count": 5,
+        "inline_count": 3,
+        "display_count": 2,
+        "empty_renderers": 0,
+        "errors": [],
+        "raw_tex": [],
+        "unconverted_math_pre": 0
+      },
+      "image": {
+        "natural_dimensions": [
+          2232,
+          1098
+        ],
+        "rendered_dimensions": [
+          1011.96875,
+          497.828125
+        ],
+        "alt_matches_source": true,
+        "complete": true,
+        "network_matches_source": true
+      },
+      "caption_matches_source": true,
+      "svg": {
+        "actual_preview_loaded": true,
+        "network_matches_source": true,
+        "preview_graphics": [
+          {
+            "tag": "IMG",
+            "viewBox": null,
+            "width": 602,
+            "height": 297,
+            "src": "https://raw.githubusercontent.com/Fengyee/genai_study/3e41f75a25739bea56420efc349ca00663721258/docs/assets/svd-decoder-chunks.svg",
+            "naturalWidth": 1190,
+            "naturalHeight": 586
+          }
+        ]
+      },
+      "blocks": [
+        {
+          "index": 0,
+          "language": "python",
+          "browser_bytes": 885,
+          "matches_ignoring_one_terminal_newline": true,
+          "scroll": {
+            "clientWidth": 685,
+            "scrollWidth": 685,
+            "overflowX": "auto",
+            "scrollLeftAfter": 0
+          }
+        },
+        {
+          "index": 1,
+          "language": "bash",
+          "browser_bytes": 337,
+          "matches_ignoring_one_terminal_newline": true,
+          "scroll": {
+            "clientWidth": 742,
+            "scrollWidth": 742,
+            "overflowX": "auto",
+            "scrollLeftAfter": 0
+          }
+        },
+        {
+          "index": 2,
+          "language": "bash",
+          "browser_bytes": 167,
+          "matches_ignoring_one_terminal_newline": true,
+          "scroll": {
+            "clientWidth": 595,
+            "scrollWidth": 595,
+            "overflowX": "auto",
+            "scrollLeftAfter": 0
+          }
+        }
+      ]
+    },
+    {
+      "viewport": "narrow",
+      "width": 390,
+      "height": 844,
+      "geometry": {
+        "viewportWidth": 390,
+        "documentScrollWidth": 390,
+        "articleClientWidth": 324,
+        "articleScrollWidth": 324
+      },
+      "math": {
+        "renderer_count": 5,
+        "mathml_count": 5,
+        "inline_count": 3,
+        "display_count": 2,
+        "empty_renderers": 0,
+        "errors": [],
+        "raw_tex": [],
+        "unconverted_math_pre": 0
+      },
+      "image": {
+        "natural_dimensions": [
+          2232,
+          1098
+        ],
+        "rendered_dimensions": [
+          323.96875,
+          159.375
+        ],
+        "alt_matches_source": true,
+        "complete": true,
+        "network_matches_source": true
+      },
+      "caption_matches_source": true,
+      "svg": {
+        "actual_preview_loaded": true,
+        "network_matches_source": true,
+        "preview_graphics": [
+          {
+            "tag": "IMG",
+            "viewBox": null,
+            "width": 328,
+            "height": 297,
+            "src": "https://raw.githubusercontent.com/Fengyee/genai_study/3e41f75a25739bea56420efc349ca00663721258/docs/assets/svd-decoder-chunks.svg",
+            "naturalWidth": 1190,
+            "naturalHeight": 586
+          }
+        ]
+      },
+      "blocks": [
+        {
+          "index": 0,
+          "language": "python",
+          "browser_bytes": 885,
+          "matches_ignoring_one_terminal_newline": true,
+          "scroll": {
+            "clientWidth": 280,
+            "scrollWidth": 685,
+            "overflowX": "auto",
+            "scrollLeftAfter": 20
+          }
+        },
+        {
+          "index": 1,
+          "language": "bash",
+          "browser_bytes": 337,
+          "matches_ignoring_one_terminal_newline": true,
+          "scroll": {
+            "clientWidth": 280,
+            "scrollWidth": 742,
+            "overflowX": "auto",
+            "scrollLeftAfter": 20
+          }
+        },
+        {
+          "index": 2,
+          "language": "bash",
+          "browser_bytes": 167,
+          "matches_ignoring_one_terminal_newline": true,
+          "scroll": {
+            "clientWidth": 280,
+            "scrollWidth": 595,
+            "overflowX": "auto",
+            "scrollLeftAfter": 20
+          }
+        }
+      ]
+    }
+  ],
+  "navigation": {
+    "passed_clicks": 12,
+    "round_trip_links": [
+      "report ↔ chapter10",
+      "report ↔ measurement evidence index"
+    ],
+    "fixed_sources": [
+      "Diffusers b71269675ec1b85193107a691dd35c308e46f0a5 decode_latents L290-L317",
+      "PyTorch2.6 GroupNorm"
+    ],
+    "results": [
+      {
+        "viewport": "desktop",
+        "link": "chapter",
+        "destination": "https://github.com/Fengyee/genai_study/blob/3e41f75a25739bea56420efc349ca00663721258/docs/chapters/10-pretrained-video-lab.md",
+        "returned_url": "https://github.com/Fengyee/genai_study/blob/3e41f75a25739bea56420efc349ca00663721258/docs/svd-decoder-chunk-report.md",
+        "passed": true
+      },
+      {
+        "viewport": "desktop",
+        "link": "evidence",
+        "destination": "https://github.com/Fengyee/genai_study/blob/3e41f75a25739bea56420efc349ca00663721258/records/measurements/svd-decoder-chunks/README.md",
+        "returned_url": "https://github.com/Fengyee/genai_study/blob/3e41f75a25739bea56420efc349ca00663721258/docs/svd-decoder-chunk-report.md",
+        "passed": true
+      },
+      {
+        "viewport": "desktop",
+        "link": "diffusers",
+        "destination": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/pipelines/stable_video_diffusion/pipeline_stable_video_diffusion.py#L290-L317",
+        "returned_url": null,
+        "passed": true
+      },
+      {
+        "viewport": "desktop",
+        "link": "groupnorm",
+        "destination": "https://docs.pytorch.org/docs/2.6/generated/torch.nn.GroupNorm.html",
+        "returned_url": null,
+        "passed": true
+      },
+      {
+        "viewport": "narrow",
+        "link": "chapter",
+        "destination": "https://github.com/Fengyee/genai_study/blob/3e41f75a25739bea56420efc349ca00663721258/docs/chapters/10-pretrained-video-lab.md",
+        "returned_url": "https://github.com/Fengyee/genai_study/blob/3e41f75a25739bea56420efc349ca00663721258/docs/svd-decoder-chunk-report.md",
+        "passed": true
+      },
+      {
+        "viewport": "narrow",
+        "link": "evidence",
+        "destination": "https://github.com/Fengyee/genai_study/blob/3e41f75a25739bea56420efc349ca00663721258/records/measurements/svd-decoder-chunks/README.md",
+        "returned_url": "https://github.com/Fengyee/genai_study/blob/3e41f75a25739bea56420efc349ca00663721258/docs/svd-decoder-chunk-report.md",
+        "passed": true
+      },
+      {
+        "viewport": "narrow",
+        "link": "diffusers",
+        "destination": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/pipelines/stable_video_diffusion/pipeline_stable_video_diffusion.py#L290-L317",
+        "returned_url": null,
+        "passed": true
+      },
+      {
+        "viewport": "narrow",
+        "link": "groupnorm",
+        "destination": "https://docs.pytorch.org/docs/2.6/generated/torch.nn.GroupNorm.html",
+        "returned_url": null,
+        "passed": true
+      }
+    ]
+  },
+  "visual_review": {
+    "observer": "AI code agent /root/meanflow_reader_check",
+    "inspected_screenshots": [
+      "table-0-narrow.png",
+      "table-1-narrow.png",
+      "figure-context-narrow.png",
+      "caption-narrow.png",
+      "exercises-narrow.png",
+      "svg-preview-narrow.png",
+      "svg-preview-desktop.png"
+    ],
+    "finding": "Two numeric tables and three exercises are readable at390px. The full plot scales to about324x159; internal plot labels require opening and magnifying the SVG. Chinese caption and alt identify both panels, the7-to8 cut, series markers and repeated-input interpretation. Actual GitHub SVG preview loads at both widths; the narrow viewer letterboxes the unchanged vector plot.",
+    "scope_limits": "No assertion of independent readability of the narrow plot labels. Zoom interaction, screen readers, physical mobile devices and model inference were not tested."
+  },
+  "evidence": [
+    {
+      "file": "api/summary.json",
+      "sha256": "5032f4acd84d9a6ce93a7041bbf9f0d94d3440f387d8b32381d7d3522b4ba6b6"
+    },
+    {
+      "file": "client/browser-results.json",
+      "sha256": "8812b10c7fbac7da37d8c24c8d0a4ab4947bec66672bb4c92b5b6cc8534f22b9"
+    },
+    {
+      "file": "client/navigation-results.json",
+      "sha256": "a128b2ed6bf9825b41f2f40efd870cbcdd4c98564e6f0a589dee8593b5aba401"
+    },
+    {
+      "file": "api/reader-controls.json",
+      "sha256": "3bdd762b1527b161745172b330320ea5ff01968656ce59d6dcba305aa6cf66c1"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "client/table-0-narrow.png",
+      "bytes": 14294,
+      "sha256": "54ba1219042420417842bb2b2e68470612d3b70e88142f85d611b88a20355d8c"
+    },
+    {
+      "file": "client/table-1-narrow.png",
+      "bytes": 12453,
+      "sha256": "40a4c2790a863085e38936439a9f766a35cd332880f75e1332d6929578dd5025"
+    },
+    {
+      "file": "client/figure-context-narrow.png",
+      "bytes": 130494,
+      "sha256": "2775593eb7b9d02accfff69c7815307e4629835010241edcd155e23fb4c7d7e5"
+    },
+    {
+      "file": "client/caption-narrow.png",
+      "bytes": 31245,
+      "sha256": "ff5859041b964c716cc6d4d58343bb7d9d7e87bca09299e22c9abcacda81d326"
+    },
+    {
+      "file": "client/exercises-narrow.png",
+      "bytes": 73431,
+      "sha256": "788296452a0ab2503b16d10222b81cd6e5ffe250cd8c88e7f5f982ae69707323"
+    },
+    {
+      "file": "client/svg-preview-narrow.png",
+      "bytes": 50194,
+      "sha256": "e02c894f27bfc72b4576267078bddb205727457a0cf39887a0e866f067ba83cb"
+    },
+    {
+      "file": "client/svg-preview-desktop.png",
+      "bytes": 159984,
+      "sha256": "ee6291974ed3860215ba186287975c532113e23f6750bd8ec36b72b17597abb9"
+    }
+  ],
+  "root_verification": {
+    "checked_utc": "2026-11-11T20:46:59.666874+00:00",
+    "source_and_11_evidence_screenshot_hashes_verified": true,
+    "screenshots_viewed": [
+      "client/table-0-narrow.png",
+      "client/table-1-narrow.png",
+      "client/figure-context-narrow.png"
+    ],
+    "finding": "Both numeric tables fit and preserve single-line numeric values; narrow plot is a thumbnail with a complete Chinese caption and SVG link."
+  }
+}
