@@ -75,7 +75,7 @@ python -m genai_study.video_diagnostics --output artifacts/video-counterexample
 python -m genai_study.video_diagnostics --frames 16 --fps 8 --seed 7 --output artifacts/video-counterexample-seed7
 ```
 
-输出目录已有文件时，选择一个新目录；只有确实要替换已有实验产物时才使用 `--overwrite`。`--frames` 限制在 2–32，`--fps` 必须是正有限值；这一限制用于保持全帧拼图与诊断计算的小规模。本实验只生成小数组和诊断图，软件版本以结果为准；CLI 不记录耗时，需要成本比较时另行测量。
+输出目录已有文件时，选择一个新目录；只有确实要替换已有实验产物时才使用 `--overwrite`。`--frames` 限制在 2–32，以保持全帧拼图与诊断计算的小规模。`--fps` 必须是正有限值，派生的时间、播放时长和质心速度也需能以 float64 表示为有限值；超出范围时命令会在写入文件前给出参数错误。本实验只生成小数组和诊断图，软件版本以结果为准；CLI 不记录耗时，需要成本比较时另行测量。
 
 | 文件 | 用途 |
 | --- | --- |

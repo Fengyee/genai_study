@@ -1,0 +1,211 @@
+{
+  "audited_utc": "2026-11-11T21:06:03.489170+00:00",
+  "baseline_head": "75245fb3a8654b6cfc74564f1d7190d8a345e91a",
+  "workspace": "/tmp/genai-video-fps-audit-vikw44ac",
+  "files": {
+    "src/genai_study/video_diagnostics.py": {
+      "sha256": "879ca6e0ab7e98ab0302213cf19974a2b68d28a570145bf18050a60fe0880fab",
+      "bytes": 7751
+    },
+    "tests/test_video_diagnostics.py": {
+      "sha256": "ae81316fad16e91ed624011a1afbaac51eaf2a88062e1c1b42ac48388b037686",
+      "bytes": 4700
+    },
+    "docs/chapters/06-video-temporal-lab.md": {
+      "sha256": "ae76277bc7206d2801fc7f1f3f2dd0292660480c2959fc82d9e42c3cc4e57894",
+      "bytes": 14188
+    }
+  },
+  "checks": [
+    {
+      "name": "duration_only_overflow",
+      "last_timestamp_seconds": 1e+308,
+      "nominal_duration_finite": false,
+      "passed": true
+    },
+    {
+      "name": "reject_before_parent_creation",
+      "fps": "1e308",
+      "returncode": 2,
+      "error": "video_diagnostics.py: error: --fps must keep timestamps and centroid speeds finite",
+      "parent_created": false,
+      "passed": true
+    },
+    {
+      "name": "reject_preserves_existing_with_overwrite",
+      "fps": "1e308",
+      "returncode": 2,
+      "file_hashes_unchanged": true,
+      "passed": true
+    },
+    {
+      "name": "reject_before_parent_creation",
+      "fps": "1e-320",
+      "returncode": 2,
+      "error": "video_diagnostics.py: error: --fps must keep playback duration finite",
+      "parent_created": false,
+      "passed": true
+    },
+    {
+      "name": "reject_preserves_existing_with_overwrite",
+      "fps": "1e-320",
+      "returncode": 2,
+      "file_hashes_unchanged": true,
+      "passed": true
+    },
+    {
+      "name": "reject_before_parent_creation",
+      "fps": "1e-308",
+      "returncode": 2,
+      "error": "video_diagnostics.py: error: --fps must keep playback duration finite",
+      "parent_created": false,
+      "passed": true
+    },
+    {
+      "name": "reject_preserves_existing_with_overwrite",
+      "fps": "1e-308",
+      "returncode": 2,
+      "file_hashes_unchanged": true,
+      "passed": true
+    },
+    {
+      "name": "ordinary_cli_exact_baseline_comparison",
+      "case": "default",
+      "options": [],
+      "metrics_and_stdout_equal": true,
+      "npz_arrays": [
+        {
+          "name": "reference",
+          "shape": [
+            16,
+            32,
+            48
+          ],
+          "dtype": "float64",
+          "bytes_equal": true
+        },
+        {
+          "name": "shuffled",
+          "shape": [
+            16,
+            32,
+            48
+          ],
+          "dtype": "float64",
+          "bytes_equal": true
+        },
+        {
+          "name": "static_first_frame",
+          "shape": [
+            16,
+            32,
+            48
+          ],
+          "dtype": "float64",
+          "bytes_equal": true
+        },
+        {
+          "name": "shuffled_source_indices",
+          "shape": [
+            16
+          ],
+          "dtype": "int64",
+          "bytes_equal": true
+        },
+        {
+          "name": "timestamps_seconds",
+          "shape": [
+            16
+          ],
+          "dtype": "float64",
+          "bytes_equal": true
+        }
+      ],
+      "contact_sheet_png_bytes_equal": true,
+      "output_file_set_equal": true,
+      "passed": true
+    },
+    {
+      "name": "ordinary_cli_exact_baseline_comparison",
+      "case": "two-frames-alt-seed",
+      "options": [
+        "--frames",
+        "2",
+        "--fps",
+        "24",
+        "--seed",
+        "19"
+      ],
+      "metrics_and_stdout_equal": true,
+      "npz_arrays": [
+        {
+          "name": "reference",
+          "shape": [
+            2,
+            32,
+            48
+          ],
+          "dtype": "float64",
+          "bytes_equal": true
+        },
+        {
+          "name": "shuffled",
+          "shape": [
+            2,
+            32,
+            48
+          ],
+          "dtype": "float64",
+          "bytes_equal": true
+        },
+        {
+          "name": "static_first_frame",
+          "shape": [
+            2,
+            32,
+            48
+          ],
+          "dtype": "float64",
+          "bytes_equal": true
+        },
+        {
+          "name": "shuffled_source_indices",
+          "shape": [
+            2
+          ],
+          "dtype": "int64",
+          "bytes_equal": true
+        },
+        {
+          "name": "timestamps_seconds",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "bytes_equal": true
+        }
+      ],
+      "contact_sheet_png_bytes_equal": true,
+      "output_file_set_equal": true,
+      "passed": true
+    }
+  ],
+  "status": "passed_no_confirmed_omission",
+  "scope": "Independent read-only source/test/doc review plus tiny synthetic CLI runs; all outputs under /tmp. No repository edits, Git mutations, installation or learned-model runs.",
+  "independent_numeric_review": {
+    "path": "/tmp/genai-video-fps-independent-review.json",
+    "sha256": "732d3e3154474c9ab36b38bde2599331d4fc73b76e8d43c7843f3001ceaaf53f",
+    "boundary_cases": 11,
+    "findings": [],
+    "matching_source_snapshot": true
+  },
+  "review_conclusion": {
+    "findings": [],
+    "arithmetic": "Original metric formulas and make_videos/RNG invocation are unchanged. Cached duration and timestamps use the same expressions as before.",
+    "rejection_timing": "For the declared bounded synthetic-video CLI, all FPS-derived values are checked before mkdir, NPZ, PNG or JSON writes. Three requested extremes fail with argparse exit2, including duration-only overflow at2frames/1e-308FPS.",
+    "finite_range": "Finite frames/fps bounds every timestamp i/fps. Other metrics are bounded by the fixed synthetic intensities and image coordinates. FPS multiplication remains a NumPy scalar operation inside errstate.",
+    "tests": "New tests cover each distinct reported extreme plus overwrite preservation. Independent audit adds nested-parent noncreation for all3values, existingNPZ/JSON preservation for all3values, and exact baseline ordinary-output comparisons.",
+    "documentation": "06chapter describes positive finiteFPS plus finite derived time, duration and centroid speed; matches CLI behavior.",
+    "limits": "No full quality suite rerun in this audit; parent will run it. Validation stays within the generated-videoCLI contract."
+  }
+}

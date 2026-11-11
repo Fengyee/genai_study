@@ -12,7 +12,7 @@
 - [PR #4](https://github.com/Fengyee/genai_study/pull/4)开放，最新efb3ead的run43070085722成功，包含checkpoint数值契约及调度观察记录。8份历史checkpoint重放结果逐元素相同；本项尚无合并授权。
 - [PR #5](https://github.com/Fengyee/genai_study/pull/5)开放，基于PR #4，最新f5cc255的run43071278535成功。完整本地检查178 tests、16/16教学块、7条CLI smoke通过；固定1684744实际页面双视口52公式/锚点/答案/局部滚动均通过。PR #4/#5的新合并授权已询问，等待用户答复，其他工作继续。
 - [PR #6](https://github.com/Fengyee/genai_study/pull/6)分支为feat/sd14-attributes-layout，原八请求首条超时、余七未执行；单独声明的线程诊断后，两线程批次0bc702c八条全部成功，37.00分钟，完整原图与两位AI独立观察均已归档。固定源码和锁文件保持。
-- PR6最终内容1b6f8f5、[PR #7](https://github.com/Fengyee/genai_study/pull/7)集成7ed0d67与[PR #8](https://github.com/Fengyee/genai_study/pull/8)集成9ebea09的最新CI均成功；PR6已转为可审阅。PR8检查点94f7660的CI43091354688也已success。分支按PR6→PR7→PR8同步，均待审阅与单独合并授权。Reflow专题已通过178/18/7完整检查和固定SHA两视口验收，以PR #9交付；正文dca73531的CI成功，证据检查点4a3235a的CI仍queued。固定latent分块实测已以PR #10交付，178/19/7及两视口验收完成；当前docs/learning-path-maintenance接续整体复审与状态记录，见轮次61–62。
+- PR6最终内容1b6f8f5、[PR #7](https://github.com/Fengyee/genai_study/pull/7)集成7ed0d67与[PR #8](https://github.com/Fengyee/genai_study/pull/8)集成9ebea09的最新CI均成功；PR6已转为可审阅。PR8检查点94f7660的CI43091354688也已success。分支按PR6→PR7→PR8同步，均待审阅与单独合并授权。Reflow专题已通过178/18/7完整检查和固定SHA两视口验收，以PR #9交付；正文dca73531的CI成功，证据检查点4a3235a的CI仍queued。固定latent分块实测已以PR #10交付，178/19/7及两视口验收完成；整体复审已通过[PR #11](https://github.com/Fengyee/genai_study/pull/11)交付，75245fb的CI43099027810成功。当前fix/cli-derived-numeric-bounds处理公开CLI的极端数值参数，见轮次61–63。
 - 每小时质量workflow位于main，API active、cron为UTC每小时:17；原416版本push/手动与d99版本push的artifact均实际核验。初段117次查询覆盖16:17/17:17；恢复后18:31–19:35的64次覆盖19:17，19:36复查仍无schedule事件；18:17处于断线空窗，原因未确定。
 - 编码代理持久调度、网站和通知绑定未部署；Bark/Codex推送仍缺可用接口。原八请求已按超时规则停止；新两线程批次已完成，完整PNG、metrics/run与日志文本进入仓库，浮点数组保存在忽略的artifacts。
 
@@ -747,3 +747,19 @@ PR8基底同步：当前工作分支feat/meanflow-average-velocity已合入PR7�
 自动化状态另存read-only记录：20:40–20:41的PR9新head仍排队，无job/check-run；main workflow active且SHA保持，官方Actions operational，未识别可证实修复的仓库配置问题。主协调重hash35份原始响应，归档automation-queue-20261111.json及manifest；约25分钟的job超时不涵盖无job队列。20:44平台状态running/current，无secret/runtime变量/出站身份绑定，工具仍缺Bark或编码调度API；只保存无凭据的环境摘要，没有配置发布。
 
 当前工作分支docs/learning-path-maintenance从PR10检查点30124d5建立；PR9的4a3235a、PR10的3e41f75/30124d5远端检查仍queued。下一项具体工作是公开CPU CLI参数与实际运行前提的有限审查；完整发布尺寸视频、真实读者完成情况及自动化外部阻塞继续保留。
+
+
+## 轮次63：在写文件前检查派生种子与视频时间单位
+
+发现：14次公开CPU命令审查确认两项低严重性边界故障。五个Torch命令接受uint64最大种子，随后seed+offset溢出，exit1并留下空目录；视频命令接受有限正FPS 1e308/1e-320，却在速度或时间溢出后写出部分文件。四条正常最小规模路径通过，三条图像样本数拒绝符合约定。原审查与九份基线Git blob身份已核对并保存到records/validation/cli-numeric-bounds。
+
+修改：共享argparse类型保留Torch的有符号原始输入，按二维训练+5、图像训练+6、三个固定模型比较+2预留合法上界；解析阶段检查先于checkpoint读取和输出创建。实际Torch2.6边界与负种子行为已核验，现有随机流表达式保持。视频先检查播放时长，再在浮点溢出检查中计算全部时间/指标，最后建立目录；不设任意物理FPS上限，也不裁剪数值。06章和实验说明同步输入契约。
+
+验证进展：26项候选种子测试通过；集成后五个真实CLI子进程均提前exit2且无输出目录。视频9项测试通过，独立审查另检查三种极端FPS（含仅总时长溢出的1e-308）、嵌套目录未创建与overwrite已有文件保持；默认及双帧24fps/seed19的完整JSON、所有数组bytes和PNG与修改前相同，11项浮点边界分析通过。全量结果见本轮末尾。
+
+集成记录：初版候选补丁缺少新文件mode，git apply --check提前拒绝，仓库未被部分修改。一次过早启动的quality由主代理终止（外层exit143，但内部exit-status.txt误写0）；核对七文件before/after SHA后完成复制集成，重新启动完整检查。原证据保持，不能将终止运行计为通过。
+
+
+轮次63完整验收：artifacts/quality/20261111T211031Z-FZXOZI，208 tests（JUnit总时间86.864秒）、19/19教学块、7条CLI smoke全部通过，10个子检查exit0。主协调另将七份smoke NPZ内全部数组与轮次61完整检查逐一对比，shape/dtype/C-order bytes完全相同。视频独立审查JSON的audited_utc为检查开始时刻，原文件保持；主协调核对三份最终源文件SHA及数值子证据。仅新增参数拒绝路径，算法、模型、依赖与普通配置的数值输出保持。即将推送并创建以PR11为基底的新PR。
+
+新发现与下一轮：被终止的旧quality运行在无pytest.xml、日志未完成时仍写exit-status=0，与外层143矛盾。已将信号中断记录列为P1，先独立复现并修复SIGTERM/SIGINT退出记录，再继续已通过数学审阅的时间GroupNorm教学草稿（/tmp/genai-temporal-norm-candidate及/tmp/genai-temporal-norm-reader-review.json）。PR9/10的旧检查仍queued，PR11最新检查success；默认分支/环境/网站/调度状态保持。

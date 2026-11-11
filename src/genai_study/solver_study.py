@@ -10,6 +10,7 @@ import time
 
 import torch
 
+from .cli import seed_with_offset
 from .checkpoint import load_checkpoint
 from .experiment import positive_int
 from .toy import diagnostics, integrate_flow, sample_data
@@ -21,7 +22,7 @@ def main() -> None:
     parser.add_argument("--steps", nargs="+", type=positive_int, default=[10, 25, 100, 200],
                         help="Euler step counts, sorted and deduplicated; no training")
     parser.add_argument("--samples", type=positive_int, default=2048)
-    parser.add_argument("--seed", type=int, default=123)
+    parser.add_argument("--seed", type=seed_with_offset(max_offset=2), default=123)
     parser.add_argument("--threads", type=positive_int, default=1)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--overwrite", action="store_true")

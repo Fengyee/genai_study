@@ -1,0 +1,419 @@
+{
+  "finished_utc": "2026-11-11T21:14:34.511938+00:00",
+  "quality_directory": "artifacts/quality/20261111T211031Z-FZXOZI",
+  "baseline_quality_directory": "artifacts/quality/20261111T203653Z-JoXwZN",
+  "exit_code": 0,
+  "check_exit_codes": {
+    "tests.exit-status.txt": 0,
+    "lesson-examples.exit-status.txt": 0,
+    "smoke-image.exit-status.txt": 0,
+    "smoke-video.exit-status.txt": 0,
+    "smoke-image-cfg.exit-status.txt": 0,
+    "smoke-image-guidance.exit-status.txt": 0,
+    "smoke-image-solver.exit-status.txt": 0,
+    "smoke-ddpm.exit-status.txt": 0,
+    "smoke-flow.exit-status.txt": 0,
+    "docs.exit-status.txt": 0
+  },
+  "pytest": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "208",
+    "time": "86.864",
+    "timestamp": "2026-11-11T21:10:50.505811+00:00",
+    "hostname": "fc4dc9bc966b"
+  },
+  "lesson_examples": 19,
+  "cli_smokes": 7,
+  "normal_run_array_comparisons": [
+    {
+      "path": "ddpm/samples.npz",
+      "baseline_npz_sha256": "c29129f8254d172e3c78c66024515df7124e41c19cfdcf48f78f908dc04545bb",
+      "current_npz_sha256": "c29129f8254d172e3c78c66024515df7124e41c19cfdcf48f78f908dc04545bb",
+      "arrays": [
+        {
+          "key": "generated",
+          "shape": [
+            64,
+            2
+          ],
+          "dtype": "float32",
+          "bytes_equal": true
+        },
+        {
+          "key": "reference",
+          "shape": [
+            64,
+            2
+          ],
+          "dtype": "float32",
+          "bytes_equal": true
+        },
+        {
+          "key": "training_loss",
+          "shape": [
+            20
+          ],
+          "dtype": "float64",
+          "bytes_equal": true
+        }
+      ]
+    },
+    {
+      "path": "flow/samples.npz",
+      "baseline_npz_sha256": "761b98dc21cdab82218ffdb7747021f2f30c8c23b3db41bd047d303d46851ddd",
+      "current_npz_sha256": "761b98dc21cdab82218ffdb7747021f2f30c8c23b3db41bd047d303d46851ddd",
+      "arrays": [
+        {
+          "key": "generated",
+          "shape": [
+            64,
+            2
+          ],
+          "dtype": "float32",
+          "bytes_equal": true
+        },
+        {
+          "key": "reference",
+          "shape": [
+            64,
+            2
+          ],
+          "dtype": "float32",
+          "bytes_equal": true
+        },
+        {
+          "key": "training_loss",
+          "shape": [
+            20
+          ],
+          "dtype": "float64",
+          "bytes_equal": true
+        }
+      ]
+    },
+    {
+      "path": "image/arrays.npz",
+      "baseline_npz_sha256": "04351b4d5222e27b8a44567c1da977a7a48bbf83e8b5c6086a76a7d1088019a6",
+      "current_npz_sha256": "04351b4d5222e27b8a44567c1da977a7a48bbf83e8b5c6086a76a7d1088019a6",
+      "arrays": [
+        {
+          "key": "generated_raw",
+          "shape": [
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "bytes_equal": true
+        },
+        {
+          "key": "reference",
+          "shape": [
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "bytes_equal": true
+        },
+        {
+          "key": "independent_target",
+          "shape": [
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "bytes_equal": true
+        },
+        {
+          "key": "labels",
+          "shape": [
+            16
+          ],
+          "dtype": "int64",
+          "bytes_equal": true
+        },
+        {
+          "key": "training_loss",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "bytes_equal": true
+        }
+      ]
+    },
+    {
+      "path": "image-cfg/arrays.npz",
+      "baseline_npz_sha256": "b63859ebb33600ff11f906f0af026e927fb69efb848fdf5c1d963eed515149ea",
+      "current_npz_sha256": "b63859ebb33600ff11f906f0af026e927fb69efb848fdf5c1d963eed515149ea",
+      "arrays": [
+        {
+          "key": "generated_raw",
+          "shape": [
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "bytes_equal": true
+        },
+        {
+          "key": "reference",
+          "shape": [
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "bytes_equal": true
+        },
+        {
+          "key": "independent_target",
+          "shape": [
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "bytes_equal": true
+        },
+        {
+          "key": "labels",
+          "shape": [
+            16
+          ],
+          "dtype": "int64",
+          "bytes_equal": true
+        },
+        {
+          "key": "training_loss",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "bytes_equal": true
+        }
+      ]
+    },
+    {
+      "path": "image-guidance/arrays.npz",
+      "baseline_npz_sha256": "5c8c1309c8990d8c3396a283f1e4fc89e97d53ec58e8c11da3bf4842351c8d44",
+      "current_npz_sha256": "5c8c1309c8990d8c3396a283f1e4fc89e97d53ec58e8c11da3bf4842351c8d44",
+      "arrays": [
+        {
+          "key": "initial",
+          "shape": [
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "bytes_equal": true
+        },
+        {
+          "key": "labels",
+          "shape": [
+            16
+          ],
+          "dtype": "int64",
+          "bytes_equal": true
+        },
+        {
+          "key": "reference",
+          "shape": [
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "bytes_equal": true
+        },
+        {
+          "key": "independent_target",
+          "shape": [
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "bytes_equal": true
+        },
+        {
+          "key": "scale_0",
+          "shape": [
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "bytes_equal": true
+        },
+        {
+          "key": "scale_1",
+          "shape": [
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "bytes_equal": true
+        },
+        {
+          "key": "scale_2",
+          "shape": [
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "bytes_equal": true
+        }
+      ]
+    },
+    {
+      "path": "image-solver/arrays.npz",
+      "baseline_npz_sha256": "f663ccce0089b9a2d2a89d7fd91b2a7f03942ffadf7630a73fd96155d897972e",
+      "current_npz_sha256": "f663ccce0089b9a2d2a89d7fd91b2a7f03942ffadf7630a73fd96155d897972e",
+      "arrays": [
+        {
+          "key": "initial",
+          "shape": [
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "bytes_equal": true
+        },
+        {
+          "key": "labels",
+          "shape": [
+            16
+          ],
+          "dtype": "int64",
+          "bytes_equal": true
+        },
+        {
+          "key": "reference",
+          "shape": [
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "bytes_equal": true
+        },
+        {
+          "key": "independent_target",
+          "shape": [
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "bytes_equal": true
+        },
+        {
+          "key": "steps_2",
+          "shape": [
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "bytes_equal": true
+        },
+        {
+          "key": "steps_4",
+          "shape": [
+            16,
+            1,
+            16,
+            16
+          ],
+          "dtype": "float32",
+          "bytes_equal": true
+        }
+      ]
+    },
+    {
+      "path": "video/frames.npz",
+      "baseline_npz_sha256": "26b788e528d4b0751924e4c1a912e6586d108e96d65c9a900d4d00a23c782154",
+      "current_npz_sha256": "26b788e528d4b0751924e4c1a912e6586d108e96d65c9a900d4d00a23c782154",
+      "arrays": [
+        {
+          "key": "reference",
+          "shape": [
+            16,
+            32,
+            48
+          ],
+          "dtype": "float64",
+          "bytes_equal": true
+        },
+        {
+          "key": "shuffled",
+          "shape": [
+            16,
+            32,
+            48
+          ],
+          "dtype": "float64",
+          "bytes_equal": true
+        },
+        {
+          "key": "static_first_frame",
+          "shape": [
+            16,
+            32,
+            48
+          ],
+          "dtype": "float64",
+          "bytes_equal": true
+        },
+        {
+          "key": "shuffled_source_indices",
+          "shape": [
+            16
+          ],
+          "dtype": "int64",
+          "bytes_equal": true
+        },
+        {
+          "key": "timestamps_seconds",
+          "shape": [
+            16
+          ],
+          "dtype": "float64",
+          "bytes_equal": true
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Compared exact arrays of seven fixed short smoke cases; training quality and timing are not inferred.",
+    "Full pytest and all smoke commands ran after seed patch integration.",
+    "Earlier interrupted run has outer exit143 but a misleading exit-status.txt=0; a separate prioritized round will fix signal recording."
+  ]
+}
