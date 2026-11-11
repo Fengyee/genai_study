@@ -7,10 +7,10 @@
 2026-11-11恢复后的当前检查点：云环境、两个虚拟环境和历史实验产物均可用，原未提交成果已接续验证并提交。用户授权的浏览器CA同步完成，正常TLS的GitHub浏览器检查已恢复；协调PID975持有工作区写锁。环境配置保持用户发布版本。
 
 - PR #1已按授权合并，main为416dd8ce9c3e890d03d814bc02d0015c21e51090。
-- [PR #2](https://github.com/Fengyee/genai_study/pull/2)开放，feat/vae-reconstruction最新2ac2f7b：VAE实测、预测目标/权重、路线和GitHub数学修复；32页1536公式的实际客户端验证完成。
-- [PR #3](https://github.com/Fengyee/genai_study/pull/3)开放，当前feat/spatial-token-interface基于PR #2：空间token/位置专题及来源入口核验，b7a4910已推送且远端quality成功。新专题与符号表两视口全部公式/习题/滚动验收通过。两项PR均待评审，新的合并尚未授权。
-- 当前分支最近完整本地检查：146 tests、15/15教学块、7条CLI smoke通过，artifacts/quality/20261111T170520Z-XoMQbD。后续证据/表单改动运行对应检查，逐轮记在末尾。
-- 每小时质量workflow位于main，API active、cron为UTC每小时:17；push43050083353与手动43050263196均success，artifact实际核验115 tests、13教学块及全部退出状态。真实schedule观察继续到17:35 UTC，尚无成功触发证据。
+- [PR #2](https://github.com/Fengyee/genai_study/pull/2)与[PR #3](https://github.com/Fengyee/genai_study/pull/3)已获后续明确授权并顺序合并：PR #2的2ac2f7b检查通过后合入；PR #3切base到main、更新分支到79508e8，run43068306477成功后合入。main现为d99b748fd4555db525f76a0ea83bb73b6b98c84d；其push43068708112已success。
+- 默认分支包含VAE实测、预测权重、GitHub数学修复、空间token专题和反馈表。32页1536公式的批量客户端验收与新专题/符号表两视口验收分别归档；默认分支检查范围为146 tests、15教学块和7条CLI smoke。
+- 当前分支fix/checkpoint-numeric-contract完成数值契约修复；最近完整本地检查178 tests、15/15教学块、7条CLI smoke通过，artifacts/quality/20261111T172929Z-tuGEfg。8份历史checkpoint重放结果逐元素相同；本项将通过新PR交付，尚无合并授权。
+- 每小时质量workflow位于main，API active、cron为UTC每小时:17；原416版本的push43050083353/手动43050263196已实际核验artifact（115 tests、13教学块）。新main的push也成功，artifact核对与真实schedule观察继续到17:35 UTC；尚无真实schedule触发证据。
 - 编码代理持久调度、网站和通知绑定未部署；Bark/Codex推送仍缺可用接口。当前没有模型运行，数据保存在忽略的artifacts。
 
 以下恢复说明和轮次按历史保留，当前状态以上段及末尾最新检查点为准。
@@ -562,3 +562,15 @@ SVD在途检查点：已推送a3ed4a8，对应自动PR run42877869115为complete
 验证：使用现有可选环境中的PyYAML解析修改后的真实文件，与HEAD比较，问题/建议字段和表单名称/描述完全保持，复现required为布尔false。来源URL、内容SHA、公开仓库证据与验证范围保存在[反馈表检查](reader-checks/feedback-form-20261111.json)。没有创建测试issue，GitHub托管表单的实际呈现/提交尚未验证，改动待合入默认分支生效；本轮文档与diff检查通过后保存到PR #3。
 
 检查点：2ba6e57已推送，空间专题的全部验收证据保存在远端。当前保留146测试/15教学块/7条smoke的完整基线；本轮表单改动无需模型或算法重跑。整体路线审查并行进行，继续等待真实schedule事件，环境配置与通知/网站/持续编码部署状态保持。
+
+## 轮次48：整体复查与checkpoint数值契约
+
+整体审查README→路线→首次CPU运行→空间接口→评价与研究模板，25个文件身份归档，未确认新的P0/P1衔接故障。核心代码的时间方向、MSE归约、训练/留出/采样随机流与文档一致；独立二维energy和图像逐像素诊断在float32误差内相符，11个CLI非法参数/非空输出检查保留原文件。49项相关既有测试通过。证据见[路线复查](reader-checks/learning-path-round48.json)与[核心检查](reader-checks/checkpoint-contract/README.md)。
+
+具体发现：直接helper接受double模型，加载按全局默认dtype重建；1+2^-25会静默变为1，默认float64又使普通文件变为float64模型。同形int64和NaN state也被原路径接受。主代理从冻结c554f78源码独立复现两种架构，并核对已锁定PyTorch源码的assign/strict与复制规则；默认CPU命令没有复现故障，本项定为P2。
+
+实施：schema 1明确有限float32张量，保存/载入统一验证，CPU float32构造保持既有严格键/形状校验；examples/07说明支持范围。32项跨架构回归覆盖实际反例、失败保存不覆盖文件、默认dtype独立性和精确预测，52项相关测试通过。主代理另重放历史flow/DDPM各一份及07/08各三个训练seed，共8份真实checkpoint，全部state/输出逐元素相同，原文件SHA未变；未重新训练。
+
+最终全量bash scripts/quality.sh退出0：178 passed（36.11秒）、15/15教学块、7条CLI smoke，执行时779本地链接0错误；日志artifacts/quality/20261111T172929Z-tuGEfg。后续仅补记录，提交前执行文档/diff检查。修复在fix/checkpoint-numeric-contract独立交付。
+
+合并与部署：本轮中用户明确授权PR #2/#3顺序合并并验证。核对PR2最新2ac2f7b的run43064047951成功后精确head合并为fe9c911；PR3改base为main、update-branch后head79508e8，其run43068306477成功且内容树与c554f78相同，再精确head合并为d99b748。两个main push43068272806/43068708112均success。后续新PR仍按创建PR方式交付，未获得新的合并授权。环境配置保持用户发布版本，调度观察与通知入口边界继续如实记录。

@@ -1,0 +1,42 @@
+{
+  "cases": [
+    {
+      "model": "toy",
+      "ambient_default_dtype": "torch.float64",
+      "checkpoint_dtypes": [
+        "torch.float32"
+      ],
+      "loaded_dtypes": [
+        "torch.float64"
+      ]
+    },
+    {
+      "model": "toy",
+      "mutated_key": "net.0.weight",
+      "saved_dtype": "torch.int64",
+      "loaded_dtype": "torch.float32",
+      "accepted_integer_state": true,
+      "loaded_all_ones": true
+    },
+    {
+      "model": "image",
+      "ambient_default_dtype": "torch.float64",
+      "checkpoint_dtypes": [
+        "torch.float32"
+      ],
+      "loaded_dtypes": [
+        "torch.float64"
+      ]
+    },
+    {
+      "model": "image",
+      "mutated_key": "enc1.0.weight",
+      "saved_dtype": "torch.int64",
+      "loaded_dtype": "torch.float32",
+      "accepted_integer_state": true,
+      "loaded_all_ones": true
+    }
+  ],
+  "contract_issue": "Both load helpers choose ambient torch default dtype; strict=True validates keys/shapes but silently casts state tensors. API-level checkpoint reproducibility/validation gap; documented fresh CLI float32 path remains verified.",
+  "minimal_fix": "Keep schema-v1 CPU float32 contract explicit: validate saved/loaded tensor mapping, exact expected dtype and finiteness; construct/load the model explicitly in float32; reject malformed tensor payload before sampling. If supporting float64, encode/infer and validate dtype consistently, then ensure CLI input tensors follow it."
+}

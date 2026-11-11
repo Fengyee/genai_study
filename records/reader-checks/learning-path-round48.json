@@ -1,0 +1,230 @@
+{
+  "utc": "2026-11-11T17:21:27.287515+00:00",
+  "round": "48-read-only-path-review",
+  "head": "c554f787c04499b02548b132cdcb7a031e0a34b5",
+  "result": "No new specific P0/P1 defect confirmed in the requested path. No new backlog item proposed from this review.",
+  "new_confirmed_findings": [],
+  "reviewed_areas": [
+    {
+      "area": "入口、先修与章节依赖",
+      "finding": "README明确目标读者、Linux/Python/CPU范围；学习路径同时说明02/03时间方向与07需要03+05，之前确认的依赖遗漏已修复。",
+      "evidence": [
+        {
+          "file": "README.md",
+          "line": 33,
+          "quote": "已验证目标是 Linux x86_64、Python 3.12、CPU PyTorch 2.6.0。锁文件对应这一平台；macOS/Windows 需要各自的依赖锁定与验证。云环境首次安装需要 PyPI 与 PyTorch 官方软件源可达。下面命令从仓库根目录运行："
+        },
+        {
+          "file": "docs/learning-path.md",
+          "line": 47,
+          "quote": "图中依赖的文字版：00 → 01 → 02/03 → 05。完成05并掌握03的直线路径与Euler后，图像实践沿07 → 08推进；仅完成02的读者进入07前先补03。视频时序实践从05进入06。两条实践路线汇入04研究路线，最后可选09预训练图像实践，随后进入10的预训练视频运行与失败分析。"
+        }
+      ]
+    },
+    {
+      "area": "首次CPU训练与固定模型采样",
+      "finding": "README显式5000次训练更新、CLI默认800与采样预算100分开解释，结果目录复用和checkpoint预算对应；既有首次路径记录保留成功命令及独立数组对照。",
+      "evidence": [
+        {
+          "file": "README.md",
+          "line": 40,
+          "quote": "python -m genai_study.experiment --method flow --steps 5000 --output artifacts/first-flow"
+        },
+        {
+          "file": "docs/learning-path.md",
+          "line": 92,
+          "quote": "`--steps`表示优化器更新次数；这里显式选择5000次，省略参数时CLI默认800次。这两条训练命令的默认采样预算为100步。比较方法时还需控制数据、训练与采样预算，并检查收敛和多种子结果。单独改变flow积分步数使用03章的`solver_study`。实际依赖、输出文件、测量记录和可调参数以README与实验命令的`--help`为准。"
+        },
+        {
+          "file": "records/measurements/first-run-5000/README.md",
+          "line": 3,
+          "quote": "2026-11-10在当前CPU环境重新执行Flow 5000、DDPM 5000及Flow固定checkpoint的10/25/100/200步求解器路径。沿用基础hash锁依赖，三个命令依次执行，均退出0；源码hash、完整argv与120秒单命令上限保存在[execution.json](execution.json)。"
+        }
+      ]
+    },
+    {
+      "area": "07/04到空间token专题",
+      "finding": "先修包含卷积、潜空间和Q/K/V；明确patch内外索引、共享投影与卷积对应、位置联合置换、输出还原及2C分支范围，三题有答案。现有独立矩形/标量循环与作者函数检查对应这些教学主张。",
+      "evidence": [
+        {
+          "file": "docs/readings/spatial-tokens-and-position.md",
+          "line": 3,
+          "quote": "**先修：** [07卷积图像生成](../chapters/07-image-flow-lab.md)、[04潜空间与DiT](../chapters/04-image-video-roadmap.md)、[条件注意力](conditioning-attention.md)的Q/K/V与矩阵形状。**学习目标：** 写清空间patch的排列与投影；解释位置编码如何把内容绑定到网格；将预测token还原为带通道的空间场。"
+        },
+        {
+          "file": "docs/readings/spatial-tokens-and-position.md",
+          "line": 26,
+          "quote": "R_{b,n,k}=z_{b,c,ip+r,jp+s}."
+        },
+        {
+          "file": "docs/readings/spatial-tokens-and-position.md",
+          "line": 83,
+          "quote": "固定`unpatchify`按`B,H_p,W_p,p,p,C_out`解释预测向量，再排列为BCHW；它使用正方形token网格。下面的教学函数显式接收$`H,W`$，把同一索引规则用于长方形网格。作者函数的docstring写为NHWC，实际`einsum`与返回值为NCHW；检查接口时以返回张量的运算为依据。"
+        },
+        {
+          "file": "records/measurements/spatial-tokens/README.md",
+          "line": 9,
+          "quote": "- [主代理矩形检查](root-independent-check.json)：另用3通道6×4网格、2×2 patch、固定投影；重排/卷积逐元素相等，均值投影碰撞展示信息损失。三个投影矩阵下，联合置换误差约4.44e-16，固定位置只重排内容差约0.51783。完整小数组与输入/核公式保存。"
+        }
+      ]
+    },
+    {
+      "area": "05评价到04研究设计与模板",
+      "finding": "实验单位、配对噪声、提示簇不确定性、调参与报告集合区分，能够对应成本校准、单变量干预、完整结果和模板填写项；没有把待执行研究计划写成测量结果。",
+      "evidence": [
+        {
+          "file": "docs/chapters/05-evaluation.md",
+          "line": 229,
+          "quote": "### 先决定结论的单位"
+        },
+        {
+          "file": "docs/chapters/05-evaluation.md",
+          "line": 268,
+          "quote": "在 [04 章](04-image-video-roadmap.md) 的预训练模型上研究 CFG 系数是否提高属性遵循。填入 [论文阅读与实验模板](../reading-paper-template.md)，在开始前声明 30 个条件、每条件 4 个采样 seed、3 个引导系数的试运行设计。"
+        },
+        {
+          "file": "docs/chapters/04-image-video-roadmap.md",
+          "line": 101,
+          "quote": "## 7. 从阅读到一个可复现实验"
+        },
+        {
+          "file": "docs/reading-paper-template.md",
+          "line": 56,
+          "quote": "## 5. 最小基线与资源计划"
+        },
+        {
+          "file": "docs/reading-paper-template.md",
+          "line": 76,
+          "quote": "## 6. 实验矩阵与公平比较"
+        },
+        {
+          "file": "docs/reading-paper-template.md",
+          "line": 93,
+          "quote": "## 7. 评价协议与不确定性"
+        }
+      ]
+    }
+  ],
+  "checks_performed": [
+    {
+      "command": ".venv/bin/python scripts/check_docs.py",
+      "exit_code": 0,
+      "result": "Markdown: checked 779 local links; 0 errors"
+    }
+  ],
+  "independent_review": {
+    "agent": "evaluation_only",
+    "scope": "05 evaluation -> 04 research design -> reading-paper template and existing evaluation source audits",
+    "result": "No confirmed P0/P1 handoff defect; uncertainty unit, paired inputs, budgets, failure/selection rules and plan-vs-measurement scope align."
+  },
+  "verification_limits": [
+    "No fresh dependency installation, training, pretrained model inference, full quality suite, or browser run in this review.",
+    "First-run and spatial-token execution evidence was read from existing scoped records; historical timings were not remeasured.",
+    "Existing fixed source identities and claim locations were inspected; original papers were not redownloaded or fully reread.",
+    "This bounded audit does not close the existing backlog items for broad 2025–2026 coverage, expanded prompt evaluation, released-size SVD baseline, real-reader study, or scheduling/notification deployment."
+  ],
+  "recommended_disposition": "Record this path as reviewed at the listed file hashes. Continue prioritizing the existing evidence-based backlog; add a new change only when a concrete reader problem or verified claim/interface mismatch is identified.",
+  "source_snapshots": [
+    {
+      "file": "AGENTS.md",
+      "sha256": "90334863b76e12bb5d0db11b1c34125e471017100a9ae8200f61e306ce11f3e8"
+    },
+    {
+      "file": "README.md",
+      "sha256": "bb35b92ef39bcbb33e5991c9e4907873370947afb8d9df9f447a2f5697cc8673"
+    },
+    {
+      "file": "docs/learning-path.md",
+      "sha256": "803bb6fdaafe15708b13813eb2e23f798e3776c8b92d057a4b860f85dcb4c61c"
+    },
+    {
+      "file": "docs/notation.md",
+      "sha256": "c1b27f12c66dfb97dfd66cca6a17b125a344dec77cc1d05b6a28865f3f453b5d"
+    },
+    {
+      "file": "records/BACKLOG.md",
+      "sha256": "354b3e38b196848a20bb2b30e0ea5dfd73035b257d39404e985f231dae708f98"
+    },
+    {
+      "file": "records/PROGRESS.md",
+      "sha256": "327f99f5fafa07f03323324c41a65e0902b0c070dfd03484aee875ff17f6ea1d"
+    },
+    {
+      "file": "docs/chapters/00-foundations.md",
+      "sha256": "feb2423c9dd0cff4a98de619b2ce70d1450673b130690b888aa535cc6c47a10b"
+    },
+    {
+      "file": "docs/chapters/02-diffusion.md",
+      "sha256": "4ab030b3d2a9c2c0deca2142227330dccc0f3efd878af63f0c23c8922767aded"
+    },
+    {
+      "file": "docs/chapters/03-flow-matching.md",
+      "sha256": "dd0667e336feb30efdc1634c033351ed65366742d9085f35b5724eee91cdca29"
+    },
+    {
+      "file": "docs/chapters/04-image-video-roadmap.md",
+      "sha256": "cb5833a164652dbbd4a98c45d572f1752f7e9ea0b3895075de8f79bd671461b3"
+    },
+    {
+      "file": "docs/chapters/05-evaluation.md",
+      "sha256": "a828f8c8510d7a8d4a78f51a39bf38fbc8d645ce0f9f2b33ff309402bdc4f7d6"
+    },
+    {
+      "file": "docs/chapters/07-image-flow-lab.md",
+      "sha256": "c2935eee9604115847e8b112fc38ba8ed7eb2808d141e26ce30fac894188ba37"
+    },
+    {
+      "file": "docs/chapters/08-image-guidance-lab.md",
+      "sha256": "2f5d01cf1dff49d6f2dab039166c9b6dea80564c395b1ed82b2b8945cd4caad6"
+    },
+    {
+      "file": "docs/readings/spatial-tokens-and-position.md",
+      "sha256": "f69dc540d5ea004664d2502856979f90ac70cdcca17e30da06485b666eed0965"
+    },
+    {
+      "file": "docs/readings/conditioning-attention.md",
+      "sha256": "27f6bab645c4661dc7985aa74d828837211accf01f4a75257c173f5ee4350fa5"
+    },
+    {
+      "file": "docs/reading-paper-template.md",
+      "sha256": "f935e27f527c26bf7a0a16a83620c2692f7e3709e6c2b7aee07b8d5c056d3e47"
+    },
+    {
+      "file": "docs/image-video-source-audit.md",
+      "sha256": "c5a14c897e15b9642fca47a4e81b60801b5b22fb849665c552692ce301ebbba5"
+    },
+    {
+      "file": "docs/evaluation-source-audit.md",
+      "sha256": "b815d13ecf1f03e7e1a40fa0bf967873276a1569341d816148d4dc4f624a7a02"
+    },
+    {
+      "file": "docs/evaluation-metrics-audit.md",
+      "sha256": "8829321f0cdc9a4179e9c2075bbb1d488a9fd2e26aaac63e34ff677c36fe82a0"
+    },
+    {
+      "file": "records/measurements/spatial-tokens/README.md",
+      "sha256": "b00ca804f06f34f828a1c32e42c4200eab3dac963ed60f709aab3416c303a9aa"
+    },
+    {
+      "file": "records/measurements/spatial-tokens/source-identity.json",
+      "sha256": "239952bb021dac25b7a94d9e60be119794febfe0894fd33f08984e87adefc974"
+    },
+    {
+      "file": "records/measurements/first-run-5000/README.md",
+      "sha256": "433b7ff8ad4491433c0d2729bbd9f806d7c77fd9d3f0c805f6df07b3bfeb45f6"
+    },
+    {
+      "file": "pyproject.toml",
+      "sha256": "8b35069bf9c68a061a465848eecfccbb16a72e4b1dd90743a9dfef232c15eec5"
+    },
+    {
+      "file": "src/genai_study/experiment.py",
+      "sha256": "bee833cc0c3221c9983f86ad8899e15d01e2f8f85cc9f8d1e9e1896530675aea"
+    },
+    {
+      "file": "scripts/quality.sh",
+      "sha256": "e29560f57f2469e08d50a1e700d02c7a07b771ff4ecf50820111b3f78e0d6ce3"
+    }
+  ],
+  "repository_mutations": "none; only the requested /tmp report written"
+}

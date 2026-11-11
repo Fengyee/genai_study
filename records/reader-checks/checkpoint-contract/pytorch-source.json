@@ -1,0 +1,20 @@
+{
+  "torch_version": "2.6.0+cpu",
+  "torch_git_revision": "2236df1770800ffea5697b11b0bb0d910b2e59e1",
+  "file": "/workspace/genai_study/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py",
+  "source_sha256": "9543831476ced9a1ff8772aaed917ff5ff369c45e5a19679d95256eb22a52929",
+  "load_state_dict_line": 2473,
+  "parameter_doc": "strict (bool, optional): whether to strictly enforce that the keys\n                in :attr:`state_dict` match the keys returned by this module's\n                :meth:`~torch.nn.Module.state_dict` function. Default: ``True``\n            assign (bool, optional): When set to ``False``, the properties of the tensors\n                in the current module are preserved whereas setting it to ``True`` preserves\n                properties of the Tensors in the state dict. The only\n                exception is the ``requires_grad`` field of :class:`~torch.nn.Parameter`s\n                for which the value from the module is preserved.\n                Default: ``False``",
+  "copy_and_shape_lines": [
+    {
+      "line": 2384,
+      "text": "if not is_param_lazy and input_param.shape != param.shape:"
+    },
+    {
+      "line": 2438,
+      "text": "param.copy_(input_param)"
+    }
+  ],
+  "official_source_url": "https://github.com/pytorch/pytorch/blob/2236df1770800ffea5697b11b0bb0d910b2e59e1/torch/nn/modules/module.py",
+  "scope": "Read the installed pinned 2.6.0 CPU implementation and function docstring; independent before/after helper experiments provide runtime evidence."
+}
