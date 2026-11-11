@@ -1,0 +1,141 @@
+{
+  "checked_utc": "2026-11-11T19:20:08.427520+00:00",
+  "commit": "002dd89bfef5ac6ae2a8f3cddb3bb9d59fa3ad0d",
+  "path": "docs/readings/meanflow-average-velocity.md",
+  "source_sha256": "7ec5564b658aafc6565f5b95e2ce436d8cbcdf41590e33854b67551a4be7c30a",
+  "math_payload_and_sequence_unchanged_from": "876647bfbcc913af577447c036beb03b4e7d1346",
+  "expected_math_count": 79,
+  "cpu_block_bytes": 1924,
+  "cpu_block_sha256": "aba58d6ac5a2fd561f1031ec97182440ea76d7f63c8242c7e7573d21bc92094c",
+  "png_sha256": "2caec9cd8e55d186bc79cc690d524b46a16fdcc2c909eabd16c624e65a153adf",
+  "png_bytes": 211464,
+  "tls_verification": true,
+  "pages": [
+    {
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "screenshots": [
+        "figure-desktop.png",
+        "caption-desktop.png",
+        "figure-context-desktop.png"
+      ],
+      "http_status": 200,
+      "math": {
+        "renderer_count": 79,
+        "mathml_count": 79,
+        "inline_count": 70,
+        "display_count": 9,
+        "empty_renderers": 0,
+        "errors": [],
+        "raw_tex": []
+      },
+      "image": {
+        "complete": true,
+        "naturalWidth": 2112,
+        "naturalHeight": 1024,
+        "width": 1011.96875,
+        "height": 490.65625,
+        "alt": "解析Gaussian对照：左图从噪声−1.5沿精确轨迹到0.45，平均速度弦连接相同端点，Euler切线到1.5；右图精确输出随输入线性变化，Euler输出恒为1.5",
+        "currentSrc": "https://github.com/Fengyee/genai_study/raw/002dd89bfef5ac6ae2a8f3cddb3bb9d59fa3ad0d/docs/assets/meanflow-gaussian.png",
+        "alt_matches_source": true
+      },
+      "image_network_responses": [
+        {
+          "url": "https://raw.githubusercontent.com/Fengyee/genai_study/002dd89bfef5ac6ae2a8f3cddb3bb9d59fa3ad0d/docs/assets/meanflow-gaussian.png",
+          "status": 200,
+          "bytes": 211464,
+          "sha256": "2caec9cd8e55d186bc79cc690d524b46a16fdcc2c909eabd16c624e65a153adf"
+        }
+      ],
+      "image_network_matches_source": true,
+      "caption": {
+        "text": "图中固定m=1.5、s=0.7。左图从z=-1.5出发，横轴沿生成方向从1走向0；蓝色曲线是精确ODE轨迹，绿色虚线弦连接完整区间两端，橙色切线给出一步Euler更新。弦的中间点由端点连线确定；改变目标时间时，需重新求对应区间的平均速度。右图的九个点用于逐点示意，总体方差0.49和0来自标准正态初态的解析变换。可打开SVG矢量图查看细节；图由可重跑脚本生成。",
+        "matches_source_plain_text": true,
+        "visible": true,
+        "explains_chord_and_new_target": true,
+        "variance_population_source": true
+      },
+      "code_matches": true,
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentScrollWidth": 1440,
+        "articleClientWidth": 1012,
+        "articleScrollWidth": 1012
+      },
+      "svg_link_href": "/Fengyee/genai_study/blob/002dd89bfef5ac6ae2a8f3cddb3bb9d59fa3ad0d/docs/assets/meanflow-gaussian.svg",
+      "svg_navigation": {
+        "url": "https://github.com/Fengyee/genai_study/blob/002dd89bfef5ac6ae2a8f3cddb3bb9d59fa3ad0d/docs/assets/meanflow-gaussian.svg",
+        "title": "genai_study/docs/assets/meanflow-gaussian.svg at 002dd89bfef5ac6ae2a8f3cddb3bb9d59fa3ad0d · Fengyee/genai_study · GitHub",
+        "body_present": true,
+        "preview_images": 0
+      },
+      "passed": true
+    },
+    {
+      "viewport": "narrow",
+      "width": 390,
+      "height": 844,
+      "screenshots": [
+        "figure-narrow.png",
+        "caption-narrow.png",
+        "figure-context-narrow.png"
+      ],
+      "http_status": 200,
+      "math": {
+        "renderer_count": 79,
+        "mathml_count": 79,
+        "inline_count": 70,
+        "display_count": 9,
+        "empty_renderers": 0,
+        "errors": [],
+        "raw_tex": []
+      },
+      "image": {
+        "complete": true,
+        "naturalWidth": 2112,
+        "naturalHeight": 1024,
+        "width": 323.96875,
+        "height": 157.078125,
+        "alt": "解析Gaussian对照：左图从噪声−1.5沿精确轨迹到0.45，平均速度弦连接相同端点，Euler切线到1.5；右图精确输出随输入线性变化，Euler输出恒为1.5",
+        "currentSrc": "https://github.com/Fengyee/genai_study/raw/002dd89bfef5ac6ae2a8f3cddb3bb9d59fa3ad0d/docs/assets/meanflow-gaussian.png",
+        "alt_matches_source": true
+      },
+      "image_network_responses": [
+        {
+          "url": "https://raw.githubusercontent.com/Fengyee/genai_study/002dd89bfef5ac6ae2a8f3cddb3bb9d59fa3ad0d/docs/assets/meanflow-gaussian.png",
+          "status": 200,
+          "bytes": 211464,
+          "sha256": "2caec9cd8e55d186bc79cc690d524b46a16fdcc2c909eabd16c624e65a153adf"
+        }
+      ],
+      "image_network_matches_source": true,
+      "caption": {
+        "text": "图中固定m=1.5、s=0.7。左图从z=-1.5出发，横轴沿生成方向从1走向0；蓝色曲线是精确ODE轨迹，绿色虚线弦连接完整区间两端，橙色切线给出一步Euler更新。弦的中间点由端点连线确定；改变目标时间时，需重新求对应区间的平均速度。右图的九个点用于逐点示意，总体方差0.49和0来自标准正态初态的解析变换。可打开SVG矢量图查看细节；图由可重跑脚本生成。",
+        "matches_source_plain_text": true,
+        "visible": true,
+        "explains_chord_and_new_target": true,
+        "variance_population_source": true
+      },
+      "code_matches": true,
+      "geometry": {
+        "viewportWidth": 390,
+        "documentScrollWidth": 390,
+        "articleClientWidth": 324,
+        "articleScrollWidth": 324
+      },
+      "svg_link_href": "/Fengyee/genai_study/blob/002dd89bfef5ac6ae2a8f3cddb3bb9d59fa3ad0d/docs/assets/meanflow-gaussian.svg",
+      "svg_navigation": {
+        "url": "https://github.com/Fengyee/genai_study/blob/002dd89bfef5ac6ae2a8f3cddb3bb9d59fa3ad0d/docs/assets/meanflow-gaussian.svg",
+        "title": "genai_study/docs/assets/meanflow-gaussian.svg at 002dd89bfef5ac6ae2a8f3cddb3bb9d59fa3ad0d · Fengyee/genai_study · GitHub",
+        "body_present": true,
+        "preview_images": 0
+      },
+      "passed": true
+    }
+  ],
+  "browser_version": "156.0.8078.79",
+  "finished_utc": "2026-11-11T19:20:33.776290+00:00",
+  "all_passed": true,
+  "script_sha256": "2992272bb8b173cb0083ab602791042590b194e1d75ca31b54445692e3e6067e"
+}
