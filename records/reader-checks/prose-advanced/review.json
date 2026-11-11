@@ -1,0 +1,194 @@
+{
+  "created_utc": "2026-11-11T18:05:48.411947+00:00",
+  "scope": "只读审查04/07/08/09/10的中文叙述；仅/tmp草稿，不修改受跟踪文件，不执行Git或模型。",
+  "change_count": 8,
+  "changes": [
+    {
+      "path": "docs/chapters/04-image-video-roadmap.md",
+      "original": "“去噪误差下降”不能自动推断手部解剖、物体持久性或物理运动正确。",
+      "replacement": "评价生成结果时，还需分别检查手部解剖、物体持久性与物理运动。",
+      "reason": "承接前句训练损失与人类评价的差距，将非蕴含提醒转为明确的检查对象；保留这些质量维度需要独立检查的要求。",
+      "id": 1,
+      "line": 11,
+      "source_sha256": "cb5833a164652dbbd4a98c45d572f1752f7e9ea0b3895075de8f79bd671461b3"
+    },
+    {
+      "path": "docs/chapters/04-image-video-roadmap.md",
+      "original": "模型文件名相近不保证潜空间兼容；随意替换 VAE 可能改变尺度或解码质量。",
+      "replacement": "替换 VAE 时，应逐项核对潜空间接口，并检查其对尺度和解码质量的影响。",
+      "reason": "前句已列出缩放、编码输出和自编码器一致性三个假设；直接说明替换时的核对与验证动作，保留兼容性要求。",
+      "id": 2,
+      "line": 32,
+      "source_sha256": "cb5833a164652dbbd4a98c45d572f1752f7e9ea0b3895075de8f79bd671461b3"
+    },
+    {
+      "path": "docs/chapters/04-image-video-roadmap.md",
+      "original": "后续仓库版本可能扩展能力，不应回写成 2024 首发论文的结论。",
+      "replacement": "后续仓库扩展的能力需按对应版本注明来源；2024 首发论文的结论以原文为准。",
+      "reason": "将禁止混写改为明确的版本归属方法；保留首发论文与后续实现的证据边界。",
+      "id": 3,
+      "line": 75,
+      "source_sha256": "cb5833a164652dbbd4a98c45d572f1752f7e9ea0b3895075de8f79bd671461b3"
+    },
+    {
+      "path": "docs/chapters/04-image-video-roadmap.md",
+      "original": "不要仅因为方法名称相近就假定推理参数可互换。",
+      "replacement": "迁移推理参数前，逐项核对目标实现的参数定义与接口。",
+      "reason": "把笼统的相似名称提醒换成迁移前可以实际执行的核对动作。",
+      "id": 4,
+      "line": 123,
+      "source_sha256": "cb5833a164652dbbd4a98c45d572f1752f7e9ea0b3895075de8f79bd671461b3"
+    },
+    {
+      "path": "docs/chapters/04-image-video-roadmap.md",
+      "original": "报告计数与不确定性，不能只挑一个失败例子就断言总体排序。",
+      "replacement": "基于完整评估集报告计数与不确定性，说明观察到的排序及其适用范围。",
+      "reason": "用完整评估集定义报告范围，保留计数与不确定性；按独立复核建议将结论写成观察到的排序及其适用范围，贴合题目的小规模验证。",
+      "id": 5,
+      "line": 165,
+      "source_sha256": "cb5833a164652dbbd4a98c45d572f1752f7e9ea0b3895075de8f79bd671461b3"
+    },
+    {
+      "path": "docs/chapters/04-image-video-roadmap.md",
+      "original": "README 的默认结果也附采样配置，不能脱离配置比较。",
+      "replacement": "README 的默认结果也附采样配置，比较时需一并核对。",
+      "reason": "直接说明读者比较默认结果时应核对什么，保留配置可比性要求。",
+      "id": 6,
+      "line": 191,
+      "source_sha256": "cb5833a164652dbbd4a98c45d572f1752f7e9ea0b3895075de8f79bd671461b3"
+    },
+    {
+      "path": "docs/chapters/07-image-flow-lab.md",
+      "original": "卷积核共享参数，利于复用局部边缘模式；下采样和多层组合扩大有效感受野。但“使用卷积”不等于模型对任意平移严格等变：有限边界、padding、下采样及显式坐标通道都会影响这一性质。坐标通道还提供绝对位置，帮助模型利用教学数据的中心范围；这种设计假设不应未经检查就搬到另一套数据。",
+      "replacement": "卷积核共享参数，利于复用局部边缘模式；下采样和多层组合扩大有效感受野。有限边界、padding、下采样及显式坐标通道都会影响平移等变性；判断模型是否对任意平移严格等变时，需要逐项检查这些因素。坐标通道还提供绝对位置，帮助模型利用教学数据的中心范围；迁移到另一套数据时，应先核对其位置分布是否适合这一设计。",
+      "reason": "保留任意平移的严格等变性问题及四个影响因素，将重复否定改为等变性检查与迁移前位置分布检查。",
+      "id": 7,
+      "line": 105,
+      "source_sha256": "169cf5f30eeb927462f8ed8c830f8dc35cabea57e88e4504c5bb618d2fd9d708"
+    },
+    {
+      "path": "docs/chapters/07-image-flow-lab.md",
+      "original": "`0.01` 是本教学实验的显式阈值，不能拿去判断更高分辨率、不同强度尺度或自然图像的质量。",
+      "replacement": "`0.01` 是本教学实验的显式阈值；更高分辨率、不同强度尺度或自然图像需要重新建立对应的质量标准。",
+      "reason": "将阈值适用范围直接写成迁移时的评价要求，保留当前阈值与三类迁移条件。",
+      "id": 8,
+      "line": 211,
+      "source_sha256": "169cf5f30eeb927462f8ed8c830f8dc35cabea57e88e4504c5bb618d2fd9d708"
+    }
+  ],
+  "source_snapshot": [
+    {
+      "path": "docs/chapters/04-image-video-roadmap.md",
+      "sha256": "cb5833a164652dbbd4a98c45d572f1752f7e9ea0b3895075de8f79bd671461b3",
+      "line_count": 205
+    },
+    {
+      "path": "docs/chapters/07-image-flow-lab.md",
+      "sha256": "169cf5f30eeb927462f8ed8c830f8dc35cabea57e88e4504c5bb618d2fd9d708",
+      "line_count": 303
+    },
+    {
+      "path": "docs/chapters/08-image-guidance-lab.md",
+      "sha256": "2f5d01cf1dff49d6f2dab039166c9b6dea80564c395b1ed82b2b8945cd4caad6",
+      "line_count": 280
+    },
+    {
+      "path": "docs/chapters/09-pretrained-image-lab.md",
+      "sha256": "8dd860fa8024df96fd799f05c0eee5361af550fbb9ce7f2b3e14140774825a02",
+      "line_count": 263
+    },
+    {
+      "path": "docs/chapters/10-pretrained-video-lab.md",
+      "sha256": "3b3e6382fa699274aafbdb76d698f9ed33afa737ec4d2cfeda9941576d7911af",
+      "line_count": 297
+    }
+  ],
+  "independent_review": {
+    "agent": "evaluation_only",
+    "reviewed_candidates": 8,
+    "adjusted_candidates": [
+      5,
+      7
+    ],
+    "adjustments": [
+      "小规模验证结论限定为观察到的排序及适用范围。",
+      "显式保留边界、padding、下采样与坐标通道对平移等变性的影响关系。"
+    ]
+  },
+  "unchanged_chapters": [
+    {
+      "path": "docs/chapters/08-image-guidance-lab.md",
+      "reason": "现有否定用于条件期望、速度与密度的数学关系、配对噪声独立性和RMS含义，保留教学辨析；未发现值得改写的重复防御性说明。"
+    },
+    {
+      "path": "docs/chapters/09-pretrained-image-lab.md",
+      "reason": "子审查通读全部263行；实测用途、配对实验解释与扩大评价要求已直接陈述，未发现适合本轮改写的候选。"
+    },
+    {
+      "path": "docs/chapters/10-pretrained-video-lab.md",
+      "reason": "子审查通读全部297行；校准、预算外推、Euler正sigma条件与失败测量范围有必要保留，未发现适合本轮改写的候选。"
+    }
+  ],
+  "explicitly_preserved": [
+    {
+      "path": "docs/chapters/07-image-flow-lab.md",
+      "items": [
+        "方形轮廓沿角外方向与欧氏有符号距离的区别",
+        "低维终点与光滑可逆ODE的适用条件",
+        "sigmoid速度反例",
+        "MSE尺度与优化轨迹关系",
+        "步数敏感性与目标分布拟合区别",
+        "几何模板通过但模式坍塌反例"
+      ]
+    },
+    {
+      "path": "docs/chapters/04-image-video-roadmap.md",
+      "items": [
+        "逐帧边缘分布与跨帧联合分布反例",
+        "全部评价指标的适用范围表",
+        "U-Net医学分割来源边界",
+        "FVD对视频质量维度的覆盖范围"
+      ]
+    }
+  ],
+  "validation": {
+    "method": "每处原句唯一匹配；按顺序比较标题、所有围栏块（含公式/命令/Mermaid）、保护格式行内数学、行内代码、Markdown链接全文及数值token；完成后复核源文件SHA未变。",
+    "files": [
+      {
+        "path": "docs/chapters/04-image-video-roadmap.md",
+        "source_sha256": "cb5833a164652dbbd4a98c45d572f1752f7e9ea0b3895075de8f79bd671461b3",
+        "draft_sha256": "2ead8c6f849c33bdf1a4106c8990ac67bcd080a0653688b6906b86f3530c1095",
+        "all_invariants_equal": true,
+        "preserved_counts": {
+          "headings": 15,
+          "fenced_blocks": 4,
+          "protected_inline_math": 34,
+          "inline_code": 43,
+          "links": 46,
+          "numeric_tokens": 130
+        }
+      },
+      {
+        "path": "docs/chapters/07-image-flow-lab.md",
+        "source_sha256": "169cf5f30eeb927462f8ed8c830f8dc35cabea57e88e4504c5bb618d2fd9d708",
+        "draft_sha256": "50ff21172930024522719538f2516dfe7a4af34156175af98a5dee60f75ee639",
+        "all_invariants_equal": true,
+        "preserved_counts": {
+          "headings": 24,
+          "fenced_blocks": 11,
+          "protected_inline_math": 49,
+          "inline_code": 112,
+          "links": 13,
+          "numeric_tokens": 174
+        }
+      }
+    ],
+    "runtime_checks": "无模型或执行示例；纯叙述草稿，代码和公式字节均保持。",
+    "browser_checks": "未执行；未改数学、链接或结构。"
+  },
+  "artifacts": {
+    "directory": "/tmp/genai-prose-advanced-draft",
+    "patch": "/tmp/genai-prose-advanced-draft/proposed.patch"
+  },
+  "limitations": "仅提供可审阅建议；根代理可按教学判断挑选接入。未修改科学结论或重新核验外部论文。"
+}
