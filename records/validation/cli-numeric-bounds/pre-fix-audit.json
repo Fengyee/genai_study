@@ -1,0 +1,535 @@
+{
+  "schema_version": 1,
+  "audit_name": "CPU CLI contract read-only audit round63",
+  "created_utc": "2026-11-11T20:56:10.906147+00:00",
+  "repository": "/workspace/genai_study",
+  "base_commit": "30124d5da8de66dbff2a656e1101def888bf05d5",
+  "environment": {
+    "python": "3.12.14",
+    "torch": "2.6.0+cpu",
+    "numpy": "2.1.3",
+    "interpreter": "/workspace/genai_study/.venv/bin/python"
+  },
+  "constraints": {
+    "repository_files_changed_by_audit": false,
+    "git_mutations": false,
+    "network_downloads": false,
+    "long_training": false,
+    "probe_artifacts": "/tmp/genai-cli-contract-round63"
+  },
+  "source_sha256": {
+    "experiment": "bee833cc0c3221c9983f86ad8899e15d01e2f8f85cc9f8d1e9e1896530675aea",
+    "solver_study": "ed9c240869870195aef61a81688dca5bf44daf8c1381ac4343c8e361e68b6252",
+    "toy": "ec76843afbddd8445148f5f5ffe0a4793288c12372e0925d911eeb4eea67facb",
+    "checkpoint": "013a6e1ab0289496962db76777dac6292cd6cec98828ee58a7a8c9a1144a5b79",
+    "image_flow": "70aa2567364eaf7724ae3715f73b9c056623fcfc4f2a529cc61bec0c9352e73f",
+    "image_solver_study": "f6ecd4ca7dfa7420f6c1b6d4cb35446550f39fd556f3a97d7375f0851eceb029",
+    "image_guidance_study": "d7487a449f97d72178add646b8b55086d8a3f6f36060e7e0a95b8e71fabb633f",
+    "image_checkpoint": "50ce0631fa088b0d478e5d737d57c58e83615be5aa387883f17669fc09c971d2",
+    "video_diagnostics": "2f33e433a8403ee91600ab382ea49f58245f154080853f96f6f5b8c0700ad939"
+  },
+  "tests_reviewed": [
+    "tests/test_experiment.py",
+    "tests/test_checkpoint.py",
+    "tests/test_video_diagnostics.py",
+    "tests/test_oracle_study.py seed-boundary cases; image test coverage in attached image audit"
+  ],
+  "findings": [
+    {
+      "id": "seed-derived-stream-overflow",
+      "suggested_priority": "P3, extreme explicit seed input validation",
+      "status": "reproduced",
+      "affected_modules": [
+        "experiment",
+        "solver_study",
+        "image_flow",
+        "image_solver_study",
+        "image_guidance_study"
+      ],
+      "trigger": "Public --seed 18446744073709551615, accepted by torch.manual_seed itself, exceeds PyTorch range when a CLI derives seed+1.",
+      "locations": [
+        "src/genai_study/experiment.py:31",
+        "src/genai_study/experiment.py:42",
+        "src/genai_study/solver_study.py:24",
+        "src/genai_study/solver_study.py:40",
+        "src/genai_study/image_flow.py:229",
+        "src/genai_study/image_solver_study.py:42",
+        "src/genai_study/image_guidance_study.py:96"
+      ],
+      "observed": "All five PyTorch CLIs exit 1 with RuntimeError: Overflow when unpacking long. Their output directories have already been created and remain empty.",
+      "evidence_probes": [
+        "flow_seed_overflow",
+        "solver_seed_overflow"
+      ],
+      "primary_contract": "Installed torch 2.6.0 torch.manual_seed docstring states inclusive [-0x8000_0000_0000_0000, 0xffff_ffff_ffff_ffff]; Generator.manual_seed(2**64-1).initial_seed() returned 18446744073709551615.",
+      "impact": "Extreme explicit seeds fail at stream construction; ordinary default seeds and small samples succeed. No existing artifacts were overwritten in the fresh-directory probes.",
+      "suggested_resolution": "Validate the base-seed range for every derived stream before creating output. Maximum offsets are experiment +5, image_flow +6, and all three solver/guidance CLIs +2. Document the supported base-seed interval and test public CLI rejection and safe boundaries.",
+      "coverage_gap": "Existing real CLI tests use ordinary seeds and test repeatability; no seed upper-bound tests in test_experiment.py or test_checkpoint.py.",
+      "image_evidence_report": "/tmp/genai-image-cli-contract-audit.json"
+    },
+    {
+      "id": "video-finite-fps-derived-overflow",
+      "suggested_priority": "P3, extreme floating-point parameter boundary",
+      "status": "reproduced",
+      "affected_modules": [
+        "video_diagnostics"
+      ],
+      "trigger": "Public --frames 2 --fps 1e308 or --fps 1e-320. Both satisfy the advertised finite-positive FPS validation.",
+      "locations": [
+        "src/genai_study/video_diagnostics.py:60",
+        "src/genai_study/video_diagnostics.py:76",
+        "src/genai_study/video_diagnostics.py:92",
+        "src/genai_study/video_diagnostics.py:131"
+      ],
+      "observed": "CLI exits 1 with ValueError: Out of range float values are not JSON compliant: inf after creating frames.npz and contact_sheet.png; metrics.json is absent. At 1e308 speed multiplication overflows. At 1e-320 timestamps/duration overflow, and persisted NPZ timestamps are [0.0, Infinity].",
+      "evidence_probes": [
+        "video_fps_overflow",
+        "video_fps_underflow"
+      ],
+      "impact": "Unrealistic finite FPS values produce an incomplete run and, for the tiny FPS, an NPZ with a nonfinite timestamp. Default FPS and the smallest supported frame count succeed.",
+      "suggested_resolution": "Validate finite representability of derived timestamps/duration and speed before writing artifacts, producing a concise CLI error if the configured values cannot be represented.",
+      "coverage_gap": "Video tests cover units, doubling FPS, frame ordering, smallest frame count, and default CLI output, but no floating-point extremes."
+    }
+  ],
+  "successful_boundary_checks": [
+    "Public flow experiment with one update, batch size 1, samples 1 completed and emitted checkpoint, JSON, NPZ, and plots; generated/reference/loss arrays finite.",
+    "Public DDPM experiment with one update, batch size 1, samples 1 completed with the same complete artifact set and finite arrays.",
+    "Public solver_study using the fresh flow checkpoint, samples 1, steps 1 and 2 completed; all saved initial/reference/baseline/endpoint arrays finite.",
+    "Public video_diagnostics with frames 2 and default FPS completed with contact sheet, NPZ and JSON.",
+    "All three image CLIs reject samples=8 with argparse exit 2 before creating output, consistently with their declared even samples>=16 constraint."
+  ],
+  "validation_scope": "Fourteen controlled public CPU CLI invocations: four ordinary smallest-scale successful runs, five derived-seed overflows, two derived-FPS overflows, and three expected image sample-count rejections. Also directly verified the PyTorch maximum base-seed contract. Existing tests were reviewed; no full suite or trained image quality evaluation was run.",
+  "probes": [
+    {
+      "name": "flow_samples1",
+      "command": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.experiment",
+        "--method",
+        "flow",
+        "--steps",
+        "1",
+        "--batch-size",
+        "1",
+        "--samples",
+        "1",
+        "--output",
+        "/tmp/genai-cli-contract-round63/flow_samples1"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "outputs": [
+        "checkpoint.pt",
+        "loss.png",
+        "metrics.json",
+        "samples.npz",
+        "samples.png"
+      ],
+      "output_created": true
+    },
+    {
+      "name": "solver_samples1",
+      "command": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.solver_study",
+        "--checkpoint",
+        "/tmp/genai-cli-contract-round63/flow_samples1/checkpoint.pt",
+        "--steps",
+        "1",
+        "2",
+        "--samples",
+        "1",
+        "--output",
+        "/tmp/genai-cli-contract-round63/solver_samples1"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "outputs": [
+        "metrics.json",
+        "samples.npz",
+        "samples.png"
+      ],
+      "output_created": true
+    },
+    {
+      "name": "flow_seed_overflow",
+      "command": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.experiment",
+        "--method",
+        "flow",
+        "--steps",
+        "1",
+        "--batch-size",
+        "1",
+        "--samples",
+        "1",
+        "--seed",
+        "18446744073709551615",
+        "--output",
+        "/tmp/genai-cli-contract-round63/flow_seed_overflow"
+      ],
+      "returncode": 1,
+      "stderr": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/workspace/genai_study/src/genai_study/experiment.py\", line 144, in <module>\n    main()\n  File \"/workspace/genai_study/src/genai_study/experiment.py\", line 42, in main\n    train_rng = torch.Generator().manual_seed(args.seed + 1)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: Overflow when unpacking long\n",
+      "outputs": [],
+      "output_created": true
+    },
+    {
+      "name": "solver_seed_overflow",
+      "command": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.solver_study",
+        "--checkpoint",
+        "/tmp/genai-cli-contract-round63/flow_samples1/checkpoint.pt",
+        "--steps",
+        "1",
+        "--samples",
+        "1",
+        "--seed",
+        "18446744073709551615",
+        "--output",
+        "/tmp/genai-cli-contract-round63/solver_seed_overflow"
+      ],
+      "returncode": 1,
+      "stderr": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/workspace/genai_study/src/genai_study/solver_study.py\", line 105, in <module>\n    main()\n  File \"/workspace/genai_study/src/genai_study/solver_study.py\", line 40, in main\n    reference = sample_data(args.samples, torch.Generator().manual_seed(args.seed + 1))\n                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: Overflow when unpacking long\n",
+      "outputs": [],
+      "output_created": true
+    },
+    {
+      "name": "video_frames2",
+      "command": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.video_diagnostics",
+        "--frames",
+        "2",
+        "--output",
+        "/tmp/genai-cli-contract-round63/video_frames2"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "outputs": [
+        "contact_sheet.png",
+        "frames.npz",
+        "metrics.json"
+      ],
+      "output_created": true
+    },
+    {
+      "name": "video_fps_overflow",
+      "command": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.video_diagnostics",
+        "--frames",
+        "2",
+        "--fps",
+        "1e308",
+        "--output",
+        "/tmp/genai-cli-contract-round63/video_fps_overflow"
+      ],
+      "returncode": 1,
+      "stderr": "/workspace/genai_study/src/genai_study/video_diagnostics.py:60: RuntimeWarning: overflow encountered in scalar multiply\n  \"mean_centroid_speed_px_per_second\": float(np.linalg.norm(steps, axis=1).mean() * fps),\nTraceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/workspace/genai_study/src/genai_study/video_diagnostics.py\", line 137, in <module>\n    main()\n  File \"/workspace/genai_study/src/genai_study/video_diagnostics.py\", line 131, in main\n    (args.output / \"metrics.json\").write_text(json.dumps(result, indent=2, allow_nan=False) + \"\\n\",\n                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/__init__.py\", line 238, in dumps\n    **kw).encode(obj)\n          ^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py\", line 202, in encode\n    chunks = list(chunks)\n             ^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py\", line 432, in _iterencode\n    yield from _iterencode_dict(o, _current_indent_level)\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py\", line 406, in _iterencode_dict\n    yield from chunks\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py\", line 406, in _iterencode_dict\n    yield from chunks\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py\", line 398, in _iterencode_dict\n    yield _floatstr(value)\n          ^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py\", line 240, in floatstr\n    raise ValueError(\nValueError: Out of range float values are not JSON compliant: inf\n",
+      "outputs": [
+        "contact_sheet.png",
+        "frames.npz"
+      ],
+      "output_created": true
+    },
+    {
+      "name": "video_fps_underflow",
+      "command": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.video_diagnostics",
+        "--frames",
+        "2",
+        "--fps",
+        "1e-320",
+        "--output",
+        "/tmp/genai-cli-contract-round63/video_fps_underflow"
+      ],
+      "returncode": 1,
+      "stderr": "/workspace/genai_study/src/genai_study/video_diagnostics.py:96: RuntimeWarning: overflow encountered in divide\n  \"timestamps_seconds\": (np.arange(args.frames) / args.fps).tolist(),\n/workspace/genai_study/src/genai_study/video_diagnostics.py:104: RuntimeWarning: overflow encountered in divide\n  timestamps_seconds=np.arange(args.frames) / args.fps)\nTraceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/workspace/genai_study/src/genai_study/video_diagnostics.py\", line 137, in <module>\n    main()\n  File \"/workspace/genai_study/src/genai_study/video_diagnostics.py\", line 131, in main\n    (args.output / \"metrics.json\").write_text(json.dumps(result, indent=2, allow_nan=False) + \"\\n\",\n                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/__init__.py\", line 238, in dumps\n    **kw).encode(obj)\n          ^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py\", line 202, in encode\n    chunks = list(chunks)\n             ^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py\", line 432, in _iterencode\n    yield from _iterencode_dict(o, _current_indent_level)\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py\", line 406, in _iterencode_dict\n    yield from chunks\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py\", line 398, in _iterencode_dict\n    yield _floatstr(value)\n          ^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py\", line 240, in floatstr\n    raise ValueError(\nValueError: Out of range float values are not JSON compliant: inf\n",
+      "outputs": [
+        "contact_sheet.png",
+        "frames.npz"
+      ],
+      "output_created": true
+    },
+    {
+      "name": "ddpm_samples1",
+      "command": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.experiment",
+        "--method",
+        "ddpm",
+        "--steps",
+        "1",
+        "--batch-size",
+        "1",
+        "--samples",
+        "1",
+        "--output",
+        "/tmp/genai-cli-contract-round63/ddpm_samples1"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "outputs": [
+        "checkpoint.pt",
+        "loss.png",
+        "metrics.json",
+        "samples.npz",
+        "samples.png"
+      ]
+    }
+  ],
+  "image_audit": {
+    "audit": "round63 image CLI contract read-only audit",
+    "repository": "/workspace/genai_study",
+    "git_head": "30124d5da8de66dbff2a656e1101def888bf05d5",
+    "recorded_at_utc": "2026-11-11T20:55:31.237137+00:00",
+    "source_sha256": {
+      "image_flow": "70aa2567364eaf7724ae3715f73b9c056623fcfc4f2a529cc61bec0c9352e73f",
+      "image_solver_study": "f6ecd4ca7dfa7420f6c1b6d4cb35446550f39fd556f3a97d7375f0851eceb029",
+      "image_guidance_study": "d7487a449f97d72178add646b8b55086d8a3f6f36060e7e0a95b8e71fabb633f"
+    },
+    "findings": [
+      {
+        "id": "image-cli-derived-seed-overflow",
+        "priority": "P3",
+        "title": "Accepted uint64 maximum seed overflows when derived RNG streams add offsets",
+        "impact": "All three image CLIs fail with an uncaught RuntimeError before producing results, while leaving a newly created empty output directory. This affects an edge of the accepted seed domain; default tutorial seeds are unaffected.",
+        "locations": [
+          {
+            "file": "src/genai_study/image_flow.py",
+            "seed_argument_line": 214,
+            "output_creation_line": 223,
+            "failure_line": 229,
+            "last_derived_seed_line": 234,
+            "maximum_offset": 6
+          },
+          {
+            "file": "src/genai_study/image_solver_study.py",
+            "seed_argument_line": 23,
+            "output_creation_line": 36,
+            "failure_line": 42,
+            "last_derived_seed_line": 43,
+            "maximum_offset": 2
+          },
+          {
+            "file": "src/genai_study/image_guidance_study.py",
+            "seed_argument_line": 71,
+            "output_creation_line": 88,
+            "failure_line": 96,
+            "last_derived_seed_line": 97,
+            "maximum_offset": 2
+          }
+        ],
+        "trigger": "--seed 18446744073709551615 with --samples 16 and one training/sampling step as applicable; solver/guidance load the temporary width=4 fixture specified in evidence.",
+        "observed_error": "RuntimeError: Overflow when unpacking long",
+        "actual_exit_code": 1,
+        "expected_contract": "Either reject seeds outside the documented complete derived-stream range before creating output, or normalize and record every actual derived seed consistently.",
+        "independent_control": {
+          "torch_Generator_manual_seed_accepted_value": 18446744073709551615
+        },
+        "existing_test_coverage": [
+          {
+            "file": "tests/test_image_flow.py",
+            "line": 81,
+            "covers": "Default seed 7; samples 16/32; checkpoint/metrics consistency; training RNG isolation from sampling budget."
+          },
+          {
+            "file": "tests/test_image_checkpoint.py",
+            "line": 134,
+            "covers": "Solver seed 123; 16 samples; frozen weights, paired initial arrays, diagnostics, checkpoint hash."
+          },
+          {
+            "file": "tests/test_image_guidance.py",
+            "line": 135,
+            "covers": "Training seed 7 and guidance seed 123; 16 samples; paired classes, scale array keys and metrics."
+          }
+        ],
+        "coverage_gap": "No seed-range or derived-seed-overflow cases found in the three image test modules."
+      }
+    ],
+    "other_review_results": [
+      "All three CLIs explicitly require even samples >=16. Executed samples=8 controls exit 2 with argparse messages and leave output directories absent.",
+      "Read analytic Euler/guidance tests, image RNG isolation tests, checkpoint checks and metric counterexamples. No additional sample/layout/checkpoint-default-dtype contract fault found through the public CLI in this scope.",
+      "Image diagnostics use population standard deviations; paired image-guidance initial noise, labels and metric axes agree with their recorded definitions.",
+      "Existing nonempty-output guard was reviewed statically. Concurrent writers, filesystem failure paths and overwriting were not executed."
+    ],
+    "executed_checks": {
+      "cli_subprocess_count": 6,
+      "cases": [
+        {
+          "cli": "image_flow",
+          "case": "uint64_max",
+          "argv": [
+            "/workspace/genai_study/.venv/bin/python",
+            "-m",
+            "genai_study.image_flow",
+            "--steps",
+            "1",
+            "--batch-size",
+            "2",
+            "--sampling-steps",
+            "1",
+            "--samples",
+            "16",
+            "--seed",
+            "18446744073709551615",
+            "--output",
+            "/tmp/genai-image-cli-contract-round63/image_flow-uint64_max"
+          ],
+          "exit_code": 1,
+          "output_exists": true,
+          "output_files": [],
+          "elapsed_seconds": 3.9543648830003804
+        },
+        {
+          "cli": "image_flow",
+          "case": "reject_8_samples",
+          "argv": [
+            "/workspace/genai_study/.venv/bin/python",
+            "-m",
+            "genai_study.image_flow",
+            "--steps",
+            "1",
+            "--batch-size",
+            "2",
+            "--sampling-steps",
+            "1",
+            "--samples",
+            "8",
+            "--seed",
+            "7",
+            "--output",
+            "/tmp/genai-image-cli-contract-round63/image_flow-reject_8_samples"
+          ],
+          "exit_code": 2,
+          "output_exists": false,
+          "output_files": [],
+          "elapsed_seconds": 1.8888932740010205
+        },
+        {
+          "cli": "image_solver_study",
+          "case": "uint64_max",
+          "argv": [
+            "/workspace/genai_study/.venv/bin/python",
+            "-m",
+            "genai_study.image_solver_study",
+            "--checkpoint",
+            "/tmp/genai-image-cli-contract-round63/untrained-synthetic-metadata-fixture.pt",
+            "--steps",
+            "1",
+            "--samples",
+            "16",
+            "--seed",
+            "18446744073709551615",
+            "--output",
+            "/tmp/genai-image-cli-contract-round63/image_solver_study-uint64_max"
+          ],
+          "exit_code": 1,
+          "output_exists": true,
+          "output_files": [],
+          "elapsed_seconds": 2.0894381210000574
+        },
+        {
+          "cli": "image_solver_study",
+          "case": "reject_8_samples",
+          "argv": [
+            "/workspace/genai_study/.venv/bin/python",
+            "-m",
+            "genai_study.image_solver_study",
+            "--checkpoint",
+            "/tmp/genai-image-cli-contract-round63/untrained-synthetic-metadata-fixture.pt",
+            "--steps",
+            "1",
+            "--samples",
+            "8",
+            "--seed",
+            "7",
+            "--output",
+            "/tmp/genai-image-cli-contract-round63/image_solver_study-reject_8_samples"
+          ],
+          "exit_code": 2,
+          "output_exists": false,
+          "output_files": [],
+          "elapsed_seconds": 1.911103919001107
+        },
+        {
+          "cli": "image_guidance_study",
+          "case": "uint64_max",
+          "argv": [
+            "/workspace/genai_study/.venv/bin/python",
+            "-m",
+            "genai_study.image_guidance_study",
+            "--checkpoint",
+            "/tmp/genai-image-cli-contract-round63/untrained-synthetic-metadata-fixture.pt",
+            "--sampling-steps",
+            "1",
+            "--scales",
+            "1",
+            "--samples",
+            "16",
+            "--seed",
+            "18446744073709551615",
+            "--output",
+            "/tmp/genai-image-cli-contract-round63/image_guidance_study-uint64_max"
+          ],
+          "exit_code": 1,
+          "output_exists": true,
+          "output_files": [],
+          "elapsed_seconds": 1.9947159709990956
+        },
+        {
+          "cli": "image_guidance_study",
+          "case": "reject_8_samples",
+          "argv": [
+            "/workspace/genai_study/.venv/bin/python",
+            "-m",
+            "genai_study.image_guidance_study",
+            "--checkpoint",
+            "/tmp/genai-image-cli-contract-round63/untrained-synthetic-metadata-fixture.pt",
+            "--sampling-steps",
+            "1",
+            "--scales",
+            "1",
+            "--samples",
+            "8",
+            "--seed",
+            "7",
+            "--output",
+            "/tmp/genai-image-cli-contract-round63/image_guidance_study-reject_8_samples"
+          ],
+          "exit_code": 2,
+          "output_exists": false,
+          "output_files": [],
+          "elapsed_seconds": 2.053643754999939
+        }
+      ],
+      "direct_torch_seed_acceptance": 18446744073709551615
+    },
+    "evidence": {
+      "raw_probe_json": "/tmp/genai-image-cli-contract-round63/probe-results.json",
+      "logs_directory": "/tmp/genai-image-cli-contract-round63",
+      "probe_script": "/tmp/genai-image-cli-contract-probe.py",
+      "fixture": "/tmp/genai-image-cli-contract-round63/untrained-synthetic-metadata-fixture.pt",
+      "fixture_sha256": "b8c1bdfe60dc128fdbe06808bfbd4f9f1e4c028a1df679ed236c7aac8c12f797"
+    },
+    "verification_limits": [
+      "Untrained model with synthetic metadata used only to reach argument-dependent RNG initialization; no guidance quality or training result is asserted.",
+      "No extra training completed; uint64 seed image_flow fails before its training loop.",
+      "No complete pytest suite rerun; existing tests were read.",
+      "No trained-model quality, statistical convergence, GPU behavior, cross-platform reproducibility or in-process default-dtype overrides evaluated.",
+      "No tracked-file changes, Git writes, model downloads or network calls for external data."
+    ]
+  },
+  "overall": "No high-priority issue found in the inspected ordinary reader paths. Confirmed findings concern extreme input validation and should be prioritized below learning-path gaps or normal-run faults."
+}

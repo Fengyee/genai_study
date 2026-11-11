@@ -68,3 +68,34 @@ def test_video_cli_artifacts(tmp_path):
     with np.load(output / "frames.npz") as saved:
         np.testing.assert_array_equal(saved["shuffled"], saved["reference"][saved["shuffled_source_indices"]])
     assert (output / "contact_sheet.png").stat().st_size > 1000
+
+
+@pytest.mark.parametrize("fps", ["1e308", "1e-320", "1e-308"])
+def test_unrepresentable_fps_fails_before_creating_artifacts(tmp_path, fps):
+    # At 1e-308 and two frames the last timestamp fits, but playback duration
+    # overflows. Both derived units must be checked in addition to finite fps.
+    output = tmp_path / "video"
+    result = subprocess.run(
+        [sys.executable, "-m", "genai_study.video_diagnostics", "--frames", "2",
+         "--fps", fps, "--output", str(output)],
+        capture_output=True, text=True, timeout=30)
+    assert result.returncode == 2
+    assert "--fps must keep" in result.stderr
+    assert "finite" in result.stderr
+    assert "Traceback" not in result.stderr
+    assert not output.exists()
+
+
+def test_invalid_fps_preserves_existing_artifacts_with_overwrite(tmp_path):
+    output = tmp_path / "video"
+    output.mkdir()
+    saved = output / "frames.npz"
+    np.savez_compressed(saved, timestamps_seconds=[0.0, 0.125])
+    before = saved.read_bytes()
+    result = subprocess.run(
+        [sys.executable, "-m", "genai_study.video_diagnostics", "--frames", "2",
+         "--fps", "1e308", "--overwrite", "--output", str(output)],
+        capture_output=True, text=True, timeout=30)
+    assert result.returncode == 2
+    assert saved.read_bytes() == before
+    assert sorted(p.name for p in output.iterdir()) == ["frames.npz"]

@@ -79,8 +79,17 @@ def main() -> None:
         parser.error("--seed must be nonnegative")
     if args.output.exists() and any(args.output.iterdir()) and not args.overwrite:
         parser.error("output directory is nonempty; choose another or use --overwrite")
-    args.output.mkdir(parents=True, exist_ok=True)
+    duration = args.frames / args.fps
+    if not np.isfinite(duration):
+        parser.error("--fps must keep playback duration finite")
     videos, permutation = make_videos(args.frames, args.seed)
+    try:
+        with np.errstate(over="raise", divide="raise", invalid="raise"):
+            timestamps = np.arange(args.frames) / args.fps
+            metrics = {name: video_metrics(video, videos["reference"], args.fps)
+                       for name, video in videos.items()}
+    except FloatingPointError:
+        parser.error("--fps must keep timestamps and centroid speeds finite")
     result = {
         "schema_version": 1,
         "config": {"frames": args.frames, "fps": args.fps, "seed": args.seed,
@@ -90,18 +99,18 @@ def main() -> None:
                    "center_x_end_px": 39.0, "center_y_px": 15.5,
                    "first_frame_time_seconds": 0.0,
                    "last_frame_time_seconds": (args.frames - 1) / args.fps,
-                   "nominal_playback_duration_seconds": args.frames / args.fps,
+                   "nominal_playback_duration_seconds": duration,
                    "rng": "NumPy default_rng (PCG64)"},
         "shuffled_source_indices": permutation.tolist(),
-        "timestamps_seconds": (np.arange(args.frames) / args.fps).tolist(),
-        "metrics": {name: video_metrics(video, videos["reference"], args.fps)
-                    for name, video in videos.items()},
+        "timestamps_seconds": timestamps.tolist(),
+        "metrics": metrics,
         "versions": {"python": platform.python_version(), "numpy": np.__version__},
         "limitations": "Synthetic known-trajectory counterexample; no learned generator or perceptual evaluator. Frame-set metrics ignore order. Static motion has zero speed but fails the moving-target task. These diagnostics are not FID/FVD or general-purpose video quality metrics.",
     }
+    args.output.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(args.output / "frames.npz", **videos,
                         shuffled_source_indices=permutation,
-                        timestamps_seconds=np.arange(args.frames) / args.fps)
+                        timestamps_seconds=timestamps)
     with tempfile.TemporaryDirectory(prefix="genai-study-video-") as cache:
         os.environ.setdefault("MPLCONFIGDIR", str(Path(cache) / "matplotlib"))
         os.environ.setdefault("XDG_CACHE_HOME", cache)

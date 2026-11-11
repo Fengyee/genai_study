@@ -9,6 +9,7 @@ import time
 
 import torch
 
+from .cli import seed_with_offset
 from .checkpoint import save_checkpoint
 from .toy import (GAUSSIAN_3SIGMA_MASS_2D, TimeMLP, diagnostics, flow_path, make_schedule, q_sample,
                   sample_data, sample_ddpm, sample_flow)
@@ -28,7 +29,7 @@ def main() -> None:
                         help="optimizer updates (not sampling steps)")
     parser.add_argument("--batch-size", type=positive_int, default=256)
     parser.add_argument("--samples", type=positive_int, default=2048)
-    parser.add_argument("--seed", type=int, default=7)
+    parser.add_argument("--seed", type=seed_with_offset(max_offset=5), default=7)
     parser.add_argument("--threads", type=positive_int, default=1)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--overwrite", action="store_true")

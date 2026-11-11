@@ -1,0 +1,98 @@
+{
+  "finished_utc": "2026-11-11T21:11:11.184444+00:00",
+  "scope": "Five actual Python CLI subprocesses with max uint64; checkpoint paths deliberately absent. FPS subprocess cases are recorded in pytest and independent review.",
+  "checks": [
+    {
+      "module": "experiment",
+      "argv": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.experiment",
+        "--method",
+        "flow",
+        "--seed",
+        "18446744073709551615",
+        "--output",
+        "artifacts/cli-numeric-bounds/experiment"
+      ],
+      "returncode": 2,
+      "stderr": "usage: experiment.py [-h] --method {ddpm,flow} [--steps STEPS]\n                     [--batch-size BATCH_SIZE] [--samples SAMPLES]\n                     [--seed SEED] [--threads THREADS] --output OUTPUT\n                     [--overwrite]\nexperiment.py: error: argument --seed: must be an integer in [-9223372036854775808, 18446744073709551610] (reserving +5 for derived seeds)\n",
+      "output_exists": false
+    },
+    {
+      "module": "solver_study",
+      "argv": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.solver_study",
+        "--checkpoint",
+        "artifacts/cli-numeric-bounds/missing.pt",
+        "--seed",
+        "18446744073709551615",
+        "--output",
+        "artifacts/cli-numeric-bounds/solver_study"
+      ],
+      "returncode": 2,
+      "stderr": "usage: solver_study.py [-h] --checkpoint CHECKPOINT\n                       [--steps STEPS [STEPS ...]] [--samples SAMPLES]\n                       [--seed SEED] [--threads THREADS] --output OUTPUT\n                       [--overwrite]\nsolver_study.py: error: argument --seed: must be an integer in [-9223372036854775808, 18446744073709551613] (reserving +2 for derived seeds)\n",
+      "output_exists": false
+    },
+    {
+      "module": "image_flow",
+      "argv": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.image_flow",
+        "--seed",
+        "18446744073709551615",
+        "--output",
+        "artifacts/cli-numeric-bounds/image_flow"
+      ],
+      "returncode": 2,
+      "stderr": "usage: image_flow.py [-h] [--steps STEPS] [--batch-size BATCH_SIZE]\n                     [--samples SAMPLES] [--sampling-steps SAMPLING_STEPS]\n                     [--condition-dropout CONDITION_DROPOUT] [--seed SEED]\n                     [--threads THREADS] --output OUTPUT [--overwrite]\nimage_flow.py: error: argument --seed: must be an integer in [-9223372036854775808, 18446744073709551609] (reserving +6 for derived seeds)\n",
+      "output_exists": false
+    },
+    {
+      "module": "image_solver_study",
+      "argv": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.image_solver_study",
+        "--checkpoint",
+        "artifacts/cli-numeric-bounds/missing.pt",
+        "--seed",
+        "18446744073709551615",
+        "--output",
+        "artifacts/cli-numeric-bounds/image_solver_study"
+      ],
+      "returncode": 2,
+      "stderr": "usage: image_solver_study.py [-h] --checkpoint CHECKPOINT\n                             [--steps STEPS [STEPS ...]] [--samples SAMPLES]\n                             [--seed SEED] [--threads THREADS] --output OUTPUT\n                             [--overwrite]\nimage_solver_study.py: error: argument --seed: must be an integer in [-9223372036854775808, 18446744073709551613] (reserving +2 for derived seeds)\n",
+      "output_exists": false
+    },
+    {
+      "module": "image_guidance_study",
+      "argv": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.image_guidance_study",
+        "--checkpoint",
+        "artifacts/cli-numeric-bounds/missing.pt",
+        "--seed",
+        "18446744073709551615",
+        "--output",
+        "artifacts/cli-numeric-bounds/image_guidance_study"
+      ],
+      "returncode": 2,
+      "stderr": "usage: image_guidance_study.py [-h] --checkpoint CHECKPOINT\n                               [--scales SCALES [SCALES ...]]\n                               [--sampling-steps SAMPLING_STEPS]\n                               [--samples SAMPLES] [--seed SEED]\n                               [--threads THREADS] --output OUTPUT\n                               [--overwrite]\nimage_guidance_study.py: error: argument --seed: must be an integer in [-9223372036854775808, 18446744073709551613] (reserving +2 for derived seeds)\n",
+      "output_exists": false
+    }
+  ],
+  "source_sha256": {
+    "src/genai_study/cli.py": "b8b3c643595d48770acf2014fcdce4f18285b69d07d0ae647dd63db68928fe26",
+    "src/genai_study/experiment.py": "21108e304db54fabbd5219c70594ad193bdb97aabb7c05e47af769f5019eadbb",
+    "src/genai_study/solver_study.py": "36ea25d664ef4d9f0a71346888fc647be139e00bd2adefc6387935b1e3d60e11",
+    "src/genai_study/image_flow.py": "0223d0f15f2ba45bbd8efbc639f70fbbd4427a064eb59c3acbd3365f42de125f",
+    "src/genai_study/image_solver_study.py": "27c0f2198bc271d1c5daebc5326265d237af0ae91d603acf5186d3c0fb6182a3",
+    "src/genai_study/image_guidance_study.py": "06faf6068d2bdbe64d62a368019c35ca99e56c38733f6d20bc2b72b76072478d",
+    "src/genai_study/video_diagnostics.py": "879ca6e0ab7e98ab0302213cf19974a2b68d28a570145bf18050a60fe0880fab"
+  }
+}

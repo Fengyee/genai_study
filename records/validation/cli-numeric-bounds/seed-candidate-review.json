@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-11T21:08:40.435335+00:00",
+  "repository": "/workspace/genai_study",
+  "repository_head": "75245fb3a8654b6cfc74564f1d7190d8a345e91a",
+  "candidate_directory": "/tmp/genai-seed-contract-candidate",
+  "patch": "/tmp/genai-seed-contract-candidate/seed-contract.patch",
+  "files": [
+    {
+      "path": "src/genai_study/cli.py",
+      "before_sha256": null,
+      "after_sha256": "b8b3c643595d48770acf2014fcdce4f18285b69d07d0ae647dd63db68928fe26"
+    },
+    {
+      "path": "src/genai_study/experiment.py",
+      "before_sha256": "bee833cc0c3221c9983f86ad8899e15d01e2f8f85cc9f8d1e9e1896530675aea",
+      "after_sha256": "21108e304db54fabbd5219c70594ad193bdb97aabb7c05e47af769f5019eadbb"
+    },
+    {
+      "path": "src/genai_study/solver_study.py",
+      "before_sha256": "ed9c240869870195aef61a81688dca5bf44daf8c1381ac4343c8e361e68b6252",
+      "after_sha256": "36ea25d664ef4d9f0a71346888fc647be139e00bd2adefc6387935b1e3d60e11"
+    },
+    {
+      "path": "src/genai_study/image_flow.py",
+      "before_sha256": "70aa2567364eaf7724ae3715f73b9c056623fcfc4f2a529cc61bec0c9352e73f",
+      "after_sha256": "0223d0f15f2ba45bbd8efbc639f70fbbd4427a064eb59c3acbd3365f42de125f"
+    },
+    {
+      "path": "src/genai_study/image_solver_study.py",
+      "before_sha256": "f6ecd4ca7dfa7420f6c1b6d4cb35446550f39fd556f3a97d7375f0851eceb029",
+      "after_sha256": "27c0f2198bc271d1c5daebc5326265d237af0ae91d603acf5186d3c0fb6182a3"
+    },
+    {
+      "path": "src/genai_study/image_guidance_study.py",
+      "before_sha256": "d7487a449f97d72178add646b8b55086d8a3f6f36060e7e0a95b8e71fabb633f",
+      "after_sha256": "06faf6068d2bdbe64d62a368019c35ca99e56c38733f6d20bc2b72b76072478d"
+    },
+    {
+      "path": "tests/test_cli_seed.py",
+      "before_sha256": null,
+      "after_sha256": "5b85842fa1408b044640733a9db94c5705f470dbfd45c23125aefca31b74a94b"
+    }
+  ],
+  "repository_tracked_files_or_git_modified": false,
+  "implementation": {
+    "helper": "genai_study.cli.seed_with_offset(max_offset)",
+    "supported_base_interval": "[-2**63, 2**64 - 1 - max_offset] inclusive",
+    "offsets": {
+      "experiment": 5,
+      "image_flow": 6,
+      "solver_study": 2,
+      "image_solver_study": 2,
+      "image_guidance_study": 2
+    },
+    "behavior": "Validator returns the exact signed Python int. Existing RNG initialization and seed+offset expressions remain unchanged. ArgumentTypeError includes valid interval and reserved offset; all validation happens during parse_args."
+  },
+  "verification": {
+    "command": "PYTHONPATH=/tmp/genai-seed-contract-candidate/src /workspace/genai_study/.venv/bin/python -m pytest -q /tmp/genai-seed-contract-candidate/tests/test_cli_seed.py",
+    "result": "26 passed in 3.17s",
+    "torch_version": "2.6.0+cpu",
+    "real_torch_boundary_observations": [
+      {
+        "input": -9223372036854775809,
+        "accepted": false,
+        "error": "Overflow when unpacking long"
+      },
+      {
+        "input": -9223372036854775808,
+        "accepted": true,
+        "initial_seed": 9223372036854775808
+      },
+      {
+        "input": -1,
+        "accepted": true,
+        "initial_seed": 18446744073709551615
+      },
+      {
+        "input": 0,
+        "accepted": true,
+        "initial_seed": 0
+      },
+      {
+        "input": 18446744073709551615,
+        "accepted": true,
+        "initial_seed": 18446744073709551615
+      },
+      {
+        "input": 18446744073709551616,
+        "accepted": false,
+        "error": "Overflow when unpacking long"
+      }
+    ],
+    "test_scope": [
+      "For offsets 2,5,6, accepted lower/upper bounds and negative/zero/default-like values initialize every derived real Torch Generator; signed values and sampled values equal direct unchanged seeding.",
+      "Real Torch accepts the otherwise-legal upper base; its first disallowed derived stream raises Overflow. Below-minimum seeds also raise Overflow.",
+      "Five real CLI main parsers reject lower overflow, derived upper overflow, and noninteger input with exit 2 before output creation or checkpoint reads.",
+      "Five real CLI main parsers preserve their actual defaults, minimum, maximum, -1, and 0; tests stop immediately after successful parsing."
+    ],
+    "limits": [
+      "No full candidate training or sampling CLI process executed. Parent will perform actual subprocess regressions and full quality checks after integration.",
+      "No complete repository test suite run for this isolated candidate.",
+      "Existing ordinary smallest-scale baseline runs and failures are recorded separately in /tmp/genai-cli-contract-round63.json."
+    ]
+  },
+  "independent_interface_review": {
+    "reviewer": "/root/cli_contract_round63/image_cli_audit",
+    "assessment": "A small argparse type factory is sufficient; no new registry, stream abstraction, or seed normalization is necessary.",
+    "negative_seed_semantics": "Preserve signed bases before adding offsets. In actual Torch, -1 maps to uint64 maximum while (-1+1) seeds the next stream with 0; pre-normalizing would change behavior. Actual minimum maps to 2**63. No negative-remapping formula from the docstring is copied.",
+    "max_offset_contract": "A fixed nonnegative internal constant chosen at each CLI call site, currently 2/5/6. The helper does not expose this as a user parameter.",
+    "compatibility": "Every previously usable seed remains usable; previously accepted but overflowing seeds now receive early usage errors. Defaults and all existing RNG expressions are unchanged."
+  }
+}

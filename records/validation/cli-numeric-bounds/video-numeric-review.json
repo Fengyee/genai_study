@@ -1,0 +1,101 @@
+{
+  "scope": "Read-only numeric review of finite-positive FPS preflight; no CLI or model runs",
+  "file_sha256": {
+    "src/genai_study/video_diagnostics.py": "879ca6e0ab7e98ab0302213cf19974a2b68d28a570145bf18050a60fe0880fab",
+    "tests/test_video_diagnostics.py": "ae81316fad16e91ed624011a1afbaac51eaf2a88062e1c1b42ac48388b037686",
+    "docs/chapters/06-video-temporal-lab.md": "ae76277bc7206d2801fc7f1f3f2dd0292660480c2959fc82d9e42c3cc4e57894"
+  },
+  "numpy": "2.1.3",
+  "boundary_checks": [
+    {
+      "fps": 1e+308,
+      "duration": "2e-308",
+      "last_time": "1e-308",
+      "branch": "reject_numpy",
+      "error": "overflow encountered in scalar multiply"
+    },
+    {
+      "fps": 1e-320,
+      "duration": "inf",
+      "last_time": "inf",
+      "branch": "reject_duration"
+    },
+    {
+      "fps": 1e-308,
+      "duration": "inf",
+      "last_time": "1e+308",
+      "branch": "reject_duration"
+    },
+    {
+      "fps": 1.2e-308,
+      "duration": "1.666666666666667e+308",
+      "last_time": "8.333333333333335e+307",
+      "branch": "accept",
+      "all_finite": true,
+      "speed": 3.719980801985043e-307
+    },
+    {
+      "fps": 1e+306,
+      "duration": "2e-306",
+      "last_time": "1e-306",
+      "branch": "accept",
+      "all_finite": true,
+      "speed": 3.0999840016542026e+307
+    },
+    {
+      "fps": 1.1125369292536e-308,
+      "duration": "inf",
+      "last_time": "8.988465674311584e+307",
+      "branch": "reject_duration"
+    },
+    {
+      "fps": 1.1125369292536007e-308,
+      "duration": "inf",
+      "last_time": "8.98846567431158e+307",
+      "branch": "reject_duration"
+    },
+    {
+      "fps": 1.112536929253601e-308,
+      "duration": "1.7976931348623151e+308",
+      "last_time": "8.988465674311576e+307",
+      "branch": "accept",
+      "all_finite": true,
+      "speed": 3.4488466819356573e-307
+    },
+    {
+      "fps": 5.799040039893872e+306,
+      "duration": "3.448846681935657e-307",
+      "last_time": "1.7244233409678284e-307",
+      "branch": "accept",
+      "all_finite": true,
+      "speed": 1.7976931348623153e+308
+    },
+    {
+      "fps": 5.799040039893873e+306,
+      "duration": "3.448846681935656e-307",
+      "last_time": "1.724423340967828e-307",
+      "branch": "accept",
+      "all_finite": true,
+      "speed": 1.7976931348623157e+308
+    },
+    {
+      "fps": 5.799040039893875e+306,
+      "duration": "3.4488466819356553e-307",
+      "last_time": "1.7244233409678276e-307",
+      "branch": "reject_numpy",
+      "error": "overflow encountered in scalar multiply"
+    }
+  ],
+  "analysis": [
+    "For 2<=F<=32 and fps>0, finite F/fps bounds all i/fps for 0<=i<F; NumPy timestamps receive the additional errstate check.",
+    "Generated intensities are in [0,1]; positions are bounded by the 48x32 image. All non-FPS metrics operate on bounded arrays.",
+    "The sole FPS-scaled metric multiplies a numpy.float64 mean step norm by fps; overflow raises FloatingPointError within errstate.",
+    "The duration calculation and all metrics happen before mkdir and before any file write, including overwrite mode.",
+    "At accepted lower FPS, nonzero speed is bounded away from float64 underflow by fixed 31-pixel path plus the finite duration requirement; reciprocal timestamps cannot round to zero for finite float64 FPS."
+  ],
+  "findings": [],
+  "validation_limits": [
+    "Did not run CLI/artifact tests; parent covers those.",
+    "Scope limited to declared generated-video CLI and FPS numeric behavior; arbitrary caller video arrays excluded."
+  ]
+}

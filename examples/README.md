@@ -22,6 +22,8 @@ python -m genai_study.experiment --method flow --steps 5000 --output artifacts/f
 - Flow matching：独立采样噪声和数据端点，直线条件路径，速度目标 `data-noise`；采样使用 100 步显式 Euler。
 - 默认 seed 7。模型初始化与训练、固定留出评估、生成、参考数据、基线数据分别使用不同随机流。同一依赖版本和 CPU 环境可复现；跨平台/版本不保证位级一致。
 
+五个基础 PyTorch 命令（二维训练、二维求解器、图像训练、图像求解器、图像引导）使用 `seed + offset` 分配随机流。`--seed` 的整数范围为 `[-2**63, 2**64 - 1 - m]`：二维训练预留 `m=5`，图像训练预留 `m=6`，三个固定模型比较命令预留 `m=2`，确保所有派生种子落在 [PyTorch 2.6 支持的范围](https://docs.pytorch.org/docs/2.6/generated/torch.manual_seed.html)内。负种子保留原整数，先加偏移，再交给 PyTorch；越界输入会在读取 checkpoint 或创建输出目录前报参数错误。
+
 `metrics.json` 记录全部命令配置、依赖版本与实测耗时（训练、评估、采样、指标；不含导入和绘图）。`initial_eval_loss` / `final_eval_loss` 使用同一组 4096 个独立留出样本。DDPM 回归噪声，flow 回归速度，**两者损失数值不能直接比较**。
 
 诊断指标均为二维教学工具：

@@ -10,6 +10,7 @@ import time
 
 import torch
 
+from .cli import seed_with_offset
 from .image_checkpoint import load_image_checkpoint
 from .image_flow import image_diagnostics, integrate_images, positive, sample_shapes, template_bank
 
@@ -20,7 +21,7 @@ def main() -> None:
     parser.add_argument("--steps", nargs="+", type=positive, default=[10, 20, 40, 80],
                         help="Euler step counts, sorted and deduplicated")
     parser.add_argument("--samples", type=positive, default=128)
-    parser.add_argument("--seed", type=int, default=123)
+    parser.add_argument("--seed", type=seed_with_offset(max_offset=2), default=123)
     parser.add_argument("--threads", type=positive, default=1)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--overwrite", action="store_true")

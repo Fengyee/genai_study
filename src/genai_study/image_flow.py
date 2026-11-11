@@ -17,6 +17,8 @@ import torch
 from torch import Tensor, nn
 import torch.nn.functional as F
 
+from .cli import seed_with_offset
+
 IMAGE_SIZE = 16
 EDGE_WIDTH = 0.35
 TEMPLATE_MSE_THRESHOLD = 0.01  # Defined before training, validated on counterexamples.
@@ -211,7 +213,7 @@ def main() -> None:
     parser.add_argument("--sampling-steps", type=positive, default=40)
     parser.add_argument("--condition-dropout", type=dropout_probability, default=0.0,
                         help="Probability of replacing a training condition by the zero-vector null condition")
-    parser.add_argument("--seed", type=int, default=7)
+    parser.add_argument("--seed", type=seed_with_offset(max_offset=6), default=7)
     parser.add_argument("--threads", type=positive, default=1)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--overwrite", action="store_true")
