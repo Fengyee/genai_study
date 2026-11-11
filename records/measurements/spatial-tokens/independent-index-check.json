@@ -1,0 +1,236 @@
+{
+  "patch_order": {
+    "input_shape": [
+      1,
+      2,
+      4,
+      6
+    ],
+    "patch_size": 2,
+    "patch_grid": [
+      2,
+      3
+    ],
+    "token_shape": [
+      1,
+      6,
+      8
+    ],
+    "token_index": "n = i * (W/p) + j",
+    "feature_index": "k = (r * p + s) * C + c",
+    "identity": "tokens[b,n,k] = x[b,c,i*p+r,j*p+s]",
+    "all_tokens": [
+      [
+        0.0,
+        24.0,
+        1.0,
+        25.0,
+        6.0,
+        30.0,
+        7.0,
+        31.0
+      ],
+      [
+        2.0,
+        26.0,
+        3.0,
+        27.0,
+        8.0,
+        32.0,
+        9.0,
+        33.0
+      ],
+      [
+        4.0,
+        28.0,
+        5.0,
+        29.0,
+        10.0,
+        34.0,
+        11.0,
+        35.0
+      ],
+      [
+        12.0,
+        36.0,
+        13.0,
+        37.0,
+        18.0,
+        42.0,
+        19.0,
+        43.0
+      ],
+      [
+        14.0,
+        38.0,
+        15.0,
+        39.0,
+        20.0,
+        44.0,
+        21.0,
+        45.0
+      ],
+      [
+        16.0,
+        40.0,
+        17.0,
+        41.0,
+        22.0,
+        46.0,
+        23.0,
+        47.0
+      ]
+    ],
+    "first_token": [
+      0.0,
+      24.0,
+      1.0,
+      25.0,
+      6.0,
+      30.0,
+      7.0,
+      31.0
+    ],
+    "last_token": [
+      16.0,
+      40.0,
+      17.0,
+      41.0,
+      22.0,
+      46.0,
+      23.0,
+      47.0
+    ],
+    "exact_roundtrip": true
+  },
+  "self_attention": {
+    "definition": "F(U) = softmax_rows(U @ U.T / sqrt(d)) @ U",
+    "U": [
+      [
+        0.1,
+        0.7
+      ],
+      [
+        0.3,
+        -0.5
+      ],
+      [
+        0.8,
+        0.2
+      ],
+      [
+        -0.4,
+        0.6
+      ]
+    ],
+    "position_rows_yx": [
+      [
+        -1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        1.0
+      ],
+      [
+        1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        1.0
+      ]
+    ],
+    "permutation": [
+      1,
+      0,
+      3,
+      2
+    ],
+    "meaning": "Horizontal reflection: swap left/right positions in each row of a 2x2 grid.",
+    "errors": {
+      "no_position_equivariance": 5.551115123125783e-17,
+      "co_permuted_positions_equivariance": 2.220446049250313e-16,
+      "fixed_positions_counterexample": 1.7749826244310967
+    },
+    "F_U": [
+      [
+        0.1687900956784374,
+        0.34412233602622133
+      ],
+      [
+        0.2674169107110902,
+        0.15039489699870123
+      ],
+      [
+        0.2931399925551111,
+        0.23332651686566425
+      ],
+      [
+        0.10781337948869783,
+        0.36310248993288696
+      ]
+    ],
+    "F_U_plus_E": [
+      [
+        -0.4122130202194104,
+        0.14710408551640136
+      ],
+      [
+        -0.2343275651231452,
+        0.48170461461349445
+      ],
+      [
+        1.6343345867323191,
+        -0.6436015593894916
+      ],
+      [
+        0.46836448963717475,
+        1.178388519602075
+      ]
+    ],
+    "F_PU_plus_E": [
+      [
+        -0.4973464733842357,
+        -1.2179844447155554
+      ],
+      [
+        -0.6251340754478101,
+        1.5483503755828858
+      ],
+      [
+        0.5392256114016921,
+        0.059650213396634004
+      ],
+      [
+        1.6104027062888586,
+        1.1313810650416052
+      ]
+    ],
+    "P_F_U_plus_E": [
+      [
+        -0.2343275651231452,
+        0.48170461461349445
+      ],
+      [
+        -0.4122130202194104,
+        0.14710408551640136
+      ],
+      [
+        0.46836448963717475,
+        1.178388519602075
+      ],
+      [
+        1.6343345867323191,
+        -0.6436015593894916
+      ]
+    ],
+    "assumptions": [
+      "Single head, row-softmax, Q=K=V=U; shared projection identity.",
+      "No masks, dropout, relative biases, or other position-dependent terms.",
+      "E is a fixed 2-D illustrative coordinate feature, not a claim about DiT positional embedding implementation.",
+      "The simultaneous content/position row permutation is a relabeling; fixed E while permuting content changes which feature is assigned to each coordinate."
+    ]
+  },
+  "scope": "Independent exact indexing and deterministic small-array algebra, no model training or forward."
+}

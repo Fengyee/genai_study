@@ -1,6 +1,6 @@
 # GenAI 中英术语索引
 
-**使用前提：** 能读懂 PyTorch 张量与损失函数；概率基础可随时返回[00章](chapters/00-foundations.md)。**目标：** 从一个术语定位其定义、模型接口和可执行例子。**范围：** 本页索引00–10章及已有研究阅读卡中的38组高频术语，简释以链接处的假设和具体配置为准。
+**使用前提：** 能读懂 PyTorch 张量与损失函数；概率基础可随时返回[00章](chapters/00-foundations.md)。**目标：** 从一个术语定位其定义、模型接口和可执行例子。**范围：** 本页索引00–10章及已有研究阅读卡中的39组高频术语，简释以链接处的假设和具体配置为准。
 
 按主题查词，再到右栏阅读推导或运行练习。时间方向、符号和单位统一由[符号约定](notation.md)维护；系统学习顺序见[学习路线](learning-path.md)。原始论文、实现版本和验证范围保留在对应章节及[来源索引](../SOURCES.md)。
 
@@ -23,7 +23,8 @@
 | 变分自编码器 · variational autoencoder（VAE） | 使用近似后验进行变分学习的潜变量模型。具体图像压缩器还可加入感知、对抗等目标；阅读发布模型时核对实际训练目标与编解码接口。 | [01：VAE目标](chapters/01-generative-models.md#3-vae用变分推断处理难积分)；[04：图像压缩器](chapters/04-image-video-roadmap.md#2-潜空间先压缩再生成)；[固定VAE往返](vae-reconstruction-report.md) |
 | Token / tokenizer · 序列单元 / 分词或编码器 | Token是序列中的表示单元，tokenizer规定输入到这些单元的转换。文本与ResTok可用离散索引，图像patch也可表示为连续向量。 | [09：文本token](chapters/09-pretrained-image-lab.md#2-从文本与噪声到图像)；[ResTok：两类模型与token](readings/restok-image-ar-2026.md#1-先把两个模型分开) |
 | 向量量化 / 码本 · vector quantization（VQ）/ codebook | 把连续向量映射到码本条目，用索引表示。8192项码本的固定长度索引需要13bit；码本向量维数与模型存储另计。 | [ResTok：离散索引预算](readings/restok-image-ar-2026.md#1-先把两个模型分开) |
-| 图块token · patch token | 将像素或潜张量按图块组织，展平并投影为网络序列。Token数量由所在空间、图块尺寸及时间轴决定。 | [04：DiT的latent patches](chapters/04-image-video-roadmap.md#4-从-u-net-到-diffusion-transformer)；[Wan：表示与压缩](readings/wan-video-2025.md#表示压缩率不是一个脱离通道数的数字) |
+| 图块token · patch token | 将像素或潜张量按图块组织，展平并投影为网络序列。Token数量由所在空间、图块尺寸及时间轴决定。 | [04：DiT的latent patches](chapters/04-image-video-roadmap.md#4-从-u-net-到-diffusion-transformer)；[索引、投影与还原](readings/spatial-tokens-and-position.md)；[Wan：表示与压缩](readings/wan-video-2025.md#表示压缩率不是一个脱离通道数的数字) |
+| 自注意力与位置编码 · self-attention / positional encoding | 从同一序列构造Q/K/V并汇聚位置间信息。关闭dropout且无位置项/mask时，共享全注意力对token置换等变；位置编码将内容与网格坐标绑定。 | [自注意力与位置绑定](readings/spatial-tokens-and-position.md#2-自注意力怎样看到空间位置) |
 | 潜变量缩放 · latent scaling factor | 改变潜变量数值坐标的乘法系数。SD1.4使用$`z=0.18215z_{\mathrm{VAE}}`$，解码前除以该系数；各latent路径须遵循训练坐标；SVD的参考条件编码保持未缩放，生成latent在解码前除以系数。 | [09：latent形状与缩放](chapters/09-pretrained-image-lab.md#2-从文本与噪声到图像)；[10：参考与生成路径](chapters/10-pretrained-video-lab.md#2-参考图走两条条件路径) |
 | 时空压缩 · spatial / temporal compression | 编码器沿空间或时间下采样，改变潜张量尺寸。首帧处理影响实际潜帧数，例如所选CogVideoX配置把49帧编码为13个潜帧。 | [SVD/CogVideoX：时间压缩与token](readings/video-training-svd-cogvideox.md#3d-causal-vae-与-token) |
 | 帧率 / 时长 · frames per second（fps）/ duration | fps给出每秒显示帧数。等间隔的$`F`$帧以$`r`$ fps播放，首尾采样时刻跨度为$`(F-1)/r`$；每帧显示一个间隔时，播放时长为$`F/r`$。 | [06：帧率与时间单位](chapters/06-video-temporal-lab.md#帧数帧率和时长不等价)；[10：条件与播放fps](chapters/10-pretrained-video-lab.md#4-扩散时间视频帧索引和播放帧率) |

@@ -1,0 +1,38 @@
+{
+  "request_started_utc": "2026-11-11T16:53:37.680165+00:00",
+  "finished_utc": "2026-11-11T16:53:39.221260+00:00",
+  "endpoint": "POST https://api.github.com/markdown",
+  "mode": "gfm",
+  "context": "Fengyee/genai_study",
+  "source_file": "client-compatible-card.md",
+  "source_sha256": "f69dc540d5ea004664d2502856979f90ac70cdcca17e30da06485b666eed0965",
+  "frozen_source_sha256": "2f01fa06ffaffc563ba184031a048eeb59255ffd4cb83b87c293ee9e930c4625",
+  "response_sha256": "387532a556348f4a0f71202ebea0f6c3feaac573f101b01d2b3cbe599a519854",
+  "returncode": 0,
+  "source_formula_count": 46,
+  "source_inline_count": 40,
+  "source_display_count": 6,
+  "nonmath_fences_byte_identical": true,
+  "nonmath_fences": [
+    {
+      "language": "python",
+      "bytes": 2846,
+      "sha256": "429ae80b69565dc35d6fd2deaf96d8443cb55ea86dadbd91efda6ede2ea0b82c"
+    }
+  ],
+  "cpu_check_markers_preserved": true,
+  "cpu_check_markers": [
+    "<!-- cpu-check: spatial-tokens-and-position -->"
+  ],
+  "renderer_count": 46,
+  "renderer_inline_count": 40,
+  "renderer_display_count": 6,
+  "payloads_match_in_order": true,
+  "kinds_match_in_order": true,
+  "math_pre_count": 0,
+  "raw_dollars_outside_math_and_code": 0,
+  "raw_tex_candidates": [],
+  "source_unchanged_after_request": true,
+  "status": "passed",
+  "scope": "API checks server-side formula recognition and decoded TeX fidelity; only the non-math code bytes and marker are compared here, no CPU code or model executed. Actual MathJax layout requires browser verification."
+}

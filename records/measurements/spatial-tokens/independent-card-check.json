@@ -1,0 +1,32 @@
+{
+  "card_path": "docs/readings/spatial-tokens-and-position.md",
+  "card_sha256": "2f01fa06ffaffc563ba184031a048eeb59255ffd4cb83b87c293ee9e930c4625",
+  "command": ".venv/bin/python /tmp/genai-spatial-token-independent/card-exact.py",
+  "exit_code": 0,
+  "elapsed_seconds": 1.1799541259997568,
+  "stdout": "Patch/embedding shapes: (1, 6, 8) (1, 6, 3)\nFirst patch: [0, 24, 1, 25, 6, 30, 7, 31]\nConv2d equivalence max error: 2.842170943040401e-14\nFixed-position content swap max difference: 1.774983\n",
+  "stderr": "",
+  "independent_scalar_conv_max_error": 5.684341886080802e-14,
+  "conv_weight_mapping": "embedding[(r*p+s)*C+c,o] == kernel[o,c,r,s]",
+  "exercise1": {
+    "L": 24,
+    "m": 16,
+    "patch_ij": [
+      1,
+      1
+    ],
+    "local_rsc": [
+      1,
+      0,
+      3
+    ],
+    "original_crowcol": [
+      3,
+      3,
+      2
+    ]
+  },
+  "exercise2": "Correct: rank <=3 for a map R^8->R^3 implies nullspace dimension >=5; output unpatchify is a layout inverse.",
+  "exercise3": "Correct: invert token permutation or update token-to-grid mapping before unpatchify.",
+  "review": "No mathematical or indexing issues found in the supplied card; all exact code assertions passed."
+}

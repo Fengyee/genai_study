@@ -1,0 +1,23 @@
+{
+  "url": "https://raw.githubusercontent.com/facebookresearch/DiT/ed81ce2229091fd4ecc9a223645f95cf379d582b/models.py",
+  "commit": "ed81ce2229091fd4ecc9a223645f95cf379d582b",
+  "bytes": 14995,
+  "sha256": "1b8031a1340a3d1045c0bdb382334068f5f20e32edf67b3e6aba961ba91846ca",
+  "paper": {
+    "version": "arXiv:2212.09748v2",
+    "path": "/tmp/genai-image-video-audit/2212.09748v2.pdf",
+    "bytes": 43824062,
+    "sha256": "5fbb0ec35e3ae76826240171ca63ed4c27de6cb43180367453019e9d28a8b076",
+    "locations": "PDF p4 Patchify; p5 Transformer decoder"
+  },
+  "source_locations": {
+    "DiTBlock": "101-122",
+    "prediction_head": "125-142",
+    "out_channels_PatchEmbed_position": "149-174",
+    "frozen_2d_position_initialization": "191-198",
+    "unpatchify_actual_BCHW": "218-231",
+    "forward": "233-248",
+    "2d_sincos_functions": "274-320"
+  },
+  "unpatchify_note": "Docstring says NHWC; actual einsum and final reshape produce NCHW. Original code requires square grid; tutorial explicitly generalizes known H,W."
+}
