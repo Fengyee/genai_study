@@ -1,0 +1,13 @@
+{
+  "url": "https://raw.githubusercontent.com/huggingface/diffusers/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/schedulers/scheduling_ddim.py",
+  "local_path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/schedulers/scheduling_ddim.py",
+  "sha256": "6bb3c830a7937a96acd9bfc3bbab6d75404ceda0189c423899d03c9d34da8599",
+  "bytes": 24919,
+  "remote_byte_equal": true,
+  "relevant_lines": {
+    "step_prediction_conversion": "412-420",
+    "post_conversion_nonlinearity": "427-433",
+    "get_velocity": "500-519"
+  },
+  "scope": "Inference conversion and velocity label; independent loss algebra is derived separately. Source does not define a training loss."
+}

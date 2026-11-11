@@ -113,6 +113,8 @@ w_u=(\alpha\sigma'-\sigma\alpha')\,
 | VP的$v$ | $\mathbb E[\alpha E-\sigma Y\mid X_u=x]$ | VP归一化与上面的时间系数 |
 | 边缘速度 | $w_u=\mathbb E[\alpha'Y+\sigma'E\mid X_u=x]$ | 路径导数、时间方向及坐标单位 |
 
+上表连接预测对象与速度。[预测目标与损失权重](prediction-and-loss-weighting.md)继续推导同一状态上的误差缩放、时间权重和有限容量下的最优解差异，适合在阅读训练实现前完成。
+
 ### DDIM：换坐标后的一步Euler
 
 对VP幅度$\alpha,\sigma$，定义$\bar x=x/\alpha$、$\rho=\sigma/\alpha$。09章无裁剪、`eta=0`的DDIM一步可直接重写为

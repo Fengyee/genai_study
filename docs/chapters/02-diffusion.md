@@ -120,6 +120,8 @@ $$
 
 这解释噪声预测与 score 的联系，但有限训练、模型容量与离散采样误差仍然存在。
 
+换成clean或VP预测时，MSE的时间权重也随预测坐标变化。[预测目标与损失权重](../readings/prediction-and-loss-weighting.md)推导三种误差的比例，用有限容量例和CPU梯度检查说明如何保留指定目标，并连接时间采样分布。
+
 ## 5. 动手：二维八高斯
 
 先完成 [README](../../README.md) 的依赖安装。若已有`artifacts/first-ddpm`或`artifacts/ddpm`，先查看`metrics.json`中的`config.steps`：5000步结果可直接复用；800步结果用于短训练对照，需要5000步时选择新目录，例如`artifacts/ddpm-5000`。首次运行时在仓库根目录执行：

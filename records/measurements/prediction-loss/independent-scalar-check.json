@@ -1,0 +1,66 @@
+{
+  "pointwise_rows": [
+    {
+      "a": 0.2,
+      "b": 0.9797958971132712,
+      "clean_squared_error": 0.20159999999999997,
+      "noise_squared_error": 0.00839999999999999,
+      "v_squared_error": 0.2099999999999999
+    },
+    {
+      "a": 0.6,
+      "b": 0.8,
+      "clean_squared_error": 0.13440000000000019,
+      "noise_squared_error": 0.07560000000000007,
+      "v_squared_error": 0.2100000000000001
+    },
+    {
+      "a": 0.95,
+      "b": 0.31224989991991997,
+      "clean_squared_error": 0.020474999999999993,
+      "noise_squared_error": 0.18952499999999994,
+      "v_squared_error": 0.21000000000000008
+    }
+  ],
+  "equivalent_v_reference_objectives": [
+    0.8725002464846834,
+    0.8725002464846834,
+    0.8725002464846833
+  ],
+  "equivalent_gradients_wrt_shared_theta": [
+    -0.3608530949951583,
+    -0.3608530949951584,
+    -0.3608530949951584
+  ],
+  "finite_capacity_constant_v_optima": {
+    "unit_v": -0.7,
+    "unit_noise": -0.616,
+    "unit_clean": -0.7840000000000001
+  },
+  "time_importance": {
+    "target_bin_mass": [
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333
+    ],
+    "sampling_bin_mass": [
+      0.1,
+      0.2,
+      0.7
+    ],
+    "correction_weights": [
+      3.333333333333333,
+      1.6666666666666665,
+      0.4761904761904762
+    ],
+    "losses": [
+      1.0,
+      4.0,
+      9.0
+    ],
+    "target": 4.666666666666666,
+    "unweighted_sampling": 7.199999999999999,
+    "corrected_sampling": 4.666666666666666
+  },
+  "scope": "Small deterministic arrays and one scalar autograd parameter; no model training or forward."
+}

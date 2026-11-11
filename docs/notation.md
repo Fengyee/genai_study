@@ -26,6 +26,8 @@
 | $\epsilon_\theta(x_t,t)$ | DDPM 的噪声预测网络；不是直接预测方差 |
 | $u$, $w_u$（理论衔接专题） | 数据到噪声时间及该方向的边缘速度；令$t=1-u$时$v_t=-w_{1-t}$ |
 | $\alpha(u)$, $\sigma(u)$（高斯路径） | $X_u=\alpha(u)Y+\sigma(u)E$中的数据/噪声幅度；$\alpha(u)$对应离散DDPM的$\sqrt{\bar\alpha_t}$，单步$\alpha_t$沿用上表定义 |
+| $V_{\mathrm{VP}}$, $\widehat v_{\mathrm{VP}}$（预测权重专题） | VP标签$\alpha E-\sigma Y$及其预测，要求$\alpha^2+\sigma^2=1$；flow速度继续使用$v_\theta$ |
+| $S(u)$, $\lambda(u)$, $\rho(u)$（预测权重专题） | 名义调度SNR $\alpha^2/\sigma^2$、逐样本显式损失权重、时间采样密度；有效积分权重为$\rho\lambda$。此处$\rho$表示概率密度，衔接专题的DDIM坐标$\sigma/\alpha$在该节单独定义 |
 | $Q,K,V$（条件注意力） | 行向量形式的查询、键和值；本专题中查询来自当前特征，键和值来自已编码条件 |
 | $L_q,L_c$（条件注意力） | 查询位置数与条件token数；softmax沿$L_c$轴归一化，输出保留$L_q$轴 |
 | $f_\theta(x,\sigma)$（一致性专题） | 预测所选概率流轨迹在$\sigma_{\min}>0$处的状态；与局部速度预测分别定义 |
@@ -61,6 +63,8 @@ DDPM 的正向过程从 $x_0$ 数据走向 $x_T$ 噪声，生成反向执行。f
 后续新增术语、时间参数化或单位时，应先更新本页，再核对所有章节和代码。
 
 连续高斯路径的score、去噪器、概率流ODE及DDIM/SVD采样坐标见[扩散与流的理论衔接](readings/diffusion-flow-bridge.md)。其换算在正文声明的内部时间和正则性条件下使用，端点按实际scheduler另行核对。
+
+相互对应预测的平方误差、同参数梯度与时间采样校正见[预测目标与损失权重](readings/prediction-and-loss-weighting.md)。权重先作用于各样本的特征MSE，再进行batch平均；端点按输入信息和换算公式分别分析。
 
 交叉注意力的完整张量形状、mask与条件编码接口见[条件注意力专题](readings/conditioning-attention.md)。图像空间层和视频时间层分别核对查询轴，CLIP序列隐藏态与池化投影向量按具体管线读取。
 

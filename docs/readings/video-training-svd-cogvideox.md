@@ -109,6 +109,8 @@ $$L_v=13\cdot(60/2)\cdot(90/2)=17\,550$$
 
 第 6 页 §3 明确使用 **v-prediction 与 zero terminal SNR**。第 7 页式(1)回顾 DDPM 的噪声预测损失，用来解释时间采样策略；复现所选模型时，固定 scheduler 配置中的 `prediction_type=v_prediction` 与 `rescale_betas_zero_snr=true` 是直接依据。
 
+预测接口、MSE权重与时间采样共同定义训练目标。[预测目标与损失权重](prediction-and-loss-weighting.md)给出noise/clean/VP的逐样本换算及零SNR端点分析，可用于逐项核对具体训练代码。
+
 训练混合图像与视频，将图像视为单帧样本。Multi-Resolution Frame Pack 处理不同长度/分辨率；分辨率逐步提高，最后做高质量微调。Explicit Uniform Sampling 把扩散时间范围分给不同数据并行 rank，每个 rank 在自己的区间内抽样。等宽区间、等量样本下，聚合估计仍对应均匀时间目标；分层采样降低时间分布偶然失衡的程度，方差变化还取决于各时间区间的损失分布。
 
 附录 A 第 15 页将最后微调数据约占原数据 20%，并报告视觉质量略有提高、语义能力略有下降。这提醒我们同时评估视觉观感与条件表达。附录 D 第 17 页还描述 T2V 到 I2V 的微调：参考图经 VAE 后沿通道拼接到带噪视频输入，训练中给参考图条件加噪；本卡所选 2B T2V 权重仍使用文本入口。

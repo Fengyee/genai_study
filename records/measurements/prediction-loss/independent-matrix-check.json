@@ -1,0 +1,94 @@
+{
+  "scope": "Independent three interior VP coefficient settings and two-parameter analytic/autograd check; no neural training",
+  "alpha_squared": [
+    0.29999999999999993,
+    0.6000000000000001,
+    0.8999999999999999
+  ],
+  "sigma_squared": [
+    0.7000000000000001,
+    0.39999999999999986,
+    0.10000000000000007
+  ],
+  "matched_losses": [
+    1.191574067204017,
+    1.1915740672040174,
+    1.191574067204017
+  ],
+  "matched_gradients": [
+    [
+      0.2863057952529344,
+      -0.13206218484617324
+    ],
+    [
+      0.2863057952529344,
+      -0.13206218484617324
+    ],
+    [
+      0.2863057952529346,
+      -0.13206218484617316
+    ]
+  ],
+  "unweighted_optima": {
+    "v_unweighted": [
+      -1.5209911518712251,
+      2.9260750655270216
+    ],
+    "epsilon_unweighted": [
+      -0.663108539653286,
+      1.412164573377718
+    ],
+    "clean_unweighted": [
+      -2.353641922553342,
+      5.953896049825627
+    ]
+  },
+  "proposal_probability": [
+    0.16666666666666666,
+    0.3333333333333333,
+    0.5
+  ],
+  "desired_probability": [
+    0.3333333333333333,
+    0.3333333333333333,
+    0.3333333333333333
+  ],
+  "importance_corrected_expectation": 2.5135336321503923,
+  "desired_expectation": 2.5135336321503923,
+  "inputs": {
+    "clean": [
+      2.0,
+      -1.0,
+      0.5
+    ],
+    "noise": [
+      -0.8,
+      1.2,
+      0.1
+    ],
+    "design_matrix": [
+      [
+        1.0,
+        0.1
+      ],
+      [
+        1.0,
+        0.45
+      ],
+      [
+        1.0,
+        0.8
+      ]
+    ],
+    "theta": [
+      0.2,
+      -0.4
+    ],
+    "lambda_clean": [
+      0.7,
+      1.1,
+      0.9
+    ],
+    "feature_reduction": "one scalar per case; mean over three cases"
+  }
+}

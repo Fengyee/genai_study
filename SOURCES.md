@@ -60,3 +60,5 @@
 [条件注意力专题](docs/readings/conditioning-attention.md)重新核对LDM v2 §3.3、固定CompVis attention.py与OpenAI CLIP源码，连接SD1.4的last_hidden_state和SVD的全局image_embeds/参考latent。Diffusers0.35.2 commit `b71269675ec1b85193107a691dd35c308e46f0a5`与Transformers4.57.6 commit `753d61104116eefc8ffc977327b441ee0c8d599f`的五份相关源码和本地安装逐字节一致。CPU检查包含SDPA对照、单token零梯度、mask联合置换和两键sigmoid导数；来源身份及独立检查见[记录](records/measurements/conditioning-attention/README.md)。
 
 [少步生成与一致性端点映射](docs/readings/consistency-endpoint-map.md)固定Consistency Models `2303.01469v1`（PDF SHA `f2f4dbed7f73d182c0b2dad0747d3df8e2c27a7df05d4b2aa5dee00b6ca94d64`）和作者commit `e32b69ee436d518377db86fb2127a3972d0d8716`。核对VE概率流、正端点、边界、CD/CT与EMA/stopgrad；独立Gaussian例验证端点恒定性、Euler误差、MMSE与共噪声配对反例。原作者采样函数用mock实际计数，保留初始噪声由外层提供的范围；[核验记录](records/measurements/consistency-endpoint/README.md)包含全部来源身份与两组参数独立检查。
+
+[预测目标与损失权重](docs/readings/prediction-and-loss-weighting.md)沿固定DDPM v2式12/14解释加权与简化目标，核对Diffusers0.35.2固定DDIM源码的VP标签、三种预测转换及裁剪顺序。误差比例、同参数梯度、有限容量与重要性权重按明确假设独立推导；正文CPU块与两组独立参数检查归档于[核验记录](records/measurements/prediction-loss/README.md)。

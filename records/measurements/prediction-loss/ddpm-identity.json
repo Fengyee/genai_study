@@ -1,0 +1,11 @@
+{
+  "paper": "Denoising Diffusion Probabilistic Models",
+  "version": "arXiv:2006.11239v2",
+  "bytes": 10267274,
+  "sha256": "aee5e07a802e8dfd2a386374c94fd61d1d056cb7e1e0fec4f28e8120ff5d8505",
+  "source": "https://arxiv.org/pdf/2006.11239v2",
+  "locations": {
+    "weighted_epsilon_MSE": "PDF p4 Eq12",
+    "uniform_simplified_objective": "PDF p5 Eq14"
+  }
+}
