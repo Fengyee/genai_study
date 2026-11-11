@@ -8,8 +8,8 @@
 - [x] DDPM 时间索引、后验方差与 flow 时间方向缺少验证：加入独立解析/统计测试。
 - [x] 覆盖8个模式可能掩盖严重欠拟合：增加反例、真实样本基线、二维半径概率及完整显示离群点的图。
 - [x] DDPM终点接近正态的条件写得过强：用标准正态不变性反例修正，并给出八高斯数据与短噪声表的解析偏差。
-- [x] GitHub PR 创建：环境发布恢复后API可达，PR #1已创建：https://github.com/Fengyee/genai_study/pull/1 。尚未合并。
-- [ ] 每小时 workflow 必须进入默认分支才能激活：先创建/评审/合并 PR，再观察 GitHub Actions 一次真实定时运行；禁止宣称已部署。
+- [x] GitHub PR 创建与首轮合入：PR #1已按用户明确授权，在8a6c47b检查通过后合并；main为416dd8ce9c3e890d03d814bc02d0015c21e51090：https://github.com/Fengyee/genai_study/pull/1 。
+- [ ] 每小时质量检查的真实触发验证：workflow已进入默认分支且API为active；push与手动检查已启动，继续观察首个schedule事件及结果，分别记录事件类型与运行位置。
 
 ## P1
 

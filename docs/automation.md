@@ -24,6 +24,8 @@ bash scripts/quality.sh
 
 ## GitHub Actions 每小时检查
 
+当前部署：2026-11-11，[PR #1](https://github.com/Fengyee/genai_study/pull/1)已按授权合并，默认分支包含本workflow，API状态为active。合并后的push检查和显式手动检查已启动；首个真实schedule事件仍在观察。状态与实际run证据持续写入[执行记录](../records/PROGRESS.md)。
+
 配置位于 [quality.yml](../.github/workflows/quality.yml)：
 
 | 项目 | 配置 |
