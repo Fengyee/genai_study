@@ -1,0 +1,96 @@
+{
+  "method": "Root exact Fraction enumeration of all 27 prompt draws and independent sum-PMF convolution for 3,12,27 row draws; alternate prompt values included.",
+  "cases": [
+    {
+      "prompt_differences": [
+        -1,
+        0,
+        1
+      ],
+      "copies": 1,
+      "prompt_mean": "0",
+      "prompt_variance": "2/9",
+      "iid_row_variance": "2/9",
+      "variance_ratio": "1"
+    },
+    {
+      "prompt_differences": [
+        -1,
+        0,
+        1
+      ],
+      "copies": 4,
+      "prompt_mean": "0",
+      "prompt_variance": "2/9",
+      "iid_row_variance": "1/18",
+      "variance_ratio": "4"
+    },
+    {
+      "prompt_differences": [
+        -1,
+        0,
+        1
+      ],
+      "copies": 9,
+      "prompt_mean": "0",
+      "prompt_variance": "2/9",
+      "iid_row_variance": "2/81",
+      "variance_ratio": "9"
+    },
+    {
+      "prompt_differences": [
+        -2,
+        1,
+        4
+      ],
+      "copies": 1,
+      "prompt_mean": "1",
+      "prompt_variance": "2",
+      "iid_row_variance": "2",
+      "variance_ratio": "1"
+    },
+    {
+      "prompt_differences": [
+        -2,
+        1,
+        4
+      ],
+      "copies": 4,
+      "prompt_mean": "1",
+      "prompt_variance": "2",
+      "iid_row_variance": "1/2",
+      "variance_ratio": "4"
+    },
+    {
+      "prompt_differences": [
+        -2,
+        1,
+        4
+      ],
+      "copies": 9,
+      "prompt_mean": "1",
+      "prompt_variance": "2",
+      "iid_row_variance": "2/9",
+      "variance_ratio": "9"
+    }
+  ],
+  "unequal_counts_example": {
+    "differences": [
+      -1,
+      0,
+      1
+    ],
+    "counts": [
+      1,
+      4,
+      9
+    ],
+    "equal_prompt_mean": "0",
+    "row_weighted_mean": "4/7"
+  },
+  "source_pdf_identity_rechecked": true,
+  "source_pages_read": [
+    6,
+    7
+  ]
+}

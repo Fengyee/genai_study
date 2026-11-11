@@ -66,3 +66,5 @@
 [空间token与位置专题](docs/readings/spatial-tokens-and-position.md)重新核对DiT `2212.09748v2`第4–5页和原作者commit `ed81ce2229091fd4ecc9a223645f95cf379d582b`的models.py，定位patch入口、冻结二维正弦位置、输出通道及实际NCHW还原。独立推导patch索引、卷积等价和置换关系，用矩形小数组及作者抽取函数核对，保留源码docstring与实际维序差异；[记录](records/measurements/spatial-tokens/README.md)包含固定身份、原样CPU块和独立检查。
 
 2026-11-11对固定提交9f5b3b6中的23份来源入口文档执行一次[外部可达性检查](records/reader-checks/source-links-20261111.json)：98个去重来源URL的最终HTTP状态均为200，记录4个正常重定向；全部使用HEAD，正文下载0字节。PDF/模型资产与本仓PR/Actions链接按计划排除。此记录核验HTTP入口，论文内容、锚点及科学主张沿用各专题的固定来源与独立审查。
+
+[05提示簇重采样反例](docs/chapters/05-evaluation.md#可运行反例复制结果不会增加独立提示)读取Efron/Narasimhan的[作者稿](https://efron.ckirby.su.domains/papers/2018Automatic-Construction-BCIs.pdf)，PDF SHA `117c03df5fecf8954c21a1faeef2eb249f33fa24bd9969c5de91d1b5d5a19184`，第6–7页§3式(3.1)–(3.7)给出IID观测和有放回抽样定义。提示差复制与方差变化为本仓库独立构造；完整27种分布与错误按行抽样经Fraction枚举/卷积核验，[证据](records/reader-checks/prompt-bootstrap/README.md)明确条件分布、权重与置信区间的验证范围。

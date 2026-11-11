@@ -1,0 +1,10 @@
+{
+  "checked_utc": "2026-11-11T17:39:29.759594+00:00",
+  "endpoint": "POST https://api.github.com/markdown",
+  "source": "docs/chapters/05-evaluation.md",
+  "source_sha256": "afa12386e9499a205247bf2f15d20bd9908b17f9a5276e581a24fa8108a07b04",
+  "formulas": 52,
+  "renderer_count": 52,
+  "payloads_and_kinds_match": true,
+  "scope": "GitHub API markup only; actual client verification follows after push."
+}

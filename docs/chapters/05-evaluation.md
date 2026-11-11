@@ -241,6 +241,59 @@ FVD 将每段视频压缩为特征，再比较一、二阶统计。物体持久�
 
 视频的连续帧强相关，不能将同一视频的 100 帧当作 100 个独立视频来缩窄区间。报告平均分时还要看分组与最差案例：常见提示的大量成功可能掩盖少数重要条件完全失败。
 
+### 可运行反例：复制结果不会增加独立提示
+
+固定模型A/B与评分规则，先对同一提示下配对的输出计算分数差A−B。用一个教学构造：设三个独立提示的平均差为$`d=(-1,0,1)`$，每个提示的结果各复制4次，组成12行记录。提示等权，观察均值为0；四个副本保留同一提示的信息。
+
+如果目标是描述这三个固定提示，直接报告均值0即可。若要估计声明提示分布上的平均配对差，重采样单位应对应独立提示：有放回抽3个提示，保留各自4行，并重新计算平均差。下面的星号$`*`$表示**条件于已观察数据的经验bootstrap分布**。
+
+每次抽中的提示差以相同概率取$`-1,0,1`$，其经验方差为$`2/3`$，因此
+
+```math
+\mathrm{Var}^{*}(\bar d^{*})=\frac{1}{3}\left[\frac{1}{3}\sum_{i=1}^{3}(d_i-\bar d)^2\right]=\frac{2}{9}.
+```
+
+错误地把12行当作独立观测，会按行有放回抽12次。单次取值的经验分布相同，均值方差却变成$`(2/3)/12=1/18`$，标准差只有按提示重采样的一半。
+
+在基础环境中运行以下代码；无需训练、文件或随机种子。它完整枚举$`3^3=27`$个等概率提示索引序列；错误行抽样的方差使用上面的独立抽样均值公式。
+
+<!-- cpu-check: prompt-cluster-bootstrap -->
+```python
+from itertools import product
+import numpy as np
+
+# Rows are prompts; columns are four exact copies of a paired A-minus-B result.
+paired_diff = np.repeat(np.array([-1., 0., 1.])[:, None], 4, axis=1)
+indices = np.array(list(product(range(3), repeat=3)))
+# Keep all four paired differences whenever a prompt is selected.
+cluster_means = paired_diff[indices].mean(axis=(1, 2))
+cluster_variance = cluster_means.var(ddof=0)
+
+rows = paired_diff.ravel()
+iid_row_variance = rows.var(ddof=0) / rows.size
+sd_ratio = np.sqrt(cluster_variance / iid_row_variance)
+np.testing.assert_allclose(
+    [cluster_means.mean(), cluster_variance, iid_row_variance, sd_ratio],
+    [0., 2/9, 1/18, 2.], rtol=0, atol=1e-15)
+print(f"Prompt resamples: {len(cluster_means)}")
+print(f"Prompt variance: {cluster_variance:.6f}; row variance: {iid_row_variance:.6f}")
+print(f"Prompt/row standard-deviation ratio: {sd_ratio:.1f}")
+```
+
+应输出27种结果、方差约0.222222与0.055556、标准差比2.0。`ddof=0`把27个结果视为完整的等概率条件分布，方差分母为27；随机抽取$`B`$次复制时，常见的$`B-1`$样本方差则用于估计这个条件分布的方差。
+
+这段计算精确展示了重采样单位的影响。向新提示推广仍依赖原提示的独立性和代表性，本例没有验证任何置信区间的覆盖率。实际每提示样本数不等时，先明确采用提示等权还是按输出条数加权；四次完全复制是本反例的构造。
+
+**练习：** 每个提示改为复制9次，上述两种方差与标准差比怎样变化？
+
+<details><summary>答案</summary>
+
+提示重采样方差保持$`2/9`$；错误的27行独立重采样方差为$`(2/3)/27=2/81`$，其标准差成为提示重采样的$`1/3`$。新增副本增加了行数，独立提示仍为3个。
+
+</details>
+
+**来源：** Efron与Narasimhan，[The automatic construction of bootstrap confidence intervals](https://efron.ckirby.su.domains/papers/2018Automatic-Construction-BCIs.pdf)，作者稿PDF第6–7页§3、式(3.1)–(3.7)：独立同分布观测及从原观测中有放回抽取同样数量样本。这里将独立提示作为观测单位；复制反例与精确方差由上述构造独立推导。
+
 ### 防止选择和泄漏影响结论
 
 - 在运行前固定主要假设、主指标、条件集合和预算；把调参集合与最后报告集合分开。

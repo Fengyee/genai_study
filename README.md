@@ -55,7 +55,7 @@ python -m genai_study.experiment --method ddpm --steps 5000 --output artifacts/f
 bash scripts/quality.sh
 ```
 
-脚本检查公式性质、文档链接，直接执行15个已审查的CPU教学代码块，并运行二维生成、图像生成和视频时序反例。短 smoke 用于检查程序路径；训练质量由完整实验评估。第 03、07 章提供固定 checkpoint 和初始噪声的求解器步数实验。完整实验按 seed 固定 CPU 随机性；跨 PyTorch/平台的位级一致性仍需另行验证。随机种子、多次评估和教学指标解释见 [实验说明](examples/README.md)。
+脚本检查公式性质、文档链接，直接执行16个已审查的CPU教学代码块，并运行二维生成、图像生成和视频时序反例。短 smoke 用于检查程序路径；训练质量由完整实验评估。第 03、07 章提供固定 checkpoint 和初始噪声的求解器步数实验。完整实验按 seed 固定 CPU 随机性；跨 PyTorch/平台的位级一致性仍需另行验证。随机种子、多次评估和教学指标解释见 [实验说明](examples/README.md)。
 
 ## 专题阅读
 
