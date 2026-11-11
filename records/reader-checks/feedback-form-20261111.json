@@ -1,0 +1,103 @@
+{
+  "utc": "2026-11-11T17:17:23.571075+00:00",
+  "file": ".github/ISSUE_TEMPLATE/quality.yml",
+  "source_sha256": "c1b4f41abbfcdb6d9420c307f74884fe7b7c445344352b95225f555199f15153",
+  "severity": "P2",
+  "finding": "表单接受事实、公式与学习路径问题，但 reproduction 文本域 required:true 在公开仓库中阻止该字段留空提交；这会要求不涉及运行的报告填写无关环境内容。",
+  "repository_evidence": {
+    "endpoint": "GET /repos/Fengyee/genai_study",
+    "visibility": "public",
+    "private": false,
+    "default_branch": "main"
+  },
+  "official_semantics": {
+    "section": "Validations for textarea",
+    "quote": "Prevents form submission until element is completed. Only for public repositories.",
+    "key": "validations.required",
+    "type": "Boolean",
+    "default": false,
+    "applicability": "Repository API reports visibility=public, so the documented public-repository scope applies.",
+    "description_quote": "A description of the text area to provide context or guidance, which is displayed in the form."
+  },
+  "evidence_lines": {
+    "accepted_problem_types": 2,
+    "problem_required": 10,
+    "reproduction_label": 14,
+    "reproduction_guidance": 15,
+    "reproduction_required": 17
+  },
+  "minimal_proposed_edits": {
+    "id": "reproduction",
+    "attributes": {
+      "label": "运行问题的复现步骤与环境（选填）",
+      "description": "运行问题请提供最小命令、Python/PyTorch/OS 版本、seed 和错误日志。请勿包含凭据。"
+    },
+    "validations": {
+      "required": false
+    }
+  },
+  "retained_behavior": {
+    "problem_required": true,
+    "suggestion_required": false,
+    "field_count": 3,
+    "field_ids": [
+      "problem",
+      "reproduction",
+      "suggestion"
+    ],
+    "runtime_information_guidance": [
+      "minimal command",
+      "Python version",
+      "PyTorch version",
+      "OS version",
+      "seed",
+      "error logs"
+    ],
+    "credential_reminder_retained": true
+  },
+  "checks_performed": {
+    "current_yaml_parses": true,
+    "candidate_yaml_roundtrip": true,
+    "problem_field_unchanged": true,
+    "suggestion_field_unchanged": true,
+    "no_fields_added_or_removed": true,
+    "candidate_reproduction_required_is_boolean_false": true,
+    "repository_source_bytes_unchanged_after_review": true
+  },
+  "recommended_implementation_validation": [
+    "Parse the edited YAML and inspect problem.required=true and reproduction.required=false; verify the three field IDs remain.",
+    "Check the diff for the intended label/description/required-only change. No model runs or full repository test suite are needed for this form-only adjustment."
+  ],
+  "verification_scope": "Verified official schema semantics, public repository applicability, current YAML and an in-memory candidate. GitHub-hosted form rendering and actual submission validation were not exercised; no issue was created.",
+  "sources": [
+    {
+      "url": "https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-githubs-form-schema#validations-for-textarea",
+      "local_artifact": "/tmp/genai-feedback-form-review/official-html.html",
+      "sha256": "e12f61b429454c73d96872b3f9f2840bb389ff1916cb8e45d9ef2d709a31c51c"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/github/docs/main/content/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-githubs-form-schema.md",
+      "local_artifact": "/tmp/genai-feedback-form-review/official-raw.md",
+      "sha256": "91c445a4ce07dafb78d05f7b9d074da457d3f4bded37b47055e69ab764b5e10c"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/github/docs/main/data/reusables/form-schema/required-key.md",
+      "local_artifact": "/tmp/genai-feedback-form-review/required-key.md",
+      "sha256": "de19d82781036aa431e545b64ce4ac93e6d8a321ea85dc8f2e73e95f3c31c805"
+    },
+    {
+      "url": "https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms",
+      "local_artifact": "/tmp/genai-feedback-form-review/issue-forms-html.html",
+      "sha256": "c6e95f8265cb3a5fc413b1438def1aa7a13e51720ab66f39abed66097fbf6de3"
+    }
+  ],
+  "implementation_validation": {
+    "source_sha256": "91416af31807e6bfa03ca3d3c9a597ca04a2a30b2b2d04719944fe7c99cfdc2f",
+    "yaml_parses": true,
+    "problem_required": true,
+    "reproduction_required": false,
+    "field_ids_unchanged": true,
+    "problem_and_suggestion_unchanged": true,
+    "github_rendering_or_submission_tested": false
+  }
+}

@@ -21,6 +21,7 @@ import time
 
 
 EXAMPLES = {
+    "spatial-tokens-and-position": "docs/readings/spatial-tokens-and-position.md",
     "prediction-and-loss-weighting": "docs/readings/prediction-and-loss-weighting.md",
     "consistency-endpoint-map": "docs/readings/consistency-endpoint-map.md",
     "conditioning-attention": "docs/readings/conditioning-attention.md",

@@ -1,0 +1,18 @@
+{
+  "source_commit": "ed81ce2229091fd4ecc9a223645f95cf379d582b",
+  "source_sha256": "1b8031a1340a3d1045c0bdb382334068f5f20e32edf67b3e6aba961ba91846ca",
+  "scope": "AST extracted only the inspected author unpatchify function; no module imports or model creation",
+  "tokens_shape": [
+    2,
+    4,
+    12
+  ],
+  "actual_BCHW_shape": [
+    2,
+    3,
+    4,
+    4
+  ],
+  "six_index_loop_exact": true,
+  "output_sha256_float64_c_order": "b92eb46218f2d773c609c05f9c10dcd2384cf2baf518f9e290a00d769da86695"
+}

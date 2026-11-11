@@ -1,0 +1,2355 @@
+{
+  "utc": "2026-11-11T17:09:14.117229+00:00",
+  "source_file_count": 23,
+  "source_files": [
+    {
+      "file": "README.md",
+      "sha256": "bb35b92ef39bcbb33e5991c9e4907873370947afb8d9df9f447a2f5697cc8673"
+    },
+    {
+      "file": "SOURCES.md",
+      "sha256": "e4a2b731446a2e482e10052066f99024d041f86622ed3aff09100f9d48828e57"
+    },
+    {
+      "file": "docs/chapters/00-foundations.md",
+      "sha256": "feb2423c9dd0cff4a98de619b2ce70d1450673b130690b888aa535cc6c47a10b"
+    },
+    {
+      "file": "docs/chapters/01-generative-models.md",
+      "sha256": "df603b38520e5eaf9181a511041499f92a1d8d12c7f749c4f653babe582634ab"
+    },
+    {
+      "file": "docs/chapters/02-diffusion.md",
+      "sha256": "4ab030b3d2a9c2c0deca2142227330dccc0f3efd878af63f0c23c8922767aded"
+    },
+    {
+      "file": "docs/chapters/03-flow-matching.md",
+      "sha256": "dd0667e336feb30efdc1634c033351ed65366742d9085f35b5724eee91cdca29"
+    },
+    {
+      "file": "docs/chapters/04-image-video-roadmap.md",
+      "sha256": "cb5833a164652dbbd4a98c45d572f1752f7e9ea0b3895075de8f79bd671461b3"
+    },
+    {
+      "file": "docs/chapters/05-evaluation.md",
+      "sha256": "a828f8c8510d7a8d4a78f51a39bf38fbc8d645ce0f9f2b33ff309402bdc4f7d6"
+    },
+    {
+      "file": "docs/chapters/06-video-temporal-lab.md",
+      "sha256": "cf2b1e89884c89c299f87b9bff02bddbba673dfa7eacba6682969fe7feadfeb8"
+    },
+    {
+      "file": "docs/chapters/07-image-flow-lab.md",
+      "sha256": "c2935eee9604115847e8b112fc38ba8ed7eb2808d141e26ce30fac894188ba37"
+    },
+    {
+      "file": "docs/chapters/08-image-guidance-lab.md",
+      "sha256": "2f5d01cf1dff49d6f2dab039166c9b6dea80564c395b1ed82b2b8945cd4caad6"
+    },
+    {
+      "file": "docs/chapters/09-pretrained-image-lab.md",
+      "sha256": "8dd860fa8024df96fd799f05c0eee5361af550fbb9ce7f2b3e14140774825a02"
+    },
+    {
+      "file": "docs/chapters/10-pretrained-video-lab.md",
+      "sha256": "3b3e6382fa699274aafbdb76d698f9ed33afa737ec4d2cfeda9941576d7911af"
+    },
+    {
+      "file": "docs/readings/conditioning-attention.md",
+      "sha256": "27f6bab645c4661dc7985aa74d828837211accf01f4a75257c173f5ee4350fa5"
+    },
+    {
+      "file": "docs/readings/consistency-endpoint-map.md",
+      "sha256": "f1d43b4105a83d5011f4728182098797095f3ddcacd1e1a14784f65687ab233e"
+    },
+    {
+      "file": "docs/readings/diffusion-flow-bridge.md",
+      "sha256": "c63b3fa345f1c2ccac8f8fd5330f0eadf9ad7d5bc3643fe514618cf1be444118"
+    },
+    {
+      "file": "docs/readings/flux-kontext-2025.md",
+      "sha256": "3ff8e0c52869ebc74fc0d16236671e37eedf43352cb3e7665ecb401179a6117d"
+    },
+    {
+      "file": "docs/readings/ltx2-video-audio-2026.md",
+      "sha256": "95c256e2940ecec23980902722f3da0be916fad5e0a6e45e537e9be232645ea7"
+    },
+    {
+      "file": "docs/readings/prediction-and-loss-weighting.md",
+      "sha256": "04dea1e750a76cb972f5e9932eae22434a5a194c5e759fe6d636918bf33d46d9"
+    },
+    {
+      "file": "docs/readings/restok-image-ar-2026.md",
+      "sha256": "67fc0d794962cdc74409009ffba8398f291f6eb34a92a6591d47a6b5b9cd1123"
+    },
+    {
+      "file": "docs/readings/spatial-tokens-and-position.md",
+      "sha256": "f69dc540d5ea004664d2502856979f90ac70cdcca17e30da06485b666eed0965"
+    },
+    {
+      "file": "docs/readings/video-training-svd-cogvideox.md",
+      "sha256": "d269ea02a371ebe68fe90b5cea51e8373e4c40b2b0fd94096907d5633bb449f7"
+    },
+    {
+      "file": "docs/readings/wan-video-2025.md",
+      "sha256": "0353bf81f558cc82a6d144d6292aeb09d54e8a2002aecce44d4014cb50c19f97"
+    }
+  ],
+  "current_snapshot_sha256": "99198f03ec56ca9b8b650e0bebc831d7fd99c728018a7253af04e078ebf2968a",
+  "original_snapshot_sha256": "6082e48453d9c22070645137658596a157da9604ab24e72eaf68d7f1ab98c9b1",
+  "candidate_urls": 98,
+  "checked_urls": 98,
+  "initial_requests": 80,
+  "additional_requests": 18,
+  "total_requests": 98,
+  "concurrency": 4,
+  "per_request_curl_max_seconds": 15,
+  "largest_observed_request_seconds": 2.713402,
+  "classifications": {
+    "reachable": 98
+  },
+  "http_status_counts": {
+    "200": 98
+  },
+  "body_bytes_downloaded": 0,
+  "response_body_cap_bytes_for_needed_get": 8192,
+  "source_files_unchanged_after_extension": true,
+  "concurrent_source_changes": [],
+  "new_card_sources": [
+    {
+      "url": "https://arxiv.org/abs/2212.09748v2",
+      "status": 200,
+      "request_generation": "initial-80",
+      "source_lines": [
+        162
+      ]
+    },
+    {
+      "url": "https://github.com/facebookresearch/DiT/blob/ed81ce2229091fd4ecc9a223645f95cf379d582b/models.py",
+      "status": 200,
+      "request_generation": "initial-80",
+      "source_lines": [
+        163
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "url": "https://github.com/THUDM/CogVideo/blob/7a1af7154511e0ce4e4be8d62faa8c5e5a3532d2/README.md",
+      "final_url": "https://github.com/zai-org/CogVideo/blob/7a1af7154511e0ce4e4be8d62faa8c5e5a3532d2/README.md",
+      "redirect_count": 1,
+      "status": 200
+    },
+    {
+      "url": "https://github.com/THUDM/CogVideo/blob/7a1af7154511e0ce4e4be8d62faa8c5e5a3532d2/sat/configs/cogvideox_2b.yaml",
+      "final_url": "https://github.com/zai-org/CogVideo/blob/7a1af7154511e0ce4e4be8d62faa8c5e5a3532d2/sat/configs/cogvideox_2b.yaml",
+      "redirect_count": 1,
+      "status": 200
+    },
+    {
+      "url": "https://pytorch.org/docs/stable/notes/randomness.html",
+      "final_url": "https://docs.pytorch.org/docs/stable/notes/randomness.html",
+      "redirect_count": 1,
+      "status": 200
+    },
+    {
+      "url": "https://huggingface.co/THUDM/CogVideoX-2b/blob/1137dacfc2c9c012bed6a0793f4ecf2ca8e7ba01/README.md",
+      "final_url": "https://huggingface.co/zai-org/CogVideoX-2b/blob/1137dacfc2c9c012bed6a0793f4ecf2ca8e7ba01/README.md",
+      "redirect_count": 1,
+      "status": 200
+    }
+  ],
+  "excluded_occurrences": [
+    {
+      "url": "https://arxiv.org/pdf/2010.02502v4",
+      "file": "docs/chapters/09-pretrained-image-lab.md",
+      "line": 250,
+      "reason": "pdf_or_large_binary"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2112.10752v2",
+      "file": "docs/readings/conditioning-attention.md",
+      "line": 184,
+      "reason": "pdf_or_large_binary"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2010.02502v4",
+      "file": "docs/readings/diffusion-flow-bridge.md",
+      "line": 274,
+      "reason": "pdf_or_large_binary"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2506.15742v2",
+      "file": "docs/readings/flux-kontext-2025.md",
+      "line": 186,
+      "reason": "pdf_or_large_binary"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2601.03233v1",
+      "file": "docs/readings/ltx2-video-audio-2026.md",
+      "line": 268,
+      "reason": "pdf_or_large_binary"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2601.03955v1",
+      "file": "docs/readings/restok-image-ar-2026.md",
+      "line": 216,
+      "reason": "pdf_or_large_binary"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2311.15127v1",
+      "file": "docs/readings/video-training-svd-cogvideox.md",
+      "line": 250,
+      "reason": "pdf_or_large_binary"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2408.06072v3",
+      "file": "docs/readings/video-training-svd-cogvideox.md",
+      "line": 255,
+      "reason": "pdf_or_large_binary"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2503.20314v2",
+      "file": "docs/readings/wan-video-2025.md",
+      "line": 14,
+      "reason": "pdf_or_large_binary"
+    }
+  ],
+  "scope": "All 98 deduplicated eligible external URLs extracted from the current 23 target files: README, SOURCES, eleven chapters and ten reading cards, including spatial-tokens-and-position. HEAD only; all final status 200, so no GET fallback or missing-link retry was needed. TLS and inherited proxy retained. Normal redirects are recorded with original source URLs preserved. This checks HTTP reachability, not page content, fragment targets, source claims or scientific accuracy. PDF/model/binary assets and own-repository links excluded.",
+  "rows": [
+    {
+      "url": "https://arxiv.org/abs/1312.6114",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/1312.6114",
+      "started_utc": "2026-11-11T17:05:38.000517+00:00",
+      "elapsed_seconds": 0.991605,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/1312.6114",
+          "file": "docs/chapters/00-foundations.md",
+          "line": 115
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1312.6114v11",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/1312.6114v11",
+      "started_utc": "2026-11-11T17:05:38.000809+00:00",
+      "elapsed_seconds": 1.286816,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/1312.6114v11",
+          "file": "docs/chapters/01-generative-models.md",
+          "line": 226
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1406.2661v1",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/1406.2661v1",
+      "started_utc": "2026-11-11T17:05:38.001061+00:00",
+      "elapsed_seconds": 0.897307,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/1406.2661v1",
+          "file": "docs/chapters/01-generative-models.md",
+          "line": 227
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1505.04597",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/1505.04597",
+      "started_utc": "2026-11-11T17:05:38.001267+00:00",
+      "elapsed_seconds": 1.066834,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/1505.04597",
+          "file": "docs/chapters/04-image-video-roadmap.md",
+          "line": 173
+        },
+        {
+          "url": "https://arxiv.org/abs/1505.04597",
+          "file": "docs/chapters/07-image-flow-lab.md",
+          "line": 299
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1601.06759v3",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/1601.06759v3",
+      "started_utc": "2026-11-11T17:05:38.908738+00:00",
+      "elapsed_seconds": 1.316797,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/1601.06759v3",
+          "file": "docs/chapters/01-generative-models.md",
+          "line": 225
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1605.08803v3",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/1605.08803v3",
+      "started_utc": "2026-11-11T17:05:39.003197+00:00",
+      "elapsed_seconds": 0.365615,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/1605.08803v3",
+          "file": "docs/chapters/01-generative-models.md",
+          "line": 228
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1606.03498v1",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/1606.03498v1",
+      "started_utc": "2026-11-11T17:05:39.079308+00:00",
+      "elapsed_seconds": 0.828658,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/1606.03498v1",
+          "file": "docs/chapters/05-evaluation.md",
+          "line": 283
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1706.08500",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/1706.08500",
+      "started_utc": "2026-11-11T17:05:39.298751+00:00",
+      "elapsed_seconds": 1.092372,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/1706.08500",
+          "file": "docs/chapters/04-image-video-roadmap.md",
+          "line": 180
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1706.08500v6",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/1706.08500v6",
+      "started_utc": "2026-11-11T17:05:39.376970+00:00",
+      "elapsed_seconds": 0.758354,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/1706.08500v6",
+          "file": "docs/chapters/05-evaluation.md",
+          "line": 282
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1801.01401v5",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/1801.01401v5",
+      "started_utc": "2026-11-11T17:05:39.916391+00:00",
+      "elapsed_seconds": 0.685649,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/1801.01401v5",
+          "file": "docs/chapters/05-evaluation.md",
+          "line": 288
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1806.07366v6",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/1806.07366v6",
+      "started_utc": "2026-11-11T17:05:40.145453+00:00",
+      "elapsed_seconds": 0.709047,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/1806.07366v6",
+          "file": "docs/chapters/01-generative-models.md",
+          "line": 229
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1812.01717",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/1812.01717",
+      "started_utc": "2026-11-11T17:05:40.237042+00:00",
+      "elapsed_seconds": 0.225,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/1812.01717",
+          "file": "docs/chapters/04-image-video-roadmap.md",
+          "line": 182
+        },
+        {
+          "url": "https://arxiv.org/abs/1812.01717",
+          "file": "docs/chapters/06-video-temporal-lab.md",
+          "line": 203
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1812.01717v2",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/1812.01717v2",
+      "started_utc": "2026-11-11T17:05:40.399248+00:00",
+      "elapsed_seconds": 2.348475,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/1812.01717v2",
+          "file": "docs/chapters/05-evaluation.md",
+          "line": 285
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1904.06991v3",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/1904.06991v3",
+      "started_utc": "2026-11-11T17:05:40.470956+00:00",
+      "elapsed_seconds": 0.206949,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/1904.06991v3",
+          "file": "docs/chapters/05-evaluation.md",
+          "line": 284
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1911.07023v3",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/1911.07023v3",
+      "started_utc": "2026-11-11T17:05:40.609838+00:00",
+      "elapsed_seconds": 2.201627,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/1911.07023v3",
+          "file": "docs/chapters/05-evaluation.md",
+          "line": 286
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2006.11239",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2006.11239",
+      "started_utc": "2026-11-11T17:05:40.687539+00:00",
+      "elapsed_seconds": 2.057008,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2006.11239",
+          "file": "docs/chapters/00-foundations.md",
+          "line": 115
+        },
+        {
+          "url": "https://arxiv.org/abs/2006.11239",
+          "file": "docs/chapters/01-generative-models.md",
+          "line": 230
+        },
+        {
+          "url": "https://arxiv.org/abs/2006.11239",
+          "file": "docs/chapters/02-diffusion.md",
+          "line": 180
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2006.11239v2",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2006.11239v2",
+      "started_utc": "2026-11-11T17:05:40.862933+00:00",
+      "elapsed_seconds": 0.237664,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2006.11239v2",
+          "file": "docs/readings/prediction-and-loss-weighting.md",
+          "line": 210
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2011.13456",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2011.13456",
+      "started_utc": "2026-11-11T17:05:41.108381+00:00",
+      "elapsed_seconds": 0.174928,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2011.13456",
+          "file": "docs/chapters/02-diffusion.md",
+          "line": 182
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2011.13456v2",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2011.13456v2",
+      "started_utc": "2026-11-11T17:05:41.290682+00:00",
+      "elapsed_seconds": 0.818437,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2011.13456v2",
+          "file": "docs/readings/diffusion-flow-bridge.md",
+          "line": 272
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2104.11222",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2104.11222",
+      "started_utc": "2026-11-11T17:05:42.116602+00:00",
+      "elapsed_seconds": 0.701814,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2104.11222",
+          "file": "docs/chapters/04-image-video-roadmap.md",
+          "line": 181
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2104.11222v3",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2104.11222v3",
+      "started_utc": "2026-11-11T17:05:42.759485+00:00",
+      "elapsed_seconds": 0.736405,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2104.11222v3",
+          "file": "docs/chapters/05-evaluation.md",
+          "line": 287
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2112.10752",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2112.10752",
+      "started_utc": "2026-11-11T17:05:42.760900+00:00",
+      "elapsed_seconds": 0.811341,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2112.10752",
+          "file": "docs/chapters/04-image-video-roadmap.md",
+          "line": 174
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2204.03458",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2204.03458",
+      "started_utc": "2026-11-11T17:05:42.819409+00:00",
+      "elapsed_seconds": 0.226533,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2204.03458",
+          "file": "docs/chapters/04-image-video-roadmap.md",
+          "line": 177
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2207.12598",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2207.12598",
+      "started_utc": "2026-11-11T17:05:42.826876+00:00",
+      "elapsed_seconds": 0.322331,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2207.12598",
+          "file": "docs/chapters/04-image-video-roadmap.md",
+          "line": 175
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2207.12598v1",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2207.12598v1",
+      "started_utc": "2026-11-11T17:05:43.054331+00:00",
+      "elapsed_seconds": 0.18851,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2207.12598v1",
+          "file": "docs/chapters/08-image-guidance-lab.md",
+          "line": 276
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2209.03003",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2209.03003",
+      "started_utc": "2026-11-11T17:05:43.157415+00:00",
+      "elapsed_seconds": 0.604772,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2209.03003",
+          "file": "docs/chapters/03-flow-matching.md",
+          "line": 191
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2210.02747",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2210.02747",
+      "started_utc": "2026-11-11T17:05:43.254363+00:00",
+      "elapsed_seconds": 0.240172,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2210.02747",
+          "file": "docs/chapters/01-generative-models.md",
+          "line": 231
+        },
+        {
+          "url": "https://arxiv.org/abs/2210.02747",
+          "file": "docs/chapters/03-flow-matching.md",
+          "line": 189
+        },
+        {
+          "url": "https://arxiv.org/abs/2210.02747",
+          "file": "docs/chapters/07-image-flow-lab.md",
+          "line": 296
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2210.02747v2",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2210.02747v2",
+      "started_utc": "2026-11-11T17:05:43.503283+00:00",
+      "elapsed_seconds": 0.606063,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2210.02747v2",
+          "file": "docs/chapters/08-image-guidance-lab.md",
+          "line": 277
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2212.09748",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2212.09748",
+      "started_utc": "2026-11-11T17:05:43.504136+00:00",
+      "elapsed_seconds": 0.21941,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2212.09748",
+          "file": "docs/chapters/04-image-video-roadmap.md",
+          "line": 176
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2212.09748v2",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2212.09748v2",
+      "started_utc": "2026-11-11T17:05:43.582453+00:00",
+      "elapsed_seconds": 0.72235,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2212.09748v2",
+          "file": "docs/readings/spatial-tokens-and-position.md",
+          "line": 162
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2303.01469v1",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2303.01469v1",
+      "started_utc": "2026-11-11T17:05:43.730434+00:00",
+      "elapsed_seconds": 0.288891,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2303.01469v1",
+          "file": "docs/readings/consistency-endpoint-map.md",
+          "line": 201
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2311.15127",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2311.15127",
+      "started_utc": "2026-11-11T17:05:43.771078+00:00",
+      "elapsed_seconds": 0.184315,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2311.15127",
+          "file": "docs/chapters/04-image-video-roadmap.md",
+          "line": 178
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2311.15127v1",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2311.15127v1",
+      "started_utc": "2026-11-11T17:05:43.962960+00:00",
+      "elapsed_seconds": 0.281054,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2311.15127v1",
+          "file": "docs/chapters/10-pretrained-video-lab.md",
+          "line": 292
+        },
+        {
+          "url": "https://arxiv.org/abs/2311.15127v1",
+          "file": "docs/readings/video-training-svd-cogvideox.md",
+          "line": 13
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2408.06072",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2408.06072",
+      "started_utc": "2026-11-11T17:05:44.026972+00:00",
+      "elapsed_seconds": 0.208942,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2408.06072",
+          "file": "docs/chapters/04-image-video-roadmap.md",
+          "line": 179
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2408.06072v3",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2408.06072v3",
+      "started_utc": "2026-11-11T17:05:44.116731+00:00",
+      "elapsed_seconds": 0.288784,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2408.06072v3",
+          "file": "docs/readings/video-training-svd-cogvideox.md",
+          "line": 15
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2503.20314v2",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2503.20314v2",
+      "started_utc": "2026-11-11T17:05:44.243925+00:00",
+      "elapsed_seconds": 0.185003,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2503.20314v2",
+          "file": "docs/readings/wan-video-2025.md",
+          "line": 13
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2506.15742v2",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2506.15742v2",
+      "started_utc": "2026-11-11T17:05:44.253081+00:00",
+      "elapsed_seconds": 0.230519,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2506.15742v2",
+          "file": "docs/readings/flux-kontext-2025.md",
+          "line": 185
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2601.03233v1",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2601.03233v1",
+      "started_utc": "2026-11-11T17:05:44.312717+00:00",
+      "elapsed_seconds": 0.222868,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2601.03233v1",
+          "file": "docs/readings/ltx2-video-audio-2026.md",
+          "line": 7
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2601.03955v1",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2601.03955v1",
+      "started_utc": "2026-11-11T17:05:44.413032+00:00",
+      "elapsed_seconds": 0.28906,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://arxiv.org/abs/2601.03955v1",
+          "file": "docs/readings/restok-image-ar-2026.md",
+          "line": 7
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/CompVis/latent-diffusion/blob/a506df5756472e2ebaf9078affdde2c4f1502cd4/README.md",
+      "status": 200,
+      "final_url": "https://github.com/CompVis/latent-diffusion/blob/a506df5756472e2ebaf9078affdde2c4f1502cd4/README.md",
+      "started_utc": "2026-11-11T17:05:44.438102+00:00",
+      "elapsed_seconds": 1.832143,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/CompVis/latent-diffusion/blob/a506df5756472e2ebaf9078affdde2c4f1502cd4/README.md",
+          "file": "docs/chapters/04-image-video-roadmap.md",
+          "line": 190
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/CompVis/latent-diffusion/blob/a506df5756472e2ebaf9078affdde2c4f1502cd4/ldm/modules/attention.py",
+      "status": 200,
+      "final_url": "https://github.com/CompVis/latent-diffusion/blob/a506df5756472e2ebaf9078affdde2c4f1502cd4/ldm/modules/attention.py",
+      "started_utc": "2026-11-11T17:05:44.492299+00:00",
+      "elapsed_seconds": 1.887486,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/CompVis/latent-diffusion/blob/a506df5756472e2ebaf9078affdde2c4f1502cd4/ldm/modules/attention.py",
+          "file": "docs/readings/conditioning-attention.md",
+          "line": 185
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/Kwai-Kolors/ResTok/blob/7811bf23e8de2bc0f888afff8a836c313ec6bef8/LICENSE",
+      "status": 200,
+      "final_url": "https://github.com/Kwai-Kolors/ResTok/blob/7811bf23e8de2bc0f888afff8a836c313ec6bef8/LICENSE",
+      "started_utc": "2026-11-11T17:05:44.543103+00:00",
+      "elapsed_seconds": 1.637855,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/Kwai-Kolors/ResTok/blob/7811bf23e8de2bc0f888afff8a836c313ec6bef8/LICENSE",
+          "file": "docs/readings/restok-image-ar-2026.md",
+          "line": 226
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/Kwai-Kolors/ResTok/blob/7811bf23e8de2bc0f888afff8a836c313ec6bef8/README.md",
+      "status": 200,
+      "final_url": "https://github.com/Kwai-Kolors/ResTok/blob/7811bf23e8de2bc0f888afff8a836c313ec6bef8/README.md",
+      "started_utc": "2026-11-11T17:05:44.709831+00:00",
+      "elapsed_seconds": 1.778711,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/Kwai-Kolors/ResTok/blob/7811bf23e8de2bc0f888afff8a836c313ec6bef8/README.md",
+          "file": "docs/readings/restok-image-ar-2026.md",
+          "line": 217
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/Kwai-Kolors/ResTok/blob/7811bf23e8de2bc0f888afff8a836c313ec6bef8/modeling/modules/blocks.py",
+      "status": 200,
+      "final_url": "https://github.com/Kwai-Kolors/ResTok/blob/7811bf23e8de2bc0f888afff8a836c313ec6bef8/modeling/modules/blocks.py",
+      "started_utc": "2026-11-11T17:05:46.189898+00:00",
+      "elapsed_seconds": 1.178451,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/Kwai-Kolors/ResTok/blob/7811bf23e8de2bc0f888afff8a836c313ec6bef8/modeling/modules/blocks.py",
+          "file": "docs/readings/restok-image-ar-2026.md",
+          "line": 218
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/Kwai-Kolors/ResTok/blob/7811bf23e8de2bc0f888afff8a836c313ec6bef8/scripts/test_restok.py",
+      "status": 200,
+      "final_url": "https://github.com/Kwai-Kolors/ResTok/blob/7811bf23e8de2bc0f888afff8a836c313ec6bef8/scripts/test_restok.py",
+      "started_utc": "2026-11-11T17:05:46.278122+00:00",
+      "elapsed_seconds": 0.964172,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/Kwai-Kolors/ResTok/blob/7811bf23e8de2bc0f888afff8a836c313ec6bef8/scripts/test_restok.py",
+          "file": "docs/readings/restok-image-ar-2026.md",
+          "line": 219
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/Lightricks/LTX-2/blob/4f521619ae0029e8fbb64d555030c2b121a33b4f/LICENSE",
+      "status": 200,
+      "final_url": "https://github.com/Lightricks/LTX-2/blob/4f521619ae0029e8fbb64d555030c2b121a33b4f/LICENSE",
+      "started_utc": "2026-11-11T17:05:46.389740+00:00",
+      "elapsed_seconds": 1.034475,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/Lightricks/LTX-2/blob/4f521619ae0029e8fbb64d555030c2b121a33b4f/LICENSE",
+          "file": "docs/readings/ltx2-video-audio-2026.md",
+          "line": 273
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/Lightricks/LTX-2/blob/7179f0d0e30bcc2a157ceccc4a507fff4b32f7cf/LICENSE",
+      "status": 200,
+      "final_url": "https://github.com/Lightricks/LTX-2/blob/7179f0d0e30bcc2a157ceccc4a507fff4b32f7cf/LICENSE",
+      "started_utc": "2026-11-11T17:05:46.496947+00:00",
+      "elapsed_seconds": 1.040199,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/Lightricks/LTX-2/blob/7179f0d0e30bcc2a157ceccc4a507fff4b32f7cf/LICENSE",
+          "file": "docs/readings/ltx2-video-audio-2026.md",
+          "line": 273
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/Lightricks/LTX-2/blob/7179f0d0e30bcc2a157ceccc4a507fff4b32f7cf/README.md",
+      "status": 200,
+      "final_url": "https://github.com/Lightricks/LTX-2/blob/7179f0d0e30bcc2a157ceccc4a507fff4b32f7cf/README.md",
+      "started_utc": "2026-11-11T17:05:47.252825+00:00",
+      "elapsed_seconds": 1.271826,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/Lightricks/LTX-2/blob/7179f0d0e30bcc2a157ceccc4a507fff4b32f7cf/README.md",
+          "file": "docs/readings/ltx2-video-audio-2026.md",
+          "line": 269
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/Lightricks/LTX-2/blob/7179f0d0e30bcc2a157ceccc4a507fff4b32f7cf/packages/ltx-core/src/ltx_core/model/transformer/model.py",
+      "status": 200,
+      "final_url": "https://github.com/Lightricks/LTX-2/blob/7179f0d0e30bcc2a157ceccc4a507fff4b32f7cf/packages/ltx-core/src/ltx_core/model/transformer/model.py",
+      "started_utc": "2026-11-11T17:05:47.376736+00:00",
+      "elapsed_seconds": 1.322368,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/Lightricks/LTX-2/blob/7179f0d0e30bcc2a157ceccc4a507fff4b32f7cf/packages/ltx-core/src/ltx_core/model/transformer/model.py#L443",
+          "file": "docs/readings/ltx2-video-audio-2026.md",
+          "line": 271
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/Lightricks/LTX-2/blob/7179f0d0e30bcc2a157ceccc4a507fff4b32f7cf/packages/ltx-trainer/src/ltx_trainer/training_strategies/text_to_video.py",
+      "status": 200,
+      "final_url": "https://github.com/Lightricks/LTX-2/blob/7179f0d0e30bcc2a157ceccc4a507fff4b32f7cf/packages/ltx-trainer/src/ltx_trainer/training_strategies/text_to_video.py",
+      "started_utc": "2026-11-11T17:05:47.432624+00:00",
+      "elapsed_seconds": 1.266202,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/Lightricks/LTX-2/blob/7179f0d0e30bcc2a157ceccc4a507fff4b32f7cf/packages/ltx-trainer/src/ltx_trainer/training_strategies/text_to_video.py",
+          "file": "docs/readings/ltx2-video-audio-2026.md",
+          "line": 270
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/Stability-AI/generative-models/blob/e8cd657656fa5d61688191730d0e03242bf4ed44/README.md",
+      "status": 200,
+      "final_url": "https://github.com/Stability-AI/generative-models/blob/e8cd657656fa5d61688191730d0e03242bf4ed44/README.md",
+      "started_utc": "2026-11-11T17:05:47.548935+00:00",
+      "elapsed_seconds": 1.223035,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/Stability-AI/generative-models/blob/e8cd657656fa5d61688191730d0e03242bf4ed44/README.md",
+          "file": "docs/chapters/04-image-video-roadmap.md",
+          "line": 192
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/Stability-AI/generative-models/blob/e8cd657656fa5d61688191730d0e03242bf4ed44/scripts/sampling/configs/svd.yaml",
+      "status": 200,
+      "final_url": "https://github.com/Stability-AI/generative-models/blob/e8cd657656fa5d61688191730d0e03242bf4ed44/scripts/sampling/configs/svd.yaml",
+      "started_utc": "2026-11-11T17:05:48.534008+00:00",
+      "elapsed_seconds": 0.964207,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/Stability-AI/generative-models/blob/e8cd657656fa5d61688191730d0e03242bf4ed44/scripts/sampling/configs/svd.yaml",
+          "file": "docs/chapters/10-pretrained-video-lab.md",
+          "line": 293
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/Stability-AI/generative-models/blob/e8cd657656fa5d61688191730d0e03242bf4ed44/scripts/sampling/simple_video_sample.py",
+      "status": 200,
+      "final_url": "https://github.com/Stability-AI/generative-models/blob/e8cd657656fa5d61688191730d0e03242bf4ed44/scripts/sampling/simple_video_sample.py",
+      "started_utc": "2026-11-11T17:05:48.707250+00:00",
+      "elapsed_seconds": 0.903128,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/Stability-AI/generative-models/blob/e8cd657656fa5d61688191730d0e03242bf4ed44/scripts/sampling/simple_video_sample.py",
+          "file": "docs/readings/video-training-svd-cogvideox.md",
+          "line": 251
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/Stability-AI/generative-models/blob/e8cd657656fa5d61688191730d0e03242bf4ed44/sgm/models/diffusion.py",
+      "status": 200,
+      "final_url": "https://github.com/Stability-AI/generative-models/blob/e8cd657656fa5d61688191730d0e03242bf4ed44/sgm/models/diffusion.py",
+      "started_utc": "2026-11-11T17:05:48.707744+00:00",
+      "elapsed_seconds": 1.144218,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/Stability-AI/generative-models/blob/e8cd657656fa5d61688191730d0e03242bf4ed44/sgm/models/diffusion.py",
+          "file": "docs/readings/video-training-svd-cogvideox.md",
+          "line": 252
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/Stability-AI/generative-models/blob/e8cd657656fa5d61688191730d0e03242bf4ed44/sgm/modules/encoders/modules.py",
+      "status": 200,
+      "final_url": "https://github.com/Stability-AI/generative-models/blob/e8cd657656fa5d61688191730d0e03242bf4ed44/sgm/modules/encoders/modules.py",
+      "started_utc": "2026-11-11T17:05:48.780418+00:00",
+      "elapsed_seconds": 1.230438,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/Stability-AI/generative-models/blob/e8cd657656fa5d61688191730d0e03242bf4ed44/sgm/modules/encoders/modules.py",
+          "file": "docs/readings/video-training-svd-cogvideox.md",
+          "line": 252
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/THUDM/CogVideo/blob/7a1af7154511e0ce4e4be8d62faa8c5e5a3532d2/README.md",
+      "status": 200,
+      "final_url": "https://github.com/zai-org/CogVideo/blob/7a1af7154511e0ce4e4be8d62faa8c5e5a3532d2/README.md",
+      "started_utc": "2026-11-11T17:05:49.507223+00:00",
+      "elapsed_seconds": 2.269909,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 1,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/THUDM/CogVideo/blob/7a1af7154511e0ce4e4be8d62faa8c5e5a3532d2/README.md",
+          "file": "docs/chapters/04-image-video-roadmap.md",
+          "line": 193
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/THUDM/CogVideo/blob/7a1af7154511e0ce4e4be8d62faa8c5e5a3532d2/sat/configs/cogvideox_2b.yaml",
+      "status": 200,
+      "final_url": "https://github.com/zai-org/CogVideo/blob/7a1af7154511e0ce4e4be8d62faa8c5e5a3532d2/sat/configs/cogvideox_2b.yaml",
+      "started_utc": "2026-11-11T17:05:49.618781+00:00",
+      "elapsed_seconds": 2.072155,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 1,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/THUDM/CogVideo/blob/7a1af7154511e0ce4e4be8d62faa8c5e5a3532d2/sat/configs/cogvideox_2b.yaml",
+          "file": "docs/readings/video-training-svd-cogvideox.md",
+          "line": 256
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/Wan-Video/Wan2.1/blob/9737cba9c1c3c4d04b33fcad41c111989865d315/LICENSE.txt",
+      "status": 200,
+      "final_url": "https://github.com/Wan-Video/Wan2.1/blob/9737cba9c1c3c4d04b33fcad41c111989865d315/LICENSE.txt",
+      "started_utc": "2026-11-11T17:05:49.860533+00:00",
+      "elapsed_seconds": 0.942959,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/Wan-Video/Wan2.1/blob/9737cba9c1c3c4d04b33fcad41c111989865d315/LICENSE.txt",
+          "file": "docs/readings/wan-video-2025.md",
+          "line": 78
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/black-forest-labs/flux/blob/802fb4713906133fcbd0d8dc5351620ca4773036/LICENSE",
+      "status": 200,
+      "final_url": "https://github.com/black-forest-labs/flux/blob/802fb4713906133fcbd0d8dc5351620ca4773036/LICENSE",
+      "started_utc": "2026-11-11T17:05:50.019296+00:00",
+      "elapsed_seconds": 0.956239,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/black-forest-labs/flux/blob/802fb4713906133fcbd0d8dc5351620ca4773036/LICENSE",
+          "file": "docs/readings/flux-kontext-2025.md",
+          "line": 190
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/black-forest-labs/flux/blob/802fb4713906133fcbd0d8dc5351620ca4773036/docs/image-editing.md",
+      "status": 200,
+      "final_url": "https://github.com/black-forest-labs/flux/blob/802fb4713906133fcbd0d8dc5351620ca4773036/docs/image-editing.md",
+      "started_utc": "2026-11-11T17:05:50.811682+00:00",
+      "elapsed_seconds": 0.987492,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/black-forest-labs/flux/blob/802fb4713906133fcbd0d8dc5351620ca4773036/docs/image-editing.md#L29",
+          "file": "docs/readings/flux-kontext-2025.md",
+          "line": 194
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/black-forest-labs/flux/blob/802fb4713906133fcbd0d8dc5351620ca4773036/src/flux/model.py",
+      "status": 200,
+      "final_url": "https://github.com/black-forest-labs/flux/blob/802fb4713906133fcbd0d8dc5351620ca4773036/src/flux/model.py",
+      "started_utc": "2026-11-11T17:05:50.984083+00:00",
+      "elapsed_seconds": 0.951094,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/black-forest-labs/flux/blob/802fb4713906133fcbd0d8dc5351620ca4773036/src/flux/model.py#L97",
+          "file": "docs/readings/flux-kontext-2025.md",
+          "line": 193
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/black-forest-labs/flux/blob/802fb4713906133fcbd0d8dc5351620ca4773036/src/flux/sampling.py",
+      "status": 200,
+      "final_url": "https://github.com/black-forest-labs/flux/blob/802fb4713906133fcbd0d8dc5351620ca4773036/src/flux/sampling.py",
+      "started_utc": "2026-11-11T17:05:51.699468+00:00",
+      "elapsed_seconds": 0.948439,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/black-forest-labs/flux/blob/802fb4713906133fcbd0d8dc5351620ca4773036/src/flux/sampling.py#L210",
+          "file": "docs/readings/flux-kontext-2025.md",
+          "line": 192
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/black-forest-labs/flux/blob/802fb4713906133fcbd0d8dc5351620ca4773036/src/flux/util.py",
+      "status": 200,
+      "final_url": "https://github.com/black-forest-labs/flux/blob/802fb4713906133fcbd0d8dc5351620ca4773036/src/flux/util.py",
+      "started_utc": "2026-11-11T17:05:51.785749+00:00",
+      "elapsed_seconds": 1.023498,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/black-forest-labs/flux/blob/802fb4713906133fcbd0d8dc5351620ca4773036/src/flux/util.py#L582",
+          "file": "docs/readings/flux-kontext-2025.md",
+          "line": 191
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/facebookresearch/DiT/blob/ed81ce2229091fd4ecc9a223645f95cf379d582b/README.md",
+      "status": 200,
+      "final_url": "https://github.com/facebookresearch/DiT/blob/ed81ce2229091fd4ecc9a223645f95cf379d582b/README.md",
+      "started_utc": "2026-11-11T17:05:51.807316+00:00",
+      "elapsed_seconds": 0.990692,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/facebookresearch/DiT/blob/ed81ce2229091fd4ecc9a223645f95cf379d582b/README.md",
+          "file": "docs/chapters/04-image-video-roadmap.md",
+          "line": 191
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/facebookresearch/DiT/blob/ed81ce2229091fd4ecc9a223645f95cf379d582b/models.py",
+      "status": 200,
+      "final_url": "https://github.com/facebookresearch/DiT/blob/ed81ce2229091fd4ecc9a223645f95cf379d582b/models.py",
+      "started_utc": "2026-11-11T17:05:51.943211+00:00",
+      "elapsed_seconds": 0.996322,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/facebookresearch/DiT/blob/ed81ce2229091fd4ecc9a223645f95cf379d582b/models.py",
+          "file": "docs/readings/spatial-tokens-and-position.md",
+          "line": 163
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/facebookresearch/flow_matching/blob/11568d37f8d5a080e12aa7b5305d9c35ae07d136/flow_matching/path/affine.py",
+      "status": 200,
+      "final_url": "https://github.com/facebookresearch/flow_matching/blob/11568d37f8d5a080e12aa7b5305d9c35ae07d136/flow_matching/path/affine.py",
+      "started_utc": "2026-11-11T17:05:52.655974+00:00",
+      "elapsed_seconds": 1.016069,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/facebookresearch/flow_matching/blob/11568d37f8d5a080e12aa7b5305d9c35ae07d136/flow_matching/path/affine.py",
+          "file": "SOURCES.md",
+          "line": 12
+        },
+        {
+          "url": "https://github.com/facebookresearch/flow_matching/blob/11568d37f8d5a080e12aa7b5305d9c35ae07d136/flow_matching/path/affine.py",
+          "file": "docs/chapters/03-flow-matching.md",
+          "line": 190
+        },
+        {
+          "url": "https://github.com/facebookresearch/flow_matching/blob/11568d37f8d5a080e12aa7b5305d9c35ae07d136/flow_matching/path/affine.py",
+          "file": "docs/chapters/07-image-flow-lab.md",
+          "line": 297
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/hojonathanho/diffusion/blob/1e0dceb3b3495bbe19116a5e1b3596cd0706c543/diffusion_tf/diffusion_utils.py",
+      "status": 200,
+      "final_url": "https://github.com/hojonathanho/diffusion/blob/1e0dceb3b3495bbe19116a5e1b3596cd0706c543/diffusion_tf/diffusion_utils.py",
+      "started_utc": "2026-11-11T17:05:52.805311+00:00",
+      "elapsed_seconds": 1.018444,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/hojonathanho/diffusion/blob/1e0dceb3b3495bbe19116a5e1b3596cd0706c543/diffusion_tf/diffusion_utils.py",
+          "file": "SOURCES.md",
+          "line": 11
+        },
+        {
+          "url": "https://github.com/hojonathanho/diffusion/blob/1e0dceb3b3495bbe19116a5e1b3596cd0706c543/diffusion_tf/diffusion_utils.py",
+          "file": "docs/chapters/02-diffusion.md",
+          "line": 181
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/models/attention_processor.py",
+      "status": 200,
+      "final_url": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/models/attention_processor.py",
+      "started_utc": "2026-11-11T17:05:52.818179+00:00",
+      "elapsed_seconds": 1.803245,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/models/attention_processor.py",
+          "file": "docs/readings/conditioning-attention.md",
+          "line": 188
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/pipelines/stable_diffusion/pipeline_stable_diffusion.py",
+      "status": 200,
+      "final_url": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/pipelines/stable_diffusion/pipeline_stable_diffusion.py",
+      "started_utc": "2026-11-11T17:05:52.947832+00:00",
+      "elapsed_seconds": 1.242687,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/pipelines/stable_diffusion/pipeline_stable_diffusion.py",
+          "file": "docs/chapters/09-pretrained-image-lab.md",
+          "line": 253
+        },
+        {
+          "url": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/pipelines/stable_diffusion/pipeline_stable_diffusion.py",
+          "file": "docs/readings/conditioning-attention.md",
+          "line": 188
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/pipelines/stable_video_diffusion/pipeline_stable_video_diffusion.py",
+      "status": 200,
+      "final_url": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/pipelines/stable_video_diffusion/pipeline_stable_video_diffusion.py",
+      "started_utc": "2026-11-11T17:05:53.683792+00:00",
+      "elapsed_seconds": 1.109321,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/pipelines/stable_video_diffusion/pipeline_stable_video_diffusion.py",
+          "file": "docs/chapters/10-pretrained-video-lab.md",
+          "line": 295
+        },
+        {
+          "url": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/pipelines/stable_video_diffusion/pipeline_stable_video_diffusion.py",
+          "file": "docs/readings/conditioning-attention.md",
+          "line": 188
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/schedulers/scheduling_ddim.py",
+      "status": 200,
+      "final_url": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/schedulers/scheduling_ddim.py",
+      "started_utc": "2026-11-11T17:05:53.832305+00:00",
+      "elapsed_seconds": 1.04482,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/schedulers/scheduling_ddim.py",
+          "file": "docs/chapters/09-pretrained-image-lab.md",
+          "line": 253
+        },
+        {
+          "url": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/schedulers/scheduling_ddim.py",
+          "file": "docs/readings/prediction-and-loss-weighting.md",
+          "line": 211
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/schedulers/scheduling_euler_discrete.py",
+      "status": 200,
+      "final_url": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/schedulers/scheduling_euler_discrete.py",
+      "started_utc": "2026-11-11T17:05:54.201930+00:00",
+      "elapsed_seconds": 1.114908,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/schedulers/scheduling_euler_discrete.py",
+          "file": "docs/chapters/10-pretrained-video-lab.md",
+          "line": 295
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/huggingface/transformers/blob/753d61104116eefc8ffc977327b441ee0c8d599f/src/transformers/models/clip/modeling_clip.py",
+      "status": 200,
+      "final_url": "https://github.com/huggingface/transformers/blob/753d61104116eefc8ffc977327b441ee0c8d599f/src/transformers/models/clip/modeling_clip.py",
+      "started_utc": "2026-11-11T17:05:54.630918+00:00",
+      "elapsed_seconds": 1.320441,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/huggingface/transformers/blob/753d61104116eefc8ffc977327b441ee0c8d599f/src/transformers/models/clip/modeling_clip.py",
+          "file": "docs/chapters/09-pretrained-image-lab.md",
+          "line": 254
+        },
+        {
+          "url": "https://github.com/huggingface/transformers/blob/753d61104116eefc8ffc977327b441ee0c8d599f/src/transformers/models/clip/modeling_clip.py",
+          "file": "docs/readings/conditioning-attention.md",
+          "line": 189
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/openai/CLIP/blob/cfcffb90e69f37bf2ff1e988237a0fbe41f33c04/clip/model.py",
+      "status": 200,
+      "final_url": "https://github.com/openai/CLIP/blob/cfcffb90e69f37bf2ff1e988237a0fbe41f33c04/clip/model.py",
+      "started_utc": "2026-11-11T17:05:54.807577+00:00",
+      "elapsed_seconds": 1.173663,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/openai/CLIP/blob/cfcffb90e69f37bf2ff1e988237a0fbe41f33c04/clip/model.py",
+          "file": "docs/readings/conditioning-attention.md",
+          "line": 186
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/openai/consistency_models/blob/e32b69ee436d518377db86fb2127a3972d0d8716/cm/karras_diffusion.py",
+      "status": 200,
+      "final_url": "https://github.com/openai/consistency_models/blob/e32b69ee436d518377db86fb2127a3972d0d8716/cm/karras_diffusion.py",
+      "started_utc": "2026-11-11T17:05:54.886306+00:00",
+      "elapsed_seconds": 1.299828,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/openai/consistency_models/blob/e32b69ee436d518377db86fb2127a3972d0d8716/cm/karras_diffusion.py",
+          "file": "docs/readings/consistency-endpoint-map.md",
+          "line": 202
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/openai/consistency_models/blob/e32b69ee436d518377db86fb2127a3972d0d8716/cm/train_util.py",
+      "status": 200,
+      "final_url": "https://github.com/openai/consistency_models/blob/e32b69ee436d518377db86fb2127a3972d0d8716/cm/train_util.py",
+      "started_utc": "2026-11-11T17:05:55.327755+00:00",
+      "elapsed_seconds": 1.097028,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/openai/consistency_models/blob/e32b69ee436d518377db86fb2127a3972d0d8716/cm/train_util.py",
+          "file": "docs/readings/consistency-endpoint-map.md",
+          "line": 203
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/yang-song/score_sde/blob/0acb9e0ea3b8cccd935068cd9c657318fbc6ce4c/sampling.py",
+      "status": 200,
+      "final_url": "https://github.com/yang-song/score_sde/blob/0acb9e0ea3b8cccd935068cd9c657318fbc6ce4c/sampling.py",
+      "started_utc": "2026-11-11T17:05:55.960569+00:00",
+      "elapsed_seconds": 0.999899,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/yang-song/score_sde/blob/0acb9e0ea3b8cccd935068cd9c657318fbc6ce4c/sampling.py",
+          "file": "docs/readings/diffusion-flow-bridge.md",
+          "line": 273
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/yang-song/score_sde/blob/0acb9e0ea3b8cccd935068cd9c657318fbc6ce4c/sde_lib.py",
+      "status": 200,
+      "final_url": "https://github.com/yang-song/score_sde/blob/0acb9e0ea3b8cccd935068cd9c657318fbc6ce4c/sde_lib.py",
+      "started_utc": "2026-11-11T17:05:55.989898+00:00",
+      "elapsed_seconds": 1.714876,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/yang-song/score_sde/blob/0acb9e0ea3b8cccd935068cd9c657318fbc6ce4c/sde_lib.py",
+          "file": "docs/readings/diffusion-flow-bridge.md",
+          "line": 273
+        }
+      ]
+    },
+    {
+      "url": "https://pytorch.org/docs/stable/notes/randomness.html",
+      "status": 200,
+      "final_url": "https://docs.pytorch.org/docs/stable/notes/randomness.html",
+      "started_utc": "2026-11-11T17:05:56.194372+00:00",
+      "elapsed_seconds": 1.651355,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 1,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://pytorch.org/docs/stable/notes/randomness.html",
+          "file": "docs/chapters/00-foundations.md",
+          "line": 65
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/Kwai-Kolors/ResTok/tree/7811bf23e8de2bc0f888afff8a836c313ec6bef8",
+      "status": 200,
+      "final_url": "https://github.com/Kwai-Kolors/ResTok/tree/7811bf23e8de2bc0f888afff8a836c313ec6bef8",
+      "started_utc": "2026-11-11T17:05:56.438434+00:00",
+      "elapsed_seconds": 1.659441,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "initial-80",
+      "occurrences": [
+        {
+          "url": "https://github.com/Kwai-Kolors/ResTok/tree/7811bf23e8de2bc0f888afff8a836c313ec6bef8",
+          "file": "docs/readings/restok-image-ar-2026.md",
+          "line": 217
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/Wan-Video/Wan2.1/tree/9737cba9c1c3c4d04b33fcad41c111989865d315",
+      "status": 200,
+      "final_url": "https://github.com/Wan-Video/Wan2.1/tree/9737cba9c1c3c4d04b33fcad41c111989865d315",
+      "started_utc": "2026-11-11T17:08:21.185558+00:00",
+      "elapsed_seconds": 1.524007,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "remaining-18",
+      "occurrences": [
+        {
+          "url": "https://github.com/Wan-Video/Wan2.1/tree/9737cba9c1c3c4d04b33fcad41c111989865d315",
+          "file": "docs/readings/wan-video-2025.md",
+          "line": 15
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/advisories/GHSA-53q9-r3pm-6pq6",
+      "status": 200,
+      "final_url": "https://github.com/advisories/GHSA-53q9-r3pm-6pq6",
+      "started_utc": "2026-11-11T17:08:21.186132+00:00",
+      "elapsed_seconds": 1.339059,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "remaining-18",
+      "occurrences": [
+        {
+          "url": "https://github.com/advisories/GHSA-53q9-r3pm-6pq6",
+          "file": "SOURCES.md",
+          "line": 22
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/black-forest-labs/flux/tree/802fb4713906133fcbd0d8dc5351620ca4773036",
+      "status": 200,
+      "final_url": "https://github.com/black-forest-labs/flux/tree/802fb4713906133fcbd0d8dc5351620ca4773036",
+      "started_utc": "2026-11-11T17:08:21.186809+00:00",
+      "elapsed_seconds": 1.692653,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "remaining-18",
+      "occurrences": [
+        {
+          "url": "https://github.com/black-forest-labs/flux/tree/802fb4713906133fcbd0d8dc5351620ca4773036",
+          "file": "docs/readings/flux-kontext-2025.md",
+          "line": 187
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/pytorch/pytorch/blob/v2.6.0/torch/nn/modules/loss.py",
+      "status": 200,
+      "final_url": "https://github.com/pytorch/pytorch/blob/v2.6.0/torch/nn/modules/loss.py",
+      "started_utc": "2026-11-11T17:08:21.187125+00:00",
+      "elapsed_seconds": 1.764491,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "remaining-18",
+      "occurrences": [
+        {
+          "url": "https://github.com/pytorch/pytorch/blob/v2.6.0/torch/nn/modules/loss.py",
+          "file": "docs/chapters/07-image-flow-lab.md",
+          "line": 298
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/yang-song/score_sde/tree/0acb9e0ea3b8cccd935068cd9c657318fbc6ce4c",
+      "status": 200,
+      "final_url": "https://github.com/yang-song/score_sde/tree/0acb9e0ea3b8cccd935068cd9c657318fbc6ce4c",
+      "started_utc": "2026-11-11T17:08:22.539653+00:00",
+      "elapsed_seconds": 0.938362,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "remaining-18",
+      "occurrences": [
+        {
+          "url": "https://github.com/yang-song/score_sde/tree/0acb9e0ea3b8cccd935068cd9c657318fbc6ce4c",
+          "file": "docs/readings/diffusion-flow-bridge.md",
+          "line": 273
+        }
+      ]
+    },
+    {
+      "url": "https://huggingface.co/CompVis/stable-diffusion-v1-4/blob/133a221b8aa7292a167afc5127cb63fb5005638b/README.md",
+      "status": 200,
+      "final_url": "https://huggingface.co/CompVis/stable-diffusion-v1-4/blob/133a221b8aa7292a167afc5127cb63fb5005638b/README.md",
+      "started_utc": "2026-11-11T17:08:22.727073+00:00",
+      "elapsed_seconds": 1.545393,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "remaining-18",
+      "occurrences": [
+        {
+          "url": "https://huggingface.co/CompVis/stable-diffusion-v1-4/blob/133a221b8aa7292a167afc5127cb63fb5005638b/README.md",
+          "file": "docs/chapters/09-pretrained-image-lab.md",
+          "line": 251
+        }
+      ]
+    },
+    {
+      "url": "https://huggingface.co/CompVis/stable-diffusion-v1-4/blob/133a221b8aa7292a167afc5127cb63fb5005638b/vae/config.json",
+      "status": 200,
+      "final_url": "https://huggingface.co/CompVis/stable-diffusion-v1-4/blob/133a221b8aa7292a167afc5127cb63fb5005638b/vae/config.json",
+      "started_utc": "2026-11-11T17:08:22.889772+00:00",
+      "elapsed_seconds": 1.224732,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "remaining-18",
+      "occurrences": [
+        {
+          "url": "https://huggingface.co/CompVis/stable-diffusion-v1-4/blob/133a221b8aa7292a167afc5127cb63fb5005638b/vae/config.json",
+          "file": "docs/chapters/09-pretrained-image-lab.md",
+          "line": 252
+        }
+      ]
+    },
+    {
+      "url": "https://huggingface.co/Lightricks/LTX-2/blob/64f65d09e0b76c96202b5bc09997673184cf9b5d/README.md",
+      "status": 200,
+      "final_url": "https://huggingface.co/Lightricks/LTX-2/blob/64f65d09e0b76c96202b5bc09997673184cf9b5d/README.md",
+      "started_utc": "2026-11-11T17:08:22.967547+00:00",
+      "elapsed_seconds": 1.244882,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "remaining-18",
+      "occurrences": [
+        {
+          "url": "https://huggingface.co/Lightricks/LTX-2/blob/64f65d09e0b76c96202b5bc09997673184cf9b5d/README.md",
+          "file": "docs/readings/ltx2-video-audio-2026.md",
+          "line": 272
+        }
+      ]
+    },
+    {
+      "url": "https://huggingface.co/THUDM/CogVideoX-2b/blob/1137dacfc2c9c012bed6a0793f4ecf2ca8e7ba01/README.md",
+      "status": 200,
+      "final_url": "https://huggingface.co/zai-org/CogVideoX-2b/blob/1137dacfc2c9c012bed6a0793f4ecf2ca8e7ba01/README.md",
+      "started_utc": "2026-11-11T17:08:23.486019+00:00",
+      "elapsed_seconds": 2.713402,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 1,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "remaining-18",
+      "occurrences": [
+        {
+          "url": "https://huggingface.co/THUDM/CogVideoX-2b/blob/1137dacfc2c9c012bed6a0793f4ecf2ca8e7ba01/README.md",
+          "file": "docs/readings/video-training-svd-cogvideox.md",
+          "line": 257
+        }
+      ]
+    },
+    {
+      "url": "https://huggingface.co/Wan-AI/Wan2.1-T2V-1.3B/blob/37ec512624d61f7aa208f7ea8140a131f93afc9a/README.md",
+      "status": 200,
+      "final_url": "https://huggingface.co/Wan-AI/Wan2.1-T2V-1.3B/blob/37ec512624d61f7aa208f7ea8140a131f93afc9a/README.md",
+      "started_utc": "2026-11-11T17:08:24.122937+00:00",
+      "elapsed_seconds": 1.255334,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "remaining-18",
+      "occurrences": [
+        {
+          "url": "https://huggingface.co/Wan-AI/Wan2.1-T2V-1.3B/blob/37ec512624d61f7aa208f7ea8140a131f93afc9a/README.md",
+          "file": "docs/readings/wan-video-2025.md",
+          "line": 16
+        }
+      ]
+    },
+    {
+      "url": "https://huggingface.co/black-forest-labs/FLUX.1-Kontext-dev/blob/24e9dedc4ef646698dc8eb4e18ae2cec3c9fea0d/LICENSE.md",
+      "status": 200,
+      "final_url": "https://huggingface.co/black-forest-labs/FLUX.1-Kontext-dev/blob/24e9dedc4ef646698dc8eb4e18ae2cec3c9fea0d/LICENSE.md",
+      "started_utc": "2026-11-11T17:08:24.220797+00:00",
+      "elapsed_seconds": 1.276971,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "remaining-18",
+      "occurrences": [
+        {
+          "url": "https://huggingface.co/black-forest-labs/FLUX.1-Kontext-dev/blob/24e9dedc4ef646698dc8eb4e18ae2cec3c9fea0d/LICENSE.md",
+          "file": "docs/readings/flux-kontext-2025.md",
+          "line": 189
+        }
+      ]
+    },
+    {
+      "url": "https://huggingface.co/black-forest-labs/FLUX.1-Kontext-dev/blob/24e9dedc4ef646698dc8eb4e18ae2cec3c9fea0d/README.md",
+      "status": 200,
+      "final_url": "https://huggingface.co/black-forest-labs/FLUX.1-Kontext-dev/blob/24e9dedc4ef646698dc8eb4e18ae2cec3c9fea0d/README.md",
+      "started_utc": "2026-11-11T17:08:24.286480+00:00",
+      "elapsed_seconds": 0.765313,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "remaining-18",
+      "occurrences": [
+        {
+          "url": "https://huggingface.co/black-forest-labs/FLUX.1-Kontext-dev/blob/24e9dedc4ef646698dc8eb4e18ae2cec3c9fea0d/README.md",
+          "file": "docs/readings/flux-kontext-2025.md",
+          "line": 188
+        }
+      ]
+    },
+    {
+      "url": "https://huggingface.co/spaces/CompVis/stable-diffusion-license/blob/14d42d09bffd871b1666a084fc954a50cff72ac0/license.txt",
+      "status": 200,
+      "final_url": "https://huggingface.co/spaces/CompVis/stable-diffusion-license/blob/14d42d09bffd871b1666a084fc954a50cff72ac0/license.txt",
+      "started_utc": "2026-11-11T17:08:25.066779+00:00",
+      "elapsed_seconds": 0.673496,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "remaining-18",
+      "occurrences": [
+        {
+          "url": "https://huggingface.co/spaces/CompVis/stable-diffusion-license/blob/14d42d09bffd871b1666a084fc954a50cff72ac0/license.txt",
+          "file": "docs/chapters/09-pretrained-image-lab.md",
+          "line": 255
+        }
+      ]
+    },
+    {
+      "url": "https://huggingface.co/stabilityai/stable-video-diffusion-img2vid-xt/blob/9e43909513c6714f1bc78bcb44d96e733cd242aa/README.md",
+      "status": 200,
+      "final_url": "https://huggingface.co/stabilityai/stable-video-diffusion-img2vid-xt/blob/9e43909513c6714f1bc78bcb44d96e733cd242aa/README.md",
+      "started_utc": "2026-11-11T17:08:25.387362+00:00",
+      "elapsed_seconds": 1.951207,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "remaining-18",
+      "occurrences": [
+        {
+          "url": "https://huggingface.co/stabilityai/stable-video-diffusion-img2vid-xt/blob/9e43909513c6714f1bc78bcb44d96e733cd242aa/README.md",
+          "file": "docs/readings/video-training-svd-cogvideox.md",
+          "line": 254
+        }
+      ]
+    },
+    {
+      "url": "https://huggingface.co/stabilityai/stable-video-diffusion-img2vid/blob/9cf024d5bfa8f56622af86c884f26a52f6676f2e/README.md",
+      "status": 200,
+      "final_url": "https://huggingface.co/stabilityai/stable-video-diffusion-img2vid/blob/9cf024d5bfa8f56622af86c884f26a52f6676f2e/README.md",
+      "started_utc": "2026-11-11T17:08:25.506995+00:00",
+      "elapsed_seconds": 1.408554,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "remaining-18",
+      "occurrences": [
+        {
+          "url": "https://huggingface.co/stabilityai/stable-video-diffusion-img2vid/blob/9cf024d5bfa8f56622af86c884f26a52f6676f2e/README.md",
+          "file": "docs/chapters/10-pretrained-video-lab.md",
+          "line": 294
+        },
+        {
+          "url": "https://huggingface.co/stabilityai/stable-video-diffusion-img2vid/blob/9cf024d5bfa8f56622af86c884f26a52f6676f2e/README.md",
+          "file": "docs/readings/video-training-svd-cogvideox.md",
+          "line": 253
+        }
+      ]
+    },
+    {
+      "url": "https://huggingface.co/xushu-me/llamagen_l_c2i_restok_l_128.r256_in1k/tree/0e013ba039625d7f83d0be30296d56ed7d30ac92",
+      "status": 200,
+      "final_url": "https://huggingface.co/xushu-me/llamagen_l_c2i_restok_l_128.r256_in1k/tree/0e013ba039625d7f83d0be30296d56ed7d30ac92",
+      "started_utc": "2026-11-11T17:08:25.750770+00:00",
+      "elapsed_seconds": 0.77078,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "remaining-18",
+      "occurrences": [
+        {
+          "url": "https://huggingface.co/xushu-me/llamagen_l_c2i_restok_l_128.r256_in1k/tree/0e013ba039625d7f83d0be30296d56ed7d30ac92",
+          "file": "docs/readings/restok-image-ar-2026.md",
+          "line": 224
+        }
+      ]
+    },
+    {
+      "url": "https://huggingface.co/xushu-me/restok_l_128.r256_in1k/tree/157e3de0c19dca1b96827253363e605fbfb4c2a5",
+      "status": 200,
+      "final_url": "https://huggingface.co/xushu-me/restok_l_128.r256_in1k/tree/157e3de0c19dca1b96827253363e605fbfb4c2a5",
+      "started_utc": "2026-11-11T17:08:26.207814+00:00",
+      "elapsed_seconds": 1.345953,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "remaining-18",
+      "occurrences": [
+        {
+          "url": "https://huggingface.co/xushu-me/restok_l_128.r256_in1k/tree/157e3de0c19dca1b96827253363e605fbfb4c2a5",
+          "file": "docs/readings/restok-image-ar-2026.md",
+          "line": 223
+        }
+      ]
+    },
+    {
+      "url": "https://pypi.org/pypi/torchvision/0.17.2/json",
+      "status": 200,
+      "final_url": "https://pypi.org/pypi/torchvision/0.17.2/json",
+      "started_utc": "2026-11-11T17:08:26.530440+00:00",
+      "elapsed_seconds": 0.674229,
+      "method": "HEAD",
+      "curl_exit": 0,
+      "redirect_count": 0,
+      "classification": "reachable",
+      "downloaded_body_bytes": 0,
+      "body_scope": "HEAD response headers only",
+      "request_generation": "remaining-18",
+      "occurrences": [
+        {
+          "url": "https://pypi.org/pypi/torchvision/0.17.2/json",
+          "file": "docs/readings/restok-image-ar-2026.md",
+          "line": 176
+        }
+      ]
+    }
+  ],
+  "repository_source_commit": "9f5b3b6e52c651053ee40d39dd984d86f8669ea9"
+}

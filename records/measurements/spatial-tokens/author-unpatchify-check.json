@@ -1,0 +1,80 @@
+{
+  "source_path": "/tmp/genai-spatial-token-scope/models.py",
+  "source_sha256": "1b8031a1340a3d1045c0bdb382334068f5f20e32edf67b3e6aba961ba91846ca",
+  "source_lines": [
+    218,
+    231
+  ],
+  "scope": "Only the AST-extracted DiT.unpatchify method; called with scalar settings via SimpleNamespace; no imports of author module or model instance/forward.",
+  "input_tokens_shape": [
+    1,
+    4,
+    8
+  ],
+  "input_tokens": [
+    [
+      [
+        0.0,
+        16.0,
+        1.0,
+        17.0,
+        4.0,
+        20.0,
+        5.0,
+        21.0
+      ],
+      [
+        2.0,
+        18.0,
+        3.0,
+        19.0,
+        6.0,
+        22.0,
+        7.0,
+        23.0
+      ],
+      [
+        8.0,
+        24.0,
+        9.0,
+        25.0,
+        12.0,
+        28.0,
+        13.0,
+        29.0
+      ],
+      [
+        10.0,
+        26.0,
+        11.0,
+        27.0,
+        14.0,
+        30.0,
+        15.0,
+        31.0
+      ]
+    ]
+  ],
+  "original_BCHW_shape": [
+    1,
+    2,
+    4,
+    4
+  ],
+  "actual_output_shape": [
+    1,
+    2,
+    4,
+    4
+  ],
+  "source_docstring": "x: (N, T, patch_size**2 * C)\nimgs: (N, H, W, C)",
+  "teaching_patch_order": "(patch row, patch column, within-patch row, within-patch column, channel); last three flatten as p,p,C",
+  "actual_axes": "N,C,H,W",
+  "exact_match_original": true,
+  "exact_match_teaching_inverse": true,
+  "notes": [
+    "Author code assumes a square patch grid h=w=int(sqrt(T)).",
+    "The 4x6 teaching example is a generalization using the explicitly known rectangular patch grid.",
+    "This validates output unpatchify order only. Input PatchEmbed comes from timm and its Conv2d weight flattening is not asserted here."
+  ]
+}

@@ -103,6 +103,8 @@ python -m genai_study.experiment --method ddpm --steps 5000 --output artifacts/f
 
 在04的条件控制之后，可选读[条件注意力专题](readings/conditioning-attention.md)，先检查Q/K/V的轴、CLIP隐藏态与全局向量、单token和mask置换，再追踪09/10的真实接口。
 
+阅读DiT与视频Transformer结构前，接着完成[空间token与位置专题](readings/spatial-tokens-and-position.md)：手算一个patch索引，验证矩阵投影与stride卷积相等，并说明内容/位置重排后如何恢复空间输出。再进入Wan和CogVideoX的时空token计数。
+
 图像编辑方向接着读 [FLUX.1 Kontext阅读卡](readings/flux-kontext-2025.md)：用CPU检查latent打包与时间反向映射，核对参考图token、guidance蒸馏接口及每步调用数，再为编辑完成度和内容保留设计分组评价。视频方向通过Wan卡对照时空表示与条件接口。
 
 视频训练基础可先读 [SVD与CogVideoX对照](readings/video-training-svd-cogvideox.md)：追踪图像初始化、视频训练与任务微调，独立计算49帧的潜压缩与token数，并说明VP的`v_prediction`和本仓库flow速度各自的定义。
