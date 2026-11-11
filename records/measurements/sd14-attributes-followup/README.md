@@ -36,3 +36,5 @@
 `audit.py`保留本次固定路径、计划commit与原始产物的核验方法；有完整本地产物时可传入一个尚不存在的`--output`文件，`--verify-assets`另做全缓存hash。新克隆可以核对已提交的证据与图像；复跑新计划后应让核验脚本显式指向新的计划身份和产物路径。
 
 模型来源与生成图片许可沿用[SD1.4资产说明](../../../SOURCES.md)。两位观察者均为AI代码代理，真实读者标注仍待收集。目录内计划与原始JSON保留当时措辞和源码路径，当前实测状态以上文和报告为准。
+
+固定b9be847的[实际GitHub阅读验收](reader-check.json)与[源码/图像核对](reader-source-check.json)确认两视口完整原图、锚点、练习、代码和来源/索引入口。原[窄屏结果表](reader-results-before-narrow.png)暴露逐字折行，后续[布局修改记录](reader-layout-change.json)将它改为简表；模型、成本、原始观察与主项计数保持。
