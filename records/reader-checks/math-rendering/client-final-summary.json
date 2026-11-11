@@ -1,0 +1,315 @@
+{
+  "schema_version": 1,
+  "checked_utc": "2026-11-11T16:57:13.538059+00:00",
+  "finished_utc": "2026-11-11T16:58:09.423538+00:00",
+  "commit": "ed5cac4add6e47b1673966121fcce2d52574a5ef",
+  "platform": "Public GitHub file preview at the pinned commit",
+  "browser": "156.0.8078.79",
+  "tls_verification": true,
+  "desktop_viewport": [
+    1440,
+    1000
+  ],
+  "narrow_viewport": [
+    390,
+    844
+  ],
+  "math_pages_desktop": 32,
+  "expected_formula_count_desktop": 1536,
+  "math_renderer_count_desktop": 1536,
+  "mathml_count_desktop": 1536,
+  "page_viewport_pairs": 41,
+  "all_checks_passed": true,
+  "failures": [],
+  "core_interactions": [
+    {
+      "path": "docs/learning-path.md",
+      "viewport": "desktop",
+      "missing_fragment_targets": 0,
+      "actual_fragment_clicks": 0,
+      "details_tested": 2,
+      "all_toggles_restored": true
+    },
+    {
+      "path": "README.md",
+      "viewport": "desktop",
+      "missing_fragment_targets": 0,
+      "actual_fragment_clicks": 1,
+      "details_tested": 0,
+      "all_toggles_restored": true
+    },
+    {
+      "path": "README.md",
+      "viewport": "narrow",
+      "missing_fragment_targets": 0,
+      "actual_fragment_clicks": 1,
+      "details_tested": 0,
+      "all_toggles_restored": true
+    },
+    {
+      "path": "docs/self-assessment.md",
+      "viewport": "desktop",
+      "missing_fragment_targets": 0,
+      "actual_fragment_clicks": 3,
+      "details_tested": 26,
+      "all_toggles_restored": true
+    },
+    {
+      "path": "docs/learning-path.md",
+      "viewport": "narrow",
+      "missing_fragment_targets": 0,
+      "actual_fragment_clicks": 0,
+      "details_tested": 2,
+      "all_toggles_restored": true
+    },
+    {
+      "path": "docs/self-assessment.md",
+      "viewport": "narrow",
+      "missing_fragment_targets": 0,
+      "actual_fragment_clicks": 3,
+      "details_tested": 26,
+      "all_toggles_restored": true
+    }
+  ],
+  "screen_reader_tested": false,
+  "scope_limits": [
+    "Client checks cover the pinned GitHub commit and the stated browser/viewports.",
+    "No screen-reader or real mobile-device interaction was tested.",
+    "Long equations and tables may require horizontal scrolling inside their own containers."
+  ],
+  "expected_counts_source": "records/reader-checks/math-rendering/api-client-compatible-summary.json",
+  "desktop_math_errors": 0,
+  "desktop_empty_renderers": 0,
+  "raw_tex_candidates": 0,
+  "unconverted_math_fences": 0,
+  "page_wide_horizontal_overflow": false,
+  "expanded_details_page_wide_horizontal_overflow": false,
+  "desktop_pages": [
+    {
+      "path": "docs/chapters/00-foundations.md",
+      "source_formula_count": 44,
+      "mathml_count": 44
+    },
+    {
+      "path": "docs/chapters/01-generative-models.md",
+      "source_formula_count": 76,
+      "mathml_count": 76
+    },
+    {
+      "path": "docs/chapters/02-diffusion.md",
+      "source_formula_count": 89,
+      "mathml_count": 89
+    },
+    {
+      "path": "docs/chapters/03-flow-matching.md",
+      "source_formula_count": 68,
+      "mathml_count": 68
+    },
+    {
+      "path": "docs/chapters/04-image-video-roadmap.md",
+      "source_formula_count": 36,
+      "mathml_count": 36
+    },
+    {
+      "path": "docs/chapters/05-evaluation.md",
+      "source_formula_count": 40,
+      "mathml_count": 40
+    },
+    {
+      "path": "docs/chapters/06-video-temporal-lab.md",
+      "source_formula_count": 34,
+      "mathml_count": 34
+    },
+    {
+      "path": "docs/chapters/07-image-flow-lab.md",
+      "source_formula_count": 56,
+      "mathml_count": 56
+    },
+    {
+      "path": "docs/chapters/08-image-guidance-lab.md",
+      "source_formula_count": 61,
+      "mathml_count": 61
+    },
+    {
+      "path": "docs/chapters/09-pretrained-image-lab.md",
+      "source_formula_count": 31,
+      "mathml_count": 31
+    },
+    {
+      "path": "docs/chapters/10-pretrained-video-lab.md",
+      "source_formula_count": 36,
+      "mathml_count": 36
+    },
+    {
+      "path": "docs/ddpm-oracle-report.md",
+      "source_formula_count": 44,
+      "mathml_count": 44
+    },
+    {
+      "path": "docs/evaluation-metrics-audit.md",
+      "source_formula_count": 25,
+      "mathml_count": 25
+    },
+    {
+      "path": "docs/evaluation-source-audit.md",
+      "source_formula_count": 39,
+      "mathml_count": 39
+    },
+    {
+      "path": "docs/generative-source-audit.md",
+      "source_formula_count": 39,
+      "mathml_count": 39
+    },
+    {
+      "path": "docs/glossary.md",
+      "source_formula_count": 17,
+      "mathml_count": 17
+    },
+    {
+      "path": "docs/image-video-source-audit.md",
+      "source_formula_count": 31,
+      "mathml_count": 31
+    },
+    {
+      "path": "docs/learning-path.md",
+      "source_formula_count": 10,
+      "mathml_count": 10
+    },
+    {
+      "path": "docs/notation.md",
+      "source_formula_count": 82,
+      "mathml_count": 82
+    },
+    {
+      "path": "docs/reading-paper-template.md",
+      "source_formula_count": 1,
+      "mathml_count": 1
+    },
+    {
+      "path": "docs/readings/conditioning-attention.md",
+      "source_formula_count": 44,
+      "mathml_count": 44
+    },
+    {
+      "path": "docs/readings/consistency-endpoint-map.md",
+      "source_formula_count": 76,
+      "mathml_count": 76
+    },
+    {
+      "path": "docs/readings/diffusion-flow-bridge.md",
+      "source_formula_count": 123,
+      "mathml_count": 123
+    },
+    {
+      "path": "docs/readings/flux-kontext-2025.md",
+      "source_formula_count": 38,
+      "mathml_count": 38
+    },
+    {
+      "path": "docs/readings/ltx2-video-audio-2026.md",
+      "source_formula_count": 42,
+      "mathml_count": 42
+    },
+    {
+      "path": "docs/readings/prediction-and-loss-weighting.md",
+      "source_formula_count": 112,
+      "mathml_count": 112
+    },
+    {
+      "path": "docs/readings/restok-image-ar-2026.md",
+      "source_formula_count": 18,
+      "mathml_count": 18
+    },
+    {
+      "path": "docs/readings/video-training-svd-cogvideox.md",
+      "source_formula_count": 34,
+      "mathml_count": 34
+    },
+    {
+      "path": "docs/readings/wan-video-2025.md",
+      "source_formula_count": 18,
+      "mathml_count": 18
+    },
+    {
+      "path": "docs/self-assessment.md",
+      "source_formula_count": 78,
+      "mathml_count": 78
+    },
+    {
+      "path": "docs/source-audit.md",
+      "source_formula_count": 39,
+      "mathml_count": 39
+    },
+    {
+      "path": "docs/vae-reconstruction-report.md",
+      "source_formula_count": 55,
+      "mathml_count": 55
+    }
+  ],
+  "mermaid": [
+    {
+      "viewport": "desktop",
+      "visible_rendered_svg": true,
+      "svg_title": "GenAI学习依赖图",
+      "svg_description": "00接01，随后分为02和03，两者汇入05。07需要05和03两项先修，再接08；06接在05之后。两条实践路线汇入04；09是04后的可选图像实践，随后10连接预训练视频运行与失败分析。",
+      "labelledby": "chart-title-diagram",
+      "describedby": "chart-desc-diagram"
+    },
+    {
+      "viewport": "narrow",
+      "visible_rendered_svg": true,
+      "svg_title": "GenAI学习依赖图",
+      "svg_description": "00接01，随后分为02和03，两者汇入05。07需要05和03两项先修，再接08；06接在05之后。两条实践路线汇入04；09是04后的可选图像实践，随后10连接预训练视频运行与失败分析。",
+      "labelledby": "chart-title-diagram",
+      "describedby": "chart-desc-diagram"
+    }
+  ],
+  "narrow_scroll_verified": [
+    {
+      "path": "README.md",
+      "overflowing_containers": 2,
+      "all_overflow_containers_scrollable": true
+    },
+    {
+      "path": "docs/learning-path.md",
+      "overflowing_containers": 3,
+      "all_overflow_containers_scrollable": true
+    },
+    {
+      "path": "docs/chapters/01-generative-models.md",
+      "overflowing_containers": 6,
+      "all_overflow_containers_scrollable": true
+    },
+    {
+      "path": "docs/chapters/08-image-guidance-lab.md",
+      "overflowing_containers": 8,
+      "all_overflow_containers_scrollable": true
+    },
+    {
+      "path": "docs/chapters/06-video-temporal-lab.md",
+      "overflowing_containers": 6,
+      "all_overflow_containers_scrollable": true
+    },
+    {
+      "path": "docs/readings/diffusion-flow-bridge.md",
+      "overflowing_containers": 7,
+      "all_overflow_containers_scrollable": true
+    },
+    {
+      "path": "docs/notation.md",
+      "overflowing_containers": 0,
+      "all_overflow_containers_scrollable": true
+    },
+    {
+      "path": "docs/self-assessment.md",
+      "overflowing_containers": 0,
+      "all_overflow_containers_scrollable": true
+    }
+  ],
+  "visual_review": [
+    "Q01 Uniform renders without warning in desktop/narrow screenshots.",
+    "Q03 expanded answer renders four mathematical expressions.",
+    "08 cases and 01/bridge aligned equations retain multiple rows.",
+    "Mermaid renders inside GitHub viewer; narrow view includes zoom controls and adjacent prose description."
+  ]
+}

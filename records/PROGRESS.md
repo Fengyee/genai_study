@@ -522,3 +522,8 @@ SVD在途检查点：已推送a3ed4a8，对应自动PR run42877869115为complete
 检查点：完整quality正在执行，随后推送并以新精确SHA运行32页实际MathML/错误盘点，核心窄屏另行检查。空间专题已在/tmp/genai-spatial-token-scope/client-compatible-card.md使用同一数学格式预检，46公式API通过，2846字节CPU块与原冻结版本一致，继续保留独立草稿。schedule观察延长到17:35 UTC覆盖下一计划窗口；可见repo非fork/归档/禁用，main正确、workflow active，actions/permissions端点返回403，未修改设置或重复dispatch。
 
 本轮最终完整quality退出0：146 passed（36.14秒）、14/14教学块、7条CLI smoke，执行时736链接0错误；日志artifacts/quality/20261111T165428Z-088aa2。随后仅补记录，推送新SHA后做全部32页客户端验收。
+
+
+客户端最终验收：固定ed5cac4add6e47b1673966121fcce2d52574a5ef，32页1536/1536公式全部生成真实MathML，空renderer/数学错误/原始TeX为0。41个页面/视口组合全部HTTP200，目录实际点击、2+26个折叠区在两视口展开/还原均通过，展开后无整体横向溢出；长式及表格实际scrollLeft验证局部滚动。Mermaid桌面/窄屏的可见SVG及title/desc/aria引用已核对，窄屏标签较小，保留缩放控制与文字依赖说明；未测试屏幕阅读器。主代理查看修复后Q01与窄屏Q03截图，公式正常。轻量摘要与前后图已归档，ed5的远端run43063239850 success。
+
+本轮证据单独提交推送后，下一轮接入空间token/位置专题，计划以PR #2为基底建立独立PR，保留已验证的数学约定并限制该PR的内容差异；PR #2合入后可将后续PR基底改为main。没有新的合并操作。每小时workflow/main部署状态保持，实际schedule观察继续到17:35 UTC。

@@ -24,4 +24,8 @@
 
 客户端候选通过临时插入同源GitHub页面验证，未发布候选页面：[算子及小于号对照](client-candidate-probe.json)、[侧下标对照](client-nolimits-probe.json)、[softmax侧下标](client-softmax-probe.json)。已采用 `\mathop{\mathrm{...}}\nolimits` 与显式 `\lt`，保留数学算子类别和侧下标。
 
-[客户端修复源码不变量](client-source-invariants.json)记录19页43个算子和7个小于号替换；逆变换精确恢复348e545原始字节。[新API汇总](api-client-compatible-summary.json)重新核对受影响19页并合并32页结果，全部1536个公式的内容和类别继续逐项通过。更新后的推送版本仍需最终客户端全量盘点。
+[客户端修复源码不变量](client-source-invariants.json)记录19页43个算子和7个小于号替换；逆变换精确恢复348e545原始字节。[新API汇总](api-client-compatible-summary.json)重新核对受影响19页并合并32页结果，全部1536个公式的内容和类别继续逐项通过。
+
+最终客户端验收固定提交 `ed5cac4add6e47b1673966121fcce2d52574a5ef`：[完整轻量摘要](client-final-summary.json)记录32页全部1536个公式生成真实MathML，错误/原始TeX为0；41个页面/视口组合均HTTP200，目录、折叠答案及局部滚动正常，无页面整体横向溢出。Mermaid的实际SVG、标题/描述和ARIA引用通过；窄屏图中文字需放大查看，屏幕阅读器未测试。
+
+前后对照：[Q01客户端宏错误](q01-client-error.png) → [Q01正常显示](q01-after.png)；[Q03原始TeX](q03-before.png) → [Q03正常显示](q03-after.png)，以及[窄屏Q03](q03-after-narrow.png)。全量本地146项测试、14个教学块和7条smoke通过，远端同SHA检查也成功。
