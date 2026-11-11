@@ -1,0 +1,18 @@
+{
+  "checked_utc": "2026-11-11T18:40:48.785553+00:00",
+  "independent_checks": {
+    "planned_slots": 8,
+    "timed_out": 1,
+    "not_attempted": 7,
+    "generated_images": 0,
+    "all_output_directories_absent": true,
+    "unstarted_record_directories_absent": true,
+    "log_sha256_matches": true,
+    "driver_recorder_child_pids_absent": true
+  },
+  "request_wall_seconds": 420.30499129400005,
+  "campaign_wall_seconds": 420.49832726599993,
+  "exit_code": 124,
+  "last_logged_event": "DDIM step 20/20 started",
+  "interpretation": "Last log is a pre-forward hook; it does not establish that final UNet, VAE decode or pipeline postprocessing completed. RSS and inference-stage metrics are unavailable because the model did not reach metrics output. No image annotation performed."
+}

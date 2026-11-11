@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-11T18:40:48.786843+00:00",
+  "purpose": "After the original 420s timeout and CPU model change, measure two fixed four-step requests to plan a separate future campaign. Original eight-slot outcome remains unchanged. No generated content used for selection.",
+  "original_execution": "records/measurements/sd14-attributes-pilot/execution.json",
+  "source_identities": {
+    "examples/pretrained-sd14/manifest.json": {
+      "sha256": "96a6930e1db07afefe127075304325e316d03621e4681a42b351d9c6b6072141",
+      "bytes": 7639
+    },
+    "requirements-pretrained-lock.txt": {
+      "sha256": "95176d3908a08a99ca80ca84fe8d2aaf0a5b7c5cc80cd663fb63bd5c1b7b1729",
+      "bytes": 98413
+    },
+    "src/genai_study/pretrained_image.py": {
+      "sha256": "3cd514bae6d2a9e8c17fafea806f49854813ad88c0b08e858e685dd6e0b8f1be",
+      "bytes": 15154
+    },
+    "src/genai_study/run_record.py": {
+      "sha256": "be545eff1985b8eed096b0663145bade01303685430310d4b199aa727c685697",
+      "bytes": 7728
+    }
+  },
+  "model_id": "CompVis/stable-diffusion-v1-4",
+  "revision": "133a221b8aa7292a167afc5127cb63fb5005638b",
+  "fixed": {
+    "steps": 4,
+    "guidance_scale": 7.5,
+    "height": 512,
+    "width": 512,
+    "device": "cpu",
+    "dtype": "float32",
+    "eta": 0.0,
+    "negative_prompt": "",
+    "batch_size": 1,
+    "scheduler": "DDIMScheduler",
+    "safety_checker_enabled": true,
+    "unet_calls_per_request": 20,
+    "unet_branch_evaluations_per_request": 40,
+    "fresh_process_per_request": true,
+    "warmup": false,
+    "seed": 101,
+    "prompt": "a watercolor painting of a red cube, plain white background"
+  },
+  "expected_noise": {
+    "shape": [
+      1,
+      4,
+      64,
+      64
+    ],
+    "dtype": "torch.float32",
+    "sha256": "7e21a385554c654015bc4c511142ce6d34f23e26f6c58e7f3e8143dffa7bb9b8",
+    "hash_format": "C-order float32 raw bytes before init_noise_sigma multiplication"
+  },
+  "request_timeout_seconds": 240,
+  "campaign_budget_seconds": 600,
+  "requests": [
+    {
+      "threads": 1,
+      "output": "artifacts/sd14-thread-diagnostic/threads1",
+      "record_output": "artifacts/run-records/sd14-thread-diagnostic/threads1",
+      "argv": [
+        ".venv/bin/python",
+        "-m",
+        "genai_study.run_record",
+        "--timeout",
+        "240",
+        "--output",
+        "artifacts/run-records/sd14-thread-diagnostic/threads1",
+        "--",
+        ".venv-pretrained/bin/python",
+        "-u",
+        "-m",
+        "genai_study.pretrained_image",
+        "run",
+        "--manifest",
+        "examples/pretrained-sd14/manifest.json",
+        "--model-dir",
+        "artifacts/models/sd14",
+        "--output",
+        "artifacts/sd14-thread-diagnostic/threads1",
+        "--prompt",
+        "a watercolor painting of a red cube, plain white background",
+        "--seed",
+        "101",
+        "--steps",
+        "4",
+        "--guidance-scale",
+        "7.5",
+        "--height",
+        "512",
+        "--width",
+        "512",
+        "--threads",
+        "1"
+      ]
+    },
+    {
+      "threads": 2,
+      "output": "artifacts/sd14-thread-diagnostic/threads2",
+      "record_output": "artifacts/run-records/sd14-thread-diagnostic/threads2",
+      "argv": [
+        ".venv/bin/python",
+        "-m",
+        "genai_study.run_record",
+        "--timeout",
+        "240",
+        "--output",
+        "artifacts/run-records/sd14-thread-diagnostic/threads2",
+        "--",
+        ".venv-pretrained/bin/python",
+        "-u",
+        "-m",
+        "genai_study.pretrained_image",
+        "run",
+        "--manifest",
+        "examples/pretrained-sd14/manifest.json",
+        "--model-dir",
+        "artifacts/models/sd14",
+        "--output",
+        "artifacts/sd14-thread-diagnostic/threads2",
+        "--prompt",
+        "a watercolor painting of a red cube, plain white background",
+        "--seed",
+        "101",
+        "--steps",
+        "4",
+        "--guidance-scale",
+        "7.5",
+        "--height",
+        "512",
+        "--width",
+        "512",
+        "--threads",
+        "2"
+      ]
+    }
+  ],
+  "cost_decision": {
+    "formula": "upper20_seconds = run_record.wall_seconds - metrics.timing_seconds.inference + 5 * metrics.timing_seconds.inference. This scales fixed pipeline work fivefold and is a conservative planning estimate, not measured 20-step runtime.",
+    "threads2_gate": "Both requests technically succeed and pass identity/noise checks; threads2 upper20_seconds <= 360 and query-point RSS <= 8GiB. If passed, predeclare a separate eight-request 20-step campaign with threads2 and original 420s/3600s limits before execution. Otherwise retain evidence and defer full batch until a suitable resource/budget is available.",
+    "content": "Keep both complete outputs with hashes; do not inspect or score diagnostic content before deciding costs. No replacement of original request1."
+  }
+}
