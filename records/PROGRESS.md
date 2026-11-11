@@ -468,3 +468,13 @@ SVD在途检查点：已推送a3ed4a8，对应自动PR run42877869115为complete
 教学与验证：新增09配套报告，明确后验mean/sample、非线性解码期望、区间投影和单图往返误差的范围，附三题解答；接入04/09、路线、术语、符号和来源索引。审查发现历史核验脚本的相邻record路径与读者命令不一致，改为显式--record/--output，并在真实数组上再次执行，结果JSON逐字节一致。最终完整quality退出0：133 passed（35.63秒）、13/13教学块、7条CLI smoke；日志artifacts/quality/20261111T154904Z-9mlozB，执行时702本地链接0错误。随后仅补核验CLI、来源/记录和PR正文，提交前复查链接/diff。
 
 交付检查点：本轮代码、报告和实测随后提交推送到feat/vae-reconstruction，并创建新的PR供评审；用户的合并授权已用于PR #1。main保持416dd8ce，实际push与手动两个run均115测试通过，完整artifact退出状态已核对并归档records/automation-deployment.json。只读观察继续等待schedule；当前无模型进程，原始数据位于artifacts/vae-current，协作锁由PID975持有。下一轮继续按完整路线与读者操作检查选择具体问题，同时完成定时触发验证。
+
+## 轮次40：直接说明评价用途与视频诊断动作
+
+问题：05/06若干段落反复否定未提出的解读，影响自学叙述的连贯性。按用户偏好选12处改写：05保留实测协议与解析反例，直接说明方法比较、盲评操作和实验计划范围；06直接定义帧轴、拼图用途、参考任务和数学性质，保留静态任务、帧集合重数和质心等关键反例。
+
+验证：独立提取HEAD与修改后内容，4个代码块、74段公式、44标题、30链接目标、421个数值token及37处行内代码均按原序相同。文档704链接0错误，diff检查通过。代码、公式与命令均保持，沿用轮次39完整133测试/13教学块/7条smoke基线。
+
+交付：轮次39的c25a3df已推送，新的PR #2为https://github.com/Fengyee/genai_study/pull/2 ，远端run43052894522 completed/success。本轮单独提交到同一PR；下一项只读审查已确认epsilon/x0/VP v预测误差与时间权重的教学缺口，准备限定范围的解析专题。
+
+环境附加诊断：直接Chromium仍ERR_CERT_AUTHORITY_INVALID，继承系统CA的Python HTTPS返回200。只读核对发现当前系统环境CA与浏览器NSS里的旧环境代理证书不同。尝试将当前系统已信任的公开CA新增到浏览器用户NSS库时，自动审批以“工作区外持久扩展HTTPS信任、缺少具体安全设置授权”拒绝；已向用户明确请求此项授权，没有替代信任库或绕过TLS。诊断在artifacts/reader-render-recovery，待授权恢复直接浏览器检查；其它代码、API和Actions操作正常。每小时schedule观察仍在进行。
