@@ -13,7 +13,7 @@
 - [PR #5](https://github.com/Fengyee/genai_study/pull/5)开放，基于PR #4，最新f5cc255的run43071278535成功。完整本地检查178 tests、16/16教学块、7条CLI smoke通过；固定1684744实际页面双视口52公式/锚点/答案/局部滚动均通过。PR #4/#5的新合并授权已询问，等待用户答复，其他工作继续。
 - [PR #6](https://github.com/Fengyee/genai_study/pull/6)为当前feat/sd14-attributes-layout，原八请求首条超时、余七未执行；单独声明的线程诊断后，两线程批次0bc702c八条全部成功，37.00分钟，完整原图与两位AI独立观察均已归档。固定源码和锁文件保持。
 - [PR #7](https://github.com/Fengyee/genai_study/pull/7)的测量边界与写作改进已推送，3fec489的CI成功；[PR #8](https://github.com/Fengyee/genai_study/pull/8)的MeanFlow专题和解析图已推送，002dd89的CI成功，最新e6e996e只补实际浏览器验收记录。PR8完整基线178 tests、17教学块、7条smoke；两项按PR6→PR7→PR8堆叠，均待审阅与单独合并授权。轮次52–55完整记录在相应分支。
-- 每小时质量workflow位于main，API active、cron为UTC每小时:17；原416版本push/手动与d99版本push的artifact均实际核验。15:39–17:35 UTC观察结束，117次查询覆盖16:17/17:17计划点，最后无schedule事件；原因未确定，恢复时先读实际事件。
+- 每小时质量workflow位于main，API active、cron为UTC每小时:17；原416版本push/手动与d99版本push的artifact均实际核验。初段117次查询覆盖16:17/17:17；恢复后18:31–19:35的64次覆盖19:17，19:36复查仍无schedule事件；18:17处于断线空窗，原因未确定。
 - 编码代理持久调度、网站和通知绑定未部署；Bark/Codex推送仍缺可用接口。原八请求已按超时规则停止；新两线程批次已完成，完整PNG、metrics/run与日志文本进入仓库，浮点数组保存在忽略的artifacts。
 
 以下恢复说明和轮次按历史保留，当前状态以上段及末尾最新检查点为准。
@@ -645,3 +645,11 @@ Flow/DDPM生成坐标最大差4.21e−5/6.96e−5；邻域比例仍0.9248046875/
 新增docs/sd14-attributes-layout.md展示全部八图、原协议/成本、分歧、复现命令和三题思路，接入09、README、前小屋报告与证据/来源索引。匿名代理另审合并说明，确认其原判断被诚实保留。报告复现审查发现新计划需先提交HEAD这一驱动前置条件，已明确全部路径更新及提交步骤；两个初版来源链接指向缺失README，已改现有SOURCES入口，最终887链接0错误。此次为实测报告/记录，算法与依赖未改，沿用178/16/7完整基线；真实浏览器将按推送SHA验收图片与版面。
 
 同时只读复查README→路线→首次运行→实测报告，配置/版本/随机流/分轮成本与恢复记录一致，未确认新的实质性错误；11个Bash块语法和846个当时链接通过，证据records/reader-checks/learning-path-round57.json。本项未重新运行训练。
+
+## 轮次58：保存恢复后定时观察的有界结果
+
+恢复观察器按19:35 UTC截止自然退出，内核记录exit0，当前Z状态等待父进程回收。原始64份查询均成功，18:31:58–19:34:59覆盖19:17计划点，全部schedule total_count=0；独立代理19:36末次GET仍0。18:17属于18:06:13之后的断线空窗，明确未纳入现场覆盖。
+
+独立核对main d99、workflow active与1356字节SHA901761ec…2ff6保持；打开既有main push artifact13877521472，确认146 tests、15/15块、7smokes和11退出0。主协调重hash87份原始证据，并另读64次恢复窗口查询确认均成功且列表为空；原清单另含8份中断前查询，按父目录区分两段。轻量摘要与原证据清单归档records/automation-recovery-20261111*.json，部署总记录及自动化说明同步更新。
+
+没有修改cron、重复dispatch、权限探测或环境发布。定时事件缺失原因尚未确定，Actions策略接口原403证据保留；Bark/Codex主动通知入口与每小时编码调度API仍不可用，状态已在聊天说明。后续获得真实schedule run后核验event/head/artifact；普通内容工作继续。当前PR6报告已推送b9be847，正在固定该SHA进行实际GitHub双视口验收；环境配置、网站和main合并状态保持。
