@@ -1,0 +1,40 @@
+{
+  "checked_utc": "2026-11-11T20:11:18.454050+00:00",
+  "scope": "Integration of previously run CPU checks; compare original artifacts without rerunning unchanged computations.",
+  "gaussian": {
+    "artifact_sha256": "4a13be2e0e777755db2962ab767bbf24a98c50f35e162b908d51bb14f1a0a085",
+    "matches_archived": "gaussian-check.json",
+    "ignored_fields": []
+  },
+  "costs": {
+    "artifact_sha256": "1cbc022481ceb55015aa89d0a26a97cd7156dd8d5babfc75071244c665c8f4b5",
+    "matches_archived": "candidate-math-check.json",
+    "ignored_fields": []
+  },
+  "author-loss": {
+    "artifact_sha256": "5f721aee8ee81eae5804e4c15f424cfbe96f32b9749a0f3a069617200f377cff",
+    "matches_archived": "author-loss-cli.json",
+    "ignored_fields": [
+      "output_path"
+    ]
+  },
+  "gaussian_script": {
+    "calculation_ast_matches_original": true,
+    "only_change": "Module documentation now uses repository script/output paths.",
+    "original_sha256": "a36adc805f70136074a4cb7280ee259b1c992de9fd0380e97100150af7292d3c",
+    "current_sha256": "aaf0f7e2a2b4358423e733e224f87f7b8906ed794afae844fca532b9fc9f1947"
+  },
+  "teaching": {
+    "lines": 36,
+    "bytes": 1649,
+    "sha256": "d4f3a26876413c1ba58cb3e411632f22ae5c448570264b9e1b50ce8f124d33fb"
+  },
+  "meanflow": {
+    "math_payloads_unchanged": 79,
+    "python_blocks_unchanged": true
+  },
+  "author_tree": {
+    "truncated": false,
+    "license_copying_notice_paths": []
+  }
+}

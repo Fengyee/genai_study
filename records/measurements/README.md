@@ -6,6 +6,7 @@
 
 | 实验问题 | 阅读与复现入口 | 原始记录及身份核验 |
 | --- | --- | --- |
+| Reflow怎样更新端点配对，恒速轨迹与二次OT有什么关系？ | [Reflow阅读卡](../../docs/readings/reflow-coupling.md)：两种Gaussian耦合、跨轮边缘与旋转反例 | [reflow-coupling索引](reflow-coupling/README.md)：固定原论文/作者函数、独立推导、27项CPU核验与原文排版定位 |
 | 二维模型增加训练预算后，哪些分布诊断改善？ | [二维实测报告](../../docs/experiment-report.md)；800/5000更新、两种方法、三个seed | 下表列出全部12份训练JSON；[provenance](provenance.json)记录当时源码与依赖锁SHA |
 | 使用精确最优噪声预测器，DDPM还会产生什么偏差？ | [解析oracle报告](../../docs/ddpm-oracle-report.md)：正态方差递推、八高斯径向收缩 | [oracle-study索引](oracle-study/README.md)：事先预算、全部三seed、独立推导/数组复算、seed边界修复验证和图形来源 |
 | 固定二维flow后，增加Euler步数会怎样？ | [800步checkpoint的求解器对照](../../docs/experiment-report.md#固定模型的求解器对照)；该节有独立复现命令 | [solver-study.json](solver-study.json)：训练metadata、checkpoint SHA、配对噪声配置、每组NFE与终点诊断 |

@@ -188,13 +188,15 @@ v^*(x,t)=m+\frac{2t-1}{s_t^2}(x-tm).
 
 - Lipman et al., **Flow Matching for Generative Modeling**, ICLR 2023：[论文](https://arxiv.org/abs/2210.02747)。阅读重点是边缘与条件 flow matching 目标及 Gaussian probability paths；原论文讨论比本章独立配对直线实验更一般的路径。
 - Meta 官方 `facebookresearch/flow_matching`：[固定版本 `affine.py`](https://github.com/facebookresearch/flow_matching/blob/11568d37f8d5a080e12aa7b5305d9c35ae07d136/flow_matching/path/affine.py)。2026-11-10 核对了 $`x_t=\sigma_t x_0+\alpha_t x_1`$ 与导数目标，以及 `CondOTProbPath` 的 $`\alpha_t=t,\sigma_t=1-t`$。这是后续官方软件实现，不能当作 2023 论文最初发布的代码版本。
-- Liu, Gong, Liu, **Flow Straight and Fast: Learning to Generate and Transfer Data with Rectified Flow**, ICLR 2023：[论文](https://arxiv.org/abs/2209.03003)。用于对照 rectification 与耦合更新；本仓库未实现 reflow。
+- Liu, Gong, Liu, **Flow Straight and Fast: Learning to Generate and Transfer Data with Rectified Flow**, ICLR 2023：[论文](https://arxiv.org/abs/2209.03003)。用于对照rectification与耦合更新；[Reflow解析专题](../readings/reflow-coupling.md)固定v1及后续作者代码，给出生成配对与旋转反例，神经网络reflow训练留待扩展。
 
 核验范围：2026-11-10 恢复网络后，已下载并核对 `arXiv:2210.02747v2` 的公式 (5)–(15)、(20)–(23)、(26) 及相关定理条件，并补充本仓库零终点噪声与原文正终点噪声的区别。版本、PDF 哈希、页码和未覆盖范围见 [来源审计](../source-audit.md)。本次核验覆盖上述公式与条件；整篇论文的实验复现及本节其它论文的全文核验仍待开展。
 
 下一步：[05 评价与实验诊断](05-evaluation.md)，随后完成07/08图像实践与06视频反例，再进入[04研究路线](04-image-video-roadmap.md)。
 
 理论延伸：[从噪声预测到生成速度](../readings/diffusion-flow-bridge.md)沿同一高斯路径推导边缘速度，核对反向时间、概率流1/2系数、VP的v参数化与DDIM/SVD坐标；包含可直接运行的解析高斯检查。
+
+先沿[Reflow与端点耦合](../readings/reflow-coupling.md)把本章独立Gaussian速度积分到端点，再用生成配对构造第二场；90°旋转例核对恒速轨迹、数值精确性与二次OT成本。
 
 理解速度场积分后，可沿[少步生成专题](../readings/consistency-endpoint-map.md)学习轨迹端点映射。解析Gaussian例固定起始边缘与终点，比较不同次数的局部速度求值和一次精确端点求值，再连接原始一致性模型的训练目标。
 

@@ -1,0 +1,53 @@
+{
+  "checked_utc": "2026-11-11T19:58:27.233133+00:00",
+  "source_files_rehashed": 10,
+  "root_pdf_visual_review": "Actual PDF page15 confirms missing squared norm in Eq13 and adjacent-vs-same index difference in Theorem3.7 text; no source page copied into repository.",
+  "extra_rotation_case": {
+    "angle_radians": 1.0471975511965976,
+    "source_covariance": [
+      [
+        4.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0
+      ]
+    ],
+    "target_covariance": [
+      [
+        1.7500000000000004,
+        1.2990381056766582
+      ],
+      [
+        1.2990381056766582,
+        3.2499999999999996
+      ]
+    ],
+    "alternative_linear_map": [
+      [
+        0.625,
+        0.4330127018922193
+      ],
+      [
+        0.21650635094610965,
+        1.7499999999999996
+      ]
+    ],
+    "covariance_pushforward_max_error": 1.3322676295501878e-15,
+    "rotation_squared_cost": 4.999999999999999,
+    "alternative_feasible_squared_cost": 1.4999999999999993,
+    "alternative_global_optimality_claimed": false,
+    "minimum_interpolation_determinant_on_grid": 0.75,
+    "max_constant_path_velocity_residual": 3.3306690738754696e-16,
+    "scope": "Separate root calculation with different endpoint marginals; feasible lower-cost coupling suffices to refute rotation optimality. This extra case is not the teaching 90-degree standard-Gaussian example."
+  },
+  "gauss_legendre64": {
+    "straightness": 0.8584073464102069,
+    "conditional_residual": 3.141592653589793,
+    "cost_drop": 4.0,
+    "expected_straightness": 0.8584073464102069,
+    "expected_conditional_residual": 3.141592653589793,
+    "cost_drop_decomposition_passed": true
+  }
+}

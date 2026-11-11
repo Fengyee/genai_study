@@ -1,0 +1,73 @@
+{
+  "status": "passed",
+  "math_format_issues": [],
+  "marker": "cpu-check: reflow-coupling",
+  "cpu_block_exact_bytes": true,
+  "cpu_block_lines": 36,
+  "cpu_block_sha256": "d4f3a26876413c1ba58cb3e411632f22ae5c448570264b9e1b50ce8f124d33fb",
+  "cpu_exit_code": 0,
+  "cpu_command_wall_seconds": 0.23044653600027232,
+  "cpu_stdout": "independent input / exact rectified cost: 4.0 0.0\nrotation input / exact rectified cost: 4.0 4.0\nidentity coupling achieves global minimum squared cost: 0.0\nindependent-field one-step Euler endpoint: [[0. 0.]\n [0. 0.]]\n",
+  "local_links": [
+    {
+      "line": 3,
+      "destination": "../chapters/03-flow-matching.md",
+      "status": "exists; anchor checked if present"
+    },
+    {
+      "line": 3,
+      "destination": "../chapters/03-flow-matching.md#c-一个能完全推导的边缘速度",
+      "status": "exists; anchor checked if present"
+    },
+    {
+      "line": 5,
+      "destination": "meanflow-average-velocity.md",
+      "status": "exists; anchor checked if present"
+    },
+    {
+      "line": 126,
+      "destination": "../../records/measurements/reflow-coupling/squared-cost-derivation.md",
+      "status": "requires evidence-file integration"
+    },
+    {
+      "line": 128,
+      "destination": "../../records/measurements/reflow-coupling/README.md",
+      "status": "requires evidence-file integration"
+    },
+    {
+      "line": 140,
+      "destination": "../../records/measurements/reflow-coupling/README.md",
+      "status": "requires evidence-file integration"
+    }
+  ],
+  "original_loss_result_fields_identical": true,
+  "cli_failure_cases": [
+    {
+      "case": "existing-output",
+      "exit_code": 2,
+      "expected_error": "output already exists",
+      "existing_output_preserved_or_no_output_created": true
+    },
+    {
+      "case": "missing-source",
+      "exit_code": 2,
+      "expected_error": "source is not a readable file",
+      "existing_output_preserved_or_no_output_created": true
+    },
+    {
+      "case": "wrong-sha",
+      "exit_code": 2,
+      "expected_error": "source SHA-256 mismatch",
+      "existing_output_preserved_or_no_output_created": true
+    },
+    {
+      "case": "wrong-sha-optimized-python",
+      "exit_code": 2,
+      "expected_error": "source SHA-256 mismatch",
+      "existing_output_preserved_or_no_output_created": true
+    }
+  ],
+  "card_sha256": "4872cac9f0b106a4c0ee43985a2dbdbf6248896f58886d028fdb72da4f71b794",
+  "loss_script_sha256": "40b82c92d3d63e3828ae3e8c1aa6387b756839d14343feba8cf25cbc1d200927",
+  "scope": "Candidate-only read-only repository checks; full docs-link check and runner allowlist remain integration steps. No training or model execution."
+}

@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "torch": "2.6.0+cpu",
+  "device": "cpu",
+  "threads": 1,
+  "dtype": "float32",
+  "seed": 1729,
+  "source_sha256": "f59d42f90c982063498c5c6328d184bebb3258a79c8233a712cf06743b4ca5e8",
+  "source_path": "/tmp/genai-reflow-candidate/author-source/ImageGeneration/losses.py",
+  "output_path": "/tmp/genai-reflow-candidate/cli-rerun/author-loss-check.json",
+  "extracted_function": "get_rectified_flow_loss_fn",
+  "source_lines": [
+    55,
+    133
+  ],
+  "eps": 0.001,
+  "times": [
+    0.3132873475551605,
+    0.37971633672714233,
+    0.3093605935573578,
+    0.07450650632381439
+  ],
+  "perfect_target_loss": 0.0,
+  "offset_target_loss": 7.5,
+  "endpoint_permutation_loss": 0.1728000044822693,
+  "scope": "Real upstream factory AST executed; stub model/mutils, four tiny tensors. No training, architecture, data loader, solver, or full upstream dependency execution."
+}

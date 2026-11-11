@@ -185,3 +185,5 @@ CPU float64实际输出：平均速度的最大端点误差约$`2.22\times10^{-1
 | [作者README](https://github.com/Gsunshine/meanflow/blob/58d099c0fa197bd31b9a7b51727a76019ae5fdbe/README.md)及[B/4配置](https://github.com/Gsunshine/meanflow/blob/58d099c0fa197bd31b9a7b51727a76019ae5fdbe/configs/run_b4.yml) | 同一commit，官方JAX/TPU实现，`sampling.num_steps: 1` | 发布模型和论文实验的配置身份 |
 
 固定PDF为6,192,153 bytes，SHA-256 `322ba9244ad2c72382038e421fe0ffa92510c51d4f9c740bd7282b36bfc25206`；核心源码为8,029 bytes，SHA-256 `b8dcee1033e6ba01de0019d14fad846a399d356d67e549ee311a5e19d2a7c3a4`。源码按作者MIT许可引用；教学代码和Gaussian推导为本仓库独立示例。固定来源身份、源码函数替身检查、独立推导与实际CPU输出见[证据索引](../../records/measurements/meanflow-average-velocity/README.md)。
+
+训练配对的另一条延伸见[Reflow耦合更新](reflow-coupling.md)：用已有流的生成端点重新构造条件路径，再训练瞬时速度场。两个专题分别核对端点配对与网络预测接口。
