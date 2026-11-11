@@ -7,3 +7,16 @@
 根代理依序执行plan中的argv，每次开始前检查剩余预算至少245秒，首条技术失败就停止；每个真实命令由已有run_record记录和清理。保留计划、两份run.json/metrics/PNG/NPY与完整日志。原八请求的超时和未执行状态继续保存。
 
 计划中的两条argv和steps字段均为4步；从20步模板复制的调用计数字段已在[勘误](plan-clarification.json)中更正为4次U-Net调用/8次分支求值。原计划字节保留，执行参数、成本判据与顺序保持。勘误在首条完成、第二条启动前保存，未查看诊断图片。
+
+## 实际结果
+
+两条均退出0，未过滤，真实配置、16文件身份、依赖版本、4次batch2调用、时间网格、PNG与初噪声核验通过。
+
+| 线程 | 外层wall秒 | 推理秒 | 查询点RSS GiB | 20步保守估计秒 | 完整诊断PNG |
+| --- | ---: | ---: | ---: | ---: | --- |
+| 1 | 118.22 | 100.57 | 5.39 | 520.50 | [原图](../../../docs/assets/sd14-thread-diagnostic-threads1.png) |
+| 2 | 76.69 | 62.47 | 5.41 | 326.59 | [原图](../../../docs/assets/sd14-thread-diagnostic-threads2.png) |
+
+两命令wall合计194.91秒，从诊断开始至最后命令退出303.48秒，包含中间检查与计划勘误，低于600秒预算。RSS覆盖进程启动至PNG/NPY保存后的查询点；输出hash、metrics写入和退出随后执行。全部记录见[execution.json](execution.json)、[1线程metrics](threads1-metrics.json)/[run](threads1-run.json)/[日志](threads1-command.txt)与[2线程metrics](threads2-metrics.json)/[run](threads2-run.json)/[日志](threads2-command.txt)。[独立校验代码](validate.py)保留检查方法。
+
+成本门槛通过后已另写[两线程八请求计划](../sd14-attributes-followup/README.md)。两诊断初噪声逐元素相同，PNG字节不同：786,432个RGB标量中150个相差1个8位灰度级。此项是数值身份检查，图像内容未用于成本决策。原始PNG保持字节，数组保存在本地artifacts；模型来源与许可沿用[来源说明](../../../SOURCES.md)。

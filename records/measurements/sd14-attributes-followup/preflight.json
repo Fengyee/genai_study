@@ -1,0 +1,9 @@
+{
+  "plan_sha256": "c14f167cc3668c1e2f29dcf2046a9b8dce91ff1c5de89c08e558b501047b9144",
+  "driver_sha256": "a8d240b6fe2735086fe04a2097f132d76df2dc31c8ee21b69d8989d242de5dd0",
+  "source_and_path_checks": "passed",
+  "all_sixteen_directories_absent": true,
+  "eight_actual_parsers_pass": true,
+  "threads": 2,
+  "actual_followup_requests_started": 0
+}
