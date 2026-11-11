@@ -24,7 +24,7 @@
 
 想把预训练接口延伸到视频，可读[10 SVD运行与失败分析](docs/chapters/10-pretrained-video-lab.md)。低分辨率14帧/25步在本机完整运行约16.8分钟、峰值11.21GiB，输出存在严重形变；[报告](docs/pretrained-video-report.md)保留全部帧、官方API对照和后续诊断问题。
 
-完整的先修图、实践任务与时间预算见 [学习路线](docs/learning-path.md)。遇到新词可查 [39组中英术语索引](docs/glossary.md)，再沿具体章节链接阅读推导；全局 [符号约定](docs/notation.md) 与 [来源核验](SOURCES.md) 帮助跨章核对。
+完整的先修图、实践任务与时间预算见 [学习路线](docs/learning-path.md)。遇到新词可查 [40组中英术语索引](docs/glossary.md)，再沿具体章节链接阅读推导；全局 [符号约定](docs/notation.md) 与 [来源核验](SOURCES.md) 帮助跨章核对。
 
 读完一段路线后，用[13题课程自测](docs/self-assessment.md)定位下一步：先独立作答，再展开提示和参考答案，按具体通过判据回到对应章节。
 
@@ -55,7 +55,7 @@ python -m genai_study.experiment --method ddpm --steps 5000 --output artifacts/f
 bash scripts/quality.sh
 ```
 
-脚本检查公式性质、文档链接，直接执行16个已审查的CPU教学代码块，并运行二维生成、图像生成和视频时序反例。短 smoke 用于检查程序路径；训练质量由完整实验评估。第 03、07 章提供固定 checkpoint 和初始噪声的求解器步数实验。完整实验按 seed 固定 CPU 随机性；跨 PyTorch/平台的位级一致性仍需另行验证。随机种子、多次评估和教学指标解释见 [实验说明](examples/README.md)。
+脚本检查公式性质、文档链接，直接执行17个已审查的CPU教学代码块，并运行二维生成、图像生成和视频时序反例。短 smoke 用于检查程序路径；训练质量由完整实验评估。第 03、07 章提供固定 checkpoint 和初始噪声的求解器步数实验。完整实验按 seed 固定 CPU 随机性；跨 PyTorch/平台的位级一致性仍需另行验证。随机种子、多次评估和教学指标解释见 [实验说明](examples/README.md)。
 
 ## 专题阅读
 
@@ -66,6 +66,7 @@ bash scripts/quality.sh
 | 扩散与流的数学连接 | [噪声、score与概率流ODE](docs/readings/diffusion-flow-bridge.md)：条件期望、时间方向、DDIM与SVD坐标 |
 | 扩散训练目标 | [预测量与损失权重](docs/readings/prediction-and-loss-weighting.md)：clean/noise/VP误差、有限容量与时间采样校正 |
 | 少步生成 | [从积分到轨迹端点](docs/readings/consistency-endpoint-map.md)：一致性模型、CD/CT配对与解析Euler对照 |
+| 两时间少步生成 | [MeanFlow平均速度](docs/readings/meanflow-average-velocity.md)：位移恒等式、JVP输入换元、停止目标梯度与解析反例 |
 | 条件表示 | [文本与图像怎样进入生成网络](docs/readings/conditioning-attention.md)：Q/K/V、CLIP接口、单token与联合置换反例 |
 | 潜空间表示 | [固定VAE编码与解码](docs/vae-reconstruction-report.md)：后验采样、缩放往返、六案例重建及完整重复 |
 | 空间网络接口 | [patch、位置与预测输出](docs/readings/spatial-tokens-and-position.md)：重排索引、卷积等价、自注意力与空间还原 |

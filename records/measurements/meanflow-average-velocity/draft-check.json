@@ -1,0 +1,48 @@
+{
+  "source_sha256": "76aacddca1c7d485eae270ed429047c3b8b58f9354939ef2a8fac3249bdb004d",
+  "inline_math": 70,
+  "display_math": 9,
+  "math_format_issues": [],
+  "local_links": [
+    {
+      "line": 3,
+      "target": "../chapters/03-flow-matching.md",
+      "exists": true
+    },
+    {
+      "line": 3,
+      "target": "consistency-endpoint-map.md",
+      "exists": true
+    },
+    {
+      "line": 32,
+      "target": "consistency-endpoint-map.md",
+      "exists": true
+    },
+    {
+      "line": 79,
+      "target": "prediction-and-loss-weighting.md",
+      "exists": true
+    }
+  ],
+  "cpu_block_sha256": "aba58d6ac5a2fd561f1031ec97182440ea76d7f63c8242c7e7573d21bc92094c",
+  "cpu_block_bytes": 1924,
+  "cpu_stdout": "Holding interval fixed changes JVP by: 2.1552947170702272\nAverage-velocity max endpoint error: 2.220446049250313e-16\nOne-Euler max endpoint error: 1.4\nExact / one-Euler population variance: 0.48999999999999994 0.0\n",
+  "exit_code": 0,
+  "wall_seconds": 3.394036754999888,
+  "runtime": "existing base venv torch2.6.0+cpu; no install/model",
+  "note": "Draft only; GitHub API/browser display not checked",
+  "post_run_change": "Only final evidence-summary prose changed; CPU/math/links unchanged",
+  "independent_review": {
+    "agent": "/root/meanflow_scope/analytic_meanflow",
+    "result": "passed; no required correction",
+    "scope": [
+      "affine conditional target and unweighted stopped-target expectation, with time/data independence",
+      "finite continuous diagonal and k/h counterexample",
+      "JVP input reordering and interval chain rule",
+      "Gaussian population variances and exercise3",
+      "analytic/author-reported/local-execution scopes"
+    ],
+    "reviewer_did_not_read_author_sources": true
+  }
+}

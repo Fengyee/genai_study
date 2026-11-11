@@ -37,7 +37,7 @@
 | 类型 | 在哪里核对 | 阅读时关注什么 |
 | --- | --- | --- |
 | 本仓库实际运行 | 上表的测量JSON、报告与执行记录 | 实际配置、输出、过滤/失败状态、计时边界和验证范围；具体字段随实验而异 |
-| 解析结论与数值核验 | [02/03来源审计](../../docs/source-audit.md)、[概率流衔接核验](probability-flow/README.md)、[预测目标与时间权重](prediction-loss/README.md)、[条件注意力接口](conditioning-attention/README.md)、[空间token与位置](spatial-tokens/README.md)、[一致性端点映射](consistency-endpoint/README.md)、[生成模型审计](../../docs/generative-source-audit.md)、[评价指标审计](../../docs/evaluation-metrics-audit.md)，以及对应章节的推导和反例 | 假设、变量定义、解析参照与有限样本/浮点误差；例如二维高斯邻域概率由分布公式计算，测量比例由生成样本统计 |
+| 解析结论与数值核验 | [02/03来源审计](../../docs/source-audit.md)、[概率流衔接核验](probability-flow/README.md)、[预测目标与时间权重](prediction-loss/README.md)、[条件注意力接口](conditioning-attention/README.md)、[空间token与位置](spatial-tokens/README.md)、[一致性端点映射](consistency-endpoint/README.md)、[MeanFlow平均速度与JVP](meanflow-average-velocity/README.md)、[生成模型审计](../../docs/generative-source-audit.md)、[评价指标审计](../../docs/evaluation-metrics-audit.md)，以及对应章节的推导和反例 | 假设、变量定义、解析参照与有限样本/浮点误差；例如二维高斯邻域概率由分布公式计算，测量比例由生成样本统计 |
 | 原论文作者报告 | [来源总表](../../SOURCES.md)及[研究阅读卡](../../docs/readings/) | 固定论文/官方实现版本、表格或页码、原作者硬件与评价协议；这些数值沿用作者证据身份，本地执行范围在各卡单独说明 |
 | 计划与预算估计 | 各实验的`plan.json`和执行记录 | 生成前声明的请求、超时与判断门槛；完成后再对照实际执行记录确认结果 |
 

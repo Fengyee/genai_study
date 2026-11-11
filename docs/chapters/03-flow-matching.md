@@ -197,3 +197,5 @@ v^*(x,t)=m+\frac{2t-1}{s_t^2}(x-tm).
 理论延伸：[从噪声预测到生成速度](../readings/diffusion-flow-bridge.md)沿同一高斯路径推导边缘速度，核对反向时间、概率流1/2系数、VP的v参数化与DDIM/SVD坐标；包含可直接运行的解析高斯检查。
 
 理解速度场积分后，可沿[少步生成专题](../readings/consistency-endpoint-map.md)学习轨迹端点映射。解析Gaussian例固定起始边缘与终点，比较不同次数的局部速度求值和一次精确端点求值，再连接原始一致性模型的训练目标。
+
+进一步阅读[MeanFlow两时间平均速度](../readings/meanflow-average-velocity.md)：从一段轨迹的位移推导平均速度恒等式，核对JVP方向与停止目标梯度，再用已知Gaussian场检验一次采样。该卡采用数据到噪声时间，先按其局部符号换算方向。

@@ -1,0 +1,57 @@
+{
+  "created_utc": "2026-11-11T18:38:12.911044+00:00",
+  "source_sha256": "b8dcee1033e6ba01de0019d14fad846a399d356d67e549ee311a5e19d2a7c3a4",
+  "source_commit": "58d099c0fa197bd31b9a7b51727a76019ae5fdbe",
+  "method": "AST-extracted three reviewed source functions; jnp mapped to NumPy; model u_fn replaced by analytic Gaussian average velocity; no JAX/Flax import or weight inference",
+  "function_lines": {
+    "sample_one_step": [
+      102,
+      109
+    ],
+    "solver_step": [
+      111,
+      113
+    ],
+    "_default_schedule": [
+      121,
+      124
+    ]
+  },
+  "grid": [
+    1.0,
+    0.0
+  ],
+  "model_calls": [
+    {
+      "t": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "h": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "train": false,
+      "shape": [
+        3,
+        1,
+        1,
+        1
+      ]
+    }
+  ],
+  "input": [
+    -1.25,
+    0.25,
+    1.75
+  ],
+  "output": [
+    0.625,
+    1.675,
+    2.7249999999999996
+  ],
+  "max_error": 0.0,
+  "scope": "Actual source control flow and one-call time/interval contract; excludes network computation, compiled JAX, training and image quality"
+}

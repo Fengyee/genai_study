@@ -1,0 +1,116 @@
+{
+  "scope": "Independent Gaussian algebra and numerical checks; no model or paper code executed",
+  "torch": "2.6.0+cpu",
+  "dtype": "float64",
+  "threads": 1,
+  "parameters": {
+    "m": 1.5,
+    "s": 0.7
+  },
+  "off_diagonal": [
+    {
+      "r": 0.0,
+      "t": 1.0,
+      "identity_max_abs": 1.1102230246251565e-16,
+      "endpoint_max_abs": 2.220446049250313e-16,
+      "jvp_finite_difference_max_abs": 6.246225758843593e-11
+    },
+    {
+      "r": 0.2,
+      "t": 0.8,
+      "identity_max_abs": 4.440892098500626e-16,
+      "endpoint_max_abs": 4.440892098500626e-16,
+      "jvp_finite_difference_max_abs": 4.1486147850378075e-11
+    },
+    {
+      "r": 0.05,
+      "t": 0.4,
+      "identity_max_abs": 2.220446049250313e-16,
+      "endpoint_max_abs": 4.440892098500626e-16,
+      "jvp_finite_difference_max_abs": 2.6623059312669284e-10
+    },
+    {
+      "r": 0.7,
+      "t": 0.9,
+      "identity_max_abs": 4.163336342344337e-16,
+      "endpoint_max_abs": 2.220446049250313e-16,
+      "jvp_finite_difference_max_abs": 7.30929761161292e-11
+    },
+    {
+      "r": 0.4,
+      "t": 0.400001,
+      "identity_max_abs": 2.54700689657e-16,
+      "endpoint_max_abs": 2.220446049250313e-16,
+      "jvp_finite_difference_max_abs": 2.3829427320265495e-10
+    }
+  ],
+  "diagonal_max_abs": 0.0,
+  "one_step": {
+    "r": 0,
+    "t": 1,
+    "z": [
+      -2.0,
+      -1.5,
+      -1.0,
+      -0.5,
+      0.0,
+      0.5,
+      1.0,
+      1.5,
+      2.0
+    ],
+    "exact_endpoint": [
+      0.10000000000000009,
+      0.4500000000000002,
+      0.8,
+      1.15,
+      1.5,
+      1.85,
+      2.2,
+      2.55,
+      2.9
+    ],
+    "meanflow": [
+      0.10000000000000009,
+      0.4500000000000002,
+      0.8,
+      1.1500000000000001,
+      1.5,
+      1.8499999999999999,
+      2.2,
+      2.55,
+      2.9
+    ],
+    "euler": [
+      1.5,
+      1.5,
+      1.5,
+      1.5,
+      1.5,
+      1.5,
+      1.5,
+      1.5,
+      1.5
+    ],
+    "meanflow_max_abs": 2.220446049250313e-16,
+    "euler_max_abs": 1.4,
+    "population_variance_exact": 0.48999999999999994,
+    "population_variance_euler": 0.0
+  },
+  "conditional_target": {
+    "r": 0.2,
+    "t": 0.8,
+    "x": 0.3,
+    "mean_target": -1.5,
+    "exact_u": -1.5,
+    "target_residual_variance": 0.39824198358267726,
+    "analytic_residual_variance": 0.39824198358267726,
+    "method": "Two conditional velocities with equal weight reproduce Gaussian first and second moments; no Monte Carlo claim"
+  },
+  "stopgrad_example": {
+    "theta": 0.4,
+    "semigradient": 0.756,
+    "full_target_gradient": -2.1895015160703464
+  },
+  "passed": true
+}

@@ -1,0 +1,69 @@
+{
+  "paper": {
+    "file": "2505.13447v1.pdf",
+    "url": "https://arxiv.org/pdf/2505.13447v1",
+    "bytes": 6192153,
+    "sha256": "322ba9244ad2c72382038e421fe0ffa92510c51d4f9c740bd7282b36bfc25206"
+  },
+  "arxiv_metadata": {
+    "file": "arxiv-v1.html",
+    "url": "https://arxiv.org/abs/2505.13447v1",
+    "bytes": 40799,
+    "sha256": "7fd6354d4edfdc7abdbbd995ff516bf25dc555947f04e3a34882680110fd23d4"
+  },
+  "source": {
+    "file": "meanflow-58d.py",
+    "url": "https://raw.githubusercontent.com/Gsunshine/meanflow/58d099c0fa197bd31b9a7b51727a76019ae5fdbe/meanflow.py",
+    "bytes": 8029,
+    "sha256": "b8dcee1033e6ba01de0019d14fad846a399d356d67e549ee311a5e19d2a7c3a4"
+  },
+  "readme": {
+    "file": "README-58d.md",
+    "url": "https://raw.githubusercontent.com/Gsunshine/meanflow/58d099c0fa197bd31b9a7b51727a76019ae5fdbe/README.md",
+    "bytes": 6579,
+    "sha256": "33154801bd739f7a67f1f79e3e1a7355952ab5deffa5d8911602c21698263d9a"
+  },
+  "config": {
+    "file": "run_b4-58d.yml",
+    "url": "https://raw.githubusercontent.com/Gsunshine/meanflow/58d099c0fa197bd31b9a7b51727a76019ae5fdbe/configs/run_b4.yml",
+    "bytes": 544,
+    "sha256": "f56a95e5c3025294fd7d7a991f3477d68fa3d00d8232ae7847e7dbc984d32f80"
+  },
+  "license": {
+    "file": "LICENSE-upstream",
+    "url": "https://raw.githubusercontent.com/Gsunshine/meanflow/58d099c0fa197bd31b9a7b51727a76019ae5fdbe/LICENSE",
+    "bytes": 1065,
+    "sha256": "526cf2427583e3684cd9e647e8096555a9989105c2081cc2163ba30d9c66fb1a"
+  },
+  "title": "Mean Flows for One-step Generative Modeling",
+  "authors": [
+    "Zhengyang Geng",
+    "Mingyang Deng",
+    "Xingjian Bai",
+    "J. Zico Kolter",
+    "Kaiming He"
+  ],
+  "paper_version": "arXiv:2505.13447v1",
+  "paper_date": "2025-05-19",
+  "source_commit": "58d099c0fa197bd31b9a7b51727a76019ae5fdbe",
+  "source_commit_date": "2025-07-08T08:00:38Z",
+  "checked_utc": "2026-11-11T18:38:12.960322+00:00",
+  "read_scope": {
+    "pages_3_5": "Eq(1)-(12), Algorithms1-2: marginal field, mean identity, derivatives, basic stopped MSE and sampling",
+    "pages_7_9": "ImageNet setup and selected Table1b/Table2/table captions; author reported experimental context",
+    "pages_14_16": "AppendixA representation and B2-B4 weighting, sufficiency and author JVP benchmark",
+    "source_functions": [
+      "sample_one_step",
+      "solver_step",
+      "sample_tr",
+      "u_fn",
+      "forward"
+    ],
+    "not_reproduced": [
+      "ImageNet/CIFAR training",
+      "author image metrics",
+      "JAX performance or TPU speedup",
+      "guidance variants"
+    ]
+  }
+}

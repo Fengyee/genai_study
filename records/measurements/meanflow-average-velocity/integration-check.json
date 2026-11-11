@@ -1,0 +1,62 @@
+{
+  "created_utc": "2026-11-11T18:55:39.763919+00:00",
+  "python": "3.12.14",
+  "torch": "2.6.0+cpu",
+  "body_source_sha256": "dca122a3a76f517f3acb3c90655fe7dd1f251f604c7a2ada199d4c22d050caae",
+  "body_change_since_frozen_draft": "Only final evidence-index link added",
+  "cpu_block_bytes": 1924,
+  "cpu_block_sha256": "aba58d6ac5a2fd561f1031ec97182440ea76d7f63c8242c7e7573d21bc92094c",
+  "scripts_output_interface": "--output required; parent directory must exist; existing output rejected; original computations preserved",
+  "reruns": [
+    {
+      "script": "check_gaussian.py",
+      "script_sha256": "b8230a5d91337951000a8978328715d7c24b08a90fc95f69e8d518fc1cb6b7f3",
+      "argv": [
+        ".venv/bin/python",
+        "records/measurements/meanflow-average-velocity/check_gaussian.py",
+        "--output",
+        "/tmp/genai-meanflow-integrated-uah4hnqx/gaussian.json"
+      ],
+      "returncode": 0,
+      "wall_seconds": 2.7092950539999947,
+      "output": "/tmp/genai-meanflow-integrated-uah4hnqx/gaussian.json",
+      "matches_archived_calculation": true
+    },
+    {
+      "script": "check_linear_field.py",
+      "script_sha256": "5b0c63c274becb80088c95f5d2429c7a9bd8e5f8efe16dfa1e92601faa4fdb2d",
+      "argv": [
+        ".venv/bin/python",
+        "records/measurements/meanflow-average-velocity/check_linear_field.py",
+        "--output",
+        "/tmp/genai-meanflow-integrated-uah4hnqx/linear-field.json"
+      ],
+      "returncode": 0,
+      "wall_seconds": 2.462682895999933,
+      "output": "/tmp/genai-meanflow-integrated-uah4hnqx/linear-field.json",
+      "matches_archived_calculation": true
+    },
+    {
+      "script": "check_author_sampler.py",
+      "script_sha256": "a6530585cc4ff515af0792a9116e5ef5c5d3fbe6fa3441ed9f7a804cc8809102",
+      "argv": [
+        ".venv/bin/python",
+        "records/measurements/meanflow-average-velocity/check_author_sampler.py",
+        "--output",
+        "/tmp/genai-meanflow-integrated-uah4hnqx/source-call.json",
+        "--source",
+        "/tmp/genai-meanflow-candidate/meanflow-58d.py"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.30331753300015407,
+      "output": "/tmp/genai-meanflow-integrated-uah4hnqx/source-call.json",
+      "matches_archived_calculation": true
+    }
+  ],
+  "negative_checks": {
+    "existing_output_rejected": 2,
+    "wrong_upstream_source_rejected_before_execution": 2
+  },
+  "upstream_license_byte_identical": true,
+  "scope": "No model training/inference, JAX execution, Git operation or dependency change"
+}

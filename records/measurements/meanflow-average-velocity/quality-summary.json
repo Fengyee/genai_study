@@ -1,0 +1,50 @@
+{
+  "checked_utc": "2026-11-11T18:59:44.541470+00:00",
+  "command": "bash scripts/quality.sh",
+  "output_directory": "artifacts/quality/20261111T185608Z-XPkSUF",
+  "exit_code": 0,
+  "pytest": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "178",
+    "time": "80.989",
+    "timestamp": "2026-11-11T18:56:25.572879+00:00",
+    "hostname": "fc4dc9bc966b"
+  },
+  "lesson_examples": {
+    "passed": 17,
+    "failures": 0,
+    "unique_documents": 13
+  },
+  "docs": {
+    "links": 872,
+    "errors": 0
+  },
+  "cli_smokes": 7,
+  "per_check_exit_status": {
+    "tests.exit-status.txt": 0,
+    "lesson-examples.exit-status.txt": 0,
+    "smoke-image.exit-status.txt": 0,
+    "smoke-video.exit-status.txt": 0,
+    "smoke-image-cfg.exit-status.txt": 0,
+    "smoke-image-guidance.exit-status.txt": 0,
+    "smoke-image-solver.exit-status.txt": 0,
+    "smoke-ddpm.exit-status.txt": 0,
+    "smoke-flow.exit-status.txt": 0,
+    "docs.exit-status.txt": 0
+  },
+  "tested_content_sha256": {
+    "README.md": "7bc02605fe067f51b262a6ea64cbe4defaa45807f724aa571adad7dac12664cc",
+    "docs/learning-path.md": "03e6cbfe514d1dba266098d1ca499c6434450ba260fa94ab16b2594909a43aeb",
+    "docs/notation.md": "b71e4bb0e52f6f38d3a5a85c196d2e6f8f14691850d84e211a12ac103e829c02",
+    "docs/glossary.md": "763d8921370cfccbaad6d467fa77c67a79d67d758073df21ff4991e325093521",
+    "docs/readings/meanflow-average-velocity.md": "dca122a3a76f517f3acb3c90655fe7dd1f251f604c7a2ada199d4c22d050caae",
+    "docs/readings/consistency-endpoint-map.md": "a666c9c862ff01f9ee2d798709b45f770c680a5d624c75885c8d8b0afd81e776",
+    "docs/chapters/03-flow-matching.md": "491d7c54b00080067234b3da68c4b7b56d0db546f5acd2d2724148013fce30ba",
+    "scripts/check_lesson_examples.py": "82cef770736a7b54c35d916790503a48c840a317bb9d84632688edd965a496fc"
+  },
+  "context_head": "3fec489ba365dac91529f5ce02d9b2dbeebb7937",
+  "scope": "Content snapshot was uncommitted at execution; only maintenance records and PR description added afterward. Browser acceptance follows pushed exact commit."
+}
