@@ -37,6 +37,6 @@
 
 首请求外层wall为420.304991秒，记录器退出124、模型子进程返回-15；驱动总wall为420.498327秒。最后一条日志是第20步的前置hook，表示该步开始，后续完成状态无法据此确定。模型未保存PNG/NPY/metrics；阶段耗时和RSS字段均不可用，未进行图像评分。其余七项按首请求失败规则保留not_attempted，全部槽位见[execution.json](execution.json)。
 
-[原始运行记录](single-red-cube-seed101-run.json)、[完整日志](single-red-cube-seed101-command.log)与[独立核验](audit.json)确认退出/超时、日志SHA、全部产物目录缺失及驱动/记录器/模型进程均已退出。[硬件快照](recovery-hardware.json)显示恢复后CPU为Intel Xeon，历史SD1.4成本记录来自AMD EPYC；线程与配额保持，其他宿主因素未控制。
+[原始运行记录](single-red-cube-seed101-run.json)、[完整日志](single-red-cube-seed101-command.txt)与[独立核验](audit.json)确认退出/超时、日志SHA、全部产物目录缺失及驱动/记录器/模型进程均已退出。[硬件快照](recovery-hardware.json)显示恢复后CPU为Intel Xeon，历史SD1.4成本记录来自AMD EPYC；线程与配额保持，其他宿主因素未控制。
 
 后续单独声明[4步线程成本诊断](../sd14-thread-diagnostic/README.md)，根据实际成本决定是否安排新的完整实验。本批八槽位及失败结论保持。

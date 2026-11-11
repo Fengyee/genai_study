@@ -1,0 +1,8 @@
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Loading pipeline components...:  14%|█▍        | 1/7 [00:02<00:16,  2.77s/it]`torch_dtype` is deprecated! Use `dtype` instead!
+Loading pipeline components...:  43%|████▎     | 3/7 [00:03<00:03,  1.18it/s]Loading pipeline components...:  71%|███████▏  | 5/7 [00:03<00:01,  1.92it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:03<00:00,  1.93it/s]
+DDIM step 1/20 started
+DDIM step 4/20 started
+DDIM step 8/20 started
+DDIM step 12/20 started
+DDIM step 16/20 started
+DDIM step 20/20 started
