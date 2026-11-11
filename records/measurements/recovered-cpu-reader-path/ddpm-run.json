@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "status": "succeeded",
+  "argv": [
+    ".venv/bin/python",
+    "-m",
+    "genai_study.experiment",
+    "--method",
+    "ddpm",
+    "--steps",
+    "5000",
+    "--output",
+    "artifacts/recovered-cpu-reader-path/ddpm"
+  ],
+  "cwd": "/workspace/genai_study",
+  "started_utc": "2026-11-11T19:07:02.519111+00:00",
+  "timeout_seconds": 180.0,
+  "termination_grace_seconds": 1.0,
+  "runner": {
+    "version": 1,
+    "source_sha256": "be545eff1985b8eed096b0663145bade01303685430310d4b199aa727c685697",
+    "python_version": "3.12.14",
+    "python_executable": "/workspace/genai_study/.venv/bin/python"
+  },
+  "git": {
+    "root": "/workspace/genai_study",
+    "head": "52e76baac0ebdd0171170e81721bd959b4d1f27a",
+    "changed_paths": []
+  },
+  "stdin": "devnull",
+  "log_file": "command.log",
+  "timed_out": false,
+  "child_returncode": 0,
+  "exit_code": 0,
+  "wall_seconds": 18.09498640799984,
+  "finished_utc": "2026-11-11T19:07:20.628986+00:00",
+  "log_size_bytes": 1667,
+  "log_sha256": "284061eabb07c4c9a8061795fd599459795b9fdc54b5f8359a8d509f98c6631c"
+}

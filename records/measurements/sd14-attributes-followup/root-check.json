@@ -1,0 +1,50 @@
+{
+  "checked_utc": "2026-11-11T19:29:42.669437+00:00",
+  "four_source_identities_passed": true,
+  "eight_png_metrics_records_and_logs_copied_byte_exact": true,
+  "same_seed_equal_pairs": 12,
+  "different_seed_unequal_pairs": 16,
+  "campaign_budget_passed": true,
+  "rows": [
+    {
+      "request_id": "single-red-cube-seed101",
+      "png_sha256": "a82f10ed42696ec4ee1736473fa03e5c49dbb7d92a05e693a481e65028229a8b",
+      "copied_byte_exact": true
+    },
+    {
+      "request_id": "single-blue-cube-seed101",
+      "png_sha256": "0d35ef7af25a133f15382cb5c3b0cc22bb27e490d1785e9dc3c321b309454924",
+      "copied_byte_exact": true
+    },
+    {
+      "request_id": "red-cube-left-blue-sphere-seed101",
+      "png_sha256": "7bd4f102296682515c84d9f3c73e4effe6e165afdb7b07cc755b01483239491c",
+      "copied_byte_exact": true
+    },
+    {
+      "request_id": "blue-sphere-left-red-cube-seed101",
+      "png_sha256": "fc3808726c9b273edf67ee5b78377ffe614ba5ef03b3cc83499991762fd9ccba",
+      "copied_byte_exact": true
+    },
+    {
+      "request_id": "blue-sphere-left-red-cube-seed211",
+      "png_sha256": "82b01f58f8cdc1bb41472763b1cc4a7ec87ef4f06d5bb717c8b60e6813ae6fa5",
+      "copied_byte_exact": true
+    },
+    {
+      "request_id": "red-cube-left-blue-sphere-seed211",
+      "png_sha256": "c902d68310c232fd7254f9dc9eff5b038c0ab3f1bedef7d1ae2331a81bfa2944",
+      "copied_byte_exact": true
+    },
+    {
+      "request_id": "single-blue-cube-seed211",
+      "png_sha256": "dd832ba236a1be55574d455cc1edd5926dcebc2449e88ec01dd67ace995bb870",
+      "copied_byte_exact": true
+    },
+    {
+      "request_id": "single-red-cube-seed211",
+      "png_sha256": "cd1c14bc2fcb42aa9c145cd6432892279dfea938ba52b522500a02abd1da9511",
+      "copied_byte_exact": true
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "method": "Fixed shuffle of all eight predeclared slots before visual inspection; mapping withheld from blind observer",
+  "shuffle_seed": 20261111,
+  "mapping": {
+    "A": "red-cube-left-blue-sphere-seed211",
+    "B": "single-red-cube-seed101",
+    "C": "blue-sphere-left-red-cube-seed211",
+    "D": "blue-sphere-left-red-cube-seed101",
+    "E": "single-blue-cube-seed101",
+    "F": "single-blue-cube-seed211",
+    "G": "red-cube-left-blue-sphere-seed101",
+    "H": "single-red-cube-seed211"
+  }
+}

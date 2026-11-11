@@ -1,0 +1,135 @@
+{
+  "checked_utc": "2026-11-11T19:23:58.541537+00:00",
+  "commit": "002dd89bfef5ac6ae2a8f3cddb3bb9d59fa3ad0d",
+  "source_sha256": "7ec5564b658aafc6565f5b95e2ce436d8cbcdf41590e33854b67551a4be7c30a",
+  "scope": "Incremental check of the new scientific figure and caption on the MeanFlow card at two viewports. Previous notation/glossary checks retained separately.",
+  "tls_verification": true,
+  "browser_version": "156.0.8078.79",
+  "passed_viewports": 2,
+  "pages": [
+    {
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "http_status": 200,
+      "image_complete": true,
+      "natural_dimensions": [
+        2112,
+        1024
+      ],
+      "rendered_dimensions": [
+        1011.96875,
+        490.65625
+      ],
+      "alt_matches_source": true,
+      "png_network_matches_source": true,
+      "caption_matches_source": true,
+      "caption_explains_interval_and_population_variance": true,
+      "mathml": 79,
+      "math_errors": [],
+      "code_matches": true,
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentScrollWidth": 1440,
+        "articleClientWidth": 1012,
+        "articleScrollWidth": 1012
+      },
+      "svg_link_navigated": true
+    },
+    {
+      "viewport": "narrow",
+      "width": 390,
+      "height": 844,
+      "http_status": 200,
+      "image_complete": true,
+      "natural_dimensions": [
+        2112,
+        1024
+      ],
+      "rendered_dimensions": [
+        323.96875,
+        157.078125
+      ],
+      "alt_matches_source": true,
+      "png_network_matches_source": true,
+      "caption_matches_source": true,
+      "caption_explains_interval_and_population_variance": true,
+      "mathml": 79,
+      "math_errors": [],
+      "code_matches": true,
+      "geometry": {
+        "viewportWidth": 390,
+        "documentScrollWidth": 390,
+        "articleClientWidth": 324,
+        "articleScrollWidth": 324
+      },
+      "svg_link_navigated": true
+    }
+  ],
+  "png": {
+    "bytes": 211464,
+    "sha256": "2caec9cd8e55d186bc79cc690d524b46a16fdcc2c909eabd16c624e65a153adf",
+    "natural_dimensions": [
+      2112,
+      1024
+    ]
+  },
+  "svg": {
+    "http_status": 200,
+    "bytes": 107600,
+    "sha256": "b846b699a1565509dd2753c2e56e7fa9ace7000426b4ffaa7651c6f4fd9b0c22",
+    "xml_valid": true,
+    "viewBox": "0 0 950.4 460.8",
+    "file_page_navigation_passed": true,
+    "github_viewscreen_preview_loaded": true,
+    "preview_graphics": [
+      {
+        "tag": "IMG",
+        "rendered_width": 602,
+        "rendered_height": 293,
+        "natural_width": 1267
+      }
+    ]
+  },
+  "guards": {
+    "math_payload_and_sequence_unchanged_from": "876647bfbcc913af577447c036beb03b4e7d1346",
+    "formula_count": 79,
+    "code_bytes": 1924,
+    "code_sha256": "aba58d6ac5a2fd561f1031ec97182440ea76d7f63c8242c7e7573d21bc92094c"
+  },
+  "visual_review": {
+    "observer": "AI code agent /root/meanflow_reader_check",
+    "inspected": [
+      "source PNG",
+      "figure-context-narrow.png",
+      "caption-narrow.png",
+      "svg-file-page-desktop.png"
+    ],
+    "finding": "The full two-panel figure loads without page overflow. At390px the figure scales to about324x157; its internal labels require opening the SVG and magnifying it. The Chinese alt describes numerical endpoints; adjacent readable caption explains the full-interval chord, changed target-time interpretation, nine illustrative points and Gaussian population variance source.",
+    "scope_limit": "No claim that labels are independently readable in the narrow thumbnail; zoom interaction and screen-reader behavior were not tested."
+  },
+  "screenshots": [
+    {
+      "file": "figure-context-narrow.png",
+      "bytes": 116890,
+      "sha256": "e8a6bb6e3bfac4d09f69f4487a0f8bc55b24d8f370b39d46aec6db1903297e58"
+    },
+    {
+      "file": "caption-narrow.png",
+      "bytes": 42602,
+      "sha256": "d48247b17f0f203005258b3c3788080a30f3f2bd703f67ebf6e28d197bb95bec"
+    },
+    {
+      "file": "figure-desktop.png",
+      "bytes": 116597,
+      "sha256": "910fbfdf364763aba154a735d9e79b8a490eb664c8a140ef8f5cd369eadc6a97"
+    },
+    {
+      "file": "svg-file-page-desktop.png",
+      "bytes": 165643,
+      "sha256": "fd43eba7c8ffbb04f581effa73ffad6092bc0abc93653f9be9006f797e8429c2"
+    }
+  ],
+  "browser_results_sha256": "8733bbf58ac43770157077f0b47bba13871ed4347d3033854e84b98a876d1111",
+  "browser_script_sha256": "2992272bb8b173cb0083ab602791042590b194e1d75ca31b54445692e3e6067e"
+}

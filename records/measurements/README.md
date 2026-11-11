@@ -16,7 +16,9 @@
 | 固定SD1.4的真实CPU推理成本、引导对照和重复结果是什么？ | [预训练图像实测](../../docs/pretrained-image-report.md)与[09章操作路径](../../docs/chapters/09-pretrained-image-lab.md) | [pretrained-sd14索引](pretrained-sd14/README.md)：准备/缓存复用、smoke、双引导、完整重复、提示修订及源码/软件身份 |
 | 同一图像经VAE编码与解码后，后验采样和缩放带来什么变化？ | [VAE重建实践](../../docs/vae-reconstruction-report.md)：六案例、原始/裁剪像素误差与完整重复 | [vae-reconstruction索引](vae-reconstruction/README.md)：事前协议、全部指标/外层日志、26数组复算、源码和媒体身份 |
 | 在生成前固定提示与seed集合后，如何保留并比较全部结果？ | [SD1.4四请求探索报告](../../docs/sd14-prompt-pilot.md) | [sd14-prompt-pilot索引](sd14-prompt-pilot/README.md)：事先计划、全部metrics、实际执行顺序、AI视觉观察与配置/噪声/图片核验 |
+| 对象颜色与左右关系如何分别观察，如何保留不可评及分歧？ | [八请求属性与关系报告](../../docs/sd14-attributes-layout.md)：全部原图、四条件各两seed、37.00分钟实测 | [两线程证据](sd14-attributes-followup/README.md)：原超时、成本诊断、新计划、完整日志/指标、两位AI原始观察及独立核验 |
 | 推荐5000步首次路径能否重跑，并复用checkpoint完成采样对照？ | [首次路径复查报告](../../docs/experiment-report.md#推荐首次路径的再次运行) | [first-run-5000索引](first-run-5000/README.md)：两训练和solver原始JSON、完整argv/外层耗时，以及与历史数组的比对记录 |
+| 环境恢复后，首次路径仍能运行吗，哪些结果精确或近似一致？ | [恢复实例核验](../../docs/experiment-report.md#恢复实例后的首次路径与浮点差异)：两训练、两次求解器及其实际成本 | [recovered-cpu-reader-path索引](recovered-cpu-reader-path/README.md)：三请求原计划、观察后追加的旧checkpoint控制、逐数组/参数差异、源码身份和独立诊断复算 |
 | 固定SVD图生视频能否在声明的CPU预算内完成，画面表现如何？ | [视频实测与失败分析](../../docs/pretrained-video-report.md)及[10章](../../docs/chapters/10-pretrained-video-lab.md)：完整请求16.8分钟、严重形变与闪烁 | [pretrained-svd索引](pretrained-svd/README.md)：事先计划、准备、smoke/校准/full/重复、官方API短对照、全部帧与播放核验；模型身份和许可见[资产说明](../../examples/pretrained-svd/README.md) |
 
 二维训练预算的全部原始JSON：
@@ -47,6 +49,6 @@
 
 已提交的材料包括本目录的小型JSON与说明、报告中使用的[展示图片](../../docs/assets/)，以及各实验已有的源码/依赖/输出身份记录。SD1.4与SVD的模型文件身份分别由[SD1.4清单](../../examples/pretrained-sd14/manifest.json)和[SVD清单](../../examples/pretrained-svd/manifest.json)逐文件固定大小与SHA；许可和获取方式见相邻资产说明及实践章节。
 
-原始浮点数组（如`samples.npz`、`arrays.npz`、`initial_noise.npy`）、推理checkpoint、下载的模型权重和完整运行日志保存在执行环境的`artifacts/`中，该目录由[.gitignore](../../.gitignore)排除。克隆仓库后可先阅读已提交的JSON与图；需要这些完整产物时，按对应报告/章节重新运行，并将预训练权重下载到声明的本地目录。JSON中的历史路径用于定位当时的产物，文件hash用于核对已有或重新取得的内容。
+原始浮点数组（如`samples.npz`、`arrays.npz`、`initial_noise.npy`）、推理checkpoint、下载的模型权重和多数完整运行日志保存在执行环境的`artifacts/`中，该目录由[.gitignore](../../.gitignore)排除。克隆仓库后可先阅读已提交的JSON与图；需要这些完整产物时，按对应报告/章节重新运行，并将预训练权重下载到声明的本地目录。属性实验另外提交完整命令文本日志，便于核查失败与恢复过程。JSON中的历史路径用于定位当时的产物，文件hash用于核对已有或重新取得的内容。
 
 复现时选择新的输出目录，保留原始结果。数值数组与PNG承担不同用途：前者用于重算指标和逐元素比较，后者用于查看报告声明的展示或完整样本。每次核验应记录实际拿到的文件、比较方法和覆盖范围；已有检查状态可从[自动化说明](../../docs/automation.md)与[执行记录](../PROGRESS.md)继续追踪。

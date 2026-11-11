@@ -1,0 +1,83 @@
+{
+  "checked_utc": "2026-11-11T19:44:43.567720+00:00",
+  "commit": "cd28325eba565efb93d86c8a689ae9f8d29f01c4",
+  "previous_commit": "b9be84784adb853d2b184631244d195244cf4846",
+  "report_path": "docs/sd14-attributes-layout.md",
+  "report_source_sha256": "34ae979c6e3ab3ba9e3ec9f491479bb976161a004ed55d5403a591617441cc11",
+  "previous_report_source_sha256": "77c7a97ba62508a6f9516c412d0206ca20434f5ac60da0e432ddada5d81345a0",
+  "observations_path": "records/measurements/sd14-attributes-followup/observations.json",
+  "observations_sha256": "7320c36d56ce3c3f67f4985b4fe2e116b2bbb1b10be8a719397d9382d775bf7e",
+  "observations_bytes_unchanged": true,
+  "table_columns": 3,
+  "table_data_rows": 4,
+  "counts": [
+    {
+      "condition": "single_red_cube",
+      "table_row": [
+        "单红立方体",
+        "0/2",
+        "—"
+      ],
+      "confirmed_recomputed_from_rows": 0,
+      "planned_denominator": 2,
+      "geometry_recomputed_from_rows": null,
+      "geometry_applicable": false,
+      "matches_frozen_counts_and_rows": true
+    },
+    {
+      "condition": "single_blue_cube",
+      "table_row": [
+        "单蓝立方体",
+        "2/2",
+        "—"
+      ],
+      "confirmed_recomputed_from_rows": 2,
+      "planned_denominator": 2,
+      "geometry_recomputed_from_rows": null,
+      "geometry_applicable": false,
+      "matches_frozen_counts_and_rows": true
+    },
+    {
+      "condition": "red_cube_left_blue_sphere",
+      "table_row": [
+        "红立方体在左",
+        "0/2",
+        "0/2"
+      ],
+      "confirmed_recomputed_from_rows": 0,
+      "planned_denominator": 2,
+      "geometry_recomputed_from_rows": 0,
+      "geometry_applicable": true,
+      "matches_frozen_counts_and_rows": true
+    },
+    {
+      "condition": "blue_sphere_left_red_cube",
+      "table_row": [
+        "蓝球在左",
+        "0/2",
+        "0/2"
+      ],
+      "confirmed_recomputed_from_rows": 0,
+      "planned_denominator": 2,
+      "geometry_recomputed_from_rows": 0,
+      "geometry_applicable": true,
+      "matches_frozen_counts_and_rows": true
+    }
+  ],
+  "explanation_checks": {
+    "fixed_planned_denominator_2": true,
+    "dash_means_no_relation_requirement": true,
+    "single_red_zero_confirmed_retains_uncertainty": true,
+    "four_relations_unassessable": true
+  },
+  "invariants": {
+    "complete_code_fences_identical": true,
+    "code_fence_count": 1,
+    "eight_image_markdown_lines_identical": true,
+    "image_line_count": 8,
+    "exercise_section_byte_identical": true,
+    "exercise_count": 3
+  },
+  "status": "passed",
+  "scope": "Independent comparison of exact Git blobs and recomputation from frozen annotation rows. No visual inspection, model execution, tracked modification or Git state mutation."
+}

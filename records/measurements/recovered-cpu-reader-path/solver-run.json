@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "status": "succeeded",
+  "argv": [
+    ".venv/bin/python",
+    "-m",
+    "genai_study.solver_study",
+    "--checkpoint",
+    "artifacts/recovered-cpu-reader-path/flow/checkpoint.pt",
+    "--steps",
+    "10",
+    "25",
+    "100",
+    "200",
+    "--samples",
+    "2048",
+    "--seed",
+    "123",
+    "--output",
+    "artifacts/recovered-cpu-reader-path/solver"
+  ],
+  "cwd": "/workspace/genai_study",
+  "started_utc": "2026-11-11T19:07:20.774647+00:00",
+  "timeout_seconds": 180.0,
+  "termination_grace_seconds": 1.0,
+  "runner": {
+    "version": 1,
+    "source_sha256": "be545eff1985b8eed096b0663145bade01303685430310d4b199aa727c685697",
+    "python_version": "3.12.14",
+    "python_executable": "/workspace/genai_study/.venv/bin/python"
+  },
+  "git": {
+    "root": "/workspace/genai_study",
+    "head": "52e76baac0ebdd0171170e81721bd959b4d1f27a",
+    "changed_paths": []
+  },
+  "stdin": "devnull",
+  "log_file": "command.log",
+  "timed_out": false,
+  "child_returncode": 0,
+  "exit_code": 0,
+  "wall_seconds": 6.782035234999967,
+  "finished_utc": "2026-11-11T19:07:27.572136+00:00",
+  "log_size_bytes": 3863,
+  "log_sha256": "38039b9ecb3ec13d9729e378b49b58f5c40e836e174b164874d8ac581e45082f"
+}

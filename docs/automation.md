@@ -26,7 +26,9 @@ bash scripts/quality.sh
 
 当前部署：2026-11-11，PR #1/#2/#3已按授权合并，main为d99b748，workflow为active。原416版本的[push检查](https://github.com/Fengyee/genai_study/actions/runs/43050083353)与[手动检查](https://github.com/Fengyee/genai_study/actions/runs/43050263196)均通过115项测试/13个教学块；[新main的push检查](https://github.com/Fengyee/genai_study/actions/runs/43068708112)通过146项测试/15个教学块。三个artifact实际下载，全部退出状态为0；新版本的ZIP由主代理再次独立核验。
 
-本次观察从15:39 UTC持续到17:35 UTC截止，117次成功查询覆盖16:17和17:17两个计划点，最后查询仍无schedule事件。已确认默认分支、cron及active状态；Actions权限策略端点返回403，一次main读取503经有界重试恢复。当前证据尚不能解释定时事件缺失的原因。恢复后先查询实际schedule运行及其head SHA，再检查完成结果与artifact；[部署证据](../records/automation-deployment.json)保留观察窗口、各版本及权限范围。
+2026-11-11第一段观察为15:39–17:35 UTC，117次成功查询覆盖16:17和17:17，未发现schedule事件。连接恢复后的18:31:58–19:34:59又完成64次成功查询，覆盖19:17；19:36独立复查仍为0。18:17处于断线空窗，缺少当时的现场查询。main d99、workflow active及1356字节配置身份保持；原main push artifact重新核验146 tests、15教学块、7条smoke和11项退出0。
+
+Actions权限策略端点曾返回403，定时事件缺失的原因仍待确定；当前没有成功的schedule运行可供验收。后续取得实际run后核对event/head SHA、结果与artifact。[恢复观察](../records/automation-recovery-20261111.json)与[部署证据](../records/automation-deployment.json)保留两个窗口、版本和范围；编码代理的每小时启动入口与Bark/Codex通知绑定仍未配置。
 
 配置位于 [quality.yml](../.github/workflows/quality.yml)：
 

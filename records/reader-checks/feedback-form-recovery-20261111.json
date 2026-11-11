@@ -1,0 +1,43 @@
+{
+  "checked_utc": "2026-11-11T18:34:48.347517+00:00",
+  "requested_url": "https://github.com/Fengyee/genai_study/issues/new?template=quality.yml",
+  "scope": "read-only navigation and DOM inspection; no login and no issue submission",
+  "tls_verification": true,
+  "existing_environment_proxy": true,
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "browser_version": "156.0.8078.79",
+  "http_status": 200,
+  "final_url": "https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2FFengyee%2Fgenai_study%2Fissues%2Fnew%3Ftemplate%3Dquality.yml",
+  "title": "Sign in to GitHub · GitHub",
+  "headings": [
+    "Sign in to GitHub"
+  ],
+  "labels": [
+    "\n      Username or email address\n    ",
+    "\n      Password\n    "
+  ],
+  "textarea_contracts": [],
+  "login_wall": true,
+  "form_rendering_verified": false,
+  "submission_tested": false,
+  "issue_created": false,
+  "outcome": "blocked_by_github_login",
+  "reason": "The issue-new URL redirects the clean browser context to GitHub sign in. Template field rendering and required semantics cannot be inspected without an authenticated browser session.",
+  "screenshot": "page-desktop.png",
+  "finished_utc": "2026-11-11T18:34:53.546301+00:00",
+  "main_source": {
+    "commit": "d99b748fd4555db525f76a0ea83bb73b6b98c84d",
+    "path": ".github/ISSUE_TEMPLATE/quality.yml",
+    "sha256": "91416af31807e6bfa03ca3d3c9a597ca04a2a30b2b2d04719944fe7c99cfdc2f",
+    "bytes": 737,
+    "matches_local": true,
+    "problem_required": true,
+    "reproduction_required": false,
+    "source": "GitHub REST GET contents?ref=main; decoded bytes compared with local file"
+  },
+  "screenshot_sha256": "e77efc3689ab3d7e7676d27c8510bd7595bb59fafb5a46254eae02d5c0695a58",
+  "script_sha256": "70cda3fc1c607fefa47e61afeff985db36bf5e425d9f6d57b4cff88207f18129"
+}

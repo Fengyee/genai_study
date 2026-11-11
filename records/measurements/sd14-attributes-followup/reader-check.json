@@ -1,0 +1,230 @@
+{
+  "checked_utc": "2026-11-11T19:41:49.603700+00:00",
+  "commit": "b9be84784adb853d2b184631244d195244cf4846",
+  "path": "docs/sd14-attributes-layout.md",
+  "source_sha256": "77c7a97ba62508a6f9516c412d0206ca20434f5ac60da0e432ddada5d81345a0",
+  "source_bytes": 13152,
+  "all_passed": true,
+  "passed_viewports": 2,
+  "method": "Main actual GitHub browser check plus targeted source-paragraph verification, at the same exact commit. Independent static Git blob checks compare all 8 PNG hashes to metrics.",
+  "browser_version": "156.0.8078.79",
+  "tls_verification": true,
+  "existing_environment_proxy": true,
+  "source_code": {
+    "bytes": 502,
+    "sha256": "7de3ef7423e63ad8ba7fdc3b8edd1e64a53ff94ab58abaef8b65a71e2f766d13"
+  },
+  "pages": [
+    {
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "passed": true,
+      "images": {
+        "count": 8,
+        "network_hashes_match": 8,
+        "natural_dimensions": [
+          512,
+          512
+        ],
+        "rendered_dimensions": [
+          512,
+          512
+        ],
+        "alt_matches": 8,
+        "aspect_ratio_preserved": 8
+      },
+      "headings_clicked": 7,
+      "exercises_match_source": 3,
+      "code_matches_source": true,
+      "code_browser_bytes": 501,
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentScrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "articleClientWidth": 1012,
+        "articleScrollWidth": 1012,
+        "stage": "after_tables_and_code"
+      },
+      "tables": [
+        {
+          "index": 0,
+          "client_width": 1012,
+          "scroll_width": 1012,
+          "local_scroll_operable": false
+        },
+        {
+          "index": 1,
+          "client_width": 1012,
+          "scroll_width": 1012,
+          "local_scroll_operable": false
+        },
+        {
+          "index": 2,
+          "client_width": 776,
+          "scroll_width": 776,
+          "local_scroll_operable": false
+        },
+        {
+          "index": 3,
+          "client_width": 1012,
+          "scroll_width": 1012,
+          "local_scroll_operable": false
+        }
+      ],
+      "code_scroll": {
+        "tag": "PRE",
+        "className": "",
+        "clientWidth": 685,
+        "scrollWidth": 685,
+        "overflowX": "auto",
+        "scrollLeftAfter": 0
+      },
+      "sources_navigation_and_fixed_revision_verified": true,
+      "measurement_index_navigation_and_backlink_verified": true
+    },
+    {
+      "viewport": "narrow",
+      "width": 390,
+      "height": 844,
+      "passed": true,
+      "images": {
+        "count": 8,
+        "network_hashes_match": 8,
+        "natural_dimensions": [
+          512,
+          512
+        ],
+        "rendered_dimensions": [
+          324,
+          324
+        ],
+        "alt_matches": 8,
+        "aspect_ratio_preserved": 8
+      },
+      "headings_clicked": 7,
+      "exercises_match_source": 3,
+      "code_matches_source": true,
+      "code_browser_bytes": 501,
+      "geometry": {
+        "viewportWidth": 390,
+        "documentScrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "articleClientWidth": 324,
+        "articleScrollWidth": 324,
+        "stage": "after_tables_and_code"
+      },
+      "tables": [
+        {
+          "index": 0,
+          "client_width": 324,
+          "scroll_width": 439,
+          "local_scroll_operable": true
+        },
+        {
+          "index": 1,
+          "client_width": 324,
+          "scroll_width": 324,
+          "local_scroll_operable": false
+        },
+        {
+          "index": 2,
+          "client_width": 324,
+          "scroll_width": 576,
+          "local_scroll_operable": true
+        },
+        {
+          "index": 3,
+          "client_width": 324,
+          "scroll_width": 357,
+          "local_scroll_operable": true
+        }
+      ],
+      "code_scroll": {
+        "tag": "PRE",
+        "className": "",
+        "clientWidth": 280,
+        "scrollWidth": 685,
+        "overflowX": "auto",
+        "scrollLeftAfter": 30
+      },
+      "sources_navigation_and_fixed_revision_verified": true,
+      "measurement_index_navigation_and_backlink_verified": true
+    }
+  ],
+  "visual_review": {
+    "observer": "AI code agent /root/meanflow_reader_check",
+    "inspected_screenshots": [
+      "exercises-narrow.png",
+      "results-table-narrow.png",
+      "table-0-scrolled-narrow.png",
+      "code-scrolled-narrow.png",
+      "sources-model-paragraph-narrow.png",
+      "sd14-attributes-single-blue-cube-seed101-narrow.png",
+      "sd14-attributes-blue-sphere-left-red-cube-seed211-narrow.png"
+    ],
+    "findings": "The 3 exercises and reference thoughts remain readable at 390px. Images retain the full square frame. Prompt, cost and phase tables and the reproduction code support local horizontal scrolling; the result table wraps in narrow columns. The narrow result table has vertically wrapped labels, and the prompt table is tall: a future mobile layout improvement would help quick comparison. No document-level horizontal overflow.",
+    "scope": "Reader rendering and navigation only; model inference and image-content ratings were not rerun. Physical device and screen-reader behavior were not tested."
+  },
+  "harness_corrections": [
+    {
+      "file": "client/harness-first-attempt.json",
+      "issue": "The response collector included redirects, whose bodies Playwright cannot expose. Fixed to collect final HTTP 200 image responses and repeated the affected main check."
+    },
+    {
+      "file": "client/browser-results.json",
+      "issue": "All main page conditions passed except an incorrect harness assertion expecting the full Hub identifier in SOURCES visible text. The actual page uses SD1.4 and the exact model revision. Targeted source-navigation-results.json verifies that revision, CreativeML Open RAIL-M and output section 6 at both viewports. Raw assertion outcomes are retained."
+    }
+  ],
+  "evidence": [
+    {
+      "file": "client/browser-results.json",
+      "sha256": "4f0b6247fef8e58b9ba887c09ed826f5b525e77399b666d2d03d7a07fc49319f"
+    },
+    {
+      "file": "client/source-navigation-results.json",
+      "sha256": "f5d91a12a6db1371cb681dd8cca97bfd25c64436e0c97bf5792a8e005914790d"
+    },
+    {
+      "file": "source-precheck.json",
+      "sha256": "ffdacce069f354f81ced3bf795e53b5d7a5a59ac8370b1bc1cf694fde482a786"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "client/exercises-narrow.png",
+      "bytes": 81246,
+      "sha256": "8211cd10eaa81c29e6d81c8df03c98cec25deedf2bb8190ea7b0fb3019f128ce"
+    },
+    {
+      "file": "client/results-table-narrow.png",
+      "bytes": 76538,
+      "sha256": "1c5813e69c1a2a90fee8bdbbfe708080f177f6cee7f57b74a23ca912b19310a1"
+    },
+    {
+      "file": "client/table-0-scrolled-narrow.png",
+      "bytes": 31517,
+      "sha256": "7da46367913f7651f8d17740d6719440716aea5c46dc9edcd6b81df5a95c683d"
+    },
+    {
+      "file": "client/code-scrolled-narrow.png",
+      "bytes": 123633,
+      "sha256": "1c1b9e5883039eb0e0bddfa27cdd1a1a12fc8ee79124479abcb8d36dafeaaf20"
+    },
+    {
+      "file": "client/sources-model-paragraph-narrow.png",
+      "bytes": 44505,
+      "sha256": "adc83c2b2d165c6b2adbed12622ee9e5f7d4a6af0a8a5235e9999c797e09fed8"
+    },
+    {
+      "file": "client/sd14-attributes-single-blue-cube-seed101-narrow.png",
+      "bytes": 166256,
+      "sha256": "ee3ec129223b28561c236addb116b6f25827fc2b886aa3f8d62643b5ad2fb344"
+    },
+    {
+      "file": "client/sd14-attributes-blue-sphere-left-red-cube-seed211-narrow.png",
+      "bytes": 187918,
+      "sha256": "24973d845b338453ec0f1f23f0ccecdd25c72abde02cd8d6dcf5844e0a0c128b"
+    }
+  ]
+}

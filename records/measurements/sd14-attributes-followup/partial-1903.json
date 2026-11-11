@@ -1,0 +1,95 @@
+{
+  "checked_utc": "2026-11-11T19:04:04.201739+00:00",
+  "scope": "Independent read-only audit; only terminal succeeded/filtered slots receive completed-output validation. No pixel-content interpretation. Earlier timeout batch and four-step diagnostics excluded.",
+  "plan_commit": "0bc702c562f9dad44ad446d448ffcb1a30d0d995",
+  "plan_sha256": "c14f167cc3668c1e2f29dcf2046a9b8dce91ff1c5de89c08e558b501047b9144",
+  "execution_snapshot_sha256": "6c24135028cd963bfa636716ea333e46f2b0ae632e1ef02707aeeca4b7f03252",
+  "campaign_status_at_snapshot": "running",
+  "completed_slots_checked": 2,
+  "all_eight_completed_and_checked": false,
+  "source_identity_count": 4,
+  "cached_asset_verification": {
+    "performed": true,
+    "files": 16,
+    "bytes": 5482669095,
+    "passed": true
+  },
+  "requests": [
+    {
+      "request_id": "single-red-cube-seed101",
+      "seed": 101,
+      "status": "succeeded",
+      "validation": "passed",
+      "wall_seconds": 277.01644783599977,
+      "inference_seconds": 260.86967798800015,
+      "rss_kib": 5616000,
+      "png_sha256": "a82f10ed42696ec4ee1736473fa03e5c49dbb7d92a05e693a481e65028229a8b",
+      "noise_raw_sha256": "7e21a385554c654015bc4c511142ce6d34f23e26f6c58e7f3e8143dffa7bb9b8",
+      "noise_file_sha256": "d88a904c10e6a6082a209ca56c07a0671b4dcd44740741eb7ff1e6c708704b53",
+      "run_record_sha256": "027f00c675b342c1f5f164c4aa6459b216eef187a9f9efb27f79d65a9ad3285c",
+      "metrics_sha256": "e384491645ebcff43aaf08c8b47be57c8672b06cefc4a6a146cd2ca0bf9a5779",
+      "launch_git_head": "0bc702c562f9dad44ad446d448ffcb1a30d0d995"
+    },
+    {
+      "request_id": "single-blue-cube-seed101",
+      "seed": 101,
+      "status": "succeeded",
+      "validation": "passed",
+      "wall_seconds": 291.0809595710002,
+      "inference_seconds": 274.87379934599994,
+      "rss_kib": 5706908,
+      "png_sha256": "0d35ef7af25a133f15382cb5c3b0cc22bb27e490d1785e9dc3c321b309454924",
+      "noise_raw_sha256": "7e21a385554c654015bc4c511142ce6d34f23e26f6c58e7f3e8143dffa7bb9b8",
+      "noise_file_sha256": "d88a904c10e6a6082a209ca56c07a0671b4dcd44740741eb7ff1e6c708704b53",
+      "run_record_sha256": "6b449be32de0570db3c09b816b912d18d3422a9bcd3799060ee591120eecc0fe",
+      "metrics_sha256": "cf240596bb72b3e8940ad7b39e326ed4af441e919db36378a7540f58d6f9b951",
+      "launch_git_head": "3fec489ba365dac91529f5ce02d9b2dbeebb7937"
+    },
+    {
+      "request_id": "red-cube-left-blue-sphere-seed101",
+      "seed": 101,
+      "status": "running",
+      "scope": "Retained snapshot status; completed-output checks pending"
+    },
+    {
+      "request_id": "blue-sphere-left-red-cube-seed101",
+      "seed": 101,
+      "status": "not_attempted",
+      "scope": "Retained snapshot status; completed-output checks pending"
+    },
+    {
+      "request_id": "blue-sphere-left-red-cube-seed211",
+      "seed": 211,
+      "status": "not_attempted",
+      "scope": "Retained snapshot status; completed-output checks pending"
+    },
+    {
+      "request_id": "red-cube-left-blue-sphere-seed211",
+      "seed": 211,
+      "status": "not_attempted",
+      "scope": "Retained snapshot status; completed-output checks pending"
+    },
+    {
+      "request_id": "single-blue-cube-seed211",
+      "seed": 211,
+      "status": "not_attempted",
+      "scope": "Retained snapshot status; completed-output checks pending"
+    },
+    {
+      "request_id": "single-red-cube-seed211",
+      "seed": 211,
+      "status": "not_attempted",
+      "scope": "Retained snapshot status; completed-output checks pending"
+    }
+  ],
+  "pairwise_noise_checks": [
+    {
+      "left": "single-red-cube-seed101",
+      "right": "single-blue-cube-seed101",
+      "same_seed": true,
+      "arrays_equal": true
+    }
+  ],
+  "memory_scope": "Linux RUSAGE_SELF high-water RSS from process start through source line254 query, after PNG/NPY saving and before PNG hash, metrics serialization/write, printing and exit. Full command wall comes from run_record.",
+  "script_sha256": "df42861e32a4c06dac6a9e6a27d11cec45d2fdc2276228500b7aa7b824b14a9f"
+}

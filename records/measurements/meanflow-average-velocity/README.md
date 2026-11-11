@@ -67,3 +67,5 @@ curl --fail --location --max-time 30 \
 新目录保存PNG、SVG、全部绘图数组data.npz及verification.json；已有目录会被拒绝。[生成记录](figure-verification.json)、[独立几何审查](figure-geometry-review.json)与[主代理核对](figure-root-check.json)保存版本、身份、解析端点与图像检查。原始数据在本地/tmp/genai-meanflow-figure/final，读者可用该命令重新生成。
 
 固定002dd89的新增图片验收见[实际浏览器](figure-browser-check.json)、[SVG字节核验](figure-svg-reachability.json)和[主代理检查](figure-browser-root-check.json)。两视口均正常加载完整原图、中文alt/配文和79个公式，整体无横向溢出；[窄屏配文截图](figure-caption-narrow.png)保留实际文字呈现。窄屏中的整图为缩略显示，细小标签需放大查看。
+
+[完整增量摘要](figure-browser-final.json)另确认SVG文件页的GitHub viewscreen预览实际加载成功。原始矢量文件HTTP200且SHA相同；缩放交互与屏幕阅读器行为仍需分别验证。
