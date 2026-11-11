@@ -28,6 +28,8 @@ bash scripts/quality.sh
 
 2026-11-11第一段观察为15:39–17:35 UTC，117次成功查询覆盖16:17和17:17，未发现schedule事件。连接恢复后的18:31:58–19:34:59又完成64次成功查询，覆盖19:17；19:36独立复查仍为0。18:17处于断线空窗，缺少当时的现场查询。main d99、workflow active及1356字节配置身份保持；原main push artifact重新核验146 tests、15教学块、7条smoke和11项退出0。
 
+20:40–20:41 UTC的[队列复查](../records/automation-queue-20261111.json)显示，PR9最新记录提交的run43095115227排队约24分钟，尚无job/check-run；其前次正文run43094510880成功。workflow与main文件身份保持，未识别出同组运行阻塞；官方Actions状态为operational，原因仍待确定。此时schedule事件总数仍为0。作业的25分钟上限从job执行阶段生效，排队等待需要单独观察；本次未修改workflow或触发重跑。
+
 Actions权限策略端点曾返回403，定时事件缺失的原因仍待确定；当前没有成功的schedule运行可供验收。后续取得实际run后核对event/head SHA、结果与artifact。[恢复观察](../records/automation-recovery-20261111.json)与[部署证据](../records/automation-deployment.json)保留两个窗口、版本和范围；编码代理的每小时启动入口与Bark/Codex通知绑定仍未配置。
 
 配置位于 [quality.yml](../.github/workflows/quality.yml)：

@@ -1,0 +1,86 @@
+{
+  "status": "passed_no_confirmed_new_issue",
+  "reviewed_utc": "2026-11-11T20:45:25.325828+00:00",
+  "commit": "3e41f75a25739bea56420efc349ca00663721258",
+  "scope": "Read-only foundation-path review: 00–03 prerequisites/goals/formulas/exercises, all13 self-assessment questions and answer criteria, notation time/target conventions, experiment/solver CLI definitions. No models, training, installation, new tests or Git writes.",
+  "files": {
+    "AGENTS.md": {
+      "bytes": 2181,
+      "sha256": "90334863b76e12bb5d0db11b1c34125e471017100a9ae8200f61e306ce11f3e8"
+    },
+    "docs/chapters/00-foundations.md": {
+      "bytes": 6645,
+      "sha256": "feb2423c9dd0cff4a98de619b2ce70d1450673b130690b888aa535cc6c47a10b"
+    },
+    "docs/chapters/01-generative-models.md": {
+      "bytes": 17453,
+      "sha256": "df603b38520e5eaf9181a511041499f92a1d8d12c7f749c4f653babe582634ab"
+    },
+    "docs/chapters/02-diffusion.md": {
+      "bytes": 13068,
+      "sha256": "4ab030b3d2a9c2c0deca2142227330dccc0f3efd878af63f0c23c8922767aded"
+    },
+    "docs/chapters/03-flow-matching.md": {
+      "bytes": 13893,
+      "sha256": "4e83df5dc9ab2c849014d9b73d60fa05d4ea34e10e8a625c0646609b093e6b83"
+    },
+    "docs/self-assessment.md": {
+      "bytes": 24249,
+      "sha256": "fed14b62111f9c1b1d0b475adf2609b48a53002608bbc893130518acb5879e59"
+    },
+    "docs/notation.md": {
+      "bytes": 8718,
+      "sha256": "723f0f73e50313e1cf580df6bdf50cfc9959ad51290b450b7f9454dbda85e946"
+    },
+    "src/genai_study/experiment.py": {
+      "bytes": 6963,
+      "sha256": "bee833cc0c3221c9983f86ad8899e15d01e2f8f85cc9f8d1e9e1896530675aea"
+    },
+    "src/genai_study/solver_study.py": {
+      "bytes": 5520,
+      "sha256": "ed9c240869870195aef61a81688dca5bf44daf8c1381ac4343c8e361e68b6252"
+    }
+  },
+  "confirmed_findings": [],
+  "checks": [
+    {
+      "topic": "Time and prediction conventions",
+      "result": "DDPM t=0 data and k=0 first noisy array entry; flow time0 noise/time1 data and instantaneous velocity; local endpoint names z/y and MeanFlow local direction are explicit and consistent with notation."
+    },
+    {
+      "topic": "Model objectives",
+      "result": "ELBO/KL direction and finite-expectation conditions, GAN minimax vs non-saturating loss, density Jacobian sign and CNF total derivative are internally consistent; exercises provide concrete numerical counterexamples."
+    },
+    {
+      "topic": "DDPM interface and practice",
+      "result": "Posterior variance last step0, mean parameterization, simple-loss weighting/reduction scope, continuous2D vs image decoder scope, strengthened100-step beta schedule,5000 optimizer updates and output reuse are consistent."
+    },
+    {
+      "topic": "Flow interface and practice",
+      "result": "Conditional square-loss regression/continuity equation, sigma_min0 endpoint caveat, Gaussian conditional velocity/variance and Euler direction/NFE agree across body, exercises and self-assessment."
+    },
+    {
+      "topic": "Exercise progression",
+      "result": "00–03 each have concrete exercises/answers or derivation hints. Self-assessment1–5 diagnose coordinates, causal inputs, DDPM prediction, conditional-mean regression and frozen-checkpoint solver comparisons, with exact back-links and completion criteria. The remaining8 questions maintain stated scope and numeric conventions."
+    },
+    {
+      "topic": "CLI contract",
+      "result": "Read parser definitions and ran both --help commands. experiment defaults800 optimizer updates/batch256/samples2048/seed7/threads1; docs explicitlyrequest5000. Flow sampling100 is fixed in code. solver steps10/25/100/200,samples2048,seed123,threads1 andflow-only checkpoint agree."
+    }
+  ],
+  "cheap_execution": [
+    {
+      "command": ".venv/bin/python -m genai_study.experiment --help",
+      "result": "exit0; no model construction or training"
+    },
+    {
+      "command": ".venv/bin/python -m genai_study.solver_study --help",
+      "result": "exit0; no checkpoint/model load"
+    }
+  ],
+  "unverified_reader_points": [
+    "Actual learners familiarity with joint-Gaussian conditional means and ODEs:02/03 declare these prerequisites, while00 focuses on Gaussian linear combinations. This is a learner-testing question rather than a confirmed contradiction.",
+    "Learning durations, independent completion rates and readers success without assistance require real target-reader observations.",
+    "This audit did not refetch primary papers, rerun training or independently certify every proof across the repository."
+  ]
+}

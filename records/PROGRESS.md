@@ -12,7 +12,7 @@
 - [PR #4](https://github.com/Fengyee/genai_study/pull/4)开放，最新efb3ead的run43070085722成功，包含checkpoint数值契约及调度观察记录。8份历史checkpoint重放结果逐元素相同；本项尚无合并授权。
 - [PR #5](https://github.com/Fengyee/genai_study/pull/5)开放，基于PR #4，最新f5cc255的run43071278535成功。完整本地检查178 tests、16/16教学块、7条CLI smoke通过；固定1684744实际页面双视口52公式/锚点/答案/局部滚动均通过。PR #4/#5的新合并授权已询问，等待用户答复，其他工作继续。
 - [PR #6](https://github.com/Fengyee/genai_study/pull/6)分支为feat/sd14-attributes-layout，原八请求首条超时、余七未执行；单独声明的线程诊断后，两线程批次0bc702c八条全部成功，37.00分钟，完整原图与两位AI独立观察均已归档。固定源码和锁文件保持。
-- PR6最终内容1b6f8f5、[PR #7](https://github.com/Fengyee/genai_study/pull/7)集成7ed0d67与[PR #8](https://github.com/Fengyee/genai_study/pull/8)集成9ebea09的最新CI均成功；PR6已转为可审阅。PR8检查点94f7660的CI43091354688也已success。分支按PR6→PR7→PR8同步，均待审阅与单独合并授权。Reflow专题已通过178/18/7完整检查和固定SHA两视口验收，以PR #9交付；正文dca73531的CI成功，证据检查点4a3235a的CI仍queued。当前工作分支feat/svd-temporal-decoder-chunks从4a3235a接续，固定latent分块实测已完成；详细进度见轮次61。
+- PR6最终内容1b6f8f5、[PR #7](https://github.com/Fengyee/genai_study/pull/7)集成7ed0d67与[PR #8](https://github.com/Fengyee/genai_study/pull/8)集成9ebea09的最新CI均成功；PR6已转为可审阅。PR8检查点94f7660的CI43091354688也已success。分支按PR6→PR7→PR8同步，均待审阅与单独合并授权。Reflow专题已通过178/18/7完整检查和固定SHA两视口验收，以PR #9交付；正文dca73531的CI成功，证据检查点4a3235a的CI仍queued。固定latent分块实测已以PR #10交付，178/19/7及两视口验收完成；当前docs/learning-path-maintenance接续整体复审与状态记录，见轮次61–62。
 - 每小时质量workflow位于main，API active、cron为UTC每小时:17；原416版本push/手动与d99版本push的artifact均实际核验。初段117次查询覆盖16:17/17:17；恢复后18:31–19:35的64次覆盖19:17，19:36复查仍无schedule事件；18:17处于断线空窗，原因未确定。
 - 编码代理持久调度、网站和通知绑定未部署；Bark/Codex推送仍缺可用接口。原八请求已按超时规则停止；新两线程批次已完成，完整PNG、metrics/run与日志文本进入仓库，浮点数组保存在忽略的artifacts。
 
@@ -737,3 +737,13 @@ PR8基底同步：当前工作分支feat/meanflow-average-velocity已合入PR7�
 轮次61页面与交付：已创建[PR #10](https://github.com/Fengyee/genai_study/pull/10)，base为docs/reflow-coupling，正文3e41f75。GitHub实际1440×1000与390×844均通过：5个公式/视口、23行886字节CPU及338/168字节Bash、3题、两张表逐格数字、14次锚点和12次课程/证据/固定来源跳转。PNG/SVG网络响应SHA相同，两种视口真实SVG预览加载；主协调查看窄屏表格/图上下文，重hash正文及11份证据/截图。窄图324×159为缩略图，中文说明完整，图内标签需打开矢量版放大；未测实际缩放交互/屏幕阅读器。reader-check.json及原表截图归档。
 
 20:43交付状态：PR9检查点4a3235a/run43095115227与PR10正文3e41f75/run43097625331均queued；PR9正文dca73531的run43094510880仍success。独立只读队列诊断未发现已禁用workflow或可识别同组运行，官方Actions状态operational，排队原因未确定；没有取消、重跑或改配置。平台环境状态新查询为running/当前观测，用户发布配置身份保持；工具没有Bark/编码调度入口，配置无secret/runtime变量绑定。下一轮继续整体路径审查并修正已发现的README术语计数陈旧问题，持续保存远端实际状态。
+
+## 轮次62：完整路径复审与先修、术语入口的一致性
+
+独立代理按3e41f75基线阅读README、路线、符号/术语、自测、00–10章及MeanFlow/Reflow/SVD新材料；基础章另由子审查核对。确认两项低严重性问题：README仍标40组术语、实际41组；全局路线要求03和05后进入07，而07章首把05写成推荐。现将术语计数只保留在glossary，README/notation保持导航；07章首明确两项先修，路线图与课程顺序保持。
+
+本轮范围内未发现新的数学或运行入口P0/P1。1038本地链接0错误、30段Bash语法/5段独立Python解析与基础CLI帮助通过；两个发现均独立复查闭环。主协调重hash20份基线和3份最终修复文件，保留审查原记录与静态/基础子证据。审查JSON的baseline_files.current字段来自初段扫描，最终修复由closure_files绑定。额外确认三处编辑的公式和代码围栏逐字节保持；src/tests/scripts/依赖锁/workflow与PR10检查点30124d5无差异，沿用178/19/7完整基线，运行文档/diff检查。
+
+自动化状态另存read-only记录：20:40–20:41的PR9新head仍排队，无job/check-run；main workflow active且SHA保持，官方Actions operational，未识别可证实修复的仓库配置问题。主协调重hash35份原始响应，归档automation-queue-20261111.json及manifest；约25分钟的job超时不涵盖无job队列。20:44平台状态running/current，无secret/runtime变量/出站身份绑定，工具仍缺Bark或编码调度API；只保存无凭据的环境摘要，没有配置发布。
+
+当前工作分支docs/learning-path-maintenance从PR10检查点30124d5建立；PR9的4a3235a、PR10的3e41f75/30124d5远端检查仍queued。下一项具体工作是公开CPU CLI参数与实际运行前提的有限审查；完整发布尺寸视频、真实读者完成情况及自动化外部阻塞继续保留。

@@ -1,6 +1,6 @@
 # 07 · 从二维点到小图像：条件 Flow Matching 实验
 
-**先修与依赖：** [03 Flow matching](03-flow-matching.md) 的直线路径与 Euler 采样、PyTorch 卷积和广播；建议先完成 [05 评价与实验诊断](05-evaluation.md)。
+**先修与依赖：** [03 Flow matching](03-flow-matching.md) 的直线路径与 Euler 采样、[05 评价与实验诊断](05-evaluation.md)，以及 PyTorch 卷积和广播。
 
 **完成后应能：** 把二维速度回归推广到 `B,C,H,W` 图像张量；解释时间、类别和坐标怎样进入卷积网络；保存并冻结模型比较采样步数；从原始数值、形状与多样性三个角度检查生成结果。
 

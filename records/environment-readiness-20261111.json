@@ -1,0 +1,14 @@
+{
+  "checked_utc": "2026-11-11T20:44:00Z",
+  "time_precision": "Tool read occurred during20:44 UTC; exact seconds were not captured.",
+  "observed_phase": "running",
+  "desired_phase": "running",
+  "observations_current": true,
+  "configured_secret_binding_count": 0,
+  "configured_runtime_variable_count": 0,
+  "configured_outbound_identity_count": 0,
+  "callable_bark_or_coding_scheduler_tool_found": false,
+  "scope": "Read-only provider readiness/configuration and tool catalog observation; no configuration draft, metadata or publication mutation. Existing repository integration authentication is not inferred from these binding counts.",
+  "source_config_version_sha256": "cc4c95147e7e74863bdde1c5d95c93eac42d0585441ed09be8426502c40610a0",
+  "environment": "Managed Codex Cloud instance selected in this session"
+}

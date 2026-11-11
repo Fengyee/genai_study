@@ -1,0 +1,21 @@
+{
+  "checks": [
+    {
+      "path": "README.md",
+      "mathematics_and_fenced_blocks_unchanged": true,
+      "current_sha256": "f60080d4c1f7ecf8d2dbbf594d6fd266b8a4abbb276fdf0f27f6648075a7fdcc"
+    },
+    {
+      "path": "docs/notation.md",
+      "mathematics_and_fenced_blocks_unchanged": true,
+      "current_sha256": "50007b0881896ccece7b1393b49cea3816706a5f2fae17be2ad942e897df8a2e"
+    },
+    {
+      "path": "docs/chapters/07-image-flow-lab.md",
+      "mathematics_and_fenced_blocks_unchanged": true,
+      "current_sha256": "537b1c1dd43d931c32e79989dd86e8b9c3120fb20f2d608ed3cbe8fb003144f9"
+    }
+  ],
+  "glossary_entry_rows": 41,
+  "scope": "Small editorial changes; all formulas and fenced code remain unchanged. Shared implementation/tests/locks/workflow/executor diff againstPR10 checkpoint is empty."
+}

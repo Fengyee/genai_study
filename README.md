@@ -24,7 +24,7 @@
 
 想把预训练接口延伸到视频，可读[10 SVD运行与失败分析](docs/chapters/10-pretrained-video-lab.md)。低分辨率14帧/25步在本机完整运行约16.8分钟、峰值11.21GiB，输出存在严重形变；[报告](docs/pretrained-video-report.md)保留全部帧、官方API对照和后续诊断问题。
 
-完整的先修图、实践任务与时间预算见 [学习路线](docs/learning-path.md)。遇到新词可查 [40组中英术语索引](docs/glossary.md)，再沿具体章节链接阅读推导；全局 [符号约定](docs/notation.md) 与 [来源核验](SOURCES.md) 帮助跨章核对。
+完整的先修图、实践任务与时间预算见 [学习路线](docs/learning-path.md)。遇到新词可查 [中英术语索引](docs/glossary.md)，再沿具体章节链接阅读推导；全局 [符号约定](docs/notation.md) 与 [来源核验](SOURCES.md) 帮助跨章核对。
 
 读完一段路线后，用[13题课程自测](docs/self-assessment.md)定位下一步：先独立作答，再展开提示和参考答案，按具体通过判据回到对应章节。
 

@@ -1,0 +1,236 @@
+{
+  "reviewed_utc": "2026-11-11T20:49:47.666179+00:00",
+  "status": "passed_after_two_low_severity_documentation_fixes",
+  "baseline_commit": "3e41f75a25739bea56420efc349ca00663721258",
+  "closure_observed_head": "30124d5da8de66dbff2a656e1101def888bf05d5",
+  "closure_binding": "Fixes were reviewed in the parent-maintained worktree; file SHA256 below binds them independently of commit status.",
+  "scope": "Independent read-only review for PyTorch-proficient CS graduate researchers new to GenAI. AGENTS/README/learning path/notation/glossary/self-assessment;00–10 chapter prerequisites, goals, practice entry points, exercises, evidence and completion criteria; MeanFlow, Reflow and SVD temporal-decoder-chunk additions. No training/model inference, installation, tracked edits, Git mutations or external messages by this reviewer.",
+  "findings": [
+    {
+      "id": "LP62-1",
+      "priority": "P2",
+      "severity": "low",
+      "title": "README glossary entry count lagged behind the41-entry index",
+      "baseline_locations": [
+        "README.md:27",
+        "docs/glossary.md:3",
+        "docs/notation.md:5"
+      ],
+      "evidence": "README advertised40groups; glossary and notation declared41. Independent count of non-header glossary table rows returned41, including Reflow.",
+      "impact": "The reader-facing inventory contradicted the actual navigation index.",
+      "resolution": "Parent removed the repeated numeric count from README and notation; glossary owns the count. Links and useful navigation remain.",
+      "closure": "verified"
+    },
+    {
+      "id": "LP62-2",
+      "priority": "P2",
+      "severity": "low",
+      "title": "Chapter07 and the global path assigned different strength to the05 prerequisite",
+      "baseline_locations": [
+        "docs/learning-path.md:31",
+        "docs/learning-path.md:37",
+        "docs/learning-path.md:47",
+        "docs/chapters/07-image-flow-lab.md:3"
+      ],
+      "evidence": "The dependency graph, accessible description and prose require both05 and03 for07;07 header described05 as recommended.",
+      "impact": "A reader choosing a local chapter entry could infer a different required preparation from the global route.",
+      "resolution": "Parent chapter header now lists03 and05 together as prerequisites, preserving the existing global graph and course order.",
+      "closure": "verified"
+    }
+  ],
+  "unresolved_findings": [],
+  "review_results": [
+    "No new confirmed mathematical, factual, execution-path or completion-criterion P0/P1 issue in this scope.",
+    "00–03 and13-question self-assessment independently reviewed by foundations_path; no confirmed new issue. Foundation prerequisites, DDPM/flow directions, loss reductions, exercises and CLI defaults are consistent.",
+    "04–10 carry explicit prerequisites, objectives, scopes, practical outputs and exercises/answers. Synthetic images lead to frozen-checkpoint solver/CFG comparisons; temporal diagnostics lead to budgeted SVD generation and full-frame failure analysis.",
+    "README/learning-path clarify optimizer updates versus sampling steps, CLI800 default versus5000 recommended runs, result-directory reuse and fresh paths. Optional SD1.4/SVD environments, download size, RAM/time and output verification are visible.",
+    "Global time/target conventions stay consistent: DDPMdata→noise, flow noise→data, MeanFlow local tau data→noise, SVD sigma integration and VP target. Local symbols/scales and frame/call counting are stated explicitly.",
+    "MeanFlow JVP input order, h=t-r chain rule, stop-gradient role, Gaussian endpoint/variance example and exercise boundaries agree. Reflow coupling update, preserved per-round marginals, Gaussian counterexamples and OT scope agree.",
+    "SVD chunk report prerequisite links, full-latent control,14/7/1runtime commands, statistical units, time/RSS scope and toy-convolution exercises match the main chapter and stated experimental limitations."
+  ],
+  "checks": [
+    {
+      "command": ".venv/bin/python scripts/check_docs.py",
+      "observed_result": "exit0;1038local links;0errors",
+      "scope": "Current worktree; repeated once after parent fixes."
+    },
+    {
+      "command": "Extract baseline bash fences and pass each to bash -n; parse standalone Python fences with ast.parse",
+      "observed_result": "30bash blocks and5standalonePython blocks passed; no commands executed",
+      "scope": "20reviewed baselineMarkdown files; bash heredoc bodies were not separately executed or Python-parsed."
+    },
+    {
+      "command": "Independent glossary non-header row count",
+      "observed_result": "41term rows",
+      "scope": "Baseline glossary table, excluding headers/separators."
+    },
+    {
+      "command": ".venv/bin/python -m genai_study.experiment --help; .venv/bin/python -m genai_study.solver_study --help",
+      "observed_result": "both exit0; parser/options/defaults agree with00–03documentation",
+      "scope": "Delegated read-only review; no models or checkpoint loaded."
+    },
+    {
+      "command": "Read run_probe.py and compare.py argparse definitions",
+      "observed_result": "Published chunk-study flags,14/7/1choices and required output paths match parser definitions",
+      "scope": "Static CLI contract review."
+    },
+    {
+      "command": "Read and assert parent closure text",
+      "observed_result": "Both reported findings closed; glossary count has one canonical location;07prerequisites match global route",
+      "scope": "Bound to closure_files SHA256."
+    }
+  ],
+  "known_limits_and_reader_validation": [
+    "A real target reader has not been observed independently completing installation, Gaussian conditional-mean reasoning, ODE prerequisites, exercises and research-plan transfer. The listed learning-time estimates remain unmeasured planning suggestions.",
+    "This audit did not rerun training, pretrained models, full quality suite, paper downloads or browser rendering. Existing checked-in evidence was reviewed for scope and consistency; exact source/experiment revalidation belongs to its original records and parallel audits.",
+    "The optional low-resolution SVD output remains a documented severe visual failure. This report does not establish release-resolution video quality or identify the cause of those failures.",
+    "Screen-reader, mobile navigation and real-reader completion evidence remain separate validation needs. Static Markdown/link and syntax checks do not measure them."
+  ],
+  "baseline_files": {
+    "AGENTS.md": {
+      "baseline_sha256": "90334863b76e12bb5d0db11b1c34125e471017100a9ae8200f61e306ce11f3e8",
+      "bytes": 2181,
+      "current_sha256": "90334863b76e12bb5d0db11b1c34125e471017100a9ae8200f61e306ce11f3e8",
+      "current_matches_baseline": true
+    },
+    "README.md": {
+      "baseline_sha256": "1c3f7c1d1321ee9ea44c99b1dddcd0b1e8b807a63290dafe75a51a3295e237f3",
+      "bytes": 10153,
+      "current_sha256": "f60080d4c1f7ecf8d2dbbf594d6fd266b8a4abbb276fdf0f27f6648075a7fdcc",
+      "current_matches_baseline": false
+    },
+    "docs/learning-path.md": {
+      "baseline_sha256": "d98a2c1648df7f891ec8d97521b45db47e6584848c9acead3726989a359097cf",
+      "bytes": 16652,
+      "current_sha256": "d98a2c1648df7f891ec8d97521b45db47e6584848c9acead3726989a359097cf",
+      "current_matches_baseline": true
+    },
+    "docs/notation.md": {
+      "baseline_sha256": "723f0f73e50313e1cf580df6bdf50cfc9959ad51290b450b7f9454dbda85e946",
+      "bytes": 8718,
+      "current_sha256": "50007b0881896ccece7b1393b49cea3816706a5f2fae17be2ad942e897df8a2e",
+      "current_matches_baseline": false
+    },
+    "docs/glossary.md": {
+      "baseline_sha256": "8b5857b4393f68e21eacac87417cedcdea8a95601725bcd78f09bfce7d4e4efb",
+      "bytes": 16959,
+      "current_sha256": "8b5857b4393f68e21eacac87417cedcdea8a95601725bcd78f09bfce7d4e4efb",
+      "current_matches_baseline": true
+    },
+    "docs/self-assessment.md": {
+      "baseline_sha256": "fed14b62111f9c1b1d0b475adf2609b48a53002608bbc893130518acb5879e59",
+      "bytes": 24249,
+      "current_sha256": "fed14b62111f9c1b1d0b475adf2609b48a53002608bbc893130518acb5879e59",
+      "current_matches_baseline": true
+    },
+    "docs/chapters/00-foundations.md": {
+      "baseline_sha256": "feb2423c9dd0cff4a98de619b2ce70d1450673b130690b888aa535cc6c47a10b",
+      "bytes": 6645,
+      "current_sha256": "feb2423c9dd0cff4a98de619b2ce70d1450673b130690b888aa535cc6c47a10b",
+      "current_matches_baseline": true
+    },
+    "docs/chapters/01-generative-models.md": {
+      "baseline_sha256": "df603b38520e5eaf9181a511041499f92a1d8d12c7f749c4f653babe582634ab",
+      "bytes": 17453,
+      "current_sha256": "df603b38520e5eaf9181a511041499f92a1d8d12c7f749c4f653babe582634ab",
+      "current_matches_baseline": true
+    },
+    "docs/chapters/02-diffusion.md": {
+      "baseline_sha256": "4ab030b3d2a9c2c0deca2142227330dccc0f3efd878af63f0c23c8922767aded",
+      "bytes": 13068,
+      "current_sha256": "4ab030b3d2a9c2c0deca2142227330dccc0f3efd878af63f0c23c8922767aded",
+      "current_matches_baseline": true
+    },
+    "docs/chapters/03-flow-matching.md": {
+      "baseline_sha256": "4e83df5dc9ab2c849014d9b73d60fa05d4ea34e10e8a625c0646609b093e6b83",
+      "bytes": 13893,
+      "current_sha256": "4e83df5dc9ab2c849014d9b73d60fa05d4ea34e10e8a625c0646609b093e6b83",
+      "current_matches_baseline": true
+    },
+    "docs/chapters/04-image-video-roadmap.md": {
+      "baseline_sha256": "2ead8c6f849c33bdf1a4106c8990ac67bcd080a0653688b6906b86f3530c1095",
+      "bytes": 19189,
+      "current_sha256": "2ead8c6f849c33bdf1a4106c8990ac67bcd080a0653688b6906b86f3530c1095",
+      "current_matches_baseline": true
+    },
+    "docs/chapters/05-evaluation.md": {
+      "baseline_sha256": "afa12386e9499a205247bf2f15d20bd9908b17f9a5276e581a24fa8108a07b04",
+      "bytes": 26146,
+      "current_sha256": "afa12386e9499a205247bf2f15d20bd9908b17f9a5276e581a24fa8108a07b04",
+      "current_matches_baseline": true
+    },
+    "docs/chapters/06-video-temporal-lab.md": {
+      "baseline_sha256": "cf2b1e89884c89c299f87b9bff02bddbba673dfa7eacba6682969fe7feadfeb8",
+      "bytes": 14053,
+      "current_sha256": "cf2b1e89884c89c299f87b9bff02bddbba673dfa7eacba6682969fe7feadfeb8",
+      "current_matches_baseline": true
+    },
+    "docs/chapters/07-image-flow-lab.md": {
+      "baseline_sha256": "50ff21172930024522719538f2516dfe7a4af34156175af98a5dee60f75ee639",
+      "bytes": 20312,
+      "current_sha256": "50ff21172930024522719538f2516dfe7a4af34156175af98a5dee60f75ee639",
+      "current_matches_baseline": true
+    },
+    "docs/chapters/08-image-guidance-lab.md": {
+      "baseline_sha256": "2f5d01cf1dff49d6f2dab039166c9b6dea80564c395b1ed82b2b8945cd4caad6",
+      "bytes": 18842,
+      "current_sha256": "2f5d01cf1dff49d6f2dab039166c9b6dea80564c395b1ed82b2b8945cd4caad6",
+      "current_matches_baseline": true
+    },
+    "docs/chapters/09-pretrained-image-lab.md": {
+      "baseline_sha256": "a4147ea9ea448c0d1aff67fa1479b6cdbf2ab6467c920cbe834a06f09333bbb8",
+      "bytes": 21598,
+      "current_sha256": "a4147ea9ea448c0d1aff67fa1479b6cdbf2ab6467c920cbe834a06f09333bbb8",
+      "current_matches_baseline": true
+    },
+    "docs/chapters/10-pretrained-video-lab.md": {
+      "baseline_sha256": "d26c12896f4eff9bdbd66efa09ec036c7527a0915065f8b7cfbdb6331413c44b",
+      "bytes": 21909,
+      "current_sha256": "d26c12896f4eff9bdbd66efa09ec036c7527a0915065f8b7cfbdb6331413c44b",
+      "current_matches_baseline": true
+    },
+    "docs/readings/meanflow-average-velocity.md": {
+      "baseline_sha256": "4fc6d136fe448233cbbec3c5d5efe5d0f60796364fa7b0a14dae77cd310d77e5",
+      "bytes": 12943,
+      "current_sha256": "4fc6d136fe448233cbbec3c5d5efe5d0f60796364fa7b0a14dae77cd310d77e5",
+      "current_matches_baseline": true
+    },
+    "docs/readings/reflow-coupling.md": {
+      "baseline_sha256": "a8a2dd6e458274eaefd1664a404ab5e1ebbca1e09345dcf593f8b8dd2ee884fe",
+      "bytes": 10666,
+      "current_sha256": "a8a2dd6e458274eaefd1664a404ab5e1ebbca1e09345dcf593f8b8dd2ee884fe",
+      "current_matches_baseline": true
+    },
+    "docs/svd-decoder-chunk-report.md": {
+      "baseline_sha256": "7915b58a5e68e7d55cc65e616e67ada710a02f62999b30338a6ba865c867cc9b",
+      "bytes": 10554,
+      "current_sha256": "7915b58a5e68e7d55cc65e616e67ada710a02f62999b30338a6ba865c867cc9b",
+      "current_matches_baseline": true
+    }
+  },
+  "closure_files": {
+    "README.md": {
+      "sha256": "f60080d4c1f7ecf8d2dbbf594d6fd266b8a4abbb276fdf0f27f6648075a7fdcc",
+      "bytes": 10148
+    },
+    "docs/notation.md": {
+      "sha256": "50007b0881896ccece7b1393b49cea3816706a5f2fae17be2ad942e897df8a2e",
+      "bytes": 8710
+    },
+    "docs/chapters/07-image-flow-lab.md": {
+      "sha256": "537b1c1dd43d931c32e79989dd86e8b9c3120fb20f2d608ed3cbe8fb003144f9",
+      "bytes": 20303
+    }
+  },
+  "supporting_artifacts": {
+    "static": {
+      "path": "/tmp/genai-learning-path-round62-static.json",
+      "sha256": "85c9edae95006496014fd04b0c9ad5c34c17f28cd76a5fd1e0b5feef3e263cdd"
+    },
+    "foundations": {
+      "path": "/tmp/genai-path-foundations-audit.json",
+      "sha256": "b729bd652e00d27a278f44e12bb2d402c2ccee920c397053f5e898c281a3f80f",
+      "status": "passed_no_confirmed_new_issue"
+    }
+  }
+}
