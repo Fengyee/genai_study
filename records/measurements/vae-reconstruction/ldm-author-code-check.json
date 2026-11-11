@@ -1,0 +1,35 @@
+{
+  "url": "https://raw.githubusercontent.com/CompVis/latent-diffusion/a506df5756472e2ebaf9078affdde2c4f1502cd4/ldm/models/diffusion/ddpm.py",
+  "bytes": 67425,
+  "sha256": "e5c085c54758952a13540fb69e9b7a6dccb46ae420c6bb2c589c51afab64013e",
+  "locations": [
+    {
+      "line": 489,
+      "excerpt": "            z = self.get_first_stage_encoding(encoder_posterior).detach()\n            del self.scale_factor\n            self.register_buffer('scale_factor', 1. / z.flatten().std())\n            print(f\"setting self.scale_factor to {self.scale_factor}\")\n            print(\"### USING STD-RESCALING ###\")\n"
+    },
+    {
+      "line": 542,
+      "excerpt": "        return denoise_grid\n\n    def get_first_stage_encoding(self, encoder_posterior):\n        if isinstance(encoder_posterior, DiagonalGaussianDistribution):\n            z = encoder_posterior.sample()\n        elif isinstance(encoder_posterior, torch.Tensor):"
+    },
+    {
+      "line": 544,
+      "excerpt": "    def get_first_stage_encoding(self, encoder_posterior):\n        if isinstance(encoder_posterior, DiagonalGaussianDistribution):\n            z = encoder_posterior.sample()\n        elif isinstance(encoder_posterior, torch.Tensor):\n            z = encoder_posterior\n        else:"
+    },
+    {
+      "line": 549,
+      "excerpt": "        else:\n            raise NotImplementedError(f\"encoder_posterior of type '{type(encoder_posterior)}' not yet implemented\")\n        return self.scale_factor * z\n\n    def get_learned_conditioning(self, c):\n        if self.cond_stage_forward is None:"
+    },
+    {
+      "line": 706,
+      "excerpt": "\n    @torch.no_grad()\n    def decode_first_stage(self, z, predict_cids=False, force_not_quantize=False):\n        if predict_cids:\n            if z.dim() == 4:\n                z = torch.argmax(z.exp(), dim=1).long()"
+    },
+    {
+      "line": 713,
+      "excerpt": "            z = rearrange(z, 'b h w c -> b c h w').contiguous()\n\n        z = 1. / self.scale_factor * z\n\n        if hasattr(self, \"split_input_params\"):\n            if self.split_input_params[\"patch_distributed_vq\"]:"
+    },
+    {
+      "line": 773,
+      "excerpt": "            z = rearrange(z, 'b h w c -> b c h w').contiguous()\n\n        z = 1. / self.scale_factor * z\n\n        if hasattr(self, \"split_input_params\"):\n            if self.split_input_params[\"patch_distributed_vq\"]:"
+    }
+  ]
+}

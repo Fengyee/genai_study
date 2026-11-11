@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "checked_date_utc": "2026-11-10",
+  "source": {
+    "title": "High-Resolution Image Synthesis with Latent Diffusion Models",
+    "arxiv_version": "2112.10752v2",
+    "url": "https://arxiv.org/pdf/2112.10752v2",
+    "pdf_local_path": "/tmp/genai-image-video-audit/2112.10752v2.pdf",
+    "pdf_size_bytes": 40842586,
+    "pdf_sha256": "46ede043a8dc07ca1f0f445620523fe1ad8b2436bd83856a3835612a47e9f79e",
+    "pdf_pages": 45,
+    "method": "Read existing pdftotext layout extraction and rehash the fixed PDF; PDF and printed page numbers coincide for cited sections."
+  },
+  "claims": [
+    {
+      "id": "perceptual-compression",
+      "section": "3.1 Perceptual Image Compression",
+      "pdf_pages": [
+        3,
+        4
+      ],
+      "printed_pages": [
+        3,
+        4
+      ],
+      "short_quote": "an autoencoder trained by combination of a perceptual loss",
+      "paraphrase": "The autoencoder uses a perceptual loss and patch-based adversarial objective. It maps RGB x through E to spatial latent z, then D(z) reconstructs x; the spatial downsampling factor is f=H/h=W/w. KL and VQ are alternative regularizations studied in this paper.",
+      "scope": "This describes the paper family, not a verified exhaustive training recipe for the later SD1.4 release."
+    },
+    {
+      "id": "kl-regularization",
+      "section": "3.1 and G Details on Autoencoder Models",
+      "pdf_pages": [
+        4,
+        29
+      ],
+      "printed_pages": [
+        4,
+        29
+      ],
+      "equation_number": 25,
+      "paraphrase": "KL regularization is a low-weight penalty between q_E(z|x)=Normal(E_mu(x),E_sigma(x)^2) and a standard normal. Appendix G reports a KL weight around 1e-6 for its experiments; the autoencoder loss also includes reconstruction and adversarial terms.",
+      "scope": "A weak KL penalty does not establish that each sample, channel, or the aggregate encoded-data distribution is exactly standard normal. The paper-specific weight is not claimed as the complete SD1.4 training configuration."
+    },
+    {
+      "id": "kl-encoding-samples",
+      "section": "G, DM Training in Latent Space",
+      "pdf_pages": [
+        29
+      ],
+      "printed_pages": [
+        29
+      ],
+      "short_quote": "For a KL-regularized latent space, we sample",
+      "formula": "z = E_mu(x) + E_sigma(x) * epsilon, epsilon ~ Normal(0,1)",
+      "paraphrase": "The paper samples the encoder approximate posterior when training the diffusion model on KL-regularized latent representations.",
+      "scope": "The defined E(x) in this paragraph includes random sampling; a mode-based reconstruction is a separately declared diagnostic choice."
+    },
+    {
+      "id": "latent-rescaling",
+      "section": "G, DM Training in Latent Space",
+      "pdf_pages": [
+        29
+      ],
+      "printed_pages": [
+        29
+      ],
+      "short_quote": "from the first batch in the data",
+      "formula": "mu_hat = (1/(b*c*h*w)) sum_{b,c,h,w} z[b,c,h,w]; sigma_hat^2 = (1/(b*c*h*w)) sum_{b,c,h,w} (z[b,c,h,w]-mu_hat)^2; z <- z/sigma_hat",
+      "paraphrase": "For the rescaled setting, the variance estimate uses latent scalar entries from the first data batch. The displayed formula is a single pooled scalar despite the prose saying component-wise variance.",
+      "scope": "The constant 0.18215 is not specified in this paragraph and must be attributed to the fixed SD1.4 configuration. A statistic computed on one later image does not re-estimate or validate the original training-data normalization."
+    },
+    {
+      "id": "variance-and-snr",
+      "section": "D.1 Choosing the Signal-to-Noise Ratio for High-Resolution Synthesis",
+      "pdf_pages": [
+        20
+      ],
+      "printed_pages": [
+        20
+      ],
+      "figure": 15,
+      "short_quote": "the signal-to-noise ratio induced by the variance of the latent space",
+      "paper_expression": "Var(z) / sigma_t^2",
+      "paraphrase": "For the semantic-layout convolutional-sampling comparison, high latent variance in an unscaled KL representation yields high signal-to-noise ratio and early semantic-detail allocation. Rescaling decreases the ratio in this comparison. The VQ representation in this comparison has variance near 1.",
+      "scope": "These are the paper's convolutional sampling settings and observations. A fixed SD1.4 decode-only scale mismatch experiment does not reproduce that training experiment."
+    }
+  ],
+  "independent_reasoning": [
+    {
+      "claim": "For a fixed decoder D and any encoder choice e(x), inf_z ||x-D(z)||^2 <= ||x-D(e(x))||^2.",
+      "reason": "The encoded latent is one candidate in the infimum. An encoder-decoder round-trip error therefore bounds the decoder's best-latent reconstruction error from above; it does not provide a universal bound on generative distribution quality.",
+      "type": "analytic argument; not an empirical model measurement"
+    },
+    {
+      "claim": "For Z~Normal(mu,sigma^2) and D(z)=z^2, D(E[Z])=mu^2 whereas E[D(Z)]=mu^2+sigma^2.",
+      "reason": "Second-moment identity gives a strict difference whenever sigma>0.",
+      "example": {
+        "mu": 0,
+        "sigma": 1,
+        "decode_mean": 0,
+        "mean_decode": 1
+      },
+      "type": "analytic counterexample; not an empirical VAE claim"
+    },
+    {
+      "claim": "For x in [0,1] and any real y, (clip(y,0,1)-x)^2 <= (y-x)^2.",
+      "reason": "Projection of y onto the interval containing x weakly decreases distance, coordinate by coordinate; summing or averaging preserves the inequality.",
+      "type": "analytic argument for reporting raw and clipped MSE together"
+    }
+  ],
+  "execution_scope": "No repository files modified; no weight download, real encoder/decoder forward, or training executed. Only cached paper text, byte hashing, and analytic reasoning."
+}

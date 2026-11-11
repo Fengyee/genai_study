@@ -1,0 +1,126 @@
+{
+  "checked_utc": "2026-11-11T16:49:34.283281+00:00",
+  "api": "https://api.github.com/markdown",
+  "github_host_page": "https://github.com/Fengyee/genai_study/blob/348e54571f53ffbfce6b962d6ffdae45088d36d1/docs/chapters/01-generative-models.md",
+  "scope": "Transient local DOM candidate probe, not published source validation",
+  "candidates": [
+    {
+      "label": "control_inline",
+      "markdown": "$`x^2+1`$",
+      "api_html": "<p dir=\"auto\"><math-renderer class=\"js-inline-math\" style=\"display: inline-block\" data-run-id=\"ec0e9fd98627a477eb741bde1c7d3d35\">$x^2+1$</math-renderer></p>",
+      "client_result": {
+        "renderer_count": 1,
+        "mathml_count": 1,
+        "svg_count": 0,
+        "text": "control_inline\n\n𝑥\n2\n+\n1",
+        "html": "<h3>control_inline</h3><p dir=\"auto\"><math-renderer class=\"js-inline-math\" style=\"display: inline-block\" data-run-id=\"ec0e9fd98627a477eb741bde1c7d3d35\" data-catalyst=\"\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n  <msup>\n    <mi>x</mi>\n    <mn>2</mn>\n  </msup>\n  <mo>+</mo>\n  <mn>1</mn>\n</math></math-renderer></p>"
+      }
+    },
+    {
+      "label": "operatorname_cov",
+      "markdown": "$`\\operatorname{Cov}(U,X)`$",
+      "api_html": "<p dir=\"auto\"><math-renderer class=\"js-inline-math\" style=\"display: inline-block\" data-run-id=\"88bc3f561415b008de25c4db25ee44a7\">$\\operatorname{Cov}(U,X)$</math-renderer></p>",
+      "client_result": {
+        "renderer_count": 1,
+        "mathml_count": 0,
+        "svg_count": 0,
+        "text": "operatorname_cov\n\nThe following macros are not allowed: operatorname\n\n\n$\\operatorname{Cov}(U,X)$",
+        "html": "<h3>operatorname_cov</h3><p dir=\"auto\"><math-renderer class=\"js-inline-math\" style=\"display: inline-block\" data-run-id=\"88bc3f561415b008de25c4db25ee44a7\" data-catalyst=\"\"><!----><div class=\"flash flash-error\"><!---->The following macros are not allowed: operatorname<!----></div>\n        <br>\n        <pre><!---->$\\operatorname{Cov}(U,X)$<!----></pre><!----></math-renderer></p>"
+      },
+      "screenshot": "candidate-operatorname_cov.png"
+    },
+    {
+      "label": "mathrm_cov",
+      "markdown": "$`\\mathrm{Cov}(U,X)`$",
+      "api_html": "<p dir=\"auto\"><math-renderer class=\"js-inline-math\" style=\"display: inline-block\" data-run-id=\"23efc258c8c7465d155dbeff2a11f329\">$\\mathrm{Cov}(U,X)$</math-renderer></p>",
+      "client_result": {
+        "renderer_count": 1,
+        "mathml_count": 1,
+        "svg_count": 0,
+        "text": "mathrm_cov\n\nCov\n(\n𝑈\n,\n𝑋\n)",
+        "html": "<h3>mathrm_cov</h3><p dir=\"auto\"><math-renderer class=\"js-inline-math\" style=\"display: inline-block\" data-run-id=\"23efc258c8c7465d155dbeff2a11f329\" data-catalyst=\"\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n  <mrow data-mjx-texclass=\"ORD\">\n    <mi data-mjx-auto-op=\"false\">Cov</mi>\n  </mrow>\n  <mo stretchy=\"false\">(</mo>\n  <mi>U</mi>\n  <mo>,</mo>\n  <mi>X</mi>\n  <mo stretchy=\"false\">)</mo>\n</math></math-renderer></p>"
+      }
+    },
+    {
+      "label": "mathop_mathrm_cov",
+      "markdown": "$`\\mathop{\\mathrm{Cov}}(U,X)`$",
+      "api_html": "<p dir=\"auto\"><math-renderer class=\"js-inline-math\" style=\"display: inline-block\" data-run-id=\"b5b41070fa7ae8b5194d721dd0575389\">$\\mathop{\\mathrm{Cov}}(U,X)$</math-renderer></p>",
+      "client_result": {
+        "renderer_count": 1,
+        "mathml_count": 1,
+        "svg_count": 0,
+        "text": "mathop_mathrm_cov\n\nCov\n⁡\n(\n𝑈\n,\n𝑋\n)",
+        "html": "<h3>mathop_mathrm_cov</h3><p dir=\"auto\"><math-renderer class=\"js-inline-math\" style=\"display: inline-block\" data-run-id=\"b5b41070fa7ae8b5194d721dd0575389\" data-catalyst=\"\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n  <mrow data-mjx-texclass=\"OP\">\n    <mrow data-mjx-texclass=\"ORD\">\n      <mi data-mjx-auto-op=\"false\">Cov</mi>\n    </mrow>\n  </mrow>\n  <mo data-mjx-texclass=\"NONE\">⁡</mo>\n  <mo stretchy=\"false\">(</mo>\n  <mi>U</mi>\n  <mo>,</mo>\n  <mi>X</mi>\n  <mo stretchy=\"false\">)</mo>\n</math></math-renderer></p>"
+      },
+      "screenshot": "candidate-mathop_mathrm_cov.png"
+    },
+    {
+      "label": "mathop_mathrm_uniform",
+      "markdown": "$`X\\sim\\mathop{\\mathrm{Uniform}}(0,0.25)`$",
+      "api_html": "<p dir=\"auto\"><math-renderer class=\"js-inline-math\" style=\"display: inline-block\" data-run-id=\"6f33b29b01016db1b25ed64a293450cd\">$X\\sim\\mathop{\\mathrm{Uniform}}(0,0.25)$</math-renderer></p>",
+      "client_result": {
+        "renderer_count": 1,
+        "mathml_count": 1,
+        "svg_count": 0,
+        "text": "mathop_mathrm_uniform\n\n𝑋\n∼\nUniform\n⁡\n(\n0\n,\n0.25\n)",
+        "html": "<h3>mathop_mathrm_uniform</h3><p dir=\"auto\"><math-renderer class=\"js-inline-math\" style=\"display: inline-block\" data-run-id=\"6f33b29b01016db1b25ed64a293450cd\" data-catalyst=\"\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n  <mi>X</mi>\n  <mo>∼</mo>\n  <mrow data-mjx-texclass=\"OP\">\n    <mrow data-mjx-texclass=\"ORD\">\n      <mi data-mjx-auto-op=\"false\">Uniform</mi>\n    </mrow>\n  </mrow>\n  <mo data-mjx-texclass=\"NONE\">⁡</mo>\n  <mo stretchy=\"false\">(</mo>\n  <mn>0</mn>\n  <mo>,</mo>\n  <mn>0.25</mn>\n  <mo stretchy=\"false\">)</mo>\n</math></math-renderer></p>"
+      }
+    },
+    {
+      "label": "original_lt_display",
+      "markdown": "```math\np_\\theta(x_1,\\ldots,x_D)=\\prod_{i=1}^D p_\\theta(x_i\\mid x_{<i}).\n```",
+      "api_html": "<math-renderer class=\"js-display-math\" style=\"display: block\" data-run-id=\"4c521bd3dfd9906aa461d5b0379585e2\">$$p_\\theta(x_1,\\ldots,x_D)=\\prod_{i=1}^D p_\\theta(x_i\\mid x_{&lt;i}).$$</math-renderer>",
+      "client_result": {
+        "renderer_count": 1,
+        "mathml_count": 0,
+        "svg_count": 0,
+        "text": "original_lt_display\nExtra open brace or missing close brace\n\n\n$$p_\\theta(x_1,\\ldots,x_D)=\\prod_{i=1}^D p_\\theta(x_i\\mid x_{<i}).$$",
+        "html": "<h3>original_lt_display</h3><math-renderer class=\"js-display-math\" style=\"display: block\" data-run-id=\"4c521bd3dfd9906aa461d5b0379585e2\" data-catalyst=\"\"><!----><div class=\"flash flash-error\"><!---->\n    Extra open brace or missing close brace\n  <!----></div>\n        <br>\n        <pre><!---->$$p_\\theta(x_1,\\ldots,x_D)=\\prod_{i=1}^D p_\\theta(x_i\\mid x_{&lt;i}).$$<!----></pre><!----></math-renderer>"
+      },
+      "screenshot": "candidate-original_lt_display.png"
+    },
+    {
+      "label": "alias_lt_display",
+      "markdown": "```math\np_\\theta(x_1,\\ldots,x_D)=\\prod_{i=1}^D p_\\theta(x_i\\mid x_{\\lt i}).\n```",
+      "api_html": "<math-renderer class=\"js-display-math\" style=\"display: block\" data-run-id=\"6f5ac0c4b8ceb9fbd94fc48d4bd296b5\">$$p_\\theta(x_1,\\ldots,x_D)=\\prod_{i=1}^D p_\\theta(x_i\\mid x_{\\lt i}).$$</math-renderer>",
+      "client_result": {
+        "renderer_count": 1,
+        "mathml_count": 1,
+        "svg_count": 0,
+        "text": "alias_lt_display\n𝑝\n𝜃\n(\n𝑥\n1\n,\n…\n,\n𝑥\n𝐷\n)\n=\n∏\n𝑖\n=\n1\n𝐷\n𝑝\n𝜃\n(\n𝑥\n𝑖\n∣\n𝑥\n<\n𝑖\n)\n.",
+        "html": "<h3>alias_lt_display</h3><math-renderer class=\"js-display-math\" style=\"display: block\" data-run-id=\"6f5ac0c4b8ceb9fbd94fc48d4bd296b5\" data-catalyst=\"\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <msub>\n    <mi>p</mi>\n    <mi>θ</mi>\n  </msub>\n  <mo stretchy=\"false\">(</mo>\n  <msub>\n    <mi>x</mi>\n    <mn>1</mn>\n  </msub>\n  <mo>,</mo>\n  <mo>…</mo>\n  <mo>,</mo>\n  <msub>\n    <mi>x</mi>\n    <mi>D</mi>\n  </msub>\n  <mo stretchy=\"false\">)</mo>\n  <mo>=</mo>\n  <munderover>\n    <mo data-mjx-texclass=\"OP\">∏</mo>\n    <mrow data-mjx-texclass=\"ORD\">\n      <mi>i</mi>\n      <mo>=</mo>\n      <mn>1</mn>\n    </mrow>\n    <mi>D</mi>\n  </munderover>\n  <msub>\n    <mi>p</mi>\n    <mi>θ</mi>\n  </msub>\n  <mo stretchy=\"false\">(</mo>\n  <msub>\n    <mi>x</mi>\n    <mi>i</mi>\n  </msub>\n  <mo>∣</mo>\n  <msub>\n    <mi>x</mi>\n    <mrow data-mjx-texclass=\"ORD\">\n      <mo>&lt;</mo>\n      <mi>i</mi>\n    </mrow>\n  </msub>\n  <mo stretchy=\"false\">)</mo>\n  <mo>.</mo>\n</math></math-renderer>"
+      },
+      "screenshot": "candidate-alias_lt_display.png"
+    },
+    {
+      "label": "space_lt_display",
+      "markdown": "```math\np_\\theta(x_1,\\ldots,x_D)=\\prod_{i=1}^D p_\\theta(x_i\\mid x_{< i}).\n```",
+      "api_html": "<math-renderer class=\"js-display-math\" style=\"display: block\" data-run-id=\"2e7f822dbeaa3a1e8fd437d9f7f5309b\">$$p_\\theta(x_1,\\ldots,x_D)=\\prod_{i=1}^D p_\\theta(x_i\\mid x_{&lt; i}).$$</math-renderer>",
+      "client_result": {
+        "renderer_count": 1,
+        "mathml_count": 1,
+        "svg_count": 0,
+        "text": "space_lt_display\n𝑝\n𝜃\n(\n𝑥\n1\n,\n…\n,\n𝑥\n𝐷\n)\n=\n∏\n𝑖\n=\n1\n𝐷\n𝑝\n𝜃\n(\n𝑥\n𝑖\n∣\n𝑥\n<\n𝑖\n)\n.",
+        "html": "<h3>space_lt_display</h3><math-renderer class=\"js-display-math\" style=\"display: block\" data-run-id=\"2e7f822dbeaa3a1e8fd437d9f7f5309b\" data-catalyst=\"\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <msub>\n    <mi>p</mi>\n    <mi>θ</mi>\n  </msub>\n  <mo stretchy=\"false\">(</mo>\n  <msub>\n    <mi>x</mi>\n    <mn>1</mn>\n  </msub>\n  <mo>,</mo>\n  <mo>…</mo>\n  <mo>,</mo>\n  <msub>\n    <mi>x</mi>\n    <mi>D</mi>\n  </msub>\n  <mo stretchy=\"false\">)</mo>\n  <mo>=</mo>\n  <munderover>\n    <mo data-mjx-texclass=\"OP\">∏</mo>\n    <mrow data-mjx-texclass=\"ORD\">\n      <mi>i</mi>\n      <mo>=</mo>\n      <mn>1</mn>\n    </mrow>\n    <mi>D</mi>\n  </munderover>\n  <msub>\n    <mi>p</mi>\n    <mi>θ</mi>\n  </msub>\n  <mo stretchy=\"false\">(</mo>\n  <msub>\n    <mi>x</mi>\n    <mi>i</mi>\n  </msub>\n  <mo>∣</mo>\n  <msub>\n    <mi>x</mi>\n    <mrow data-mjx-texclass=\"ORD\">\n      <mo>&lt;</mo>\n      <mi>i</mi>\n    </mrow>\n  </msub>\n  <mo stretchy=\"false\">)</mo>\n  <mo>.</mo>\n</math></math-renderer>"
+      }
+    },
+    {
+      "label": "mathop_mathrm_tr_display",
+      "markdown": "```math\n-\\mathop{\\mathrm{tr}}\\!\\left(\\frac{\\partial v_\\theta}{\\partial x}(x_t,t)\\right).\n```",
+      "api_html": "<math-renderer class=\"js-display-math\" style=\"display: block\" data-run-id=\"d5ece1857f324ffb969224beea4f139e\">$$-\\mathop{\\mathrm{tr}}\\!\\left(\\frac{\\partial v_\\theta}{\\partial x}(x_t,t)\\right).$$</math-renderer>",
+      "client_result": {
+        "renderer_count": 1,
+        "mathml_count": 1,
+        "svg_count": 0,
+        "text": "mathop_mathrm_tr_display\n−\ntr\n(\n𝜕\n𝑣\n𝜃\n𝜕\n𝑥\n(\n𝑥\n𝑡\n,\n𝑡\n)\n)\n.",
+        "html": "<h3>mathop_mathrm_tr_display</h3><math-renderer class=\"js-display-math\" style=\"display: block\" data-run-id=\"d5ece1857f324ffb969224beea4f139e\" data-catalyst=\"\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mo>−</mo>\n  <mrow data-mjx-texclass=\"OP\">\n    <mrow data-mjx-texclass=\"ORD\">\n      <mi data-mjx-auto-op=\"false\">tr</mi>\n    </mrow>\n  </mrow>\n  <mstyle>\n    <mspace width=\"-0.167em\"></mspace>\n  </mstyle>\n  <mrow data-mjx-texclass=\"INNER\">\n    <mo data-mjx-texclass=\"OPEN\">(</mo>\n    <mfrac>\n      <mrow>\n        <mi>∂</mi>\n        <msub>\n          <mi>v</mi>\n          <mi>θ</mi>\n        </msub>\n      </mrow>\n      <mrow>\n        <mi>∂</mi>\n        <mi>x</mi>\n      </mrow>\n    </mfrac>\n    <mo stretchy=\"false\">(</mo>\n    <msub>\n      <mi>x</mi>\n      <mi>t</mi>\n    </msub>\n    <mo>,</mo>\n    <mi>t</mi>\n    <mo stretchy=\"false\">)</mo>\n    <mo data-mjx-texclass=\"CLOSE\">)</mo>\n  </mrow>\n  <mo>.</mo>\n</math></math-renderer>"
+      }
+    }
+  ],
+  "original_first_formula": {
+    "html": "<math-renderer class=\"js-display-math\" style=\"display: block\" data-run-id=\"34b89aca4267c6f51a8f480323fbd318\" data-catalyst=\"\"><!----><div class=\"flash flash-error\"><!---->\n    Extra open brace or missing close brace\n  <!----></div>\n        <br>\n        <pre><!---->$$p_\\theta(x_1,\\ldots,x_D)=\\prod_{i=1}^D p_\\theta(x_i\\mid x_{&lt;i}).$$<!----></pre><!----></math-renderer>",
+    "text": "\n    Extra open brace or missing close brace\n  ",
+    "math": 0
+  },
+  "custom_element_registered": true
+}

@@ -1,0 +1,623 @@
+VAE encode started
+VAE decode 1/6: mode
+VAE decode 2/6: posterior-seed7
+VAE decode 3/6: posterior-seed19
+VAE decode 4/6: posterior-seed43
+VAE decode 5/6: scale-roundtrip
+VAE decode 6/6: scale-mismatch
+{
+  "schema_version": 1,
+  "model": {
+    "model_id": "CompVis/stable-diffusion-v1-4",
+    "revision": "133a221b8aa7292a167afc5127cb63fb5005638b",
+    "manifest_path": "examples/pretrained-sd14/manifest.json",
+    "manifest_sha256": "96a6930e1db07afefe127075304325e316d03621e4681a42b351d9c6b6072141",
+    "verification_scope": "VAE config and safetensors only; other SD components are unused",
+    "files": [
+      {
+        "path": "vae/config.json",
+        "url": "https://huggingface.co/CompVis/stable-diffusion-v1-4/resolve/133a221b8aa7292a167afc5127cb63fb5005638b/vae/config.json",
+        "sha256": "0e5966d4d52c8077648754ffd2c14ab5e0b26a4bdfa6af1d207c27550fa6d2af",
+        "verification": "downloaded content; byte length and Git blob sha1 matched immutable revision API",
+        "size_bytes": 551
+      },
+      {
+        "path": "vae/diffusion_pytorch_model.safetensors",
+        "url": "https://huggingface.co/CompVis/stable-diffusion-v1-4/resolve/133a221b8aa7292a167afc5127cb63fb5005638b/vae/diffusion_pytorch_model.safetensors",
+        "sha256": "a2b5134f4dbc140d9c11f11cba3233099e00af40f262f136c691fb7d38d2194c",
+        "verification": "LFS sha256 from immutable revision API; weights not downloaded by metadata audit",
+        "size_bytes": 334643276
+      }
+    ],
+    "verified_files": 2,
+    "verified_bytes": 334643827
+  },
+  "input": {
+    "source_path": "docs/assets/sd14-pilot-scene-seed43.png",
+    "source_sha256": "a262f5478c234927217e9268e5abeb7f58bcb21a2415366cdbe4f950f26688b9",
+    "original_size_wh": [
+      512,
+      512
+    ],
+    "original_mode": "RGB",
+    "exif_orientation": null,
+    "prepared_size_wh": [
+      512,
+      512
+    ],
+    "transform": "EXIF transpose -> RGB -> float32/255 -> BCHW -> 2*x-1; no crop or resize"
+  },
+  "config": {
+    "seeds": [
+      7,
+      19,
+      43
+    ],
+    "threads": 1,
+    "device": "cpu",
+    "dtype": "float32",
+    "deterministic_algorithms": true,
+    "tiling": false,
+    "slicing": false,
+    "scaling_factor": 0.18215,
+    "vae_config": {
+      "in_channels": 3,
+      "out_channels": 3,
+      "down_block_types": [
+        "DownEncoderBlock2D",
+        "DownEncoderBlock2D",
+        "DownEncoderBlock2D",
+        "DownEncoderBlock2D"
+      ],
+      "up_block_types": [
+        "UpDecoderBlock2D",
+        "UpDecoderBlock2D",
+        "UpDecoderBlock2D",
+        "UpDecoderBlock2D"
+      ],
+      "block_out_channels": [
+        128,
+        256,
+        512,
+        512
+      ],
+      "layers_per_block": 2,
+      "act_fn": "silu",
+      "latent_channels": 4,
+      "norm_num_groups": 32,
+      "sample_size": 512,
+      "scaling_factor": 0.18215,
+      "shift_factor": null,
+      "latents_mean": null,
+      "latents_std": null,
+      "force_upcast": true,
+      "use_quant_conv": true,
+      "use_post_quant_conv": true,
+      "mid_block_add_attention": true,
+      "_use_default_values": [
+        "norm_num_groups",
+        "latents_mean",
+        "use_quant_conv",
+        "shift_factor",
+        "mid_block_add_attention",
+        "force_upcast",
+        "use_post_quant_conv",
+        "latents_std"
+      ],
+      "_class_name": "AutoencoderKL",
+      "_diffusers_version": "0.2.2",
+      "_name_or_path": "artifacts/models/sd14"
+    },
+    "attention_processors": {
+      "encoder.mid_block.attentions.0.processor": "diffusers.models.attention_processor.AttnProcessor2_0",
+      "decoder.mid_block.attentions.0.processor": "diffusers.models.attention_processor.AttnProcessor2_0"
+    }
+  },
+  "versions": {
+    "torch": "2.6.0+cpu",
+    "numpy": "2.1.3",
+    "diffusers": "0.35.2",
+    "transformers": "4.57.6",
+    "accelerate": "1.11.0",
+    "safetensors": "0.6.2",
+    "Pillow": "13.0.0",
+    "python": "3.12.14"
+  },
+  "source": {
+    "vae_study_sha256": "827aaff547906db71bea4097a042a20605f5a876d678cb43ae2707150d03ae79",
+    "pretrained_image_sha256": "3cd514bae6d2a9e8c17fafea806f49854813ad88c0b08e858e685dd6e0b8f1be",
+    "pretrained_lock_sha256": "95176d3908a08a99ca80ca84fe8d2aaf0a5b7c5cc80cd663fb63bd5c1b7b1729"
+  },
+  "posterior": {
+    "family": "encoder approximate posterior: diagonal Gaussian",
+    "logvar_clamp": [
+      -30.0,
+      20.0
+    ],
+    "mode_equals_mean": true,
+    "mean_coordinate_mean": 0.6354400171933321,
+    "mean_coordinate_std": 3.9868771989955003,
+    "std_range": [
+      3.0590231858695915e-07,
+      0.0020260342862457037
+    ],
+    "std_coordinate_mean": 0.00037760337913312486
+  },
+  "representation": {
+    "image_scalar_count": 786432,
+    "latent_scalar_count": 16384,
+    "scalar_count_ratio": 48.0,
+    "scale_roundtrip_max_abs_error": 3.814697265625e-06
+  },
+  "network_evaluations": {
+    "vae_encode_calls": 1,
+    "vae_decode_calls": 6
+  },
+  "cases": [
+    {
+      "id": "mode",
+      "seed": null,
+      "array_prefix": "case_0",
+      "reparameterization_max_abs_error": null,
+      "decode_seconds": 13.149074756999994,
+      "diagnostics": {
+        "raw_rgb_range": [
+          -0.010518789291381836,
+          0.9694051742553711
+        ],
+        "raw_rgb_mse": 0.0004433625551289419,
+        "raw_rgb_rms": 0.02105617617538716,
+        "clipped_rgb_mse": 0.0004433618899137884,
+        "clipped_rgb_rms": 0.02105616037918092,
+        "out_of_range_fraction": 1.2715657552083333e-06,
+        "clipping_rms": 1.18613785721255e-05
+      },
+      "image": "mode.png"
+    },
+    {
+      "id": "posterior-seed7",
+      "seed": 7,
+      "array_prefix": "case_1",
+      "reparameterization_max_abs_error": 0.0,
+      "decode_seconds": 13.364216176000014,
+      "diagnostics": {
+        "raw_rgb_range": [
+          -0.010517239570617676,
+          0.9694119691848755
+        ],
+        "raw_rgb_mse": 0.0004433534350546172,
+        "raw_rgb_rms": 0.021055959608970977,
+        "clipped_rgb_mse": 0.0004433527699581941,
+        "clipped_rgb_rms": 0.02105594381542167,
+        "out_of_range_fraction": 1.2715657552083333e-06,
+        "clipping_rms": 1.185963104927324e-05
+      },
+      "image": "posterior-seed7.png"
+    },
+    {
+      "id": "posterior-seed19",
+      "seed": 19,
+      "array_prefix": "case_2",
+      "reparameterization_max_abs_error": 0.0,
+      "decode_seconds": 13.640334885000016,
+      "diagnostics": {
+        "raw_rgb_range": [
+          -0.010515868663787842,
+          0.9693724513053894
+        ],
+        "raw_rgb_mse": 0.0004433522176236178,
+        "raw_rgb_rms": 0.021055930699534937,
+        "clipped_rgb_mse": 0.0004433515526322202,
+        "clipped_rgb_rms": 0.02105591490845791,
+        "out_of_range_fraction": 1.2715657552083333e-06,
+        "clipping_rms": 1.1858085163673166e-05
+      },
+      "image": "posterior-seed19.png"
+    },
+    {
+      "id": "posterior-seed43",
+      "seed": 43,
+      "array_prefix": "case_3",
+      "reparameterization_max_abs_error": 0.0,
+      "decode_seconds": 13.315023570999983,
+      "diagnostics": {
+        "raw_rgb_range": [
+          -0.010523974895477295,
+          0.9695063829421997
+        ],
+        "raw_rgb_mse": 0.0004434831600989319,
+        "raw_rgb_rms": 0.021059039866502267,
+        "clipped_rgb_mse": 0.00044348249448644396,
+        "clipped_rgb_rms": 0.02105902406301023,
+        "out_of_range_fraction": 1.2715657552083333e-06,
+        "clipping_rms": 1.1867226052438829e-05
+      },
+      "image": "posterior-seed43.png"
+    },
+    {
+      "id": "scale-roundtrip",
+      "seed": null,
+      "array_prefix": "case_4",
+      "reparameterization_max_abs_error": null,
+      "decode_seconds": 14.068859461999978,
+      "diagnostics": {
+        "raw_rgb_range": [
+          -0.010518848896026611,
+          0.9694052934646606
+        ],
+        "raw_rgb_mse": 0.00044336258681894363,
+        "raw_rgb_rms": 0.02105617692789799,
+        "clipped_rgb_mse": 0.0004433619215992235,
+        "clipped_rgb_rms": 0.021056161131583873,
+        "out_of_range_fraction": 1.2715657552083333e-06,
+        "clipping_rms": 1.1861445784542894e-05
+      },
+      "image": "scale-roundtrip.png"
+    },
+    {
+      "id": "scale-mismatch",
+      "seed": null,
+      "array_prefix": "case_5",
+      "reparameterization_max_abs_error": null,
+      "decode_seconds": 13.520264161,
+      "diagnostics": {
+        "raw_rgb_range": [
+          0.2259473204612732,
+          0.6069463491439819
+        ],
+        "raw_rgb_mse": 0.0256559653236957,
+        "raw_rgb_rms": 0.16017479615624833,
+        "clipped_rgb_mse": 0.0256559653236957,
+        "clipped_rgb_rms": 0.16017479615624833,
+        "out_of_range_fraction": 0.0,
+        "clipping_rms": 0.0
+      },
+      "image": "scale-mismatch.png"
+    }
+  ],
+  "arrays": {
+    "input_rgb": {
+      "shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "dtype": "float32",
+      "sha256": "13433ccc01ddf345df758f9e745df4f190a235dca4bff8bacfe9eaa2d9039083",
+      "hash_format": "C-order raw bytes"
+    },
+    "input_normalized": {
+      "shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "dtype": "float32",
+      "sha256": "1d9dc5c1296e0a38fbdc0d2a18b3d2f65d7db083f312299ff5398965c445cda3",
+      "hash_format": "C-order raw bytes"
+    },
+    "posterior_mean": {
+      "shape": [
+        1,
+        4,
+        64,
+        64
+      ],
+      "dtype": "float32",
+      "sha256": "49ded1c4c346fb1091ee0f67d009a692bee9eecda34b9a93a2d7651197624e80",
+      "hash_format": "C-order raw bytes"
+    },
+    "posterior_logvar": {
+      "shape": [
+        1,
+        4,
+        64,
+        64
+      ],
+      "dtype": "float32",
+      "sha256": "8363614e07a4e191d1063bea587b41b9e7818863b652f18a83a930cd0357443f",
+      "hash_format": "C-order raw bytes"
+    },
+    "posterior_std": {
+      "shape": [
+        1,
+        4,
+        64,
+        64
+      ],
+      "dtype": "float32",
+      "sha256": "2a5872e5875a847d48eb4c08458462eae89890c1f9f2581bc49c881d56c3434f",
+      "hash_format": "C-order raw bytes"
+    },
+    "epsilon_seed7": {
+      "shape": [
+        1,
+        4,
+        64,
+        64
+      ],
+      "dtype": "float32",
+      "sha256": "e0236a3fd3aea2d52159dbbb9c363da74ea06cccba20eb26132c4fb0d3d8fa63",
+      "hash_format": "C-order raw bytes"
+    },
+    "epsilon_seed19": {
+      "shape": [
+        1,
+        4,
+        64,
+        64
+      ],
+      "dtype": "float32",
+      "sha256": "009c2cf0b4d3d043d8bcdc20c02f0ba344f56a6be6cc038867a20be02c39b189",
+      "hash_format": "C-order raw bytes"
+    },
+    "epsilon_seed43": {
+      "shape": [
+        1,
+        4,
+        64,
+        64
+      ],
+      "dtype": "float32",
+      "sha256": "9221a84e15909664a5796681aca5c377438de2775b516c3f0cc6330c4134f187",
+      "hash_format": "C-order raw bytes"
+    },
+    "case_0_latent": {
+      "shape": [
+        1,
+        4,
+        64,
+        64
+      ],
+      "dtype": "float32",
+      "sha256": "49ded1c4c346fb1091ee0f67d009a692bee9eecda34b9a93a2d7651197624e80",
+      "hash_format": "C-order raw bytes"
+    },
+    "case_0_decoder_raw": {
+      "shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "dtype": "float32",
+      "sha256": "f5567a67fcd14e6a106508ec38b26a0613c67a74c5040fb55145f078b0ff7676",
+      "hash_format": "C-order raw bytes"
+    },
+    "case_0_rgb_raw": {
+      "shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "dtype": "float32",
+      "sha256": "f3990d78d6729c19f72190625786720f1e94e2cdc26e36a603bfaf8f1d7a9784",
+      "hash_format": "C-order raw bytes"
+    },
+    "case_1_latent": {
+      "shape": [
+        1,
+        4,
+        64,
+        64
+      ],
+      "dtype": "float32",
+      "sha256": "e4525bc486a7a2df05063a666aa986953314b371bcd98410478f73f762c897cd",
+      "hash_format": "C-order raw bytes"
+    },
+    "case_1_decoder_raw": {
+      "shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "dtype": "float32",
+      "sha256": "8fb8d0f2a8120ed7817ff0bc92c65bcf59ed0d1ff0068ade3ba64a1bdd7acc91",
+      "hash_format": "C-order raw bytes"
+    },
+    "case_1_rgb_raw": {
+      "shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "dtype": "float32",
+      "sha256": "f8db18ecbbac5f35272d5eb35d87e37e5d52c58f744655f064ba9e42e6ab4818",
+      "hash_format": "C-order raw bytes"
+    },
+    "case_2_latent": {
+      "shape": [
+        1,
+        4,
+        64,
+        64
+      ],
+      "dtype": "float32",
+      "sha256": "8e6f4ffd3fefd34aa45a0af31e8fae6b495fa4e35aee6532c4d9bf5a30741998",
+      "hash_format": "C-order raw bytes"
+    },
+    "case_2_decoder_raw": {
+      "shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "dtype": "float32",
+      "sha256": "9ed885dbc528d769b198fc79a7535d9647e050a72455fb34a85178cc829258e9",
+      "hash_format": "C-order raw bytes"
+    },
+    "case_2_rgb_raw": {
+      "shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "dtype": "float32",
+      "sha256": "b837cee667431319abc56a6ce9b66e7786998963322538ca5c464d1fcbb378f0",
+      "hash_format": "C-order raw bytes"
+    },
+    "case_3_latent": {
+      "shape": [
+        1,
+        4,
+        64,
+        64
+      ],
+      "dtype": "float32",
+      "sha256": "f78a4e88789ba689d62f867d350200d4fd51c3ae3b3d1dea7f597f9e41710ec9",
+      "hash_format": "C-order raw bytes"
+    },
+    "case_3_decoder_raw": {
+      "shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "dtype": "float32",
+      "sha256": "e2b42ad3f536060ac930dc68dfdb08ddb31797943da97a596d68a7d77fa3400c",
+      "hash_format": "C-order raw bytes"
+    },
+    "case_3_rgb_raw": {
+      "shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "dtype": "float32",
+      "sha256": "22a2874c5bf65d7978f22bfed9353a5a1af423a4d83e85f00ddfb2871f4f65f9",
+      "hash_format": "C-order raw bytes"
+    },
+    "case_4_latent": {
+      "shape": [
+        1,
+        4,
+        64,
+        64
+      ],
+      "dtype": "float32",
+      "sha256": "032682c03981695941d316074dc58bbb66617fc3daeaa0122e0ffeed88bb1463",
+      "hash_format": "C-order raw bytes"
+    },
+    "case_4_decoder_raw": {
+      "shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "dtype": "float32",
+      "sha256": "f2a2c29d99dd8c92323ebe997bc45aa75d4ee2a2ac2288c9aadc96a383546cbb",
+      "hash_format": "C-order raw bytes"
+    },
+    "case_4_rgb_raw": {
+      "shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "dtype": "float32",
+      "sha256": "126b1d8196b47c5cc3b589c929402b6664eba0631f492aa61abca9f042efdfac",
+      "hash_format": "C-order raw bytes"
+    },
+    "case_5_latent": {
+      "shape": [
+        1,
+        4,
+        64,
+        64
+      ],
+      "dtype": "float32",
+      "sha256": "ed1c0aa995c135f294b7f5300c31f746130ca6b97d0e18c882746d308ad5b3a3",
+      "hash_format": "C-order raw bytes"
+    },
+    "case_5_decoder_raw": {
+      "shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "dtype": "float32",
+      "sha256": "bd68384166bd6dfc77df12ebd8dc43e74946562824df8bd307fc6bbbfd373111",
+      "hash_format": "C-order raw bytes"
+    },
+    "case_5_rgb_raw": {
+      "shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "dtype": "float32",
+      "sha256": "9372c3d58eb984932743fa665e837fcafc54c983598d854498e1f64c1f7c1574",
+      "hash_format": "C-order raw bytes"
+    }
+  },
+  "diagnostic_scope": "RGB coordinate [0,1]; statistics reduce all BCHW entries in float64. Raw RGB is (decoder+1)/2 before clipping. Display applies clip, round(255*x), uint8.",
+  "timing_seconds": {
+    "verification": 0.3342235710000523,
+    "preprocess": 0.132902477000016,
+    "vae_load": 2.7435792270000547,
+    "encode": 6.373300968999956,
+    "decode_total": 81.05777301199998,
+    "save_and_metadata": 2.360441428999934,
+    "total_before_metrics_write": 93.0579443260001
+  },
+  "timing_scope": "No warm-up. VAE load includes optional imports; encode/decode fields time API calls. Per-case diagnostics and artifact saving are included in total_before_metrics_write. Full command wall is recorded externally.",
+  "memory": {
+    "process_peak_rss_kib": 1722144,
+    "scope": "Linux process lifetime high-water RSS, including imports, weights and saving"
+  },
+  "outputs": {
+    "arrays.npz": {
+      "size_bytes": 35775904,
+      "sha256": "3f9544585ede12071a3066de3a0150b234ed072be4c9f7fe3ae9379de41601e4"
+    },
+    "contact_sheet.png": {
+      "size_bytes": 1959601,
+      "sha256": "a2f30ee3721c0cf38a5a7e3061affc29ab89bf49f875c8c80715db46d69a63dd"
+    },
+    "input-source.bin": {
+      "size_bytes": 467791,
+      "sha256": "a262f5478c234927217e9268e5abeb7f58bcb21a2415366cdbe4f950f26688b9"
+    },
+    "input.png": {
+      "size_bytes": 467791,
+      "sha256": "a262f5478c234927217e9268e5abeb7f58bcb21a2415366cdbe4f950f26688b9"
+    },
+    "mode.png": {
+      "size_bytes": 471334,
+      "sha256": "5f69160c6cd4e758ca9ba1dffc1ebe89e25a50d06a6762662b0407d84e8233f5"
+    },
+    "posterior-seed19.png": {
+      "size_bytes": 471335,
+      "sha256": "074536c198f67bc4d615a8306fd68c948e75f82ece50f48a4497a5ee3befed2c"
+    },
+    "posterior-seed43.png": {
+      "size_bytes": 471326,
+      "sha256": "6ffc937c79740367dc11a34a1820cddee9708c8ee013de584c2647345b9001fc"
+    },
+    "posterior-seed7.png": {
+      "size_bytes": 471373,
+      "sha256": "c0cc0c38016e445b115acb685ad8798a3b0a2c658ace42bdab4c9ea4356f28f1"
+    },
+    "scale-mismatch.png": {
+      "size_bytes": 416437,
+      "sha256": "dbd37114d60ea14ff8ef7377188100fff09774d6b9569880c6a3b8c1f3c3337b"
+    },
+    "scale-roundtrip.png": {
+      "size_bytes": 471334,
+      "sha256": "968b217ad2a02769f88cf23325a9d0e5a0e7755cdc43e023425567ccb059a087"
+    }
+  }
+}

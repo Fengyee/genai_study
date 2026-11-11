@@ -1,0 +1,33 @@
+{
+  "utc": "2026-11-11T16:33:00.443777+00:00",
+  "endpoint": "POST https://api.github.com/markdown",
+  "parameters": {
+    "mode": "gfm",
+    "context": "Fengyee/genai_study"
+  },
+  "source_commit": "341340a7044407d522f6e80198a8509de621e520",
+  "source_path": "docs/self-assessment.md",
+  "before_sha256": "f1cd30f0460ccf7f3848013e1910274e2bed948253d25949417dc23c3c619e6b",
+  "successful_proposed_source": "full_block_as_own_inline_paragraph.md",
+  "proposed_sha256": "3a5bec58ba345a63fa42c254acc0a2e966aee74aa0499eeb239037e0a983b4f5",
+  "response_sha256": "f34a2ca8cbcb1b437775ad0dac102ceb471c0079baf9dec31d1dcc2608d67b0b",
+  "original_formula_count": 78,
+  "proposed_formula_count": 78,
+  "tex_payloads_unchanged_in_order": true,
+  "api_math_payloads_match_source_in_order": true,
+  "math_renderer_count": 78,
+  "raw_dollars_outside_math_renderer": 0,
+  "observed_request_count": 53,
+  "api_evidence_files": [
+    "api-results.json",
+    "full-results.json",
+    "details-results.json",
+    "question-results.json",
+    "isolation-results.json"
+  ],
+  "limitations": [
+    "API verifies server-side recognition, math element type, and preserved TeX payload; it does not execute client MathJax, verify visual layout, or test details expansion.",
+    "Response data-run-id values are transient, so identical input need not produce byte-identical HTML.",
+    "This report records current observed GitHub behavior; details mixing failure is empirical, not documented as a supported-platform restriction."
+  ]
+}

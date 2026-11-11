@@ -1,0 +1,23 @@
+{
+  "utc": "2026-11-11T16:27:33.540286+00:00",
+  "sources": [
+    {
+      "url": "https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions",
+      "local": "official_html.html",
+      "bytes": 191918,
+      "sha256": "8a8b3b36110199205ec7958b3dda330803d4586dcfddf3f431af12cc5140e326"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/github/docs/main/content/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions.md",
+      "local": "official_raw.md",
+      "bytes": 5006,
+      "sha256": "e0440dca59c2f45a6489e065c891416a82cd9ace595d70a91816ca73e23fb684"
+    },
+    {
+      "url": "https://docs.github.com/en/rest/markdown/markdown?apiVersion=2022-11-28",
+      "local": "rest-markdown-doc.html",
+      "bytes": 291085,
+      "sha256": "ae4be9aea7d2dafc6365fe31fd2a2edadc469da7194f18ad2f6a2ee73327bc4b"
+    }
+  ]
+}

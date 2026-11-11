@@ -1,0 +1,158 @@
+{
+  "base_commit": "348e54571f53ffbfce6b962d6ffdae45088d36d1",
+  "scope": "Equivalent TeX operator class with nolimits and explicit less-than command; inverse replacements reproduce all original bytes.",
+  "files": [
+    {
+      "file": "docs/evaluation-source-audit.md",
+      "named_operator_replacements": 3,
+      "display_less_than_replacements": 0,
+      "before_sha256": "9868bf9dadfc4e3225a2e7b10f9b04efeaca3ffac350b9559d8fa1e7b3865540",
+      "after_sha256": "b815d13ecf1f03e7e1a40fa0bf967873276a1569341d816148d4dc4f624a7a02",
+      "inverse_equivalent_notation_recovers_original_bytes": true
+    },
+    {
+      "file": "docs/generative-source-audit.md",
+      "named_operator_replacements": 1,
+      "display_less_than_replacements": 0,
+      "before_sha256": "0b612dc378d1d1afb9608c0ae485d70a5554e2b760e6cf9d0d082c2718bf6c62",
+      "after_sha256": "54351ba80561dd48a0943d9c7667647945c4c2f22b0b73f77d6120e77531d398",
+      "inverse_equivalent_notation_recovers_original_bytes": true
+    },
+    {
+      "file": "docs/vae-reconstruction-report.md",
+      "named_operator_replacements": 6,
+      "display_less_than_replacements": 0,
+      "before_sha256": "5bd8b05f338df392b3a848f9fd7424dab3dfcf8c2c4c1a6dad7c87341a3fb96d",
+      "after_sha256": "a606994f75cdd58688a06c9b879f54cab365953ca8613211568d818a67d32b11",
+      "inverse_equivalent_notation_recovers_original_bytes": true
+    },
+    {
+      "file": "docs/self-assessment.md",
+      "named_operator_replacements": 3,
+      "display_less_than_replacements": 0,
+      "before_sha256": "3a5bec58ba345a63fa42c254acc0a2e966aee74aa0499eeb239037e0a983b4f5",
+      "after_sha256": "fed14b62111f9c1b1d0b475adf2609b48a53002608bbc893130518acb5879e59",
+      "inverse_equivalent_notation_recovers_original_bytes": true
+    },
+    {
+      "file": "docs/ddpm-oracle-report.md",
+      "named_operator_replacements": 3,
+      "display_less_than_replacements": 1,
+      "before_sha256": "05b5c4d5f6459dc19cda92aa2c57671de3302f3dcacfff53cbf2c98c324660bf",
+      "after_sha256": "aac1877a49de999d74c9952f3215e980d963a67f112fcdb8dea9f09c842c1207",
+      "inverse_equivalent_notation_recovers_original_bytes": true
+    },
+    {
+      "file": "docs/chapters/00-foundations.md",
+      "named_operator_replacements": 1,
+      "display_less_than_replacements": 0,
+      "before_sha256": "d59127b7bc6654bc5be0e15c9fecb484082da809e8aaae3b9b69b3f748296d81",
+      "after_sha256": "feb2423c9dd0cff4a98de619b2ce70d1450673b130690b888aa535cc6c47a10b",
+      "inverse_equivalent_notation_recovers_original_bytes": true
+    },
+    {
+      "file": "docs/chapters/01-generative-models.md",
+      "named_operator_replacements": 2,
+      "display_less_than_replacements": 1,
+      "before_sha256": "4ed27a8341252ad9bf9e632e7c75502c4ddf13797696f59fc1ebdd64db22ef25",
+      "after_sha256": "df603b38520e5eaf9181a511041499f92a1d8d12c7f749c4f653babe582634ab",
+      "inverse_equivalent_notation_recovers_original_bytes": true
+    },
+    {
+      "file": "docs/chapters/02-diffusion.md",
+      "named_operator_replacements": 6,
+      "display_less_than_replacements": 0,
+      "before_sha256": "d61023468aee965fbd366c7326ef48f18cd2c8f55fb1dadfad4b280b1ad666e0",
+      "after_sha256": "4ab030b3d2a9c2c0deca2142227330dccc0f3efd878af63f0c23c8922767aded",
+      "inverse_equivalent_notation_recovers_original_bytes": true
+    },
+    {
+      "file": "docs/chapters/03-flow-matching.md",
+      "named_operator_replacements": 3,
+      "display_less_than_replacements": 0,
+      "before_sha256": "a5aa163829668ae7b4454eb7846129d21d22a1e59b539a0fce465a972310515c",
+      "after_sha256": "dd0667e336feb30efdc1634c033351ed65366742d9085f35b5724eee91cdca29",
+      "inverse_equivalent_notation_recovers_original_bytes": true
+    },
+    {
+      "file": "docs/chapters/04-image-video-roadmap.md",
+      "named_operator_replacements": 1,
+      "display_less_than_replacements": 0,
+      "before_sha256": "d88563f5b7d42e77465a062736b87c5b9a36e0dc70e921d70f57c2da65d475ba",
+      "after_sha256": "c1ee9c8a389a726a5a93231391ee3bcc818578435a1afb56a6c3618fe7e41ae5",
+      "inverse_equivalent_notation_recovers_original_bytes": true
+    },
+    {
+      "file": "docs/chapters/05-evaluation.md",
+      "named_operator_replacements": 5,
+      "display_less_than_replacements": 1,
+      "before_sha256": "49fd61eae4e19e52d3af24d64915fc56dfdfaf1f5b79caa2c446987055f13d6b",
+      "after_sha256": "a828f8c8510d7a8d4a78f51a39bf38fbc8d645ce0f9f2b33ff309402bdc4f7d6",
+      "inverse_equivalent_notation_recovers_original_bytes": true
+    },
+    {
+      "file": "docs/chapters/09-pretrained-image-lab.md",
+      "named_operator_replacements": 1,
+      "display_less_than_replacements": 0,
+      "before_sha256": "95f8276a1617ea0dffcb12d61913697e7a8c3f2bf45a3e1a319698827ff0ce7c",
+      "after_sha256": "8dd860fa8024df96fd799f05c0eee5361af550fbb9ce7f2b3e14140774825a02",
+      "inverse_equivalent_notation_recovers_original_bytes": true
+    },
+    {
+      "file": "docs/chapters/07-image-flow-lab.md",
+      "named_operator_replacements": 2,
+      "display_less_than_replacements": 0,
+      "before_sha256": "4dc15a2f10456b3893c560a52ccc440b0d301ef133ae5e080aa9a8796b79ce82",
+      "after_sha256": "c2935eee9604115847e8b112fc38ba8ed7eb2808d141e26ce30fac894188ba37",
+      "inverse_equivalent_notation_recovers_original_bytes": true
+    },
+    {
+      "file": "docs/chapters/08-image-guidance-lab.md",
+      "named_operator_replacements": 2,
+      "display_less_than_replacements": 0,
+      "before_sha256": "746f5a4be8a61995322b1238024245ac652d3d8237772e4ae9a770b86095f94c",
+      "after_sha256": "2f5d01cf1dff49d6f2dab039166c9b6dea80564c395b1ed82b2b8945cd4caad6",
+      "inverse_equivalent_notation_recovers_original_bytes": true
+    },
+    {
+      "file": "docs/readings/restok-image-ar-2026.md",
+      "named_operator_replacements": 0,
+      "display_less_than_replacements": 2,
+      "before_sha256": "1db0661cdfa0c6f5180f1de48b99f87146e778843f9bd2751f3c5cfa817225db",
+      "after_sha256": "67fc0d794962cdc74409009ffba8398f291f6eb34a92a6591d47a6b5b9cd1123",
+      "inverse_equivalent_notation_recovers_original_bytes": true
+    },
+    {
+      "file": "docs/readings/consistency-endpoint-map.md",
+      "named_operator_replacements": 1,
+      "display_less_than_replacements": 0,
+      "before_sha256": "1629df3fba0210e185bbf88222eabf299e765427ee7c084da6ba6231818bdc76",
+      "after_sha256": "f1d43b4105a83d5011f4728182098797095f3ddcacd1e1a14784f65687ab233e",
+      "inverse_equivalent_notation_recovers_original_bytes": true
+    },
+    {
+      "file": "docs/readings/prediction-and-loss-weighting.md",
+      "named_operator_replacements": 0,
+      "display_less_than_replacements": 1,
+      "before_sha256": "b646277df18f957a295559472b07236eb05101d7876c153ce49fc1e72165cce8",
+      "after_sha256": "04dea1e750a76cb972f5e9932eae22434a5a194c5e759fe6d636918bf33d46d9",
+      "inverse_equivalent_notation_recovers_original_bytes": true
+    },
+    {
+      "file": "docs/readings/conditioning-attention.md",
+      "named_operator_replacements": 2,
+      "display_less_than_replacements": 0,
+      "before_sha256": "408e1a9f1a5ccad1812d455d7d535ec46eb85bf8c18213adf05646f30b65b6b5",
+      "after_sha256": "3fba60fbf80066ef24cfcac57723f488c4392f80b6992b90a83f271535990341",
+      "inverse_equivalent_notation_recovers_original_bytes": true
+    },
+    {
+      "file": "docs/readings/ltx2-video-audio-2026.md",
+      "named_operator_replacements": 1,
+      "display_less_than_replacements": 1,
+      "before_sha256": "26b00d1e7a80c55c6de917299520d3bdd1957f2f82aa740846dfd8bcef0595cc",
+      "after_sha256": "95c256e2940ecec23980902722f3da0be916fad5e0a6e45e537e9be232645ea7",
+      "inverse_equivalent_notation_recovers_original_bytes": true
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "node": "v24.22.1",
+  "mermaid": "11.12.2",
+  "jsdom": "26.1.0",
+  "scope": "parse and metadata extraction under jsdom; no layout, browser or screen-reader verification",
+  "diagrams": [
+    {
+      "file": "docs/learning-path.md",
+      "index": 0,
+      "parse": {
+        "diagramType": "flowchart-v2",
+        "config": {}
+      },
+      "accTitle": "GenAI学习依赖图",
+      "accDescr": "00接01，随后分为02和03，两者汇入05。07需要05和03两项先修，再接08；06接在05之后。两条实践路线汇入04；09是04后的可选图像实践，随后10连接预训练视频运行与失败分析。"
+    }
+  ],
+  "document_sha256": "053419ebe8379ffddedc966e6ac390a4090fb932237134d0ab574a2c65366828",
+  "verified_edges": [
+    "03 -> 07",
+    "05 -> 07"
+  ],
+  "reason": "07 prerequisite text requires 03; 05 also permits readers from 02 alone."
+}

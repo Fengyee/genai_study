@@ -1,0 +1,78 @@
+{
+  "scope": "Saved arrays and direct analytic/RNG/pixel checks; no model forward",
+  "arrays_verified": 26,
+  "artifact_files_verified": 10,
+  "source_commit": "89a64cd1171da7d0d4396cb0e7d27da6885b97be",
+  "cases": [
+    {
+      "raw_rgb_mse": 0.0004433625551289419,
+      "raw_rgb_rms": 0.02105617617538716,
+      "clipped_rgb_mse": 0.0004433618899137884,
+      "clipped_rgb_rms": 0.02105616037918092,
+      "out_of_range_fraction": 1.2715657552083333e-06,
+      "clipping_rms": 1.18613785721255e-05,
+      "id": "mode",
+      "raw_rgb_rms_from_mode": 0.0,
+      "raw_rgb_max_abs_from_mode": 0.0
+    },
+    {
+      "raw_rgb_mse": 0.0004433534350546172,
+      "raw_rgb_rms": 0.021055959608970977,
+      "clipped_rgb_mse": 0.0004433527699581941,
+      "clipped_rgb_rms": 0.02105594381542167,
+      "out_of_range_fraction": 1.2715657552083333e-06,
+      "clipping_rms": 1.185963104927324e-05,
+      "id": "posterior-seed7",
+      "raw_rgb_rms_from_mode": 3.0424403908162066e-05,
+      "raw_rgb_max_abs_from_mode": 0.0010855793952941895
+    },
+    {
+      "raw_rgb_mse": 0.0004433522176236178,
+      "raw_rgb_rms": 0.021055930699534937,
+      "clipped_rgb_mse": 0.0004433515526322202,
+      "clipped_rgb_rms": 0.02105591490845791,
+      "out_of_range_fraction": 1.2715657552083333e-06,
+      "clipping_rms": 1.1858085163673166e-05,
+      "id": "posterior-seed19",
+      "raw_rgb_rms_from_mode": 2.9883364750684722e-05,
+      "raw_rgb_max_abs_from_mode": 0.0006878376007080078
+    },
+    {
+      "raw_rgb_mse": 0.0004434831600989319,
+      "raw_rgb_rms": 0.021059039866502267,
+      "clipped_rgb_mse": 0.00044348249448644396,
+      "clipped_rgb_rms": 0.02105902406301023,
+      "out_of_range_fraction": 1.2715657552083333e-06,
+      "clipping_rms": 1.1867226052438829e-05,
+      "id": "posterior-seed43",
+      "raw_rgb_rms_from_mode": 2.9820595210458868e-05,
+      "raw_rgb_max_abs_from_mode": 0.0006782412528991699
+    },
+    {
+      "raw_rgb_mse": 0.00044336258681894363,
+      "raw_rgb_rms": 0.02105617692789799,
+      "clipped_rgb_mse": 0.0004433619215992235,
+      "clipped_rgb_rms": 0.021056161131583873,
+      "out_of_range_fraction": 1.2715657552083333e-06,
+      "clipping_rms": 1.1861445784542894e-05,
+      "id": "scale-roundtrip",
+      "raw_rgb_rms_from_mode": 4.9113114161602466e-08,
+      "raw_rgb_max_abs_from_mode": 9.5367431640625e-07
+    },
+    {
+      "raw_rgb_mse": 0.0256559653236957,
+      "raw_rgb_rms": 0.16017479615624833,
+      "clipped_rgb_mse": 0.0256559653236957,
+      "clipped_rgb_rms": 0.16017479615624833,
+      "out_of_range_fraction": 0.0,
+      "clipping_rms": 0.0,
+      "id": "scale-mismatch",
+      "raw_rgb_rms_from_mode": 0.16250401883886048,
+      "raw_rgb_max_abs_from_mode": 0.5456947088241577
+    }
+  ],
+  "posterior_std_vs_numpy_max_abs": 6.101967065311187e-11,
+  "latent_scale_roundtrip_max_abs": 3.814697265625e-06,
+  "primary_wall_seconds": 93.770107435,
+  "process_peak_rss_gib": 1.642364501953125
+}

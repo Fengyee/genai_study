@@ -1,0 +1,11 @@
+{
+  "command": ".venv/bin/python /tmp/genai-prediction-loss-scope/prediction_loss_check.py",
+  "exit_code": 0,
+  "elapsed_seconds": 1.172958170000129,
+  "stdout": "Equivalent VP losses: [1.09, 1.09, 1.09]\nGradients for shared theta: [2.0, 2.0, 2.0]\nUnweighted optima (VP, noise, clean): [-0.7, -0.616, -0.784]\nTime means (target, uncorrected, corrected): [5.0, 8.2, 5.0]\n",
+  "stderr": "",
+  "card_sha256": "6331e150489eb3c5bec29425373f55d802b3098c228da464510c7fff68f9efda",
+  "scope": "Exact rendered card CPU block; deterministic two-time arrays, shared scalar autograd, restricted optima and importance expectation; no model training/forward.",
+  "cpu_block_sha256": "07c28edfc7d75a7efa50c7698c7d6b217386621bda00c3c36fe0ac2ee2835b94",
+  "post_run_change": "Only the final source-record link changed after this card snapshot; CPU source checked byte-identical."
+}

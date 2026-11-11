@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "status": "succeeded",
+  "argv": [
+    ".venv-pretrained/bin/python",
+    "-u",
+    "-m",
+    "genai_study.vae_study",
+    "--model-dir",
+    "artifacts/models/sd14",
+    "--input",
+    "docs/assets/sd14-pilot-scene-seed43.png",
+    "--output",
+    "artifacts/vae-current/repeat",
+    "--seeds",
+    "7",
+    "19",
+    "43",
+    "--threads",
+    "1"
+  ],
+  "cwd": "/workspace/genai_study",
+  "started_utc": "2026-11-11T15:43:03.402338+00:00",
+  "timeout_seconds": 300.0,
+  "termination_grace_seconds": 1.0,
+  "runner": {
+    "version": 1,
+    "source_sha256": "be545eff1985b8eed096b0663145bade01303685430310d4b199aa727c685697",
+    "python_version": "3.12.14",
+    "python_executable": "/workspace/genai_study/.venv-pretrained/bin/python"
+  },
+  "git": {
+    "root": "/workspace/genai_study",
+    "head": "89a64cd1171da7d0d4396cb0e7d27da6885b97be",
+    "changed_paths": [
+      {
+        "status": "??",
+        "path": "docs/vae-reconstruction-report.md"
+      },
+      {
+        "status": "??",
+        "path": "records/measurements/vae-reconstruction/README.md"
+      },
+      {
+        "status": "??",
+        "path": "records/measurements/vae-reconstruction/interface-claims.json"
+      },
+      {
+        "status": "??",
+        "path": "records/measurements/vae-reconstruction/ldm-author-code-check.json"
+      },
+      {
+        "status": "??",
+        "path": "records/measurements/vae-reconstruction/ldm-paper-check.json"
+      },
+      {
+        "status": "??",
+        "path": "records/measurements/vae-reconstruction/small-function-checks.json"
+      },
+      {
+        "status": "??",
+        "path": "records/measurements/vae-reconstruction/source-identities.json"
+      }
+    ]
+  },
+  "stdin": "devnull",
+  "log_file": "command.log",
+  "timed_out": false,
+  "child_returncode": 0,
+  "exit_code": 0,
+  "wall_seconds": 94.848776412,
+  "finished_utc": "2026-11-11T15:44:38.256203+00:00",
+  "log_size_bytes": 17705,
+  "log_sha256": "312ab9a5898c42fcc1ace771162cccc571cca711bd03d33df53839494fb0ae71"
+}

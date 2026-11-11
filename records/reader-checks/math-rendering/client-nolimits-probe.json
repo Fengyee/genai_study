@@ -1,0 +1,66 @@
+{
+  "checked_utc": "2026-11-11T16:50:56.642402+00:00",
+  "scope": "Transient local DOM candidate and narrow overflow probe",
+  "candidates": [
+    {
+      "label": "cov_nolimits",
+      "markdown": "$`\\mathop{\\mathrm{Cov}}\\nolimits(U,X)`$",
+      "api_html": "<p dir=\"auto\"><math-renderer class=\"js-inline-math\" style=\"display: inline-block\" data-run-id=\"7774b7ba5f2e801562d0224aafd2c067\">$\\mathop{\\mathrm{Cov}}\\nolimits(U,X)$</math-renderer></p>",
+      "client": {
+        "mathml": 1,
+        "text": "Cov\n⁡\n(\n𝑈\n,\n𝑋\n)",
+        "html": "<p dir=\"auto\"><math-renderer class=\"js-inline-math\" style=\"display: inline-block\" data-run-id=\"7774b7ba5f2e801562d0224aafd2c067\" data-catalyst=\"\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n  <mrow data-mjx-texclass=\"OP\">\n    <mrow data-mjx-texclass=\"ORD\">\n      <mi data-mjx-auto-op=\"false\">Cov</mi>\n    </mrow>\n  </mrow>\n  <mo data-mjx-texclass=\"NONE\">⁡</mo>\n  <mo stretchy=\"false\">(</mo>\n  <mi>U</mi>\n  <mo>,</mo>\n  <mi>X</mi>\n  <mo stretchy=\"false\">)</mo>\n</math></math-renderer></p>",
+        "msub": 0,
+        "munder": 0
+      }
+    },
+    {
+      "label": "mean_nolimits_display",
+      "markdown": "```math\n\\Delta=\\sqrt{\\mathop{\\mathrm{mean}}\\nolimits_{B,C,H,W}(v_c-v_u)^2}.\n```",
+      "api_html": "<math-renderer class=\"js-display-math\" style=\"display: block\" data-run-id=\"0b9a955d46be46ccd66a0601b0816380\">$$\\Delta=\\sqrt{\\mathop{\\mathrm{mean}}\\nolimits_{B,C,H,W}(v_c-v_u)^2}.$$</math-renderer>",
+      "client": {
+        "mathml": 1,
+        "text": "Δ\n=\nmean\n𝐵\n,\n𝐶\n,\n𝐻\n,\n𝑊\n⁡\n(\n𝑣\n𝑐\n−\n𝑣\n𝑢\n)\n2\n.",
+        "html": "<math-renderer class=\"js-display-math\" style=\"display: block\" data-run-id=\"0b9a955d46be46ccd66a0601b0816380\" data-catalyst=\"\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mi mathvariant=\"normal\">Δ</mi>\n  <mo>=</mo>\n  <msqrt>\n    <msub>\n      <mrow data-mjx-texclass=\"OP\">\n        <mrow data-mjx-texclass=\"ORD\">\n          <mi data-mjx-auto-op=\"false\">mean</mi>\n        </mrow>\n      </mrow>\n      <mrow data-mjx-texclass=\"ORD\">\n        <mi>B</mi>\n        <mo>,</mo>\n        <mi>C</mi>\n        <mo>,</mo>\n        <mi>H</mi>\n        <mo>,</mo>\n        <mi>W</mi>\n      </mrow>\n    </msub>\n    <mo data-mjx-texclass=\"NONE\">⁡</mo>\n    <mo stretchy=\"false\">(</mo>\n    <msub>\n      <mi>v</mi>\n      <mi>c</mi>\n    </msub>\n    <mo>−</mo>\n    <msub>\n      <mi>v</mi>\n      <mi>u</mi>\n    </msub>\n    <msup>\n      <mo stretchy=\"false\">)</mo>\n      <mn>2</mn>\n    </msup>\n  </msqrt>\n  <mo>.</mo>\n</math></math-renderer>",
+        "msub": 3,
+        "munder": 0
+      }
+    }
+  ],
+  "narrow_aligned_containers": [
+    {
+      "tag": "MATH-RENDERER",
+      "class": "js-display-math",
+      "width": 324,
+      "height": 117.3125,
+      "clientWidth": 324,
+      "scrollWidth": 324,
+      "overflowX": "auto",
+      "scrollLeftAfter": 0
+    },
+    {
+      "tag": "math",
+      "class": "",
+      "width": 324,
+      "height": 117.3125,
+      "clientWidth": 324,
+      "scrollWidth": 552,
+      "overflowX": "auto",
+      "scrollLeftAfter": 20
+    },
+    {
+      "tag": "mtable",
+      "class": "",
+      "width": 551.890625,
+      "height": 105.3125,
+      "clientWidth": 552,
+      "scrollWidth": 552,
+      "overflowX": "visible",
+      "scrollLeftAfter": 0
+    }
+  ],
+  "narrow_geometry": {
+    "width": 390,
+    "scrollWidth": 390
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "diffusers_commit": "b71269675ec1b85193107a691dd35c308e46f0a5",
+  "files": [
+    {
+      "relative_path": "models/autoencoders/autoencoder_kl.py",
+      "local_path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_kl.py",
+      "url": "https://raw.githubusercontent.com/huggingface/diffusers/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/models/autoencoders/autoencoder_kl.py",
+      "bytes": 25078,
+      "sha256": "1ea5f6d3f2737bc6542a9d5edfbe8c7cb5e06e86e859f45742d9ba4af4bd4a4b",
+      "remote_byte_equal": true
+    },
+    {
+      "relative_path": "models/autoencoders/vae.py",
+      "local_path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/models/autoencoders/vae.py",
+      "url": "https://raw.githubusercontent.com/huggingface/diffusers/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/models/autoencoders/vae.py",
+      "bytes": 32733,
+      "sha256": "5d79b5d057d0f702e1a335a89913b695d7dc6faa91f3978f17e4a153162afba6",
+      "remote_byte_equal": true
+    },
+    {
+      "relative_path": "image_processor.py",
+      "local_path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/image_processor.py",
+      "url": "https://raw.githubusercontent.com/huggingface/diffusers/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/image_processor.py",
+      "bytes": 52868,
+      "sha256": "eaaa29edf8a54c776adcbf991955a624c9f4fb4b38060ed6f8068014135d3b44",
+      "remote_byte_equal": true
+    },
+    {
+      "relative_path": "pipelines/stable_diffusion/pipeline_stable_diffusion.py",
+      "local_path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/pipelines/stable_diffusion/pipeline_stable_diffusion.py",
+      "url": "https://raw.githubusercontent.com/huggingface/diffusers/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/pipelines/stable_diffusion/pipeline_stable_diffusion.py",
+      "bytes": 55721,
+      "sha256": "7466201901e68667164344a9fb58596d9d253e524c9addad38494ee6bc1f7e08",
+      "remote_byte_equal": true
+    },
+    {
+      "relative_path": "vae/config.json",
+      "local_path": "/workspace/genai_study/artifacts/models/sd14/vae/config.json",
+      "bytes": 551,
+      "sha256": "0e5966d4d52c8077648754ffd2c14ab5e0b26a4bdfa6af1d207c27550fa6d2af",
+      "manifest_verified": true,
+      "revision": "133a221b8aa7292a167afc5127cb63fb5005638b",
+      "model_id": "CompVis/stable-diffusion-v1-4",
+      "scaling_factor": 0.18215
+    },
+    {
+      "relative_path": "utils/torch_utils.py",
+      "local_path": "/workspace/genai_study/.venv-pretrained/lib/python3.12/site-packages/diffusers/utils/torch_utils.py",
+      "url": "https://raw.githubusercontent.com/huggingface/diffusers/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/utils/torch_utils.py",
+      "bytes": 7775,
+      "sha256": "a20bcdbd17ceaf2739ae23fe3e1fe7a29184b2e66d988b333080cfae44a09c06",
+      "remote_byte_equal": true
+    }
+  ]
+}

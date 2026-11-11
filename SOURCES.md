@@ -49,6 +49,8 @@
 
 [SD1.4四请求提示探索](docs/sd14-prompt-pilot.md)继续使用上面固定模型和许可，生成前保存完整计划，保留两提示×两种子的全部原图、metrics和逐项观察。图片与推理输出逐字节相同，两个同seed噪声对完全一致。视觉观察者均为AI代码代理，真实读者评阅尚待开展。
 
+[VAE编码—解码往返](docs/vae-reconstruction-report.md)继续使用上述SD1.4模型及许可，输入固定为scene/seed43生成图。预先声明六案例，实际完成编码、后验采样、缩放对照和完整重复；全部PNG、数组身份与原始/裁剪指标保留。LDM v2的§3.1/D.1/G与固定Diffusers的后验/编解码接口分别核验，来源和实测记录见[VAE证据索引](records/measurements/vae-reconstruction/README.md)。单图重建误差的解释范围在报告中明确。
+
 [10 SVD视频运行与失败分析](docs/chapters/10-pretrained-video-lab.md)固定原作者SVD revision `9cf024d5bfa8f56622af86c884f26a52f6676f2e`，完整下载并核验[11文件清单](examples/pretrained-svd/manifest.json)。保留[Community2024-07-05许可原文](examples/pretrained-svd/LICENSE-model.txt)、[NOTICE](examples/pretrained-svd/NOTICE)及指定归属 **Powered by Stability AI**。参考图来自上述SD1.4 scene/seed43输出；SVD生成结果同时受其模型许可约束。核对Diffusers0.35.2固定实现中的参考latent、双随机流、VP预条件、Euler更新和联合帧调用，独立复算首末Euler步并实际完成smoke/校准/25步/重复。完整视频输出严重失真，全部帧、运行成本和追加的直接官方API短对照见[报告](docs/pretrained-video-report.md)及[原始证据](records/measurements/pretrained-svd/README.md)；具体失败成因待控制实验。
 
 [扩散与Flow Matching理论衔接](docs/readings/diffusion-flow-bridge.md)固定Score-SDE `2011.13456v2`（PDF SHA `b244b740e60628d01bc3d4b98d721c2343be1fb9b67ad22593c8555e66f4d4a6`）与原作者JAX commit `0acb9e0ea3b8cccd935068cd9c657318fbc6ce4c`，核对式(6)/(7)/(13)/(35)–(37)、概率流0.5系数和T→eps积分。重新核对DDIM v4式(13)–(15)；独立推导后验均值、路径速度、VP参数化和坐标变换，并以解析Gaussian边缘/轨迹、符号错误反例与有限Euler误差验证。JAX项目仅做源码核对；实际CPU代码块使用基础NumPy并纳入质量检查。
@@ -58,3 +60,5 @@
 [条件注意力专题](docs/readings/conditioning-attention.md)重新核对LDM v2 §3.3、固定CompVis attention.py与OpenAI CLIP源码，连接SD1.4的last_hidden_state和SVD的全局image_embeds/参考latent。Diffusers0.35.2 commit `b71269675ec1b85193107a691dd35c308e46f0a5`与Transformers4.57.6 commit `753d61104116eefc8ffc977327b441ee0c8d599f`的五份相关源码和本地安装逐字节一致。CPU检查包含SDPA对照、单token零梯度、mask联合置换和两键sigmoid导数；来源身份及独立检查见[记录](records/measurements/conditioning-attention/README.md)。
 
 [少步生成与一致性端点映射](docs/readings/consistency-endpoint-map.md)固定Consistency Models `2303.01469v1`（PDF SHA `f2f4dbed7f73d182c0b2dad0747d3df8e2c27a7df05d4b2aa5dee00b6ca94d64`）和作者commit `e32b69ee436d518377db86fb2127a3972d0d8716`。核对VE概率流、正端点、边界、CD/CT与EMA/stopgrad；独立Gaussian例验证端点恒定性、Euler误差、MMSE与共噪声配对反例。原作者采样函数用mock实际计数，保留初始噪声由外层提供的范围；[核验记录](records/measurements/consistency-endpoint/README.md)包含全部来源身份与两组参数独立检查。
+
+[预测目标与损失权重](docs/readings/prediction-and-loss-weighting.md)沿固定DDPM v2式12/14解释加权与简化目标，核对Diffusers0.35.2固定DDIM源码的VP标签、三种预测转换及裁剪顺序。误差比例、同参数梯度、有限容量与重要性权重按明确假设独立推导；正文CPU块与两组独立参数检查归档于[核验记录](records/measurements/prediction-loss/README.md)。

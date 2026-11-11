@@ -37,23 +37,23 @@ SVD 第 3–6 页 §3–4、附录 D 第 19–20 页给出下面的训练路径�
 
 附录 D 第 18 页式(2)写加权干净样本回归：
 
-$$
+```math
 \mathbb E_{z_0,c,\sigma,\epsilon}\!\left[
 \lambda(\sigma)\|D_\theta(z_0+\sigma\epsilon;\sigma,c)-z_0\|_2^2
 \right],\qquad \epsilon\sim\mathcal N(0,I).
-$$
+```
 
-这里用 $z_0$ 强调生成发生在潜空间；原文用 $x_0$。$\sigma$ 是噪声标准差。预条件去噪器 $D_\theta$ 由底层网络 $F_\theta$ 构造，式(3)、(10)–(13)为
+这里用 $`z_0`$ 强调生成发生在潜空间；原文用 $`x_0`$。$`\sigma`$ 是噪声标准差。预条件去噪器 $`D_\theta`$ 由底层网络 $`F_\theta`$ 构造，式(3)、(10)–(13)为
 
-$$
+```math
 D_\theta(z_\sigma;\sigma,c)
 =\frac{z_\sigma}{1+\sigma^2}
 -\frac{\sigma}{\sqrt{1+\sigma^2}}
 F_\theta\!\left(\frac{z_\sigma}{\sqrt{1+\sigma^2}};
 \tfrac14\log\sigma,c\right).
-$$
+```
 
-官方配置使用 `VScalingWithEDMcNoise`；后文将它与 `v_prediction` 的代数关系独立核对。采样沿较大噪声级别走向较小噪声级别。此处的 $\sigma$、网络时间嵌入、视频中的第几帧各有不同含义。
+官方配置使用 `VScalingWithEDMcNoise`；后文将它与 `v_prediction` 的代数关系独立核对。采样沿较大噪声级别走向较小噪声级别。此处的 $`\sigma`$、网络时间嵌入、视频中的第几帧各有不同含义。
 
 ### 一张参考图像怎样控制整段视频
 
@@ -64,20 +64,20 @@ $$
 
 固定 `svd.yaml` 的去噪输入有 8 通道，输出有 4 通道；参考 latent 和视频 latent 各占 4 通道。空间下采样为 8。视频生成分支的 `scale_factor` 为 0.18215；参考图条件编码器沿用 `VideoPredictionEmbedderWithEncoder` 默认的 `scale_factor=1.0`。复现时应逐条核对两条编码路径。对 14×576×1024 的输出，视频 latent 有 14×4×72×128 个标量。这里保留 14 个潜帧；发布模型另用带时间层的解码器改善重建的时间一致性。
 
-SVD 的引导强度还随**视频帧索引**变化。论文 Figure 15 与固定代码 `LinearPredictionGuider` 都在 $F$ 帧上构造
+SVD 的引导强度还随**视频帧索引**变化。论文 Figure 15 与固定代码 `LinearPredictionGuider` 都在 $`F`$ 帧上构造
 
-$$
+```math
 s_f=s_{\min}+\frac{f}{F-1}(s_{\max}-s_{\min}),\qquad
 \widehat D_f=D_{u,f}+s_f(D_{c,f}-D_{u,f}).
-$$
+```
 
-同一次去噪调用中，不同帧使用不同系数；这组系数会在采样步骤间重复使用。固定 SVD 配置从 1 增至 2.5。采样脚本把基准分支的两条图像 embedding 置零，帧率、运动分桶与条件噪声强度仍保留，所以 $D_u$ 在这里表示空图像条件的预测。作者报告这一设计平衡其样例中的参考图一致性与过饱和，效果应在目标任务上实测。
+同一次去噪调用中，不同帧使用不同系数；这组系数会在采样步骤间重复使用。固定 SVD 配置从 1 增至 2.5。采样脚本把基准分支的两条图像 embedding 置零，帧率、运动分桶与条件噪声强度仍保留，所以 $`D_u`$ 在这里表示空图像条件的预测。作者报告这一设计平衡其样例中的参考图一致性与过饱和，效果应在目标任务上实测。
 
 ### 帧率条件与输出视频分别记录
 
 固定官方脚本的默认值为 `fps_id=6`、`motion_bucket_id=127`、`cond_aug=0.02`；SVD 默认 14 帧/25 步，SVD-XT 默认 25 帧/30 步。`fps_id` 被直接送入条件编码，最终 `imageio.mimwrite(video_path, vid)` 调用没有显式提供播放 fps。
 
-因此复现记录需要同时保存模型的帧率条件和最终视频文件的实际 fps，可用媒体元数据检查播放值。对 $F$ 帧、播放率 $r$，相邻采样时刻间隔为 $1/r$，首尾帧时刻相差 $(F-1)/r$；按每帧显示一个间隔计，文件播放时长为 $F/r$。这与 [06 章](../chapters/06-video-temporal-lab.md)的速度单位直接相连。
+因此复现记录需要同时保存模型的帧率条件和最终视频文件的实际 fps，可用媒体元数据检查播放值。对 $`F`$ 帧、播放率 $`r`$，相邻采样时刻间隔为 $`1/r`$，首尾帧时刻相差 $`(F-1)/r`$；按每帧显示一个间隔计，文件播放时长为 $`F/r`$。这与 [06 章](../chapters/06-video-temporal-lab.md)的速度单位直接相连。
 
 ## 3. CogVideoX：压缩时间，再联合建模文本与视频
 
@@ -87,17 +87,21 @@ $$
 
 时间因果卷积把 padding 放在序列开始，使局部编码不读取未来帧。去噪 Transformer 使用文本与整个带噪视频上的联合注意力；应分别核对编码器的因果性与去噪网络的注意力范围。
 
-对所选 2B 配置，第一帧单独保留时间位置，其余帧按 4 倍压缩；对 $F=4k+1$，潜帧数为
+对所选 2B 配置，第一帧单独保留时间位置，其余帧按 4 倍压缩；对 $`F=4k+1`$，潜帧数为
 
-$$F_z=1+\frac{F-1}{4}.$$
+```math
+F_z=1+\frac{F-1}{4}.
+```
 
-因此 49 帧对应 13 个潜帧。480×720 视频的潜空间为 $16\times13\times60\times90$（本式采用通道、帧、高、宽顺序）。时间 patch 为 1、空间 patch 为 2×2，得到
+因此 49 帧对应 13 个潜帧。480×720 视频的潜空间为 $`16\times13\times60\times90`$（本式采用通道、帧、高、宽顺序）。时间 patch 为 1、空间 patch 为 2×2，得到
 
-$$L_v=13\cdot(60/2)\cdot(90/2)=17\,550$$
+```math
+L_v=13\cdot(60/2)\cdot(90/2)=17\,550
+```
 
-个视觉 token；配置的文本序列长度为 226，拼接后共 17,776 个 token。每个视觉 patch 在投影前有 $16\cdot1\cdot2\cdot2=64$ 个数。2B 配置的 latent scaling factor 为 1.15258426，应与其 VAE 配套使用。
+个视觉 token；配置的文本序列长度为 226，拼接后共 17,776 个 token。每个视觉 patch 在投影前有 $`16\cdot1\cdot2\cdot2=64`$ 个数。2B 配置的 latent scaling factor 为 1.15258426，应与其 VAE 配套使用。
 
-一张显式的密集注意力矩阵有 $17\,776^2=315\,986\,176$ 个元素/头。FP16 存放它需要约 632 MB/头，这是**张量尺寸分析**；FlashAttention 等实现改变实际中间存储，模型总内存还包括参数、激活、文本编码与解码等部分。
+一张显式的密集注意力矩阵有 $`17\,776^2=315\,986\,176`$ 个元素/头。FP16 存放它需要约 632 MB/头，这是**张量尺寸分析**；FlashAttention 等实现改变实际中间存储，模型总内存还包括参数、激活、文本编码与解码等部分。
 
 ### 文本与视觉如何交互
 
@@ -109,6 +113,8 @@ $$L_v=13\cdot(60/2)\cdot(90/2)=17\,550$$
 
 第 6 页 §3 明确使用 **v-prediction 与 zero terminal SNR**。第 7 页式(1)回顾 DDPM 的噪声预测损失，用来解释时间采样策略；复现所选模型时，固定 scheduler 配置中的 `prediction_type=v_prediction` 与 `rescale_betas_zero_snr=true` 是直接依据。
 
+预测接口、MSE权重与时间采样共同定义训练目标。[预测目标与损失权重](prediction-and-loss-weighting.md)给出noise/clean/VP的逐样本换算及零SNR端点分析，可用于逐项核对具体训练代码。
+
 训练混合图像与视频，将图像视为单帧样本。Multi-Resolution Frame Pack 处理不同长度/分辨率；分辨率逐步提高，最后做高质量微调。Explicit Uniform Sampling 把扩散时间范围分给不同数据并行 rank，每个 rank 在自己的区间内抽样。等宽区间、等量样本下，聚合估计仍对应均匀时间目标；分层采样降低时间分布偶然失衡的程度，方差变化还取决于各时间区间的损失分布。
 
 附录 A 第 15 页将最后微调数据约占原数据 20%，并报告视觉质量略有提高、语义能力略有下降。这提醒我们同时评估视觉观感与条件表达。附录 D 第 17 页还描述 T2V 到 I2V 的微调：参考图经 VAE 后沿通道拼接到带噪视频输入，训练中给参考图条件加噪；本卡所选 2B T2V 权重仍使用文本入口。
@@ -119,12 +125,14 @@ $$L_v=13\cdot(60/2)\cdot(90/2)=17\,550$$
 
 在本仓库已安装的 CPU 环境运行下面代码。它只创建小向量和标量，几秒内完成，无需下载权重。模型总推理时间仍需单独测量。
 
-令 $a^2+b^2=1$，带噪输入为 $z_t=az_0+b\epsilon$，常见 VP 扩散的目标为 $v_{\mathrm{VP}}=a\epsilon-bz_0$。于是
+令 $`a^2+b^2=1`$，带噪输入为 $`z_t=az_0+b\epsilon`$，常见 VP 扩散的目标为 $`v_{\mathrm{VP}}=a\epsilon-bz_0`$。于是
 
-$$z_0=az_t-bv_{\mathrm{VP}},\qquad
-\epsilon=bz_t+av_{\mathrm{VP}}.$$
+```math
+z_0=az_t-bv_{\mathrm{VP}},\qquad
+\epsilon=bz_t+av_{\mathrm{VP}}.
+```
 
-取 $a=(1+\sigma^2)^{-1/2}$、$b=\sigma a$，SVD 的预条件式也满足这一还原关系。`v_prediction` 的定义随噪声级别变化；[03 章](../chapters/03-flow-matching.md)直线路径的速度目标则为数据减噪声，使用参数前先展开对应公式。
+取 $`a=(1+\sigma^2)^{-1/2}`$、$`b=\sigma a`$，SVD 的预条件式也满足这一还原关系。`v_prediction` 的定义随噪声级别变化；[03 章](../chapters/03-flow-matching.md)直线路径的速度目标则为数据减噪声，使用参数前先展开对应公式。
 
 <!-- cpu-check: video-vp-shapes -->
 ```python
@@ -213,7 +221,7 @@ print("v reconstruction passed; latent frames/tokens:",
 
 <details><summary>参考答案</summary>
 
-潜帧为 $1+(81-1)/4=21$；视觉 token 为 $21\cdot30\cdot45=28\,350$，总 token 为 28,576。相对原来的 17,776，每头密集注意力元素数比例为 $(28\,576/17\,776)^2\approx2.584$。这是尺寸外推；所选权重对新增时长的质量与推理支持仍需独立验证。
+潜帧为 $`1+(81-1)/4=21`$；视觉 token 为 $`21\cdot30\cdot45=28\,350`$，总 token 为 28,576。相对原来的 17,776，每头密集注意力元素数比例为 $`(28\,576/17\,776)^2\approx2.584`$。这是尺寸外推；所选权重对新增时长的质量与推理支持仍需独立验证。
 
 </details>
 
@@ -225,11 +233,11 @@ print("v reconstruction passed; latent frames/tokens:",
 
 </details>
 
-**D · 看见 `v_prediction`。** 对 $a=b=1/\sqrt2$ 写出 VP 目标，并与本仓库直线路径的目标比较。
+**D · 看见 `v_prediction`。** 对 $`a=b=1/\sqrt2`$ 写出 VP 目标，并与本仓库直线路径的目标比较。
 
 <details><summary>参考答案</summary>
 
-$v_{\mathrm{VP}}=(\epsilon-z_0)/\sqrt2$；本仓库 flow 目标为 $z_0-\epsilon$。此噪声级别下它们差一个负的缩放系数，其他级别的系数继续变化。要转换网络输出，应同时转换输入参数化、噪声级别与采样更新。
+$`v_{\mathrm{VP}}=(\epsilon-z_0)/\sqrt2`$；本仓库 flow 目标为 $`z_0-\epsilon`$。此噪声级别下它们差一个负的缩放系数，其他级别的系数继续变化。要转换网络输出，应同时转换输入参数化、噪声级别与采样更新。
 
 </details>
 

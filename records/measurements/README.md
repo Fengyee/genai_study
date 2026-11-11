@@ -14,6 +14,7 @@
 | 固定同一图像模型，积分步数如何影响原始值与显示值？ | [图像Euler对照](../../docs/image-experiment-report.md#固定模型后euler-步数改变了什么) | [image-solver-study](image-solver-study/)：各seed的`train-*.json`、`study-*.json`及[provenance](image-solver-study/provenance.json)，保留重新训练和配对采样的身份 |
 | 条件丢弃与CFG强度怎样改变条件响应、几何和裁剪？ | [图像CFG实测](../../docs/image-guidance-report.md) | [image-guidance](image-guidance/)：有/无条件训练计数、强度扫描、兼容性对照及[provenance](image-guidance/provenance.json)中的独立复算 |
 | 固定SD1.4的真实CPU推理成本、引导对照和重复结果是什么？ | [预训练图像实测](../../docs/pretrained-image-report.md)与[09章操作路径](../../docs/chapters/09-pretrained-image-lab.md) | [pretrained-sd14索引](pretrained-sd14/README.md)：准备/缓存复用、smoke、双引导、完整重复、提示修订及源码/软件身份 |
+| 同一图像经VAE编码与解码后，后验采样和缩放带来什么变化？ | [VAE重建实践](../../docs/vae-reconstruction-report.md)：六案例、原始/裁剪像素误差与完整重复 | [vae-reconstruction索引](vae-reconstruction/README.md)：事前协议、全部指标/外层日志、26数组复算、源码和媒体身份 |
 | 在生成前固定提示与seed集合后，如何保留并比较全部结果？ | [SD1.4四请求探索报告](../../docs/sd14-prompt-pilot.md) | [sd14-prompt-pilot索引](sd14-prompt-pilot/README.md)：事先计划、全部metrics、实际执行顺序、AI视觉观察与配置/噪声/图片核验 |
 | 推荐5000步首次路径能否重跑，并复用checkpoint完成采样对照？ | [首次路径复查报告](../../docs/experiment-report.md#推荐首次路径的再次运行) | [first-run-5000索引](first-run-5000/README.md)：两训练和solver原始JSON、完整argv/外层耗时，以及与历史数组的比对记录 |
 | 固定SVD图生视频能否在声明的CPU预算内完成，画面表现如何？ | [视频实测与失败分析](../../docs/pretrained-video-report.md)及[10章](../../docs/chapters/10-pretrained-video-lab.md)：完整请求16.8分钟、严重形变与闪烁 | [pretrained-svd索引](pretrained-svd/README.md)：事先计划、准备、smoke/校准/full/重复、官方API短对照、全部帧与播放核验；模型身份和许可见[资产说明](../../examples/pretrained-svd/README.md) |
@@ -36,7 +37,7 @@
 | 类型 | 在哪里核对 | 阅读时关注什么 |
 | --- | --- | --- |
 | 本仓库实际运行 | 上表的测量JSON、报告与执行记录 | 实际配置、输出、过滤/失败状态、计时边界和验证范围；具体字段随实验而异 |
-| 解析结论与数值核验 | [02/03来源审计](../../docs/source-audit.md)、[概率流衔接核验](probability-flow/README.md)、[条件注意力接口](conditioning-attention/README.md)、[一致性端点映射](consistency-endpoint/README.md)、[生成模型审计](../../docs/generative-source-audit.md)、[评价指标审计](../../docs/evaluation-metrics-audit.md)，以及对应章节的推导和反例 | 假设、变量定义、解析参照与有限样本/浮点误差；例如二维高斯邻域概率由分布公式计算，测量比例由生成样本统计 |
+| 解析结论与数值核验 | [02/03来源审计](../../docs/source-audit.md)、[概率流衔接核验](probability-flow/README.md)、[预测目标与时间权重](prediction-loss/README.md)、[条件注意力接口](conditioning-attention/README.md)、[一致性端点映射](consistency-endpoint/README.md)、[生成模型审计](../../docs/generative-source-audit.md)、[评价指标审计](../../docs/evaluation-metrics-audit.md)，以及对应章节的推导和反例 | 假设、变量定义、解析参照与有限样本/浮点误差；例如二维高斯邻域概率由分布公式计算，测量比例由生成样本统计 |
 | 原论文作者报告 | [来源总表](../../SOURCES.md)及[研究阅读卡](../../docs/readings/) | 固定论文/官方实现版本、表格或页码、原作者硬件与评价协议；这些数值沿用作者证据身份，本地执行范围在各卡单独说明 |
 | 计划与预算估计 | 各实验的`plan.json`和执行记录 | 生成前声明的请求、超时与判断门槛；完成后再对照实际执行记录确认结果 |
 

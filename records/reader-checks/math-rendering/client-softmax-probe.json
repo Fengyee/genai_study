@@ -1,0 +1,18 @@
+{
+  "checked_utc": "2026-11-11T16:52:24.440866+00:00",
+  "scope": "Transient local DOM candidate and narrow overflow probe",
+  "candidates": [
+    {
+      "label": "softmax_nolimits_display",
+      "markdown": "```math\n\\mathop{\\mathrm{softmax}}\\nolimits_j(q_i^\\top k_j/\\sqrt{d_k})\n```",
+      "api_html": "<math-renderer class=\"js-display-math\" style=\"display: block\" data-run-id=\"183d116b9acf563c7cae6d51cbeda2a0\">$$\\mathop{\\mathrm{softmax}}\\nolimits_j(q_i^\\top k_j/\\sqrt{d_k})$$</math-renderer>",
+      "client": {
+        "mathml": 1,
+        "text": "softmax\n𝑗\n⁡\n(\n𝑞\n𝑖\n⊤\n𝑘\n𝑗\n/\n𝑑\n𝑘\n)",
+        "html": "<math-renderer class=\"js-display-math\" style=\"display: block\" data-run-id=\"183d116b9acf563c7cae6d51cbeda2a0\" data-catalyst=\"\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <msub>\n    <mrow data-mjx-texclass=\"OP\">\n      <mrow data-mjx-texclass=\"ORD\">\n        <mi data-mjx-auto-op=\"false\">softmax</mi>\n      </mrow>\n    </mrow>\n    <mi>j</mi>\n  </msub>\n  <mo data-mjx-texclass=\"NONE\">⁡</mo>\n  <mo stretchy=\"false\">(</mo>\n  <msubsup>\n    <mi>q</mi>\n    <mi>i</mi>\n    <mi mathvariant=\"normal\">⊤</mi>\n  </msubsup>\n  <msub>\n    <mi>k</mi>\n    <mi>j</mi>\n  </msub>\n  <mrow data-mjx-texclass=\"ORD\">\n    <mo>/</mo>\n  </mrow>\n  <msqrt>\n    <msub>\n      <mi>d</mi>\n      <mi>k</mi>\n    </msub>\n  </msqrt>\n  <mo stretchy=\"false\">)</mo>\n</math></math-renderer>",
+        "msub": 3,
+        "munder": 0
+      }
+    }
+  ]
+}

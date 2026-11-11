@@ -1,0 +1,74 @@
+{
+  "scope": "Tiny untrained distribution and image-processor functions; no VAE/network forward or weight load",
+  "posterior": {
+    "mean": [
+      0.3,
+      -0.2,
+      1.0,
+      2.0
+    ],
+    "input_logvar": [
+      -40.0,
+      -2.0,
+      0.0,
+      30.0
+    ],
+    "clipped_logvar": [
+      -30.0,
+      -2.0,
+      0.0,
+      20.0
+    ],
+    "seed": 19,
+    "mode_equals_mean": true,
+    "numpy_reparameterization_max_abs_error": 0.0
+  },
+  "normalization": {
+    "rgb_input_uint8": [
+      [
+        [
+          [
+            0,
+            127,
+            255
+          ],
+          [
+            255,
+            128,
+            64
+          ]
+        ]
+      ]
+    ],
+    "bchw_shape": [
+      1,
+      3,
+      1,
+      2
+    ],
+    "independent_numpy_match": true,
+    "denormalize_input": [
+      -3.0,
+      -1.0,
+      0.0,
+      1.0,
+      3.0
+    ],
+    "denormalize_output": [
+      0.0,
+      0.0,
+      0.5,
+      1.0,
+      1.0
+    ]
+  },
+  "clipping_projection": {
+    "targets": 101,
+    "raw_values": 501,
+    "max_clipped_minus_raw_squared_error": 0.0
+  },
+  "analytic_counterexamples": {
+    "nonlinear_decoder": "Z~N(2,9), D(z)=z^2: D(E Z)=4, E D(Z)=13",
+    "encoder_suboptimality": "For x=9, D(z)=z^2 and E(x)=2, round-trip squared error=25; inf_z squared error=0 at z=3. Every encoder latent is a candidate, so the infimum is no larger than its round-trip error."
+  }
+}
