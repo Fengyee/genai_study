@@ -9,7 +9,7 @@
 - [x] 覆盖8个模式可能掩盖严重欠拟合：增加反例、真实样本基线、二维半径概率及完整显示离群点的图。
 - [x] DDPM终点接近正态的条件写得过强：用标准正态不变性反例修正，并给出八高斯数据与短噪声表的解析偏差。
 - [x] GitHub PR 创建与首轮合入：PR #1已按用户明确授权，在8a6c47b检查通过后合并；main为416dd8ce9c3e890d03d814bc02d0015c21e51090：https://github.com/Fengyee/genai_study/pull/1 。
-- [ ] 每小时质量检查的真实触发验证：workflow已进入默认分支且API为active；push与手动检查已启动，继续观察首个schedule事件及结果，分别记录事件类型与运行位置。
+- [ ] 每小时质量检查的真实触发验证：workflow已进入默认分支且API为active；原版本push/手动及新main push均通过并核验artifact。15:39–17:35 UTC的117次查询覆盖两个计划点，仍无schedule事件；原因未确定。恢复时查询实际事件及head SHA，记录结果与运行位置。
 
 ## P1
 

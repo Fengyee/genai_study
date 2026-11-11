@@ -9,8 +9,8 @@
 - PR #1已按授权合并，main为416dd8ce9c3e890d03d814bc02d0015c21e51090。
 - [PR #2](https://github.com/Fengyee/genai_study/pull/2)与[PR #3](https://github.com/Fengyee/genai_study/pull/3)已获后续明确授权并顺序合并：PR #2的2ac2f7b检查通过后合入；PR #3切base到main、更新分支到79508e8，run43068306477成功后合入。main现为d99b748fd4555db525f76a0ea83bb73b6b98c84d；其push43068708112已success。
 - 默认分支包含VAE实测、预测权重、GitHub数学修复、空间token专题和反馈表。32页1536公式的批量客户端验收与新专题/符号表两视口验收分别归档；默认分支检查范围为146 tests、15教学块和7条CLI smoke。
-- 当前分支fix/checkpoint-numeric-contract完成数值契约修复；最近完整本地检查178 tests、15/15教学块、7条CLI smoke通过，artifacts/quality/20261111T172929Z-tuGEfg。8份历史checkpoint重放结果逐元素相同；本项将通过新PR交付，尚无合并授权。
-- 每小时质量workflow位于main，API active、cron为UTC每小时:17；原416版本的push43050083353/手动43050263196已实际核验artifact（115 tests、13教学块）。新main的push也成功，artifact核对与真实schedule观察继续到17:35 UTC；尚无真实schedule触发证据。
+- 当前分支fix/checkpoint-numeric-contract的修复已推送d6efad9，[PR #4](https://github.com/Fengyee/genai_study/pull/4)开放，run43069289007成功。最近完整本地检查178 tests、15/15教学块、7条CLI smoke通过，artifacts/quality/20261111T172929Z-tuGEfg。8份历史checkpoint重放结果逐元素相同；本项尚无合并授权。
+- 每小时质量workflow位于main，API active、cron为UTC每小时:17；原416版本push/手动与d99版本push的artifact均实际核验。15:39–17:35 UTC观察结束，117次查询覆盖16:17/17:17计划点，最后无schedule事件；原因未确定，恢复时先读实际事件。
 - 编码代理持久调度、网站和通知绑定未部署；Bark/Codex推送仍缺可用接口。当前没有模型运行，数据保存在忽略的artifacts。
 
 以下恢复说明和轮次按历史保留，当前状态以上段及末尾最新检查点为准。
@@ -574,3 +574,13 @@ SVD在途检查点：已推送a3ed4a8，对应自动PR run42877869115为complete
 最终全量bash scripts/quality.sh退出0：178 passed（36.11秒）、15/15教学块、7条CLI smoke，执行时779本地链接0错误；日志artifacts/quality/20261111T172929Z-tuGEfg。后续仅补记录，提交前执行文档/diff检查。修复在fix/checkpoint-numeric-contract独立交付。
 
 合并与部署：本轮中用户明确授权PR #2/#3顺序合并并验证。核对PR2最新2ac2f7b的run43064047951成功后精确head合并为fe9c911；PR3改base为main、update-branch后head79508e8，其run43068306477成功且内容树与c554f78相同，再精确head合并为d99b748。两个main push43068272806/43068708112均success。后续新PR仍按创建PR方式交付，未获得新的合并授权。环境配置保持用户发布版本，调度观察与通知入口边界继续如实记录。
+
+## 轮次49：保存已部署检查与定时观察的最终证据
+
+按17:35 UTC截止结束只读观察，进程exit0。15:39:38–17:34:54共有117次成功的schedule列表查询，覆盖16:17/17:17两次计划点，最后total_count=0；主代理随后独立查询仍为0。workflow active、main d99、cron17 * * * *已核对，workflow字节与初始416完全一致。Actions权限策略接口403；另一次main刷新503经一次重试恢复，保留错误与恢复记录，未将其推定为schedule缺失的原因。
+
+新main push43068708112实际artifact13877521472为2,017,450字节、52项ZIP目录；其中commit匹配d99、146 tests无失败/错误/跳过、15/15教学块、779链接0错，11份退出状态全部0。主代理独立打开同一ZIP并逐项确认，SHA8aa03422…fc3b。原416的push/manual详细证据继续保留，三run及main演变合并归档records/automation-deployment.json，自动化说明/backlog更新为实际部署范围与未验证的schedule状态。
+
+交付：checkpoint修复8fb8115提交后合入origin/main，内容树保持，最终d6efad9已推送并创建PR #4，远端run43069289007 success。本轮只更新部署/恢复记录，文档及diff检查通过后保存到同一PR。没有额外dispatch、workflow改动、网站发布或环境重新发布；当前无可用Bark/Codex主动通知绑定，已在聊天报告调度观察结果。
+
+下一轮具体任务：05的提示簇bootstrap说明已有独立推导和作者来源，准备接入一个27种重采样的CPU反例及练习，说明复制同一提示会如何缩小错误按行抽样的方差。草稿/tmp/genai-bootstrap-draft，来源PDF及Fraction独立枚举均已保留；先完成本轮远端检查点，再进入新内容PR。
