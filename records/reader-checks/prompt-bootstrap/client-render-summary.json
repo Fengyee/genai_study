@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "checked_utc": "2026-11-11T17:43:39.577489+00:00",
+  "finished_utc": "2026-11-11T17:43:52.369199+00:00",
+  "commit": "1684744bb6a8e5dd05570b66f494be7f18fc36a3",
+  "path": "docs/chapters/05-evaluation.md",
+  "source_sha256": "afa12386e9499a205247bf2f15d20bd9908b17f9a5276e581a24fa8108a07b04",
+  "platform": "Public GitHub preview at the pinned commit",
+  "browser": "156.0.8078.79",
+  "tls_verification": true,
+  "existing_environment_proxy": true,
+  "desktop_viewport": [
+    1440,
+    1000
+  ],
+  "narrow_viewport": [
+    390,
+    844
+  ],
+  "expected_formula_count_per_viewport": 52,
+  "all_checks_passed": true,
+  "failures": [],
+  "math_errors": 0,
+  "raw_tex_candidates": 0,
+  "screen_reader_tested": false,
+  "scope_limits": [
+    "No screen-reader or physical mobile-device testing.",
+    "Code equality ignores one terminal newline omitted from GitHub display.",
+    "Long code, equations and tables can require local horizontal scrolling."
+  ],
+  "pages": [
+    {
+      "viewport": "desktop",
+      "http_status": 200,
+      "math_renderers": 52,
+      "mathml_nodes": 52,
+      "inline": 42,
+      "display": 10,
+      "geometry": {
+        "viewportWidth": 1440,
+        "documentScrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "articleClientWidth": 1012,
+        "articleScrollWidth": 1012
+      },
+      "anchor": {
+        "href": "#可运行反例复制结果不会增加独立提示",
+        "actual_hash": "可运行反例复制结果不会增加独立提示",
+        "target_text": "可运行反例：复制结果不会增加独立提示",
+        "target_top": 132.234375
+      },
+      "answer_toggle": {
+        "before_open": false,
+        "after_open": true,
+        "restored": true,
+        "mathml_nodes": 3,
+        "geometry_expanded": {
+          "viewportWidth": 1440,
+          "documentScrollWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "articleClientWidth": 1012,
+          "articleScrollWidth": 1012
+        }
+      },
+      "code": {
+        "source_bytes": 897,
+        "browser_bytes": 896,
+        "matches_ignoring_one_terminal_newline": true,
+        "source_sha256": "bf9144c88fed21846c3900b6cb9462455023f70339b0c9404eabfa03271e8fe5",
+        "geometry": {
+          "clientWidth": 742,
+          "scrollWidth": 742,
+          "overflowX": "auto",
+          "scrollLeftAfter": 0
+        }
+      },
+      "scroll_containers": [],
+      "screenshots": [
+        "bootstrap-section-desktop.png",
+        "bootstrap-code-desktop.png",
+        "bootstrap-nine-copies-answer-desktop.png"
+      ]
+    },
+    {
+      "viewport": "narrow",
+      "http_status": 200,
+      "math_renderers": 52,
+      "mathml_nodes": 52,
+      "inline": 42,
+      "display": 10,
+      "geometry": {
+        "viewportWidth": 390,
+        "documentScrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "articleClientWidth": 324,
+        "articleScrollWidth": 324
+      },
+      "anchor": {
+        "href": "#可运行反例复制结果不会增加独立提示",
+        "actual_hash": "可运行反例复制结果不会增加独立提示",
+        "target_text": "可运行反例：复制结果不会增加独立提示",
+        "target_top": 115.40625
+      },
+      "answer_toggle": {
+        "before_open": false,
+        "after_open": true,
+        "restored": true,
+        "mathml_nodes": 3,
+        "geometry_expanded": {
+          "viewportWidth": 390,
+          "documentScrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "articleClientWidth": 324,
+          "articleScrollWidth": 324
+        }
+      },
+      "code": {
+        "source_bytes": 897,
+        "browser_bytes": 896,
+        "matches_ignoring_one_terminal_newline": true,
+        "source_sha256": "bf9144c88fed21846c3900b6cb9462455023f70339b0c9404eabfa03271e8fe5",
+        "geometry": {
+          "clientWidth": 280,
+          "scrollWidth": 742,
+          "overflowX": "auto",
+          "scrollLeftAfter": 20
+        }
+      },
+      "scroll_containers": [
+        {
+          "tag": "TABLE",
+          "clientWidth": 324,
+          "scrollWidth": 326,
+          "overflowX": "auto",
+          "scrollLeftAfter": 2
+        },
+        {
+          "tag": "PRE",
+          "clientWidth": 280,
+          "scrollWidth": 750,
+          "overflowX": "auto",
+          "scrollLeftAfter": 20
+        },
+        {
+          "tag": "math",
+          "clientWidth": 324,
+          "scrollWidth": 490,
+          "overflowX": "auto",
+          "scrollLeftAfter": 20
+        },
+        {
+          "tag": "math",
+          "clientWidth": 324,
+          "scrollWidth": 429,
+          "overflowX": "auto",
+          "scrollLeftAfter": 20
+        },
+        {
+          "tag": "math",
+          "clientWidth": 324,
+          "scrollWidth": 425,
+          "overflowX": "auto",
+          "scrollLeftAfter": 20
+        },
+        {
+          "tag": "math",
+          "clientWidth": 324,
+          "scrollWidth": 498,
+          "overflowX": "auto",
+          "scrollLeftAfter": 20
+        },
+        {
+          "tag": "math",
+          "clientWidth": 324,
+          "scrollWidth": 436,
+          "overflowX": "auto",
+          "scrollLeftAfter": 20
+        },
+        {
+          "tag": "PRE",
+          "clientWidth": 280,
+          "scrollWidth": 889,
+          "overflowX": "auto",
+          "scrollLeftAfter": 20
+        },
+        {
+          "tag": "PRE",
+          "clientWidth": 280,
+          "scrollWidth": 742,
+          "overflowX": "auto",
+          "scrollLeftAfter": 20
+        },
+        {
+          "tag": "TABLE",
+          "clientWidth": 324,
+          "scrollWidth": 387,
+          "overflowX": "auto",
+          "scrollLeftAfter": 20
+        }
+      ],
+      "screenshots": [
+        "bootstrap-section-narrow.png",
+        "bootstrap-code-narrow.png",
+        "bootstrap-nine-copies-answer-narrow.png"
+      ]
+    }
+  ]
+}

@@ -10,7 +10,7 @@ bash scripts/quality.sh
 
 脚本优先使用 `.venv/bin/python`；可通过 `GENAI_PYTHON=/absolute/path/to/python` 指定解释器。每次结果写入独立的 `artifacts/quality/<UTC 时间>-<随机后缀>/`，不覆盖旧记录，包括：
 
-- 文档检查、15个已审查CPU教学例子、pytest、两个20步生成smoke、视频时序反例、2步图像flow训练与checkpoint求解器对照、条件丢弃训练与引导对照的日志及各自退出码；
+- 文档检查、16个已审查CPU教学例子、pytest、两个20步生成smoke、视频时序反例、2步图像flow训练与checkpoint求解器对照、条件丢弃训练与引导对照的日志及各自退出码；
 - pytest JUnit XML、实验图片/指标，以及本轮总退出码 `exit-status.txt`；
 - 检查时间、Git commit、Python 版本。
 
@@ -18,7 +18,7 @@ bash scripts/quality.sh
 
 `check_docs.py` 检查必要文档、Markdown 内联链接/图片、引用式链接定义、本地文件及 Markdown 标题锚点，并检查[贡献指南](../CONTRIBUTING.md)中的数学定界约定。链接扫描忽略代码围栏和行内代码，支持 ATX 标题（`#`）和 HTML `id`。数学检查覆盖未保护的美元定界及折叠区内的块公式，跳过代码、HTML属性和注释。该工具针对仓库当前Markdown子集；来源事实、公式正确性、孤立的未定义引用标签、实际渲染和图示教学质量仍需分别审查。
 
-[check_lesson_examples.py](../scripts/check_lesson_examples.py)直接执行12份文档中已审查的15个CPU代码块：空间patch/卷积投影/位置绑定、预测量/损失权重/时间采样校正、一致性端点/Euler解析对照、条件注意力的轴/置换/梯度、扩散/flow的Gaussian概率流与DDIM坐标、自回归因果性、覆盖率反例、IS/KID、生成模型恒等式、Kontext打包/时间、SVD/CogVideoX参数化、ResTok分组，以及LTX-2联合分解/尺寸/网格。每个ID在脚本白名单中固定文件，并由紧邻代码围栏的HTML标记定位。标记缺失、重复、未知ID或不支持的包装形式会报告失败；其余允许块继续检查。
+[check_lesson_examples.py](../scripts/check_lesson_examples.py)直接执行12份文档中已审查的16个CPU代码块：提示簇重采样、空间patch/卷积投影/位置绑定、预测量/损失权重/时间采样校正、一致性端点/Euler解析对照、条件注意力的轴/置换/梯度、扩散/flow的Gaussian概率流与DDIM坐标、自回归因果性、覆盖率反例、IS/KID、生成模型恒等式、Kontext打包/时间、SVD/CogVideoX参数化、ResTok分组，以及LTX-2联合分解/尺寸/网格。每个ID在脚本白名单中固定文件，并由紧邻代码围栏的HTML标记定位。标记缺失、重复、未知ID或不支持的包装形式会报告失败；其余允许块继续检查。
 
 每块使用当前Python解释器在独立进程运行，OMP/MKL/OpenBLAS线程数固定为1。独立命令默认30秒/块；quality入口设为20秒/块，外层仍限制该整项300秒。代码异常、非零退出或超时使检查总状态非零，日志保留文档位置、stdout/stderr和逐块结果。当前白名单无需权重、训练产物、下载或写文件；它执行仓库代码并采用当前环境权限。05的coverage块检查读者代码能执行，其覆盖性质另由toy测试验证。
 
@@ -34,7 +34,7 @@ bash scripts/quality.sh
 | --- | --- |
 | 触发 | PR、推送到 `main`、手动、每小时第 17 分钟（UTC） |
 | 运行位置 | GitHub 托管的 `ubuntu-24.04` runner，Python 3.12 |
-| 范围 | 文档链接、15个CPU教学块、默认分支146项测试（本PR扩展至178项）、DDPM/flow训练smoke、视频时序诊断、图像训练/求解器、条件丢弃训练/引导对照 |
+| 范围 | 文档链接、默认分支15个CPU教学块/146项测试（本PR及基底扩展至16块/178项）、DDPM/flow训练smoke、视频时序诊断、图像训练/求解器、条件丢弃训练/引导对照 |
 | 作业总超时 | 25 分钟（含安装） |
 | 并发 | 同一 workflow 与 PR/ref 共用 concurrency group，已有运行不取消 |
 | 权限 | `contents: read`，检查任务无提交或修改仓库权限 |

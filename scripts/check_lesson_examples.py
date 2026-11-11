@@ -29,6 +29,7 @@ EXAMPLES = {
     "autoregressive-causality": "docs/chapters/01-generative-models.md",
     "coverage-counterexample": "docs/chapters/05-evaluation.md",
     "is-kid-counterexamples": "docs/chapters/05-evaluation.md",
+    "prompt-cluster-bootstrap": "docs/chapters/05-evaluation.md",
     "generative-identities": "docs/generative-source-audit.md",
     "kontext-packing-time": "docs/readings/flux-kontext-2025.md",
     "video-vp-shapes": "docs/readings/video-training-svd-cogvideox.md",

@@ -9,7 +9,8 @@
 - PR #1已按授权合并，main为416dd8ce9c3e890d03d814bc02d0015c21e51090。
 - [PR #2](https://github.com/Fengyee/genai_study/pull/2)与[PR #3](https://github.com/Fengyee/genai_study/pull/3)已获后续明确授权并顺序合并：PR #2的2ac2f7b检查通过后合入；PR #3切base到main、更新分支到79508e8，run43068306477成功后合入。main现为d99b748fd4555db525f76a0ea83bb73b6b98c84d；其push43068708112已success。
 - 默认分支包含VAE实测、预测权重、GitHub数学修复、空间token专题和反馈表。32页1536公式的批量客户端验收与新专题/符号表两视口验收分别归档；默认分支检查范围为146 tests、15教学块和7条CLI smoke。
-- 当前分支fix/checkpoint-numeric-contract的修复已推送d6efad9，[PR #4](https://github.com/Fengyee/genai_study/pull/4)开放，run43069289007成功。最近完整本地检查178 tests、15/15教学块、7条CLI smoke通过，artifacts/quality/20261111T172929Z-tuGEfg。8份历史checkpoint重放结果逐元素相同；本项尚无合并授权。
+- [PR #4](https://github.com/Fengyee/genai_study/pull/4)开放，最新efb3ead的run43070085722成功，包含checkpoint数值契约及调度观察记录。8份历史checkpoint重放结果逐元素相同；本项尚无合并授权。
+- 当前分支docs/prompt-cluster-bootstrap基于PR #4，[PR #5](https://github.com/Fengyee/genai_study/pull/5)开放，新增05提示簇重采样反例。完整本地检查178 tests、16/16教学块、7条CLI smoke通过，artifacts/quality/20261111T174013Z-bzRcQS；固定1684744实际页面双视口52公式/锚点/答案/局部滚动均通过。
 - 每小时质量workflow位于main，API active、cron为UTC每小时:17；原416版本push/手动与d99版本push的artifact均实际核验。15:39–17:35 UTC观察结束，117次查询覆盖16:17/17:17计划点，最后无schedule事件；原因未确定，恢复时先读实际事件。
 - 编码代理持久调度、网站和通知绑定未部署；Bark/Codex推送仍缺可用接口。当前没有模型运行，数据保存在忽略的artifacts。
 
@@ -584,3 +585,17 @@ SVD在途检查点：已推送a3ed4a8，对应自动PR run42877869115为complete
 交付：checkpoint修复8fb8115提交后合入origin/main，内容树保持，最终d6efad9已推送并创建PR #4，远端run43069289007 success。本轮只更新部署/恢复记录，文档及diff检查通过后保存到同一PR。没有额外dispatch、workflow改动、网站发布或环境重新发布；当前无可用Bark/Codex主动通知绑定，已在聊天报告调度观察结果。
 
 下一轮具体任务：05的提示簇bootstrap说明已有独立推导和作者来源，准备接入一个27种重采样的CPU反例及练习，说明复制同一提示会如何缩小错误按行抽样的方差。草稿/tmp/genai-bootstrap-draft，来源PDF及Fraction独立枚举均已保留；先完成本轮远端检查点，再进入新内容PR。
+
+## 轮次50：把提示簇不确定性变成可执行反例
+
+问题：05建议按提示簇bootstrap，读者尚不能直接运行一个例子观察错误实验单位如何改变方差。新增三个提示、每项复制四行的配对差构造；提示等权时完整枚举27种重采样，条件方差2/9，错误按12独立行抽样为1/18，标准差缩小一半。说明固定三提示的描述均值、向声明提示分布推广的估计对象、提示独立/代表性、不等簇大小的权重选择；练习改为九次复制，答案2/81。均为教学与解析结果，未报告置信区间覆盖结论。
+
+来源：实际读取Efron/Narasimhan作者PDF第6–7页§3式(3.1)–(3.7)，370601字节、SHA117c03df…19184，核对IID观测和有放回重采样。原始1979论文出版方返回反爬HTML，本章引用的是实际读到的作者稿。独立Fraction分别枚举27种提示抽样、91种加权行计数，并以12步PMF卷积复查；主代理另用−2/1/4提示差以及1/4/9次复制，六种情形精确核对。保留来源身份、正文CPU、独立脚本/结果及作用范围。
+
+实施与验证：新增一个897字节CPU块进入白名单，12份文档共16块；原05内容移除新增节后逐字节恢复。最终52个公式的GitHub API内容/类别逐项一致。完整bash scripts/quality.sh退出0：178 passed（36.65秒）、16/16块、7条CLI smoke，执行时799本地链接0错误；日志artifacts/quality/20261111T174013Z-bzRcQS。后续只补记录，提交前跑文档/diff；推送后按精确SHA验证实际GitHub桌面/窄屏、折叠答案及局部滚动。
+
+交付检查点：PR #4最新efb3ead已推送且run43070085722 success。本轮建立docs/prompt-cluster-bootstrap，基底暂为PR #4以保留执行记录与已完成修复；将创建独立PR。本轮未训练或运行预训练权重，main仍d99、实际schedule观察状态沿轮次49，环境配置保持。
+
+轮次50最终页面验收：1684744已推送并创建[PR #5](https://github.com/Fengyee/genai_study/pull/5)，base为fix/checkpoint-numeric-contract。实际GitHub的05章在1440/390两视口均52/52 MathML（42行内/10块），无空renderer、错误和原始TeX。新锚点实际点击、九次复制答案的展开/还原及三公式显示通过；897字节代码与源码匹配，显示省略末尾换行，窄屏代码宽280/742且实际scrollLeft=20，document无整体溢出。主代理核对精确提交及源码SHA、查看窄屏答案，轻量JSON与截图已归档；未测试屏幕阅读器。当前远端1684744的CI仍在执行，后续查询新提交结果。
+
+下一项准备：按现有P1 backlog扩大预训练提示评价，草拟4个颜色/左右关系提示×seed101/211共8请求；历史约4.5分钟/图用于估计36分钟，单请求420秒、总预算3600秒。先核对缓存、固定身份与观察规则并提交计划，再启动生成；目前尚未执行这些请求。全部结果、失败和AI观察者范围将按协议保留。

@@ -1,0 +1,12 @@
+{
+  "base_commit": "efb3ead63cf08b0a3953e24d67af9ccf6a5e568a",
+  "source_file": "docs/chapters/05-evaluation.md",
+  "before_sha256": "a828f8c8510d7a8d4a78f51a39bf38fbc8d645ce0f9f2b33ff309402bdc4f7d6",
+  "after_sha256": "afa12386e9499a205247bf2f15d20bd9908b17f9a5276e581a24fa8108a07b04",
+  "previous_chapter_bytes_unchanged_after_removing_new_section": true,
+  "added_cpu_blocks": 1,
+  "added_details_answers": 1,
+  "added_formulas": 12,
+  "before_formulas": 40,
+  "after_formulas": 52
+}
