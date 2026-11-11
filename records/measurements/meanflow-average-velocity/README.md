@@ -47,4 +47,8 @@ curl --fail --location --max-time 30 \
 
 原源码为8029字节，SHA-256 `b8dcee1033e6ba01de0019d14fad846a399d356d67e549ee311a5e19d2a7c3a4`。替身检查确认`[1,0]`时间表、`h=1`、一次网络接口调用和解析端点结果。完整JAX/Flax执行、权重质量、图像训练和作者FID未在这些检查中运行。PDF与其它作者文件按source-identity.json中的固定URL重新获取并核对。
 
-来源论文与作者MIT文件按各自许可引用；本目录教学推导和验证脚本属于本项目的原创材料。GitHub API与实际客户端渲染验收由接入轮次另行记录。
+来源论文与作者MIT文件按各自许可引用；本目录教学推导和验证脚本属于本项目的原创材料。GitHub API与实际客户端渲染验收已完成，见下文。
+
+## GitHub阅读验收
+
+固定876647b，新卡/符号/术语三页在1440×1000和390×844两视口全部通过；79/90/17个公式均产生MathML，错误与原始TeX为0。新锚点、三道习题、1924字节代码、公式/表格/代码局部滚动及术语入口实际跳转通过，document/article无整体溢出。[API摘要](api-render-summary.json)、[实际客户端摘要](client-render-summary.json)与[主代理复核](root-reader-check.json)记录身份、数量和范围；[桌面JVP表](meanflow-anchor-desktop.png)和[窄屏习题](meanflow-exercises-narrow.png)保留原截图。其它完整截图位于本地产物目录；屏幕阅读器及真实移动设备尚待读者验证。

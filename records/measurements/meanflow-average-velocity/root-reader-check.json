@@ -1,0 +1,10 @@
+{
+  "checked_utc": "2026-11-11T19:05:50.433828+00:00",
+  "commit": "876647bfbcc913af577447c036beb03b4e7d1346",
+  "source_files_verified_against_commit_and_sha": 3,
+  "screenshots_viewed_and_copied_byte_exact": [
+    "meanflow-anchor-desktop.png",
+    "meanflow-exercises-narrow.png"
+  ],
+  "findings": "Read the derivative/JVP interface table and stopped-target formulas on desktop; narrow exercise answers and signs/indices remain readable. Other raw screenshots remain in artifacts/meanflow-reader/client."
+}

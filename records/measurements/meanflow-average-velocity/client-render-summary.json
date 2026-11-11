@@ -1,0 +1,136 @@
+{
+  "checked_utc": "2026-11-11T19:04:32.339019+00:00",
+  "commit": "876647bfbcc913af577447c036beb03b4e7d1346",
+  "browser_version": "156.0.8078.79",
+  "tls_verification": true,
+  "api": {
+    "pages": 3,
+    "formulas": 186,
+    "all_payloads_kinds_and_order_match": true,
+    "summary_sha256": "420850926d0345c3944e5fc27c127472213db592e424598422bb73be020c52ac"
+  },
+  "client": {
+    "page_viewport_combinations": 6,
+    "passed": 6,
+    "viewport_sizes": [
+      [
+        1440,
+        1000
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "per_page_math_counts": {
+      "meanflow": 79,
+      "notation": 90,
+      "glossary": 17
+    },
+    "observed_mathml_across_both_viewports": 372,
+    "empty_renderers": 0,
+    "math_errors": 0,
+    "raw_tex": 0,
+    "unconverted_math_fences": 0,
+    "all_anchor_clicks_match": true,
+    "whole_document_and_article_overflow": false,
+    "new_notation_rows_visible": 2,
+    "new_glossary_rows_visible": 1,
+    "meanflow_exercise_items_visible": 3
+  },
+  "code": {
+    "source_bytes": 1924,
+    "rendered_bytes": 1923,
+    "source_sha256": "aba58d6ac5a2fd561f1031ec97182440ea76d7f63c8242c7e7573d21bc92094c",
+    "matches_ignoring_one_terminal_newline": true,
+    "narrow_pre_client_width": 280,
+    "narrow_pre_scroll_width": 758,
+    "narrow_actual_scroll_left": 20
+  },
+  "narrow_scrolling": "Long formulas, code and wide tables accept actual horizontal scroll; the document and article retain viewport width.",
+  "navigation": {
+    "checked_utc": "2026-11-11T19:03:51.655798+00:00",
+    "commit": "876647bfbcc913af577447c036beb03b4e7d1346",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "tls_verification": true,
+    "table_scroll": {
+      "before": 1,
+      "after": 101,
+      "clientWidth": 324,
+      "scrollWidth": 425
+    },
+    "link_href": "/Fengyee/genai_study/blob/876647bfbcc913af577447c036beb03b4e7d1346/docs/readings/meanflow-average-velocity.md",
+    "source_http_status": 200,
+    "destination_url": "https://github.com/Fengyee/genai_study/blob/876647bfbcc913af577447c036beb03b4e7d1346/docs/readings/meanflow-average-velocity.md",
+    "destination_heading": "MeanFlow：用两时间平均速度连接一次生成与训练导数",
+    "destination_mathml": 79,
+    "click_passed": true,
+    "finished_utc": "2026-11-11T19:03:59.060997+00:00"
+  },
+  "source_identities": [
+    {
+      "path": "docs/readings/meanflow-average-velocity.md",
+      "sha256": "dca122a3a76f517f3acb3c90655fe7dd1f251f604c7a2ada199d4c22d050caae",
+      "bytes": 11911
+    },
+    {
+      "path": "docs/notation.md",
+      "sha256": "b71e4bb0e52f6f38d3a5a85c196d2e6f8f14691850d84e211a12ac103e829c02",
+      "bytes": 8122
+    },
+    {
+      "path": "docs/glossary.md",
+      "sha256": "763d8921370cfccbaad6d467fa77c67a79d67d758073df21ff4991e325093521",
+      "bytes": 16650
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "meanflow-anchor-desktop.png",
+      "bytes": 307466,
+      "sha256": "16ba4ec0031d9502250fabadd28490b227aad3e146c25fe10010d478c38ece3a"
+    },
+    {
+      "file": "meanflow-exercises-narrow.png",
+      "bytes": 87250,
+      "sha256": "0d4b2d8fb71d541048e73c429e7a175755f25cb88650655b5e67bdcf215c92af"
+    },
+    {
+      "file": "meanflow-code-narrow.png",
+      "bytes": 71428,
+      "sha256": "ac43776b7362d792c0dd31de7b44ac5d2be316b1918d30ec80352ca026ab0927"
+    },
+    {
+      "file": "notation-meanflow-rows-narrow.png",
+      "bytes": 95812,
+      "sha256": "6516be1076d785c6da5e5a3c6db092be96e676599c655e2412a0b39cd0829888"
+    },
+    {
+      "file": "glossary-meanflow-link-scrolled-narrow.png",
+      "bytes": 88037,
+      "sha256": "6c04c7c27a447397bb379004ee34dea3de78f2732202d7d9b3236f4a93d4a05c"
+    }
+  ],
+  "visual_review": {
+    "observer": "AI code agent /root/meanflow_reader_check",
+    "images_inspected": [
+      "meanflow-anchor-desktop.png",
+      "meanflow-exercises-narrow.png",
+      "notation-meanflow-rows-narrow.png",
+      "glossary-meanflow-row-narrow.png",
+      "glossary-meanflow-link-scrolled-narrow.png"
+    ],
+    "finding": "Formula signs/indices and three exercise answers readable. Narrow notation rows wrap; glossary reference column is reachable by verified table scrolling."
+  },
+  "scope": "Actual GitHub pages at the exact commit, source/API identity comparison, client MathML and DOM interaction, screenshot inspection. Screen reader and physical mobile device not tested. No model images viewed.",
+  "navigation_harness_recovery": {
+    "initial_attempt": "Raw expression wait predicate hit GitHub CSP unsafe-eval; this was a harness failure, not a page failure.",
+    "correction": "Use arrow-function wait predicates with browser CSP/TLS unchanged.",
+    "corrected_navigation_passed": true
+  },
+  "raw_browser_results_sha256": "4fad94e790901c4fbd308a3a64bfab76da743320cf95badc172ab208743f0cd0",
+  "browser_script_sha256": "56ffe17b134f8b2a720d83c6c567df43870582fb8d3c3e054992ff61a79eb2dd"
+}
