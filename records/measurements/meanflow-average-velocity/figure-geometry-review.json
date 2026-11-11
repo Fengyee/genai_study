@@ -1,0 +1,28 @@
+{
+  "independent_reviewer": "/root/meanflow_figure/geometry_review",
+  "source": "Independent hand derivation plus501-point order check",
+  "values": {
+    "x1": -1.5,
+    "exact_x0": 0.45,
+    "euler_x0": 1.5,
+    "forward_average_velocity": -1.95,
+    "forward_initial_velocity": -3.0,
+    "reverse_average_displacement": 1.95,
+    "reverse_euler_displacement": 3.0,
+    "midpoint_exact": -0.16549167118,
+    "midpoint_chord": -0.525,
+    "midpoint_euler": 0.0
+  },
+  "curve_order": "For interior tau, exact curve is above the full-interval chord and below the initial-tangent Euler line. x_second_derivative=z*s_squared/q^(3/2)<0.",
+  "chord_definition": "Full interval rho=0 fixed. Recomputing U(x1,rho,1) for each rho would instead give endpoints on the true curve.",
+  "population_variances": {
+    "average": 0.49,
+    "euler": 0.0
+  },
+  "visual_review": "Final PNG viewed at full figure scope. Titles, legends, all endpoint annotations, axis direction and footer are readable; no overlap seen. No model image viewed.",
+  "output_protection": {
+    "existing_directory_exit_code": 2,
+    "all_existing_output_bytes_unchanged": true
+  },
+  "svg_parse": "passed"
+}

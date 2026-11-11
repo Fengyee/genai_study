@@ -1,0 +1,9 @@
+{
+  "checked_utc": "2026-11-11T19:24:06.746046+00:00",
+  "commit": "002dd89bfef5ac6ae2a8f3cddb3bb9d59fa3ad0d",
+  "source_sha_verified": true,
+  "two_viewports_passed": true,
+  "root_viewed_screenshot": "figure-caption-narrow.png",
+  "screenshot_sha256": "d48247b17f0f203005258b3c3788080a30f3f2bd703f67ebf6e28d197bb95bec",
+  "scope": "Actual loaded full PNG, Chinese alt/caption, 79 MathML, code identity and absence of whole-page overflow. Narrow PNG is a thumbnail; no claim of standalone small-label readability. SVG bytes verified; file-view UI recorded separately."
+}

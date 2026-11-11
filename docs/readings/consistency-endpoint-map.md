@@ -14,6 +14,8 @@
 
 例如[Kontext阅读卡](flux-kontext-2025.md)中固定的dev路径使用guidance-distilled模型，每个区间调用一次学生，默认仍有30个区间。它压缩了引导计算；跨越多少时间区间由采样配置和模型的训练适用范围共同决定。[LTX-2阅读卡](ltx2-video-audio-2026.md)记录的8+3次调用也应按各阶段实际接口解释。下面的CM是独立机制案例，这两张阅读卡中的模型各自沿用其原始训练方案。
 
+另一个可选方向是[MeanFlow两时间平均速度](meanflow-average-velocity.md)：同时输入当前位置与目标时间，学习整段位移除以区间长度，并通过总导数构造目标。可在读完本页后比较两类输出的边界与采样接口。
+
 ## 2. 端点映射沿概率流轨迹保持恒定
 
 采用方差爆炸（variance-exploding, VE）扰动：数据$`Y\sim p_{\mathrm{data}}`$、独立噪声$`Z\sim\mathcal N(0,I)`$，单时刻边缘为

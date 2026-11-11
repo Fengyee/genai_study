@@ -1,0 +1,12 @@
+{
+  "scope": "Independent diagonal linear vector field; no model training or author framework imported",
+  "identity_max_abs": 0.0,
+  "endpoint_max_abs": 2.220446049250313e-16,
+  "rt_and_th_jvp_exact_equal": true,
+  "wrong_constant_h_identity_max_abs": 0.07434782006276097,
+  "two_interval_additivity_max_abs": 5.551115123125783e-17,
+  "equal_weight_conditional_tangent_mean_error": 0.0,
+  "stopgrad_gradient": -0.31999999999999984,
+  "full_target_gradient": -0.4159999999999998,
+  "constant_target_assumption": "For conditional tangent comparison z,tau,rho and the current field are fixed; this is not a convergence proof."
+}
