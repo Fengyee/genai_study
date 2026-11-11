@@ -10,7 +10,7 @@
 - [PR #2](https://github.com/Fengyee/genai_study/pull/2)与[PR #3](https://github.com/Fengyee/genai_study/pull/3)已获后续明确授权并顺序合并：PR #2的2ac2f7b检查通过后合入；PR #3切base到main、更新分支到79508e8，run43068306477成功后合入。main现为d99b748fd4555db525f76a0ea83bb73b6b98c84d；其push43068708112已success。
 - 默认分支包含VAE实测、预测权重、GitHub数学修复、空间token专题和反馈表。32页1536公式的批量客户端验收与新专题/符号表两视口验收分别归档；默认分支检查范围为146 tests、15教学块和7条CLI smoke。
 - [PR #4](https://github.com/Fengyee/genai_study/pull/4)开放，最新efb3ead的run43070085722成功，包含checkpoint数值契约及调度观察记录。8份历史checkpoint重放结果逐元素相同；本项尚无合并授权。
-- 当前分支docs/prompt-cluster-bootstrap基于PR #4，新增05提示簇重采样反例。完整本地检查178 tests、16/16教学块、7条CLI smoke通过，artifacts/quality/20261111T174013Z-bzRcQS；准备独立PR，推送后补实际页面验收。
+- 当前分支docs/prompt-cluster-bootstrap基于PR #4，[PR #5](https://github.com/Fengyee/genai_study/pull/5)开放，新增05提示簇重采样反例。完整本地检查178 tests、16/16教学块、7条CLI smoke通过，artifacts/quality/20261111T174013Z-bzRcQS；固定1684744实际页面双视口52公式/锚点/答案/局部滚动均通过。
 - 每小时质量workflow位于main，API active、cron为UTC每小时:17；原416版本push/手动与d99版本push的artifact均实际核验。15:39–17:35 UTC观察结束，117次查询覆盖16:17/17:17计划点，最后无schedule事件；原因未确定，恢复时先读实际事件。
 - 编码代理持久调度、网站和通知绑定未部署；Bark/Codex推送仍缺可用接口。当前没有模型运行，数据保存在忽略的artifacts。
 
@@ -595,3 +595,7 @@ SVD在途检查点：已推送a3ed4a8，对应自动PR run42877869115为complete
 实施与验证：新增一个897字节CPU块进入白名单，12份文档共16块；原05内容移除新增节后逐字节恢复。最终52个公式的GitHub API内容/类别逐项一致。完整bash scripts/quality.sh退出0：178 passed（36.65秒）、16/16块、7条CLI smoke，执行时799本地链接0错误；日志artifacts/quality/20261111T174013Z-bzRcQS。后续只补记录，提交前跑文档/diff；推送后按精确SHA验证实际GitHub桌面/窄屏、折叠答案及局部滚动。
 
 交付检查点：PR #4最新efb3ead已推送且run43070085722 success。本轮建立docs/prompt-cluster-bootstrap，基底暂为PR #4以保留执行记录与已完成修复；将创建独立PR。本轮未训练或运行预训练权重，main仍d99、实际schedule观察状态沿轮次49，环境配置保持。
+
+轮次50最终页面验收：1684744已推送并创建[PR #5](https://github.com/Fengyee/genai_study/pull/5)，base为fix/checkpoint-numeric-contract。实际GitHub的05章在1440/390两视口均52/52 MathML（42行内/10块），无空renderer、错误和原始TeX。新锚点实际点击、九次复制答案的展开/还原及三公式显示通过；897字节代码与源码匹配，显示省略末尾换行，窄屏代码宽280/742且实际scrollLeft=20，document无整体溢出。主代理核对精确提交及源码SHA、查看窄屏答案，轻量JSON与截图已归档；未测试屏幕阅读器。当前远端1684744的CI仍在执行，后续查询新提交结果。
+
+下一项准备：按现有P1 backlog扩大预训练提示评价，草拟4个颜色/左右关系提示×seed101/211共8请求；历史约4.5分钟/图用于估计36分钟，单请求420秒、总预算3600秒。先核对缓存、固定身份与观察规则并提交计划，再启动生成；目前尚未执行这些请求。全部结果、失败和AI观察者范围将按协议保留。
