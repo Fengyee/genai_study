@@ -1,0 +1,21 @@
+{
+  "checked_utc": "2026-11-11T18:34:45.253651+00:00",
+  "sources": [
+    {
+      "name": "python-resource",
+      "url": "https://docs.python.org/3.12/library/resource.html",
+      "final_url": "https://docs.python.org/3.12/library/resource.html",
+      "status": 200,
+      "bytes": 53008,
+      "sha256": "ab9bdcca1da0593ce7a538e4bf51055366a6184c9d12b1e2193061b839cfada9"
+    },
+    {
+      "name": "linux-getrusage",
+      "url": "https://man7.org/linux/man-pages/man2/getrusage.2.html",
+      "final_url": "https://man7.org/linux/man-pages/man2/getrusage.2.html",
+      "status": 200,
+      "bytes": 16691,
+      "sha256": "ade816073a4c25f6d272fbf628d7bdf6d9a5b4ae76b29f1889cc01420220d523"
+    }
+  ]
+}

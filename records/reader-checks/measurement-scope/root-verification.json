@@ -1,0 +1,8 @@
+{
+  "checked_utc": "2026-11-11T18:51:21.996343+00:00",
+  "base_commit": "0bc702c562f9dad44ad446d448ffcb1a30d0d995",
+  "source_files_sha_verified": 5,
+  "historical_records_sha_unchanged": 18,
+  "applied_files_match_reviewed_draft": 6,
+  "method": "Independent current-source/historical-record SHA verification, six applied bytes checked against review and HEAD; directly inspected image and video/VAE query order. No inference, values or commands changed."
+}

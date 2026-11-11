@@ -1,0 +1,467 @@
+{
+  "created_utc": "2026-11-11T18:37:02.793231+00:00",
+  "head": "03bdd6cc80cc5d4eebc7cda9cbb7737d01a47d62",
+  "priority": "P2 measurement-scope ambiguity",
+  "finding": "Internal ru_maxrss queries capture process high-water RSS up to their query, while documentation calls it lifetime/whole-process peak without the endpoint. Recorded numeric values are retained; no claim is made that the historical exited-process maximum was higher. SVD also computes frame differences and array hashes after both internal total timing and RSS queries. VAE total timing includes output hashing but its earlier RSS query precedes that hashing.",
+  "source_evidence": [
+    {
+      "path": "src/genai_study/pretrained_image.py",
+      "sha256": "3cd514bae6d2a9e8c17fafea806f49854813ad88c0b08e858e685dd6e0b8f1be",
+      "bytes": 15154,
+      "rss_query_lines": [
+        254
+      ],
+      "selected_lines": [
+        {
+          "line": 252,
+          "text": "\"inference\": inference_seconds, \"total_before_metrics_write\": time.perf_counter() - started},"
+        },
+        {
+          "line": 254,
+          "text": "\"memory\": {\"process_peak_rss_kib\": int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss),"
+        },
+        {
+          "line": 262,
+          "text": "(args.output / \"metrics.json\").write_text(json.dumps(result, indent=2, allow_nan=False) + \"\\n\","
+        }
+      ]
+    },
+    {
+      "path": "src/genai_study/pretrained_video.py",
+      "sha256": "215940885a6f05b5d158a901a75b51e02e7a985a2b83556bd690320a09ea4e7f",
+      "bytes": 20704,
+      "rss_query_lines": [
+        320
+      ],
+      "selected_lines": [
+        {
+          "line": 318,
+          "text": "\"total_before_metrics_write\": time.perf_counter() - started},"
+        },
+        {
+          "line": 320,
+          "text": "\"memory\": {\"process_peak_rss_kib\": int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss),"
+        },
+        {
+          "line": 322,
+          "text": "\"diagnostics\": frame_diagnostics(frames),"
+        },
+        {
+          "line": 332,
+          "text": "(args.output / \"metrics.json\").write_text(json.dumps(result, indent=2, allow_nan=False) + \"\\n\","
+        }
+      ]
+    },
+    {
+      "path": "src/genai_study/vae_study.py",
+      "sha256": "827aaff547906db71bea4097a042a20605f5a876d678cb43ae2707150d03ae79",
+      "bytes": 14742,
+      "rss_query_lines": [
+        253
+      ],
+      "selected_lines": [
+        {
+          "line": 252,
+          "text": "\"timing_scope\": \"No warm-up. VAE load includes optional imports; encode/decode fields time API calls. Per-case diagnostics and artifact saving are included in total_before_metrics_write. Full command wall is recorded externally.\","
+        },
+        {
+          "line": 253,
+          "text": "\"memory\": {\"process_peak_rss_kib\": int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss),"
+        },
+        {
+          "line": 259,
+          "text": "result[\"timing_seconds\"][\"total_before_metrics_write\"] = time.perf_counter() - started"
+        },
+        {
+          "line": 260,
+          "text": "(args.output / \"metrics.json\").write_text(json.dumps(result, indent=2, allow_nan=False) + \"\\n\")"
+        }
+      ]
+    },
+    {
+      "path": "records/measurements/pretrained-svd/direct-reference.py",
+      "sha256": "6a21b514c8c545b76cddd8a9cce07653e7f1800bd25d877ee183a368d5f639cc",
+      "bytes": 10189,
+      "rss_query_lines": [
+        133
+      ],
+      "selected_lines": [
+        {
+          "line": 131,
+          "text": "'inference':inference_seconds,'total_before_report_write':time.perf_counter()-started},"
+        },
+        {
+          "line": 133,
+          "text": "'memory': {'process_peak_rss_kib':int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss),"
+        },
+        {
+          "line": 136,
+          "text": "(OUT/'comparison.json').write_text(json.dumps(report,indent=2,allow_nan=False)+'\\n')"
+        }
+      ]
+    },
+    {
+      "path": "src/genai_study/run_record.py",
+      "sha256": "be545eff1985b8eed096b0663145bade01303685430310d4b199aa727c685697",
+      "bytes": 7728,
+      "rss_query_lines": [],
+      "selected_lines": []
+    }
+  ],
+  "records": [
+    {
+      "path": "records/measurements/pretrained-sd14/default.json",
+      "sha256": "7d201531a2423370066d156984ba172d4aa15f498cf5dd1fdccf8203645108eb",
+      "memory": {
+        "process_peak_rss_kib": 5645892,
+        "scope": "Linux process lifetime high-water RSS, including imports/model loading; measured in KiB, not incremental inference allocation."
+      },
+      "timing_seconds": {
+        "verification": 2.733326787999431,
+        "pipeline_load": 3.0067019300004176,
+        "inference": 261.5156380920007,
+        "total_before_metrics_write": 267.33632582599967
+      },
+      "wall_seconds": null
+    },
+    {
+      "path": "records/measurements/pretrained-sd14/guidance3.json",
+      "sha256": "4b405a3c550dd02c559d25475aec5164a4c34268e2cfb026c93503e97d1b5cd8",
+      "memory": {
+        "process_peak_rss_kib": 5637048,
+        "scope": "Linux process lifetime high-water RSS, including imports/model loading; measured in KiB, not incremental inference allocation."
+      },
+      "timing_seconds": {
+        "verification": 2.842914147000556,
+        "pipeline_load": 3.062524050999855,
+        "inference": 262.4891273180001,
+        "total_before_metrics_write": 268.46677591200023
+      },
+      "wall_seconds": null
+    },
+    {
+      "path": "records/measurements/pretrained-sd14/repeat.json",
+      "sha256": "595810040b4bd9477c0453ed387cc993dcd5af6ac74515b131a2b8337821bc1b",
+      "memory": {
+        "process_peak_rss_kib": 5722480,
+        "scope": "Linux process lifetime high-water RSS, including imports/model loading; measured in KiB, not incremental inference allocation."
+      },
+      "timing_seconds": {
+        "verification": 2.768323689000681,
+        "pipeline_load": 3.018866373000492,
+        "inference": 259.216123186,
+        "total_before_metrics_write": 265.0774833380001
+      },
+      "wall_seconds": null
+    },
+    {
+      "path": "records/measurements/pretrained-sd14/foreground.json",
+      "sha256": "8e8e8aeb88c1c72cb6137a344001bddb329ee1a256f3a3f480f95ae9aed90e29",
+      "memory": {
+        "process_peak_rss_kib": 5608560,
+        "scope": "Linux process lifetime high-water RSS, including imports/model loading; measured in KiB, not incremental inference allocation."
+      },
+      "timing_seconds": {
+        "verification": 2.9016013310001654,
+        "pipeline_load": 3.344304631000341,
+        "inference": 262.01649347199964,
+        "total_before_metrics_write": 268.3313815520005
+      },
+      "wall_seconds": null
+    },
+    {
+      "path": "records/measurements/pretrained-sd14/smoke.json",
+      "sha256": "601a9431b7c1ad948812e503329e31c1d923a2c7a2b776e1bd81835226a5df8e",
+      "memory": {
+        "process_peak_rss_kib": 5575796,
+        "scope": "Linux process lifetime high-water RSS, including imports/model loading; measured in KiB, not incremental inference allocation."
+      },
+      "timing_seconds": {
+        "verification": 3.478779920999841,
+        "pipeline_load": 3.294346667999889,
+        "inference": 10.930012281000018,
+        "total_before_metrics_write": 17.718640852000135
+      },
+      "wall_seconds": null
+    },
+    {
+      "path": "records/measurements/sd14-prompt-pilot/cabin-seed19.json",
+      "sha256": "c720f1be181e2d8fff1f1375dc8d4811caf689bfe9541f90f79ec8887dfa6b04",
+      "memory": {
+        "process_peak_rss_kib": 5702452,
+        "scope": "Linux process lifetime high-water RSS, including imports/model loading; measured in KiB, not incremental inference allocation."
+      },
+      "timing_seconds": {
+        "verification": 3.2381320349995804,
+        "pipeline_load": 3.064248561999193,
+        "inference": 259.9714446329999,
+        "total_before_metrics_write": 266.3612005289997
+      },
+      "wall_seconds": null
+    },
+    {
+      "path": "records/measurements/sd14-prompt-pilot/scene-seed19.json",
+      "sha256": "584d732b1eb43edb59c3b11d6fc3f316d985846628adae4023aa898400ed5048",
+      "memory": {
+        "process_peak_rss_kib": 5631400,
+        "scope": "Linux process lifetime high-water RSS, including imports/model loading; measured in KiB, not incremental inference allocation."
+      },
+      "timing_seconds": {
+        "verification": 2.8078946830009954,
+        "pipeline_load": 3.3646034039993538,
+        "inference": 260.073436259001,
+        "total_before_metrics_write": 266.30632168600096
+      },
+      "wall_seconds": null
+    },
+    {
+      "path": "records/measurements/sd14-prompt-pilot/scene-seed43.json",
+      "sha256": "36a61bcb55266854b3855990d34ba36ae67a5c4697759e6c5e219cf9882a07a1",
+      "memory": {
+        "process_peak_rss_kib": 5630588,
+        "scope": "Linux process lifetime high-water RSS, including imports/model loading; measured in KiB, not incremental inference allocation."
+      },
+      "timing_seconds": {
+        "verification": 2.8068654220005556,
+        "pipeline_load": 3.064262272000633,
+        "inference": 262.56709368500015,
+        "total_before_metrics_write": 268.50345278699933
+      },
+      "wall_seconds": null
+    },
+    {
+      "path": "records/measurements/sd14-prompt-pilot/cabin-seed43.json",
+      "sha256": "c458920d60f188a33888ea0c5ccbfbc7ce26c850ba149677082cd3220ed3105f",
+      "memory": {
+        "process_peak_rss_kib": 5599896,
+        "scope": "Linux process lifetime high-water RSS, including imports/model loading; measured in KiB, not incremental inference allocation."
+      },
+      "timing_seconds": {
+        "verification": 2.8414729129999614,
+        "pipeline_load": 3.1301688739986275,
+        "inference": 264.5594150400011,
+        "total_before_metrics_write": 270.6140969949993
+      },
+      "wall_seconds": null
+    },
+    {
+      "path": "records/measurements/pretrained-svd/full.json",
+      "sha256": "03b45c0b02462dfb78c5f743e621cbe687992362f875600c7d2019792b0ea6e4",
+      "memory": {
+        "process_peak_rss_kib": 11754884,
+        "scope": "Linux process lifetime high-water RSS in KiB, including imports/model loading."
+      },
+      "timing_seconds": {
+        "input_preparation": 0.01810267599830695,
+        "verification": 4.636044241999116,
+        "pipeline_load": 3.2592202340001677,
+        "inference": 998.6861995989984,
+        "conditioning_before_first_unet": 3.8203362979984377,
+        "denoising_first_unet_through_last_euler": 954.8114615610011,
+        "decoding_and_postprocessing": 40.054401739998866,
+        "total_before_metrics_write": 1006.7251035959998
+      },
+      "wall_seconds": null
+    },
+    {
+      "path": "records/measurements/pretrained-svd/smoke.json",
+      "sha256": "7d1d1f3a2a3522146c36257743e8e23138094f86fd102f23859555d3a77830a4",
+      "memory": {
+        "process_peak_rss_kib": 9999088,
+        "scope": "Linux process lifetime high-water RSS in KiB, including imports/model loading."
+      },
+      "timing_seconds": {
+        "input_preparation": 0.017311903000518214,
+        "verification": 4.74376858100004,
+        "pipeline_load": 3.345627400000012,
+        "inference": 38.36832986199988,
+        "conditioning_before_first_unet": 3.9341591430002154,
+        "denoising_first_unet_through_last_euler": 23.239932495000176,
+        "decoding_and_postprocessing": 11.194238223999491,
+        "total_before_metrics_write": 46.535073338000075
+      },
+      "wall_seconds": null
+    },
+    {
+      "path": "records/measurements/pretrained-svd/calibration.json",
+      "sha256": "08ad87c7dca8fe0b32bbd7fe3b477cbc18119ade23cbc708372a9d8bd8e767ff",
+      "memory": {
+        "process_peak_rss_kib": 11833584,
+        "scope": "Linux process lifetime high-water RSS in KiB, including imports/model loading."
+      },
+      "timing_seconds": {
+        "input_preparation": 0.01862847400116152,
+        "verification": 5.066765555000529,
+        "pipeline_load": 3.495012040999427,
+        "inference": 194.4147926400001,
+        "conditioning_before_first_unet": 4.072234216999277,
+        "denoising_first_unet_through_last_euler": 150.7631663989996,
+        "decoding_and_postprocessing": 39.57939202400121,
+        "total_before_metrics_write": 203.15423298299902
+      },
+      "wall_seconds": null
+    },
+    {
+      "path": "records/measurements/pretrained-svd/smoke-repeat.json",
+      "sha256": "9d031192a6c70067998dd003b51cf1a9f5ef062ebb65133e2923daa5c682a265",
+      "memory": {
+        "process_peak_rss_kib": 10051812,
+        "scope": "Linux process lifetime high-water RSS in KiB, including imports/model loading."
+      },
+      "timing_seconds": {
+        "input_preparation": 0.016921672999160364,
+        "verification": 4.645464354998694,
+        "pipeline_load": 3.381911589000083,
+        "inference": 37.85448537500088,
+        "conditioning_before_first_unet": 3.873648045000664,
+        "denoising_first_unet_through_last_euler": 23.391923790000874,
+        "decoding_and_postprocessing": 10.58891353999934,
+        "total_before_metrics_write": 45.95738087399877
+      },
+      "wall_seconds": null
+    },
+    {
+      "path": "records/measurements/pretrained-svd/direct-comparison.json",
+      "sha256": "0e9bbc72b7aa2e77ae9a5f9a6c3ba76fb4a834ae357fc602c6eda27c7df880ae",
+      "memory": {
+        "process_peak_rss_kib": 9994720,
+        "scope": "Linux process-lifetime peak RSS, including model loading; KiB."
+      },
+      "timing_seconds": {
+        "verification": 4.719237928000439,
+        "pipeline_load": 3.62443190599879,
+        "inference": 38.25300372699894,
+        "total_before_report_write": 46.661416192000615
+      },
+      "wall_seconds": null
+    },
+    {
+      "path": "records/measurements/vae-reconstruction/primary-metrics.json",
+      "sha256": "359670e7bbba25f9bace0987354b5b24b4b4beada484d9f19a0df6cf271a2e87",
+      "memory": {
+        "process_peak_rss_kib": 1722144,
+        "scope": "Linux process lifetime high-water RSS, including imports, weights and saving"
+      },
+      "timing_seconds": {
+        "verification": 0.3342235710000523,
+        "preprocess": 0.132902477000016,
+        "vae_load": 2.7435792270000547,
+        "encode": 6.373300968999956,
+        "decode_total": 81.05777301199998,
+        "save_and_metadata": 2.360441428999934,
+        "total_before_metrics_write": 93.0579443260001
+      },
+      "wall_seconds": null
+    },
+    {
+      "path": "records/measurements/vae-reconstruction/repeat-metrics.json",
+      "sha256": "0deb7eea2d12ea3afe268574385c296607f38ed4b89d3842dd23c9b88798c66e",
+      "memory": {
+        "process_peak_rss_kib": 1727924,
+        "scope": "Linux process lifetime high-water RSS, including imports, weights and saving"
+      },
+      "timing_seconds": {
+        "verification": 0.18245551300003626,
+        "preprocess": 0.05401235199997245,
+        "vae_load": 2.122496473999945,
+        "encode": 7.256976592000001,
+        "decode_total": 82.26831263199995,
+        "save_and_metadata": 2.2944331969999894,
+        "total_before_metrics_write": 94.2174434210001
+      },
+      "wall_seconds": null
+    },
+    {
+      "path": "records/measurements/vae-reconstruction/primary-run.json",
+      "sha256": "ce78e0d91ac861493a19ea43d296b0c4301bdf351e84e0721b8e56c4cc28a832",
+      "memory": null,
+      "timing_seconds": null,
+      "wall_seconds": 93.770107435
+    },
+    {
+      "path": "records/measurements/vae-reconstruction/repeat-run.json",
+      "sha256": "6dc903f286478b5de5c3c2934a151bfcf403c98a096fb46ac37e7526e8648934",
+      "memory": null,
+      "timing_seconds": null,
+      "wall_seconds": 94.848776412
+    }
+  ],
+  "authoritative_definitions": [
+    {
+      "name": "python-resource",
+      "excerpts": [
+        "e resource usage information: resource. getrusage ( who ) ¶ This function returns an object that describes the resources consumed by either the current process or its children, as specified by the who parameter. The who parameter should be specified using one of the RUSAGE_* constants described below. A simple example: from resource import * import time # a non CPU-bound task t",
+        "e time in system mode (float seconds) 2 ru_maxrss maximum resident set size 3 ru_ixrss shared memory size 4 ru_idrss unshared memory size 5 ru_isrss unshared stack size 6 ru_minflt page faults not requiring I/O 7 ru_majflt page faults requiring I/O 8 ru_nswap number of swap outs 9 ru_inblock block input operations 10 ru_oublock block output operations 11 ru_msgsnd messages sent",
+        " time . sleep ( 3 ) print ( getrusage ( RUSAGE_SELF )) # a CPU-bound task for i in range ( 10 ** 8 ): _ = 1 + 1 print ( getrusage ( RUSAGE_SELF )) The fields of the return value each describe how a particular system resource has been used, e.g. amount of time spent running is user mode or number of times the process was swapped out of main memory. Some values are dependent on t"
+      ]
+    },
+    {
+      "name": "linux-getrusage",
+      "excerpts": [
+        "ho , which can be one of the following: RUSAGE_SELF Return resource usage statistics for the calling process, which is the sum of resources used by all threads in the process. RUSAGE_CHILDREN Return resource usage statistics for all children of the calling process that have terminated and been waited for. These statistics will include the resources used by grandchildren, and fu",
+        " structure (seconds plus microseconds). ru_maxrss (since Linux 2.6.32) This is the maximum resident set size used (in KiB). For RUSAGE_CHILDREN , this is the resident set size of the largest child, not the maximum resident set size of the process tree. ru_ixrss (unmaintained) This field is currently unused on Linux. ru_idrss (unmaintained) This field is currently unused on Linu"
+      ]
+    }
+  ],
+  "scope_by_program": {
+    "pretrained_image": {
+      "before_time_and_rss": [
+        "imports/loading",
+        "verification/inference",
+        "PNG and NPY saving",
+        "metadata through call counts"
+      ],
+      "after_time_and_rss": [
+        "output PNG SHA",
+        "metrics serialization/write",
+        "printing",
+        "shutdown"
+      ]
+    },
+    "pretrained_video": {
+      "before_time_and_rss": [
+        "imports/loading/input preparation",
+        "verification/inference",
+        "PNG and NPY saving including PNG hashes",
+        "metadata through call counts"
+      ],
+      "after_time_and_rss": [
+        "frame_diagnostics float64 differences",
+        "frames NPY and raw hashes",
+        "metrics serialization/write",
+        "printing",
+        "shutdown"
+      ]
+    },
+    "vae_study": {
+      "before_rss": [
+        "imports/loading/verification/preprocessing",
+        "encode/six decode calls",
+        "case diagnostics",
+        "all artifact saves and array identities"
+      ],
+      "after_rss": [
+        "output file hash iteration",
+        "save_and_metadata and total_before_metrics_write samples",
+        "metrics serialization/write",
+        "printing",
+        "shutdown"
+      ]
+    },
+    "svd_direct_reference": {
+      "before_rss": [
+        "model loading and inference",
+        "saving and comparisons",
+        "source/output hashes",
+        "total timing sample"
+      ],
+      "after_rss": [
+        "comparison JSON serialization/write",
+        "printing",
+        "assertions and shutdown"
+      ]
+    }
+  },
+  "recommendation": "Apply six-file documentation patch with precise scope; preserve raw JSON. Existing new pilot sources are frozen: any improvements to emitted metadata strings belong after completion of that campaign and must be recorded as a new source identity.",
+  "verification": "Source order and saved JSON inspection; KiB conversion cross-check; independent VAE reviewer; official resource docs retrieved. No model requests, no source or tracked file mutations."
+}

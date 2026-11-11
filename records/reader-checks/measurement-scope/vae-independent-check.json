@@ -1,0 +1,90 @@
+{
+  "source_path": "src/genai_study/vae_study.py",
+  "source_sha256": "827aaff547906db71bea4097a042a20605f5a876d678cb43ae2707150d03ae79",
+  "query_line": 253,
+  "query": "resource.getrusage(resource.RUSAGE_SELF).ru_maxrss",
+  "before_query": [
+    "startup and imports",
+    "VAE weights and all encoder/decoder calls",
+    "per-case diagnostics",
+    "input/arrays/PNG/contact-sheet writes at lines185–211",
+    "all 26 array identities computed at line247"
+  ],
+  "after_query": [
+    "output file size/hash iteration at lines255–256",
+    "save_and_metadata and total_before_metrics_write assignments at lines258–259",
+    "metrics serialization/write at260",
+    "return, printing at285 and interpreter shutdown"
+  ],
+  "records": {
+    "primary": {
+      "argv": [
+        ".venv-pretrained/bin/python",
+        "-u",
+        "-m",
+        "genai_study.vae_study",
+        "--model-dir",
+        "artifacts/models/sd14",
+        "--input",
+        "docs/assets/sd14-pilot-scene-seed43.png",
+        "--output",
+        "artifacts/vae-current/primary",
+        "--seeds",
+        "7",
+        "19",
+        "43",
+        "--threads",
+        "1"
+      ],
+      "wall_seconds": 93.770107435,
+      "rss_kib": 1722144,
+      "rss_gib": 1.642364501953125,
+      "timing_seconds": {
+        "verification": 0.3342235710000523,
+        "preprocess": 0.132902477000016,
+        "vae_load": 2.7435792270000547,
+        "encode": 6.373300968999956,
+        "decode_total": 81.05777301199998,
+        "save_and_metadata": 2.360441428999934,
+        "total_before_metrics_write": 93.0579443260001
+      },
+      "memory_scope_raw": "Linux process lifetime high-water RSS, including imports, weights and saving"
+    },
+    "repeat": {
+      "argv": [
+        ".venv-pretrained/bin/python",
+        "-u",
+        "-m",
+        "genai_study.vae_study",
+        "--model-dir",
+        "artifacts/models/sd14",
+        "--input",
+        "docs/assets/sd14-pilot-scene-seed43.png",
+        "--output",
+        "artifacts/vae-current/repeat",
+        "--seeds",
+        "7",
+        "19",
+        "43",
+        "--threads",
+        "1"
+      ],
+      "wall_seconds": 94.848776412,
+      "rss_kib": 1727924,
+      "rss_gib": 1.6478767395019531,
+      "timing_seconds": {
+        "verification": 0.18245551300003626,
+        "preprocess": 0.05401235199997245,
+        "vae_load": 2.122496473999945,
+        "encode": 7.256976592000001,
+        "decode_total": 82.26831263199995,
+        "save_and_metadata": 2.2944331969999894,
+        "total_before_metrics_write": 94.2174434210001
+      },
+      "memory_scope_raw": "Linux process lifetime high-water RSS, including imports, weights and saving"
+    }
+  },
+  "finding": "Report does not explicitly claim full process lifetime; memory high-water measurement is internal and its query boundary is unstated. No /usr/bin/time command appears in either recorded argv. The saved metrics scope says lifetime high-water but represents lifetime only up to query. Wall fields come from external run_record, which reports no RSS.",
+  "recommended_minimal_sentence": "峰值RSS取自模型进程保存全部产物后、计算输出文件hash前查询的resource.ru_maxrss，覆盖进程启动至该查询点，按Linux KiB换算GiB；整条命令的wall由外层记录器测量。",
+  "validation": "Read-only source/order and saved JSON inspection; numerical KiB/GiB conversion; no model run, no tracked changes."
+}
