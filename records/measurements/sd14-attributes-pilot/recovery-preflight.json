@@ -1,0 +1,17 @@
+{
+  "recovered_utc": "2026-11-11T18:32:30.980122+00:00",
+  "head": "f3c26f8ae2dcf31a8b6b1f6c1d7a0f058ad85b17",
+  "git_worktree_was_clean": true,
+  "driver_sha256": "a8d240b6fe2735086fe04a2097f132d76df2dc31c8ee21b69d8989d242de5dd0",
+  "plan_sha256": "41f96fd41ce9ae846eb4b90297607f3664191bcd58b0fe857a75fa85e582f8e3",
+  "all_sixteen_request_directories_absent": true,
+  "four_source_identities_verified": true,
+  "eight_actual_cli_parsers_pass": true,
+  "pip_check": "passed",
+  "python": "3.12.14",
+  "workspace_lock_pid": 2281,
+  "model_requests_started": 0,
+  "environment_configuration_changed": false,
+  "transport_outage": "previous runtime disconnected around 18:07 UTC; next runtime connected and files retained; cause undetermined",
+  "schedule_observation": "interrupted before 18:17; reconnect read-only observation separately"
+}

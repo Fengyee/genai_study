@@ -1,0 +1,16 @@
+{
+  "created_utc": "2026-11-11T18:45:30.427086+00:00",
+  "plan_sha256": "b96f72036c3a6dce4aef82f12e3e28b7372d70842bd65310e34df0758948dec4",
+  "reason": "The four-step plan copied two explanatory network-count fields from the twenty-step template. The predeclared steps=4 and both exact argv were correct. Corrected counts are derived from four timesteps and two CFG branches. No argv, seed, order, source identity, resource threshold or cost rule changes.",
+  "corrections": {
+    "fixed.unet_calls_per_request": {
+      "recorded": 20,
+      "correct": 4
+    },
+    "fixed.unet_branch_evaluations_per_request": {
+      "recorded": 40,
+      "correct": 8
+    }
+  },
+  "timing": "Identified after threads1 completed, before threads2 launch; no diagnostic images visually inspected."
+}

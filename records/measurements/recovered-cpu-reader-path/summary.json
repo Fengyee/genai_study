@@ -1,0 +1,101 @@
+{
+  "created_utc": "2026-11-11T19:12:37.751240+00:00",
+  "outcome": "all_four_commands_succeeded",
+  "source_commit_at_plan": "52e76baac0ebdd0171170e81721bd959b4d1f27a",
+  "hardware": {
+    "cpu_model": "INTEL(R) XEON(R) PLATINUM 8573C",
+    "cpu_max": "400000 100000",
+    "memory_max": "34359738368",
+    "affinity_count": 5,
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python": "3.12.14",
+    "threads": 1
+  },
+  "source_scope": "experiment.py/toy.py/solver_study.py/base lock byte-identical to historical bcdeae8; checkpoint helper adds finite float32 validation and explicit CPU/float32 reconstruction. See source-scope.json.",
+  "initial_three_command_campaign_seconds": 44.74851429099999,
+  "all_commands_wall_sum_seconds": 50.7489365159995,
+  "elapsed_until_added_control_finished_seconds": 162.644317,
+  "budget_seconds": 600,
+  "per_command_timeout_seconds": 180,
+  "runs": [
+    {
+      "label": "flow",
+      "status": "succeeded",
+      "wall_seconds": 19.426485807000063,
+      "exit_code": 0
+    },
+    {
+      "label": "ddpm",
+      "status": "succeeded",
+      "wall_seconds": 18.09498640799984,
+      "exit_code": 0
+    },
+    {
+      "label": "solver",
+      "status": "succeeded",
+      "wall_seconds": 6.782035234999967,
+      "exit_code": 0
+    },
+    {
+      "label": "fixed-old-checkpoint-solver",
+      "status": "succeeded",
+      "wall_seconds": 6.445429065999633,
+      "exit_code": 0
+    }
+  ],
+  "training_comparison": {
+    "flow": {
+      "initial_and_final_eval_loss_exact_equal": true,
+      "reference_array_exact_equal": true,
+      "generated_array_exact_equal": false,
+      "generated_max_abs": 4.208087921142578e-05,
+      "generated_rms": 1.8582742564786582e-06,
+      "training_loss_array_exact_equal": false,
+      "checkpoint_state_all_exact_equal": false,
+      "checkpoint_state_max_abs": 1.8924474716186523e-05,
+      "fraction_within_3sigma": 0.9248046875,
+      "covered_modes_at_1pct": 8
+    },
+    "ddpm": {
+      "initial_and_final_eval_loss_exact_equal": true,
+      "reference_array_exact_equal": true,
+      "generated_array_exact_equal": false,
+      "generated_max_abs": 6.958842277526855e-05,
+      "generated_rms": 2.052486874409185e-06,
+      "training_loss_array_exact_equal": false,
+      "checkpoint_state_all_exact_equal": false,
+      "checkpoint_state_max_abs": 1.1682510375976562e-05,
+      "fraction_within_3sigma": 0.9189453125,
+      "covered_modes_at_1pct": 8
+    }
+  },
+  "frozen_checkpoint_solver": {
+    "checkpoint_identity_metadata_exact_equal": true,
+    "initial_reference_baseline_exact_equal": true,
+    "endpoint_max_abs_by_steps": {
+      "steps_10": 2.5033950805664062e-06,
+      "steps_25": 4.947185516357422e-06,
+      "steps_100": 6.318092346191406e-06,
+      "steps_200": 7.271766662597656e-06
+    },
+    "endpoint_rms_by_steps": {
+      "steps_10": 1.856706966227135e-07,
+      "steps_25": 2.5060214501423844e-07,
+      "steps_100": 2.9941459582694116e-07,
+      "steps_200": 3.1246922283303147e-07
+    }
+  },
+  "independent_diagnostics": {
+    "cases": 10,
+    "all_counts_and_fraction_fields_match": true,
+    "max_energy_abs_difference": 5.395679396613673e-07,
+    "max_nearest_distance_abs_difference": 4.182526617546589e-07
+  },
+  "historical_files_preserved": true,
+  "tracked_files_changed_by_task": false,
+  "new_training_or_inference_error": false,
+  "interpretation": "The documented path works on the recovered instance. Exact random/reference inputs can coexist with non-bitwise-identical weights, outputs and derived float diagnostics. This observed instance comparison does not identify a sole cause or guarantee equality on other systems.",
+  "cost_context": "Single reader command at a time, threads1; SD1.4 threads2 plus documentation/browser work ran concurrently, host load and caches uncontrolled.",
+  "artifact_root": "artifacts/recovered-cpu-reader-path",
+  "evidence_bundle": "/tmp/genai-recovered-reader-evidence"
+}

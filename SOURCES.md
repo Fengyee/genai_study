@@ -49,6 +49,8 @@
 
 [SD1.4四请求提示探索](docs/sd14-prompt-pilot.md)继续使用上面固定模型和许可，生成前保存完整计划，保留两提示×两种子的全部原图、metrics和逐项观察。图片与推理输出逐字节相同，两个同seed噪声对完全一致。视觉观察者均为AI代码代理，真实读者评阅尚待开展。
 
+[恢复后的线程诊断](records/measurements/sd14-thread-diagnostic/README.md)及[两线程属性实验](records/measurements/sd14-attributes-followup/README.md)沿用上述SD1.4 revision与许可。诊断原图由固定提示/seed101、4步及1/2线程产生，保持完整字节；后续八请求有独立运行前计划，全部完成的原图、成本、对象身份分歧与关系不可评案例见[报告](docs/sd14-attributes-layout.md)，两位AI原始观察完整保留。原单线程超时与未执行状态保存在相邻记录，生成图像的使用同样遵守模型许可第6条。
+
 [VAE编码—解码往返](docs/vae-reconstruction-report.md)继续使用上述SD1.4模型及许可，输入固定为scene/seed43生成图。预先声明六案例，实际完成编码、后验采样、缩放对照和完整重复；全部PNG、数组身份与原始/裁剪指标保留。LDM v2的§3.1/D.1/G与固定Diffusers的后验/编解码接口分别核验，来源和实测记录见[VAE证据索引](records/measurements/vae-reconstruction/README.md)。单图重建误差的解释范围在报告中明确。
 
 [10 SVD视频运行与失败分析](docs/chapters/10-pretrained-video-lab.md)固定原作者SVD revision `9cf024d5bfa8f56622af86c884f26a52f6676f2e`，完整下载并核验[11文件清单](examples/pretrained-svd/manifest.json)。保留[Community2024-07-05许可原文](examples/pretrained-svd/LICENSE-model.txt)、[NOTICE](examples/pretrained-svd/NOTICE)及指定归属 **Powered by Stability AI**。参考图来自上述SD1.4 scene/seed43输出；SVD生成结果同时受其模型许可约束。核对Diffusers0.35.2固定实现中的参考latent、双随机流、VP预条件、Euler更新和联合帧调用，独立复算首末Euler步并实际完成smoke/校准/25步/重复。完整视频输出严重失真，全部帧、运行成本和追加的直接官方API短对照见[报告](docs/pretrained-video-report.md)及[原始证据](records/measurements/pretrained-svd/README.md)；具体失败成因待控制实验。

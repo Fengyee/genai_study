@@ -1,0 +1,49 @@
+{
+  "driver_sha256": "a8d240b6fe2735086fe04a2097f132d76df2dc31c8ee21b69d8989d242de5dd0",
+  "fixture_root": "/tmp/sd14-validator-stub-635w4yeh",
+  "scope": "validate_success with synthetic PNG/NPY/records, actual 101 RNG array; no model or real recorder launched",
+  "cases": [
+    {
+      "case": "valid_complete_stub",
+      "passed": true
+    },
+    {
+      "case": "filtered_is_technically_valid",
+      "passed": true
+    },
+    {
+      "case": "scheduler_default_names_order_ignored",
+      "passed": true
+    },
+    {
+      "case": "missing_rss",
+      "passed": true,
+      "error": "Missing or invalid model process_peak_rss_kib"
+    },
+    {
+      "case": "wrong_version",
+      "passed": true,
+      "error": "Generated software versions differ from plan"
+    },
+    {
+      "case": "wrong_scheduler_step",
+      "passed": true,
+      "error": "Actual scheduler differs from plan"
+    },
+    {
+      "case": "wrong_batch_count",
+      "passed": true,
+      "error": "Actual UNet evaluations differ from the twenty-step CFG protocol"
+    },
+    {
+      "case": "wrong_noise_hash",
+      "passed": true,
+      "error": "Initial-noise raw SHA/shape mismatch"
+    },
+    {
+      "case": "corrupt_png_with_matching_declared_hash",
+      "passed": true,
+      "error": "cannot identify image file '/tmp/sd14-validator-stub-635w4yeh/artifacts/sd14-attributes-pilot/single-red-cube-seed101/image.png'"
+    }
+  ]
+}

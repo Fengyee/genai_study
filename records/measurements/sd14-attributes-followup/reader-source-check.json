@@ -1,0 +1,373 @@
+{
+  "checked_utc": "2026-11-11T19:37:08.524689+00:00",
+  "source_file": "docs/sd14-attributes-layout.md",
+  "source_sha256": "77c7a97ba62508a6f9516c412d0206ca20434f5ac60da0e432ddada5d81345a0",
+  "source_bytes": 13152,
+  "git_head_observed": "054e4e81093f99851a90bc636ea95eefdde1f592",
+  "source_snapshot": "exact committed Git blobs; matches original working-tree static check",
+  "source_unchanged_during_check": true,
+  "images": [
+    {
+      "target": "assets/sd14-attributes-single-red-cube-seed101.png",
+      "file": "docs/assets/sd14-attributes-single-red-cube-seed101.png",
+      "alt": "红色方框与紫红内部区域，右侧青蓝结构和下方红块出画，立方体身份含混",
+      "request_id": "single-red-cube-seed101",
+      "metrics_file": "records/measurements/sd14-attributes-followup/single-red-cube-seed101-metrics.json",
+      "metrics_sha256": "e384491645ebcff43aaf08c8b47be57c8672b06cefc4a6a146cd2ca0bf9a5779",
+      "image_sha256": "a82f10ed42696ec4ee1736473fa03e5c49dbb7d92a05e693a481e65028229a8b",
+      "metrics_image_sha256": "a82f10ed42696ec4ee1736473fa03e5c49dbb7d92a05e693a481e65028229a8b",
+      "sha_matches_metrics": true,
+      "bytes": 442003,
+      "width": 512,
+      "height": 512,
+      "mode": "RGB",
+      "format": "PNG",
+      "fully_decoded": true,
+      "declared_dimensions_match": true,
+      "seed": 101,
+      "prompt": "a watercolor painting of a red cube, plain white background",
+      "filtered": false
+    },
+    {
+      "target": "assets/sd14-attributes-single-blue-cube-seed101.png",
+      "file": "docs/assets/sd14-attributes-single-blue-cube-seed101.png",
+      "alt": "蓝色立方体具有顶面和两侧面，位于黄色内框和灰褐背景上",
+      "request_id": "single-blue-cube-seed101",
+      "metrics_file": "records/measurements/sd14-attributes-followup/single-blue-cube-seed101-metrics.json",
+      "metrics_sha256": "cf240596bb72b3e8940ad7b39e326ed4af441e919db36378a7540f58d6f9b951",
+      "image_sha256": "0d35ef7af25a133f15382cb5c3b0cc22bb27e490d1785e9dc3c321b309454924",
+      "metrics_image_sha256": "0d35ef7af25a133f15382cb5c3b0cc22bb27e490d1785e9dc3c321b309454924",
+      "sha_matches_metrics": true,
+      "bytes": 428379,
+      "width": 512,
+      "height": 512,
+      "mode": "RGB",
+      "format": "PNG",
+      "fully_decoded": true,
+      "declared_dimensions_match": true,
+      "seed": 101,
+      "prompt": "a watercolor painting of a blue cube, plain white background",
+      "filtered": false
+    },
+    {
+      "target": "assets/sd14-attributes-single-red-cube-seed211.png",
+      "file": "docs/assets/sd14-attributes-single-red-cube-seed211.png",
+      "alt": "红紫几何板片围绕开放白区，中央折叠结构与面边关系含混",
+      "request_id": "single-red-cube-seed211",
+      "metrics_file": "records/measurements/sd14-attributes-followup/single-red-cube-seed211-metrics.json",
+      "metrics_sha256": "38ef6a08164b3117f253ce3884d674c856684ef4b2132943e232806d05bcc8ac",
+      "image_sha256": "cd1c14bc2fcb42aa9c145cd6432892279dfea938ba52b522500a02abd1da9511",
+      "metrics_image_sha256": "cd1c14bc2fcb42aa9c145cd6432892279dfea938ba52b522500a02abd1da9511",
+      "sha_matches_metrics": true,
+      "bytes": 443606,
+      "width": 512,
+      "height": 512,
+      "mode": "RGB",
+      "format": "PNG",
+      "fully_decoded": true,
+      "declared_dimensions_match": true,
+      "seed": 211,
+      "prompt": "a watercolor painting of a red cube, plain white background",
+      "filtered": false
+    },
+    {
+      "target": "assets/sd14-attributes-single-blue-cube-seed211.png",
+      "file": "docs/assets/sd14-attributes-single-blue-cube-seed211.png",
+      "alt": "蓝色立方体的顶面和两侧面可辨，白色条带与高光穿过内部，浅色纸面上有投影",
+      "request_id": "single-blue-cube-seed211",
+      "metrics_file": "records/measurements/sd14-attributes-followup/single-blue-cube-seed211-metrics.json",
+      "metrics_sha256": "f458cd375f80740c72798eaff6919e6ecd7910ff1ad2ec13cc32e47868e1513f",
+      "image_sha256": "dd832ba236a1be55574d455cc1edd5926dcebc2449e88ec01dd67ace995bb870",
+      "metrics_image_sha256": "dd832ba236a1be55574d455cc1edd5926dcebc2449e88ec01dd67ace995bb870",
+      "sha_matches_metrics": true,
+      "bytes": 452281,
+      "width": 512,
+      "height": 512,
+      "mode": "RGB",
+      "format": "PNG",
+      "fully_decoded": true,
+      "declared_dimensions_match": true,
+      "seed": 211,
+      "prompt": "a watercolor painting of a blue cube, plain white background",
+      "filtered": false
+    },
+    {
+      "target": "assets/sd14-attributes-red-cube-left-blue-sphere-seed101.png",
+      "file": "docs/assets/sd14-attributes-red-cube-left-blue-sphere-seed101.png",
+      "alt": "灰青背景与右侧红色大面，中部蓝色圆润形状被白环围绕，右边有被裁切的蓝色曲面",
+      "request_id": "red-cube-left-blue-sphere-seed101",
+      "metrics_file": "records/measurements/sd14-attributes-followup/red-cube-left-blue-sphere-seed101-metrics.json",
+      "metrics_sha256": "42ef533951b89435f1f2a225c2cb85a897479b8a2b19bdf6da12f6b0ab1902a4",
+      "image_sha256": "7bd4f102296682515c84d9f3c73e4effe6e165afdb7b07cc755b01483239491c",
+      "metrics_image_sha256": "7bd4f102296682515c84d9f3c73e4effe6e165afdb7b07cc755b01483239491c",
+      "sha_matches_metrics": true,
+      "bytes": 432090,
+      "width": 512,
+      "height": 512,
+      "mode": "RGB",
+      "format": "PNG",
+      "fully_decoded": true,
+      "declared_dimensions_match": true,
+      "seed": 101,
+      "prompt": "a watercolor painting of a red cube to the left of a blue sphere, plain white background",
+      "filtered": false
+    },
+    {
+      "target": "assets/sd14-attributes-blue-sphere-left-red-cube-seed101.png",
+      "file": "docs/assets/sd14-attributes-blue-sphere-left-red-cube-seed101.png",
+      "alt": "右侧红色大面上有中央蓝色圆润形状和白环，最右侧出现被裁切的蓝色圆弧候选",
+      "request_id": "blue-sphere-left-red-cube-seed101",
+      "metrics_file": "records/measurements/sd14-attributes-followup/blue-sphere-left-red-cube-seed101-metrics.json",
+      "metrics_sha256": "ec4be343ec3809eee712683f8255d4379d5e99ff496d59542891e8ba3af12879",
+      "image_sha256": "fc3808726c9b273edf67ee5b78377ffe614ba5ef03b3cc83499991762fd9ccba",
+      "metrics_image_sha256": "fc3808726c9b273edf67ee5b78377ffe614ba5ef03b3cc83499991762fd9ccba",
+      "sha_matches_metrics": true,
+      "bytes": 428862,
+      "width": 512,
+      "height": 512,
+      "mode": "RGB",
+      "format": "PNG",
+      "fully_decoded": true,
+      "declared_dimensions_match": true,
+      "seed": 101,
+      "prompt": "a watercolor painting of a blue sphere to the left of a red cube, plain white background",
+      "filtered": false
+    },
+    {
+      "target": "assets/sd14-attributes-red-cube-left-blue-sphere-seed211.png",
+      "file": "docs/assets/sd14-attributes-red-cube-left-blue-sphere-seed211.png",
+      "alt": "中央红蓝白混色椭圆球状体，外围为大面积红蓝棱角板片与纸纹背景",
+      "request_id": "red-cube-left-blue-sphere-seed211",
+      "metrics_file": "records/measurements/sd14-attributes-followup/red-cube-left-blue-sphere-seed211-metrics.json",
+      "metrics_sha256": "dc17fa75b3d34f51e85347abb958c6cd49999088e8e9ffa6f2bca7a31a5e76e3",
+      "image_sha256": "c902d68310c232fd7254f9dc9eff5b038c0ab3f1bedef7d1ae2331a81bfa2944",
+      "metrics_image_sha256": "c902d68310c232fd7254f9dc9eff5b038c0ab3f1bedef7d1ae2331a81bfa2944",
+      "sha_matches_metrics": true,
+      "bytes": 459690,
+      "width": 512,
+      "height": 512,
+      "mode": "RGB",
+      "format": "PNG",
+      "fully_decoded": true,
+      "declared_dimensions_match": true,
+      "seed": 211,
+      "prompt": "a watercolor painting of a red cube to the left of a blue sphere, plain white background",
+      "filtered": false
+    },
+    {
+      "target": "assets/sd14-attributes-blue-sphere-left-red-cube-seed211.png",
+      "file": "docs/assets/sd14-attributes-blue-sphere-left-red-cube-seed211.png",
+      "alt": "一个红蓝白混色大球状轮廓，内部有方形和圆形色块，下方有小底座与投影",
+      "request_id": "blue-sphere-left-red-cube-seed211",
+      "metrics_file": "records/measurements/sd14-attributes-followup/blue-sphere-left-red-cube-seed211-metrics.json",
+      "metrics_sha256": "23c664f9437fb193edd20bc39b7e318b8e48e28fade7edbd87449a600f43b897",
+      "image_sha256": "82b01f58f8cdc1bb41472763b1cc4a7ec87ef4f06d5bb717c8b60e6813ae6fa5",
+      "metrics_image_sha256": "82b01f58f8cdc1bb41472763b1cc4a7ec87ef4f06d5bb717c8b60e6813ae6fa5",
+      "sha_matches_metrics": true,
+      "bytes": 445552,
+      "width": 512,
+      "height": 512,
+      "mode": "RGB",
+      "format": "PNG",
+      "fully_decoded": true,
+      "declared_dimensions_match": true,
+      "seed": 211,
+      "prompt": "a watercolor painting of a blue sphere to the left of a red cube, plain white background",
+      "filtered": false
+    }
+  ],
+  "image_count": 8,
+  "all_images_sha_and_512_rgb_png_match": true,
+  "all_images_have_alt_text": true,
+  "headings": [
+    {
+      "level": 1,
+      "text": "SD1.4的颜色与左右关系：八个固定请求",
+      "line": 1,
+      "expected_anchor": null,
+      "anchor_method": "not inferred"
+    },
+    {
+      "level": 2,
+      "text": "问题与生成前协议",
+      "line": 5,
+      "expected_anchor": "问题与生成前协议",
+      "anchor_method": "plain Chinese heading, expected GitHub slug; client DOM confirmation remains separate"
+    },
+    {
+      "level": 2,
+      "text": "如何记录观察",
+      "line": 20,
+      "expected_anchor": "如何记录观察",
+      "anchor_method": "plain Chinese heading, expected GitHub slug; client DOM confirmation remains separate"
+    },
+    {
+      "level": 2,
+      "text": "逐项结果与观察分歧",
+      "line": 28,
+      "expected_anchor": "逐项结果与观察分歧",
+      "anchor_method": "plain Chinese heading, expected GitHub slug; client DOM confirmation remains separate"
+    },
+    {
+      "level": 2,
+      "text": "全部完整原图",
+      "line": 47,
+      "expected_anchor": "全部完整原图",
+      "anchor_method": "plain Chinese heading, expected GitHub slug; client DOM confirmation remains separate"
+    },
+    {
+      "level": 2,
+      "text": "实际成本与环境恢复",
+      "line": 75,
+      "expected_anchor": "实际成本与环境恢复",
+      "anchor_method": "plain Chinese heading, expected GitHub slug; client DOM confirmation remains separate"
+    },
+    {
+      "level": 2,
+      "text": "复现路径",
+      "line": 104,
+      "expected_anchor": "复现路径",
+      "anchor_method": "plain Chinese heading, expected GitHub slug; client DOM confirmation remains separate"
+    },
+    {
+      "level": 2,
+      "text": "练习与参考思路",
+      "line": 124,
+      "expected_anchor": "练习与参考思路",
+      "anchor_method": "plain Chinese heading, expected GitHub slug; client DOM confirmation remains separate"
+    }
+  ],
+  "measurement_links": [
+    {
+      "label": "计划",
+      "target": "../records/measurements/sd14-attributes-followup/plan.json",
+      "repository_path": "records/measurements/sd14-attributes-followup/plan.json",
+      "exists": true
+    },
+    {
+      "label": "协调者记录",
+      "target": "../records/measurements/sd14-attributes-followup/root-observations.json",
+      "repository_path": "records/measurements/sd14-attributes-followup/root-observations.json",
+      "exists": true
+    },
+    {
+      "label": "匿名记录",
+      "target": "../records/measurements/sd14-attributes-followup/blind-observations.json",
+      "repository_path": "records/measurements/sd14-attributes-followup/blind-observations.json",
+      "exists": true
+    },
+    {
+      "label": "合并结果",
+      "target": "../records/measurements/sd14-attributes-followup/observations.json",
+      "repository_path": "records/measurements/sd14-attributes-followup/observations.json",
+      "exists": true
+    },
+    {
+      "label": "原始执行与日志",
+      "target": "../records/measurements/sd14-attributes-pilot/README.md",
+      "repository_path": "records/measurements/sd14-attributes-pilot/README.md",
+      "exists": true
+    },
+    {
+      "label": "诊断记录",
+      "target": "../records/measurements/sd14-thread-diagnostic/README.md",
+      "repository_path": "records/measurements/sd14-thread-diagnostic/README.md",
+      "exists": true
+    },
+    {
+      "label": "冻结计划",
+      "target": "../records/measurements/sd14-attributes-followup/plan.json",
+      "repository_path": "records/measurements/sd14-attributes-followup/plan.json",
+      "exists": true
+    },
+    {
+      "label": "测量目录",
+      "target": "../records/measurements/sd14-attributes-followup/README.md",
+      "repository_path": "records/measurements/sd14-attributes-followup/README.md",
+      "exists": true
+    }
+  ],
+  "source_links": [
+    {
+      "label": "固定SD1.4资产说明",
+      "target": "../SOURCES.md",
+      "repository_path": "SOURCES.md",
+      "exists": true
+    }
+  ],
+  "exercises": [
+    {
+      "number": 1,
+      "text": "图上同时存在红色区域与蓝色圆形，怎样判断“红立方体在蓝球左边”是否成立？**思路：** 先核对立方体/球体的体积身份和唯一性，再分别记录颜色与左右。立方体身份模糊时保留不可评；不要把一块红色背景直接充当目标对象。"
+    },
+    {
+      "number": 2,
+      "text": "相同seed的左右提示产生相近构图，能否推断模型忽略了位置词？**思路：** 当前提示还交换了词序和句法角色，对象身份与裁切也影响可评性；这些案例可提出假设，进一步研究需预先增加对象/种子、控制句式并纳入独立读者标注。"
+    },
+    {
+      "number": 3,
+      "text": "单条件仅两张图，怎样保存有用的结果？**思路：** 给出两张原图、固定分母、每项状态、观察者分歧和运行成本。先报告明确支持的个案性质，再设计更广的提示分布与重复方案；学习目标包括识别不可评项目。"
+    }
+  ],
+  "all_local_links_exist": true,
+  "scope": "Static report snapshot, SHA comparison with corresponding metrics, complete PNG decode and dimensions, links/headings/exercises. No visual content review, model execution, tracked-file edit, or Git operation that changes state.",
+  "commit": "b9be84784adb853d2b184631244d195244cf4846",
+  "fixed_commit_verification": {
+    "checked_utc": "2026-11-11T19:39:02.943930+00:00",
+    "method": "git show COMMIT:path for report, eight PNGs and eight metrics; SHA and PNG byte length compared with original static-check snapshot. No image re-decode or visual inspection.",
+    "report_source_sha256": "77c7a97ba62508a6f9516c412d0206ca20434f5ac60da0e432ddada5d81345a0",
+    "report_matches_prior_snapshot": true,
+    "images_and_metrics": [
+      {
+        "request_id": "single-red-cube-seed101",
+        "image_blob_sha256": "a82f10ed42696ec4ee1736473fa03e5c49dbb7d92a05e693a481e65028229a8b",
+        "metrics_blob_sha256": "e384491645ebcff43aaf08c8b47be57c8672b06cefc4a6a146cd2ca0bf9a5779",
+        "matches_prior_worktree_snapshot": true
+      },
+      {
+        "request_id": "single-blue-cube-seed101",
+        "image_blob_sha256": "0d35ef7af25a133f15382cb5c3b0cc22bb27e490d1785e9dc3c321b309454924",
+        "metrics_blob_sha256": "cf240596bb72b3e8940ad7b39e326ed4af441e919db36378a7540f58d6f9b951",
+        "matches_prior_worktree_snapshot": true
+      },
+      {
+        "request_id": "single-red-cube-seed211",
+        "image_blob_sha256": "cd1c14bc2fcb42aa9c145cd6432892279dfea938ba52b522500a02abd1da9511",
+        "metrics_blob_sha256": "38ef6a08164b3117f253ce3884d674c856684ef4b2132943e232806d05bcc8ac",
+        "matches_prior_worktree_snapshot": true
+      },
+      {
+        "request_id": "single-blue-cube-seed211",
+        "image_blob_sha256": "dd832ba236a1be55574d455cc1edd5926dcebc2449e88ec01dd67ace995bb870",
+        "metrics_blob_sha256": "f458cd375f80740c72798eaff6919e6ecd7910ff1ad2ec13cc32e47868e1513f",
+        "matches_prior_worktree_snapshot": true
+      },
+      {
+        "request_id": "red-cube-left-blue-sphere-seed101",
+        "image_blob_sha256": "7bd4f102296682515c84d9f3c73e4effe6e165afdb7b07cc755b01483239491c",
+        "metrics_blob_sha256": "42ef533951b89435f1f2a225c2cb85a897479b8a2b19bdf6da12f6b0ab1902a4",
+        "matches_prior_worktree_snapshot": true
+      },
+      {
+        "request_id": "blue-sphere-left-red-cube-seed101",
+        "image_blob_sha256": "fc3808726c9b273edf67ee5b78377ffe614ba5ef03b3cc83499991762fd9ccba",
+        "metrics_blob_sha256": "ec4be343ec3809eee712683f8255d4379d5e99ff496d59542891e8ba3af12879",
+        "matches_prior_worktree_snapshot": true
+      },
+      {
+        "request_id": "red-cube-left-blue-sphere-seed211",
+        "image_blob_sha256": "c902d68310c232fd7254f9dc9eff5b038c0ab3f1bedef7d1ae2331a81bfa2944",
+        "metrics_blob_sha256": "dc17fa75b3d34f51e85347abb958c6cd49999088e8e9ffa6f2bca7a31a5e76e3",
+        "matches_prior_worktree_snapshot": true
+      },
+      {
+        "request_id": "blue-sphere-left-red-cube-seed211",
+        "image_blob_sha256": "82b01f58f8cdc1bb41472763b1cc4a7ec87ef4f06d5bb717c8b60e6813ae6fa5",
+        "metrics_blob_sha256": "23c664f9437fb193edd20bc39b7e318b8e48e28fade7edbd87449a600f43b897",
+        "matches_prior_worktree_snapshot": true
+      }
+    ],
+    "verified_blob_count": 17,
+    "all_verified": true
+  }
+}

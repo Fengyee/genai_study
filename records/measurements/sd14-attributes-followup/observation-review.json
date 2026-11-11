@@ -1,0 +1,74 @@
+{
+  "reviewed_utc": "2026-11-11T19:35:09.319285+00:00",
+  "reviewer": "original prompt/seed-blind visual observer; source mapping disclosed only after raw observations were saved",
+  "result": "pass",
+  "scope": "只读核对合并结果、教学报告、两份原始观察、匿名映射、规则与预声明的观察协议；未重新生成或修改图片，未修改原始观察或仓库内容。执行成本、模型版本和生成过程的技术审计不属于此次审查。",
+  "reviewed_files": {
+    "/workspace/genai_study/records/measurements/sd14-attributes-followup/observations.json": {
+      "sha256": "7320c36d56ce3c3f67f4985b4fe2e116b2bbb1b10be8a719397d9382d775bf7e"
+    },
+    "/workspace/genai_study/docs/sd14-attributes-layout.md": {
+      "sha256": "502184a51d1fe3effc53048dd7563cf130084d83476bf2cc7322eed1e84ef4c8"
+    },
+    "/workspace/genai_study/records/measurements/sd14-attributes-followup/root-observations.json": {
+      "sha256": "80b27bbc2fa47e3cd3b12f6a0211098037f3b782bd43d100519aa3dac5675df3"
+    },
+    "/workspace/genai_study/records/measurements/sd14-attributes-followup/blind-observations.json": {
+      "sha256": "15e11f967469bdc95b881cf0aff9632b6741f09e5ab4d9d7decb167b3773c008"
+    },
+    "/workspace/genai_study/records/measurements/sd14-attributes-followup/anonymous-map.json": {
+      "sha256": "78e5cf75207cffde5ed23fe3386ec1d385116c7c0d6f5d58478d19eea34e4ada"
+    },
+    "/workspace/genai_study/records/measurements/sd14-attributes-followup/rubric.json": {
+      "sha256": "042bc54642f16685651f7fa664ee8c7937381a87417893a8946f83b588acbd30"
+    },
+    "/workspace/genai_study/records/measurements/sd14-attributes-followup/plan.json": {
+      "sha256": "c14f167cc3668c1e2f29dcf2046a9b8dce91ff1c5de89c08e558b501047b9144"
+    }
+  },
+  "checks": [
+    {
+      "item": "原始观察保全",
+      "result": "pass",
+      "evidence": "仓库内 blind-observations.json、root-observations.json 和 rubric.json 与 /tmp/genai-visual-round51 的原始文件逐字节一致；合并文件记录的两份观察 SHA256 均正确。"
+    },
+    {
+      "item": "匿名映射和八项字段",
+      "result": "pass",
+      "evidence": "A–H 与匿名映射一致。八行 cube_identity_root/blind 与 sphere_clear_count_root/blind 均与各自原始记录一致。"
+    },
+    {
+      "item": "B/H 的立方体身份与颜色分歧",
+      "result": "pass",
+      "evidence": "原匿名判断为一个明确立方体状体积、mixed_or_uncertain 身体颜色；协调者为 ambiguous、颜色 not_assessable。合并结果保留两份判断，最终身份为 uncertain_observer_disagreement，报告也清楚说明身份分歧及混合颜色，没有将我的 clear 改写为 ambiguous。"
+    },
+    {
+      "item": "D/G 右缘球体数量分歧",
+      "result": "pass",
+      "evidence": "匿名观察各记两个明确球体，协调者各记一个明确中央球体及右缘模糊候选。合并结果保留 1 与 2，最终数量为 uncertain_observer_disagreement；报告明确说明右缘形状的第二球体判断分歧。D 的另一个更小上方圆弧候选在原始记录中完整保留。"
+    },
+    {
+      "item": "2/2 主项范围",
+      "result": "pass",
+      "evidence": "只有 E/F 两张单蓝立方体主项得到确认。预声明 target_match 将对象、目标颜色及适用关系列为主项，将背景等列为次项。报告明确说明黄色框/灰褐底色仍存在，2/2 不表示纯白背景通过，也未把两个个案推广为总体成功率。"
+    },
+    {
+      "item": "关系不可评",
+      "result": "pass",
+      "evidence": "A/C/D/G 的 cube 身份均为 ambiguous，没有符合规则的唯一明确 cube+sphere 配对。合并结果全部保留 not_assessable，报告明确写出几何可评 0/2 与四张均不可评，没有用左右错误替代不可评，也未从重复候选选择有利配对。"
+    },
+    {
+      "item": "不确定与未确认的区别",
+      "result": "pass",
+      "evidence": "primary_criterion_confirmed=false 在报告中解释为未获确认，B/H 另显式保留不确定身份。没有将身份分歧声明为一致确认的形状失败。"
+    },
+    {
+      "item": "观察者和测量限制",
+      "result": "pass",
+      "evidence": "报告称两位 AI 代理而非人类标注；说明 bbox 是 AI 视觉估计；保留真实读者标注作为后续工作，未提供样本量不支持的总体成功率、显著性或模型排名。"
+    }
+  ],
+  "errors": [],
+  "required_changes": [],
+  "conclusion": "在此次观察解释审查范围内，合并结果和报告诚实保留了我的原始判断及两位观察者的分歧；未发现需修正的具体错误。"
+}

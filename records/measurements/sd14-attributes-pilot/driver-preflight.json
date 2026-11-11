@@ -1,0 +1,11 @@
+{
+  "mode": "read-only actual committed-plan preflight; no execute call or model start",
+  "plan_commit": "f3c26f8ae2dcf31a8b6b1f6c1d7a0f058ad85b17",
+  "plan_sha256": "41f96fd41ce9ae846eb4b90297607f3664191bcd58b0fe857a75fa85e582f8e3",
+  "driver_sha256": "a8d240b6fe2735086fe04a2097f132d76df2dc31c8ee21b69d8989d242de5dd0",
+  "all_sixteen_directories_absent": true,
+  "all_eight_command_parsers_pass": true,
+  "four_source_hashes_match": true,
+  "stub_execution_evidence": "/tmp/genai-sd14-attributes-plan/driver-tests/summary.json",
+  "validator_evidence": "/tmp/genai-sd14-attributes-plan/driver-validator-tests.json"
+}

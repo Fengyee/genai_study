@@ -1,0 +1,177 @@
+{
+  "created_utc": "2026-11-11T17:46:56Z",
+  "verification": {
+    "verified_files": 16,
+    "verified_bytes": 5482669095,
+    "elapsed_seconds": 2.9209826880005494
+  },
+  "source_identities": {
+    "examples/pretrained-sd14/manifest.json": {
+      "sha256": "96a6930e1db07afefe127075304325e316d03621e4681a42b351d9c6b6072141",
+      "bytes": 7639
+    },
+    "requirements-pretrained-lock.txt": {
+      "sha256": "95176d3908a08a99ca80ca84fe8d2aaf0a5b7c5cc80cd663fb63bd5c1b7b1729",
+      "bytes": 98413
+    },
+    "src/genai_study/pretrained_image.py": {
+      "sha256": "3cd514bae6d2a9e8c17fafea806f49854813ad88c0b08e858e685dd6e0b8f1be",
+      "bytes": 15154
+    },
+    "src/genai_study/run_record.py": {
+      "sha256": "be545eff1985b8eed096b0663145bade01303685430310d4b199aa727c685697",
+      "bytes": 7728
+    }
+  },
+  "historical_sd14_requests": [
+    {
+      "path": "records/measurements/pretrained-sd14/default.json",
+      "seed": 7,
+      "prompt": "a watercolor painting of a small cabin beside a lake, pine trees, daytime"
+    },
+    {
+      "path": "records/measurements/pretrained-sd14/guidance3.json",
+      "seed": 7,
+      "prompt": "a watercolor painting of a small cabin beside a lake, pine trees, daytime"
+    },
+    {
+      "path": "records/measurements/pretrained-sd14/repeat.json",
+      "seed": 7,
+      "prompt": "a watercolor painting of a small cabin beside a lake, pine trees, daytime"
+    },
+    {
+      "path": "records/measurements/pretrained-sd14/smoke.json",
+      "seed": 7,
+      "prompt": "a watercolor painting of a small cabin beside a lake, pine trees, daytime"
+    },
+    {
+      "path": "records/measurements/pretrained-sd14/foreground.json",
+      "seed": 7,
+      "prompt": "a watercolor painting of a wooden cabin in the foreground, with a lake and pine trees in the background, daytime"
+    },
+    {
+      "path": "records/measurements/sd14-prompt-pilot/cabin-seed19.json",
+      "seed": 19,
+      "prompt": "a watercolor painting of a small cabin, daytime"
+    },
+    {
+      "path": "records/measurements/sd14-prompt-pilot/scene-seed43.json",
+      "seed": 43,
+      "prompt": "a watercolor painting of a small cabin beside a lake, pine trees, daytime"
+    },
+    {
+      "path": "records/measurements/sd14-prompt-pilot/cabin-seed43.json",
+      "seed": 43,
+      "prompt": "a watercolor painting of a small cabin, daytime"
+    },
+    {
+      "path": "records/measurements/sd14-prompt-pilot/scene-seed19.json",
+      "seed": 19,
+      "prompt": "a watercolor painting of a small cabin beside a lake, pine trees, daytime"
+    },
+    {
+      "path": "artifacts/pretrained-sd14-foreground/metrics.json",
+      "seed": 7,
+      "prompt": "a watercolor painting of a wooden cabin in the foreground, with a lake and pine trees in the background, daytime"
+    },
+    {
+      "path": "artifacts/pretrained-sd14-guidance3/metrics.json",
+      "seed": 7,
+      "prompt": "a watercolor painting of a small cabin beside a lake, pine trees, daytime"
+    },
+    {
+      "path": "artifacts/pretrained-sd14/metrics.json",
+      "seed": 7,
+      "prompt": "a watercolor painting of a small cabin beside a lake, pine trees, daytime"
+    },
+    {
+      "path": "artifacts/pretrained-sd14-repeat/metrics.json",
+      "seed": 7,
+      "prompt": "a watercolor painting of a small cabin beside a lake, pine trees, daytime"
+    },
+    {
+      "path": "artifacts/sd14-current/smoke/metrics.json",
+      "seed": 7,
+      "prompt": "a watercolor painting of a small cabin beside a lake, pine trees, daytime"
+    },
+    {
+      "path": "artifacts/sd14-prompt-pilot/cabin-seed43/metrics.json",
+      "seed": 43,
+      "prompt": "a watercolor painting of a small cabin, daytime"
+    },
+    {
+      "path": "artifacts/sd14-prompt-pilot/scene-seed19/metrics.json",
+      "seed": 19,
+      "prompt": "a watercolor painting of a small cabin beside a lake, pine trees, daytime"
+    },
+    {
+      "path": "artifacts/sd14-prompt-pilot/cabin-seed19/metrics.json",
+      "seed": 19,
+      "prompt": "a watercolor painting of a small cabin, daytime"
+    },
+    {
+      "path": "artifacts/sd14-prompt-pilot/scene-seed43/metrics.json",
+      "seed": 43,
+      "prompt": "a watercolor painting of a small cabin beside a lake, pine trees, daytime"
+    }
+  ],
+  "historical_sd14_seeds": [
+    7,
+    19,
+    43
+  ],
+  "planned_seeds_not_found_in_scanned_sd14_outputs": true,
+  "token_counts_including_special_tokens": {
+    "single_red_cube": 13,
+    "single_blue_cube": 13,
+    "red_cube_left_blue_sphere": 20,
+    "blue_sphere_left_red_cube": 20
+  },
+  "tokenizer_max_length": 77,
+  "expected_noise": {
+    "101": {
+      "shape": [
+        1,
+        4,
+        64,
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "7e21a385554c654015bc4c511142ce6d34f23e26f6c58e7f3e8143dffa7bb9b8",
+      "hash_format": "C-order float32 raw bytes before init_noise_sigma multiplication"
+    },
+    "211": {
+      "shape": [
+        1,
+        4,
+        64,
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "77091174538a4f96c0d8d99d38d68dbbb8c194f860da0294f054d185ee3d12c5",
+      "hash_format": "C-order float32 raw bytes before init_noise_sigma multiplication"
+    }
+  },
+  "versions": {
+    "torch": "2.6.0+cpu",
+    "numpy": "2.1.3",
+    "diffusers": "0.35.2",
+    "transformers": "4.57.6",
+    "accelerate": "1.11.0",
+    "safetensors": "0.6.2",
+    "huggingface-hub": "0.36.0",
+    "tokenizers": "0.22.2",
+    "Pillow": "13.0.0"
+  },
+  "python": "3.12.14",
+  "resources": {
+    "cgroup": {
+      "memory.max": "34359738368",
+      "memory.current": "6494912512",
+      "cpu.max": "400000 100000"
+    },
+    "workspace_available_bytes": 47199703040,
+    "cpu_count": 5
+  },
+  "scope": "Read-only cached asset hash verification, local tokenizer and tiny initial-noise generation; no neural model loading or inference, no network/download."
+}

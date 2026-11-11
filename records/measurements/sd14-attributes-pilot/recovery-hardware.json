@@ -1,0 +1,19 @@
+{
+  "observed_utc": "2026-11-11T18:36:42.777520+00:00",
+  "kernel": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "cpu_model": "INTEL(R) XEON(R) PLATINUM 8573C",
+  "cpu_max": "400000 100000",
+  "memory_max": "34359738368",
+  "cpu_affinity_count": 5,
+  "historical_first_sd14_hardware": {
+    "os": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "cpu_model": "AMD EPYC 9V45 96-Core Processor",
+    "torch_device": "cpu",
+    "memory_limit_bytes": 34359738368,
+    "cpu_max": "400000 100000",
+    "cpu_affinity_count": 5,
+    "torch_threads": 1
+  },
+  "observation": "CPU model differs after reconnect; one thread remains fixed. Host load, CPU frequency, filesystem cache and other environmental changes were not controlled. Hardware difference alone does not establish a causal performance explanation.",
+  "inference_requests_changed": false
+}

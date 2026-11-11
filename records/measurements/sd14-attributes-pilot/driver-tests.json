@@ -1,0 +1,151 @@
+{
+  "driver_sha256": "a8d240b6fe2735086fe04a2097f132d76df2dc31c8ee21b69d8989d242de5dd0",
+  "created_utc": "2026-11-11T18:05:43.746486+00:00",
+  "scope": "Real execute/check_plan_paths/check_sources/validate_success/atomic state/poll/signal logic; real unmodified run_record subprocess. Synthetic inference module creates valid PNG/NPY/metrics, no model inference.",
+  "mocks": [
+    "committed_plan bypasses only Git commit check in every case.",
+    "Synthetic manifest/lock/inference source identities and NumPy seed noises are fixed in per-case plans.",
+    "high_wall case changes the completed real run.json wall_seconds to 361 before calling the original validator.",
+    "Deadline case uses 4 seconds and a 0.1-second launch threshold to exercise real cleanup without waiting an hour."
+  ],
+  "cases": [
+    {
+      "name": "success",
+      "returncode": 0,
+      "elapsed_seconds": 1.7708478210006433,
+      "status": "completed",
+      "stop_reason": null,
+      "request_statuses": [
+        "succeeded",
+        "succeeded",
+        "succeeded",
+        "succeeded",
+        "succeeded",
+        "succeeded",
+        "succeeded",
+        "succeeded"
+      ],
+      "stdout": "Starting 1/8: single-red-cube-seed101\nsingle-red-cube-seed101: succeeded\nStarting 2/8: single-blue-cube-seed101\nsingle-blue-cube-seed101: succeeded\nStarting 3/8: red-cube-left-blue-sphere-seed101\nred-cube-left-blue-sphere-seed101: succeeded\nStarting 4/8: blue-sphere-left-red-cube-seed101\nblue-sphere-left-red-cube-seed101: succeeded\nStarting 5/8: blue-sphere-left-red-cube-seed211\nblue-sphere-left-red-cube-seed211: succeeded\nStarting 6/8: red-cube-left-blue-sphere-seed211\nred-cube-left-blue-sphere-seed211: succeeded\nStarting 7/8: single-blue-cube-seed211\nsingle-blue-cube-seed211: succeeded\nStarting 8/8: single-red-cube-seed211\nsingle-red-cube-seed211: succeeded\n",
+      "stderr": "",
+      "execution": "/tmp/genai-sd14-attributes-plan/driver-tests/v2-success/driver-records/execution.json"
+    },
+    {
+      "name": "budget_before_launch",
+      "returncode": 1,
+      "elapsed_seconds": 0.09017077799944673,
+      "status": "stopped",
+      "stop_reason": "remaining_campaign_budget_below_start_reserve",
+      "request_statuses": [
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted"
+      ],
+      "stdout": "",
+      "stderr": "",
+      "execution": "/tmp/genai-sd14-attributes-plan/driver-tests/v2-budget_before_launch/driver-records/execution.json"
+    },
+    {
+      "name": "first_failure",
+      "returncode": 1,
+      "elapsed_seconds": 0.31327424899973266,
+      "status": "stopped",
+      "stop_reason": "technical_or_shared_failure:ValueError: Recorder did not complete successfully",
+      "request_statuses": [
+        "failed",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted"
+      ],
+      "stdout": "Starting 1/8: single-red-cube-seed101\n",
+      "stderr": "",
+      "execution": "/tmp/genai-sd14-attributes-plan/driver-tests/v2-first_failure/driver-records/execution.json"
+    },
+    {
+      "name": "high_wall",
+      "returncode": 1,
+      "elapsed_seconds": 0.324496879000435,
+      "status": "stopped",
+      "stop_reason": "first_request_resource_gate",
+      "request_statuses": [
+        "succeeded",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted"
+      ],
+      "stdout": "Starting 1/8: single-red-cube-seed101\nsingle-red-cube-seed101: succeeded\n",
+      "stderr": "",
+      "execution": "/tmp/genai-sd14-attributes-plan/driver-tests/v2-high_wall/driver-records/execution.json"
+    },
+    {
+      "name": "high_rss",
+      "returncode": 1,
+      "elapsed_seconds": 0.3236753100009082,
+      "status": "stopped",
+      "stop_reason": "first_request_resource_gate",
+      "request_statuses": [
+        "succeeded",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted"
+      ],
+      "stdout": "Starting 1/8: single-red-cube-seed101\nsingle-red-cube-seed101: succeeded\n",
+      "stderr": "",
+      "execution": "/tmp/genai-sd14-attributes-plan/driver-tests/v2-high_rss/driver-records/execution.json"
+    },
+    {
+      "name": "deadline",
+      "returncode": 1,
+      "elapsed_seconds": 3.784625448000952,
+      "status": "stopped",
+      "stop_reason": "campaign_deadline_cleanup_reserve",
+      "request_statuses": [
+        "interrupted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted"
+      ],
+      "stdout": "Starting 1/8: single-red-cube-seed101\n",
+      "stderr": "",
+      "execution": "/tmp/genai-sd14-attributes-plan/driver-tests/v2-deadline/driver-records/execution.json"
+    },
+    {
+      "name": "sigterm",
+      "returncode": 143,
+      "status": "stopped",
+      "stop_reason": "signal_15",
+      "request_statuses": [
+        "interrupted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted",
+        "not_attempted"
+      ],
+      "execution": "/tmp/genai-sd14-attributes-plan/driver-tests/v2-sigterm/driver-records/execution.json"
+    }
+  ],
+  "passed": 7
+}
