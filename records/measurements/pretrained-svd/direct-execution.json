@@ -1,0 +1,13 @@
+{
+  "started_utc": "2026-11-10T19:07:41.983912+00:00",
+  "command": [
+    "/workspace/genai_study/.venv-pretrained/bin/python",
+    "/tmp/genai-svd-direct-reference.py",
+    "--worker"
+  ],
+  "timeout_seconds": 600,
+  "exit_code": 0,
+  "wall_seconds": 47.28698159399937,
+  "log": "artifacts/svd-current/direct-reference/run.log",
+  "prior_repeat_exit_code": 0
+}

@@ -1,0 +1,48 @@
+{
+  "date_utc": "2026-11-10T16:40:07.891557+00:00",
+  "base_commit_before_code_changes": "abba60a3f590b344e86eb609bfcb4086fc3d70bc",
+  "source_sha256": {
+    "src/genai_study/image_flow.py": "70aa2567364eaf7724ae3715f73b9c056623fcfc4f2a529cc61bec0c9352e73f",
+    "src/genai_study/image_guidance_study.py": "d7487a449f97d72178add646b8b55086d8a3f6f36060e7e0a95b8e71fabb633f",
+    "src/genai_study/image_checkpoint.py": "095b44fdab63c1e844f4e1d03a7ba8e607dc6fe0ddff19e591e198955babad33",
+    "src/genai_study/checkpoint.py": "e41ea50d53dc106c6658c7d6cbb48b71bdd61b28261d58116200e63ca6199144",
+    "requirements-lock.txt": "87c983be2101697e42bcef34553aec0c28e2132ff3c9492c6732561468cc366a"
+  },
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "reported_cpu_model": "AMD EPYC 9V45 96-Core Processor",
+  "visible_logical_cpus": 5,
+  "torch_threads": 1,
+  "scope": "Fresh 1500-update condition-dropout0.2 training at seeds7/19/43; each checkpoint scanned at scales0/1/2/4,40Euler steps,64independent paired noises (128outputs), noise seed123/reference124/baseline125. Timings are individual code sections on a shared cloud CPU. No weights or datasets downloaded.",
+  "default_seed7_all_five_arrays_and_seven_metric_groups_match_previous_image_training_exactly": true,
+  "validation": {
+    "7": {
+      "unconditional_pairs_equal": true,
+      "scale1_equals_conditional_integrator_exactly": true,
+      "four_rms_fields_rechecked_in_float64_tolerance": 1e-07,
+      "training_condition_counts": {
+        "conditional": 76886,
+        "unconditional": 19114
+      }
+    },
+    "19": {
+      "unconditional_pairs_equal": true,
+      "scale1_equals_conditional_integrator_exactly": true,
+      "four_rms_fields_rechecked_in_float64_tolerance": 1e-07,
+      "training_condition_counts": {
+        "conditional": 76831,
+        "unconditional": 19169
+      }
+    },
+    "43": {
+      "unconditional_pairs_equal": true,
+      "scale1_equals_conditional_integrator_exactly": true,
+      "four_rms_fields_rechecked_in_float64_tolerance": 1e-07,
+      "training_condition_counts": {
+        "conditional": 76742,
+        "unconditional": 19258
+      }
+    }
+  },
+  "noise_labels_references_identical_across_studies": true
+}

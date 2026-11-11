@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "phase": "declared before viewing four new outputs",
+  "date_utc": "2026-11-10",
+  "question": "How do removing lake/pine-tree descriptions and changing seed affect recognizable cabin presence in these four fixed requests?",
+  "interpretation": "Exploratory follow-up motivated by seed7 results; prompt edit changes semantics, length and relationships together.",
+  "model_id": "CompVis/stable-diffusion-v1-4",
+  "revision": "133a221b8aa7292a167afc5127cb63fb5005638b",
+  "manifest_path": "examples/pretrained-sd14/manifest.json",
+  "manifest_sha256": "96a6930e1db07afefe127075304325e316d03621e4681a42b351d9c6b6072141",
+  "requirements_lock_sha256": "95176d3908a08a99ca80ca84fe8d2aaf0a5b7c5cc80cd663fb63bd5c1b7b1729",
+  "runner_sha256": "3cd514bae6d2a9e8c17fafea806f49854813ad88c0b08e858e685dd6e0b8f1be",
+  "prompts": {
+    "scene": "a watercolor painting of a small cabin beside a lake, pine trees, daytime",
+    "cabin": "a watercolor painting of a small cabin, daytime"
+  },
+  "token_counts_with_special_tokens": {
+    "scene": 17,
+    "cabin": 11
+  },
+  "fixed": {
+    "steps": 20,
+    "guidance_scale": 7.5,
+    "height": 512,
+    "width": 512,
+    "threads": 1,
+    "device": "cpu",
+    "dtype": "float32",
+    "eta": 0,
+    "negative_prompt": ""
+  },
+  "requests": [
+    {
+      "prompt_id": "cabin",
+      "seed": 19,
+      "output": "artifacts/sd14-prompt-pilot/cabin-seed19"
+    },
+    {
+      "prompt_id": "scene",
+      "seed": 19,
+      "output": "artifacts/sd14-prompt-pilot/scene-seed19"
+    },
+    {
+      "prompt_id": "scene",
+      "seed": 43,
+      "output": "artifacts/sd14-prompt-pilot/scene-seed43"
+    },
+    {
+      "prompt_id": "cabin",
+      "seed": 43,
+      "output": "artifacts/sd14-prompt-pilot/cabin-seed43"
+    }
+  ],
+  "single_timeout_seconds": 420,
+  "total_timeout_seconds": 1800,
+  "primary_observation": {
+    "clear": "A recognizable small building with roof and walls forming a coherent structure.",
+    "ambiguous": "Local forms may resemble a building but the overall identity is uncertain.",
+    "not_observed": "No recognizable building found in the complete original image.",
+    "filtered": "Record separately as not assessable after pipeline filtering.",
+    "technical_failure": "Record exit status and error; do not replace the request."
+  },
+  "secondary_observations": [
+    "door/window or wood detail",
+    "watercolor appearance",
+    "daylight",
+    "extra border",
+    "lake and pine trees for scene prompt only"
+  ],
+  "evaluation_policy": "Keep all four planned requests, record visual observer identity, and report counts and paired cases. Two seeds per condition support exploration; broader success rates and internal mechanisms require additional evidence."
+}

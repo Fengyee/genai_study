@@ -1,0 +1,59 @@
+{
+  "created_utc": "2026-11-10T19:22:13.979473+00:00",
+  "scope": "Diagnostic selected after a short exploratory oracle calculation; freezes the reader experiment before running the final implementation. No method ranking or pre-registered confirmatory claim.",
+  "cases": [
+    "standard_normal_optimal_epsilon",
+    "eight_gaussian_optimal_epsilon"
+  ],
+  "base_seeds": [
+    7,
+    19,
+    43
+  ],
+  "samples_per_case_and_seed": 4096,
+  "threads": 1,
+  "schedule": {
+    "steps": 100,
+    "beta_start": 0.0001,
+    "beta_end": 0.1,
+    "implementation": "existing make_schedule/sample_ddpm unchanged",
+    "variance": "fixed tilde-beta, deterministic final step"
+  },
+  "random_streams": {
+    "normal_sampling": "8*base_seed+0",
+    "mixture_sampling": "8*base_seed+1",
+    "normal_reference": "8*base_seed+2",
+    "mixture_reference": "8*base_seed+3",
+    "independent_mixture_target": "8*base_seed+4"
+  },
+  "sampling_initial": "N(0,I) for both cases; exact q_T for normal, approximation for the mixture",
+  "output": "artifacts/oracle-study-current",
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "genai_study.oracle_study",
+    "--samples",
+    "4096",
+    "--seeds",
+    "7",
+    "19",
+    "43",
+    "--threads",
+    "1",
+    "--output",
+    "artifacts/oracle-study-current"
+  ],
+  "timeout_seconds": 120,
+  "observations": [
+    "normal empirical endpoint moments versus independently recursed variance",
+    "mixture neighborhood fraction and nearest-center second moment",
+    "all coverage and energy diagnostics with independent reference/target",
+    "retain every case/seed, source identity, arrays and full timing"
+  ],
+  "validation": [
+    "finite-difference analytic log-density gradient",
+    "conditional mean and score identity",
+    "normal scalar variance recursion",
+    "independent recomputation from saved arrays"
+  ]
+}

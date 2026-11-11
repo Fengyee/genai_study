@@ -1,0 +1,54 @@
+{
+  "repository": "openai/consistency_models",
+  "commit": "e32b69ee436d518377db86fb2127a3972d0d8716",
+  "files": [
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/openai/consistency_models/e32b69ee436d518377db86fb2127a3972d0d8716/README.md",
+      "bytes": 5496,
+      "sha256": "95e5505c5c2b90aac70c5ae787a1bcde63a6f4045f6e401042870b021ff287f5"
+    },
+    {
+      "path": "cm/train_util.py",
+      "url": "https://raw.githubusercontent.com/openai/consistency_models/e32b69ee436d518377db86fb2127a3972d0d8716/cm/train_util.py",
+      "bytes": 22745,
+      "sha256": "bf387ed2d2d4582e9ab069c14c762e3797878bb2231551a54e5fbe36176b1cfc"
+    },
+    {
+      "path": "cm/karras_diffusion.py",
+      "url": "https://raw.githubusercontent.com/openai/consistency_models/e32b69ee436d518377db86fb2127a3972d0d8716/cm/karras_diffusion.py",
+      "bytes": 27865,
+      "sha256": "b8fcf9f53e63cff19db676814545ee7644259364236de5c10ac3d69007ee5177"
+    },
+    {
+      "path": "cm/nn.py",
+      "url": "https://raw.githubusercontent.com/openai/consistency_models/e32b69ee436d518377db86fb2127a3972d0d8716/cm/nn.py",
+      "bytes": 5498,
+      "sha256": "ceaf0703dfbe0c5de7afc72054740450c2705e3ae27cfa7fc2b438c9ab6d86b2"
+    },
+    {
+      "path": "cm/script_util.py",
+      "url": "https://raw.githubusercontent.com/openai/consistency_models/e32b69ee436d518377db86fb2127a3972d0d8716/cm/script_util.py",
+      "bytes": 6983,
+      "sha256": "271da181133400aa3d3de4664be8229424e9a6daacb0e93e24efd026a89ebc07"
+    },
+    {
+      "path": "scripts/cm_train.py",
+      "url": "https://raw.githubusercontent.com/openai/consistency_models/e32b69ee436d518377db86fb2127a3972d0d8716/scripts/cm_train.py",
+      "bytes": 5324,
+      "sha256": "0b5185c19b2b22a76dff1326c7c9209df791613361e0921fd63e3878477a256c"
+    },
+    {
+      "path": "scripts/launch.sh",
+      "url": "https://raw.githubusercontent.com/openai/consistency_models/e32b69ee436d518377db86fb2127a3972d0d8716/scripts/launch.sh",
+      "bytes": 13940,
+      "sha256": "740edc540c5fa212b5c8c87f5a1e0851b2b2b0a5824997d8e8a9eab75a11117d"
+    },
+    {
+      "path": "scripts/image_sample.py",
+      "url": "https://raw.githubusercontent.com/openai/consistency_models/e32b69ee436d518377db86fb2127a3972d0d8716/scripts/image_sample.py",
+      "bytes": 4298,
+      "sha256": "833af87c3ae6557c4c9d921db96fb8583611ac7bab888851aefb40a250585713"
+    }
+  ]
+}

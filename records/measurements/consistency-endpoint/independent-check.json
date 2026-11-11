@@ -1,0 +1,44 @@
+{
+  "scope": "Independent float64 Gaussian VE probability-flow calculation and autograd material derivative; analytic endpoint map, no learned model.",
+  "mean": 2.0,
+  "data_standard_deviation": 2.0,
+  "epsilon": 0.1,
+  "sigma_max": 2.0,
+  "material_derivative_max_abs": 2.7755575615628914e-17,
+  "exact_map_max_error": 8.881784197001252e-16,
+  "Euler_errors": [
+    {
+      "steps": 1,
+      "max_error": 1.0351483979166574
+    },
+    {
+      "steps": 2,
+      "max_error": 0.5348729486107411
+    },
+    {
+      "steps": 4,
+      "max_error": 0.2734207846506589
+    },
+    {
+      "steps": 16,
+      "max_error": 0.06988384697848282
+    },
+    {
+      "steps": 64,
+      "max_error": 0.017581812429345867
+    },
+    {
+      "steps": 256,
+      "max_error": 0.004402634819904883
+    }
+  ],
+  "same_data_same_noise_pair_endpoint_maps": [
+    3.311328468745027,
+    3.6420487203490644
+  ],
+  "same_data_same_noise_pair_difference": 0.3307202516040375,
+  "wrong_N0_sigma2_prior_output_mean": 0.5840197741493705,
+  "wrong_N0_sigma2_prior_output_variance": 2.005,
+  "target_smoothed_mean": 2.0,
+  "target_smoothed_variance": 4.01
+}

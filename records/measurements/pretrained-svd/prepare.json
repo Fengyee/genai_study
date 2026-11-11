@@ -1,0 +1,13 @@
+{
+  "verified_files": 11,
+  "verified_bytes": 9018094887,
+  "model_id": "stabilityai/stable-video-diffusion-img2vid",
+  "revision": "9cf024d5bfa8f56622af86c884f26a52f6676f2e",
+  "manifest_sha256": "6f10bafb14e6954382c828ed349cdaeb4023eb0dc4a727c43f4d317228deeb6a",
+  "model_dir": "/workspace/genai_study/artifacts/models/svd",
+  "reused_verified_files": 0,
+  "download_calls": 11,
+  "verification_seconds": 4.9102039160006825,
+  "prepare_seconds": 264.65785009700085,
+  "scope": "Temporary bootstrap downloader; per-file immediate SHA check plus final full verification. Final repository prepare CLI will be checked separately."
+}

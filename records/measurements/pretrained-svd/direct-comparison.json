@@ -1,0 +1,159 @@
+{
+  "scope": "Independent direct call to the installed official StableVideoDiffusionPipeline; no repository inference/noise/preprocessing helpers and no hooks. This compares the four-frame/two-step smoke wrapper with its direct API equivalent; it does not establish a cause for full-run visual failures.",
+  "model": {
+    "model_id": "stabilityai/stable-video-diffusion-img2vid",
+    "revision": "9cf024d5bfa8f56622af86c884f26a52f6676f2e",
+    "manifest_sha256": "6f10bafb14e6954382c828ed349cdaeb4023eb0dc4a727c43f4d317228deeb6a",
+    "verified_files": 11,
+    "verified_bytes": 9018094887
+  },
+  "identity": {
+    "script_sha256": "6a21b514c8c545b76cddd8a9cce07653e7f1800bd25d877ee183a368d5f639cc",
+    "requirements_lock_sha256": "95176d3908a08a99ca80ca84fe8d2aaf0a5b7c5cc80cd663fb63bd5c1b7b1729",
+    "prepared_input_png_sha256": "e76d50ef91a5ece55252b9c867d58927ca8b21a303ee112014491608f79ed962",
+    "prepared_input_rgb_sha256": "72640ec733d304ec92f754bb44ccc7612d920eb2e63c453f635f4cd1057a831c",
+    "diffusers_source_sha256": {
+      "pipelines/stable_video_diffusion/pipeline_stable_video_diffusion.py": "c7a8c4afc7944401a1e79aba21ecb5a48221c5b584cf10f43509b3bd8fd577e9",
+      "schedulers/scheduling_euler_discrete.py": "80a863e9f79e678f0e47002b030c1a5969a753902cef730fe8102191fef32b36",
+      "models/unets/unet_spatio_temporal_condition.py": "2ec063f49ea796daacdafae422df8e4f8c1e2f5194c4932670dc77c1330cfaf6",
+      "models/autoencoders/autoencoder_kl_temporal_decoder.py": "a89e764f032d410cfb42d73312c14b29755c792ed12c3452bcc31923e46c8c86",
+      "video_processor.py": "8ca70886a0ace0451c11b284176deed1326cd677d9acfc1d5caafe633ad9dced",
+      "image_processor.py": "eaaa29edf8a54c776adcbf991955a624c9f4fb4b38060ed6f8068014135d3b44"
+    }
+  },
+  "versions": {
+    "torch": "2.6.0+cpu",
+    "numpy": "2.1.3",
+    "diffusers": "0.35.2",
+    "transformers": "4.57.6",
+    "accelerate": "1.11.0",
+    "safetensors": "0.6.2",
+    "huggingface-hub": "0.36.0",
+    "Pillow": "13.0.0"
+  },
+  "python": "3.12.14",
+  "config": {
+    "height": 144,
+    "width": 256,
+    "frames": 4,
+    "steps": 2,
+    "min_guidance_scale": 1.0,
+    "max_guidance_scale": 2.5,
+    "fps_input": 7,
+    "motion_bucket_id": 127,
+    "noise_aug_strength": 0.02,
+    "decode_chunk_size": 4,
+    "initial_seed": 7,
+    "augmentation_seed": 8,
+    "threads": 1,
+    "device": "cpu",
+    "dtype": "float32",
+    "grad_context": "torch.no_grad",
+    "module_mode": "eval, requires_grad False"
+  },
+  "scheduler": {
+    "class": "EulerDiscreteScheduler",
+    "config": {
+      "num_train_timesteps": 1000,
+      "beta_start": 0.00085,
+      "beta_end": 0.012,
+      "beta_schedule": "scaled_linear",
+      "trained_betas": null,
+      "prediction_type": "v_prediction",
+      "interpolation_type": "linear",
+      "use_karras_sigmas": true,
+      "use_exponential_sigmas": false,
+      "use_beta_sigmas": false,
+      "sigma_min": 0.002,
+      "sigma_max": 700.0,
+      "timestep_spacing": "leading",
+      "timestep_type": "continuous",
+      "steps_offset": 1,
+      "rescale_betas_zero_snr": false,
+      "final_sigmas_type": "zero",
+      "_use_default_values": [
+        "final_sigmas_type",
+        "use_beta_sigmas",
+        "rescale_betas_zero_snr",
+        "use_exponential_sigmas"
+      ],
+      "_class_name": "EulerDiscreteScheduler",
+      "_diffusers_version": "0.24.0.dev0",
+      "clip_sample": false,
+      "set_alpha_to_one": false,
+      "skip_prk_steps": true
+    },
+    "sigmas": [
+      700.0,
+      0.0020000000949949026,
+      0.0
+    ],
+    "timesteps": [
+      1.6377700567245483,
+      -1.553652048110962
+    ],
+    "init_noise_sigma": 700.000732421875
+  },
+  "comparisons": {
+    "all_float_frames_equal": true,
+    "different_float_elements": 0,
+    "max_abs_float_difference": 0.0,
+    "initial_noise_equal": true,
+    "all_png_bytes_equal": true,
+    "all_quantized_pixels_equal": true,
+    "per_frame": [
+      {
+        "frame": 0,
+        "png_sha256": "a32dc041dd1d00a4f66c2784bfb7063f3de98694291468b23da74d068ebd3d4b",
+        "smoke_png_sha256": "a32dc041dd1d00a4f66c2784bfb7063f3de98694291468b23da74d068ebd3d4b",
+        "byte_identical": true,
+        "quantized_rgb_equal": true,
+        "float_frame_equal": true,
+        "float_max_abs_difference": 0.0
+      },
+      {
+        "frame": 1,
+        "png_sha256": "d9e9c23c0454e0ed86a4b50e846d4936d76e27c1ccb57d9909f084a5413473cd",
+        "smoke_png_sha256": "d9e9c23c0454e0ed86a4b50e846d4936d76e27c1ccb57d9909f084a5413473cd",
+        "byte_identical": true,
+        "quantized_rgb_equal": true,
+        "float_frame_equal": true,
+        "float_max_abs_difference": 0.0
+      },
+      {
+        "frame": 2,
+        "png_sha256": "7d8457a04c92d1c9f2be980aa5dfd3454a7552f3f9009291fff5805bd802c43c",
+        "smoke_png_sha256": "7d8457a04c92d1c9f2be980aa5dfd3454a7552f3f9009291fff5805bd802c43c",
+        "byte_identical": true,
+        "quantized_rgb_equal": true,
+        "float_frame_equal": true,
+        "float_max_abs_difference": 0.0
+      },
+      {
+        "frame": 3,
+        "png_sha256": "3e439bcaffaccbeb288a3b60a8f4c1c9f7b9d877cd92e7c512fe77b82ea51a65",
+        "smoke_png_sha256": "3e439bcaffaccbeb288a3b60a8f4c1c9f7b9d877cd92e7c512fe77b82ea51a65",
+        "byte_identical": true,
+        "quantized_rgb_equal": true,
+        "float_frame_equal": true,
+        "float_max_abs_difference": 0.0
+      }
+    ]
+  },
+  "outputs": {
+    "frames_npy_sha256": "863b34723588ddae70e5fe42da44772400b7f47ef3a19a6b03f895e5d11b935f",
+    "frames_raw_sha256": "6f3d308f2c17ac1faaae7f406abcf99521e90ab01b6fbd84dd13db82fe2b18bd",
+    "initial_noise_raw_sha256": "997d39b09c86c6b889f55cc36de60617054e542e4af56dcfa0aaae8f7ac10e73"
+  },
+  "timing_seconds": {
+    "verification": 4.719237928000439,
+    "pipeline_load": 3.62443190599879,
+    "inference": 38.25300372699894,
+    "total_before_report_write": 46.661416192000615
+  },
+  "timing_scope": "Independent fresh process; inference includes official image conditioning, denoising, decoding and output conversion. Total includes full weight hashing, loading, saving and comparison. Shared filesystem cache/host load uncontrolled.",
+  "memory": {
+    "process_peak_rss_kib": 9994720,
+    "scope": "Linux process-lifetime peak RSS, including model loading; KiB."
+  }
+}

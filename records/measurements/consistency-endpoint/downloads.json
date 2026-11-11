@@ -1,0 +1,14 @@
+[
+  {
+    "file": "abstract.html",
+    "url": "https://arxiv.org/abs/2303.01469v1",
+    "bytes": 42308,
+    "sha256": "735b3ae6fe91d81c5041de039bf950f473937f0b66c3a3fb83c2f0ea40e97be6"
+  },
+  {
+    "file": "paper.pdf",
+    "url": "https://arxiv.org/pdf/2303.01469v1",
+    "bytes": 48427384,
+    "sha256": "f2f4dbed7f73d182c0b2dad0747d3df8e2c27a7df05d4b2aa5dee00b6ca94d64"
+  }
+]

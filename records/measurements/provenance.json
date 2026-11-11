@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-10",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "architecture": "x86_64",
+  "file_sha256": {
+    "src/genai_study/toy.py": "ec76843afbddd8445148f5f5ffe0a4793288c12372e0925d911eeb4eea67facb",
+    "src/genai_study/experiment.py": "bee833cc0c3221c9983f86ad8899e15d01e2f8f85cc9f8d1e9e1896530675aea",
+    "src/genai_study/checkpoint.py": "4bb420f0d04dd6c5295fbf4cade5fab16b92a4673ffb81bd0bc3cebdfc2dead1",
+    "src/genai_study/solver_study.py": "ed9c240869870195aef61a81688dca5bf44daf8c1381ac4343c8e361e68b6252",
+    "requirements-lock.txt": "87c983be2101697e42bcef34553aec0c28e2132ff3c9492c6732561468cc366a"
+  },
+  "scope": "12 CPU runs on torch2.6.0+cpu: steps800/5000, seeds7/19/43, ddpm/flow. Actual reruns after dependency security upgrade, not relabeled old measurements. Timing excludes imports/plots."
+}

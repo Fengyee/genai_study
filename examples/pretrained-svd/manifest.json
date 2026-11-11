@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "model_id": "stabilityai/stable-video-diffusion-img2vid",
+  "revision": "9cf024d5bfa8f56622af86c884f26a52f6676f2e",
+  "files": [
+    {
+      "path": "model_index.json",
+      "size_bytes": 498,
+      "sha256": "a6130bbf546242f454c184649a012809c34ab0f398cf8e80f887627b7f7dfc02"
+    },
+    {
+      "path": "feature_extractor/preprocessor_config.json",
+      "size_bytes": 518,
+      "sha256": "4db495644e3e5bd8fcac52f70e7fc0b413c911086021acf73ac30e5911166e95"
+    },
+    {
+      "path": "image_encoder/config.json",
+      "size_bytes": 687,
+      "sha256": "9f3e1b6d9c091720471c14efd208d4a2666642833cdc28e44ecc78b35e0dce13"
+    },
+    {
+      "path": "image_encoder/model.safetensors",
+      "size_bytes": 2528371296,
+      "sha256": "ed1e5af7b4042ca30ec29999a4a5cfcac90b7fb610fd05ace834f2dcbb763eab"
+    },
+    {
+      "path": "scheduler/scheduler_config.json",
+      "size_bytes": 533,
+      "sha256": "59aa43afc33395efd40fe94c7369c0477b81698f4b65b63e3ae06f26269876d5"
+    },
+    {
+      "path": "unet/config.json",
+      "size_bytes": 986,
+      "sha256": "b69bc73c489ebe9b7ecbcbd786b8d04a1be872599669084b0588112ba50bb46c"
+    },
+    {
+      "path": "unet/diffusion_pytorch_model.safetensors",
+      "size_bytes": 6098682464,
+      "sha256": "98c5e6b99df6bef015b2681c0f8ab9d4c807b733be46c067d6c9966101698f58"
+    },
+    {
+      "path": "vae/config.json",
+      "size_bytes": 609,
+      "sha256": "aab2b8766d6db1bf742fa0e3bf217fae64e67a20e7e0fe78de84f79007100ffb"
+    },
+    {
+      "path": "vae/diffusion_pytorch_model.safetensors",
+      "size_bytes": 391017740,
+      "sha256": "9975042d7bee021bd53a72b1af14c8627d624f6547ec9abe661b68b962b88c49"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 7704,
+      "sha256": "82c5dbd2907c56e2991dde78bfb657c7e8414e47e611f14e516caf9c485081de"
+    },
+    {
+      "path": "LICENSE.md",
+      "size_bytes": 11852,
+      "sha256": "d6f6b1a4dce5c852bd6d7d9482d002baf0ccdb71e662250b73be9eec8764ee8d"
+    }
+  ],
+  "sources": {
+    "model_revision_url": "https://huggingface.co/stabilityai/stable-video-diffusion-img2vid/tree/9cf024d5bfa8f56622af86c884f26a52f6676f2e",
+    "weight_identity": "SHA256 and size from fixed revision Hub LFS metadata, anonymous HEAD confirmed accessible; full bytes will be verified by prepare.",
+    "configuration_identity": "Small files downloaded anonymously from the same fixed revision and locally SHA256 hashed.",
+    "license": "Stability AI Community License Agreement, July 5, 2024"
+  }
+}

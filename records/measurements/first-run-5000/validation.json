@@ -1,0 +1,129 @@
+{
+  "training_comparisons": [
+    {
+      "method": "flow",
+      "old_metrics": "records/measurements/flow-5000-seed7.json",
+      "identical_fields": {
+        "initial_eval_loss": true,
+        "final_eval_loss": true,
+        "diagnostics": true,
+        "baseline_diagnostics": true,
+        "data_theory": true,
+        "versions": true
+      },
+      "identical_config_except_output": true,
+      "all_five_expected_files_present": true,
+      "arrays_equal_to_original_if_available": {
+        "generated": true,
+        "reference": true,
+        "training_loss": true
+      },
+      "diagnostics": {
+        "energy_distance_v_statistic": 0.010622262954711914,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.11774034798145294,
+        "fraction_within_3sigma": 0.9248046875,
+        "covered_modes_at_1pct": 8
+      }
+    },
+    {
+      "method": "ddpm",
+      "old_metrics": "records/measurements/ddpm-5000-seed7.json",
+      "identical_fields": {
+        "initial_eval_loss": true,
+        "final_eval_loss": true,
+        "diagnostics": true,
+        "baseline_diagnostics": true,
+        "data_theory": true,
+        "versions": true
+      },
+      "identical_config_except_output": true,
+      "all_five_expected_files_present": true,
+      "arrays_equal_to_original_if_available": {
+        "generated": true,
+        "reference": true,
+        "training_loss": true
+      },
+      "diagnostics": {
+        "energy_distance_v_statistic": 0.008850336074829102,
+        "energy_sample_count": 512,
+        "mean_distance_to_nearest_center": 0.13307374715805054,
+        "fraction_within_3sigma": 0.9189453125,
+        "covered_modes_at_1pct": 8
+      }
+    }
+  ],
+  "solver": {
+    "checkpoint_training_steps": 5000,
+    "checkpoint_sha256_matches": true,
+    "steps_and_nfe": [
+      10,
+      25,
+      100,
+      200
+    ],
+    "recomputed_paired_rms_l2": [
+      0.06054042652249336,
+      0.02760249376296997,
+      0.004997582174837589
+    ],
+    "runs": [
+      {
+        "steps": 10,
+        "nfe": 10,
+        "elapsed_seconds": 0.02238854899951548,
+        "diagnostics": {
+          "energy_distance_v_statistic": 0.011351585388183594,
+          "energy_sample_count": 512,
+          "mean_distance_to_nearest_center": 0.1316867172718048,
+          "fraction_within_3sigma": 0.86865234375,
+          "covered_modes_at_1pct": 8
+        },
+        "previous_steps": null,
+        "paired_rms_l2_difference_from_previous": null
+      },
+      {
+        "steps": 25,
+        "nfe": 25,
+        "elapsed_seconds": 0.05417302699970605,
+        "diagnostics": {
+          "energy_distance_v_statistic": 0.010962724685668945,
+          "energy_sample_count": 512,
+          "mean_distance_to_nearest_center": 0.12209909409284592,
+          "fraction_within_3sigma": 0.90673828125,
+          "covered_modes_at_1pct": 8
+        },
+        "previous_steps": 10,
+        "paired_rms_l2_difference_from_previous": 0.06054042652249336
+      },
+      {
+        "steps": 100,
+        "nfe": 100,
+        "elapsed_seconds": 0.21498134799912805,
+        "diagnostics": {
+          "energy_distance_v_statistic": 0.011229753494262695,
+          "energy_sample_count": 512,
+          "mean_distance_to_nearest_center": 0.12047187238931656,
+          "fraction_within_3sigma": 0.9169921875,
+          "covered_modes_at_1pct": 8
+        },
+        "previous_steps": 25,
+        "paired_rms_l2_difference_from_previous": 0.02760249376296997
+      },
+      {
+        "steps": 200,
+        "nfe": 200,
+        "elapsed_seconds": 0.4294843099996797,
+        "diagnostics": {
+          "energy_distance_v_statistic": 0.011289596557617188,
+          "energy_sample_count": 512,
+          "mean_distance_to_nearest_center": 0.12028782069683075,
+          "fraction_within_3sigma": 0.9189453125,
+          "covered_modes_at_1pct": 8
+        },
+        "previous_steps": 100,
+        "paired_rms_l2_difference_from_previous": 0.004997581709176302
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "path": "artifacts/oracle-study-current/oracle-diagnostics-final.png",
+  "sha256": "acd13c1a5945aa7546d63d9fd36bc783b23eb5a689db04bc68a68c5b1da2eaea",
+  "script_sha256": "4691ab15f0a29176b827b5a8d938b69244c012b34515632fe09ee72ae2a68688",
+  "input_metrics_sha256": "cff1dc5b8b4a208df33f7e3d7bdb2b48dd44402bada7581efb7c191a5d5b002b",
+  "input_arrays_sha256": "10aa4ad7197ad1ffd22ae83a6a39caa2b50576b05fc2d34959bbcf9cf56a8a17",
+  "scope": "Left uses analytic 101-point variance path and every seed observed mean coordinate variance; right pools every generated/independent-target sample from every recorded seed, without excluding tails. Rayleigh reference uses own component center."
+}

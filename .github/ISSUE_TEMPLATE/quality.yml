@@ -1,0 +1,21 @@
+name: 学习材料或复现问题
+description: 报告事实、公式、代码、学习路径或运行体验问题。
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 问题和影响
+      description: 给出章节/行号、预期行为与实际行为；若是数学或事实问题，附原始来源。
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 复现步骤与环境
+      description: 粘贴最小命令、Python/PyTorch/OS 版本、seed 和错误日志。请勿包含凭据。
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: 建议或进一步调查

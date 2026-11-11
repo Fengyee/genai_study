@@ -1,0 +1,391 @@
+{
+  "schema_version": 1,
+  "checkpoint": {
+    "path": "artifacts/image-cfg-current/train-seed7/checkpoint.pt",
+    "sha256": "5478a78f3b8e1599010451fa79efd8d5decb1b555e6d37761745cc70f8e33abc",
+    "schema_version": 1,
+    "method": "image_flow",
+    "architecture": {
+      "name": "ConditionalConvFlow-v1",
+      "width": 16,
+      "image_shape": [
+        1,
+        16,
+        16
+      ],
+      "num_classes": 2
+    },
+    "metadata": {
+      "config": {
+        "steps": 1500,
+        "batch_size": 64,
+        "samples": 128,
+        "sampling_steps": 40,
+        "condition_dropout": 0.2,
+        "seed": 7,
+        "threads": 1,
+        "output": "artifacts/image-cfg-current/train-seed7",
+        "overwrite": false,
+        "device": "cpu",
+        "layout": "B,C,H,W",
+        "image_shape": [
+          1,
+          16,
+          16
+        ],
+        "learning_rate": 0.001,
+        "base_width": 16,
+        "eval_examples": 256,
+        "data_range": [
+          0,
+          1
+        ],
+        "center_range_px": [
+          5,
+          10
+        ],
+        "size_range_px": [
+          2,
+          3.5
+        ],
+        "edge_width_px": 0.35,
+        "coarse_template_mse_threshold": 0.01,
+        "null_condition_encoding": "zero-vector",
+        "rng_offsets": {
+          "initialization": 0,
+          "training": 1,
+          "heldout": 2,
+          "sampling": 3,
+          "reference": 4,
+          "target_baseline": 5,
+          "condition_dropout": 6
+        }
+      },
+      "versions": {
+        "python": "3.12.14",
+        "torch": "2.6.0+cpu",
+        "numpy": "2.1.3",
+        "matplotlib": "3.9.3"
+      },
+      "initial_heldout_loss": {
+        "all": 1.2046478986740112,
+        "circle": 1.2009763717651367,
+        "square": 1.2083193063735962
+      },
+      "final_heldout_loss": {
+        "all": 0.060506291687488556,
+        "circle": 0.062370073050260544,
+        "square": 0.05864250659942627
+      },
+      "initial_unconditional_heldout_loss": {
+        "all": 1.186954140663147,
+        "circle": 1.176140308380127,
+        "square": 1.197767734527588
+      },
+      "final_unconditional_heldout_loss": {
+        "all": 0.06389330327510834,
+        "circle": 0.06569717824459076,
+        "square": 0.06208942458033562
+      },
+      "training_condition_counts": {
+        "conditional": 76886,
+        "unconditional": 19114
+      }
+    }
+  },
+  "config": {
+    "scales": [
+      0.0,
+      1.0,
+      2.0,
+      4.0
+    ],
+    "sampling_steps": 40,
+    "samples": 128,
+    "independent_noise_pairs": 64,
+    "seed": 123,
+    "threads": 1,
+    "device": "cpu",
+    "solver": "explicit Euler",
+    "guidance": "v_unconditional + scale * (v_conditional - v_unconditional)",
+    "null_condition_encoding": "zero-vector",
+    "null_label": -1,
+    "layout": "B,C,H,W",
+    "image_shape": [
+      1,
+      16,
+      16
+    ],
+    "noise_seed": 123,
+    "reference_seed": 124,
+    "baseline_seed": 125,
+    "labels": {
+      "0": "circle",
+      "1": "square"
+    }
+  },
+  "versions": {
+    "python": "3.12.14",
+    "torch": "2.6.0+cpu",
+    "numpy": "2.1.3",
+    "matplotlib": "3.9.3"
+  },
+  "reference_diagnostics": {
+    "circle": {
+      "label": 0,
+      "count": 64,
+      "coarse_recognizable_fraction": 1.0,
+      "condition_match_fraction": 1.0,
+      "nearest_own_template_mse_mean": 0.0008762915385887027,
+      "raw_out_of_range_fraction": 0.0,
+      "mean_absolute_clip_change": 0.0,
+      "foreground_mass_mean": 26.74952507019043,
+      "foreground_mass_std": 8.009431838989258,
+      "zero_mass_fraction": 0.0,
+      "center_x_mean_px": 7.30159330368042,
+      "center_y_mean_px": 7.1952056884765625,
+      "center_x_std_px": 1.5136078596115112,
+      "center_y_std_px": 1.452380895614624
+    },
+    "square": {
+      "label": 1,
+      "count": 64,
+      "coarse_recognizable_fraction": 1.0,
+      "condition_match_fraction": 1.0,
+      "nearest_own_template_mse_mean": 0.0011146111646667123,
+      "raw_out_of_range_fraction": 0.0,
+      "mean_absolute_clip_change": 0.0,
+      "foreground_mass_mean": 33.65323257446289,
+      "foreground_mass_std": 9.187374114990234,
+      "zero_mass_fraction": 0.0,
+      "center_x_mean_px": 7.567201137542725,
+      "center_y_mean_px": 7.312162399291992,
+      "center_x_std_px": 1.5922602415084839,
+      "center_y_std_px": 1.4204144477844238
+    }
+  },
+  "independent_target_baseline": {
+    "circle": {
+      "label": 0,
+      "count": 64,
+      "coarse_recognizable_fraction": 1.0,
+      "condition_match_fraction": 1.0,
+      "nearest_own_template_mse_mean": 0.000878007966093719,
+      "raw_out_of_range_fraction": 0.0,
+      "mean_absolute_clip_change": 0.0,
+      "foreground_mass_mean": 25.828277587890625,
+      "foreground_mass_std": 7.95416784286499,
+      "zero_mass_fraction": 0.0,
+      "center_x_mean_px": 7.725700855255127,
+      "center_y_mean_px": 7.618150234222412,
+      "center_x_std_px": 1.464756965637207,
+      "center_y_std_px": 1.4908440113067627
+    },
+    "square": {
+      "label": 1,
+      "count": 64,
+      "coarse_recognizable_fraction": 1.0,
+      "condition_match_fraction": 1.0,
+      "nearest_own_template_mse_mean": 0.0009356567170470953,
+      "raw_out_of_range_fraction": 0.0,
+      "mean_absolute_clip_change": 0.0,
+      "foreground_mass_mean": 31.810041427612305,
+      "foreground_mass_std": 9.638303756713867,
+      "zero_mass_fraction": 0.0,
+      "center_x_mean_px": 7.487096309661865,
+      "center_y_mean_px": 7.941298961639404,
+      "center_x_std_px": 1.544944405555725,
+      "center_y_std_px": 1.3792871236801147
+    }
+  },
+  "runs": [
+    {
+      "scale": 0.0,
+      "array_key": "scale_0",
+      "steps": 40,
+      "nfe": 80,
+      "per_branch_nfe": 40,
+      "elapsed_seconds": 1.2428774920008436,
+      "diagnostics": {
+        "circle": {
+          "label": 0,
+          "count": 64,
+          "coarse_recognizable_fraction": 0.640625,
+          "condition_match_fraction": 0.65625,
+          "nearest_own_template_mse_mean": 0.004041190259158611,
+          "raw_out_of_range_fraction": 0.5213623046875,
+          "mean_absolute_clip_change": 0.010167045518755913,
+          "foreground_mass_mean": 31.47917366027832,
+          "foreground_mass_std": 9.44162368774414,
+          "zero_mass_fraction": 0.0,
+          "center_x_mean_px": 7.430148124694824,
+          "center_y_mean_px": 7.924694538116455,
+          "center_x_std_px": 1.3475290536880493,
+          "center_y_std_px": 1.3321722745895386
+        },
+        "square": {
+          "label": 1,
+          "count": 64,
+          "coarse_recognizable_fraction": 0.328125,
+          "condition_match_fraction": 0.34375,
+          "nearest_own_template_mse_mean": 0.003905892837792635,
+          "raw_out_of_range_fraction": 0.5213623046875,
+          "mean_absolute_clip_change": 0.010167045518755913,
+          "foreground_mass_mean": 31.47917366027832,
+          "foreground_mass_std": 9.44162368774414,
+          "zero_mass_fraction": 0.0,
+          "center_x_mean_px": 7.430148124694824,
+          "center_y_mean_px": 7.924694538116455,
+          "center_x_std_px": 1.3475290536880493,
+          "center_y_std_px": 1.3321722745895386
+        }
+      },
+      "paired_class_pixel_rms_difference": 0.0,
+      "paired_class_clipped_pixel_rms_difference": 0.0,
+      "paired_pixel_rms_difference_from_scale1": 0.048192501068115234,
+      "paired_clipped_pixel_rms_difference_from_scale1": 0.04783035069704056
+    },
+    {
+      "scale": 1.0,
+      "array_key": "scale_1",
+      "steps": 40,
+      "nfe": 80,
+      "per_branch_nfe": 40,
+      "elapsed_seconds": 1.3410667250000188,
+      "diagnostics": {
+        "circle": {
+          "label": 0,
+          "count": 64,
+          "coarse_recognizable_fraction": 0.9375,
+          "condition_match_fraction": 0.96875,
+          "nearest_own_template_mse_mean": 0.0025976132601499557,
+          "raw_out_of_range_fraction": 0.58892822265625,
+          "mean_absolute_clip_change": 0.012876136228442192,
+          "foreground_mass_mean": 28.680330276489258,
+          "foreground_mass_std": 8.635714530944824,
+          "zero_mass_fraction": 0.0,
+          "center_x_mean_px": 7.335338592529297,
+          "center_y_mean_px": 7.919557094573975,
+          "center_x_std_px": 1.347882866859436,
+          "center_y_std_px": 1.301956057548523
+        },
+        "square": {
+          "label": 1,
+          "count": 64,
+          "coarse_recognizable_fraction": 0.9375,
+          "condition_match_fraction": 0.953125,
+          "nearest_own_template_mse_mean": 0.0027889711782336235,
+          "raw_out_of_range_fraction": 0.53338623046875,
+          "mean_absolute_clip_change": 0.011013689450919628,
+          "foreground_mass_mean": 34.0419807434082,
+          "foreground_mass_std": 9.486610412597656,
+          "zero_mass_fraction": 0.0,
+          "center_x_mean_px": 7.580571174621582,
+          "center_y_mean_px": 7.927095413208008,
+          "center_x_std_px": 1.3514012098312378,
+          "center_y_std_px": 1.3553389310836792
+        }
+      },
+      "paired_class_pixel_rms_difference": 0.08674687147140503,
+      "paired_class_clipped_pixel_rms_difference": 0.08632294088602066,
+      "paired_pixel_rms_difference_from_scale1": 0.0,
+      "paired_clipped_pixel_rms_difference_from_scale1": 0.0
+    },
+    {
+      "scale": 2.0,
+      "array_key": "scale_2",
+      "steps": 40,
+      "nfe": 80,
+      "per_branch_nfe": 40,
+      "elapsed_seconds": 1.3136031270005333,
+      "diagnostics": {
+        "circle": {
+          "label": 0,
+          "count": 64,
+          "coarse_recognizable_fraction": 0.96875,
+          "condition_match_fraction": 1.0,
+          "nearest_own_template_mse_mean": 0.0024284259416162968,
+          "raw_out_of_range_fraction": 0.6397705078125,
+          "mean_absolute_clip_change": 0.01619948074221611,
+          "foreground_mass_mean": 26.70429229736328,
+          "foreground_mass_std": 8.066065788269043,
+          "zero_mass_fraction": 0.0,
+          "center_x_mean_px": 7.248189449310303,
+          "center_y_mean_px": 7.892625331878662,
+          "center_x_std_px": 1.350820541381836,
+          "center_y_std_px": 1.2843562364578247
+        },
+        "square": {
+          "label": 1,
+          "count": 64,
+          "coarse_recognizable_fraction": 0.984375,
+          "condition_match_fraction": 1.0,
+          "nearest_own_template_mse_mean": 0.0029986726585775614,
+          "raw_out_of_range_fraction": 0.54559326171875,
+          "mean_absolute_clip_change": 0.012537689879536629,
+          "foreground_mass_mean": 36.89131546020508,
+          "foreground_mass_std": 9.271974563598633,
+          "zero_mass_fraction": 0.0,
+          "center_x_mean_px": 7.7151689529418945,
+          "center_y_mean_px": 7.924952030181885,
+          "center_x_std_px": 1.352532148361206,
+          "center_y_std_px": 1.3583747148513794
+        }
+      },
+      "paired_class_pixel_rms_difference": 0.14311523735523224,
+      "paired_class_clipped_pixel_rms_difference": 0.14178915321826935,
+      "paired_pixel_rms_difference_from_scale1": 0.04029325023293495,
+      "paired_clipped_pixel_rms_difference_from_scale1": 0.03987583518028259
+    },
+    {
+      "scale": 4.0,
+      "array_key": "scale_4",
+      "steps": 40,
+      "nfe": 80,
+      "per_branch_nfe": 40,
+      "elapsed_seconds": 1.2541212959995391,
+      "diagnostics": {
+        "circle": {
+          "label": 0,
+          "count": 64,
+          "coarse_recognizable_fraction": 0.96875,
+          "condition_match_fraction": 1.0,
+          "nearest_own_template_mse_mean": 0.002658241428434849,
+          "raw_out_of_range_fraction": 0.7064208984375,
+          "mean_absolute_clip_change": 0.02255488932132721,
+          "foreground_mass_mean": 24.01983642578125,
+          "foreground_mass_std": 7.438100814819336,
+          "zero_mass_fraction": 0.0,
+          "center_x_mean_px": 7.096447467803955,
+          "center_y_mean_px": 7.8133087158203125,
+          "center_x_std_px": 1.3533772230148315,
+          "center_y_std_px": 1.2664649486541748
+        },
+        "square": {
+          "label": 1,
+          "count": 64,
+          "coarse_recognizable_fraction": 0.984375,
+          "condition_match_fraction": 1.0,
+          "nearest_own_template_mse_mean": 0.0036960612051188946,
+          "raw_out_of_range_fraction": 0.55279541015625,
+          "mean_absolute_clip_change": 0.01625526323914528,
+          "foreground_mass_mean": 42.29703903198242,
+          "foreground_mass_std": 8.468803405761719,
+          "zero_mass_fraction": 0.0,
+          "center_x_mean_px": 7.954573631286621,
+          "center_y_mean_px": 7.913689613342285,
+          "center_x_std_px": 1.320146083831787,
+          "center_y_std_px": 1.3815594911575317
+        }
+      },
+      "paired_class_pixel_rms_difference": 0.21765673160552979,
+      "paired_class_clipped_pixel_rms_difference": 0.21316151320934296,
+      "paired_pixel_rms_difference_from_scale1": 0.09680210798978806,
+      "paired_clipped_pixel_rms_difference_from_scale1": 0.09509453177452087
+    }
+  ],
+  "paired_difference_definition": "sqrt(mean over B,C,H,W of squared endpoint differences from scale1); class-paired fields compare labels0/1 for the same noise; clipped variants clamp each endpoint first",
+  "nfe_definition": "two separate full-batch model calls per Euler step, at every scale including 0 and 1; NFE is per generated image",
+  "timing_scope": "one integration call only; excludes loading, metrics and plotting; no warm-up",
+  "limitations": "Synthetic 16x16 shape geometry and finite-sample variation. Scales modify the learned velocity; exact tempered-density sampling requires additional theoretical conditions. Generated circle/square pairs share their initial noise; uncertainty analysis must preserve those pairs. Raw outputs and clipping diagnostics are retained."
+}

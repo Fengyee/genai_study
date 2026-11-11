@@ -1,0 +1,50 @@
+{
+  "scope": "Read-only AST extraction of three fixed original functions with mock zero denoiser/ones noise and a scalar boundary object; no pretrained model, training, library project installation, or repository writes. CT branch algebra independently evaluated.",
+  "results": [
+    {
+      "function": "sample_onestep",
+      "model_calls": [
+        80.0
+      ],
+      "rng_draw_calls": 0,
+      "last_output": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "function": "stochastic_iterative_sampler",
+      "model_calls": [
+        80.0,
+        1.3823679566485092
+      ],
+      "rng_draw_calls": 2,
+      "last_output": [
+        [
+          1.1271865066977384e-10,
+          1.1271865066977384e-10,
+          1.1271865066977384e-10
+        ],
+        [
+          1.1271865066977384e-10,
+          1.1271865066977384e-10,
+          1.1271865066977384e-10
+        ]
+      ]
+    },
+    {
+      "ct_shared_noise_euler_residual": 3.3306690738754696e-16,
+      "boundary_cskip": 1.0,
+      "boundary_cout": 0.0,
+      "original_boundary_function_equal": true
+    }
+  ]
+}

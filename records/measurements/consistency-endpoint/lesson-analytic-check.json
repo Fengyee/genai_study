@@ -1,0 +1,51 @@
+{
+  "scope": "Independent float64 analytic Gaussian VE probability flow; exact initial marginal p_T and positive endpoint lower; no learned student, training or pretrained forward.",
+  "parameters": {
+    "mean": 1.5,
+    "data_std": 0.7,
+    "sigma_min": 0.1,
+    "sigma_max": 2.0
+  },
+  "endpoint_consistency_residuals": [
+    0.0,
+    0.0,
+    4.440892098500626e-16,
+    2.220446049250313e-16
+  ],
+  "euler_rows": [
+    {
+      "calls": 1,
+      "max_endpoint_error": 0.7629512964805425,
+      "population_final_variance": 0.10603563474387535
+    },
+    {
+      "calls": 2,
+      "max_endpoint_error": 0.5008490913665951,
+      "population_final_variance": 0.20855866422424574
+    },
+    {
+      "calls": 4,
+      "max_endpoint_error": 0.27705969264086083,
+      "population_final_variance": 0.32327973086174877
+    },
+    {
+      "calls": 16,
+      "max_endpoint_error": 0.07390367594074831,
+      "population_final_variance": 0.4491076479170731
+    },
+    {
+      "calls": 64,
+      "max_endpoint_error": 0.01882837953773199,
+      "population_final_variance": 0.4867749521191206
+    }
+  ],
+  "one_exact_endpoint_map_max_error": 2.220446049250313e-16,
+  "target_endpoint_variance": 0.49999999999999994,
+  "clean_data_variance": 0.48999999999999994,
+  "clean_posterior_mean_output_variance": 0.05347438752783963,
+  "shared_data_noise_endpoint_outputs": [
+    1.254423754594032,
+    1.6158568892726985
+  ],
+  "renois_then_endpoint_variance": 0.49999999999999994
+}

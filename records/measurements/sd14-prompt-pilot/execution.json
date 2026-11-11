@@ -1,0 +1,41 @@
+{
+  "results": [
+    {
+      "prompt_id": "cabin",
+      "seed": 19,
+      "output": "artifacts/sd14-prompt-pilot/cabin-seed19",
+      "started_utc": "2026-11-10T17:59:40.593244+00:00",
+      "wall_seconds": 266.94040798899914,
+      "exit_code": 0,
+      "log": "artifacts/sd14-prompt-pilot/cabin-seed19.log"
+    },
+    {
+      "prompt_id": "scene",
+      "seed": 19,
+      "output": "artifacts/sd14-prompt-pilot/scene-seed19",
+      "started_utc": "2026-11-10T18:04:07.534092+00:00",
+      "wall_seconds": 266.89125631000024,
+      "exit_code": 0,
+      "log": "artifacts/sd14-prompt-pilot/scene-seed19.log"
+    },
+    {
+      "prompt_id": "scene",
+      "seed": 43,
+      "output": "artifacts/sd14-prompt-pilot/scene-seed43",
+      "started_utc": "2026-11-10T18:08:34.425787+00:00",
+      "wall_seconds": 269.0842702410009,
+      "exit_code": 0,
+      "log": "artifacts/sd14-prompt-pilot/scene-seed43.log"
+    },
+    {
+      "prompt_id": "cabin",
+      "seed": 43,
+      "output": "artifacts/sd14-prompt-pilot/cabin-seed43",
+      "started_utc": "2026-11-10T18:13:03.510451+00:00",
+      "wall_seconds": 271.208848758999,
+      "exit_code": 0,
+      "log": "artifacts/sd14-prompt-pilot/cabin-seed43.log"
+    }
+  ],
+  "total_wall_seconds": 1074.1261826709997
+}

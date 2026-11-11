@@ -1,0 +1,38 @@
+[
+  {
+    "case": "success",
+    "status": "succeeded",
+    "exit_code": 0,
+    "child_returncode": 0,
+    "wall_seconds": 0.015470891001314158,
+    "log_sha256_verified": true
+  },
+  {
+    "case": "missing-video-model",
+    "status": "failed",
+    "exit_code": 2,
+    "child_returncode": 2,
+    "wall_seconds": 0.06362269400051446,
+    "log_sha256_verified": true
+  },
+  {
+    "case": "missing-image-model",
+    "status": "failed",
+    "exit_code": 2,
+    "child_returncode": 2,
+    "wall_seconds": 0.06365688599908026,
+    "log_sha256_verified": true
+  },
+  {
+    "case": "timeout",
+    "status": "timed_out",
+    "exit_code": 124,
+    "child_returncode": -15,
+    "wall_seconds": 0.250485997999931,
+    "log_sha256_verified": true
+  },
+  {
+    "case": "documented-demo-and-stdlib-only",
+    "both_exit_code": 0
+  }
+]

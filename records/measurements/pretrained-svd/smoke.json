@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "model": {
+    "model_id": "stabilityai/stable-video-diffusion-img2vid",
+    "revision": "9cf024d5bfa8f56622af86c884f26a52f6676f2e",
+    "manifest_path": "examples/pretrained-svd/manifest.json",
+    "manifest_sha256": "6f10bafb14e6954382c828ed349cdaeb4023eb0dc4a727c43f4d317228deeb6a",
+    "verified_files": 11,
+    "verified_bytes": 9018094887
+  },
+  "config": {
+    "seed": 7,
+    "augmentation_seed": 8,
+    "frames": 4,
+    "steps": 2,
+    "height": 144,
+    "width": 256,
+    "min_guidance_scale": 1.0,
+    "max_guidance_scale": 2.5,
+    "fps_input": 7,
+    "fps_condition": 6,
+    "motion_bucket_id": 127,
+    "noise_aug_strength": 0.02,
+    "decode_chunk_size": 4,
+    "threads": 1,
+    "device": "cpu",
+    "dtype": "float32",
+    "num_videos_per_prompt": 1,
+    "deterministic_algorithms": true
+  },
+  "input": {
+    "source_path": "docs/assets/sd14-pilot-scene-seed43.png",
+    "source_sha256": "a262f5478c234927217e9268e5abeb7f58bcb21a2415366cdbe4f950f26688b9",
+    "original_size_wh": [
+      512,
+      512
+    ],
+    "original_mode": "RGB",
+    "exif_transposed_size_wh": [
+      512,
+      512
+    ],
+    "crop_box_xyxy": [
+      0,
+      112,
+      512,
+      400
+    ],
+    "prepared_size_wh": [
+      256,
+      144
+    ],
+    "transform": "PIL EXIF transpose -> RGB -> integer center crop -> Lanczos resize",
+    "prepared_rgb_sha256": "72640ec733d304ec92f754bb44ccc7612d920eb2e63c453f635f4cd1057a831c",
+    "prepared_rgb_hash_format": "HWC RGB uint8 raw bytes",
+    "prepared_png_sha256": "e76d50ef91a5ece55252b9c867d58927ca8b21a303ee112014491608f79ed962"
+  },
+  "versions": {
+    "torch": "2.6.0+cpu",
+    "numpy": "2.1.3",
+    "diffusers": "0.35.2",
+    "transformers": "4.57.6",
+    "accelerate": "1.11.0",
+    "safetensors": "0.6.2",
+    "huggingface-hub": "0.36.0",
+    "Pillow": "13.0.0",
+    "python": "3.12.14"
+  },
+  "scheduler": {
+    "class": "EulerDiscreteScheduler",
+    "config": {
+      "num_train_timesteps": 1000,
+      "beta_start": 0.00085,
+      "beta_end": 0.012,
+      "beta_schedule": "scaled_linear",
+      "trained_betas": null,
+      "prediction_type": "v_prediction",
+      "interpolation_type": "linear",
+      "use_karras_sigmas": true,
+      "use_exponential_sigmas": false,
+      "use_beta_sigmas": false,
+      "sigma_min": 0.002,
+      "sigma_max": 700.0,
+      "timestep_spacing": "leading",
+      "timestep_type": "continuous",
+      "steps_offset": 1,
+      "rescale_betas_zero_snr": false,
+      "final_sigmas_type": "zero",
+      "_use_default_values": [
+        "use_exponential_sigmas",
+        "rescale_betas_zero_snr",
+        "use_beta_sigmas",
+        "final_sigmas_type"
+      ],
+      "_class_name": "EulerDiscreteScheduler",
+      "_diffusers_version": "0.24.0.dev0",
+      "clip_sample": false,
+      "set_alpha_to_one": false,
+      "skip_prk_steps": true
+    },
+    "timesteps": [
+      1.6377700567245483,
+      -1.553652048110962
+    ],
+    "sigmas": [
+      700.0,
+      0.0020000000949949026,
+      0.0
+    ],
+    "init_noise_sigma": 700.000732421875
+  },
+  "representation": {
+    "initial_noise_shape": [
+      1,
+      4,
+      4,
+      18,
+      32
+    ],
+    "initial_noise_sha256": "997d39b09c86c6b889f55cc36de60617054e542e4af56dcfa0aaae8f7ac10e73",
+    "initial_noise_hash_format": "C-order float32 raw bytes before pipeline init_noise_sigma multiplication",
+    "augmentation_generator_initial_state_sha256": "f5bc3c574db9dc1e49dee6f3d77ea1914debd5135176a482f8df48d4ce3c7a62",
+    "augmentation_input_shape": [
+      1,
+      3,
+      144,
+      256
+    ],
+    "augmentation_input_sha256": "422a8d3a3aa4f4bb50accbafeb8565b247efa2c6f3b6356a8e2a9b69f208b1d3",
+    "augmentation_input_hash_format": "C-order float32 raw bytes at the VAE encoder input",
+    "vae_spatial_factor": 8,
+    "vae_scaling_factor": 0.18215,
+    "reference_vae_latent_scaling": "latent_dist.mode(), without multiplying scaling_factor",
+    "generated_latent_decoding": "divide by scaling_factor before temporal VAE decode",
+    "guidance_per_frame": [
+      1.0,
+      1.5,
+      2.0,
+      2.5
+    ],
+    "added_time_ids": [
+      [
+        6.0,
+        127.0,
+        0.019999999552965164
+      ],
+      [
+        6.0,
+        127.0,
+        0.019999999552965164
+      ]
+    ],
+    "image_embedding_shape": [
+      2,
+      1,
+      1024
+    ]
+  },
+  "network_evaluations": {
+    "unet_forward_calls": 2,
+    "unet_input_shapes": [
+      [
+        2,
+        4,
+        8,
+        18,
+        32
+      ],
+      [
+        2,
+        4,
+        8,
+        18,
+        32
+      ]
+    ],
+    "unet_video_branch_evaluations": 4,
+    "definition": "One joint-video UNet call per Euler interval; batch2 contains image-conditioned and zero-image branches. Each branch processes all F frames jointly. Excludes image encoder and VAE."
+  },
+  "timing_seconds": {
+    "input_preparation": 0.017311903000518214,
+    "verification": 4.74376858100004,
+    "pipeline_load": 3.345627400000012,
+    "inference": 38.36832986199988,
+    "conditioning_before_first_unet": 3.9341591430002154,
+    "denoising_first_unet_through_last_euler": 23.239932495000176,
+    "decoding_and_postprocessing": 11.194238223999491,
+    "total_before_metrics_write": 46.535073338000075
+  },
+  "timing_scope": "Fresh process, no warm-up. Inference includes image conditioning, all Euler steps, temporal VAE decode and RGB postprocessing. Denoising begins at the first UNet prehook and ends in the callback after the last Euler update. Total also includes verification, loading, input preparation and saving, stopping before metrics write. Download is separate.",
+  "memory": {
+    "process_peak_rss_kib": 9999088,
+    "scope": "Linux process lifetime high-water RSS in KiB, including imports/model loading."
+  },
+  "diagnostics": {
+    "pixel_range": [
+      0.0,
+      1.0
+    ],
+    "adjacent_rgb_rms": [
+      0.08472091558297236,
+      0.08013992983083561,
+      0.06827576196919878
+    ],
+    "first_last_rgb_rms": 0.22258890003460463,
+    "definition": "RMS over H,W,RGB of postprocessed [0,1] frame differences. These describe image change; stationary repetition has zero difference and motion correctness requires a separate task criterion."
+  },
+  "outputs": {
+    "input": "input.png",
+    "initial_noise": "initial_noise.npy",
+    "augmentation_input": "augmentation_input.npy",
+    "frames": "frames.npy",
+    "frames_shape": [
+      4,
+      144,
+      256,
+      3
+    ],
+    "frames_sha256": "863b34723588ddae70e5fe42da44772400b7f47ef3a19a6b03f895e5d11b935f",
+    "frames_raw_sha256": "6f3d308f2c17ac1faaae7f406abcf99521e90ab01b6fbd84dd13db82fe2b18bd",
+    "frames_format": "F,H,W,RGB float32 after pipeline (decoded/2+0.5).clamp(0,1)",
+    "png_conversion": "round(frames*255) to uint8, matching Diffusers numpy_to_pil",
+    "frame_files": [
+      {
+        "path": "frame_000.png",
+        "sha256": "a32dc041dd1d00a4f66c2784bfb7063f3de98694291468b23da74d068ebd3d4b"
+      },
+      {
+        "path": "frame_001.png",
+        "sha256": "d9e9c23c0454e0ed86a4b50e846d4936d76e27c1ccb57d9909f084a5413473cd"
+      },
+      {
+        "path": "frame_002.png",
+        "sha256": "7d8457a04c92d1c9f2be980aa5dfd3454a7552f3f9009291fff5805bd802c43c"
+      },
+      {
+        "path": "frame_003.png",
+        "sha256": "3e439bcaffaccbeb288a3b60a8f4c1c9f7b9d877cd92e7c512fe77b82ea51a65"
+      }
+    ]
+  },
+  "attribution": "Powered by Stability AI; fixed model uses Stability AI Community License (2024-07-05)."
+}

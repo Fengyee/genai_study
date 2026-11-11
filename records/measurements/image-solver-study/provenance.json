@@ -1,0 +1,38 @@
+{
+  "date_utc": "2026-11-10T16:06:41.477782+00:00",
+  "base_commit_before_changes": "519e9246a6b35dc583da34e0f1bba30d98b154d1",
+  "source_sha256": {
+    "src/genai_study/checkpoint.py": "e41ea50d53dc106c6658c7d6cbb48b71bdd61b28261d58116200e63ca6199144",
+    "src/genai_study/image_flow.py": "99509086dae32aa9f26895113be839b904d68da50041e29d85cc8cf02afc621f",
+    "src/genai_study/image_checkpoint.py": "095b44fdab63c1e844f4e1d03a7ba8e607dc6fe0ddff19e591e198955babad33",
+    "src/genai_study/image_solver_study.py": "f6ecd4ca7dfa7420f6c1b6d4cb35446550f39fd556f3a97d7375f0851eceb029",
+    "requirements-lock.txt": "87c983be2101697e42bcef34553aec0c28e2132ff3c9492c6732561468cc366a"
+  },
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "reported_cpu_model": "AMD EPYC 9V45 96-Core Processor",
+  "visible_logical_cpus": 5,
+  "torch_threads": 1,
+  "scope": "Fresh 1500-update training at seeds 7,19,43, followed by frozen-checkpoint Euler studies at 10/20/40/80 steps. All studies share noise seed123, reference124, baseline125 and 128 balanced conditions. Historical image-flow records remain unchanged. CPU timing records individual code sections under shared cloud load.",
+  "validation": {
+    "7": {
+      "all_training_arrays_equal_to_previous_run": true,
+      "seven_previous_metric_groups_equal": true,
+      "checkpoint_recreates_training_samples_exactly": true,
+      "study_rms_float64_recheck_absolute_tolerance": 1e-07
+    },
+    "19": {
+      "all_training_arrays_equal_to_previous_run": true,
+      "seven_previous_metric_groups_equal": true,
+      "checkpoint_recreates_training_samples_exactly": true,
+      "study_rms_float64_recheck_absolute_tolerance": 1e-07
+    },
+    "43": {
+      "all_training_arrays_equal_to_previous_run": true,
+      "seven_previous_metric_groups_equal": true,
+      "checkpoint_recreates_training_samples_exactly": true,
+      "study_rms_float64_recheck_absolute_tolerance": 1e-07
+    }
+  },
+  "shared_noise_labels_references_identical_across_studies": true
+}

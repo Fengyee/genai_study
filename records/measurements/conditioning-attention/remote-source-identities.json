@@ -1,0 +1,37 @@
+[
+  {
+    "path": "diffusers/pipelines/stable_diffusion/pipeline_stable_diffusion.py",
+    "url": "https://raw.githubusercontent.com/huggingface/diffusers/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/pipelines/stable_diffusion/pipeline_stable_diffusion.py",
+    "bytes": 55721,
+    "sha256": "7466201901e68667164344a9fb58596d9d253e524c9addad38494ee6bc1f7e08",
+    "installed_file_byte_equal": true
+  },
+  {
+    "path": "diffusers/pipelines/stable_video_diffusion/pipeline_stable_video_diffusion.py",
+    "url": "https://raw.githubusercontent.com/huggingface/diffusers/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/pipelines/stable_video_diffusion/pipeline_stable_video_diffusion.py",
+    "bytes": 32628,
+    "sha256": "c7a8c4afc7944401a1e79aba21ecb5a48221c5b584cf10f43509b3bd8fd577e9",
+    "installed_file_byte_equal": true
+  },
+  {
+    "path": "diffusers/models/attention_processor.py",
+    "url": "https://raw.githubusercontent.com/huggingface/diffusers/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/models/attention_processor.py",
+    "bytes": 239691,
+    "sha256": "d56adb29122171c897568ae0235dba6c5409b9a4176de6196d563c6f56c9df90",
+    "installed_file_byte_equal": true
+  },
+  {
+    "path": "diffusers/models/transformers/transformer_temporal.py",
+    "url": "https://raw.githubusercontent.com/huggingface/diffusers/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/models/transformers/transformer_temporal.py",
+    "bytes": 16812,
+    "sha256": "18c9f95946d6597ed9bf2a9584ed7683a6c80fb767acc9dd62b0cdf946442344",
+    "installed_file_byte_equal": true
+  },
+  {
+    "path": "transformers/models/clip/modeling_clip.py",
+    "url": "https://raw.githubusercontent.com/huggingface/transformers/753d61104116eefc8ffc977327b441ee0c8d599f/src/transformers/models/clip/modeling_clip.py",
+    "bytes": 50315,
+    "sha256": "3e779a99827618d6e6d57583ec4f5c0d765321dfa5054a4ffca6a56bb004d499",
+    "installed_file_byte_equal": true
+  }
+]

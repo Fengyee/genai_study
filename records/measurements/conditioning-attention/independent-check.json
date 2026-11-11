@@ -1,0 +1,39 @@
+{
+  "scope": "Independent CPU float64 two-token and single-token attention algebra; fixed encoded K/V, one valid context token, dropout=0, before residual and subsequent layers. No pretrained network forward.",
+  "two_token_output": [
+    [
+      [
+        9.640275800758168,
+        0.017986209962091555
+      ],
+      [
+        -9.640275800758168,
+        0.9820137900379085
+      ],
+      [
+        2.913126124515909,
+        0.35434369377420455
+      ]
+    ]
+  ],
+  "joint_kv_permutation_max_error": 0.0,
+  "single_context_output": [
+    [
+      [
+        3.0,
+        4.0
+      ],
+      [
+        3.0,
+        4.0
+      ],
+      [
+        3.0,
+        4.0
+      ]
+    ]
+  ],
+  "single_context_query_gradient_zero": true,
+  "single_context_key_gradient_zero": true,
+  "pytorch_sdpa_single_context_exact": true
+}

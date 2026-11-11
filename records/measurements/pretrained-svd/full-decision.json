@@ -1,0 +1,8 @@
+{
+  "created_utc": "2026-11-10T18:46:35.624167+00:00",
+  "calibration_wall_seconds": 203.80332452499897,
+  "conservative_predicted_wall_seconds": 1273.7707782812436,
+  "calibration_peak_rss_gib": 11.285385131835938,
+  "proceed": true,
+  "rule": "wall_seconds*25/4 <= 1500 and RSS <= 24GiB; full hard timeout1800s"
+}

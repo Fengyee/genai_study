@@ -1,0 +1,11 @@
+{
+  "verified_files": 16,
+  "verified_bytes": 5482669095,
+  "model_id": "CompVis/stable-diffusion-v1-4",
+  "revision": "133a221b8aa7292a167afc5127cb63fb5005638b",
+  "model_dir": "artifacts/models/sd14",
+  "reused_verified_files": 16,
+  "download_calls": 0,
+  "verification_seconds": 2.9684407380000266,
+  "prepare_seconds": 6.091295154999898
+}
