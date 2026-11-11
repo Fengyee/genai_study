@@ -20,7 +20,7 @@
 | 术语 | 本仓库中的含义 | 深入入口 |
 | --- | --- | --- |
 | 潜变量 / 潜空间 · latent variable / latent space | 模型内部用于表示数据或生成数据的变量及其取值空间。图像生成常先在潜空间建模，再用配套解码器恢复像素。 | [04：潜空间生成路径](chapters/04-image-video-roadmap.md#2-潜空间先压缩再生成) |
-| 变分自编码器 · variational autoencoder（VAE） | 使用近似后验进行变分学习的潜变量模型。具体图像压缩器还可加入感知、对抗等目标；阅读发布模型时核对实际训练目标与编解码接口。 | [01：VAE目标](chapters/01-generative-models.md#3-vae用变分推断处理难积分)；[04：图像压缩器](chapters/04-image-video-roadmap.md#2-潜空间先压缩再生成) |
+| 变分自编码器 · variational autoencoder（VAE） | 使用近似后验进行变分学习的潜变量模型。具体图像压缩器还可加入感知、对抗等目标；阅读发布模型时核对实际训练目标与编解码接口。 | [01：VAE目标](chapters/01-generative-models.md#3-vae用变分推断处理难积分)；[04：图像压缩器](chapters/04-image-video-roadmap.md#2-潜空间先压缩再生成)；[固定VAE往返](vae-reconstruction-report.md) |
 | Token / tokenizer · 序列单元 / 分词或编码器 | Token是序列中的表示单元，tokenizer规定输入到这些单元的转换。文本与ResTok可用离散索引，图像patch也可表示为连续向量。 | [09：文本token](chapters/09-pretrained-image-lab.md#2-从文本与噪声到图像)；[ResTok：两类模型与token](readings/restok-image-ar-2026.md#1-先把两个模型分开) |
 | 向量量化 / 码本 · vector quantization（VQ）/ codebook | 把连续向量映射到码本条目，用索引表示。8192项码本的固定长度索引需要13bit；码本向量维数与模型存储另计。 | [ResTok：离散索引预算](readings/restok-image-ar-2026.md#1-先把两个模型分开) |
 | 图块token · patch token | 将像素或潜张量按图块组织，展平并投影为网络序列。Token数量由所在空间、图块尺寸及时间轴决定。 | [04：DiT的latent patches](chapters/04-image-video-roadmap.md#4-从-u-net-到-diffusion-transformer)；[Wan：表示与压缩](readings/wan-video-2025.md#表示压缩率不是一个脱离通道数的数字) |

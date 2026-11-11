@@ -108,6 +108,8 @@ python -m genai_study.experiment --method ddpm --steps 5000 --output artifacts/f
 
 随后可按[10章](chapters/10-pretrained-video-lab.md)复用可选环境，单独下载SVD，跟踪参考图双条件路径、视频噪声与增强随机流。完整输出和官方API短对照见[视频实测](pretrained-video-report.md)；以真实失败提出控制实验，分别核对程序运行、资源与画面表现。
 
+研究潜空间表示时，可在09之后运行[VAE编码—解码往返](vae-reconstruction-report.md)：固定一张图像，比较后验均值/采样、正确缩放与错配，核对原始数组和裁剪后显示。用像素误差和一个非线性反例说明这组实验支持的表示结论，再决定后续生成模型或数据集实验。
+
 离散图像生成可沿01的因果分解进入 [ResTok 2026](readings/restok-image-ar-2026.md)：先区分tokenizer和生成器，推导128个索引的9轮分组规则，再用两个相关bit检查组内条件独立的代价。对照09的连续latent、噪声CFG和DDIM，记录两类表示、预测量与成本口径。
 
 视频联合建模沿Wan进入 [LTX-2 2026](readings/ltx2-video-audio-2026.md)：用敲击事件检查音画边缘与联合，展开顺序条件分解，核对sigma时间、音视频token及8+3区间的真实调用数。该卡只需基础CPU环境完成解析检查，完整权重实践另需资源和访问条件。

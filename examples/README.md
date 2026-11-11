@@ -96,6 +96,8 @@ python -m genai_study.image_guidance_study \
 
 首次完整运行与两强度配对命令统一放在09章。已生成`artifacts/pretrained-sd14`时直接复用结果；重跑使用新目录。基础二维/图形实验继续使用`.venv`，预训练模块的`--help`和完整性检查测试可在基础环境执行。
 
+同一环境还可运行[VAE往返实验](../docs/vae-reconstruction-report.md)：只加载固定VAE组件，比较后验mode、三个采样种子和缩放接口，共六例。规范输入、全部原始latent/RGB、PNG、指标与完整运行记录一起保存；先按报告预算执行，再核对缩放、裁剪与重复结果。
+
 ## 可选：固定SVD的CPU视频运行与失败分析
 
 [10章](../docs/chapters/10-pretrained-video-lab.md)复用预训练依赖环境，另准备8.40GiB固定SVD模型文件。实际完成4帧/2步、14帧/4步及14帧/25步，保留全部帧、双随机流、资源门槛与播放文件；完整25步约16.8分钟、峰值11.21GiB，输出有严重过饱和与形变。先阅读[实测报告](../docs/pretrained-video-report.md)选择运行阶段，再按章内命令操作。短配置的完整重复及直接官方API对照均逐元素一致。

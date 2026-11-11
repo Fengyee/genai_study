@@ -1,0 +1,107 @@
+{
+  "repository": "Fengyee/genai_study",
+  "main_merge_sha": "416dd8ce9c3e890d03d814bc02d0015c21e51090",
+  "workflow": "quality.yml",
+  "workflow_id": 413455315,
+  "cron_utc": "17 * * * *",
+  "last_observed_utc": "2026-11-11T15:52:39.930988+00:00",
+  "schedule_observed": false,
+  "completed_runs": [
+    {
+      "id": 43050083353,
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "416dd8ce9c3e890d03d814bc02d0015c21e51090",
+      "html_url": "https://github.com/Fengyee/genai_study/actions/runs/43050083353",
+      "created_at": "2026-11-11T15:36:43Z",
+      "run_started_at": "2026-11-11T15:36:43Z",
+      "updated_at": "2026-11-11T15:38:55Z",
+      "artifacts": [
+        {
+          "id": 13869311549,
+          "name": "quality-43050083353-1",
+          "size_in_bytes": 2016880,
+          "expired": false,
+          "created_at": "2026-11-11T15:38:50Z",
+          "expires_at": "2026-11-25T15:38:49Z",
+          "downloaded_bytes": 2016880,
+          "zip_entries": 52,
+          "exit_records": {
+            "20261111T153721Z-Q9cRsq/docs.exit-status.txt": "0",
+            "20261111T153721Z-Q9cRsq/exit-status.txt": "0",
+            "20261111T153721Z-Q9cRsq/lesson-examples.exit-status.txt": "0",
+            "20261111T153721Z-Q9cRsq/smoke-ddpm.exit-status.txt": "0",
+            "20261111T153721Z-Q9cRsq/smoke-flow.exit-status.txt": "0",
+            "20261111T153721Z-Q9cRsq/smoke-image-cfg.exit-status.txt": "0",
+            "20261111T153721Z-Q9cRsq/smoke-image-guidance.exit-status.txt": "0",
+            "20261111T153721Z-Q9cRsq/smoke-image-solver.exit-status.txt": "0",
+            "20261111T153721Z-Q9cRsq/smoke-image.exit-status.txt": "0",
+            "20261111T153721Z-Q9cRsq/smoke-video.exit-status.txt": "0",
+            "20261111T153721Z-Q9cRsq/tests.exit-status.txt": "0"
+          },
+          "pytest_suites": [
+            {
+              "name": "pytest",
+              "errors": "0",
+              "failures": "0",
+              "skipped": "0",
+              "tests": "115",
+              "time": "56.481",
+              "timestamp": "2026-11-11T15:37:28.887907+00:00",
+              "hostname": "runnervm7aw5e"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 43050263196,
+      "event": "workflow_dispatch",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "416dd8ce9c3e890d03d814bc02d0015c21e51090",
+      "html_url": "https://github.com/Fengyee/genai_study/actions/runs/43050263196",
+      "created_at": "2026-11-11T15:37:46Z",
+      "run_started_at": "2026-11-11T15:37:46Z",
+      "updated_at": "2026-11-11T15:40:56Z",
+      "artifacts": [
+        {
+          "id": 13867709429,
+          "name": "quality-43050263196-1",
+          "size_in_bytes": 2016877,
+          "expired": false,
+          "created_at": "2026-11-11T15:40:53Z",
+          "expires_at": "2026-11-25T15:40:52Z",
+          "downloaded_bytes": 2016877,
+          "zip_entries": 52,
+          "exit_records": {
+            "20261111T153932Z-IlCQa1/docs.exit-status.txt": "0",
+            "20261111T153932Z-IlCQa1/exit-status.txt": "0",
+            "20261111T153932Z-IlCQa1/lesson-examples.exit-status.txt": "0",
+            "20261111T153932Z-IlCQa1/smoke-ddpm.exit-status.txt": "0",
+            "20261111T153932Z-IlCQa1/smoke-flow.exit-status.txt": "0",
+            "20261111T153932Z-IlCQa1/smoke-image-cfg.exit-status.txt": "0",
+            "20261111T153932Z-IlCQa1/smoke-image-guidance.exit-status.txt": "0",
+            "20261111T153932Z-IlCQa1/smoke-image-solver.exit-status.txt": "0",
+            "20261111T153932Z-IlCQa1/smoke-image.exit-status.txt": "0",
+            "20261111T153932Z-IlCQa1/smoke-video.exit-status.txt": "0",
+            "20261111T153932Z-IlCQa1/tests.exit-status.txt": "0"
+          },
+          "pytest_suites": [
+            {
+              "name": "pytest",
+              "errors": "0",
+              "failures": "0",
+              "skipped": "0",
+              "tests": "115",
+              "time": "51.531",
+              "timestamp": "2026-11-11T15:39:38.503252+00:00",
+              "hostname": "runnervm7aw5e"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -11,6 +11,7 @@
 | $p_\theta(x)$ | 参数为 $\theta$ 的生成模型分布；有些模型不能便宜地计算其密度 |
 | $c$ | 条件，如文本、类别或参考图像；无条件模型不使用 $c$ |
 | $z$ | 潜变量；其含义随章节明确，例如 VAE 潜变量或固定先验采样 |
+| $z_{\mathrm{VAE}}$, $z_{\mathrm{diff}}$, $c_{\mathrm{VAE}}$ | VAE重建专题的编解码坐标、扩散坐标和缩放常数；$z_{\mathrm{diff}}=c_{\mathrm{VAE}}z_{\mathrm{VAE}}$，固定SD1.4配置为$c_{\mathrm{VAE}}=0.18215$ |
 | $\epsilon$ | 标准高斯噪声，通常 $\mathcal N(0,I)$，与数据独立 |
 | $\mathbb E$ | 对下标指定的随机变量取期望；省略下标时须由上下文确定 |
 | $D_{\mathrm{KL}}(q\Vert p)$ | $\mathbb E_q[\log q-\log p]$；方向不可互换 |

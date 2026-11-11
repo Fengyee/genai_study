@@ -1,0 +1,10 @@
+{
+  "docs/assets/vae-reconstruction-contact-sheet.png": {
+    "sha256": "a2f30ee3721c0cf38a5a7e3061affc29ab89bf49f875c8c80715db46d69a63dd",
+    "size_bytes": 1959601
+  },
+  "docs/assets/vae-reconstruction-pngs.zip": {
+    "sha256": "93d12bee1a73eff3804981aa09645560d5ae58f165d06571e58af4984513e59d",
+    "size_bytes": 3237777
+  }
+}

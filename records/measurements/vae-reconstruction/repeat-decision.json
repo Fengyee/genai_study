@@ -1,0 +1,10 @@
+{
+  "decided_utc": "2026-11-11T15:43:03.379682+00:00",
+  "primary_wall_seconds": 93.770107435,
+  "primary_peak_rss_gib": 1.642364501953125,
+  "limits": {
+    "wall_seconds": 120,
+    "peak_rss_gib": 8
+  },
+  "complete_repeat_authorized_by_plan": true
+}

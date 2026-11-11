@@ -1,0 +1,20 @@
+{
+  "all_26_arrays_elementwise_equal": true,
+  "all_10_artifact_files_byte_equal": true,
+  "files": [
+    "arrays.npz",
+    "contact_sheet.png",
+    "input-source.bin",
+    "input.png",
+    "mode.png",
+    "posterior-seed19.png",
+    "posterior-seed43.png",
+    "posterior-seed7.png",
+    "scale-mismatch.png",
+    "scale-roundtrip.png"
+  ],
+  "repeat_wall_seconds": 94.848776412,
+  "repeat_peak_rss_gib": 1.6478767395019531,
+  "source_sha_unchanged": true,
+  "primary_arrays_sha256": "3f9544585ede12071a3066de3a0150b234ed072be4c9f7fe3ae9379de41601e4"
+}

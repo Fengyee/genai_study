@@ -6,7 +6,7 @@
 
 2026-11-11恢复：usage limit中断后，wait工具返回ready；原虚拟环境、VAE计划提交6a662c3和未提交代码/来源/报告草稿均保留。旧协调进程已结束，新协调PID975取得同一写锁。用户已明确授权合并PR #1及验证定时触发；核对远端8a6c47b的quality成功后，以指定head SHA合并，main为416dd8ce9c3e890d03d814bc02d0015c21e51090。后续工作切到feat/vae-reconstruction，合入origin/main并保留未提交草稿。环境配置无需重建，未重新发布。
 
-每小时质量workflow已位于默认分支，API state=active；合并push run43050083353已启动，手动workflow_dispatch run43050263196已提交并排队。正在观察两者完成以及首个真实schedule事件，后者尚未验证。纽约时间每小时:17触发（配置使用UTC每小时:17），GitHub队列可能延迟。编码代理持久调度、网站和通知绑定仍未部署。
+每小时质量workflow已位于默认分支，API state=active；合并push run43050083353与手动workflow_dispatch run43050263196均success，artifact已实际下载并核验115项测试/全部退出状态。正在观察首个真实schedule事件，后者尚未验证。纽约时间每小时:17触发（配置使用UTC每小时:17），GitHub队列可能延迟。编码代理持久调度、网站和通知绑定仍未部署。
 
 以下恢复说明和轮次按历史保留，当前状态以上段及末尾最新检查点为准。
 
@@ -455,8 +455,16 @@ SVD在途检查点：已推送a3ed4a8，对应自动PR run42877869115为complete
 
 交付检查点：6900246已推送，PR正文已更新；本轮提交前其远端run42893854986仍在执行，完成后继续核对。本轮单独提交推送；下一轮只读评估潜空间编码/解码的教学缺口，先核对现有内容与源码，再决定具体实践。持续编码/通知与每小时schedule的实际部署边界保持，未改动或发布环境配置。
 
-## 轮次39进行中：恢复VAE重建实验与已授权的部署
+## 轮次39：完成VAE重建实验与已授权的部署恢复
 
-中断前6a662c3已提交固定输入、六案例、300秒超时和完整重复门槛；source-audit的五份JSON和报告草稿保留在工作树。恢复后独立审查新vae_study与测试，源码SHA827aaff547906db71bea4097a042a20605f5a876d678cb43ae2707150d03ae79，18项定向测试通过（0.90秒），无阻塞问题。当前未确认任何真实VAE重建forward，继续按已提交协议首次执行，不把草稿当测量结果。
+中断前6a662c3已提交固定输入、六案例、300秒超时和完整重复门槛；source-audit的五份JSON和报告草稿保留在工作树。恢复后独立审查新vae_study与测试，源码SHA827aaff547906db71bea4097a042a20605f5a876d678cb43ae2707150d03ae79，18项定向测试通过（0.90秒），无阻塞问题。恢复时尚无已完成的真实VAE重建forward，后续按已提交协议首次执行并保存测量结果。
 
-恢复流程：PR #1按用户授权合并后，创建feat/vae-reconstruction；原remote fetch只覆盖旧feature，普通fetch未取得origin/main。显式fetch main:refs/remotes/origin/main成功，再合入main，全部草稿保留。下一步完成全量本地检查、固定源码commit和运行前身份，然后用run_record执行六案例，独立复算并补齐报告。GitHub手动及定时运行由只读观察任务记录在artifacts/automation-deployment；没有改动云环境发布配置。
+恢复流程：PR #1按用户授权合并后，创建feat/vae-reconstruction；原remote fetch只覆盖旧feature，普通fetch未取得origin/main。显式fetch main:refs/remotes/origin/main成功，再合入main，全部草稿保留。恢复后的执行顺序为：完成全量本地检查、固定源码commit和运行前身份，再用run_record执行六案例、独立复算并补齐报告。GitHub手动及定时运行由只读观察任务记录在artifacts/automation-deployment；没有改动云环境发布配置。
+
+实际执行：恢复完整检查133 passed（35.69秒）、13教学块/7条smoke通过后提交代码89a64cd；可选环境pip check通过，原计划/输入/源码hash在preflight固定。2026-11-11首次六案例exit0，外层93.77011秒、峰值1.64236GiB、编码6.37330秒、六次解码81.05777秒。记录首次wall≤120秒/峰值≤8GiB的决定后完整重复，exit0、wall94.84878秒、峰值1.64788GiB。
+
+结果：mode原始RGB RMS0.02105618，三个posterior约0.021056，尺度错配0.16017480；正确缩放往返相对mode的RGB配对RMS4.91131e-8。两位AI代理看完整拼图/所有案例，正常坐标下小屋、树木与湖岸可辨，缩放错配呈灰棕模糊纹理。全部26数组和10产物在重复中分别逐元素/逐字节一致，NPZ SHA3f954458…601e4。独立复算噪声、scale、全部数组/文件SHA、像素指标及PNG量化；完整七PNG ZIP逐项对应原始输出。原始指标、日志、源码/纸本来源、视觉观察和检查脚本已归档。
+
+教学与验证：新增09配套报告，明确后验mean/sample、非线性解码期望、区间投影和单图往返误差的范围，附三题解答；接入04/09、路线、术语、符号和来源索引。审查发现历史核验脚本的相邻record路径与读者命令不一致，改为显式--record/--output，并在真实数组上再次执行，结果JSON逐字节一致。最终完整quality退出0：133 passed（35.63秒）、13/13教学块、7条CLI smoke；日志artifacts/quality/20261111T154904Z-9mlozB，执行时702本地链接0错误。随后仅补核验CLI、来源/记录和PR正文，提交前复查链接/diff。
+
+交付检查点：本轮代码、报告和实测随后提交推送到feat/vae-reconstruction，并创建新的PR供评审；用户的合并授权已用于PR #1。main保持416dd8ce，实际push与手动两个run均115测试通过，完整artifact退出状态已核对并归档records/automation-deployment.json。只读观察继续等待schedule；当前无模型进程，原始数据位于artifacts/vae-current，协作锁由PID975持有。下一轮继续按完整路线与读者操作检查选择具体问题，同时完成定时触发验证。

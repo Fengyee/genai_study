@@ -1,0 +1,107 @@
+{
+  "diffusers_commit": "b71269675ec1b85193107a691dd35c308e46f0a5",
+  "claims": [
+    {
+      "source": "models/autoencoders/vae.py",
+      "lines": [
+        691,
+        712,
+        743,
+        744
+      ],
+      "claim": "DiagonalGaussianDistribution splits parameter channels into mean and logvar, clamps logvar to [-30,20], uses std=exp(logvar/2), sample=mean+std*epsilon, and mode returns mean."
+    },
+    {
+      "source": "models/autoencoders/autoencoder_kl.py",
+      "lines": [
+        128,
+        129,
+        246,
+        259,
+        280,
+        287,
+        302,
+        501,
+        517,
+        522
+      ],
+      "claim": "The plain encode/decode/forward path applies learned encoder/quant conv/decoder operations without applying the configuration scaling_factor. Slicing and tiling start disabled; forward selects posterior mode by default."
+    },
+    {
+      "source": "pipelines/stable_diffusion/pipeline_stable_diffusion.py",
+      "lines": [
+        1084,
+        1096
+      ],
+      "claim": "The full SD text-to-image pipeline divides its diffusion latent by vae.config.scaling_factor before decode, then applies its safety-check and image-postprocessing path."
+    },
+    {
+      "source": "image_processor.py",
+      "lines": [
+        146,
+        170,
+        193,
+        213,
+        225,
+        228,
+        240
+      ],
+      "claim": "PIL bytes are divided by 255 in float32, NHWC is transposed to BCHW, normalize computes 2*x-1, denormalize computes (y/2+1/2).clamp(0,1), numpy_to_pil rounds 255 times the displayed floating image to uint8."
+    },
+    {
+      "source": "utils/torch_utils.py",
+      "lines": [
+        38,
+        66,
+        82,
+        87
+      ],
+      "claim": "With one CPU torch.Generator and CPU target, randn_tensor calls torch.randn with the supplied shape/generator/device/dtype."
+    },
+    {
+      "source": "fixed SD1.4 vae/config.json",
+      "claim": "The released manifest-verified config explicitly declares scaling_factor=0.18215, latent_channels=4, and four encoder/decoder block widths [128,256,512,512]."
+    }
+  ],
+  "ast_method_check": [
+    {
+      "method": "_encode",
+      "start_line": 246,
+      "end_line": 256,
+      "no_scaling_factor_access": true
+    },
+    {
+      "method": "encode",
+      "start_line": 259,
+      "end_line": 285,
+      "no_scaling_factor_access": true
+    },
+    {
+      "method": "_decode",
+      "start_line": 287,
+      "end_line": 299,
+      "no_scaling_factor_access": true
+    },
+    {
+      "method": "decode",
+      "start_line": 302,
+      "end_line": 328,
+      "no_scaling_factor_access": true
+    },
+    {
+      "method": "forward",
+      "start_line": 501,
+      "end_line": 527,
+      "no_scaling_factor_access": true
+    }
+  ],
+  "interpretation_notes": [
+    "The scaling coefficient c is a frozen coordinate convention. Scaling latent by c changes its variance by c^2; a single later image does not identify the original aggregate training distribution.",
+    "The AutoencoderKL scaling_factor docstring describes a component-wise standard deviation, but executable scaling is multiplication by c and inverse division. LDM Appendix G and its author implementation provide the normalization formula and should anchor an explanation of the training rescaling.",
+    "LDM Appendix G displays a pooled scalar variance with denominator N=b*c*h*w; the fixed author code calls z.flatten().std() without an explicit correction setting. Its behavior depends on the framework default; no historical training run was reproduced here.",
+    "Projection onto [0,1] cannot increase squared error for a [0,1] target. Subsequent uint8 quantization has an additional rounding effect; the projection property applies to the clipped floating tensor.",
+    "Correct multiply-then-divide scale round trips can have floating-point rounding residuals; equality should be assessed numerically before image quantization.",
+    "For nonlinear D, the posterior latent mode/mean need not decode to the posterior mean image or to the latent that minimizes a chosen pixel reconstruction loss."
+  ],
+  "scope": "Read fixed source and configuration; remote byte comparisons; AST and tiny function/analytic checks only. No VAE weight load or encoder/decoder forward."
+}

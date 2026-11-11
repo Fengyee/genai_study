@@ -24,7 +24,7 @@ bash scripts/quality.sh
 
 ## GitHub Actions 每小时检查
 
-当前部署：2026-11-11，[PR #1](https://github.com/Fengyee/genai_study/pull/1)已按授权合并，默认分支包含本workflow，API状态为active。合并后的push检查和显式手动检查已启动；首个真实schedule事件仍在观察。状态与实际run证据持续写入[执行记录](../records/PROGRESS.md)。
+当前部署：2026-11-11，[PR #1](https://github.com/Fengyee/genai_study/pull/1)已按授权合并，默认分支包含本workflow，API状态为active。[合并后的push检查](https://github.com/Fengyee/genai_study/actions/runs/43050083353)和[显式手动检查](https://github.com/Fengyee/genai_study/actions/runs/43050263196)均成功，两个artifact已实际下载并核对全部退出状态与115项测试；首个真实schedule事件仍在观察。原始[部署证据](../records/automation-deployment.json)和[执行记录](../records/PROGRESS.md)区分各事件与实际运行版本。
 
 配置位于 [quality.yml](../.github/workflows/quality.yml)：
 
@@ -72,6 +72,8 @@ GitHub Actions 的 `concurrency` 只约束对应 workflow 的 runs，**不能锁
 09/10章使用[运行记录器](run-records.md)保存完整子命令的日志、超时、退出状态与wall；它通过pytest中的小进程验证，独立于模型内部指标和本节的权重实践。读者可先执行记录器文档中的无模型命令确认保存路径。
 
 09/10章共用`requirements-pretrained-lock.txt`和`.venv-pretrained`，分别运行SD1.4与SVD。常规pytest中的15项图像测试、23项视频测试覆盖固定manifest、文件损坏检测/恢复、参数、输出保护、预处理与独立随机流，使用临时小文件即可执行。每小时检查保持基础依赖和CPU小实验的预算；两模型分别约5.11GiB、8.40GiB的下载及真实推理由显式实践命令完成。
+
+[VAE往返实验](vae-reconstruction-report.md)复用同一可选环境和SD1.4资产，实际只校验/加载VAE配置与权重。其18项基础测试覆盖像素投影与原始诊断、EXIF/尺寸、后验独立随机流、数组身份、参数和已有输出保护；真实六例forward及完整重复单独按报告执行。新增测试随相应PR进入默认分支后纳入小时检查，部署版本以实际run SHA为准。
 
 模型、可选依赖或采样/解码路径变化时，应按09章重新核验文件、运行真实smoke和至少一张完整图，再检查固定噪声对照。记录实际模型revision、可选锁文件hash、输出hash、进程内存和计时范围，结果见[预训练实测](pretrained-image-report.md)。文档检查跳过两个venv和本地artifacts目录。
 

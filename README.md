@@ -66,6 +66,7 @@ bash scripts/quality.sh
 | 扩散与流的数学连接 | [噪声、score与概率流ODE](docs/readings/diffusion-flow-bridge.md)：条件期望、时间方向、DDIM与SVD坐标 |
 | 少步生成 | [从积分到轨迹端点](docs/readings/consistency-endpoint-map.md)：一致性模型、CD/CT配对与解析Euler对照 |
 | 条件表示 | [文本与图像怎样进入生成网络](docs/readings/conditioning-attention.md)：Q/K/V、CLIP接口、单token与联合置换反例 |
+| 潜空间表示 | [固定VAE编码与解码](docs/vae-reconstruction-report.md)：后验采样、缩放往返、六案例重建及完整重复 |
 | 图像编辑 | [FLUX.1 Kontext 2025](docs/readings/flux-kontext-2025.md)：参考图token、时间方向与guidance蒸馏 |
 | 视频生成 | [Wan 2025](docs/readings/wan-video-2025.md)：时空表示、条件与公开模型接口 |
 | 视频训练基础 | [SVD与CogVideoX](docs/readings/video-training-svd-cogvideox.md)：训练阶段、视频压缩、VP预测量与版本差异 |
