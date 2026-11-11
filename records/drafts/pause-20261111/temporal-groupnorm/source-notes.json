@@ -1,0 +1,45 @@
+{
+  "diffusers_source_matches_previous_pinned_upstream_audit": true,
+  "sources": [
+    {
+      "name": "pytorch",
+      "url": "https://github.com/pytorch/pytorch/blob/2236df1770800ffea5697b11b0bb0d910b2e59e1/torch/nn/modules/normalization.py#L228-L313",
+      "claim": "GroupNorm uses biased variance, separate channel groups, affine parameters, and input statistics in train/eval."
+    },
+    {
+      "name": "svd_vae",
+      "url": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/models/autoencoders/autoencoder_kl_temporal_decoder.py#L42-L66",
+      "claim": "TemporalDecoder constructs MidBlockTemporalDecoder and UpBlockTemporalDecoder."
+    },
+    {
+      "name": "svd_eps",
+      "url": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/models/unets/unet_3d_blocks.py#L900-L987",
+      "claim": "Both VAE blocks pass spatial eps=1e-6 and temporal_eps=1e-5."
+    },
+    {
+      "name": "svd_temporal",
+      "url": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/models/resnet.py#L563-L583",
+      "claim": "TemporalResnetBlock uses 32 groups and affine=True."
+    },
+    {
+      "name": "svd_eps_forward",
+      "url": "https://github.com/huggingface/diffusers/blob/b71269675ec1b85193107a691dd35c308e46f0a5/src/diffusers/models/resnet.py#L673-L678",
+      "claim": "SpatioTemporalResBlock forwards temporal_eps to TemporalResnetBlock."
+    }
+  ],
+  "teaching_simplifications": {
+    "shape": [
+      1,
+      2,
+      8,
+      1,
+      1
+    ],
+    "groups": 1,
+    "affine": false,
+    "dtype": "float64",
+    "epsilon": 1e-05,
+    "no_convolution_or_trained_model": true
+  },
+  "epsilon_note": "1e-5 is the explicit VAE temporal-block argument. TemporalResnetBlock class default 1e-6 is overridden by these callers. Spatial norms are separately configured."
+}

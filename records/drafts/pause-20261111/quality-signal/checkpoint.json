@@ -1,0 +1,51 @@
+{
+  "created_utc": "2026-11-11T21:17:12.841779+00:00",
+  "status": "paused at user request before isolated signal reproduction",
+  "source_sha256": "e29560f57f2469e08d50a1e700d02c7a07b771ff4ecf50820111b3f78e0d6ce3",
+  "candidate_sha256": "56ac8fb79c9717ce0be1b0c60160523b61edd5cda1e3e03f53ec3195135e2508",
+  "repository_files_changed": false,
+  "git_mutations": false,
+  "test_processes_started": false,
+  "signals_sent": false,
+  "observed_existing_artifacts": {
+    "path": "/workspace/genai_study/artifacts/quality/20261111T210924Z-ubSPYj",
+    "source": "Parent reported process-tree SIGTERM and outer exit143; artifact presence/status independently read during checkpoint save.",
+    "exit-status.txt": {
+      "exists": true,
+      "bytes": 2,
+      "text": "0\n"
+    },
+    "tests.exit-status.txt": {
+      "exists": false
+    },
+    "pytest.xml": {
+      "exists": false
+    },
+    "tests.log": {
+      "exists": true,
+      "bytes": 51,
+      "tail": "..................................................."
+    }
+  },
+  "static_findings": [
+    "quality.sh has only an EXIT trap; finish reads $? and otherwise retains run_status=0. A signal can terminate the shell while the last completed command status remains 0.",
+    "run_check immediately snapshots PIPESTATUS for timeout and tee after its foreground pipeline; this preserves ordinary failures and timeout status if control returns normally.",
+    "Bash may defer INT/TERM traps while waiting for foreground pipeline completion. GNU timeout creates a separate process group by default, so signaling the Bash process group may not reach the timeout child group.",
+    "A minimal explicit INT/TERM exit130/143 trap should make EXIT recording nonzero, but does not itself forward signals or clean child groups."
+  ],
+  "candidate_scope": "Two explicit signal traps only. Candidate is unvalidated and intentionally has no child cleanup logic. Do not claim that missing stage statuses or interrupted process cleanup are solved.",
+  "remaining_work": [
+    "Reproduce parent-observed TERM in isolated copied script using fake cheap Python checks and real GNU timeout/tee.",
+    "Use a new session for each test and only signal recorded session-owned process groups; never kill 0 or unrelated workspace processes.",
+    "Compare whole created process tree TERM, Bash process group TERM, and Bash PID-only TERM; record trap timing, return code and artifacts.",
+    "Cover SIGINT, ordinary check failure, real shortened GNU timeout, and success; verify overall and per-check status semantics.",
+    "Decide how to explicitly record active interrupted check and later unexecuted checks before integrating.",
+    "Generate meaningful regression test candidate only after observing real signal behavior."
+  ],
+  "artifacts": {
+    "baseline": "/tmp/genai-quality-signal-candidate/baseline/scripts/quality.sh",
+    "candidate": "/tmp/genai-quality-signal-candidate/scripts/quality.sh",
+    "patch": "/tmp/genai-quality-signal-candidate/quality-signal-unvalidated.patch"
+  },
+  "resume_note": "No test process was launched, so this audit has no running process or cleanup obligation. Parent controls repository writes and PR/main integration."
+}

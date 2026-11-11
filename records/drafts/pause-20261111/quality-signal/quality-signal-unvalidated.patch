@@ -1,0 +1,12 @@
+diff --git a/scripts/quality.sh b/scripts/quality.sh
+--- a/scripts/quality.sh
++++ b/scripts/quality.sh
+@@ -19,6 +19,8 @@
+   printf 'Quality results: %s (exit %s)\n' "$run_dir" "$run_status"
+ }
+ trap finish EXIT
++trap 'exit 130' INT
++trap 'exit 143' TERM
+ {
+   date -u +'%Y-%m-%dT%H:%M:%SZ'
+   git rev-parse HEAD

@@ -24,7 +24,9 @@ bash scripts/quality.sh
 
 ## GitHub Actions 每小时检查
 
-当前部署：2026-11-11，PR #1/#2/#3已按授权合并，main为d99b748，workflow为active。原416版本的[push检查](https://github.com/Fengyee/genai_study/actions/runs/43050083353)与[手动检查](https://github.com/Fengyee/genai_study/actions/runs/43050263196)均通过115项测试/13个教学块；[新main的push检查](https://github.com/Fengyee/genai_study/actions/runs/43068708112)通过146项测试/15个教学块。三个artifact实际下载，全部退出状态为0；新版本的ZIP由主代理再次独立核验。
+当前部署：用户在暂停前授权合并全部已完成工作，PR #1–#12均已进入main，检查范围为208项测试、19个教学块及7条CLI smoke。PR12完整CI和合并后的[main push](https://github.com/Fengyee/genai_study/actions/runs/43102187504)均成功；下载的artifact已核验208 tests、19块、7smokes及11份退出记录全0，见[暂停快照](../records/pause-20261111.json)。GitHub质量检查继续启用；云环境暂停与GitHub托管runner分别管理。
+
+合并前部署记录：2026-11-11，PR #1/#2/#3已按授权合并，main为d99b748，workflow为active。原416版本的[push检查](https://github.com/Fengyee/genai_study/actions/runs/43050083353)与[手动检查](https://github.com/Fengyee/genai_study/actions/runs/43050263196)均通过115项测试/13个教学块；[新main的push检查](https://github.com/Fengyee/genai_study/actions/runs/43068708112)通过146项测试/15个教学块。三个artifact实际下载，全部退出状态为0；新版本的ZIP由主代理再次独立核验。
 
 2026-11-11第一段观察为15:39–17:35 UTC，117次成功查询覆盖16:17和17:17，未发现schedule事件。连接恢复后的18:31:58–19:34:59又完成64次成功查询，覆盖19:17；19:36独立复查仍为0。18:17处于断线空窗，缺少当时的现场查询。main d99、workflow active及1356字节配置身份保持；原main push artifact重新核验146 tests、15教学块、7条smoke和11项退出0。
 
@@ -38,7 +40,7 @@ Actions权限策略端点曾返回403，定时事件缺失的原因仍待确定�
 | --- | --- |
 | 触发 | PR、推送到 `main`、手动、每小时第 17 分钟（UTC） |
 | 运行位置 | GitHub 托管的 `ubuntu-24.04` runner，Python 3.12 |
-| 范围 | 文档链接、默认分支15个CPU教学块/146项测试（本PR及基底扩展至19块/178项）、DDPM/flow训练smoke、视频时序诊断、图像训练/求解器、条件丢弃训练/引导对照 |
+| 范围 | 文档链接、默认分支19个CPU教学块/208项测试、DDPM/flow训练smoke、视频时序诊断、图像训练/求解器、条件丢弃训练/引导对照 |
 | 作业总超时 | 25 分钟（含安装） |
 | 并发 | 同一 workflow 与 PR/ref 共用 concurrency group，已有运行不取消 |
 | 权限 | `contents: read`，检查任务无提交或修改仓库权限 |
@@ -79,7 +81,7 @@ GitHub Actions 的 `concurrency` 只约束对应 workflow 的 runs，**不能锁
 
 09/10章共用`requirements-pretrained-lock.txt`和`.venv-pretrained`，分别运行SD1.4与SVD。常规pytest中的15项图像测试、23项视频测试覆盖固定manifest、文件损坏检测/恢复、参数、输出保护、预处理与独立随机流，使用临时小文件即可执行。每小时检查保持基础依赖和CPU小实验的预算；两模型分别约5.11GiB、8.40GiB的下载及真实推理由显式实践命令完成。
 
-[VAE往返实验](vae-reconstruction-report.md)复用同一可选环境和SD1.4资产，实际只校验/加载VAE配置与权重。其18项基础测试覆盖像素投影与原始诊断、EXIF/尺寸、后验独立随机流、数组身份、参数和已有输出保护；真实六例forward及完整重复单独按报告执行。新增测试随相应PR进入默认分支后纳入小时检查，部署版本以实际run SHA为准。
+[VAE往返实验](vae-reconstruction-report.md)复用同一可选环境和SD1.4资产，实际只校验/加载VAE配置与权重。其18项基础测试覆盖像素投影与原始诊断、EXIF/尺寸、后验独立随机流、数组身份、参数和已有输出保护；真实六例forward及完整重复单独按报告执行。这些测试已随PR进入默认分支，部署版本以实际run SHA为准。
 
 模型、可选依赖或采样/解码路径变化时，应按09章重新核验文件、运行真实smoke和至少一张完整图，再检查固定噪声对照。记录实际模型revision、可选锁文件hash、输出hash、进程内存和计时范围，结果见[预训练实测](pretrained-image-report.md)。文档检查跳过两个venv和本地artifacts目录。
 
