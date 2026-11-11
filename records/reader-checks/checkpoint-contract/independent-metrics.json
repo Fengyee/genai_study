@@ -1,0 +1,30 @@
+{
+  "toy_energy_implementation": 0.12070894241333008,
+  "toy_energy_manual": 0.12070912083547869,
+  "toy_energy_abs_error": 1.7842214861119032e-07,
+  "image_metric_abs_errors": {
+    "circle": {
+      "nearest_own_template_mse_mean": 7.450580589484509e-09,
+      "foreground_mass_mean": 9.610791131819951e-07,
+      "foreground_mass_std": 7.377587607493297e-08,
+      "center_x_mean_px": 1.0498581115570005e-07,
+      "center_y_mean_px": 9.257398847495324e-07,
+      "center_x_std_px": 2.655598185796748e-07,
+      "center_y_std_px": 3.1113772758217806e-07,
+      "raw_out_of_range_fraction": 0.0,
+      "mean_absolute_clip_change": 0.0
+    },
+    "square": {
+      "nearest_own_template_mse_mean": 3.783787129235314e-08,
+      "foreground_mass_mean": 1.1557578503129662e-06,
+      "foreground_mass_std": 3.574963542973819e-07,
+      "center_x_mean_px": 3.664706857975375e-07,
+      "center_y_mean_px": 2.229514564078272e-07,
+      "center_x_std_px": 6.690183429469698e-08,
+      "center_y_std_px": 2.1042106368440727e-07,
+      "raw_out_of_range_fraction": 0.0,
+      "mean_absolute_clip_change": 0.0
+    }
+  },
+  "checks": "Independent direct pairwise Euclidean sums and explicit pixel-wise template MSE/clip/mass/centroid/population-std calculations; small arrays only."
+}

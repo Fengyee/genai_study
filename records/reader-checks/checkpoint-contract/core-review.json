@@ -1,0 +1,82 @@
+{
+  "round": 48,
+  "mode": "read-only review; repository tracked files unchanged; no Git operations",
+  "scope": {
+    "implementation": [
+      "src/genai_study/toy.py",
+      "experiment.py",
+      "image_flow.py",
+      "solver_study.py",
+      "image_solver_study.py",
+      "image_guidance_study.py",
+      "checkpoint.py",
+      "image_checkpoint.py"
+    ],
+    "documentation": [
+      "docs/chapters/02-diffusion.md",
+      "03-flow-matching.md",
+      "05-evaluation.md",
+      "07-image-flow-lab.md",
+      "08-image-guidance-lab.md",
+      "records/BACKLOG.md",
+      "AGENTS.md"
+    ],
+    "checks": [
+      "time conventions and targets",
+      "MSE and paired-error reductions",
+      "independent training/heldout/sampling/reference/dropout RNG streams",
+      "raw vs clipped image diagnostics",
+      "inference checkpoint dtype/integrity",
+      "CLI finite parameters and existing-output protection"
+    ]
+  },
+  "findings": [
+    {
+      "id": "checkpoint-dtype-contract",
+      "priority": "P1 candidate limited to public checkpoint helper reproducibility; normal documented float32 CLI path passed",
+      "locations": [
+        "src/genai_study/checkpoint.py:50-75",
+        "src/genai_study/image_checkpoint.py:18-42"
+      ],
+      "trigger": "Save TimeMLP().double() or ConditionalConvFlow().double() with first weight 1+2^-25, then load with default float32; alternatively change ambient torch default dtype before loading a valid float32 checkpoint.",
+      "observed": "Both helpers silently adopt the ambient default dtype on construction. float64 1.0000000298023224 becomes float32 1.0; valid float32 checkpoints become float64 when ambient default is float64. strict=True also silently accepts/casts same-shaped int64 state; NaN state loads.",
+      "impact": "Saved tensor precision/representation need not match the returned inference model. Existing exact-roundtrip tests cover only the default float32 case.",
+      "limit": "No default reader CLI failure or false successful metrics reproduced. Nonfinite outputs are rejected later by diagnostics.",
+      "minimal_fix": "Make schema-1 dtype contract explicit. Preserve current CPU float32 artifacts by validating state mapping/tensor dtype/finiteness at save and load, constructing the model explicitly as float32, and retaining strict shape/key checks. If float64 is supported instead, preserve declared dtype consistently through model and sampler input creation.",
+      "tests_to_add": [
+        "ambient default dtype does not alter schema-1 load",
+        "unsupported dtype rejected before saving or loading",
+        "same-shaped integer and nonfinite states rejected clearly",
+        "normal float32 roundtrip and existing artifact replay remain exact"
+      ],
+      "evidence": [
+        "/tmp/genai-core-review-sub/review.json",
+        "/tmp/genai-core-review-sub/checkpoint-contract.json"
+      ]
+    }
+  ],
+  "verified_consistent": [
+    "Core DDPM/flow mathematical targets and time directions match documentation.",
+    "Training/heldout MSE and solver paired-error reductions match stated axes.",
+    "Training, heldout, generation, reference, baseline and condition-dropout streams are separated in current entrypoints.",
+    "Image clipping/mass/centroid/population-standard-deviation fields match independent direct calculations.",
+    "All 11 inspected CLI invalid-input/nonempty-output cases rejected before work and retained sentinel files."
+  ],
+  "validation": {
+    "command": ".venv/bin/python -m pytest -q tests/test_toy.py tests/test_image_flow.py tests/test_image_guidance.py tests/test_checkpoint.py tests/test_image_checkpoint.py tests/test_experiment.py",
+    "result": "49 passed in 30.03s",
+    "independent_metric_evidence": "/tmp/genai-core-review/metric-crosscheck.json",
+    "energy_absolute_error": 1.7842214861119032e-07,
+    "max_image_summary_absolute_error": 1.1557578503129662e-06,
+    "cli_evidence": "/tmp/genai-core-review-sub/review.json"
+  },
+  "limits": [
+    "No long training, pretrained pipeline evaluation, GPU behavior, arbitrary malformed-file fuzzing or concurrency/race audit.",
+    "No confirmed P0/P1 defect in the documented default CPU float32 reader flow; the concrete finding concerns accepted helper inputs and load-environment fidelity."
+  ],
+  "root_disposition": {
+    "priority": "P2",
+    "reason": "Default documented CPU float32 commands are verified; the concrete defect concerns helper dtype/finite validation and ambient-default conversion.",
+    "reviewed_commit": "c554f787c04499b02548b132cdcb7a031e0a34b5"
+  }
+}

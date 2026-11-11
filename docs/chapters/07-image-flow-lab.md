@@ -170,7 +170,7 @@ python -m genai_study.image_solver_study \
 - **类别标签**：同一索引始终使用相同圆盘/方形条件。
 - **参考数据**：独立采样的目标图形，用于查看目标分布的几何与多样性统计；另有一批独立目标样本展示有限样本波动。这些图形与噪声独立，评价按分布进行。
 
-步数列表升序去重，每一步调用一次网络，因此 NFE（number of function evaluations）等于步数。保存的 checkpoint 含推理权重与训练元数据；优化器状态未保存，精确恢复训练需要额外状态。使用本仓库在 PyTorch 2.6.0 及以上生成并由自己保管的 checkpoint，载入机制与版本要求见 [实验说明](../../examples/README.md)。早期结果若缺少 checkpoint，请在新目录重新训练。二维 flow 使用 03 章的 `solver_study`，图像使用本节的 `image_solver_study`，二者各自读取对应模型格式。
+步数列表升序去重，每一步调用一次网络，因此 NFE（number of function evaluations）等于步数。保存的 checkpoint 含float32推理权重与训练元数据，载入为CPU float32；优化器状态未保存，精确恢复训练需要额外状态。使用本仓库在 PyTorch 2.6.0 及以上生成并由自己保管的 checkpoint，张量检查、载入机制与版本要求见 [实验说明](../../examples/README.md)。早期结果若缺少 checkpoint，请在新目录重新训练。二维 flow 使用 03 章的 `solver_study`，图像使用本节的 `image_solver_study`，二者各自读取对应模型格式。
 
 独立采样生成 `metrics.json`、`arrays.npz` 和 `samples.png`。JSON 记录 checkpoint SHA-256、训练元数据、采样配置、每组成本与分类别诊断。数组包含 `initial`、`labels`、`reference`、`independent_target` 和 `steps_10` 等原始终点；图中各采样方案展示相同索引和标签。耗时是每组单次采样的实际测量，未做预热或重复计时。
 

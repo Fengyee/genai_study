@@ -1,10 +1,9 @@
 {
   "repository": "Fengyee/genai_study",
-  "main_merge_sha": "416dd8ce9c3e890d03d814bc02d0015c21e51090",
   "workflow": "quality.yml",
   "workflow_id": 413455315,
   "cron_utc": "17 * * * *",
-  "last_observed_utc": "2026-11-11T15:52:39.930988+00:00",
+  "last_observed_utc": "2026-11-11T17:34:54.199467+00:00",
   "schedule_observed": false,
   "completed_runs": [
     {
@@ -102,6 +101,296 @@
           ]
         }
       ]
+    },
+    {
+      "id": 43068708112,
+      "run_attempt": 1,
+      "event": "push",
+      "head_sha": "d99b748fd4555db525f76a0ea83bb73b6b98c84d",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/Fengyee/genai_study/actions/runs/43068708112",
+      "created_at": "2026-11-11T17:29:45Z",
+      "run_started_at": "2026-11-11T17:29:45Z",
+      "updated_at": "2026-11-11T17:31:17Z",
+      "observed_utc": "2026-11-11T17:33:01.929113+00:00",
+      "artifacts": [
+        {
+          "id": 13877521472,
+          "name": "quality-43068708112-1",
+          "size_in_bytes": 2017450,
+          "expired": false,
+          "created_at": "2026-11-11T17:31:14Z",
+          "expires_at": "2026-11-25T17:31:12Z",
+          "downloaded_bytes": 2017450,
+          "zip_entries": 52,
+          "exit_records": {
+            "20261111T173014Z-lz6k4Y/docs.exit-status.txt": "0",
+            "20261111T173014Z-lz6k4Y/exit-status.txt": "0",
+            "20261111T173014Z-lz6k4Y/lesson-examples.exit-status.txt": "0",
+            "20261111T173014Z-lz6k4Y/smoke-ddpm.exit-status.txt": "0",
+            "20261111T173014Z-lz6k4Y/smoke-flow.exit-status.txt": "0",
+            "20261111T173014Z-lz6k4Y/smoke-image-cfg.exit-status.txt": "0",
+            "20261111T173014Z-lz6k4Y/smoke-image-guidance.exit-status.txt": "0",
+            "20261111T173014Z-lz6k4Y/smoke-image-solver.exit-status.txt": "0",
+            "20261111T173014Z-lz6k4Y/smoke-image.exit-status.txt": "0",
+            "20261111T173014Z-lz6k4Y/smoke-video.exit-status.txt": "0",
+            "20261111T173014Z-lz6k4Y/tests.exit-status.txt": "0"
+          },
+          "pytest_suites": [
+            {
+              "name": "pytest",
+              "errors": "0",
+              "failures": "0",
+              "skipped": "0",
+              "tests": "146",
+              "time": "36.056",
+              "timestamp": "2026-11-11T17:30:21.706725+00:00",
+              "hostname": "runnervm7aw5e"
+            }
+          ]
+        }
+      ],
+      "jobs_summary": [
+        {
+          "id": 130690494625,
+          "name": "quality",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-11T17:29:48Z",
+          "completed_at": "2026-11-11T17:31:17Z",
+          "runner_name": "GitHub Actions 1000000580",
+          "runner_group_name": "GitHub Actions",
+          "labels": [
+            "ubuntu-24.04"
+          ]
+        }
+      ]
     }
-  ]
+  ],
+  "initial_main_merge_sha": "416dd8ce9c3e890d03d814bc02d0015c21e51090",
+  "current_main_sha": "d99b748fd4555db525f76a0ea83bb73b6b98c84d",
+  "report_generated_utc": "2026-11-11T17:36:05.903443+00:00",
+  "observation": {
+    "started_utc": "2026-11-11T15:39:38.303975+00:00",
+    "last_successful_query_finished_utc": "2026-11-11T17:34:54.199467+00:00",
+    "deadline_utc": "2026-11-11T17:35:00+00:00",
+    "started_new_york": "2026-11-11T10:39:38.303975-05:00",
+    "last_query_new_york": "2026-11-11T12:34:54.199467-05:00",
+    "deadline_new_york": "2026-11-11T12:35:00-05:00",
+    "covered_nominal_ticks_utc": [
+      "2026-11-11T16:17:00Z",
+      "2026-11-11T17:17:00Z"
+    ],
+    "covered_nominal_ticks_new_york": [
+      "2026-11-11T11:17:00-05:00",
+      "2026-11-11T12:17:00-05:00"
+    ],
+    "capture_count": 117,
+    "successful_schedule_listing_count": 117,
+    "schedule_query_errors": [],
+    "last_capture": "20261111T173452Z.json",
+    "last_schedule_total_count": 0,
+    "last_schedule_workflow_runs": [],
+    "schedule_observed": false,
+    "schedule_run_id": null
+  },
+  "configuration": {
+    "latest_checked_utc": "2026-11-11T17:34:16.235337+00:00",
+    "workflow_id": 413455315,
+    "workflow_state": "active",
+    "workflow_path": ".github/workflows/quality.yml",
+    "workflow_sha256": "901761ec81e8fe5f8c9189287d40c05102cafe670b662dad076524b0e0992ff6",
+    "cron_expressions": [
+      "17 * * * *"
+    ],
+    "same_workflow_bytes_as_initial_main": true,
+    "repository_fields_at_initial_check": {
+      "default_branch": "main",
+      "fork": false,
+      "archived": false,
+      "disabled": false,
+      "private": false
+    },
+    "actions_permissions_read": {
+      "endpoint": "repos/Fengyee/genai_study/actions/permissions",
+      "gh_exit_code": 1,
+      "error": "gh: Resource not accessible by integration (HTTP 403)",
+      "response": {
+        "message": "Resource not accessible by integration",
+        "documentation_url": "https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-a-repository",
+        "status": "403"
+      }
+    },
+    "transient_current_main_refresh_503": "current-main-refresh-initial-error.json; bounded retry succeeded in current-main-workflow.json"
+  },
+  "main_history": [
+    {
+      "observed_utc": "2026-11-11T16:44:53Z",
+      "source": "configuration-check-20261111T164453Z.json",
+      "sha": "416dd8ce9c3e890d03d814bc02d0015c21e51090"
+    },
+    {
+      "observed_utc": "2026-11-11T17:27:57.910367+00:00",
+      "source": "GitHub git/ref/heads/main API",
+      "sha": "fe9c911faa3ad1ebf152548a4c6c5b03a7a1aeaf",
+      "parent_reported_pr2_merge_sha": "fe9c911faa3ad1ebf152548a4c6c5b03a7a1aeaf",
+      "note": "Original push and manual checks remain attached to 416dd8ce; schedule evidence uses each run actual head_sha and artifact results."
+    },
+    {
+      "observed_utc": "2026-11-11T17:30:54.435800+00:00",
+      "source": "GitHub git/ref/heads/main API",
+      "sha": "d99b748fd4555db525f76a0ea83bb73b6b98c84d",
+      "parent_reported_pr3_merge_sha": "d99b748fd4555db525f76a0ea83bb73b6b98c84d",
+      "note": "PR3 merged; original push/manual artifacts remain unchanged. New scheduled runs must be checked at their actual head SHA."
+    }
+  ],
+  "verified_run_summary": [
+    {
+      "id": 43050083353,
+      "run_attempt": 1,
+      "event": "push",
+      "head_sha": "416dd8ce9c3e890d03d814bc02d0015c21e51090",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/Fengyee/genai_study/actions/runs/43050083353",
+      "job_started_utc": "2026-11-11T15:36:45Z",
+      "job_completed_utc": "2026-11-11T15:38:54Z",
+      "runner_labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_group_name": "GitHub Actions",
+      "pytest": {
+        "tests": 115,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      "lesson_summary": [
+        "Lesson examples: 13/13 passed; 0 failures"
+      ],
+      "docs_summary": "Markdown: checked 656 local links; 0 errors",
+      "artifact": {
+        "id": 13869311549,
+        "name": "quality-43050083353-1",
+        "downloaded_bytes": 2016880,
+        "zip_entries": 52,
+        "zip_sha256": "c418a49f208c15e093418f5c9dd3cbfd0a33f66076de4ebfd69d9b775730c300",
+        "context_commit_matches_run": true,
+        "exit_status_count": 11,
+        "all_exit_statuses_zero": true
+      },
+      "details": "run-43050083353-jobs.json"
+    },
+    {
+      "id": 43050263196,
+      "run_attempt": 1,
+      "event": "workflow_dispatch",
+      "head_sha": "416dd8ce9c3e890d03d814bc02d0015c21e51090",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/Fengyee/genai_study/actions/runs/43050263196",
+      "job_started_utc": "2026-11-11T15:38:58Z",
+      "job_completed_utc": "2026-11-11T15:40:55Z",
+      "runner_labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_group_name": "GitHub Actions",
+      "pytest": {
+        "tests": 115,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      "lesson_summary": [
+        "Lesson examples: 13/13 passed; 0 failures"
+      ],
+      "docs_summary": "Markdown: checked 656 local links; 0 errors",
+      "artifact": {
+        "id": 13867709429,
+        "name": "quality-43050263196-1",
+        "downloaded_bytes": 2016877,
+        "zip_entries": 52,
+        "zip_sha256": "d63df456c8f9afa97563fd02f64179de7f2f9e50395a8d2829eb1791f221520b",
+        "context_commit_matches_run": true,
+        "exit_status_count": 11,
+        "all_exit_statuses_zero": true
+      },
+      "details": "run-43050263196-jobs.json"
+    },
+    {
+      "id": 43068708112,
+      "run_attempt": 1,
+      "event": "push",
+      "head_sha": "d99b748fd4555db525f76a0ea83bb73b6b98c84d",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/Fengyee/genai_study/actions/runs/43068708112",
+      "job_started_utc": "2026-11-11T17:29:48Z",
+      "job_completed_utc": "2026-11-11T17:31:17Z",
+      "runner_labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_group_name": "GitHub Actions",
+      "pytest": {
+        "tests": 146,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      "lesson_summary": [
+        "Lesson examples: 15/15 passed; 0 failures"
+      ],
+      "docs_summary": "Markdown: checked 779 local links; 0 errors",
+      "artifact": {
+        "id": 13877521472,
+        "name": "quality-43068708112-1",
+        "downloaded_bytes": 2017450,
+        "zip_entries": 52,
+        "zip_sha256": "8aa03422560a465dc5ea9e7290d704ab19ca455f716eb61d3b7dcba58b91fc3b",
+        "context_commit_matches_run": true,
+        "exit_status_count": 11,
+        "all_exit_statuses_zero": true
+      },
+      "details": "run-43068708112-jobs.json"
+    }
+  ],
+  "root_current_main_artifact_check": {
+    "run_id": 43068708112,
+    "event": "push",
+    "head_sha": "d99b748fd4555db525f76a0ea83bb73b6b98c84d",
+    "artifact_id": 13877521472,
+    "artifact_bytes": 2017450,
+    "artifact_sha256": "8aa03422560a465dc5ea9e7290d704ab19ca455f716eb61d3b7dcba58b91fc3b",
+    "zip_entries": 52,
+    "exit_records": {
+      "20261111T173014Z-lz6k4Y/docs.exit-status.txt": "0",
+      "20261111T173014Z-lz6k4Y/exit-status.txt": "0",
+      "20261111T173014Z-lz6k4Y/lesson-examples.exit-status.txt": "0",
+      "20261111T173014Z-lz6k4Y/smoke-ddpm.exit-status.txt": "0",
+      "20261111T173014Z-lz6k4Y/smoke-flow.exit-status.txt": "0",
+      "20261111T173014Z-lz6k4Y/smoke-image-cfg.exit-status.txt": "0",
+      "20261111T173014Z-lz6k4Y/smoke-image-guidance.exit-status.txt": "0",
+      "20261111T173014Z-lz6k4Y/smoke-image-solver.exit-status.txt": "0",
+      "20261111T173014Z-lz6k4Y/smoke-image.exit-status.txt": "0",
+      "20261111T173014Z-lz6k4Y/smoke-video.exit-status.txt": "0",
+      "20261111T173014Z-lz6k4Y/tests.exit-status.txt": "0"
+    },
+    "pytest_suites": [
+      {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "146",
+        "time": "36.056",
+        "timestamp": "2026-11-11T17:30:21.706725+00:00",
+        "hostname": "runnervm7aw5e"
+      }
+    ],
+    "lesson_examples_passed": 15,
+    "scope": "Root independently inspected downloaded ZIP; schedule trigger remains separately unverified."
+  },
+  "observer_exit_code": 0,
+  "conclusion": "Cron configuration is present and active on the default branch; push/manual runs and artifacts were verified at their actual SHAs. No schedule event was observed in this window; its cause remains undetermined."
 }

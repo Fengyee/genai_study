@@ -1,4 +1,5 @@
-"""Inference checkpoints: tensors plus JSON-compatible metadata, no pickled models."""
+"""Schema-1 inference checkpoints: finite float32 tensors and plain metadata."""
+from collections.abc import Mapping
 import math
 from pathlib import Path
 
@@ -27,8 +28,22 @@ def plain_metadata(metadata: dict) -> dict:
     return convert(metadata)
 
 
+def validate_state_dict(state: object) -> None:
+    """Require schema-1 numeric state before PyTorch can silently cast tensors."""
+    if not isinstance(state, Mapping) or not state:
+        raise ValueError("Checkpoint state must be a nonempty mapping of tensor names")
+    for name, tensor in state.items():
+        if not isinstance(name, str) or not isinstance(tensor, torch.Tensor):
+            raise ValueError("Checkpoint state requires string names and tensor values")
+        if tensor.dtype != torch.float32:
+            raise ValueError(f"Checkpoint state {name!r} must have dtype float32")
+        if not torch.isfinite(tensor).all():
+            raise ValueError(f"Checkpoint state {name!r} must contain only finite values")
+
+
 def save_payload(path: Path, payload: dict) -> None:
     """Replace a completed tensor checkpoint atomically within its directory."""
+    validate_state_dict(payload.get("model_state_dict"))
     temporary = path.with_suffix(path.suffix + ".tmp")
     torch.save(payload, temporary)
     temporary.replace(path)
@@ -44,6 +59,7 @@ def load_payload(path: Path) -> dict:
     if not isinstance(payload, dict) or type(payload.get("schema_version")) is not int or payload["schema_version"] != 1:
         raise ValueError("Unsupported checkpoint schema")
     payload["metadata"] = plain_metadata(payload.get("metadata"))
+    validate_state_dict(payload.get("model_state_dict"))
     return payload
 
 
@@ -70,7 +86,8 @@ def load_checkpoint(path: Path) -> tuple[TimeMLP, dict]:
     width = architecture.get("width")
     if type(width) is not int or width < 1:
         raise ValueError("Invalid checkpoint width")
-    model = TimeMLP(width=width)
+    with torch.device("cpu"):
+        model = TimeMLP(width=width).to(dtype=torch.float32)
     model.load_state_dict(payload["model_state_dict"], strict=True)
     model.eval()
     return model, payload

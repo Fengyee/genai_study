@@ -49,6 +49,8 @@ python -m genai_study.solver_study --checkpoint artifacts/flow/checkpoint.pt --s
 
 此命令接受二维 flow checkpoint，固定初始噪声，对冻结的速度场运行不同步数的显式 Euler。步数列表会排序并去重；每步一次网络求值，因此 NFE（number of function evaluations）等于步数。权重以 `torch.load(weights_only=True, map_location="cpu")` 载入。
 
+二维与07/08图像的schema 1 checkpoint使用float32权重及缓冲区。保存和载入会检查张量类型、dtype及有限值；返回的模型固定为CPU float32，调用方改变PyTorch默认dtype也会保持这一格式。直接调用helper保存double模型或载入整数/非有限权重会得到明确错误。需要研究其他精度时，先定义对应的模型、输入、采样与checkpoint协议，再单独验证数值结果。
+
 输出 `metrics.json`、`samples.npz` 和 `samples.png`。JSON 保存 checkpoint SHA-256、训练 metadata、实际采样配置、独立真实数据基线以及每组 `steps` / `nfe` / `elapsed_seconds` / `diagnostics`。耗时计单次采样，未做预热或重复计时；硬件比较需要额外的测量协议。
 
 `runs[i].paired_rms_l2_difference_from_previous` 是当前与上一个较少步数之间，**同一初始噪声对应的终点差**：`sqrt(mean_i ||x_i^(K)-x_i^(K_previous)||²)`。第一组为 `null`。它衡量两个数值离散化之间的差异；200 步仍是有限步近似，计算真解误差需要独立参考解。`samples.npz` 包含 `initial`、`reference`、`baseline` 与 `steps_10` 等配对数组，可独立复核。

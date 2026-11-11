@@ -24,7 +24,9 @@ bash scripts/quality.sh
 
 ## GitHub Actions 每小时检查
 
-当前部署：2026-11-11，[PR #1](https://github.com/Fengyee/genai_study/pull/1)已按授权合并，默认分支包含本workflow，API状态为active。[合并后的push检查](https://github.com/Fengyee/genai_study/actions/runs/43050083353)和[显式手动检查](https://github.com/Fengyee/genai_study/actions/runs/43050263196)均成功，两个artifact已实际下载并核对全部退出状态与115项测试；首个真实schedule事件仍在观察。原始[部署证据](../records/automation-deployment.json)和[执行记录](../records/PROGRESS.md)区分各事件与实际运行版本。
+当前部署：2026-11-11，PR #1/#2/#3已按授权合并，main为d99b748，workflow为active。原416版本的[push检查](https://github.com/Fengyee/genai_study/actions/runs/43050083353)与[手动检查](https://github.com/Fengyee/genai_study/actions/runs/43050263196)均通过115项测试/13个教学块；[新main的push检查](https://github.com/Fengyee/genai_study/actions/runs/43068708112)通过146项测试/15个教学块。三个artifact实际下载，全部退出状态为0；新版本的ZIP由主代理再次独立核验。
+
+本次观察从15:39 UTC持续到17:35 UTC截止，117次成功查询覆盖16:17和17:17两个计划点，最后查询仍无schedule事件。已确认默认分支、cron及active状态；Actions权限策略端点返回403，一次main读取503经有界重试恢复。当前证据尚不能解释定时事件缺失的原因。恢复后先查询实际schedule运行及其head SHA，再检查完成结果与artifact；[部署证据](../records/automation-deployment.json)保留观察窗口、各版本及权限范围。
 
 配置位于 [quality.yml](../.github/workflows/quality.yml)：
 
@@ -32,7 +34,7 @@ bash scripts/quality.sh
 | --- | --- |
 | 触发 | PR、推送到 `main`、手动、每小时第 17 分钟（UTC） |
 | 运行位置 | GitHub 托管的 `ubuntu-24.04` runner，Python 3.12 |
-| 范围 | 文档链接、默认分支当前13个CPU教学块（本PR及其基底扩展至15个）、已有测试、DDPM/flow训练smoke、视频时序诊断、图像训练/求解器、条件丢弃训练/引导对照 |
+| 范围 | 文档链接、15个CPU教学块、默认分支146项测试（本PR扩展至178项）、DDPM/flow训练smoke、视频时序诊断、图像训练/求解器、条件丢弃训练/引导对照 |
 | 作业总超时 | 25 分钟（含安装） |
 | 并发 | 同一 workflow 与 PR/ref 共用 concurrency group，已有运行不取消 |
 | 权限 | `contents: read`，检查任务无提交或修改仓库权限 |

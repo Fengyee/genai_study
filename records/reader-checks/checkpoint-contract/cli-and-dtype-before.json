@@ -1,0 +1,180 @@
+{
+  "scope": "Read-only review of CLI validation/output guards and checkpoint save/load; no optimizer updates or long inference.",
+  "cli_cases": [
+    {
+      "argv": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.experiment",
+        "--method",
+        "flow",
+        "--steps",
+        "0",
+        "--output",
+        "/tmp/genai-core-review-sub/protected"
+      ],
+      "returncode": 2,
+      "error": "experiment.py: error: argument --steps: must be a positive integer"
+    },
+    {
+      "argv": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.experiment",
+        "--method",
+        "flow",
+        "--batch-size",
+        "nan",
+        "--output",
+        "/tmp/genai-core-review-sub/protected"
+      ],
+      "returncode": 2,
+      "error": "experiment.py: error: argument --batch-size: invalid positive_int value: 'nan'"
+    },
+    {
+      "argv": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.image_flow",
+        "--condition-dropout",
+        "nan",
+        "--output",
+        "/tmp/genai-core-review-sub/protected"
+      ],
+      "returncode": 2,
+      "error": "image_flow.py: error: argument --condition-dropout: must be finite and in [0,1)"
+    },
+    {
+      "argv": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.image_flow",
+        "--condition-dropout",
+        "inf",
+        "--output",
+        "/tmp/genai-core-review-sub/protected"
+      ],
+      "returncode": 2,
+      "error": "image_flow.py: error: argument --condition-dropout: must be finite and in [0,1)"
+    },
+    {
+      "argv": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.image_guidance_study",
+        "--checkpoint",
+        "/tmp/genai-core-review-sub/image.pt",
+        "--scales",
+        "1",
+        "nan",
+        "--output",
+        "/tmp/genai-core-review-sub/protected"
+      ],
+      "returncode": 2,
+      "error": "image_guidance_study.py: error: argument --scales: guidance scales must be finite and nonnegative"
+    },
+    {
+      "argv": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.image_guidance_study",
+        "--checkpoint",
+        "/tmp/genai-core-review-sub/image.pt",
+        "--scales",
+        "1",
+        "inf",
+        "--output",
+        "/tmp/genai-core-review-sub/protected"
+      ],
+      "returncode": 2,
+      "error": "image_guidance_study.py: error: argument --scales: guidance scales must be finite and nonnegative"
+    },
+    {
+      "argv": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.experiment",
+        "--method",
+        "flow",
+        "--output",
+        "/tmp/genai-core-review-sub/protected"
+      ],
+      "returncode": 2,
+      "error": "experiment.py: error: output directory is nonempty; choose another or use --overwrite"
+    },
+    {
+      "argv": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.image_flow",
+        "--output",
+        "/tmp/genai-core-review-sub/protected"
+      ],
+      "returncode": 2,
+      "error": "image_flow.py: error: output directory is nonempty; choose another or use --overwrite"
+    },
+    {
+      "argv": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.solver_study",
+        "--checkpoint",
+        "/tmp/genai-core-review-sub/flow.pt",
+        "--output",
+        "/tmp/genai-core-review-sub/protected"
+      ],
+      "returncode": 2,
+      "error": "solver_study.py: error: output directory is nonempty; choose another or use --overwrite"
+    },
+    {
+      "argv": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.image_solver_study",
+        "--checkpoint",
+        "/tmp/genai-core-review-sub/image.pt",
+        "--output",
+        "/tmp/genai-core-review-sub/protected"
+      ],
+      "returncode": 2,
+      "error": "image_solver_study.py: error: output directory is nonempty; choose another or use --overwrite"
+    },
+    {
+      "argv": [
+        "/workspace/genai_study/.venv/bin/python",
+        "-m",
+        "genai_study.image_guidance_study",
+        "--checkpoint",
+        "/tmp/genai-core-review-sub/image.pt",
+        "--output",
+        "/tmp/genai-core-review-sub/protected"
+      ],
+      "returncode": 2,
+      "error": "image_guidance_study.py: error: output directory is nonempty; choose another or use --overwrite"
+    }
+  ],
+  "existing_output_retained": true,
+  "unsupported_double_roundtrip": [
+    {
+      "kind": "toy",
+      "saved_dtype": "torch.float64",
+      "loaded_dtype": "torch.float32",
+      "first_saved_value": 1.0000000298023224,
+      "first_loaded_value": 1.0,
+      "max_abs_parameter_change": 2.9802322387695312e-08,
+      "classification": "Outside documented CLI CPU single-precision path; API schema/validation hardening candidate, not a reproduced default-reader failure."
+    },
+    {
+      "kind": "image",
+      "saved_dtype": "torch.float64",
+      "loaded_dtype": "torch.float32",
+      "first_saved_value": 1.0000000298023224,
+      "first_loaded_value": 1.0,
+      "max_abs_parameter_change": 2.9802322387695312e-08,
+      "classification": "Outside documented CLI CPU single-precision path; API schema/validation hardening candidate, not a reproduced default-reader failure."
+    }
+  ],
+  "nonfinite_state_accepted_on_load": true,
+  "nonfinite_limit": "Downstream toy/image diagnostics reject nonfinite generated output; no false successful metrics demonstrated.",
+  "severity_conclusion": "No confirmed P0/P1 issue in the declared CPU float32 reader CLI path. Checkpoint tensor dtype/finiteness validation is a narrower robustness improvement; no signature/schema bypass or unintended output overwrite reproduced."
+}

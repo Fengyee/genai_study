@@ -1,0 +1,22 @@
+{
+  "commit": "c554f787c04499b02548b132cdcb7a031e0a34b5",
+  "scope": "API helper numerical round trip; default CLI path remains verified",
+  "cases": [
+    {
+      "kind": "toy",
+      "before_dtype": "torch.float64",
+      "loaded_dtype": "torch.float32",
+      "before_value": 1.0000000298023224,
+      "after_value": 1.0,
+      "float32_file_loaded_under_float64_default": "torch.float64"
+    },
+    {
+      "kind": "image",
+      "before_dtype": "torch.float64",
+      "loaded_dtype": "torch.float32",
+      "before_value": 1.0000000298023224,
+      "after_value": 1.0,
+      "float32_file_loaded_under_float64_default": "torch.float64"
+    }
+  ]
+}

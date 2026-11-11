@@ -4,6 +4,8 @@ from __future__ import annotations
 from pathlib import Path
 from typing import TYPE_CHECKING
 
+import torch
+
 from .checkpoint import load_payload, plain_metadata, save_payload
 
 if TYPE_CHECKING:
@@ -37,7 +39,8 @@ def load_image_checkpoint(path: Path) -> tuple[ConditionalConvFlow, dict]:
         raise ValueError("Image checkpoint width must be a positive multiple of 4")
     if spec != architecture(width) or type(spec.get("num_classes")) is not int or any(type(n) is not int for n in spec.get("image_shape", [])):
         raise ValueError("Unsupported image checkpoint architecture")
-    model = ConditionalConvFlow(width=width)
+    with torch.device("cpu"):
+        model = ConditionalConvFlow(width=width).to(dtype=torch.float32)
     model.load_state_dict(payload["model_state_dict"], strict=True)
     model.eval()
     return model, payload

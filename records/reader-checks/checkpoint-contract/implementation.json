@@ -1,0 +1,23 @@
+{
+  "changed_files": [
+    "src/genai_study/checkpoint.py",
+    "src/genai_study/image_checkpoint.py",
+    "tests/test_checkpoint.py"
+  ],
+  "unchanged_authorized_file": "tests/test_image_checkpoint.py",
+  "changes": {
+    "src/genai_study/checkpoint.py": "Shared schema-1 nonempty Mapping[str,Tensor], float32 and finiteness validation before save and after load; explicit CPU context and float32 conversion before strict state load.",
+    "src/genai_study/image_checkpoint.py": "Explicit CPU context and float32 conversion before strict state load; shared save/load payload validation inherited.",
+    "tests/test_checkpoint.py": "32 regressions parameterized over both architectures: invalid-save file preservation; dtype/finiteness and mapping rejection; ambient-float64 exact CPU-float32 prediction; strict key and shape checks."
+  },
+  "validation": {
+    "command": ".venv/bin/python -m pytest -q tests/test_checkpoint.py tests/test_image_checkpoint.py",
+    "result": "52 passed in 7.48s"
+  },
+  "scope": "Schema1 CPU float32 inference contract; no CLI algorithm, sampling, training or random-stream changes. No Git operations.",
+  "file_sha256": {
+    "src/genai_study/checkpoint.py": "013a6e1ab0289496962db76777dac6292cd6cec98828ee58a7a8c9a1144a5b79",
+    "src/genai_study/image_checkpoint.py": "50ce0631fa088b0d478e5d737d57c58e83615be5aa387883f17669fc09c971d2",
+    "tests/test_checkpoint.py": "3e820ef5be210528f86b00e4d1161b2e1a7b503e96bb8d570e687438cf749204"
+  }
+}
